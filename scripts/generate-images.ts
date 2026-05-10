@@ -1,8 +1,9 @@
 /**
- * Nano Banana image generator.
+ * Nano Banana (Google Gemini 2.5 Flash Image) image generator.
  *
  * Reads scripts/image-manifest.json, generates any image whose output
- * file does not already exist, and writes results to public/images/<slug>/<filename>.webp.
+ * file does not already exist, and writes results to
+ * public/images/<slug>/<filename>.webp.
  *
  * Run with: bun run gen-images
  */
@@ -20,42 +21,33 @@ type ManifestEntry = {
   aspectRatio?: string;
 };
 
-type CreateTaskResponse = {
-  code?: number;
-  msg?: string;
-  data?: {
-    taskId?: string;
-  };
-};
-
-type PollResponse = {
-  code?: number;
-  msg?: string;
-  data?: {
-    state?: string;
-    failMsg?: string;
-    response?: {
-      resultUrls?: string[];
+type GeminiPart =
+  | { text: string }
+  | {
+      inlineData: { mimeType: string; data: string };
+    }
+  | {
+      inline_data: { mime_type: string; data: string };
     };
-    successFlag?: number;
-  };
+
+type GeminiResponse = {
+  candidates?: Array<{
+    content?: { parts?: GeminiPart[] };
+    finishReason?: string;
+  }>;
+  promptFeedback?: { blockReason?: string };
+  error?: { message?: string; status?: string; code?: number };
 };
 
 const API_BASE =
-  process.env.NANO_BANANA_API_BASE ?? "https://api.nanobananaapi.ai";
-const GENERATE_PATH =
-  process.env.NANO_BANANA_GENERATE_PATH ?? "/api/v1/nanobanana/generate";
-const STATUS_PATH =
-  process.env.NANO_BANANA_STATUS_PATH ??
-  "/api/v1/nanobanana/record-info";
+  process.env.NANO_BANANA_API_BASE ??
+  "https://generativelanguage.googleapis.com";
+const MODEL = process.env.NANO_BANANA_MODEL ?? "gemini-2.5-flash-image";
 const API_KEY = process.env.NANO_BANANA_API_KEY ?? "";
 
 const ROOT = process.cwd();
 const MANIFEST_PATH = path.join(ROOT, "scripts", "image-manifest.json");
 const PUBLIC_IMAGES = path.join(ROOT, "public", "images");
-
-const POLL_INTERVAL_MS = 3_000;
-const POLL_TIMEOUT_MS = 5 * 60_000;
 
 function fail(message: string): never {
   console.error(`Error: ${message}`);
@@ -83,109 +75,122 @@ function loadManifest(): ManifestEntry[] {
   }
 }
 
-function sleep(ms: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+function aspectFromSize(w?: number, h?: number): string {
+  if (!w || !h) return "1:1";
+  const r = w / h;
+  if (r > 1.7) return "16:9";
+  if (r > 1.4) return "3:2";
+  if (r > 1.25) return "4:3";
+  if (r > 0.9) return "1:1";
+  if (r > 0.7) return "3:4";
+  return "9:16";
 }
 
-function authHeaders(): Record<string, string> {
-  return {
-    Authorization: `Bearer ${API_KEY}`,
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
-}
-
-async function createTask(entry: ManifestEntry): Promise<string> {
-  const url = `${API_BASE}${GENERATE_PATH}`;
-  const body = {
-    prompt: entry.prompt,
-    type: "textToImage",
-    aspectRatio: entry.aspectRatio ?? aspectFromSize(entry.width, entry.height),
-  };
-  const res = await fetch(url, {
-    method: "POST",
-    headers: authHeaders(),
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Create task ${res.status}: ${text || res.statusText}`);
-  }
-  const json = (await res.json()) as CreateTaskResponse;
-  const taskId = json.data?.taskId;
-  if (!taskId) {
+function extractImage(json: GeminiResponse): Buffer {
+  if (json.error) {
     throw new Error(
-      `No taskId in response: ${JSON.stringify(json).slice(0, 240)}`
+      `API error ${json.error.code ?? ""} ${json.error.status ?? ""}: ${
+        json.error.message ?? ""
+      }`.trim()
     );
   }
-  return taskId;
+  if (json.promptFeedback?.blockReason) {
+    throw new Error(
+      `Prompt blocked: ${json.promptFeedback.blockReason}`
+    );
+  }
+  const parts = json.candidates?.[0]?.content?.parts ?? [];
+  for (const part of parts) {
+    if ("inlineData" in part && part.inlineData?.data) {
+      return Buffer.from(part.inlineData.data, "base64");
+    }
+    if ("inline_data" in part && part.inline_data?.data) {
+      return Buffer.from(part.inline_data.data, "base64");
+    }
+  }
+  const finish = json.candidates?.[0]?.finishReason ?? "unknown";
+  throw new Error(
+    `No image data in response (finishReason=${finish}). ` +
+      `First candidate parts: ${JSON.stringify(parts).slice(0, 240)}`
+  );
 }
 
-async function pollTask(taskId: string): Promise<string> {
-  const url = `${API_BASE}${STATUS_PATH}?taskId=${encodeURIComponent(taskId)}`;
-  const deadline = Date.now() + POLL_TIMEOUT_MS;
+async function generate(entry: ManifestEntry): Promise<Buffer> {
+  const url = `${API_BASE}/v1beta/models/${MODEL}:generateContent`;
+  const aspect = entry.aspectRatio ?? aspectFromSize(entry.width, entry.height);
 
-  while (Date.now() < deadline) {
-    await sleep(POLL_INTERVAL_MS);
+  const body = {
+    contents: [
+      {
+        role: "user",
+        parts: [{ text: entry.prompt }],
+      },
+    ],
+    generationConfig: {
+      responseModalities: ["IMAGE"],
+      imageConfig: { aspectRatio: aspect },
+    },
+  };
 
-    let json: PollResponse;
-    try {
-      const res = await fetch(url, { headers: authHeaders() });
-      if (!res.ok) continue;
-      json = (await res.json()) as PollResponse;
-    } catch {
-      continue;
-    }
+  let res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-goog-api-key": API_KEY,
+    },
+    body: JSON.stringify(body),
+  });
 
-    const state = (json.data?.state ?? "").toLowerCase();
-    if (state === "success" || json.data?.successFlag === 1) {
-      const first = json.data?.response?.resultUrls?.[0];
-      if (!first) {
+  // If the API rejects imageConfig (older variants), retry without it.
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    if (
+      (res.status === 400 || res.status === 404) &&
+      /imageConfig|aspectRatio|responseModalities/i.test(text)
+    ) {
+      const fallback = {
+        contents: body.contents,
+        generationConfig: { responseModalities: ["IMAGE", "TEXT"] },
+      };
+      res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": API_KEY,
+        },
+        body: JSON.stringify(fallback),
+      });
+      if (!res.ok) {
+        const text2 = await res.text().catch(() => "");
         throw new Error(
-          `Task ${taskId} reported success but no resultUrls returned.`
+          `API ${res.status} ${res.statusText} (fallback): ${text2 || "no body"}`
         );
       }
-      return first;
-    }
-    if (state === "fail" || state === "failed" || state === "error") {
+    } else {
       throw new Error(
-        `Task ${taskId} failed: ${json.data?.failMsg ?? json.msg ?? "unknown"}`
+        `API ${res.status} ${res.statusText}: ${text || "no body"}`
       );
     }
   }
 
-  throw new Error(`Task ${taskId} timed out after ${POLL_TIMEOUT_MS / 1000}s`);
+  const json = (await res.json()) as GeminiResponse;
+  return extractImage(json);
 }
 
-async function downloadAndConvert(
-  imageUrl: string,
+async function convertAndSave(
+  source: Buffer,
   outPath: string,
   entry: ManifestEntry
 ) {
-  const res = await fetch(imageUrl);
-  if (!res.ok) {
-    throw new Error(`Download ${res.status} for ${imageUrl}`);
-  }
-  const buf = Buffer.from(await res.arrayBuffer());
-
-  let pipeline = sharp(buf);
+  let pipeline = sharp(source);
   if (entry.width || entry.height) {
     pipeline = pipeline.resize(entry.width, entry.height, {
       fit: "cover",
+      position: "attention",
       withoutEnlargement: false,
     });
   }
   await pipeline.webp({ quality: 88, effort: 5 }).toFile(outPath);
-}
-
-function aspectFromSize(w?: number, h?: number): string {
-  if (!w || !h) return "1:1";
-  const ratio = w / h;
-  if (ratio > 1.7) return "16:9";
-  if (ratio > 1.25) return "4:3";
-  if (ratio > 0.9) return "1:1";
-  if (ratio > 0.7) return "3:4";
-  return "9:16";
 }
 
 async function main() {
@@ -197,7 +202,6 @@ async function main() {
 
   const manifest = loadManifest();
   const total = manifest.length;
-
   if (total === 0) {
     console.log(
       "Manifest is empty. Add entries to scripts/image-manifest.json and rerun."
@@ -206,6 +210,7 @@ async function main() {
   }
 
   console.log(`Found ${total} manifest ${total === 1 ? "entry" : "entries"}.`);
+  console.log(`Model: ${MODEL}`);
 
   let generated = 0;
   let skipped = 0;
@@ -214,8 +219,6 @@ async function main() {
   for (let i = 0; i < total; i++) {
     const entry = manifest[i];
     const tag = `[${i + 1}/${total}]`;
-    const dir = path.join(PUBLIC_IMAGES, entry.slug);
-    const out = path.join(dir, `${entry.filename}.webp`);
 
     if (!entry.slug || !entry.filename || !entry.prompt) {
       const msg = "Entry missing required field (slug, filename, or prompt)";
@@ -223,6 +226,9 @@ async function main() {
       failed.push({ entry, error: msg });
       continue;
     }
+
+    const dir = path.join(PUBLIC_IMAGES, entry.slug);
+    const out = path.join(dir, `${entry.filename}.webp`);
 
     if (existsSync(out)) {
       console.log(
@@ -235,9 +241,8 @@ async function main() {
     console.log(`${tag} Generating ${entry.slug}/${entry.filename}.webp...`);
     try {
       mkdirSync(dir, { recursive: true });
-      const taskId = await createTask(entry);
-      const imageUrl = await pollTask(taskId);
-      await downloadAndConvert(imageUrl, out, entry);
+      const image = await generate(entry);
+      await convertAndSave(image, out, entry);
       generated++;
       console.log(`${tag} Saved ${path.relative(ROOT, out)}`);
     } catch (e) {

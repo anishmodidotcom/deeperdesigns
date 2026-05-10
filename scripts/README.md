@@ -18,8 +18,10 @@ Generates site imagery with the Nano Banana API and writes WebP files into
    `.env*` is already gitignored, so the key is never committed. Bun loads
    `.env.local` automatically when running `bun run`.
 
-2. (Optional) Override the API endpoint if the wrapper changes. Defaults to
-   `https://api.nanobananaapi.ai`. See the commented variables in
+2. (Optional) Override the API endpoint or model if needed. Defaults to
+   Google's Generative Language API at
+   `https://generativelanguage.googleapis.com` and the
+   `gemini-2.5-flash-image` model. See the commented variables in
    `.env.local`.
 
 ### Run the generator
@@ -92,14 +94,20 @@ bun run gen-images
 
 ### Implementation notes
 
-- The script targets the public `nanobananaapi.ai` wrapper. It posts to
-  `/api/v1/nanobanana/generate` to create a task, then polls
-  `/api/v1/nanobanana/record-info?taskId=...` every 3 seconds with a
-  5-minute timeout. Both paths can be overridden via env vars
-  (`NANO_BANANA_GENERATE_PATH`, `NANO_BANANA_STATUS_PATH`,
-  `NANO_BANANA_API_BASE`).
-- Generated URLs are downloaded, optionally resized with `sharp`, and
+- The script targets Google's Generative Language API (the official
+  Gemini 2.5 Flash Image endpoint, also known as Nano Banana). Each
+  request is a single synchronous `POST` to
+  `/v1beta/models/gemini-2.5-flash-image:generateContent` with the API
+  key sent as the `x-goog-api-key` header.
+- Aspect ratio is sent through `generationConfig.imageConfig.aspectRatio`.
+  If the API rejects that field on a particular variant, the script
+  retries the same prompt with a basic `responseModalities` config and
+  lets `sharp` enforce the final dimensions.
+- Inline base64 image bytes are decoded, optionally resized with sharp
+  (`fit: cover`, attention crop) to the requested width and height, and
   re-encoded as WebP at quality 88.
 - The script exits with code 1 if any entry fails so CI or a watch loop
   can detect partial runs. Successful and skipped entries still leave
   files on disk.
+- Override the endpoint or model with `NANO_BANANA_API_BASE` and
+  `NANO_BANANA_MODEL` if you point the key at a different deployment.
