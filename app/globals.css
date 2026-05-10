@@ -142,6 +142,15 @@ html.lenis body {
   overflow: clip;
 }
 
+/* Light-themed page wrapper: invert nav colors locally without
+   touching the global tokens. Scoped to <header> via :has(). */
+body:has([data-theme="light"]) header {
+  --text: #1A1715;
+  --text-2: #1A1715;
+  --border-2: rgba(26, 23, 21, 0.18);
+  --nav-bg-scrolled: rgba(248, 246, 242, 0.85);
+}
+
 /* Hide native cursor on desktop only (custom cursor handles it) */
 @media (hover: hover) and (pointer: fine) {
   body {

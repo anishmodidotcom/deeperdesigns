@@ -23,7 +23,7 @@ export default function Nav() {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled ? "rgba(8, 9, 10, 0.8)" : "transparent",
+        background: scrolled ? "var(--nav-bg-scrolled, rgba(8,9,10,0.8))" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
         transition:
