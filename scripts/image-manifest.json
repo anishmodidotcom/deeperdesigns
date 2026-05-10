@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "slug": "oud-and-ember",
+    "filename": "hero-bottle",
+    "prompt": "Ultra-luxurious editorial photograph of a single ornate Arabian perfume bottle, gold filigree cap, deep amber liquid catching warm light, set against deep purple-black background, dramatic single-source lighting from upper right, soft shadows, wisps of fragrant smoke curling around the bottle, photorealistic, Tom Ford fragrance campaign aesthetic, shot on Phase One, shallow depth of field, ultra-high detail on the bottle's glass and gold work",
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": "3:4"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "oud-wood",
+    "prompt": "Close-up macro photograph of raw oud wood chips arranged on dark velvet, deep amber and chocolate browns, single dramatic side light, smoke rising softly, photorealistic, museum-quality still life, ultra-detailed grain and texture of the wood, luxurious editorial photography",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "ingredients-grid-1",
+    "prompt": "Macro photograph of saffron threads scattered on black marble surface, deep crimson and orange, dramatic lighting, photorealistic, luxury editorial style, ultra-detailed texture",
+    "width": 768,
+    "height": 768,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "ingredients-grid-2",
+    "prompt": "Macro photograph of a single rose petal with morning dew, deep velvety red, against dark background, dramatic single light source, photorealistic, luxury fragrance ingredient photography, ultra-detailed",
+    "width": 768,
+    "height": 768,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "ingredients-grid-3",
+    "prompt": "Macro photograph of amber resin chunks, glowing translucent gold under warm light, dark background, dramatic shadows, photorealistic, ultra-detailed surface texture, luxury still life",
+    "width": 768,
+    "height": 768,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "ingredients-grid-4",
+    "prompt": "Macro photograph of cardamom pods and vanilla beans on dark stone, warm golden light, photorealistic, luxury editorial, ultra-detailed texture",
+    "width": 768,
+    "height": 768,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "personalized-bottle",
+    "prompt": "Elegant Arabian perfume bottle with a custom gold label that reads 'NADIA', deep amber liquid, ornate cap, photorealistic mockup, set against soft purple-black gradient background, dramatic luxury lighting, the engraved name is crisp and centered on the label, Tom Ford luxury aesthetic, ultra-high detail",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "atelier",
+    "prompt": "Atmospheric photograph of a luxurious perfumer's atelier, rows of small dark amber glass bottles on warm-lit wooden shelves, brass details, soft golden light filtering through, slightly out of focus, photorealistic, moody and mysterious, Arabian luxury aesthetic, depth of field, cinematic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  }
+]
