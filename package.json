@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gen-images": "bun run scripts/generate-images.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -17,7 +18,8 @@
     "next-view-transitions": "^0.3.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-fast-marquee": "^1.6.5"
+    "react-fast-marquee": "^1.6.5",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
