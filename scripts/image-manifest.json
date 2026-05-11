@@ -62,5 +62,69 @@
     "width": 1920,
     "height": 1080,
     "aspectRatio": "16:9"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "hero-space",
+    "prompt": "Wide architectural photograph of a modern minimalist coworking space at dawn, soft natural light flooding in through floor-to-ceiling windows, exposed concrete floors, black metal frames, plants, empty Eames chairs and Herman Miller desks arranged neatly, no people, ultra-clean composition, shot on Hasselblad, magazine-quality interior photography, neutral color grade with subtle warm highlights, deep shadows, ultra-sharp, Dwell magazine aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "member-portrait-1",
+    "prompt": "Editorial portrait photograph of a young Indian woman in her late twenties working at a laptop in a modern coworking space, soft window light from the left, wearing a simple linen shirt, focused expression looking at screen, shallow depth of field, photoreal, Apple keynote aesthetic, neutral cool tones, ultra-sharp on her hands and laptop, slight blur on background showing a hint of the workspace",
+    "width": 768,
+    "height": 960,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "member-portrait-2",
+    "prompt": "Editorial portrait photograph of a young Indian man in his early thirties on a video call with wireless earbuds in a phone booth, glass walls, soft cool lighting, focused expression, wearing a casual sweater, photoreal, ultra-sharp, modern professional aesthetic, Notion brand photography vibe",
+    "width": 768,
+    "height": 960,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "meeting-room",
+    "prompt": "Architectural photograph of a small empty meeting room in a modern coworking space, oval wooden table, six tan leather chairs, large screen mounted on wall, soft ambient light from above, exposed concrete, single plant in corner, photoreal, magazine quality, no people, shot from corner showing depth, Dwell magazine aesthetic, neutral cool tones",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "dashboard-bg-texture",
+    "prompt": "Abstract minimalist texture, near-black surface #09090B with extremely subtle violet noise grain, faint geometric grid pattern barely visible, slight gradient from darker top to slightly lighter center, ultra subtle, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "lounge-detail",
+    "prompt": "Detail photograph of a corner of a coworking space lounge, single tan leather Eames lounge chair, small black side table with a ceramic coffee cup and an open MacBook, plant in background, soft afternoon light, photoreal, Kinfolk magazine aesthetic, ultra-sharp, neutral warm tones, no people",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "focus-pod",
+    "prompt": "Architectural photograph of a single focus pod or phone booth in a coworking space, glass walls, single chair and small desk inside, soft purple-tinted accent lighting subtly visible inside the pod, surrounded by darker open workspace, photoreal, magazine quality, no people, ultra-clean composition",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "hivedesk",
+    "filename": "amit-portrait",
+    "prompt": "Editorial portrait photograph of Amit, an Indian man in his late thirties, owner of a coworking space, standing in his space wearing a simple dark t-shirt, arms slightly crossed, friendly confident expression, soft natural light from window behind him creating slight rim light, slightly out of focus background showing the workspace, photoreal, ultra-sharp on his face, Founders Fund portrait aesthetic, neutral color grade",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
   }
 ]
