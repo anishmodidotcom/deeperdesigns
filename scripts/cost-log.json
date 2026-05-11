@@ -33,7 +33,21 @@
       "images": 0,
       "videos": 0,
       "cost": 0.0
+    },
+    {
+      "date": "2026-05-11T13:45:00Z",
+      "task": "Build /work/pawstay",
+      "images": 10,
+      "videos": 1,
+      "cost": 1.59
+    },
+    {
+      "date": "2026-05-11T13:58:00Z",
+      "task": "Build /work/sahaja-farms",
+      "images": 11,
+      "videos": 1,
+      "cost": 1.63
     }
   ],
-  "running_total": 2.25
+  "running_total": 5.47
 }
