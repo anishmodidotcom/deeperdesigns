@@ -47,6 +47,30 @@
       "images": 11,
       "videos": 1,
       "cost": 1.63
+    },
+    {
+      "date": "2026-05-11T14:30:00Z",
+      "task": "Build /work/karan-legal (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 5,
+        "videos_to_generate": 0,
+        "anticipated_cost_usd": 0.2
+      }
+    },
+    {
+      "date": "2026-05-11T14:45:00Z",
+      "task": "Build /work/zara-fitness (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 10,
+        "videos_to_generate": 1,
+        "anticipated_cost_usd": 1.59
+      }
     }
   ],
   "running_total": 5.47
