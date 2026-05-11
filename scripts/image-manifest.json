@@ -294,5 +294,93 @@
     "width": 1920,
     "height": 1080,
     "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "hero-field",
+    "prompt": "Wide cinematic photograph of a 200-acre organic farm at golden hour outside Mysore, rows of leafy vegetable crops in foreground, rolling hills in middle distance, large old banyan tree on horizon, deep warm light, slight mist near the ground, photoreal, shot on medium format, National Geographic feature aesthetic, ultra-high detail, no people, warm earth color grade, dramatic depth",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "lata-portrait",
+    "prompt": "Editorial portrait of Lata, a South Indian woman in her late forties, organic farmer and operator, standing in her vegetable field wearing a faded blue work shirt and a wide-brimmed straw hat, weathered hands holding freshly picked tomatoes, calm confident expression, soft golden hour back-light creating rim light, slight blur on the rows of crops behind her, photoreal, ultra-sharp on her face and the tomatoes, magazine quality, warm color grade, Patagonia editorial aesthetic",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "soil-hands",
+    "prompt": "Close-up macro photograph of weathered Indian hands cupping rich dark soil with a small seedling sprouting from the center, ultra-detailed soil texture and root system, single warm side light, photoreal, magazine quality, no face visible, intimate framing, deep earth color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "crop-rows",
+    "prompt": "Aerial drone photograph of geometric rows of organic vegetable crops on a Karnataka farm, deep greens and earth browns in alternating bands, irrigation lines visible, late afternoon light casting long shadows between rows, photoreal, ultra-high detail, no people, magazine quality, slight haze in distance, natural color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "harvest-baskets",
+    "prompt": "Top-down photograph of three woven jute baskets filled with freshly harvested organic produce, vivid red tomatoes in one, leafy spinach in another, golden squash in the third, sitting on rough wood, soft natural overhead light, photoreal, ultra-detailed produce textures, magazine quality, warm color grade, no people",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "greenhouse-interior",
+    "prompt": "Photograph inside a clean modern polyhouse greenhouse with rows of leafy greens growing on raised beds, dappled sunlight through translucent roofing, slight green tint, photoreal, ultra-detailed plant structure, no people, magazine quality, atmospheric depth, natural color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "farm-truck-loading",
+    "prompt": "Photograph of a small white delivery truck parked at the edge of a farm with stacked wooden crates of produce being loaded into the back, golden hour light, photoreal, ultra-detailed, no people visible (or only their backs in shadow), magazine quality, warm earth color grade",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "compost-detail",
+    "prompt": "Macro photograph of rich dark compost with visible organic matter, earthworm partially visible, photoreal, ultra-detailed texture, single warm overhead light, no humans, deep earth tones, magazine quality, slight depth of field",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "subscription-box",
+    "prompt": "Editorial product photograph of a beautifully arranged wooden box of organic produce sitting on a kitchen counter, vivid vegetables and fruits arranged like a still life, soft natural window light, neutral kitchen background, photoreal, ultra-high detail, magazine quality, Kinfolk magazine aesthetic, warm color grade, no humans",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "farm-dawn",
+    "prompt": "Wide atmospheric photograph of an organic farm at dawn, low mist hanging over the fields, single banyan tree silhouetted against pink-gold sky, distant farmhouse just visible, photoreal, ultra-detailed, cinematic, ambient, no humans, magazine quality, National Geographic feature aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "dashboard-bg-organic",
+    "prompt": "Abstract minimalist organic texture, deep green-black surface with extremely subtle leaf-vein pattern barely visible, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
   }
 ]

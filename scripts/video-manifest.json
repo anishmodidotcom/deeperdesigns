@@ -12,6 +12,13 @@
     "prompt": "Steady locked-off wide-angle indoor security camera view of a calm modern dog daycare facility, three dogs lying down or quietly playing on soft rugs in a sunlit open space with large windows, golden afternoon light filtering in, gentle dust particles drifting through the light, one dog occasionally shifts position or yawns, another's tail wags slowly, the scene at the eight-second mark looks identical to the scene at the zero-second mark, no humans, no camera movement, photoreal, ambient and meditative, premium pet care facility aesthetic, warm color grade, seamless loop",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "sahaja-farms",
+    "filename": "field-loop",
+    "prompt": "Cinematic steady aerial drone-style locked-off shot looking down at rows of organic vegetable crops on a Karnataka farm at golden hour, deep greens and earth browns in alternating bands, gentle warm afternoon breeze making the leaves shimmer subtly, long shadows from low sun, fine dust particles drifting through the light, the scene at the eight-second mark looks identical to the scene at the zero-second mark, no people, no camera movement, photoreal, ambient and meditative, National Geographic feature aesthetic, warm earth color grade, seamless loop",
+    "aspectRatio": "16:9",
+    "duration": 8
   }
 ]
 
