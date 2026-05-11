@@ -5,6 +5,13 @@
     "prompt": "Ultra cinematic slow-motion macro shot of black peppercorns slowly cascading from above into a pile on aged dark wood, deep warm earth tones, single source of golden afternoon light streaming from upper left creating dramatic chiaroscuro, fine dust particles drifting through the light beam, peppercorns falling at quarter speed with subtle bounce as they land, shallow depth of field with sharp focus on the peppercorns mid-fall and soft bokeh background, photoreal, shot on Phase One IQ4 with cinema lens, National Geographic feature aesthetic, warm color grade, no people, no text, ambient and meditative, locked-off camera, seamless atmosphere",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "pawstay",
+    "filename": "live-feed",
+    "prompt": "Steady locked-off wide-angle indoor security camera view of a calm modern dog daycare facility, three dogs lying down or quietly playing on soft rugs in a sunlit open space with large windows, golden afternoon light filtering in, gentle dust particles drifting through the light, one dog occasionally shifts position or yawns, another's tail wags slowly, the scene at the eight-second mark looks identical to the scene at the zero-second mark, no humans, no camera movement, photoreal, ambient and meditative, premium pet care facility aesthetic, warm color grade, seamless loop",
+    "aspectRatio": "16:9",
+    "duration": 8
   }
 ]
 

@@ -214,5 +214,85 @@
     "width": 1080,
     "height": 1350,
     "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "hero-dog",
+    "prompt": "Cinematic editorial photograph of a single golden retriever lying calmly on a clean cream rug in a sunlit modern Indian home, soft natural light from a large window, slight smile expression, deep depth of field with sharp focus on the dog's eyes and soft bokeh background, photoreal, shot on Canon EOS R5, warm color grade with deep shadows, no humans, ultra-detailed fur texture, magazine quality, Cesar Millan editorial aesthetic",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "parent-checking-phone",
+    "prompt": "Editorial photograph of a young Indian woman in her early thirties sitting on a sofa at home, looking at her phone with a relaxed smile, soft warm afternoon light, wearing a casual linen shirt, slight blur on background showing a tasteful home interior, photoreal, ultra-sharp on her face and phone, shot from slightly above, Apple keynote aesthetic, neutral warm tones, no visible app on phone screen",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "dog-camera-feed",
+    "prompt": "Wide-angle indoor security camera view of a clean modern dog daycare facility in Delhi, four dogs of different breeds playing and resting in a sunlit open space with soft rugs and cushioned beds, large windows letting in golden afternoon light, slight wide-lens distortion at the edges, photoreal, ultra-high detail, no humans, warm but slightly clinical aesthetic like a Ring camera feed but premium, no text overlay",
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "happy-dog-1",
+    "prompt": "Editorial portrait of a small Indian indie dog (light brown with white markings) lying on a soft beige cushion, looking at camera with calm trusting expression, soft window light, photoreal, ultra-sharp on eyes and fur, magazine quality, warm color grade, no humans",
+    "width": 768,
+    "height": 960,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "happy-dog-2",
+    "prompt": "Editorial portrait of a black labrador retriever resting head on paws on a clean cream rug, gentle expression, eyes half-closed in contentment, soft golden hour light, photoreal, ultra-detailed fur texture, no humans",
+    "width": 768,
+    "height": 960,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "happy-dog-3",
+    "prompt": "Editorial portrait of a fluffy white pomeranian or small pomeranian-spitz mix sitting upright on a soft sage green velvet cushion, bright alert expression, soft natural light, photoreal, ultra-detailed fur, magazine quality, no humans",
+    "width": 768,
+    "height": 960,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "daycare-interior",
+    "prompt": "Architectural photograph of a premium modern dog daycare facility interior, polished concrete floors, soft rugs in earth tones, cushioned dog beds, low wooden play structures, large floor-to-ceiling windows, plants, no dogs visible, no humans, soft natural afternoon light, photoreal, magazine quality, Dwell magazine aesthetic, warm clean color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "pooja-portrait",
+    "prompt": "Editorial portrait of Pooja, an Indian woman in her late thirties, owner of a premium dog daycare, sitting on the floor with one arm around a relaxed golden retriever, warm confident smile, wearing a simple olive green linen kurta, soft afternoon window light, slight blur on background showing the daycare interior, photoreal, ultra-sharp on her face and the dog, warm color grade, magazine quality",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "paw-detail",
+    "prompt": "Macro detail photograph of a single dog's paw resting on a soft sage-green cushion, single warm side light, photoreal, ultra-detailed pad and fur texture, magazine quality, no humans, intimate framing, warm tones",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "pawstay",
+    "filename": "walk-outdoor",
+    "prompt": "Photograph of three dogs walking on leashes through a leafy South Delhi park at golden hour, viewed from behind the dogs' shoulder level, soft warm light filtering through trees, blurred figure of handler ahead, photoreal, magazine quality, warm color grade, ultra-high detail, ambient calm energy",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
   }
 ]
