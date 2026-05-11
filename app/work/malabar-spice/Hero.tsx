@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const EASE = [0.25, 1, 0.5, 1] as const;
+
+const POSTER_SRC = "/images/malabar-spice/hero-pepper.webp";
+const VIDEO_SRC = "/videos/malabar-spice/hero-loop.mp4";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -15,6 +18,18 @@ export default function Hero() {
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(
+      "(min-width: 768px) and (prefers-reduced-motion: no-preference)"
+    );
+    const update = () => setShowVideo(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   return (
     <section
@@ -34,13 +49,34 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/images/malabar-spice/hero-pepper.webp"
+          src={POSTER_SRC}
           alt="A mound of freshly harvested black peppercorns on aged dark wood, lit from upper left"
           fill
           priority
           sizes="100vw"
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
+        {showVideo && (
+          <video
+            key="hero-loop"
+            aria-hidden="true"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={POSTER_SRC}
+            src={VIDEO_SRC}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
+        )}
         <div
           aria-hidden
           style={{
@@ -224,7 +260,7 @@ function WordReveal({
             style={{ display: "inline-block" }}
           >
             {w}
-            {i < words.length - 1 ? " " : ""}
+            {i < words.length - 1 ? " " : ""}
           </motion.span>
         </span>
       ))}
