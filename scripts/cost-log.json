@@ -131,9 +131,26 @@
         "videos_to_generate": 0,
         "anticipated_cost_usd": 0.39
       }
+    },
+    {
+      "date": "2026-05-11T19:50:00Z",
+      "task": "Generate all deferred assets for tools 14-20 (gen-images + gen-videos run)",
+      "images": 64,
+      "videos": 4,
+      "cost": 7.30,
+      "breakdown": {
+        "karan-legal": { "images": 5, "videos": 0, "cost": 0.20 },
+        "zara-fitness": { "images": 10, "videos": 1, "cost": 1.59 },
+        "earth-and-fire": { "images": 9, "videos": 1, "cost": 1.55 },
+        "kadak-chai": { "images": 10, "videos": 1, "cost": 1.59 },
+        "nomad-trails": { "images": 10, "videos": 1, "cost": 1.59 },
+        "sugar-lane": { "images": 10, "videos": 0, "cost": 0.39 },
+        "brightpath": { "images": 10, "videos": 0, "cost": 0.39 }
+      },
+      "result": "All 68 assets generated cleanly. Zero failures. Realized cost matches anticipated exactly."
     }
   ],
-  "running_total": 5.47,
-  "deferred_total": 7.30,
+  "running_total": 12.77,
+  "deferred_total": 0.0,
   "projected_total_after_generation": 12.77
 }
