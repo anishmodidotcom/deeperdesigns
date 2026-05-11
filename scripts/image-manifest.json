@@ -382,5 +382,125 @@
     "width": 1920,
     "height": 600,
     "aspectRatio": "16:9"
+  },
+  {
+    "slug": "karan-legal",
+    "filename": "karan-portrait",
+    "prompt": "Editorial portrait of Karan, a 32-year-old Indian male startup lawyer in Mumbai, wearing a crisp white shirt with no tie, sleeves rolled once, standing in a minimal modern office with floor-to-ceiling windows showing Mumbai skyline blurred behind him, arms crossed loosely, confident calm expression looking just off camera, soft natural daylight from the side, photoreal, ultra-sharp on his face, shot on Leica Q3, magazine quality editorial portrait, neutral cool color grade, Wachtell partner portrait aesthetic but younger",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "karan-legal",
+    "filename": "hero-pen",
+    "prompt": "Top-down minimalist editorial photograph of a single Montblanc fountain pen lying diagonally on a stark cream paper document with formal typed legal headers, single soft window light, photoreal, ultra-detailed pen body and paper texture, magazine quality, no humans, neutral warm color grade, Kinfolk magazine aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "karan-legal",
+    "filename": "paper-stack",
+    "prompt": "Top-down editorial photograph of a neat stack of cream legal documents on a dark wood desk, slight depth, single window light, photoreal, ultra-detailed paper texture, no humans, magazine quality",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "karan-legal",
+    "filename": "office-detail",
+    "prompt": "Editorial photograph of a corner of a minimal modern lawyer's office in Mumbai, single Aeron chair pulled up to a clean wooden desk, MacBook closed, single law book open, brass desk lamp, large window with daylight, photoreal, no humans, magazine quality, Dwell magazine aesthetic",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "karan-legal",
+    "filename": "handshake",
+    "prompt": "Editorial photograph of two business professionals' hands meeting in a handshake over a wooden conference table with documents and pens visible, only hands and forearms visible (cropped at elbow), one Indian male hand and one Indian female hand, both in crisp white shirt cuffs, soft natural light, photoreal, ultra-detailed skin texture, magazine quality, no faces visible",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "hero-zara",
+    "prompt": "High-fashion magazine cover portrait of Zara, a 26-year-old Middle Eastern woman fitness trainer, tall and athletic build, wearing matching black athletic crop top and leggings, standing confidently with arms relaxed at her sides, slightly looking off-camera, soft dramatic studio lighting from upper left with strong shadow falloff, deep matte black backdrop, photoreal, shot on Hasselblad H6D, magazine cover quality, ultra-sharp on face and athletic definition, editorial sports portrait aesthetic, Women's Health cover, no text overlay",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "workout-strength",
+    "prompt": "Dynamic editorial photograph of a Middle Eastern woman performing a heavy barbell deadlift in a premium private gym, dramatic side lighting, mid-rep movement captured with slight motion blur on the bar, dark warm gym interior background, photoreal, ultra-sharp on face and form, magazine quality, athletic and intense, no other people",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "workout-mobility",
+    "prompt": "Editorial photograph of a Middle Eastern woman in a controlled yoga or mobility pose on a black mat, soft directional light, calm focused expression, dark gym interior, photoreal, ultra-sharp, magazine quality, no other people",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "workout-hiit",
+    "prompt": "Editorial action photograph of a Middle Eastern woman mid-jump in a box jump exercise, captured mid-air, dynamic energetic pose, dark gym interior with dramatic lighting, photoreal, slight motion blur on extremities, magazine quality, no other people, full body in frame",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "workout-hypertrophy",
+    "prompt": "Editorial photograph of a Middle Eastern woman performing a cable lateral raise with focused mind-muscle expression, premium gym setting, dramatic side lighting catching shoulder definition, dark background, photoreal, ultra-sharp on face and arm, magazine quality, no other people",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "workout-recovery",
+    "prompt": "Editorial photograph of a Middle Eastern woman lying calmly on a foam roller in a controlled recovery pose, eyes closed, peaceful expression, warm soft lighting, dark spa-gym interior, photoreal, magazine quality, athletic recovery aesthetic, no other people",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "product-sportswear",
+    "prompt": "Editorial flat-lay product photograph of matte black premium athletic crop top and leggings folded on a dark stone surface, single dramatic side light, acid lime green accent stitching just visible, photoreal, ultra-detailed fabric texture, magazine quality, no humans, athletic luxury aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "product-gloves",
+    "prompt": "Editorial product photograph of a pair of premium black leather lifting gloves with acid lime accent on a dark surface, single dramatic light, photoreal, ultra-detailed leather texture, no humans, athletic luxury aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "gym-interior",
+    "prompt": "Architectural photograph of a premium minimalist private gym interior, matte black walls and equipment, polished concrete floor, single rack with barbells, soft dramatic lighting from above, no people, photoreal, ultra-detailed, magazine quality, dark athletic aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zara-fitness",
+    "filename": "app-screen-bg",
+    "prompt": "Athletic editorial photograph of a Middle Eastern woman's hand holding an iPhone in a dark gym, viewed from a slight angle so the phone screen is visible but blurred (no actual UI on screen, just dark), dramatic warm side lighting, photoreal, ultra-detailed hand and phone texture, magazine quality, no faces",
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": "9:16"
   }
 ]
