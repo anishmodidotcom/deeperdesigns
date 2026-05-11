@@ -9,6 +9,17 @@ const EASE = [0.25, 1, 0.5, 1] as const;
 const POSTER_SRC = "/images/malabar-spice/hero-pepper.webp";
 const VIDEO_SRC = "/videos/malabar-spice/hero-loop.mp4";
 
+// The Veo clip is not a true ambient loop. It begins with an empty wood
+// surface and ends with a full mound of peppercorns, so a naive <video loop>
+// snaps from full pile back to empty table every 8 seconds.
+//
+// We could not use playbackRate = -1 (Chrome and Safari ignore negative
+// rates), so we mask the seam with an opacity crossfade. The last 300ms of
+// playback fades the video down to opacity 0, revealing the still poster
+// image underneath. On the `ended` event we snap the video back to t = 0
+// and fade it in over 300ms. The dissolve hides the snap.
+const FADE_MS = 300;
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -19,7 +30,9 @@ export default function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [videoOpacity, setVideoOpacity] = useState(1);
 
   useEffect(() => {
     const mq = window.matchMedia(
@@ -30,6 +43,44 @@ export default function Hero() {
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (!showVideo) return;
+    const v = videoRef.current;
+    if (!v) return;
+
+    let fadingOut = false;
+
+    const onTimeUpdate = () => {
+      if (!v.duration || Number.isNaN(v.duration)) return;
+      const remaining = v.duration - v.currentTime;
+      if (remaining <= FADE_MS / 1000 && !fadingOut) {
+        fadingOut = true;
+        setVideoOpacity(0);
+      }
+    };
+
+    const onEnded = () => {
+      v.currentTime = 0;
+      const playPromise = v.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
+      }
+      // requestAnimationFrame ensures the opacity change registers as a
+      // transition, not a same-tick instant set.
+      requestAnimationFrame(() => {
+        fadingOut = false;
+        setVideoOpacity(1);
+      });
+    };
+
+    v.addEventListener("timeupdate", onTimeUpdate);
+    v.addEventListener("ended", onEnded);
+    return () => {
+      v.removeEventListener("timeupdate", onTimeUpdate);
+      v.removeEventListener("ended", onEnded);
+    };
+  }, [showVideo]);
 
   return (
     <section
@@ -58,11 +109,11 @@ export default function Hero() {
         />
         {showVideo && (
           <video
+            ref={videoRef}
             key="hero-loop"
             aria-hidden="true"
             autoPlay
             muted
-            loop
             playsInline
             preload="auto"
             poster={POSTER_SRC}
@@ -74,6 +125,8 @@ export default function Hero() {
               height: "100%",
               objectFit: "cover",
               objectPosition: "center",
+              opacity: videoOpacity,
+              transition: `opacity ${FADE_MS}ms ease-in-out`,
             }}
           />
         )}

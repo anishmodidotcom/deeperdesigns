@@ -1,0 +1,39 @@
+{
+  "pricing": {
+    "image_unit_cost_usd": 0.039,
+    "video_unit_cost_usd": 1.2,
+    "image_model": "gemini-2.5-flash-image",
+    "video_model": "veo-3.1-fast-generate-preview"
+  },
+  "entries": [
+    {
+      "date": "2026-05-10T18:30:00Z",
+      "task": "Build /work/oud-and-ember",
+      "images": 8,
+      "videos": 0,
+      "cost": 0.31
+    },
+    {
+      "date": "2026-05-11T13:10:00Z",
+      "task": "Build /work/hivedesk",
+      "images": 8,
+      "videos": 0,
+      "cost": 0.31
+    },
+    {
+      "date": "2026-05-11T13:11:00Z",
+      "task": "Build /work/malabar-spice",
+      "images": 11,
+      "videos": 1,
+      "cost": 1.63
+    },
+    {
+      "date": "2026-05-11T13:38:49Z",
+      "task": "Fix Malabar Spice hero loop seam, add cost tracking",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0
+    }
+  ],
+  "running_total": 2.25
+}
