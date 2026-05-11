@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "gen-images": "bun run scripts/generate-images.ts"
+    "gen-images": "bun run scripts/generate-images.ts",
+    "gen-videos": "bun run scripts/generate-videos.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

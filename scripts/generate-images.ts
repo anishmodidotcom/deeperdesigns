@@ -40,10 +40,12 @@ type GeminiResponse = {
 };
 
 const API_BASE =
+  process.env.GEMINI_API_BASE ??
   process.env.NANO_BANANA_API_BASE ??
   "https://generativelanguage.googleapis.com";
 const MODEL = process.env.NANO_BANANA_MODEL ?? "gemini-2.5-flash-image";
-const API_KEY = process.env.NANO_BANANA_API_KEY ?? "";
+const API_KEY =
+  process.env.GEMINI_API_KEY ?? process.env.NANO_BANANA_API_KEY ?? "";
 
 const ROOT = process.cwd();
 const MANIFEST_PATH = path.join(ROOT, "scripts", "image-manifest.json");
@@ -196,7 +198,7 @@ async function convertAndSave(
 async function main() {
   if (!API_KEY) {
     fail(
-      "NANO_BANANA_API_KEY is not set. Add it to .env.local before running."
+      "GEMINI_API_KEY (or legacy NANO_BANANA_API_KEY) is not set. Add it to .env.local before running."
     );
   }
 
