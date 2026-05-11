@@ -71,7 +71,69 @@
         "videos_to_generate": 1,
         "anticipated_cost_usd": 1.59
       }
+    },
+    {
+      "date": "2026-05-11T16:20:00Z",
+      "task": "Build /work/earth-and-fire (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 9,
+        "videos_to_generate": 1,
+        "anticipated_cost_usd": 1.55
+      }
+    },
+    {
+      "date": "2026-05-11T16:21:00Z",
+      "task": "Build /work/kadak-chai (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 10,
+        "videos_to_generate": 1,
+        "anticipated_cost_usd": 1.59
+      }
+    },
+    {
+      "date": "2026-05-11T16:22:00Z",
+      "task": "Build /work/nomad-trails (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 10,
+        "videos_to_generate": 1,
+        "anticipated_cost_usd": 1.59
+      }
+    },
+    {
+      "date": "2026-05-11T16:23:00Z",
+      "task": "Build /work/sugar-lane (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 10,
+        "videos_to_generate": 0,
+        "anticipated_cost_usd": 0.39
+      }
+    },
+    {
+      "date": "2026-05-11T16:24:00Z",
+      "task": "Build /work/brightpath (page only, generation deferred to Anish)",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "deferred": {
+        "images_to_generate": 10,
+        "videos_to_generate": 0,
+        "anticipated_cost_usd": 0.39
+      }
     }
   ],
-  "running_total": 5.47
+  "running_total": 5.47,
+  "deferred_total": 7.30,
+  "projected_total_after_generation": 12.77
 }
