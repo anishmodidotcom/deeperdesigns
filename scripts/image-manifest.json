@@ -126,5 +126,93 @@
     "width": 1024,
     "height": 1280,
     "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "hero-pepper",
+    "prompt": "Ultra cinematic macro photograph of a single mound of freshly harvested black peppercorns piled high on aged dark wood, deep warm earth tones, single source of golden afternoon light streaming from upper left creating dramatic chiaroscuro, individual peppercorns visible in sharp focus in the foreground falling into soft bokeh in the background, fine dust particles catching the light, photoreal, shot on Phase One IQ4, magazine quality National Geographic feature aesthetic, ultra high detail on the peppercorn texture and skin",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "cardamom-pods",
+    "prompt": "Macro photograph of fresh green cardamom pods scattered on rough hand-woven jute cloth, deep emerald and sage green pods against warm cream texture, single dramatic side light, photoreal, ultra-detailed texture of the pods and the cloth weave, museum quality still life, slight depth of field, warm golden ambient temperature",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "turmeric-roots",
+    "prompt": "Macro photograph of freshly cut turmeric roots, vivid orange interior contrasting with earthy brown skin, sliced pieces showing the vivid pigment, scattered on dark slate, single warm light source, drops of natural oil glistening, photoreal, ultra-detailed, National Geographic food photography aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "cinnamon-curls",
+    "prompt": "Macro photograph of rolled cinnamon bark curls stacked, deep mahogany browns and rust oranges, warm side lighting, scattered cinnamon dust and crumbs around the base, photoreal, ultra-detailed surface texture of the bark, magazine quality still life, deep warm color grading",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "rashid-portrait",
+    "prompt": "Editorial portrait of Rashid, a 60-something South Indian man with grey beard and weathered hands, third-generation spice trader, wearing a simple white kurta, standing in his spice warehouse in Kochi Kerala, soft golden hour light from a high window behind him creating rim light on his shoulders, slight smile, looking off-camera in contemplation, sacks of spices softly out of focus in the background, photoreal, ultra-sharp on his face and hands, Steve McCurry portrait aesthetic, warm color grade with deep shadows",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "warehouse-wide",
+    "prompt": "Wide architectural photograph of a traditional Kerala spice warehouse interior, jute sacks of spices stacked high against weathered wooden walls, shafts of dust-filled golden light streaming through high windows, terracotta floor, no people, photoreal, atmospheric and cinematic, ultra-high detail, warm color grade, National Geographic feature aesthetic, deep depth of field showing the length of the warehouse",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "hands-pepper",
+    "prompt": "Close-up photograph of weathered brown South Indian hands cupping a handful of black peppercorns, sunlight from above, warm earth tones, photoreal, ultra-detailed skin texture and lines on the palms, magazine quality, no face visible, focus on the gesture and the spices, deep warm color grading",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "kerala-backwaters",
+    "prompt": "Atmospheric photograph of Kerala backwaters at golden hour, traditional wooden cargo boat carrying jute sacks moving slowly across still water, palm trees and lush green banks reflected on the surface, single fisherman in silhouette in the boat, soft warm light, slight mist, photoreal, cinematic wide composition, National Geographic feature aesthetic, ultra-high detail",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "spice-grid-detail",
+    "prompt": "Top-down macro photograph of a wooden tray divided into four sections each containing a different spice: black peppercorns, green cardamom, golden turmeric powder, and cinnamon sticks, warm rustic wood backdrop, single overhead window light, photoreal, ultra-detailed texture of each spice, magazine quality still life, no people",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "ledger-detail",
+    "prompt": "Close-up photograph of an open antique hand-written ledger book with Malayalam and English entries about spice trades from the 1960s, slight stains and wear on the pages, weathered brown leather cover visible at the edge, single soft warm light, photoreal, ultra-detailed paper texture and ink, museum archive aesthetic, sepia warm tones",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "malabar-spice",
+    "filename": "pepper-grid-card",
+    "prompt": "Macro photograph of Tellicherry black peppercorns piled on dark slate, single dramatic side light, photoreal, ultra-detailed peppercorn surface texture, deep warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
   }
 ]
