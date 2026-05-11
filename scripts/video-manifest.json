@@ -26,6 +26,27 @@
     "prompt": "Cinematic slow-motion shot of a Middle Eastern woman athlete chalking her hands and gripping a barbell in a dark premium private gym, slight clouds of chalk dust drifting in dramatic warm side lighting, locked-off camera, only her hands and forearms visible in frame (no face), photoreal, ultra-high detail on hands and the bar, magazine quality, athletic editorial aesthetic, deep matte black background, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "wheel-loop",
+    "prompt": "Cinematic locked-off close-up of a single piece of grey wet clay spinning steadily on a pottery wheel, viewed from a slight three-quarter angle, two clay-stained hands gently shape the rotating clay (only hands and forearms in frame, no face), the clay's form remains constant throughout (already-shaped vessel, not being created), soft warm workshop light from the left, fine clay dust drifting in the light, photoreal, ultra-high detail on hands and clay texture, magazine quality, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, Kinfolk magazine aesthetic, warm earth color grade",
+    "aspectRatio": "16:9",
+    "duration": 8
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "steam-loop",
+    "prompt": "Cinematic close-up of steam rising slowly from a clay kulhad cup of freshly poured chai, viewed slightly from above and the side, deep warm chai brown background, single dramatic golden light source from the upper left catching the steam, the steam billows gently upward in soft curls, the chai surface remains constant (not pouring, just resting), photoreal, ultra-high detail on steam and clay texture, magazine quality, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, warm color grade",
+    "aspectRatio": "16:9",
+    "duration": 8
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "ridge-loop",
+    "prompt": "Cinematic locked-off shot of a snow-covered Himalayan mountain ridge under a deep blue sky, fine wind-blown snow drifts continuously across the ridgeline from left to right, soft golden sunrise light catching the snow surface, no humans visible, no camera movement, photoreal, ultra-high detail on snow texture and ridge contours, magazine quality, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, National Geographic feature aesthetic, cold cinematic color grade, dramatic mountain landscape",
+    "aspectRatio": "16:9",
+    "duration": 8
   }
 ]
 

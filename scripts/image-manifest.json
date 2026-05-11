@@ -502,5 +502,397 @@
     "width": 1080,
     "height": 1920,
     "aspectRatio": "9:16"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "hero-vase",
+    "prompt": "Editorial still-life photograph of a single handmade terracotta vase with subtle Rajasthani painted patterns sitting on a raw stone plinth, soft directional warm window light from the left, deep warm cream backdrop, photoreal, shot on Hasselblad H6D, ultra-detailed clay texture and hand-painted pattern detail, magazine quality, no humans, Kinfolk magazine x Indian craft aesthetic",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "nia-throwing",
+    "prompt": "Editorial photograph of a young Indian woman's hands shaping wet clay on a spinning pottery wheel, only hands and forearms visible (no face), wet grey clay glistening, soft warm afternoon light from a workshop window, photoreal, ultra-detailed clay texture, slight motion blur on the rotating clay surface, magazine quality, no other people, warm earth color grade",
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "pottery-collection",
+    "prompt": "Top-down editorial photograph of a curated arrangement of 9 different handmade ceramic pieces on a raw stone surface: cups, bowls, vases, small planters, all in earth tones with hand-painted Rajasthani patterns, soft natural overhead light, photoreal, ultra-detailed pottery textures, magazine quality, no humans, Kinfolk x Jaipur aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "clay-detail",
+    "prompt": "Macro photograph of wet grey clay being shaped by fingers, fingerprints visible in the clay, single warm directional light, photoreal, ultra-detailed clay texture, no humans in frame (only fingers/hands), intimate framing, warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "kiln-glow",
+    "prompt": "Editorial photograph of the interior of a pottery kiln glowing orange-red, pottery pieces visible inside, dramatic warm light spilling out of the kiln opening, photoreal, no humans, dramatic and atmospheric, magazine quality, deep warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "nia-portrait",
+    "prompt": "Editorial portrait of Nia, a 26-year-old Indian woman ceramicist with hands stained with clay, wearing a simple linen apron over a saffron-yellow kurta, standing in her Jaipur workshop with shelves of unfinished pottery behind her, soft confident smile, warm afternoon window light, photoreal, ultra-sharp on her face and clay-stained hands, magazine quality, Kinfolk editorial portrait aesthetic, warm color grade",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "pattern-detail-1",
+    "prompt": "Macro photograph of a hand-painted Rajasthani-inspired floral pattern on a terracotta vase surface, intricate brushstrokes visible, soft warm light, photoreal, ultra-detailed brushwork and clay texture, magazine quality, no humans, warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "workshop-shelves",
+    "prompt": "Photograph of weathered wooden workshop shelves filled with rows of unfinished and finished handmade pottery in earth tones, soft afternoon light streaming in from the side, photoreal, no humans, ultra-detailed, magazine quality, Kinfolk Indian craft aesthetic, warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "earth-and-fire",
+    "filename": "pottery-builder-bg",
+    "prompt": "Editorial photograph of a single beautifully crafted handmade terracotta cup on a raw stone surface, viewed from a slightly low angle so the cup is centered and prominent, soft directional warm light, raw stone backdrop, photoreal, ultra-detailed clay and pattern texture, magazine quality, no humans, lots of negative space around the cup so this image can serve as a background for a product configurator UI overlay",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "hero-tin",
+    "prompt": "Editorial product photograph of a single ornate cylindrical metallic chai tin can with deep warm brown and cardamom green packaging, hand-illustrated typography reading 'KADAK CHAI', sitting on a dark warm wood surface, single dramatic warm light from the upper left, photoreal, ultra-detailed metallic texture and printed packaging detail, magazine quality, no humans, deep warm color grade, premium tea brand product photography",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "tin-open",
+    "prompt": "Editorial photograph of the same Kadak Chai tin can from directly above with the lid removed and slightly tilted to the side, revealing rich dark loose-leaf chai with visible whole spices (cardamom pods, cinnamon shards, cloves), single dramatic light, photoreal, ultra-detailed tea and spice texture, magazine quality, no humans, deep warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "kulhad-cup",
+    "prompt": "Editorial photograph of a single traditional clay kulhad cup filled with freshly poured chai, steam rising in soft curls, sitting on a dark wood surface with one small cinnamon stick and one cardamom pod beside it, single warm directional light from above, photoreal, ultra-detailed clay texture and chai surface, magazine quality, no humans, deep warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "tea-grid",
+    "prompt": "Top-down editorial flat-lay photograph of 6 different chai blends arranged in 6 small piles on a dark warm wood surface, each pile a different color and texture (black tea with cardamom, masala chai, kashmiri kahwa, ginger chai, mint green chai, saffron chai), small handwritten chalk labels below each pile, single overhead warm light, photoreal, ultra-detailed tea textures, magazine quality, no humans, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "devika-portrait",
+    "prompt": "Editorial portrait of Devika, a 30-year-old Indian woman tea entrepreneur in Mumbai, wearing a casual rust-colored shirt, holding a kulhad of chai and looking off-camera with a confident relaxed smile, soft warm window light from the side, dark warm interior background, photoreal, ultra-sharp on her face and the kulhad, magazine quality, warm color grade, premium founder portrait aesthetic",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "spices-detail",
+    "prompt": "Macro photograph of whole spices used in chai (green cardamom pods, cinnamon shards, cloves, dried ginger, black peppercorns) arranged on a dark warm wood surface, single dramatic side light, photoreal, ultra-detailed spice textures, magazine quality, no humans, deep warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "accessories-flatlay",
+    "prompt": "Top-down editorial product photograph of premium chai accessories arranged on a dark warm wood surface: a brass kettle, three clay kulhads, a wooden strainer, a tin of loose-leaf chai, a small ceramic milk pitcher, single overhead warm light, photoreal, ultra-detailed product textures, magazine quality, no humans, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "brewing-ritual",
+    "prompt": "Editorial photograph of a brass kettle on a stove with chai actively brewing inside (steam visible), viewed from a slight angle, dark Mumbai kitchen interior in background, single warm light, photoreal, ultra-detailed brass and steam texture, magazine quality, no humans, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "mumbai-evening",
+    "prompt": "Atmospheric photograph of a Mumbai street at evening, warm street lights, a chai stall in the foreground (out of focus, only the warm glow and silhouette of customers visible), pedestrians blurred in motion, photoreal, ultra-detailed, magazine quality, deep warm color grade, ambient Mumbai energy, no clear faces",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "kadak-chai",
+    "filename": "quiz-bg",
+    "prompt": "Editorial atmospheric photograph of a single empty kulhad cup waiting to be filled, sitting on a dark warm wood surface with rich negative space around it, soft directional warm light, photoreal, ultra-detailed clay texture and wood grain, magazine quality, no humans, this image will be used as a background for a quiz UI overlay so it needs lots of empty space, deep warm color grade",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "hero-ridge",
+    "prompt": "Cinematic photograph of a snow-covered Himalayan mountain ridge at sunrise, deep blue sky transitioning to pink-gold at horizon, fresh snow on ridge contours, soft warm light catching peaks, photoreal, magazine quality, National Geographic aesthetic, ultra-high detail, no humans, cold cinematic color grade with warm light",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "arjun-sneha-portrait",
+    "prompt": "Editorial double-portrait of Arjun and Sneha, an Indian couple in their early thirties, both seasoned mountaineers and trek guides, standing side-by-side wearing premium technical outdoor jackets (one in pine green, one in deep navy), backpacks on, snow-covered mountain landscape behind them, soft golden hour light, slight breeze visible in their hair and jacket fabric, confident weathered expressions looking off-camera, photoreal, ultra-sharp on their faces, magazine quality, Patagonia editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "base-camp",
+    "prompt": "Editorial photograph of a small expedition base camp on a snowy Himalayan plateau, three premium yellow tents arranged neatly, prayer flags strung between tents catching the wind, single figure of trekker silhouetted in the distance, soft cold morning light, photoreal, ultra-detailed, magazine quality, no clear faces, Patagonia editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "gear-flatlay",
+    "prompt": "Top-down editorial flat-lay photograph of premium trekking gear arranged on a wooden surface: an ice axe, crampons, a coiled rope, climbing harness, headlamp, gloves, a worn topographic map, single overhead soft light, photoreal, ultra-detailed gear textures, magazine quality, no humans, Patagonia editorial product aesthetic",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "trekker-back",
+    "prompt": "Editorial photograph of a single trekker viewed from behind walking through deep snow on a Himalayan slope, wearing a deep navy technical jacket and large backpack, mountain peaks visible in distance, soft warm sidelight, photoreal, no face visible, magazine quality, Patagonia editorial aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "prayer-flags",
+    "prompt": "Editorial photograph of colorful Tibetan prayer flags strung against a deep blue Himalayan sky, slight motion blur as they flutter in wind, single distant snow-capped peak in background, soft warm afternoon light, photoreal, ultra-detailed fabric texture, magazine quality, no humans, deep color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "summit-view",
+    "prompt": "Cinematic photograph from a Himalayan summit looking out at a sea of clouds with other peaks emerging like islands, deep blue sky above, dramatic golden light, photoreal, ultra-detailed, no humans, magazine quality, National Geographic feature aesthetic, cinematic wide composition",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "camping-night",
+    "prompt": "Editorial photograph of three glowing tents at night under a deep starry sky, faint silhouette of mountain peaks behind, soft warm tent lights creating amber glow against the cold night, faint Milky Way visible, photoreal, ultra-detailed star and tent texture, magazine quality, no humans, cinematic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "whatsapp-bg",
+    "prompt": "Atmospheric editorial photograph of a single weathered hand holding a phone, viewed from over the shoulder, mountain landscape blurred in the background, soft warm light, photoreal, ultra-detailed hand texture, magazine quality, no face visible, deep cinematic color grade, lots of negative space for UI overlay",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "nomad-trails",
+    "filename": "valley-wide",
+    "prompt": "Cinematic photograph of a deep Himalayan valley at sunrise viewed from above, layers of mountains receding into mist, river winding through valley floor, soft pink-gold light catching the highest peaks, photoreal, ultra-detailed, magazine quality, no humans, National Geographic feature aesthetic, panoramic depth",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "hero-cake",
+    "prompt": "Editorial product photograph of a single layered birthday cake with strawberry compote drips and fresh fruit decorations on top, sitting on a vintage white cake stand, soft warm window light from the left, pastel pink background, photoreal, shot on Hasselblad H6D, ultra-detailed frosting texture and fruit detail, magazine quality, no humans, soft pastel color grade, premium patisserie aesthetic",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "cake-spread",
+    "prompt": "Top-down editorial photograph of 6 different small cakes arranged in a curated grid on a marble surface: a chocolate gateau, a lemon tart, a strawberry shortcake, a tiramisu, a red velvet, a matcha mille-feuille, soft natural overhead light, photoreal, ultra-detailed pastry textures, magazine quality, no humans, pastel color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "farah-portrait",
+    "prompt": "Editorial portrait of Farah, a 32-year-old Middle Eastern woman home baker in Abu Dhabi, wearing a simple cream apron over a soft pink t-shirt, hands gently piping frosting onto a cake in front of her, warm focused smile, soft golden hour window light, kitchen interior softly out of focus behind her, photoreal, ultra-sharp on her face and hands, magazine quality, premium home-baker editorial portrait",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "piping-detail",
+    "prompt": "Macro photograph of a gloved hand piping rose-pink buttercream rosettes onto the top of a cake, only hand and piping bag visible, single warm directional light, photoreal, ultra-detailed buttercream texture, magazine quality, no face, intimate framing, pastel color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "cake-slice",
+    "prompt": "Editorial photograph of a single slice of layered birthday cake on a white plate, cross-section visible showing distinct cake layers, frosting, and strawberry filling, soft natural light, photoreal, ultra-detailed pastry texture, magazine quality, no humans, pastel color grade, premium patisserie aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "order-form-bg",
+    "prompt": "Atmospheric editorial photograph of an empty pink-and-cream marble surface with scattered small props (a sugar shaker, a paper menu, a piping nozzle), lots of negative space for UI overlay, soft natural overhead light, photoreal, ultra-detailed textures, magazine quality, no humans, pastel color grade",
+    "width": 1920,
+    "height": 1200,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "wedding-cake",
+    "prompt": "Editorial photograph of a three-tier ivory wedding cake with delicate gold-leaf details and fresh florals on top, sitting on a vintage cake stand, soft natural window light, pastel pink and cream background, photoreal, ultra-detailed cake and floral textures, magazine quality, no humans, premium wedding-cake editorial aesthetic",
+    "width": 1080,
+    "height": 1620,
+    "aspectRatio": "9:16"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "bakery-kitchen",
+    "prompt": "Editorial photograph of a beautifully organized home bakery kitchen, cream-and-pink interior, marble countertops, exposed wooden shelves with jars of ingredients and cake stands, soft warm window light, no humans, photoreal, ultra-detailed textures, magazine quality, Kinfolk patisserie editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "signature-collection",
+    "prompt": "Editorial flat-lay photograph of 4 signature cake designs viewed from above, each cake unique in style: a minimal naked cake with berries, a pastel rosette cake with piped buttercream, a chocolate drip cake with caramelized hazelnuts, a fresh-flower wedding-style cake, all on white cake stands on a cream surface, soft natural overhead light, photoreal, ultra-detailed cake textures, magazine quality, no humans, premium patisserie editorial",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "sugar-lane",
+    "filename": "abu-dhabi-evening",
+    "prompt": "Atmospheric photograph of a quiet Abu Dhabi evening street with warm window lights and palm trees in the distance, golden hour, photoreal, magazine quality, no clear faces, ambient warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "hero-classroom",
+    "prompt": "Editorial photograph of a clean modern tutoring classroom in the UAE, single student studying at a wooden desk with an open laptop and notebook, soft warm window light streaming in, no faces visible (over-the-shoulder view), photoreal, ultra-detailed, magazine quality, premium education editorial aesthetic, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "omar-portrait",
+    "prompt": "Editorial portrait of Omar, a 40-year-old Middle Eastern man in the UAE, owner of a premium tutoring center, wearing a smart-casual collared shirt, standing in his center with shelves of books behind him, warm confident smile, soft natural light from a window beside him, photoreal, ultra-sharp on his face, magazine quality, premium founder portrait, neutral warm color grade",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "student-studying",
+    "prompt": "Editorial photograph of a young Middle Eastern teenage student studying at a desk in profile, focused expression looking at a laptop screen with notebook open beside her, soft warm window light from the side, premium clean study space, photoreal, ultra-sharp, magazine quality, no other people, neutral warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "tutor-detail",
+    "prompt": "Editorial photograph of a tutor's hands writing equations on a tablet or whiteboard, only hands and forearms visible, soft directional warm light, photoreal, ultra-detailed, magazine quality, no faces, education editorial aesthetic",
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": "3:2"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "notebook-detail",
+    "prompt": "Editorial top-down photograph of an open spiral notebook with handwritten math equations and notes, a single fountain pen resting beside it, single soft window light, photoreal, ultra-detailed paper and ink texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "parent-phone",
+    "prompt": "Editorial photograph of a Middle Eastern parent (woman in her late thirties) sitting at home looking thoughtfully at a phone, soft natural window light, casual home interior softly out of focus behind her, photoreal, ultra-sharp on her face and the phone, no app UI visible on screen, magazine quality, neutral warm color grade",
+    "width": 1024,
+    "height": 1280,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "study-group",
+    "prompt": "Editorial photograph of three Middle Eastern teenage students seated at a study table together with notebooks and laptops, focused expressions, soft natural light, premium clean classroom setting, photoreal, ultra-sharp, magazine quality, no clear faces (low-angle or over-the-shoulder framing)",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "exam-papers",
+    "prompt": "Editorial top-down photograph of stacked exam papers and test booklets on a wooden desk, a red pen and a green highlighter beside them, soft warm overhead light, photoreal, ultra-detailed paper texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1080,
+    "height": 1080,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "classroom-wide",
+    "prompt": "Architectural photograph of a premium minimalist tutoring center interior, several wooden desks with single laptops, large windows with natural light, plants, no humans, photoreal, ultra-detailed, magazine quality, premium education editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "brightpath",
+    "filename": "dashboard-bg-edu",
+    "prompt": "Abstract minimalist texture, deep education navy background with extremely subtle pattern of mathematical equations and graphs barely visible as line work, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
   }
 ]
