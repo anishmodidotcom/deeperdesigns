@@ -13,7 +13,8 @@ import PawDetail from "./PawDetail";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -73,12 +74,18 @@ export default function PawStayPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="012"
-        archetype="a dog boarding facility"
-        timeline="10 days"
-        pattern="Boarding facilities. Salons. Service businesses with anxious clients."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "pawstay")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Boarding facilities. Salons. Service businesses with anxious clients."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Problem />
       <LiveCamera />
       <TheDay />

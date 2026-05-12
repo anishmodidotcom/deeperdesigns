@@ -67,19 +67,24 @@ type Tier = {
 
 const TIERS: Tier[] = [
   {
-    range: "From Rs. 1 lakh / $1,200",
+    range: "From ₹25,000 / $300",
     label: "Single-tool builds",
-    examples: "A quiz. A lead form. A WhatsApp agent. A single dashboard.",
+    examples: "A simple quiz. A landing page. A WhatsApp form. A small dashboard.",
   },
   {
-    range: "Rs. 3 to 10 lakh / $3.5k to $12k",
+    range: "₹1L to ₹3L / $1,200 to $3,500",
+    label: "Custom tools",
+    examples: "Custom calculators, recommendation engines, single-purpose AI tools, branded sites that convert.",
+  },
+  {
+    range: "₹3L to ₹10L / $3,500 to $12,000",
     label: "Multi-tool systems",
-    examples: "A portal and a dashboard. A site and a booking flow. A brand and a store.",
+    examples: "A portal and a dashboard. A site, a booking flow, and an inventory system. A brand world and a store.",
   },
   {
-    range: "Rs. 10 lakh+ / $12k+",
+    range: "₹10L+ / $12,000+",
     label: "Full operational redesigns",
-    examples: "The full operating system for a business. Brand, site, internal tools, customer-facing tools.",
+    examples: "The operating system for a business. Brand, site, internal tools, customer-facing tools, the works.",
   },
 ];
 
@@ -365,18 +370,67 @@ export default function Services() {
 
           <p
             style={{
+              fontSize: 17,
+              color: "var(--text-2)",
+              marginTop: 32,
+              lineHeight: 1.65,
+              maxWidth: 760,
+            }}
+          >
+            Most businesses spend more on a single industry conference than on
+            a custom DD tool. The tool, unlike the conference, ships value
+            every day after.
+          </p>
+
+          <p
+            style={{
               fontSize: 14,
               color: "var(--text-3)",
-              marginTop: 24,
+              marginTop: 16,
               fontStyle: "italic",
               lineHeight: 1.6,
-              maxWidth: 720,
+              maxWidth: 760,
             }}
           >
             Pricing depends on scope, integrations, and timeline. Most projects
             ship in 2 to 6 weeks. The studio takes a small number of new
             engagements each month.
           </p>
+
+          <div
+            style={{
+              marginTop: 32,
+              padding: "24px 24px",
+              border: "1px dashed var(--border-2)",
+              borderRadius: 12,
+              maxWidth: 760,
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: 11,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                margin: 0,
+                marginBottom: 10,
+              }}
+            >
+              Budget constraints?
+            </p>
+            <p
+              style={{
+                fontSize: 16,
+                color: "var(--text)",
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              Tell us anyway. If it is not a fit, we will say so within a day,
+              no posturing.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -392,7 +446,12 @@ export default function Services() {
             top: 120px;
           }
           :global(.srv-tier-grid) {
-            grid-template-columns: repeat(3, 1fr) !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1280px) {
+          :global(.srv-tier-grid) {
+            grid-template-columns: repeat(4, 1fr) !important;
           }
         }
         :global(.srv-item:hover) {

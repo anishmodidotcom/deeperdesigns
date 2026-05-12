@@ -16,6 +16,8 @@ const SUBHEADLINE_LINES = [
   "Shipped in weeks, not quarters. Considered for longer.",
 ];
 
+const TAGLINE = "Operational relief, designed carefully, shipped efficiently.";
+
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
@@ -137,6 +139,22 @@ export default function Hero() {
           </span>
         ))}
       </div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
+        style={{
+          marginTop: 28,
+          fontFamily: "var(--font-geist-mono), monospace",
+          fontSize: 11,
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          color: "var(--accent)",
+        }}
+      >
+        {TAGLINE}
+      </motion.p>
 
       <motion.div
         initial={{ opacity: 0 }}

@@ -9,7 +9,8 @@ import Parent from "./Parent";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const rajdhani = Rajdhani({
@@ -63,12 +64,18 @@ export default function StumpVisionPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="008"
-        archetype="a cricket coaching academy"
-        timeline="10 days"
-        pattern="Coaching academies. Music schools. Skill-building businesses with parents on the sidelines."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "stumpvision")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Coaching academies. Music schools. Skill-building businesses with parents on the sidelines."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Card />
       <StartingXI />
       <Features />

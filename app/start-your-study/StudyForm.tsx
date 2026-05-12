@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { WHATSAPP_HREF, CALENDLY_HREF } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -54,7 +55,19 @@ const BUDGETS: Budget[] = [
   "Not sure yet",
 ];
 
-const TOTAL_STEPS = 9;
+const STEP_LABELS = [
+  "Name",
+  "Business",
+  "Team",
+  "Bottleneck",
+  "Phone",
+  "Verify",
+  "Email",
+  "Budget",
+  "When",
+];
+
+const TOTAL_STEPS = STEP_LABELS.length;
 
 function nextSlots(): { value: string; label: string }[] {
   const now = new Date();
@@ -88,20 +101,57 @@ function nextSlots(): { value: string; label: string }[] {
   return slots;
 }
 
+type Phase = "intro" | "questions" | "done";
+
 export default function StudyForm() {
+  const [phase, setPhase] = useState<Phase>("intro");
   const [step, setStep] = useState(0);
   const [data, setData] = useState<FormState>(INITIAL);
   const [sending, setSending] = useState(false);
-  const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [otpSending, setOtpSending] = useState(false);
   const [otpHint, setOtpHint] = useState<string | null>(null);
+  const [prefilled, setPrefilled] = useState<{
+    industry?: string;
+    objective?: string;
+  }>({});
   const slots = useMemo(() => nextSlots(), []);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const industry = params.get("industry");
+    const objective = params.get("objective");
+    if (industry || objective) {
+      setPrefilled({
+        industry: industry ?? undefined,
+        objective: objective ?? undefined,
+      });
+    }
+  }, []);
+
+  // Exit intent: if the user has typed anything, ask before leaving.
+  useEffect(() => {
+    if (phase !== "questions") return;
+    const hasInput =
+      data.name.length > 0 ||
+      data.business.length > 0 ||
+      data.bottleneck.length > 0 ||
+      data.phone.length > 0 ||
+      data.email.length > 0;
+    if (!hasInput) return;
+    function handler(e: BeforeUnloadEvent) {
+      e.preventDefault();
+      e.returnValue = "";
+    }
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [phase, data]);
+
+  useEffect(() => {
     inputRef.current?.focus();
-  }, [step]);
+  }, [step, phase]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setData((d) => ({ ...d, [key]: value }));
@@ -199,13 +249,17 @@ export default function StudyForm() {
       const res = await fetch("/api/start-your-study", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          industry: prefilled.industry,
+          objective: prefilled.objective,
+        }),
       });
       if (!res.ok) {
         const j = (await res.json().catch(() => ({}))) as { error?: string };
         throw new Error(j.error || "Submission failed.");
       }
-      setDone(true);
+      setPhase("done");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Submission failed.");
     } finally {
@@ -219,11 +273,9 @@ export default function StudyForm() {
       requestOtp();
       return;
     }
-    if (step === 5) {
-      if (!data.otpVerified) {
-        verifyOtp();
-        return;
-      }
+    if (step === 5 && !data.otpVerified) {
+      verifyOtp();
+      return;
     }
     if (step === TOTAL_STEPS - 1) {
       submitFinal();
@@ -237,8 +289,12 @@ export default function StudyForm() {
     setStep((s) => Math.max(s - 1, 0));
   }
 
-  if (done) {
-    return <Confirmation name={data.name} slot={data.slot} />;
+  if (phase === "done") {
+    return <Confirmation name={data.name} />;
+  }
+
+  if (phase === "intro") {
+    return <Intro start={() => setPhase("questions")} prefilled={prefilled} />;
   }
 
   return (
@@ -248,7 +304,7 @@ export default function StudyForm() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        paddingBlock: "clamp(96px, 16vh, 144px)",
+        paddingBlock: "clamp(80px, 14vh, 144px)",
         paddingInline: 24,
       }}
     >
@@ -264,16 +320,46 @@ export default function StudyForm() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: 40,
+            marginBottom: 24,
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 11,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             color: "var(--text-3)",
+            flexWrap: "wrap",
+            gap: 12,
           }}
         >
-          <span>STEP {String(step + 1).padStart(2, "0")} / {TOTAL_STEPS}</span>
-          <span>POSSIBILITY STUDY · INTAKE</span>
+          <span>
+            STEP {String(step + 1).padStart(2, "0")} / {TOTAL_STEPS} ·{" "}
+            <span style={{ color: "var(--text-2)" }}>{STEP_LABELS[step]}</span>
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              if (
+                confirm(
+                  "Leave the form and open WhatsApp instead? Your answers will be lost."
+                )
+              ) {
+                window.location.href = WHATSAPP_HREF;
+              }
+            }}
+            data-cursor="pointer"
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "var(--text-3)",
+              fontFamily: "inherit",
+              fontSize: 11,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              padding: 0,
+            }}
+          >
+            Skip to WhatsApp ↗
+          </button>
         </div>
 
         <Progress step={step} total={TOTAL_STEPS} />
@@ -328,27 +414,26 @@ export default function StudyForm() {
             flexWrap: "wrap",
           }}
         >
-          {step > 0 && !done ? (
-            <button
-              type="button"
-              onClick={goBack}
-              disabled={sending || otpSending}
-              data-cursor="pointer"
-              style={{
-                paddingInline: 22,
-                paddingBlock: 12,
-                background: "transparent",
-                color: "var(--text-2)",
-                border: "1px solid var(--border-2)",
-                borderRadius: 9999,
-                fontSize: 14,
-                fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-                cursor: "pointer",
-              }}
-            >
-              ← Back
-            </button>
-          ) : null}
+          <button
+            type="button"
+            onClick={goBack}
+            disabled={step === 0 || sending || otpSending}
+            data-cursor="pointer"
+            style={{
+              paddingInline: 22,
+              paddingBlock: 12,
+              background: "transparent",
+              color: step === 0 ? "var(--text-3)" : "var(--text-2)",
+              border: "1px solid var(--border-2)",
+              borderRadius: 9999,
+              fontSize: 14,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              cursor: step === 0 ? "not-allowed" : "pointer",
+              opacity: step === 0 ? 0.4 : 1,
+            }}
+          >
+            ← Back
+          </button>
           <button
             type="button"
             onClick={goNext}
@@ -388,7 +473,7 @@ function nextLabel(
   if (otpSending && step === 5) return "Verifying...";
   if (step === 4) return "Send verification code →";
   if (step === 5) return verified ? "Continue →" : "Verify code →";
-  if (step === TOTAL_STEPS - 1) return "Submit and book →";
+  if (step === TOTAL_STEPS - 1) return "Send to studio →";
   return "Continue →";
 }
 
@@ -401,17 +486,14 @@ function renderStep(
   switch (step) {
     case 0:
       return (
-        <Question
-          title="What is your name?"
-          hint="Just the first name is fine."
-        >
+        <Question title="What is your name?" hint="Just the first name is fine.">
           <input
             autoFocus
             type="text"
             value={data.name}
             onChange={(e) => update("name", e.target.value)}
             style={inputStyle}
-            placeholder="Anish"
+            placeholder="First name"
           />
         </Question>
       );
@@ -427,20 +509,14 @@ function renderStep(
             value={data.business}
             onChange={(e) => update("business", e.target.value)}
             style={inputStyle}
-            placeholder="The Paw House, a dog boarding facility"
+            placeholder="Your business name and what it does"
           />
         </Question>
       );
     case 2:
       return (
         <Question title="How big is your team?">
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 12,
-            }}
-          >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
             {TEAM_SIZES.map((t) => (
               <Chip
                 key={t}
@@ -465,7 +541,7 @@ function renderStep(
             value={data.bottleneck}
             onChange={(e) => update("bottleneck", e.target.value)}
             style={{ ...inputStyle, resize: "vertical", minHeight: 140 }}
-            placeholder="Customers asking the same questions on WhatsApp. I copy paste the same answers all day."
+            placeholder="Customers asking the same questions on WhatsApp. We copy paste the same answers all day."
           />
         </Question>
       );
@@ -491,7 +567,7 @@ function renderStep(
                 update("phone", e.target.value.replace(/[^0-9]/g, ""))
               }
               style={{ ...inputStyle, flex: 1, minWidth: 200 }}
-              placeholder="99687 16498"
+              placeholder="Phone number"
             />
           </div>
         </Question>
@@ -549,20 +625,14 @@ function renderStep(
             value={data.email}
             onChange={(e) => update("email", e.target.value)}
             style={inputStyle}
-            placeholder="you@yourbusiness.com"
+            placeholder="Your work email"
           />
         </Question>
       );
     case 7:
       return (
         <Question title="What is your budget thinking?">
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 12,
-            }}
-          >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
             {BUDGETS.map((b) => (
               <Chip
                 key={b}
@@ -581,13 +651,7 @@ function renderStep(
           title="When can we talk?"
           hint="A short call to walk you through what we would build. Times in IST."
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-            }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {slots.map((s) => (
               <Chip
                 key={s.value}
@@ -615,22 +679,14 @@ function renderStep(
 
 function Progress({ step, total }: { step: number; total: number }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 6,
-        height: 4,
-      }}
-      aria-hidden
-    >
+    <div style={{ display: "flex", gap: 6, height: 4 }} aria-hidden>
       {Array.from({ length: total }).map((_, i) => (
         <span
           key={i}
           style={{
             flex: 1,
             borderRadius: 9999,
-            background:
-              i <= step ? "var(--accent)" : "var(--border-2)",
+            background: i <= step ? "var(--accent)" : "var(--border-2)",
             transition: "background 0.4s var(--ease-spring)",
           }}
         />
@@ -717,8 +773,289 @@ function Chip({
   );
 }
 
-function Confirmation({ name, slot }: { name: string; slot: string }) {
-  const slotLabel = slot === "calendly" ? "a Calendly link" : "your confirmed time";
+function Intro({
+  start,
+  prefilled,
+}: {
+  start: () => void;
+  prefilled: { industry?: string; objective?: string };
+}) {
+  return (
+    <section
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        paddingBlock: "clamp(96px, 16vh, 144px)",
+        paddingInline: 24,
+      }}
+    >
+      <div style={{ maxWidth: 780, width: "100%", marginInline: "auto" }}>
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
+          style={{
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 12,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+            margin: 0,
+            marginBottom: 20,
+          }}
+        >
+          STUDIO INTAKE
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          style={{
+            fontSize: "clamp(36px, 6vw, 72px)",
+            fontWeight: 300,
+            letterSpacing: "-0.04em",
+            color: "var(--text)",
+            margin: 0,
+            lineHeight: 1.05,
+          }}
+        >
+          Let&apos;s explore possibilities for your business.
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          style={{
+            fontSize: 18,
+            color: "var(--text-2)",
+            lineHeight: 1.6,
+            margin: 0,
+            marginTop: 24,
+            maxWidth: 640,
+          }}
+        >
+          Nine quick questions. A verified phone. We come back within 24 hours
+          with a plan, a timeline, and a number.
+        </motion.p>
+
+        {prefilled.industry || prefilled.objective ? (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+            style={{
+              marginTop: 24,
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: 12,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+            }}
+          >
+            Pre-noted from your filter:{" "}
+            {[prefilled.industry, prefilled.objective]
+              .filter(Boolean)
+              .join(" · ")}
+          </motion.p>
+        ) : null}
+
+        <motion.ul
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: 0,
+            marginTop: 40,
+            display: "flex",
+            flexDirection: "column",
+            gap: 14,
+            borderTop: "1px solid var(--border)",
+          }}
+        >
+          {[
+            {
+              icon: "clock",
+              label: "9 quick questions",
+              hint: "Three to five minutes.",
+            },
+            {
+              icon: "shield",
+              label: "Verified phone, never spammed",
+              hint: "One code, one time. We do not market to you.",
+            },
+            {
+              icon: "mail",
+              label: "Reply within 24 hours",
+              hint: "A plan, a timeline, and a number.",
+            },
+          ].map((row) => (
+            <li
+              key={row.label}
+              style={{
+                display: "flex",
+                gap: 18,
+                paddingBlock: 16,
+                borderBottom: "1px solid var(--border)",
+                alignItems: "center",
+              }}
+            >
+              <IntroIcon name={row.icon} />
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 16,
+                    color: "var(--text)",
+                    fontWeight: 500,
+                  }}
+                >
+                  {row.label}
+                </p>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13,
+                    color: "var(--text-3)",
+                    marginTop: 2,
+                  }}
+                >
+                  {row.hint}
+                </p>
+              </div>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: EASE }}
+          style={{
+            marginTop: 40,
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <button
+            type="button"
+            onClick={start}
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              paddingInline: 28,
+              paddingBlock: 16,
+              background: "var(--accent)",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: 9999,
+              fontSize: 15,
+              fontWeight: 600,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              cursor: "pointer",
+            }}
+          >
+            Start the questions
+            <span aria-hidden>→</span>
+          </button>
+          <a
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              paddingInline: 28,
+              paddingBlock: 16,
+              background: "transparent",
+              color: "var(--text)",
+              border: "1px solid var(--border-2)",
+              borderRadius: 9999,
+              fontSize: 15,
+              fontWeight: 600,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              textDecoration: "none",
+            }}
+          >
+            Skip and WhatsApp us instead ↗
+          </a>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+          style={{
+            marginTop: 24,
+            fontSize: 13,
+            color: "var(--text-3)",
+          }}
+        >
+          Prefer to talk first?{" "}
+          <a
+            href={CALENDLY_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="pointer"
+            style={{
+              color: "var(--text-2)",
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+            }}
+          >
+            Book a 20-min call →
+          </a>
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+function IntroIcon({ name }: { name: string }) {
+  const common = {
+    width: 28,
+    height: 28,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "var(--accent)",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+    style: { flexShrink: 0 },
+  };
+  if (name === "clock") {
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+    );
+  }
+  if (name === "shield") {
+    return (
+      <svg {...common}>
+        <path d="M12 3l8 3v6c0 4.5 -3.5 7.5 -8 9c-4.5 -1.5 -8 -4.5 -8 -9V6z" />
+        <path d="M9 12l2 2l4 -4" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <rect x="3" y="6" width="18" height="13" rx="2" />
+      <path d="M3 7l9 6l9 -6" />
+    </svg>
+  );
+}
+
+function Confirmation({ name }: { name: string }) {
   return (
     <section
       style={{
@@ -729,7 +1066,7 @@ function Confirmation({ name, slot }: { name: string; slot: string }) {
         paddingInline: 24,
       }}
     >
-      <div style={{ maxWidth: 680, textAlign: "center" }}>
+      <div style={{ maxWidth: 720, textAlign: "center" }}>
         <p
           style={{
             fontFamily: "var(--font-geist-mono), monospace",
@@ -753,7 +1090,7 @@ function Confirmation({ name, slot }: { name: string; slot: string }) {
             lineHeight: 1.05,
           }}
         >
-          Got it, {name}.
+          We&apos;ve got it{name ? `, ${name}` : ""}.
         </h1>
         <p
           style={{
@@ -763,27 +1100,61 @@ function Confirmation({ name, slot }: { name: string; slot: string }) {
             lineHeight: 1.6,
           }}
         >
-          We will be in touch within 24 hours with {slotLabel} and a short
-          shape of what we would build. If it is not a fit, we will say so.
+          We will come back within 24 hours with a plan, a timeline, and a
+          number. If you would rather talk now, WhatsApp us at +91 99687
+          16498.
         </p>
-        <a
-          href="/"
-          data-cursor="pointer"
+        <div
           style={{
-            display: "inline-block",
+            display: "flex",
+            gap: 12,
+            justifyContent: "center",
+            flexWrap: "wrap",
             marginTop: 40,
-            paddingInline: 24,
-            paddingBlock: 12,
-            borderRadius: 9999,
-            border: "1px solid var(--border-2)",
-            color: "var(--text)",
-            fontSize: 14,
-            fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-            textDecoration: "none",
           }}
         >
-          Back to the gallery
-        </a>
+          <a
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              paddingInline: 28,
+              paddingBlock: 16,
+              background: "#25D366",
+              color: "#0F2A1B",
+              borderRadius: 9999,
+              fontSize: 15,
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              textDecoration: "none",
+            }}
+          >
+            WhatsApp the studio ↗
+          </a>
+          <a
+            href="/"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              paddingInline: 24,
+              paddingBlock: 14,
+              borderRadius: 9999,
+              border: "1px solid var(--border-2)",
+              color: "var(--text)",
+              fontSize: 14,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              textDecoration: "none",
+            }}
+          >
+            Back to the gallery
+          </a>
+        </div>
       </div>
     </section>
   );

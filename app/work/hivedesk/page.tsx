@@ -11,7 +11,8 @@ import Details from "./Details";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const inter = Inter({
@@ -69,12 +70,18 @@ export default function HiveDeskPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="010"
-        archetype="a neighborhood coworking space"
-        timeline="22 days"
-        pattern="Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "hivedesk")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "22 days"}
+            pattern={meta.pattern ?? "Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Occupancy />
       <Problem />
       <TwoHalves />

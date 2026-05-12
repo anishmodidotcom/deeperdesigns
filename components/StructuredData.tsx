@@ -46,7 +46,7 @@ export const ANISH_PERSON_LD: JsonLd = {
   name: "Anish Modi",
   jobTitle: "Founder, Deeper Designs",
   url: "https://anishmodi.com",
-  image: "https://deeperdesigns.in/images/about/anish-real.webp",
+  image: "https://deeperdesigns.in/images/about/anish-portrait.webp",
   worksFor: {
     "@type": "Organization",
     name: "Deeper Designs",

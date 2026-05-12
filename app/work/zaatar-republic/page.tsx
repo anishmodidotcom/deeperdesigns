@@ -10,7 +10,8 @@ import HowItWorks from "./HowItWorks";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const dmSans = DM_Sans({
@@ -64,12 +65,18 @@ export default function ZaatarRepublicPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="004"
-        archetype="a regional QSR chain"
-        timeline="12 days"
-        pattern="QSR chains. Multi-location restaurants. Any food brand running on gut feel and a POS dump."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "zaatar-republic")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "12 days"}
+            pattern={meta.pattern ?? "QSR chains. Multi-location restaurants. Any food brand running on gut feel and a POS dump."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Numbers />
       <CoreProblem />

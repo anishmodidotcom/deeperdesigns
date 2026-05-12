@@ -10,7 +10,8 @@ import Features from "./Features";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const playfair = Playfair_Display({
@@ -65,12 +66,18 @@ export default function VedaGlowPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="001"
-        archetype="an Ayurvedic skincare D2C brand"
-        timeline="5 days"
-        pattern="Skincare brands. Wellness brands. Any DTC with high-volume customer questions."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "veda-glow")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "5 days"}
+            pattern={meta.pattern ?? "Skincare brands. Wellness brands. Any DTC with high-volume customer questions."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Problem />
       <Solution />

@@ -9,7 +9,8 @@ import Respondent from "./Respondent";
 import Outcomes from "./Outcomes";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Spectral covers the editorial slab-serif feel of GT Sectra Display
@@ -75,12 +76,18 @@ export default function KaranLegalPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="014"
-        archetype="an independent legal practice"
-        timeline="9 days"
-        pattern="Independent lawyers. CAs. Consultants. Any solo practice drowning in unqualified intakes."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "karan-legal")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "9 days"}
+            pattern={meta.pattern ?? "Independent lawyers. CAs. Consultants. Any solo practice drowning in unqualified intakes."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <StatementOfFacts />
       <Redaction />
       <Qualifier />

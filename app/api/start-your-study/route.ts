@@ -13,7 +13,7 @@ type Submission = {
   otpVerified: boolean;
 };
 
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "modianish11@gmail.com";
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "anish.modi@deeperdesigns.in";
 
 export async function POST(req: Request) {
   try {

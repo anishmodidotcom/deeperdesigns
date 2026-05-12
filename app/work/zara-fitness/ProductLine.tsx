@@ -176,7 +176,7 @@ export default function ProductLine() {
             </ul>
 
             <a
-              href="#"
+              href="/start-your-study"
               data-cursor="pointer"
               style={{
                 display: "inline-block",

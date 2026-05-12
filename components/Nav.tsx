@@ -123,7 +123,7 @@ export default function Nav() {
               e.currentTarget.style.borderColor = "var(--border-2)";
             }}
           >
-            Start Your Study
+            Explore possibilities
           </Link>
         </nav>
       </div>

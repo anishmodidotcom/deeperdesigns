@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const SLUGS = [
+  "maplelens",
   "veda-glow",
   "bharat-steel",
   "meera-wellness",

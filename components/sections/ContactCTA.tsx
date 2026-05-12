@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
+import { WHATSAPP_HREF, FORM_HREF, FORM_CTA } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -37,7 +38,7 @@ export default function ContactCTA() {
               margin: 0,
             }}
           >
-            COMMISSION YOUR STUDY
+            START A CONVERSATION
           </p>
 
           <h2
@@ -53,7 +54,7 @@ export default function ContactCTA() {
           >
             Tell us what is slowing you down.
             <br />
-            We will design your possibility study.
+            We will show you what is possible.
           </h2>
 
           <p
@@ -65,21 +66,23 @@ export default function ContactCTA() {
               maxWidth: 640,
             }}
           >
-            Nine quick questions. A verified phone number. Then a study plan,
-            a timeline, and a number, back within 24 hours. If it is not a
-            fit, we will say so.
+            Message us on WhatsApp for the fastest response. Or run through
+            nine quick questions and we will return a plan, a timeline, and a
+            number within 24 hours. If it is not a fit, we will say so.
           </p>
 
           <div
             style={{
               display: "flex",
               flexWrap: "wrap",
-              gap: 16,
+              gap: 12,
               marginTop: 12,
             }}
           >
-            <Link
-              href="/start-your-study"
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="pointer"
               style={{
                 display: "inline-flex",
@@ -87,8 +90,8 @@ export default function ContactCTA() {
                 gap: 10,
                 paddingInline: 28,
                 paddingBlock: 16,
-                background: "var(--accent)",
-                color: "#FFFFFF",
+                background: "#25D366",
+                color: "#0F2A1B",
                 border: "none",
                 borderRadius: 9999,
                 fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
@@ -98,31 +101,32 @@ export default function ContactCTA() {
                 textDecoration: "none",
               }}
             >
-              Start Your Possibility Study
-              <span aria-hidden>→</span>
-            </Link>
-            <a
-              href="https://wa.me/919968716498?text=Hey%2C%20I%27m%20interested%20in%20working%20with%20Deeper%20Designs"
-              target="_blank"
-              rel="noopener noreferrer"
+              WhatsApp +91 99687 16498
+              <span aria-hidden>↗</span>
+            </a>
+            <Link
+              href={FORM_HREF}
               data-cursor="pointer"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 8,
-                paddingInline: 24,
-                paddingBlock: 14,
+                gap: 10,
+                paddingInline: 28,
+                paddingBlock: 16,
                 background: "transparent",
-                color: "var(--text-2)",
+                color: "var(--text)",
                 border: "1px solid var(--border-2)",
                 borderRadius: 9999,
-                fontSize: 14,
                 fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                fontSize: 15,
+                fontWeight: 600,
+                letterSpacing: "0.02em",
                 textDecoration: "none",
               }}
             >
-              Prefer WhatsApp? +91 99687 16498
-            </a>
+              {FORM_CTA}
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </motion.div>
       </div>

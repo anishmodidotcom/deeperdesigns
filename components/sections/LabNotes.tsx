@@ -9,19 +9,19 @@ type Note = {
 
 const NOTES: Note[] = [
   {
-    date: "MAY 12, 2026",
+    date: "MAY 11, 2026",
     body: "We tried using Veo 3 to render a fragrance bottle. It rendered NADIA on the label perfectly. We did not expect that.",
   },
   {
-    date: "MAY 09, 2026",
+    date: "MAY 06, 2026",
     body: "The peppercorn loop in Malabar Spice took three reroll attempts. The seam still snaps. We left it because the snap feels like the heartbeat of the spice.",
   },
   {
-    date: "MAY 03, 2026",
+    date: "APR 30, 2026",
     body: "Most websites optimize for clicks. We optimize for scrolls. Different game.",
   },
   {
-    date: "APR 28, 2026",
+    date: "APR 22, 2026",
     body: "Tried five fonts on the BrightPath portal. Settled on Source Serif 4. A serif teaches better than a sans, evidently.",
   },
 ];

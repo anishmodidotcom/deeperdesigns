@@ -1,4 +1,11 @@
 import { Link } from "next-view-transitions";
+import {
+  WHATSAPP_HREF,
+  STUDIO_EMAIL,
+  STUDIO_EMAIL_HREF,
+  FORM_HREF,
+  FORM_CTA,
+} from "@/lib/contact";
 
 export default function Footer() {
   const labelStyle: React.CSSProperties = {
@@ -42,29 +49,62 @@ export default function Footer() {
           slowing you down.
         </h2>
 
-        <Link
-          href="/start-your-study"
-          data-cursor="pointer"
+        <div
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            paddingInline: 24,
-            paddingBlock: 14,
-            background: "var(--accent)",
-            color: "#FFFFFF",
-            borderRadius: 9999,
-            fontSize: 14,
-            fontWeight: 600,
-            letterSpacing: "0.02em",
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
             marginBottom: 80,
-            fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-            textDecoration: "none",
           }}
         >
-          Start Your Possibility Study
-          <span aria-hidden>→</span>
-        </Link>
+          <a
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              paddingInline: 24,
+              paddingBlock: 14,
+              background: "#25D366",
+              color: "#0F2A1B",
+              borderRadius: 9999,
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              textDecoration: "none",
+            }}
+          >
+            WhatsApp the studio
+            <span aria-hidden>↗</span>
+          </a>
+          <Link
+            href={FORM_HREF}
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              paddingInline: 24,
+              paddingBlock: 14,
+              background: "transparent",
+              color: "var(--text)",
+              border: "1px solid var(--border-2)",
+              borderRadius: 9999,
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              textDecoration: "none",
+            }}
+          >
+            {FORM_CTA}
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
 
         <div
           style={{
@@ -77,24 +117,24 @@ export default function Footer() {
           <div>
             <div style={labelStyle}>Email</div>
             <a
-              href="mailto:modianish11@gmail.com"
+              href={STUDIO_EMAIL_HREF}
               data-cursor="pointer"
               style={linkStyle}
             >
-              modianish11@gmail.com
+              {STUDIO_EMAIL}
             </a>
           </div>
 
           <div>
             <div style={labelStyle}>WhatsApp</div>
             <a
-              href="https://wa.me/919968716498"
+              href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="pointer"
               style={linkStyle}
             >
-              +91 9968716498
+              +91 99687 16498
             </a>
           </div>
 

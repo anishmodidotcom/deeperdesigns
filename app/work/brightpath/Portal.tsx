@@ -430,7 +430,7 @@ export default function Portal() {
                         marginTop: 2,
                       }}
                     >
-                      {lesson.delta === "0" ? "—" : `▲ ${lesson.delta}`}
+                      {lesson.delta === "0" ? "·" : `▲ ${lesson.delta}`}
                     </p>
                   </div>
                 </div>

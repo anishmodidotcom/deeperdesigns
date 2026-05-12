@@ -10,7 +10,8 @@ import Steam from "./Steam";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Archivo Black is the closest open-source stand-in for the heavy
@@ -78,12 +79,18 @@ export default function KadakChaiPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="017"
-        archetype="a craft chai brand"
-        timeline="7 weeks"
-        pattern="Wholesale-to-D2C brands. Family supply businesses going direct. Any product worth a tin."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "kadak-chai")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "7 weeks"}
+            pattern={meta.pattern ?? "Wholesale-to-D2C brands. Family supply businesses going direct. Any product worth a tin."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Devika />
       <TheTin />
       <TheRange />

@@ -10,7 +10,8 @@ import Kerala from "./Kerala";
 import Tray from "./Tray";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const fraunces = Fraunces({
@@ -70,12 +71,18 @@ export default function MalabarSpicePage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="011"
-        archetype="a heritage spice exporter"
-        timeline="8 days"
-        pattern="Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "malabar-spice")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "8 days"}
+            pattern={meta.pattern ?? "Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Story />
       <Spices />
       <Hands />

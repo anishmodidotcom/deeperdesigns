@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Link } from "next-view-transitions";
+import {
+  FORM_HREF,
+  FORM_CTA,
+  WHATSAPP_HREF,
+} from "@/lib/contact";
 
 const PROMPTS = [
   "Still running operations on WhatsApp?",
@@ -109,7 +114,7 @@ export default function SoundLikeYou() {
             Your business deserves better tools.
           </p>
           <Link
-            href="/start-your-study"
+            href={FORM_HREF}
             data-cursor="pointer"
             style={{
               display: "inline-flex",
@@ -127,7 +132,7 @@ export default function SoundLikeYou() {
               textDecoration: "none",
             }}
           >
-            Start Your Possibility Study
+            {FORM_CTA}
             <span aria-hidden style={{ marginLeft: 4 }}>
               →
             </span>

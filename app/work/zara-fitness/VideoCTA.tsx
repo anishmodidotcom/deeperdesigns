@@ -160,7 +160,7 @@ export default function VideoCTA() {
             FIRST MONTH FREE · LOCK IN FOUNDING MEMBER PRICING
           </p>
           <a
-            href="#"
+            href="/start-your-study"
             data-cursor="pointer"
             style={{
               display: "inline-block",

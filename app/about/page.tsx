@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import Thesis from "./Thesis";
 import HowWeWork from "./HowWeWork";
 import Studio from "./Studio";
+import Founder from "./Founder";
 import Selectivity from "./Selectivity";
 import NotDoing from "./NotDoing";
 import Contact from "./Contact";
@@ -35,6 +36,7 @@ export default function AboutPage() {
       <Thesis />
       <HowWeWork />
       <Studio />
+      <Founder />
       <WhyNotDIY />
       <Selectivity />
       <LabNotes />

@@ -30,7 +30,7 @@ export default function Studio() {
             }}
           >
             <Image
-              src="/images/about/anish-real.webp"
+              src="/images/about/anish-portrait.webp"
               alt="Anish Modi, founder of Deeper Designs"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
@@ -143,7 +143,7 @@ export default function Studio() {
               {[
                 { k: "Founder", v: "Anish Modi" },
                 { k: "Based", v: "Dubai · Delhi" },
-                { k: "Founded", v: "2024" },
+                { k: "Founded", v: "2017" },
                 { k: "More", v: "anishmodi.com" },
               ].map((row) => (
                 <div key={row.k}>

@@ -10,7 +10,8 @@ import Ridge from "./Ridge";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Bodoni Moda gives the high-contrast editorial display the brief
@@ -90,12 +91,18 @@ export default function NomadTrailsPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="018"
-        archetype="a Himalayan trek outfit"
-        timeline="10 days"
-        pattern="Trek outfits. Small-group tours. Niche travel brands selling experience, not seats."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "nomad-trails")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Trek outfits. Small-group tours. Niche travel brands selling experience, not seats."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Outfit />
       <Climb />
       <Trips />
