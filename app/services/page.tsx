@@ -16,7 +16,14 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Services · Deeper Designs",
   description:
-    "AI-built websites, custom tools, social and ecommerce, lead generation, LinkedIn sales agent as a service. What Deeper Designs builds and what it costs.",
+    "Three outcomes: customer experience, operations, growth. Custom tools, dashboards, portals, and operational systems. From ₹25,000.",
+  openGraph: {
+    title: "Services · Deeper Designs",
+    description:
+      "Custom tools, dashboards, portals, and operational systems. From ₹25,000.",
+    url: "/services",
+  },
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {
