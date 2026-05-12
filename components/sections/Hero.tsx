@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-import gsap from "gsap";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 const COMBINATIONS: { product: string; business: string }[] = [
   { product: "Skin Advisor", business: "for an Ayurvedic beauty brand" },
@@ -27,33 +26,15 @@ const COMBINATIONS: { product: string; business: string }[] = [
   { product: "Parent Portal", business: "for a tutoring centre" },
 ];
 
-const SCRAMBLE_CHARS = "!@#$%&*";
-
-function scrambleString(target: string, progress: number) {
-  const len = target.length;
-  const revealed = Math.floor(progress * len);
-  let out = "";
-  for (let i = 0; i < len; i++) {
-    if (i < revealed) {
-      out += target[i];
-    } else if (target[i] === " ") {
-      out += " ";
-    } else {
-      out +=
-        SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-    }
-  }
-  return out;
-}
-
 const SUBHEADLINE_LINES = [
   "We build tools, sites, and digital products for businesses.",
   "Deployed in days. At a fraction of what you'd expect.",
 ];
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export default function Hero() {
-  const productRef = useRef<HTMLSpanElement>(null);
-  const businessRef = useRef<HTMLSpanElement>(null);
+  const [index, setIndex] = useState(0);
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -62,76 +43,14 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!productRef.current || !businessRef.current) return;
-
-    let index = 0;
-    let killed = false;
-    const productEl = productRef.current;
-    const businessEl = businessRef.current;
-
-    productEl.textContent = COMBINATIONS[0].product;
-    businessEl.textContent = COMBINATIONS[0].business;
-
     if (reduced) return;
-
-    const tweens: gsap.core.Tween[] = [];
-
-    function animateTo(nextIndex: number) {
-      const next = COMBINATIONS[nextIndex];
-
-      const productProgress = { v: 0 };
-      const businessProgress = { v: 0 };
-
-      const t1 = gsap.to(productProgress, {
-        v: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        onUpdate: () => {
-          if (productEl) {
-            productEl.textContent = scrambleString(
-              next.product,
-              productProgress.v
-            );
-          }
-        },
-        onComplete: () => {
-          if (productEl) productEl.textContent = next.product;
-        },
-      });
-
-      const t2 = gsap.to(businessProgress, {
-        v: 1,
-        duration: 1.5,
-        delay: 0.15,
-        ease: "power2.out",
-        onUpdate: () => {
-          if (businessEl) {
-            businessEl.textContent = scrambleString(
-              next.business,
-              businessProgress.v
-            );
-          }
-        },
-        onComplete: () => {
-          if (businessEl) businessEl.textContent = next.business;
-        },
-      });
-
-      tweens.push(t1, t2);
-    }
-
-    const interval = window.setInterval(() => {
-      if (killed) return;
-      index = (index + 1) % COMBINATIONS.length;
-      animateTo(index);
-    }, 3000);
-
-    return () => {
-      killed = true;
-      window.clearInterval(interval);
-      tweens.forEach((t) => t.kill());
-    };
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % COMBINATIONS.length);
+    }, 3600);
+    return () => window.clearInterval(id);
   }, [reduced]);
+
+  const current = COMBINATIONS[index];
 
   return (
     <section
@@ -150,7 +69,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
         style={{
           fontFamily: "var(--font-geist-mono), monospace",
           fontSize: 13,
@@ -169,26 +88,63 @@ export default function Hero() {
           fontWeight: 300,
           color: "var(--text)",
           letterSpacing: "-0.04em",
-          lineHeight: 1.05,
+          lineHeight: 1.08,
           margin: 0,
           maxWidth: 1100,
+          minHeight: "2.3em",
+          position: "relative",
         }}
       >
         <span
-          ref={productRef}
-          style={{ display: "block" }}
           aria-live="polite"
+          aria-atomic="true"
+          style={{
+            display: "block",
+            position: "relative",
+            minHeight: "1.1em",
+          }}
         >
-          {COMBINATIONS[0].product}
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={`p-${index}`}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
+              transition={{ duration: 0.9, ease: EASE }}
+              style={{ display: "inline-block" }}
+            >
+              {current.product}
+            </motion.span>
+          </AnimatePresence>
         </span>
-        <span ref={businessRef} style={{ display: "block" }}>
-          {COMBINATIONS[0].business}
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          style={{
+            display: "block",
+            position: "relative",
+            minHeight: "1.1em",
+            color: "var(--text-2)",
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={`b-${index}`}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
+              transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
+              style={{ display: "inline-block" }}
+            >
+              {current.business}
+            </motion.span>
+          </AnimatePresence>
         </span>
       </h1>
 
       <div
         style={{
-          marginTop: 24,
+          marginTop: 32,
           maxWidth: 600,
           textAlign: "center",
           color: "var(--text-2)",
@@ -211,7 +167,7 @@ export default function Hero() {
               transition={{
                 duration: 0.9,
                 delay: 0.6 + i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
+                ease: EASE,
               }}
             >
               {line}

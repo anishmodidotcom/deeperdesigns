@@ -59,38 +59,82 @@ export default function Nav() {
           DEEPER DESIGNS
         </Link>
 
-        <a
-          href="mailto:modianish11@gmail.com"
-          data-cursor="pointer"
+        <nav
+          className="nav-links"
           style={{
-            display: "inline-flex",
+            display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            paddingInline: 16,
-            paddingBlock: 8,
-            borderRadius: 9999,
-            border: "1px solid var(--border-2)",
-            color: "var(--text-2)",
-            fontSize: 13,
-            fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-            transition:
-              "background var(--t-base) var(--ease-spring), color var(--t-base) var(--ease-spring), border-color var(--t-base) var(--ease-spring)",
-            background: "transparent",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--accent)";
-            e.currentTarget.style.color = "#ffffff";
-            e.currentTarget.style.borderColor = "var(--accent)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "var(--text-2)";
-            e.currentTarget.style.borderColor = "var(--border-2)";
+            gap: 24,
           }}
         >
-          Let&apos;s Talk
-        </a>
+          {[
+            { href: "/about", label: "About" },
+            { href: "/services", label: "Services" },
+            { href: "/process", label: "Process" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              data-cursor="pointer"
+              className="nav-link"
+              style={{
+                fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                fontSize: 13,
+                color: "var(--text-2)",
+                transition: "color var(--t-base) var(--ease-spring)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--text)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--text-2)";
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <a
+            href="mailto:modianish11@gmail.com"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingInline: 16,
+              paddingBlock: 8,
+              borderRadius: 9999,
+              border: "1px solid var(--border-2)",
+              color: "var(--text-2)",
+              fontSize: 13,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              transition:
+                "background var(--t-base) var(--ease-spring), color var(--t-base) var(--ease-spring), border-color var(--t-base) var(--ease-spring)",
+              background: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--accent)";
+              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.borderColor = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "var(--text-2)";
+              e.currentTarget.style.borderColor = "var(--border-2)";
+            }}
+          >
+            Let&apos;s Talk
+          </a>
+        </nav>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 600px) {
+          :global(.nav-link) {
+            display: none;
+          }
+        }
+      `}</style>
     </header>
   );
 }
