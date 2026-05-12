@@ -66,7 +66,7 @@ export default function BuildNote() {
             maxWidth: 780,
           }}
         >
-          Built end to end by the studio. Maple Lens is live.
+          Built end to end by Deeper Designs. Maple Lens is live.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 12 }}

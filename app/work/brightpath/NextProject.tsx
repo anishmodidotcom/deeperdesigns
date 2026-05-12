@@ -69,9 +69,8 @@ export default function NextProject() {
               lineHeight: 1.7,
             }}
           >
-            Twenty tools. Twenty businesses. The loop closes where it
-            opened: a skincare brand built around a skin advisor that
-            actually pays attention.{" "}
+            The loop closes where it opened. A skincare brand built around
+            a skin advisor that actually pays attention.{" "}
             <span
               style={{
                 display: "inline-block",

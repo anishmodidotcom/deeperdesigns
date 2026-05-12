@@ -15,7 +15,7 @@ const ITEMS: Item[] = [
   },
   {
     q: "Who is Anish Modi?",
-    a: "Anish is the founder of Deeper Designs and a business strategist. Ten years across marketing, brand, ops, and financial design. He runs Newfold Ventures LLC out of Dubai and lives between Dubai and Delhi. He leads strategy and the build call on every studio project. Read more at anishmodi.com.",
+    a: "Anish is the founder of Deeper Designs and a business strategist. Ten years across marketing, brand, ops, and financial design. He runs Newfold Ventures LLC out of Dubai and lives between Dubai and Delhi. He leads strategy and the build call on every project. Read more at anishmodi.com.",
   },
   {
     q: "How is this different from a regular agency?",
@@ -31,10 +31,10 @@ const ITEMS: Item[] = [
   },
   {
     q: "What is a Possibility Study?",
-    a: "A working prototype we built end to end, inspired by the real operational bottleneck of a real business archetype. Twenty studies on the site, one per archetype. Each can be commissioned, customized, and shipped to your business.",
+    a: "A working prototype we built end to end, inspired by the real operational bottleneck of a real business archetype. Each can be commissioned, customized, and shipped to your business.",
   },
   {
-    q: "Who is the studio for?",
+    q: "Who is this for?",
     a: "Indian SMBs, UAE founders, and global small businesses willing to pay in USD. Founders running operations on WhatsApp. Practices losing leads to slow follow-up. Brands whose website does not match the work. Currency is not the constraint. Fit is.",
   },
 ];

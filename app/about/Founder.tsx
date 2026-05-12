@@ -103,9 +103,9 @@ export default function Founder() {
               <p style={{ margin: 0 }}>
                 Anish leads strategy and the build call on every Deeper
                 Designs project. The thinking, the scoping, the relationship,
-                those stay with him. The studio runs with a small bench of
-                trusted specialists for heavier engineering, brand systems,
-                and motion when a build needs it.
+                those stay with him. We run with a small bench of trusted
+                specialists for heavier engineering, brand systems, and
+                motion when a build needs it.
               </p>
             </div>
             <a
