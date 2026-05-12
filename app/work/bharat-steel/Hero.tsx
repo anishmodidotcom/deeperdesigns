@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
 const HEADLINE_LINES = [
@@ -7,11 +8,6 @@ const HEADLINE_LINES = [
   { text: "Quotes.", color: "var(--page-text)" },
   { text: "In real time.", color: "var(--page-accent)" },
 ];
-
-const COLS = 6;
-const ROWS = 4;
-const SQUARES = COLS * ROWS;
-const HIGHLIGHTED = new Set([2, 5, 9, 14, 17, 22]);
 
 export default function Hero() {
   return (
@@ -27,13 +23,40 @@ export default function Hero() {
       }}
     >
       <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.5,
+        }}
+      >
+        <Image
+          src="/images/bharat-steel/warehouse-wide.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(110deg, rgba(10,13,18,0.95) 0%, rgba(10,13,18,0.45) 70%, rgba(10,13,18,0.85) 100%)",
+          }}
+        />
+      </div>
+
+      <div
         className="container-x"
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          position: "relative",
+          display: "grid",
+          gridTemplateColumns: "1fr",
           gap: 64,
           width: "100%",
+          alignItems: "center",
         }}
       >
         <div style={{ maxWidth: 720 }}>
@@ -43,25 +66,26 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             style={{
               fontFamily: "var(--font-geist-mono), monospace",
-              fontSize: 13,
+              fontSize: 11,
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.22em",
               color: "var(--page-accent)",
               margin: 0,
               marginBottom: 32,
             }}
           >
-            BHARAT STEEL CORP
+            BHARAT STEEL CORP · CASE STUDY 002 · AHMEDABAD
           </motion.p>
 
           <h1
             style={{
               fontFamily: "var(--font-space-grotesk), system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(48px, 8vw, 96px)",
+              fontSize: "clamp(48px, 9vw, 120px)",
               letterSpacing: "-0.03em",
-              lineHeight: 1.0,
+              lineHeight: 0.96,
               margin: 0,
+              textTransform: "uppercase",
             }}
           >
             {HEADLINE_LINES.map((line, i) => (
@@ -88,64 +112,50 @@ export default function Hero() {
             style={{
               fontSize: 18,
               color: "var(--page-text-2)",
-              maxWidth: 480,
-              marginTop: 32,
+              maxWidth: 520,
+              marginTop: 36,
               marginBottom: 0,
               lineHeight: 1.6,
             }}
           >
             A live inventory dashboard with instant quote generation. Fed by
-            warehouse delivery slips sent over WhatsApp.
+            warehouse delivery slips sent over WhatsApp by a father-son
+            family business that ran the steel yard on paper for thirty
+            years.
           </motion.p>
         </div>
 
-        <div
-          aria-hidden
-          className="bs-hero-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(${COLS}, 12px)`,
-            gridTemplateRows: `repeat(${ROWS}, 12px)`,
-            gap: 8,
-            flexShrink: 0,
-          }}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="bs-hero-coil"
         >
-          {Array.from({ length: SQUARES }).map((_, i) => {
-            const isHighlighted = HIGHLIGHTED.has(i);
-            return (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={
-                  isHighlighted
-                    ? { opacity: [0.4, 0.85, 0.4] }
-                    : { opacity: 0.1 }
-                }
-                transition={
-                  isHighlighted
-                    ? {
-                        duration: 2.2,
-                        repeat: Infinity,
-                        delay: (i * 0.18) % 1.6,
-                        ease: "easeInOut",
-                      }
-                    : { duration: 0.8, delay: 1 + i * 0.01 }
-                }
-                style={{
-                  width: 12,
-                  height: 12,
-                  background: "var(--page-accent)",
-                }}
-              />
-            );
-          })}
-        </div>
+          <Image
+            src="/images/bharat-steel/hero-coil.webp"
+            alt="A tightly wound steel coil viewed close-up at an angle"
+            fill
+            sizes="(min-width: 1024px) 520px, 80vw"
+            priority
+            style={{ objectFit: "cover" }}
+          />
+        </motion.div>
       </div>
 
       <style jsx>{`
-        @media (max-width: 900px) {
-          .bs-hero-grid {
-            display: none !important;
+        .bs-hero-coil {
+          position: relative;
+          width: 100%;
+          max-width: 520px;
+          aspect-ratio: 4 / 5;
+          margin-inline: auto;
+          overflow: hidden;
+          border-radius: 4px;
+          box-shadow: 0 50px 120px -30px rgba(59, 130, 246, 0.2);
+        }
+        @media (min-width: 1024px) {
+          :global(.container-x) {
+            grid-template-columns: 60fr 40fr !important;
           }
         }
       `}</style>

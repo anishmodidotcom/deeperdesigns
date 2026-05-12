@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 
 import Hero from "./Hero";
+import Family from "./Family";
 import Story from "./Story";
+import RebarGrid from "./RebarGrid";
 import Problem from "./Problem";
 import Solution from "./Solution";
 import Capabilities from "./Capabilities";
@@ -38,7 +40,9 @@ export default function BharatSteelPage() {
   return (
     <div className={spaceGrotesk.variable} style={pageStyle}>
       <Hero />
+      <Family />
       <Story />
+      <RebarGrid />
       <Problem />
       <Solution />
       <Capabilities />
