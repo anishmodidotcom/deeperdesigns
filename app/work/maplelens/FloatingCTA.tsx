@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -15,9 +16,22 @@ export default function FloatingCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      (entries) => setFooterVisible(entries.some((e) => e.isIntersecting)),
+      { rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
+  const show = visible && !footerVisible;
+
   return (
     <AnimatePresence>
-      {visible ? (
+      {show ? (
         <motion.a
           href="https://maplelens.vercel.app/app"
           target="_blank"
@@ -45,7 +59,8 @@ export default function FloatingCTA() {
             alignItems: "center",
             gap: 8,
             textDecoration: "none",
-            boxShadow: "0 18px 40px -10px rgba(212, 168, 87, 0.45)",
+            boxShadow: "0 0 0 0 rgba(212, 168, 87, 0.55), 0 18px 40px -10px rgba(212, 168, 87, 0.45)",
+            animation: "ml-glow 2.6s ease-in-out infinite",
           }}
           className="ml-floating-cta"
           aria-label="Try Maple Lens, opens in a new tab"
@@ -58,19 +73,25 @@ export default function FloatingCTA() {
               height: 8,
               borderRadius: 9999,
               background: "#1A1612",
-              animation:
-                "ml-pulse 2.6s ease-in-out infinite",
             }}
           />
           Try Maple Lens
           <span aria-hidden>↗</span>
           <style jsx>{`
-            @keyframes ml-pulse {
-              0%, 100% { transform: scale(1); opacity: 1; }
-              50% { transform: scale(1.6); opacity: 0.5; }
+            @keyframes ml-glow {
+              0%, 100% {
+                box-shadow:
+                  0 0 0 0 rgba(212, 168, 87, 0.55),
+                  0 18px 40px -10px rgba(212, 168, 87, 0.45);
+              }
+              50% {
+                box-shadow:
+                  0 0 0 12px rgba(212, 168, 87, 0),
+                  0 18px 40px -10px rgba(212, 168, 87, 0.45);
+              }
             }
             @media (prefers-reduced-motion: reduce) {
-              span[aria-hidden] {
+              :global(.ml-floating-cta) {
                 animation: none !important;
               }
             }

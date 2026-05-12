@@ -6,7 +6,6 @@ import Problem from "./Problem";
 import Solution from "./Solution";
 import Showcase from "./Showcase";
 import BuildNote from "./BuildNote";
-import Pricing from "./Pricing";
 import FloatingCTA from "./FloatingCTA";
 import NextProject from "./NextProject";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
@@ -77,7 +76,6 @@ export default function MapleLensPage() {
       <Solution />
       <Showcase />
       <BuildNote />
-      <Pricing />
       <FloatingCTA />
       <NextProject />
     </div>
