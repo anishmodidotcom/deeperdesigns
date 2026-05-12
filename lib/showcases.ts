@@ -50,7 +50,7 @@ export const SHOWCASES: Showcase[] = [
     industryLabel: "Furniture Maker",
     bg: "#1A1612",
     slug: "maplelens",
-    image: "/images/maplelens/hero-catalog.jpg",
+    image: "/images/maplelens/hero-catalog.webp",
     industries: ["Retail / D2C", "Creative / Studios"],
     objectives: ["Customer Experience", "Growth"],
     live: true,
