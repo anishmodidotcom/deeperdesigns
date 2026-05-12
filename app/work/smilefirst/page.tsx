@@ -37,6 +37,7 @@ export default function SmileFirstPage() {
   return (
     <div className={jakarta.variable} style={pageStyle}>
       <Hero />
+      <Founder />
       <Funnel />
       <System />
       <Journey />

@@ -1,128 +1,134 @@
 "use client";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import Image from "next/image";
 import { motion } from "motion/react";
 
-const TOOTH_PATH =
-  "M 24 6 C 16 6 11 10 11 18 C 11 24 13 28 14 32 C 15 36 16 41 18 43 C 20 45 22 43 22.5 39 C 23 36 23.5 33 24 33 C 24.5 33 25 36 25.5 39 C 26 43 28 45 30 43 C 32 41 33 36 34 32 C 35 28 37 24 37 18 C 37 10 32 6 24 6 Z";
-
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const toothRef = useRef<SVGPathElement>(null);
-
-  useGSAP(
-    () => {
-      const path = toothRef.current;
-      if (!path) return;
-      const length = path.getTotalLength();
-      const reduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: reduced ? 0 : length,
-      });
-      if (!reduced) {
-        gsap.to(path, {
-          strokeDashoffset: 0,
-          duration: 1.6,
-          delay: 0.1,
-          ease: "power2.inOut",
-        });
-      }
-    },
-    { scope: sectionRef }
-  );
-
   return (
     <section
-      ref={sectionRef}
       style={{
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
         paddingInline: 24,
         paddingBlock: 96,
+        overflow: "hidden",
       }}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        style={{ marginBottom: 24 }}
-        aria-hidden
-      >
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <path
-            ref={toothRef}
-            d={TOOTH_PATH}
-            stroke="var(--page-accent)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.div>
+      <div aria-hidden style={{ position: "absolute", inset: 0 }}>
+        <Image
+          src="/images/smilefirst/hero-clinic.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(110deg, rgba(7,15,18,0.96) 0%, rgba(7,15,18,0.55) 65%, rgba(7,15,18,0.15) 100%)",
+          }}
+        />
+      </div>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      <div
+        className="container-x"
         style={{
-          fontFamily:
-            "var(--font-jakarta), var(--font-geist-sans), system-ui, sans-serif",
-          fontSize: "clamp(56px, 9vw, 100px)",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.0,
-          margin: 0,
+          position: "relative",
+          maxWidth: 1320,
+          marginInline: "auto",
+          width: "100%",
         }}
       >
-        <span
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            display: "block",
-            fontWeight: 700,
-            color: "var(--page-text)",
-          }}
-        >
-          SmileFirst
-        </span>
-        <span
-          style={{
-            display: "block",
-            fontWeight: 300,
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
             color: "var(--page-accent)",
+            margin: 0,
+            marginBottom: 40,
           }}
         >
-          Clinic Manager
-        </span>
-      </motion.h1>
+          SMILEFIRST · CASE STUDY 006 · NOIDA
+        </motion.p>
 
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          fontFamily:
-            "var(--font-jakarta), var(--font-geist-sans), system-ui, sans-serif",
-          fontSize: 16,
-          color: "var(--page-text-2)",
-          maxWidth: 500,
-          margin: 0,
-          marginTop: 32,
-          lineHeight: 1.7,
-        }}
-      >
-        Patient CRM, automated recalls, appointment management, dental
-        records, and intelligent follow-up. A full clinic operating system
-        for a 3-chair practice.
-      </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily:
+              "var(--font-jakarta), var(--font-geist-sans), system-ui, sans-serif",
+            fontSize: "clamp(56px, 10vw, 132px)",
+            letterSpacing: "-0.03em",
+            lineHeight: 1.0,
+            margin: 0,
+            maxWidth: 1100,
+          }}
+        >
+          <span
+            style={{
+              display: "block",
+              fontWeight: 700,
+              color: "var(--page-text)",
+            }}
+          >
+            SmileFirst
+          </span>
+          <span
+            style={{
+              display: "block",
+              fontWeight: 300,
+              color: "var(--page-accent)",
+            }}
+          >
+            Clinic Manager
+          </span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            height: 1,
+            width: 80,
+            background: "var(--page-accent)",
+            opacity: 0.5,
+            marginBlock: 32,
+            transformOrigin: "left center",
+          }}
+          aria-hidden
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily:
+              "var(--font-jakarta), var(--font-geist-sans), system-ui, sans-serif",
+            fontSize: 17,
+            color: "var(--page-text-2)",
+            maxWidth: 540,
+            margin: 0,
+            lineHeight: 1.75,
+          }}
+        >
+          Patient CRM, automated recalls, appointment management, dental
+          records, and intelligent follow-up. A full clinic operating
+          system for a three-chair practice seeing 40-50 patients a day.
+        </motion.p>
+      </div>
     </section>
   );
 }
