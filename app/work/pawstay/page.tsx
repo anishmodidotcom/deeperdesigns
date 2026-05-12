@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import Hero from "./Hero";
+import ActivityFeed from "./ActivityFeed";
 import Problem from "./Problem";
 import LiveCamera from "./LiveCamera";
 import TheDay from "./TheDay";
@@ -45,6 +46,7 @@ const pageStyle = {
 export default function PawStayPage() {
   return (
     <div className={jakarta.variable} style={pageStyle}>
+      <ActivityFeed />
       <Hero />
       <Problem />
       <LiveCamera />
