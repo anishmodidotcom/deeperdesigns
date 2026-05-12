@@ -10,6 +10,8 @@ import Atelier from "./Atelier";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -23,6 +25,20 @@ export const metadata: Metadata = {
   title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
   description:
     "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
+  openGraph: {
+    title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
+    description: "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
+    url: "/work/oud-and-ember",
+    images: [{ url: "/images/oud-and-ember/hero-bottle.webp", width: 1200, height: 800, alt: "Oud & Ember · Find Your Fragrance · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
+    description: "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
+    images: ["/images/oud-and-ember/hero-bottle.webp"],
+  },
+  alternates: { canonical: "/work/oud-and-ember" },
+
 };
 
 const pageStyle = {
@@ -42,7 +58,22 @@ const pageStyle = {
 export default function OudAndEmberPage() {
   return (
     <div className={cormorant.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Oud And Ember",
+          description: metadata.description as string,
+          slug: "oud-and-ember",
+          image: "/images/oud-and-ember/hero-bottle.webp",
+          archetype: "a bespoke perfume atelier",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="009"
+        archetype="a bespoke perfume atelier"
+        timeline="11 days"
+        pattern="Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give."
+      />
       <Client />
       <Quiz />
       <Library />

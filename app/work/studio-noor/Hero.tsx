@@ -58,7 +58,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          STUDIO NOOR · CASE STUDY 005 · BANGALORE
+          STUDIO NOOR · POSSIBILITY STUDY · 005 OF 20 · BANGALORE
         </motion.p>
 
         <motion.h1

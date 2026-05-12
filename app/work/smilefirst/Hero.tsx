@@ -58,7 +58,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          SMILEFIRST · CASE STUDY 006 · NOIDA
+          SMILEFIRST · POSSIBILITY STUDY · 006 OF 20 · NOIDA
         </motion.p>
 
         <motion.h1

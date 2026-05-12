@@ -94,8 +94,8 @@ export default function Nav() {
             </Link>
           ))}
 
-          <a
-            href="mailto:modianish11@gmail.com"
+          <Link
+            href="/start-your-study"
             data-cursor="pointer"
             style={{
               display: "inline-flex",
@@ -123,8 +123,8 @@ export default function Nav() {
               e.currentTarget.style.borderColor = "var(--border-2)";
             }}
           >
-            Let&apos;s Talk
-          </a>
+            Start Your Study
+          </Link>
         </nav>
       </div>
 

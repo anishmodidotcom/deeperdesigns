@@ -30,11 +30,11 @@ export default function Studio() {
             }}
           >
             <Image
-              src="/images/about/anish-portrait.webp"
+              src="/images/about/anish-real.webp"
               alt="Anish Modi, founder of Deeper Designs"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", objectPosition: "center top" }}
             />
           </motion.div>
 
@@ -69,9 +69,9 @@ export default function Studio() {
                 marginBottom: 28,
               }}
             >
-              Anish Modi runs it.{" "}
+              Built and led by Anish Modi.{" "}
               <em style={{ fontStyle: "italic", color: "var(--accent-2)" }}>
-                On purpose, alone.
+                Business strategist.
               </em>
             </h2>
             <div
@@ -87,19 +87,46 @@ export default function Studio() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Anish is a business strategist with a decade in marketing
-                and strategy, most recently leading growth for venture-
-                backed brands across India and the GCC. He started
-                Deeper Designs in 2024 after realising the AI build cost
-                curve made bespoke software finally accessible for the
-                kind of clients he had been advising.
+                Deeper Designs is built and led by Anish Modi. Ten years
+                across marketing, brand, ops, and financial design. Based
+                between Dubai and Delhi.{" "}
+                <a
+                  href="https://anishmodi.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="pointer"
+                  style={{
+                    color: "var(--text)",
+                    textDecoration: "underline",
+                    textUnderlineOffset: 4,
+                    textDecorationColor: "var(--accent)",
+                    textDecorationThickness: 1,
+                  }}
+                >
+                  Read more about Anish at anishmodi.com.
+                </a>
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontStyle: "italic",
+                  fontFamily: "var(--font-fraunces), Georgia, serif",
+                  fontSize: 20,
+                  color: "var(--text)",
+                  paddingLeft: 20,
+                  borderLeft: "2px solid var(--accent)",
+                  lineHeight: 1.5,
+                }}
+              >
+                I am not interested in building the next Salesforce. I am
+                interested in building the next thing the chai vendor at the
+                corner wishes existed.
               </p>
               <p style={{ margin: 0 }}>
-                The studio is currently a single-founder operation
-                supported by a small bench of trusted specialists for
-                heavier engineering, brand systems, and motion. Every
-                project has Anish as the single point of contact. Every
-                project ships with him on the line.
+                Every project has Anish on the line. The studio runs with a
+                small bench of trusted specialists for heavier engineering,
+                brand systems, and motion when a build needs it. The
+                strategy, the call, the relationship: those stay with him.
               </p>
             </div>
 
@@ -114,10 +141,10 @@ export default function Studio() {
               }}
             >
               {[
-                { k: "Entity", v: "Newfold Ventures LLC" },
+                { k: "Founder", v: "Anish Modi" },
                 { k: "Based", v: "Dubai · Delhi" },
                 { k: "Founded", v: "2024" },
-                { k: "Founder", v: "Anish Modi" },
+                { k: "More", v: "anishmodi.com" },
               ].map((row) => (
                 <div key={row.k}>
                   <dt

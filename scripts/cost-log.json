@@ -162,6 +162,15 @@
         "step-4-new-pages": { "images": 2, "videos": 0, "cost": 0.078, "scope": "Anish portrait, default OG image" }
       },
       "result": "All 90 assets generated cleanly across multiple gen-images and gen-videos runs. One transient Veo failure (PALM_API high demand) auto-resolved on retry. Final realized cost matches anticipated within rounding."
+    },
+    {
+      "date": "2026-05-12T15:30:00Z",
+      "task": "Launch push: reposition as Possibility Studies, build self-identification copy, Why Not DIY, multi-step lead flow with OTP, services restructure, soften speed, Live Products, SEO + structured data, Anish real portrait, personality pass, mobile QA, hero polish",
+      "images": 0,
+      "videos": 0,
+      "cost": 0.0,
+      "scope": "No generation. Re-used Anish real headshot fetched from anishmodi.com (free). Resized via cwebp locally. All other work was structural and copy.",
+      "result": "Thirteen-step launch push complete. Zero new generation cost. Site reframed end to end."
     }
   ],
   "running_total": 20.924,
@@ -172,8 +181,27 @@
     "total_cost_usd": 20.924,
     "image_cost_usd": 7.488,
     "video_cost_usd": 13.20,
-    "pages_built": 23,
+    "pages_built": 25,
     "scroll_signatures_built": 22,
-    "session_runs": 5
+    "session_runs": 6,
+    "components_added_in_launch_push": [
+      "PossibilityNote",
+      "Stack",
+      "WhyNotDIY",
+      "SoundLikeYou",
+      "SpeedNote",
+      "LiveProducts",
+      "LabNotes",
+      "IdleNudge",
+      "StructuredData",
+      "FAQ (about)",
+      "StudyForm (start-your-study)"
+    ],
+    "api_routes_added": [
+      "/api/otp-send",
+      "/api/otp-verify",
+      "/api/start-your-study",
+      "/api/notify-me"
+    ]
   }
 }

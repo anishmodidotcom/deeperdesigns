@@ -69,7 +69,7 @@ export default function Hero() {
             opacity: 0.85,
           }}
         >
-          NOMAD TRAILS · CASE STUDY 018 · HIMALAYAS
+          NOMAD TRAILS · POSSIBILITY STUDY · 018 OF 20 · HIMALAYAS
         </motion.p>
 
         <div className="nt-hero-headline">

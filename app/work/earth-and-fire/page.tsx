@@ -11,6 +11,8 @@ import VideoMoment from "./VideoMoment";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Fraunces stands in as the editorial serif for body and small display.
 // DM Serif Display covers the italic display headlines that anchor the
@@ -35,6 +37,20 @@ export const metadata: Metadata = {
   title: "Earth and Fire · Pottery Brand · Deeper Designs",
   description:
     "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
+  openGraph: {
+    title: "Earth and Fire · Pottery Brand · Deeper Designs",
+    description: "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
+    url: "/work/earth-and-fire",
+    images: [{ url: "/images/earth-and-fire/hero-vase.webp", width: 1200, height: 800, alt: "Earth and Fire · Pottery Brand · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Earth and Fire · Pottery Brand · Deeper Designs",
+    description: "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
+    images: ["/images/earth-and-fire/hero-vase.webp"],
+  },
+  alternates: { canonical: "/work/earth-and-fire" },
+
 };
 
 const pageStyle = {
@@ -60,7 +76,22 @@ export default function EarthAndFirePage() {
       className={`${fraunces.variable} ${dmSerifDisplay.variable}`}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Earth And Fire",
+          description: metadata.description as string,
+          slug: "earth-and-fire",
+          image: "/images/earth-and-fire/hero-vase.webp",
+          archetype: "a handmade ceramics studio",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="016"
+        archetype="a handmade ceramics studio"
+        timeline="9 weeks"
+        pattern="Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes."
+      />
       <Maker />
       <Wheel />
       <Collection />

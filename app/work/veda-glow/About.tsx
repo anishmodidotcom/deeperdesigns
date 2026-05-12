@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 type Pair = { label: string; value: string };
 
 const LEFT: Pair[] = [
-  { label: "CLIENT", value: "Veda Glow" },
+  { label: "POSSIBILITY", value: "Inspired by an Ayurvedic skincare D2C brand" },
   { label: "INDUSTRY", value: "Ayurvedic Skincare (D2C)" },
   { label: "LOCATION", value: "Jaipur, India" },
-  { label: "YEAR", value: "2025" },
+  { label: "STATUS", value: "Working prototype, ready to commission" },
 ];
 
 const RIGHT: Pair[] = [
@@ -16,7 +16,7 @@ const RIGHT: Pair[] = [
     label: "SERVICES",
     value: "AI Tool Development, UX Design, Brand Integration",
   },
-  { label: "TIMELINE", value: "5 days from brief to deployment" },
+  { label: "TIMELINE", value: "Shipped in 5 days, considered for longer" },
   { label: "STACK", value: "Next.js, Claude API, Shopify Integration" },
 ];
 

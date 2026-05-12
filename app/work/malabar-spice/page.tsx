@@ -10,6 +10,8 @@ import Kerala from "./Kerala";
 import Tray from "./Tray";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -24,6 +26,20 @@ export const metadata: Metadata = {
   title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
   description:
     "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+  openGraph: {
+    title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
+    description: "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+    url: "/work/malabar-spice",
+    images: [{ url: "/images/malabar-spice/hero-pepper.webp", width: 1200, height: 800, alt: "Malabar Spice House · Heritage Brand Site · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
+    description: "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+    images: ["/images/malabar-spice/hero-pepper.webp"],
+  },
+  alternates: { canonical: "/work/malabar-spice" },
+
 };
 
 const pageStyle = {
@@ -44,7 +60,22 @@ const pageStyle = {
 export default function MalabarSpicePage() {
   return (
     <div className={fraunces.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Malabar Spice",
+          description: metadata.description as string,
+          slug: "malabar-spice",
+          image: "/images/malabar-spice/hero-pepper.webp",
+          archetype: "a heritage spice exporter",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="011"
+        archetype="a heritage spice exporter"
+        timeline="8 days"
+        pattern="Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work."
+      />
       <Story />
       <Spices />
       <Hands />

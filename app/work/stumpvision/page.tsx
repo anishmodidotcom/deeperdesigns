@@ -9,6 +9,8 @@ import Parent from "./Parent";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -21,6 +23,20 @@ export const metadata: Metadata = {
   title: "StumpVision · Academy Platform · Deeper Designs",
   description:
     "Gamified player profiles, trading card stats, match records, and coach reports for a 250-player cricket academy in Gurgaon.",
+  openGraph: {
+    title: "StumpVision · Academy Platform · Deeper Designs",
+    description: "Gamified player profiles, trading card stats, match records, and coach reports for a 250-player cricket academy in Gurgaon.",
+    url: "/work/stumpvision",
+    images: [{ url: "/images/stumpvision/hero-batsman.webp", width: 1200, height: 800, alt: "StumpVision · Academy Platform · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "StumpVision · Academy Platform · Deeper Designs",
+    description: "Gamified player profiles, trading card stats, match records, and coach reports for a 250-player cricket academy in Gurgaon.",
+    images: ["/images/stumpvision/hero-batsman.webp"],
+  },
+  alternates: { canonical: "/work/stumpvision" },
+
 };
 
 const pageStyle = {
@@ -37,7 +53,22 @@ const pageStyle = {
 export default function StumpVisionPage() {
   return (
     <div className={rajdhani.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Stumpvision",
+          description: metadata.description as string,
+          slug: "stumpvision",
+          image: "/images/stumpvision/hero-batsman.webp",
+          archetype: "a cricket coaching academy",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="008"
+        archetype="a cricket coaching academy"
+        timeline="10 days"
+        pattern="Coaching academies. Music schools. Skill-building businesses with parents on the sidelines."
+      />
       <Card />
       <StartingXI />
       <Features />

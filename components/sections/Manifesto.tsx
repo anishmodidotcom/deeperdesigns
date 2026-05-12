@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
 }
 
 const QUOTE =
-  "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. Not templates. Not no-code drag and drop. Custom tools, designed and coded for your specific business, deployed in days.";
+  "A traditional agency promises and pitches. We prototype and show. Twenty working studies, each inspired by a real operational bottleneck of a real business archetype. Pick the one that sounds like you. We will customize it, ship it, and hand you the keys.";
 
 export default function Manifesto() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -106,6 +106,23 @@ export default function Manifesto() {
           }}
         >
           Systems that save time, lower hassle, and bring wow.
+        </p>
+
+        <p
+          style={{
+            fontSize: "clamp(18px, 2.4vw, 24px)",
+            fontStyle: "italic",
+            fontFamily: "var(--font-geist-mono), monospace",
+            color: "var(--text-2)",
+            marginTop: 48,
+            maxWidth: 700,
+            lineHeight: 1.55,
+            letterSpacing: "-0.005em",
+          }}
+        >
+          &ldquo;Anish here. I am not interested in building the next
+          Salesforce. I am interested in building the next thing the chai
+          vendor at the corner wishes existed.&rdquo;
         </p>
       </div>
     </section>

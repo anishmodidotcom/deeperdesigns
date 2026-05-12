@@ -51,7 +51,7 @@ export default function Portfolio() {
             marginBottom: 32,
           }}
         >
-          SELECTED WORK
+          POSSIBILITY GALLERY
         </p>
 
         <h2
@@ -63,11 +63,25 @@ export default function Portfolio() {
             lineHeight: 1.05,
             margin: 0,
             maxWidth: 800,
+            marginBottom: 24,
+          }}
+        >
+          Twenty Possibility Studies.
+        </h2>
+
+        <p
+          style={{
+            fontSize: 18,
+            color: "var(--text-2)",
+            maxWidth: 640,
+            lineHeight: 1.6,
+            margin: 0,
             marginBottom: 64,
           }}
         >
-          20 tools. 20 businesses. Each one built from scratch.
-        </h2>
+          Working prototypes of custom business tools, each inspired by a real
+          operational bottleneck. Pick any. Commission your own version.
+        </p>
 
         <div
           style={{

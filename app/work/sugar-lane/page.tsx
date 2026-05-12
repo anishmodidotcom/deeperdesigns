@@ -9,6 +9,8 @@ import Studio from "./Studio";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Yellowtail carries the script-led personality (a single-weight
 // cursive that handles display sizes well). DM Sans is the quiet
@@ -31,6 +33,20 @@ export const metadata: Metadata = {
   title: "Sugar Lane · Home Bakery · Deeper Designs",
   description:
     "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
+  openGraph: {
+    title: "Sugar Lane · Home Bakery · Deeper Designs",
+    description: "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
+    url: "/work/sugar-lane",
+    images: [{ url: "/images/sugar-lane/hero-cake.webp", width: 1200, height: 800, alt: "Sugar Lane · Home Bakery · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sugar Lane · Home Bakery · Deeper Designs",
+    description: "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
+    images: ["/images/sugar-lane/hero-cake.webp"],
+  },
+  alternates: { canonical: "/work/sugar-lane" },
+
 };
 
 const pageStyle = {
@@ -56,7 +72,22 @@ export default function SugarLanePage() {
       className={`${yellowtail.variable} ${dmSans.variable}`}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Sugar Lane",
+          description: metadata.description as string,
+          slug: "sugar-lane",
+          image: "/images/sugar-lane/hero-cake.webp",
+          archetype: "a home bakery",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="019"
+        archetype="a home bakery"
+        timeline="10 days"
+        pattern="Home bakeries. Caterers. Custom-order food businesses run by one person and the oven."
+      />
       <Farah />
       <CakeBuild />
       <Menu />

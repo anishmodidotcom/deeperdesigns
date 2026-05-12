@@ -3,32 +3,17 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const COMBINATIONS: { product: string; business: string }[] = [
-  { product: "Skin Advisor", business: "for an Ayurvedic beauty brand" },
-  { product: "Inventory Dashboard", business: "for a steel trading company" },
-  { product: "Client Portal", business: "for a wellness studio" },
-  { product: "Operations Intelligence", business: "for a shawarma chain" },
-  { product: "Project Tracker", business: "for an interior design studio" },
-  { product: "Clinic Manager", business: "for a dental practice" },
-  { product: "Dynamic Pricing Engine", business: "for a used car dealership" },
-  { product: "Academy Platform", business: "for a cricket coaching centre" },
-  { product: "Fragrance Finder", business: "for a perfume house" },
-  { product: "Member Hub", business: "for a coworking space" },
-  { product: "Product Showcase", business: "for a spice exporter" },
-  { product: "Pet Parent Portal", business: "for a dog boarding facility" },
-  { product: "Farm Dashboard", business: "for an organic farm" },
-  { product: "Lead Qualifier", business: "for an independent lawyer" },
-  { product: "Fitness Platform", business: "for a strength training brand" },
-  { product: "Custom Product Builder", business: "for a ceramics studio" },
-  { product: "Brand Experience", business: "for a craft chai company" },
-  { product: "Trip Companion", business: "for an adventure travel company" },
-  { product: "Order Studio", business: "for a home bakery" },
-  { product: "Parent Portal", business: "for a tutoring centre" },
+const HEADLINES = [
+  "We design better ways to run a business.",
+  "Custom digital tools for modern businesses.",
+  "Less chaos. Better systems.",
+  "Possibility, designed.",
+  "Your business deserves better tools.",
 ];
 
 const SUBHEADLINE_LINES = [
-  "We build tools, sites, and digital products for businesses.",
-  "Deployed in days. At a fraction of what you'd expect.",
+  "We design and build custom digital tools for modern businesses.",
+  "Shipped in weeks, not quarters. Considered for longer.",
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -45,12 +30,12 @@ export default function Hero() {
   useEffect(() => {
     if (reduced) return;
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % COMBINATIONS.length);
-    }, 3600);
+      setIndex((i) => (i + 1) % HEADLINES.length);
+    }, 5200);
     return () => window.clearInterval(id);
   }, [reduced]);
 
-  const current = COMBINATIONS[index];
+  const current = HEADLINES[index];
 
   return (
     <section
@@ -91,7 +76,7 @@ export default function Hero() {
           lineHeight: 1.08,
           margin: 0,
           maxWidth: 1100,
-          minHeight: "2.3em",
+          minHeight: "1.2em",
           position: "relative",
         }}
       >
@@ -106,37 +91,14 @@ export default function Hero() {
         >
           <AnimatePresence mode="wait">
             <motion.span
-              key={`p-${index}`}
-              initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
-              transition={{ duration: 0.9, ease: EASE }}
+              key={`h-${index}`}
+              initial={{ opacity: 0, scale: 1.01, y: 6 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.99, y: -6 }}
+              transition={{ duration: 1.2, ease: EASE }}
               style={{ display: "inline-block" }}
             >
-              {current.product}
-            </motion.span>
-          </AnimatePresence>
-        </span>
-        <span
-          aria-live="polite"
-          aria-atomic="true"
-          style={{
-            display: "block",
-            position: "relative",
-            minHeight: "1.1em",
-            color: "var(--text-2)",
-          }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={`b-${index}`}
-              initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
-              transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
-              style={{ display: "inline-block" }}
-            >
-              {current.business}
+              {current}
             </motion.span>
           </AnimatePresence>
         </span>
@@ -144,8 +106,8 @@ export default function Hero() {
 
       <div
         style={{
-          marginTop: 32,
-          maxWidth: 600,
+          marginTop: 40,
+          maxWidth: 640,
           textAlign: "center",
           color: "var(--text-2)",
           fontSize: "clamp(16px, 2vw, 22px)",

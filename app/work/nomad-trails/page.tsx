@@ -10,6 +10,8 @@ import Ridge from "./Ridge";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Bodoni Moda gives the high-contrast editorial display the brief
 // asked for (Didot stand-in). Inter for body. IBM Plex Mono for the
@@ -40,6 +42,20 @@ export const metadata: Metadata = {
   title: "Nomad Trails · Trek Outfit · Deeper Designs",
   description:
     "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
+  openGraph: {
+    title: "Nomad Trails · Trek Outfit · Deeper Designs",
+    description: "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
+    url: "/work/nomad-trails",
+    images: [{ url: "/images/nomad-trails/hero-ridge.webp", width: 1200, height: 800, alt: "Nomad Trails · Trek Outfit · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nomad Trails · Trek Outfit · Deeper Designs",
+    description: "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
+    images: ["/images/nomad-trails/hero-ridge.webp"],
+  },
+  alternates: { canonical: "/work/nomad-trails" },
+
 };
 
 const pageStyle = {
@@ -64,7 +80,22 @@ export default function NomadTrailsPage() {
       className={`${bodoni.variable} ${inter.variable} ${plexMono.variable}`}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Nomad Trails",
+          description: metadata.description as string,
+          slug: "nomad-trails",
+          image: "/images/nomad-trails/hero-ridge.webp",
+          archetype: "a Himalayan trek outfit",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="018"
+        archetype="a Himalayan trek outfit"
+        timeline="10 days"
+        pattern="Trek outfits. Small-group tours. Niche travel brands selling experience, not seats."
+      />
       <Outfit />
       <Climb />
       <Trips />

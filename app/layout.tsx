@@ -9,6 +9,8 @@ import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import IdleNudge from "@/components/IdleNudge";
+import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deeperdesigns.in"),
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in 14 to 28 days.",
+    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in weeks, not quarters.",
   openGraph: {
     type: "website",
     siteName: "Deeper Designs",
@@ -55,12 +57,14 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable}`}
       >
         <body>
+          <StructuredData data={ORGANIZATION_LD} />
           <SmoothScroll>
             <Cursor />
             <Nav />
             <main>{children}</main>
             <Footer />
             <WhatsAppButton />
+            <IdleNudge />
           </SmoothScroll>
         </body>
       </html>

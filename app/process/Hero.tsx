@@ -68,9 +68,8 @@ export default function Hero() {
           }}
         >
           Below is the exact shape of a Deeper Designs build, from the
-          first call to the day the tool is live. Each step is bounded
-          in days, not weeks, because AI does the heavy lifting in the
-          middle.
+          first call to the day the tool is live. Weeks, not quarters,
+          because AI does the heavy lifting and we keep the judgment.
         </motion.p>
       </div>
     </section>

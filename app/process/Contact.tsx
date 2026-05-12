@@ -67,7 +67,7 @@ export default function Contact() {
           }}
         >
           <Link
-            href="/#contact"
+            href="/start-your-study"
             data-cursor="pointer"
             style={{
               display: "inline-flex",

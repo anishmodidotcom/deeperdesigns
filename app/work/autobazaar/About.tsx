@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 type Pair = { label: string; value: string };
 
 const LEFT: Pair[] = [
-  { label: "CLIENT", value: "AutoBazaar" },
+  { label: "POSSIBILITY", value: "Inspired by a used-car dealership" },
   { label: "INDUSTRY", value: "Automotive (Used Car Sales)" },
   { label: "LOCATION", value: "Deira, Dubai, UAE" },
-  { label: "YEAR", value: "2025" },
+  { label: "STATUS", value: "Working prototype, ready to commission" },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Dynamic Pricing Engine, Inventory Dashboard, Buyer-Facing Listings, Test Drive Booking",
   },
-  { label: "TIMELINE", value: "8 days from brief to deployment" },
+  { label: "TIMELINE", value: "Shipped in 8 days, considered for longer" },
   {
     label: "STACK",
     value: "Next.js, Market Data APIs, AI Pricing Model, WhatsApp Booking",

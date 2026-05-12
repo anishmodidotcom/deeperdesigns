@@ -9,6 +9,8 @@ import Portal from "./Portal";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Source Serif 4 carries the academic gravitas the brief asked for
 // (a contemporary cousin of the IBM Plex Serif). Source Sans 3 keeps
@@ -33,6 +35,20 @@ export const metadata: Metadata = {
   title: "BrightPath · Tutoring Practice · Deeper Designs",
   description:
     "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
+  openGraph: {
+    title: "BrightPath · Tutoring Practice · Deeper Designs",
+    description: "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
+    url: "/work/brightpath",
+    images: [{ url: "/images/brightpath/hero-classroom.webp", width: 1200, height: 800, alt: "BrightPath · Tutoring Practice · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BrightPath · Tutoring Practice · Deeper Designs",
+    description: "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
+    images: ["/images/brightpath/hero-classroom.webp"],
+  },
+  alternates: { canonical: "/work/brightpath" },
+
 };
 
 const pageStyle = {
@@ -55,7 +71,22 @@ export default function BrightPathPage() {
       className={`${sourceSerif.variable} ${sourceSans.variable}`}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Brightpath",
+          description: metadata.description as string,
+          slug: "brightpath",
+          image: "/images/brightpath/hero-classroom.webp",
+          archetype: "a neighborhood tutoring practice",
+        })}
+      />
       <Hero />
+      <PossibilityNote
+        number="020"
+        archetype="a neighborhood tutoring practice"
+        timeline="9 weeks"
+        pattern="Tutors. Coaches. Any one-person education practice that needs to look like an institution."
+      />
       <Omar />
       <Progress />
       <Programs />
