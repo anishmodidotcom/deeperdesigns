@@ -1,8 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
-
-const GRID_LINES = [12, 36, 64, 88];
 
 export default function Hero() {
   return (
@@ -11,94 +10,117 @@ export default function Hero() {
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
         paddingInline: 24,
         paddingBlock: 96,
         overflow: "hidden",
       }}
     >
-      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {GRID_LINES.map((pct, i) => (
-          <motion.span
-            key={pct}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.06 }}
-            transition={{ duration: 2, delay: 0.3 + i * 0.15 }}
-            style={{
-              position: "absolute",
-              top: 0,
-              bottom: 0,
-              left: `${pct}%`,
-              width: 1,
-              background: "var(--page-accent)",
-            }}
-          />
-        ))}
+      <div aria-hidden style={{ position: "absolute", inset: 0 }}>
+        <Image
+          src="/images/studio-noor/hero-room.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(110deg, rgba(14,12,16,0.92) 0%, rgba(14,12,16,0.4) 70%, rgba(14,12,16,0.7) 100%)",
+          }}
+        />
       </div>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      <div
+        className="container-x"
         style={{
           position: "relative",
-          fontFamily: "var(--font-instrument), Georgia, serif",
-          fontWeight: 400,
-          fontSize: "clamp(56px, 9vw, 110px)",
-          letterSpacing: "-0.02em",
-          lineHeight: 1.0,
-          margin: 0,
+          maxWidth: 1320,
+          marginInline: "auto",
+          width: "100%",
         }}
       >
-        <span style={{ display: "block", color: "var(--page-text)" }}>
-          Studio Noor
-        </span>
-        <span
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            display: "block",
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
             color: "var(--page-accent)",
-            fontStyle: "italic",
+            margin: 0,
+            marginBottom: 40,
           }}
         >
-          Client Portal
-        </span>
-      </motion.h1>
+          STUDIO NOOR · CASE STUDY 005 · BANGALORE
+        </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 1, scaleX: 1 }}
-        transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "relative",
-          height: 1,
-          width: 60,
-          background: "var(--page-accent)",
-          opacity: 0.4,
-          marginBlock: 32,
-          transformOrigin: "center",
-        }}
-        aria-hidden
-      />
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily: "var(--font-instrument), Georgia, serif",
+            fontWeight: 400,
+            fontSize: "clamp(56px, 10vw, 136px)",
+            letterSpacing: "-0.02em",
+            lineHeight: 1.0,
+            margin: 0,
+            maxWidth: 1100,
+          }}
+        >
+          <span style={{ display: "block", color: "var(--page-text)" }}>
+            Studio Noor
+          </span>
+          <span
+            style={{
+              display: "block",
+              color: "var(--page-accent)",
+              fontStyle: "italic",
+            }}
+          >
+            Client Portal
+          </span>
+        </motion.h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "relative",
-          fontSize: 16,
-          color: "var(--page-text-2)",
-          maxWidth: 460,
-          margin: 0,
-          lineHeight: 1.7,
-        }}
-      >
-        A living workspace where clients track every detail of their home
-        transformation. Updated daily. No more chasing updates over WhatsApp.
-      </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            height: 1,
+            width: 80,
+            background: "var(--page-accent)",
+            opacity: 0.5,
+            marginBlock: 32,
+            transformOrigin: "left center",
+          }}
+          aria-hidden
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontSize: 17,
+            color: "var(--page-text-2)",
+            maxWidth: 520,
+            margin: 0,
+            lineHeight: 1.75,
+          }}
+        >
+          A living workspace where interior design clients track every
+          detail of their home transformation. Updated daily by the site
+          supervisor. No more chasing updates over WhatsApp.
+        </motion.p>
+      </div>
     </section>
   );
 }

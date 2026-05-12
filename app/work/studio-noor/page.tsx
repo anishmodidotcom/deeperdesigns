@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Serif } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
 import Chaos from "./Chaos";
 import Walkthrough from "./Walkthrough";
 import Bridge from "./Bridge";
@@ -38,6 +39,7 @@ export default function StudioNoorPage() {
   return (
     <div className={instrument.variable} style={pageStyle}>
       <Hero />
+      <Founder />
       <Chaos />
       <Walkthrough />
       <Bridge />
