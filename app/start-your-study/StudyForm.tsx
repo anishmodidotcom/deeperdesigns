@@ -5,27 +5,27 @@ import { AnimatePresence, motion } from "motion/react";
 import { WHATSAPP_HREF, CALENDLY_HREF } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const STORAGE_KEY = "dd-study-form-state-v1";
 
 type TeamSize = "Solo" | "2 to 10" | "11 to 50" | "50+";
 type Budget =
-  | "Under Rs. 1L / under $1k"
-  | "Rs. 1L to 5L / $1k to $5k"
-  | "Rs. 5L to 15L / $5k to $15k"
-  | "Rs. 15L+ / $15k+"
+  | "Under ₹1L / under $1k"
+  | "₹1L to 5L / $1k to $5k"
+  | "₹5L to 15L / $5k to $15k"
+  | "₹15L+ / $15k+"
   | "Not sure yet";
-type Country = "IN" | "AE";
+type Country = "IN" | "AE" | "Other";
 
 type FormState = {
   name: string;
   business: string;
   teamSize: TeamSize | "";
   bottleneck: string;
+  email: string;
+  emailVerified: boolean;
+  otp: string;
   country: Country;
   phone: string;
-  otpRequested: boolean;
-  otpVerified: boolean;
-  otp: string;
-  email: string;
   budget: Budget | "";
   slot: string;
 };
@@ -35,12 +35,11 @@ const INITIAL: FormState = {
   business: "",
   teamSize: "",
   bottleneck: "",
+  email: "",
+  emailVerified: false,
+  otp: "",
   country: "IN",
   phone: "",
-  otpRequested: false,
-  otpVerified: false,
-  otp: "",
-  email: "",
   budget: "",
   slot: "",
 };
@@ -48,10 +47,10 @@ const INITIAL: FormState = {
 const TEAM_SIZES: TeamSize[] = ["Solo", "2 to 10", "11 to 50", "50+"];
 
 const BUDGETS: Budget[] = [
-  "Under Rs. 1L / under $1k",
-  "Rs. 1L to 5L / $1k to $5k",
-  "Rs. 5L to 15L / $5k to $15k",
-  "Rs. 15L+ / $15k+",
+  "Under ₹1L / under $1k",
+  "₹1L to 5L / $1k to $5k",
+  "₹5L to 15L / $5k to $15k",
+  "₹15L+ / $15k+",
   "Not sure yet",
 ];
 
@@ -60,14 +59,23 @@ const STEP_LABELS = [
   "Business",
   "Team",
   "Bottleneck",
-  "Phone",
-  "Verify",
   "Email",
+  "Verify",
+  "Phone",
   "Budget",
   "When",
 ];
 
 const TOTAL_STEPS = STEP_LABELS.length;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validPhone(country: Country, phone: string): boolean {
+  const digits = phone.replace(/[^0-9]/g, "");
+  if (country === "IN") return digits.length === 10;
+  if (country === "AE") return digits.length === 9;
+  return digits.length >= 6 && digits.length <= 15;
+}
 
 function nextSlots(): { value: string; label: string }[] {
   const now = new Date();
@@ -118,6 +126,7 @@ export default function StudyForm() {
   const slots = useMemo(() => nextSlots(), []);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 
+  // Hydrate prefilled filter params and any saved form state on mount.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -129,7 +138,28 @@ export default function StudyForm() {
         objective: objective ?? undefined,
       });
     }
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved) as { data?: FormState; step?: number };
+        if (parsed.data) setData({ ...INITIAL, ...parsed.data });
+        if (typeof parsed.step === "number")
+          setStep(Math.max(0, Math.min(parsed.step, TOTAL_STEPS - 1)));
+      }
+    } catch {
+      // Ignore storage errors.
+    }
   }, []);
+
+  // Persist on every change once the user has entered the questions phase.
+  useEffect(() => {
+    if (phase !== "questions") return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step }));
+    } catch {
+      // Ignore storage errors.
+    }
+  }, [data, step, phase]);
 
   // Exit intent: if the user has typed anything, ask before leaving.
   useEffect(() => {
@@ -138,8 +168,8 @@ export default function StudyForm() {
       data.name.length > 0 ||
       data.business.length > 0 ||
       data.bottleneck.length > 0 ||
-      data.phone.length > 0 ||
-      data.email.length > 0;
+      data.email.length > 0 ||
+      data.phone.length > 0;
     if (!hasInput) return;
     function handler(e: BeforeUnloadEvent) {
       e.preventDefault();
@@ -168,11 +198,11 @@ export default function StudyForm() {
       case 3:
         return data.bottleneck.trim().length > 10;
       case 4:
-        return /^[0-9]{7,12}$/.test(data.phone);
+        return EMAIL_RE.test(data.email.trim());
       case 5:
-        return data.otpVerified;
+        return data.emailVerified;
       case 6:
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+        return validPhone(data.country, data.phone);
       case 7:
         return data.budget !== "";
       case 8:
@@ -190,7 +220,7 @@ export default function StudyForm() {
       const res = await fetch("/api/otp-send", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ country: data.country, phone: data.phone }),
+        body: JSON.stringify({ email: data.email }),
       });
       const json = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -200,11 +230,8 @@ export default function StudyForm() {
       if (!res.ok || !json.ok) {
         throw new Error(json.error || "Could not send code.");
       }
-      update("otpRequested", true);
       if (json.devCode) {
-        setOtpHint(
-          `Dev mode: use code ${json.devCode}. Production provider not configured yet.`
-        );
+        setOtpHint(`Dev mode: use code ${json.devCode}.`);
       }
       setStep(5);
     } catch (e) {
@@ -221,11 +248,7 @@ export default function StudyForm() {
       const res = await fetch("/api/otp-verify", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          country: data.country,
-          phone: data.phone,
-          otp: data.otp,
-        }),
+        body: JSON.stringify({ email: data.email, otp: data.otp }),
       });
       const json = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -234,7 +257,7 @@ export default function StudyForm() {
       if (!res.ok || !json.ok) {
         throw new Error(json.error || "Incorrect code.");
       }
-      update("otpVerified", true);
+      update("emailVerified", true);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Incorrect code.");
     } finally {
@@ -259,6 +282,11 @@ export default function StudyForm() {
         const j = (await res.json().catch(() => ({}))) as { error?: string };
         throw new Error(j.error || "Submission failed.");
       }
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Ignore storage errors.
+      }
       setPhase("done");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Submission failed.");
@@ -273,7 +301,7 @@ export default function StudyForm() {
       requestOtp();
       return;
     }
-    if (step === 5 && !data.otpVerified) {
+    if (step === 5 && !data.emailVerified) {
       verifyOtp();
       return;
     }
@@ -339,7 +367,7 @@ export default function StudyForm() {
             onClick={() => {
               if (
                 confirm(
-                  "Leave the form and open WhatsApp instead? Your answers will be lost."
+                  "Leave the form and open WhatsApp instead? Your answers will be saved."
                 )
               ) {
                 window.location.href = WHATSAPP_HREF;
@@ -454,7 +482,7 @@ export default function StudyForm() {
               opacity: sending || otpSending ? 0.6 : 1,
             }}
           >
-            {nextLabel(step, sending, otpSending, data.otpVerified)}
+            {nextLabel(step, sending, otpSending, data.emailVerified)}
           </button>
         </div>
       </div>
@@ -492,6 +520,7 @@ function renderStep(
             type="text"
             value={data.name}
             onChange={(e) => update("name", e.target.value)}
+            aria-label="First name"
             style={inputStyle}
             placeholder="First name"
           />
@@ -508,6 +537,7 @@ function renderStep(
             type="text"
             value={data.business}
             onChange={(e) => update("business", e.target.value)}
+            aria-label="Business name and what it does"
             style={inputStyle}
             placeholder="Your business name and what it does"
           />
@@ -540,6 +570,7 @@ function renderStep(
             rows={5}
             value={data.bottleneck}
             onChange={(e) => update("bottleneck", e.target.value)}
+            aria-label="What is slowing your business down"
             style={{ ...inputStyle, resize: "vertical", minHeight: 140 }}
             placeholder="Customers asking the same questions on WhatsApp. We copy paste the same answers all day."
           />
@@ -548,35 +579,28 @@ function renderStep(
     case 4:
       return (
         <Question
-          title="What is your phone number?"
-          hint="We will send a code to verify. India and UAE first, others on request."
+          title="What is the best email for follow-up?"
+          hint="We will send a six-digit code to verify it. No spam, ever."
         >
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <select
-              value={data.country}
-              onChange={(e) => update("country", e.target.value as Country)}
-              style={{ ...inputStyle, maxWidth: 140 }}
-            >
-              <option value="IN">IN +91</option>
-              <option value="AE">AE +971</option>
-            </select>
-            <input
-              type="tel"
-              value={data.phone}
-              onChange={(e) =>
-                update("phone", e.target.value.replace(/[^0-9]/g, ""))
-              }
-              style={{ ...inputStyle, flex: 1, minWidth: 200 }}
-              placeholder="Phone number"
-            />
-          </div>
+          <input
+            autoFocus
+            type="email"
+            value={data.email}
+            onChange={(e) => {
+              update("email", e.target.value);
+              update("emailVerified", false);
+            }}
+            aria-label="Email address"
+            style={inputStyle}
+            placeholder="you@yourbusiness.com"
+          />
         </Question>
       );
     case 5:
       return (
         <Question
           title="Enter the code we sent you."
-          hint="Six digits. Check the same number you entered."
+          hint="Six digits. Check your inbox at the address you entered."
         >
           <input
             autoFocus
@@ -587,7 +611,8 @@ function renderStep(
             onChange={(e) =>
               update("otp", e.target.value.replace(/[^0-9]/g, ""))
             }
-            disabled={data.otpVerified}
+            disabled={data.emailVerified}
+            aria-label="Six-digit verification code"
             style={{
               ...inputStyle,
               maxWidth: 260,
@@ -597,7 +622,7 @@ function renderStep(
             }}
             placeholder="000000"
           />
-          {data.otpVerified ? (
+          {data.emailVerified ? (
             <p
               style={{
                 marginTop: 12,
@@ -616,17 +641,31 @@ function renderStep(
     case 6:
       return (
         <Question
-          title="What is the best email for follow-up?"
-          hint="We will send the study plan here."
+          title="What is your phone number?"
+          hint="So we can reach you. We do not verify it."
         >
-          <input
-            autoFocus
-            type="email"
-            value={data.email}
-            onChange={(e) => update("email", e.target.value)}
-            style={inputStyle}
-            placeholder="Your work email"
-          />
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <select
+              value={data.country}
+              onChange={(e) => update("country", e.target.value as Country)}
+              aria-label="Country code"
+              style={{ ...inputStyle, maxWidth: 150 }}
+            >
+              <option value="IN">IN +91</option>
+              <option value="AE">AE +971</option>
+              <option value="Other">Other</option>
+            </select>
+            <input
+              type="tel"
+              value={data.phone}
+              onChange={(e) =>
+                update("phone", e.target.value.replace(/[^0-9+ ]/g, ""))
+              }
+              aria-label="Phone number"
+              style={{ ...inputStyle, flex: 1, minWidth: 200 }}
+              placeholder="Phone number"
+            />
+          </div>
         </Question>
       );
     case 7:
@@ -699,17 +738,14 @@ function Question({
   title,
   hint,
   children,
-  labelId,
 }: {
   title: string;
   hint?: string;
   children: React.ReactNode;
-  labelId?: string;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       <h2
-        id={labelId}
         style={{
           fontSize: "clamp(28px, 4.8vw, 44px)",
           fontWeight: 300,
@@ -808,7 +844,7 @@ function Intro({
             marginBottom: 20,
           }}
         >
-          STUDIO INTAKE
+          INTAKE
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -838,7 +874,7 @@ function Intro({
             maxWidth: 640,
           }}
         >
-          Nine quick questions. A verified phone. We come back within 24 hours
+          Nine quick questions. A verified email. We come back within 24 hours
           with a plan, a timeline, and a number.
         </motion.p>
 
@@ -886,7 +922,7 @@ function Intro({
             },
             {
               icon: "shield",
-              label: "Verified phone, never spammed",
+              label: "Verified email, never spammed",
               hint: "One code, one time. We do not market to you.",
             },
             {
@@ -1081,7 +1117,7 @@ function Confirmation({ name }: { name: string }) {
             marginBottom: 32,
           }}
         >
-          STUDY REQUESTED
+          REQUEST RECEIVED
         </p>
         <h1
           style={{
@@ -1176,5 +1212,3 @@ const inputStyle: React.CSSProperties = {
   outline: "none",
   transition: "border-color 0.2s var(--ease-spring)",
 };
-
-const inputClass = "dd-form-input";

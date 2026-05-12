@@ -16,12 +16,13 @@ type Submission = {
   email: string;
   budget: string;
   slot: string;
-  otpVerified: boolean;
+  emailVerified: boolean;
   industry?: string;
   objective?: string;
 };
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "anish.modi@deeperdesigns.in";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
   if (!originAllowed(req)) {
@@ -48,13 +49,13 @@ export async function POST(req: Request) {
 
   try {
     const body = (await req.json()) as Submission;
-    if (!body.otpVerified) {
+    if (!body.emailVerified) {
       return NextResponse.json(
         { ok: false, error: "Email not verified." },
         { status: 400 }
       );
     }
-    if (!body.name || !body.business || !body.email) {
+    if (!body.name || !body.business || !EMAIL_RE.test(body.email)) {
       return NextResponse.json(
         { ok: false, error: "Missing required fields." },
         { status: 400 }
@@ -109,9 +110,8 @@ function renderText(s: Submission): string {
     `Bottleneck:`,
     s.bottleneck,
     ``,
-    `Country: ${s.country}`,
-    `Phone: +${s.country === "IN" ? "91" : "971"}${s.phone}`,
     `Email (verified): ${s.email}`,
+    `Phone: ${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`,
     `Budget: ${s.budget}`,
     `Preferred slot: ${s.slot}`,
   ];
@@ -132,8 +132,8 @@ function renderHtml(s: Submission): string {
       <p style="margin:0 0 22px;font:15px/1.6 system-ui;color:#333">${escapeHtml(s.bottleneck)}</p>
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
         ${row("Team size", s.teamSize)}
-        ${row("Phone", `+${s.country === "IN" ? "91" : "971"}${s.phone}`)}
         ${row("Email", s.email)}
+        ${row("Phone", `${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`)}
         ${row("Budget", s.budget)}
         ${row("Preferred slot", s.slot)}
         ${filterRow("Filter industry", s.industry)}
