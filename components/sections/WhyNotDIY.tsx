@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import Stack from "../Stack";
+import StackWall from "../StackWall";
 
 type Card = {
   eyebrow: string;
@@ -183,9 +183,9 @@ export default function WhyNotDIY() {
               marginBottom: 24,
             }}
           >
-            The studio stack
+            The stack we use. The thinking is ours.
           </motion.p>
-          <Stack />
+          <StackWall />
         </div>
       </div>
 
