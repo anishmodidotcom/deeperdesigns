@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
 import Lot from "./Lot";
 import Pricing from "./Pricing";
 import Dashboard from "./Dashboard";
@@ -38,6 +39,7 @@ export default function AutoBazaarPage() {
   return (
     <div className={outfit.variable} style={pageStyle}>
       <Hero />
+      <Founder />
       <Lot />
       <Pricing />
       <Dashboard />
