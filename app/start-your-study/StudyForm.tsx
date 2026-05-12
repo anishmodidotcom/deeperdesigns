@@ -699,14 +699,17 @@ function Question({
   title,
   hint,
   children,
+  labelId,
 }: {
   title: string;
   hint?: string;
   children: React.ReactNode;
+  labelId?: string;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       <h2
+        id={labelId}
         style={{
           fontSize: "clamp(28px, 4.8vw, 44px)",
           fontWeight: 300,
@@ -1173,3 +1176,5 @@ const inputStyle: React.CSSProperties = {
   outline: "none",
   transition: "border-color 0.2s var(--ease-spring)",
 };
+
+const inputClass = "dd-form-input";

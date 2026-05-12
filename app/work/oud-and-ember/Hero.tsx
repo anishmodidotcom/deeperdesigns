@@ -150,9 +150,7 @@ export default function Hero() {
               View the build
             </Link>
             <a
-              href="https://oudandember.example"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#about-build"
               data-cursor="pointer"
               style={{
                 fontFamily: "var(--font-geist-mono), monospace",
@@ -169,7 +167,7 @@ export default function Hero() {
                 e.currentTarget.style.color = "var(--page-text-2)";
               }}
             >
-              Visit Oud &amp; Ember →
+              See the build →
             </a>
           </motion.div>
         </div>

@@ -134,9 +134,7 @@ export default function Hero() {
             </Link>
 
             <a
-              href="https://hivedesk.example"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#about-build"
               data-cursor="pointer"
               style={{
                 fontFamily:
@@ -152,7 +150,7 @@ export default function Hero() {
                 e.currentTarget.style.color = "var(--page-text-2)";
               }}
             >
-              Live demo →
+              See the build →
             </a>
           </motion.div>
 

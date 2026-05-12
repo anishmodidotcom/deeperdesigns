@@ -26,6 +26,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="site-footer"
       style={{
         borderTop: "1px solid var(--border)",
         paddingBlockStart: 128,
