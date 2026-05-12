@@ -12,7 +12,7 @@ const ITEMS: Item[] = [
   },
   {
     q: "How long does it take?",
-    a: "Two to six weeks for most projects. The brief is one day. The build is the rest.",
+    a: "Two to six weeks for most projects. The brief is one day. The build is the rest. Faster than most enterprise demo cycles.",
   },
   {
     q: "Do you build for non-Indian businesses?",
@@ -24,11 +24,11 @@ const ITEMS: Item[] = [
   },
   {
     q: "Will I own the code and the brand?",
-    a: "Yes. Everything we ship is yours. Code, design files, copy, brand assets. Hosted wherever you want.",
+    a: "Yes. Everything we ship is yours. Code, design files, copy, brand assets. Hosted wherever you want. Even the parts you would rather we had rewritten.",
   },
   {
     q: "What if I just want to talk?",
-    a: "WhatsApp us at +91 99687 16498. No form required.",
+    a: "WhatsApp us at +91 99687 16498. No form required. We answer between meetings and not at 3am.",
   },
 ];
 
