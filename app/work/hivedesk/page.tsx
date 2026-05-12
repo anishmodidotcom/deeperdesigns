@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Hero from "./Hero";
+import Occupancy from "./Occupancy";
 import Problem from "./Problem";
 import TwoHalves from "./TwoHalves";
 import Dashboard from "./Dashboard";
@@ -43,6 +44,7 @@ export default function HiveDeskPage() {
   return (
     <div className={inter.variable} style={pageStyle}>
       <Hero />
+      <Occupancy />
       <Problem />
       <TwoHalves />
       <Dashboard />
