@@ -14,6 +14,7 @@ import Impact from "./Impact";
 import About from "./About";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -27,6 +28,20 @@ export const metadata: Metadata = {
   title: "Meera Wellness · Wellness Hub · Deeper Designs",
   description:
     "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
+  openGraph: {
+    title: "Meera Wellness · Wellness Hub · Deeper Designs",
+    description: "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
+    url: "/work/meera-wellness",
+    images: [{ url: "/images/meera-wellness/hero-pose.webp", width: 1200, height: 800, alt: "Meera Wellness · Wellness Hub · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Meera Wellness · Wellness Hub · Deeper Designs",
+    description: "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
+    images: ["/images/meera-wellness/hero-pose.webp"],
+  },
+  alternates: { canonical: "/work/meera-wellness" },
+
 };
 
 const pageStyle = {
@@ -48,6 +63,15 @@ export default function MeeraWellnessPage() {
       className={cormorant.variable}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Meera Wellness",
+          description: metadata.description as string,
+          slug: "meera-wellness",
+          image: "/images/meera-wellness/hero-pose.webp",
+          archetype: "a yoga and wellness studio",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="003"

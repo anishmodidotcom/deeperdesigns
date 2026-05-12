@@ -8,7 +8,9 @@ import Studio from "./Studio";
 import Selectivity from "./Selectivity";
 import NotDoing from "./NotDoing";
 import Contact from "./Contact";
+import FAQ from "./FAQ";
 import WhyNotDIY from "@/components/sections/WhyNotDIY";
+import { StructuredData, ANISH_PERSON_LD } from "@/components/StructuredData";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -27,12 +29,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className={fraunces.variable}>
+      <StructuredData data={ANISH_PERSON_LD} />
       <Hero />
       <Thesis />
       <HowWeWork />
       <Studio />
       <WhyNotDIY />
       <Selectivity />
+      <FAQ />
       <NotDoing />
       <Contact />
     </div>

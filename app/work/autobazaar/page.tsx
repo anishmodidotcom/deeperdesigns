@@ -11,6 +11,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,6 +24,20 @@ export const metadata: Metadata = {
   title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
   description:
     "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
+  openGraph: {
+    title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
+    description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
+    url: "/work/autobazaar",
+    images: [{ url: "/images/autobazaar/hero-sedan.webp", width: 1200, height: 800, alt: "AutoBazaar · Dynamic Pricing · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
+    description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
+    images: ["/images/autobazaar/hero-sedan.webp"],
+  },
+  alternates: { canonical: "/work/autobazaar" },
+
 };
 
 const pageStyle = {
@@ -39,6 +54,15 @@ const pageStyle = {
 export default function AutoBazaarPage() {
   return (
     <div className={outfit.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Autobazaar",
+          description: metadata.description as string,
+          slug: "autobazaar",
+          image: "/images/autobazaar/hero-sedan.webp",
+          archetype: "a used-car dealership",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="007"

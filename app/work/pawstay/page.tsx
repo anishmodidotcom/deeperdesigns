@@ -14,6 +14,7 @@ import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,6 +28,20 @@ export const metadata: Metadata = {
   title: "PawStay · Pet Parent Portal · Deeper Designs",
   description:
     "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
+  openGraph: {
+    title: "PawStay · Pet Parent Portal · Deeper Designs",
+    description: "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
+    url: "/work/pawstay",
+    images: [{ url: "/images/pawstay/hero-dog.webp", width: 1200, height: 800, alt: "PawStay · Pet Parent Portal · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PawStay · Pet Parent Portal · Deeper Designs",
+    description: "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
+    images: ["/images/pawstay/hero-dog.webp"],
+  },
+  alternates: { canonical: "/work/pawstay" },
+
 };
 
 const pageStyle = {
@@ -48,6 +63,15 @@ export default function PawStayPage() {
   return (
     <div className={jakarta.variable} style={pageStyle}>
       <ActivityFeed />
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Pawstay",
+          description: metadata.description as string,
+          slug: "pawstay",
+          image: "/images/pawstay/hero-dog.webp",
+          archetype: "a dog boarding facility",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="012"

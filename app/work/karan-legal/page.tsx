@@ -10,6 +10,7 @@ import Outcomes from "./Outcomes";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Spectral covers the editorial slab-serif feel of GT Sectra Display
 // where Sectra is not on Google Fonts. Weights tuned for body and
@@ -26,6 +27,20 @@ export const metadata: Metadata = {
   title: "Karan Legal · Lead Qualifier · Deeper Designs",
   description:
     "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
+  openGraph: {
+    title: "Karan Legal · Lead Qualifier · Deeper Designs",
+    description: "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
+    url: "/work/karan-legal",
+    images: [{ url: "/images/karan-legal/hero-pen.webp", width: 1200, height: 800, alt: "Karan Legal · Lead Qualifier · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Karan Legal · Lead Qualifier · Deeper Designs",
+    description: "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
+    images: ["/images/karan-legal/hero-pen.webp"],
+  },
+  alternates: { canonical: "/work/karan-legal" },
+
 };
 
 const pageStyle = {
@@ -50,6 +65,15 @@ export default function KaranLegalPage() {
       className={spectral.variable}
       style={pageStyle}
     >
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Karan Legal",
+          description: metadata.description as string,
+          slug: "karan-legal",
+          image: "/images/karan-legal/hero-pen.webp",
+          archetype: "an independent legal practice",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="014"

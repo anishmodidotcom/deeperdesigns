@@ -11,6 +11,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Archivo Black is the closest open-source stand-in for the heavy
 // tin-can headline style we wanted (Druk Wide Bold). Crimson Pro
@@ -34,6 +35,20 @@ export const metadata: Metadata = {
   title: "Kadak Chai · Tea Brand · Deeper Designs",
   description:
     "A third-generation Mumbai tea family selling sample-room blends out of a wholesale yard. We made it a brand. Tins. A range. A site that reads like a strong cup.",
+  openGraph: {
+    title: "Kadak Chai · Tea Brand · Deeper Designs",
+    description: "A third-generation Mumbai tea family selling sample-room blends out of a wholesale yard. We made it a brand. Tins. A range. A site that reads like a strong cup.",
+    url: "/work/kadak-chai",
+    images: [{ url: "/images/kadak-chai/hero-tin.webp", width: 1200, height: 800, alt: "Kadak Chai · Tea Brand · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kadak Chai · Tea Brand · Deeper Designs",
+    description: "A third-generation Mumbai tea family selling sample-room blends out of a wholesale yard. We made it a brand. Tins. A range. A site that reads like a strong cup.",
+    images: ["/images/kadak-chai/hero-tin.webp"],
+  },
+  alternates: { canonical: "/work/kadak-chai" },
+
 };
 
 const pageStyle = {
@@ -53,6 +68,15 @@ const pageStyle = {
 export default function KadakChaiPage() {
   return (
     <div className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Kadak Chai",
+          description: metadata.description as string,
+          slug: "kadak-chai",
+          image: "/images/kadak-chai/hero-tin.webp",
+          archetype: "a craft chai brand",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="017"

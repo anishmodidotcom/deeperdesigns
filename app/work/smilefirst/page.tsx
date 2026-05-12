@@ -10,6 +10,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -22,6 +23,20 @@ export const metadata: Metadata = {
   title: "SmileFirst · Clinic Manager · Deeper Designs",
   description:
     "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
+  openGraph: {
+    title: "SmileFirst · Clinic Manager · Deeper Designs",
+    description: "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
+    url: "/work/smilefirst",
+    images: [{ url: "/images/smilefirst/hero-clinic.webp", width: 1200, height: 800, alt: "SmileFirst · Clinic Manager · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SmileFirst · Clinic Manager · Deeper Designs",
+    description: "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
+    images: ["/images/smilefirst/hero-clinic.webp"],
+  },
+  alternates: { canonical: "/work/smilefirst" },
+
 };
 
 const pageStyle = {
@@ -38,6 +53,15 @@ const pageStyle = {
 export default function SmileFirstPage() {
   return (
     <div className={jakarta.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Smilefirst",
+          description: metadata.description as string,
+          slug: "smilefirst",
+          image: "/images/smilefirst/hero-clinic.webp",
+          archetype: "an urban dental clinic",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="006"

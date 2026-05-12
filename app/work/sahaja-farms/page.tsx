@@ -13,6 +13,7 @@ import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PossibilityNote from "@/components/PossibilityNote";
+import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Bricolage Grotesque on Google Fonts ships normal-only. Italic display
 // moments use CSS synthesized italic via fontStyle: italic; the variable
@@ -29,6 +30,20 @@ export const metadata: Metadata = {
   title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
   description:
     "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
+  openGraph: {
+    title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
+    description: "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
+    url: "/work/sahaja-farms",
+    images: [{ url: "/images/sahaja-farms/hero-field.webp", width: 1200, height: 800, alt: "Sahaja Farms · Farm Management Dashboard · Deeper Designs" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
+    description: "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
+    images: ["/images/sahaja-farms/hero-field.webp"],
+  },
+  alternates: { canonical: "/work/sahaja-farms" },
+
 };
 
 const pageStyle = {
@@ -50,6 +65,15 @@ const pageStyle = {
 export default function SahajaFarmsPage() {
   return (
     <div className={bricolage.variable} style={pageStyle}>
+      <StructuredData
+        data={creativeWorkLd({
+          name: "Sahaja Farms",
+          description: metadata.description as string,
+          slug: "sahaja-farms",
+          image: "/images/sahaja-farms/hero-field.webp",
+          archetype: "an organic farm CSA",
+        })}
+      />
       <Hero />
       <PossibilityNote
         number="013"

@@ -9,6 +9,7 @@ import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deeperdesigns.in"),
@@ -55,6 +56,7 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable}`}
       >
         <body>
+          <StructuredData data={ORGANIZATION_LD} />
           <SmoothScroll>
             <Cursor />
             <Nav />
