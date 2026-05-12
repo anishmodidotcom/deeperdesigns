@@ -33,7 +33,7 @@ export default function Contact() {
             marginBottom: 28,
           }}
         >
-          07 · GET IN TOUCH
+          06 · GET IN TOUCH
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

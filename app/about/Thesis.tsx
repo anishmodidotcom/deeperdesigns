@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const PARAGRAPHS = [
-  "Custom software used to belong to companies with seven-figure budgets and an in-house engineering team. Everyone else got Shopify and a Calendly link. That asymmetry shaped the last twenty years of business. The big got bigger. The small got templates.",
-  "AI changed the cost curve. A tool that took a fifteen-person team three quarters to build now takes one person three weeks. That economics flip is the entire reason Deeper Designs exists.",
-  "We are not a SaaS company. We do not sell a platform. We build one thing, for one business, the right way, and we move on. The work is bespoke. The cost is not. A custom tool from us is somewhere between a website and a small SaaS subscription. That is the bet.",
-  "We are very selective about the projects we take. We pick the ones where a single tool can change the shape of the business. We say no to most enquiries.",
+  "Deeper Designs started in 2017 as a small design agency. We made brand identities and websites for businesses we believed in. The work was good. The model was tight. The constraint was always the same: custom software stayed out of reach for the businesses that needed it most.",
+  "In 2024 the cost curve broke. A tool that used to take a fifteen-person team three quarters now takes one person three weeks. We rebuilt the practice around that flip. Same care. A different kind of output.",
+  "We are not a SaaS company. We do not sell a platform. We sit with one business at a time, find the operational shape it needs, and build that. Sometimes a tool. Sometimes a workflow. Sometimes a system that did not exist yet.",
+  "We are selective. We pick the projects where a single system can change how the business runs. We say no to most enquiries, kindly.",
 ];
 
 export default function Thesis() {
@@ -40,7 +40,7 @@ export default function Thesis() {
                 marginBottom: 24,
               }}
             >
-              01 · THE THESIS
+              01 · HOW WE GOT HERE
             </p>
             <h2
               style={{
@@ -55,7 +55,7 @@ export default function Thesis() {
                 maxWidth: 460,
               }}
             >
-              What we believe about AI, software, and small business.
+              From a design agency in 2017 to a custom-systems practice in 2024.
             </h2>
           </motion.div>
 

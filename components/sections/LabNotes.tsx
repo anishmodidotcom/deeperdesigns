@@ -52,7 +52,7 @@ export default function LabNotes() {
             marginBottom: 16,
           }}
         >
-          Lab Notes
+          05 · LAB NOTES
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

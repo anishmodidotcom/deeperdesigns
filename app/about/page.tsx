@@ -4,13 +4,9 @@ import { Fraunces } from "next/font/google";
 import Hero from "./Hero";
 import Thesis from "./Thesis";
 import HowWeWork from "./HowWeWork";
-import Studio from "./Studio";
 import Founder from "./Founder";
-import Selectivity from "./Selectivity";
-import NotDoing from "./NotDoing";
-import Contact from "./Contact";
 import FAQ from "./FAQ";
-import WhyNotDIY from "@/components/sections/WhyNotDIY";
+import Contact from "./Contact";
 import LabNotes from "@/components/sections/LabNotes";
 import { StructuredData, ANISH_PERSON_LD } from "@/components/StructuredData";
 
@@ -42,13 +38,9 @@ export default function AboutPage() {
       <Hero />
       <Thesis />
       <HowWeWork />
-      <Studio />
       <Founder />
-      <WhyNotDIY />
-      <Selectivity />
-      <LabNotes />
       <FAQ />
-      <NotDoing />
+      <LabNotes />
       <Contact />
     </div>
   );
