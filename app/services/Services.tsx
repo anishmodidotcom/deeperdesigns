@@ -5,72 +5,81 @@ import { Link } from "next-view-transitions";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-type Service = {
+type Item = {
+  name: string;
+  href?: string;
+};
+
+type Outcome = {
   code: string;
   title: string;
   body: string;
-  price: string;
-  timeline: string;
-  examples: { name: string; href: string }[];
+  items: Item[];
 };
 
-const SERVICES: Service[] = [
+const OUTCOMES: Outcome[] = [
   {
     code: "01",
-    title: "AI-built websites",
-    body: "Bespoke marketing sites in 24 to 48 hours. The portfolio you are reading is the example. Brand-led, scroll-choreographed, image-and-video-generated, mobile-tuned. Not a template.",
-    price: "From Rs. 3,50,000 / $4,200",
-    timeline: "24-48 hours, then a polish week",
-    examples: [
-      { name: "Earth and Fire", href: "/work/earth-and-fire" },
-      { name: "Sugar Lane", href: "/work/sugar-lane" },
-      { name: "Kadak Chai", href: "/work/kadak-chai" },
+    title: "Customer Experience",
+    body: "The systems your customers actually touch. Quizzes that recommend. Portals that brief. Bots that triage. Designed so every interaction feels considered, not bolted on.",
+    items: [
+      { name: "Customer onboarding systems" },
+      { name: "Recommendation tools and quizzes", href: "/work/veda-glow" },
+      { name: "Booking and reservation flows", href: "/work/pawstay" },
+      { name: "Customer portals", href: "/work/studio-noor" },
+      { name: "Lead qualification systems", href: "/work/karan-legal" },
+      { name: "Conversational systems (WhatsApp, chat, voice)", href: "/work/bharat-steel" },
     ],
   },
   {
     code: "02",
-    title: "Custom tools for businesses",
-    body: "The core of what we do. Dashboards, AI image generators, interactive quizzes, calculators, chatbots, voice agents, CRMs, portals, lead magnets, sales agents, internal tools. One tool, one business, the right way.",
-    price: "From Rs. 6,00,000 / $7,200",
-    timeline: "14-28 days",
-    examples: [
-      { name: "Veda Glow · Skin Advisor", href: "/work/veda-glow" },
-      { name: "Karan Legal · Lead Qualifier", href: "/work/karan-legal" },
-      { name: "Bharat Steel · Inventory Dashboard", href: "/work/bharat-steel" },
-      { name: "Zara Fitness · Training Platform", href: "/work/zara-fitness" },
+    title: "Operations",
+    body: "The tools your team uses to run the place. Dashboards that tell you where the day is going. Internal portals that replace six chat threads. Schedulers that hold the line.",
+    items: [
+      { name: "Operational dashboards", href: "/work/zaatar-republic" },
+      { name: "Workflow automation tools" },
+      { name: "Reporting and analytics interfaces", href: "/work/sahaja-farms" },
+      { name: "Internal team portals", href: "/work/hivedesk" },
+      { name: "Inventory and resource management", href: "/work/autobazaar" },
+      { name: "Calendar and scheduling systems", href: "/work/smilefirst" },
     ],
   },
   {
     code: "03",
-    title: "Social content, design, ecommerce",
-    body: "Brand-led content at the cadence of a strong agency, run by a small team and AI. Includes brand identity, product photography (generated and directed), launch campaigns, and direct-to-consumer store setup.",
-    price: "From Rs. 2,50,000 / month",
-    timeline: "Ongoing, 30-day commitments",
-    examples: [
-      { name: "Earth and Fire pottery brand", href: "/work/earth-and-fire" },
-      { name: "Sugar Lane home bakery", href: "/work/sugar-lane" },
+    title: "Growth",
+    body: "The systems that bring people in and keep them. Lead magnets that earn the email. Landing pages that convert the click. Retention loops that turn one purchase into ten.",
+    items: [
+      { name: "Sales enablement tools", href: "/work/zara-fitness" },
+      { name: "Interactive lead magnets", href: "/work/oud-and-ember" },
+      { name: "Conversion-focused landing pages", href: "/work/kadak-chai" },
+      { name: "Customer retention systems", href: "/work/brightpath" },
+      { name: "Business intelligence interfaces", href: "/work/stumpvision" },
+      { name: "Content and social automation" },
     ],
   },
+];
+
+type Tier = {
+  range: string;
+  label: string;
+  examples: string;
+};
+
+const TIERS: Tier[] = [
   {
-    code: "04",
-    title: "Lead generation and ads",
-    body: "Paid acquisition that ties a creative spend to a clear lead pipeline. Meta, LinkedIn, and Google. Creative shipped by us, audiences set by us, attribution wired into a dashboard you can actually read.",
-    price: "From Rs. 1,80,000 / month + ad spend",
-    timeline: "Ongoing, 30-day commitments",
-    examples: [
-      { name: "PawStay pet portal", href: "/work/pawstay" },
-      { name: "BrightPath tutoring portal", href: "/work/brightpath" },
-    ],
+    range: "From Rs. 1 lakh / $1,200",
+    label: "Single-tool builds",
+    examples: "A quiz. A lead form. A WhatsApp agent. A single dashboard.",
   },
   {
-    code: "05",
-    title: "LinkedIn sales agent as a service",
-    body: "We build, train, and operate a LinkedIn outreach agent on your account. Researches, writes, sends, and books meetings while keeping the voice yours. Compliance-aware. Reviewed weekly.",
-    price: "From Rs. 1,20,000 / month",
-    timeline: "Two-week ramp, then live",
-    examples: [
-      { name: "Karan Legal lead qualifier", href: "/work/karan-legal" },
-    ],
+    range: "Rs. 3 to 10 lakh / $3.5k to $12k",
+    label: "Multi-tool systems",
+    examples: "A portal and a dashboard. A site and a booking flow. A brand and a store.",
+  },
+  {
+    range: "Rs. 10 lakh+ / $12k+",
+    label: "Full operational redesigns",
+    examples: "The full operating system for a business. Brand, site, internal tools, customer-facing tools.",
   },
 ];
 
@@ -83,27 +92,72 @@ export default function Services() {
       }}
     >
       <div className="container-x" style={{ maxWidth: 1320, marginInline: "auto" }}>
+        <p
+          style={{
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 11,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+            margin: 0,
+            marginBottom: 24,
+          }}
+        >
+          What we ship, organized by outcome
+        </p>
+
+        <h2
+          style={{
+            fontFamily: "var(--font-fraunces), Georgia, serif",
+            fontWeight: 400,
+            fontSize: "clamp(32px, 5vw, 64px)",
+            letterSpacing: "-0.03em",
+            color: "var(--text)",
+            margin: 0,
+            lineHeight: 1.06,
+            marginBottom: 24,
+            maxWidth: 900,
+          }}
+        >
+          Three things a business is usually trying to do.
+        </h2>
+
+        <p
+          style={{
+            fontSize: 18,
+            color: "var(--text-2)",
+            lineHeight: 1.6,
+            margin: 0,
+            marginBottom: 64,
+            maxWidth: 700,
+          }}
+        >
+          Win the customer. Run the operation. Grow the base. We organize our
+          work the same way our clients organize their week.
+        </p>
+
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             gap: 24,
             borderTop: "1px solid var(--border)",
+            marginBottom: 96,
           }}
         >
-          {SERVICES.map((service, i) => (
+          {OUTCOMES.map((outcome, i) => (
             <motion.article
-              key={service.code}
+              key={outcome.code}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: (i % 3) * 0.06, ease: EASE }}
+              transition={{ duration: 0.7, delay: i * 0.08, ease: EASE }}
               style={{
-                paddingBlock: 40,
+                paddingBlock: 48,
                 borderBottom: "1px solid var(--border)",
                 display: "grid",
                 gridTemplateColumns: "1fr",
-                gap: 24,
+                gap: 32,
               }}
               className="srv-row"
             >
@@ -118,163 +172,231 @@ export default function Services() {
                     marginBottom: 10,
                   }}
                 >
-                  {service.code}
+                  {outcome.code}
                 </p>
-                <h2
+                <h3
                   style={{
                     fontFamily: "var(--font-fraunces), Georgia, serif",
                     fontWeight: 500,
-                    fontSize: "clamp(28px, 3.6vw, 44px)",
+                    fontSize: "clamp(28px, 3.8vw, 48px)",
                     letterSpacing: "-0.02em",
                     color: "var(--text)",
                     margin: 0,
-                    lineHeight: 1.1,
+                    lineHeight: 1.06,
                   }}
                 >
-                  {service.title}
-                </h2>
-              </div>
-
-              <div>
+                  {outcome.title}
+                </h3>
                 <p
                   style={{
                     fontSize: 16,
                     color: "var(--text-2)",
-                    lineHeight: 1.75,
+                    lineHeight: 1.7,
                     margin: 0,
-                    marginBottom: 28,
-                    maxWidth: 640,
+                    marginTop: 20,
+                    maxWidth: 380,
                   }}
                 >
-                  {service.body}
+                  {outcome.body}
                 </p>
-
-                <dl
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 20,
-                    margin: 0,
-                    marginBottom: 28,
-                    maxWidth: 560,
-                  }}
-                >
-                  <div>
-                    <dt
-                      style={{
-                        fontFamily:
-                          "var(--font-geist-mono), monospace",
-                        fontSize: 10,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        color: "var(--text-3)",
-                        margin: 0,
-                        marginBottom: 8,
-                      }}
-                    >
-                      INDICATIVE PRICE
-                    </dt>
-                    <dd
-                      style={{
-                        fontFamily:
-                          "var(--font-fraunces), Georgia, serif",
-                        fontWeight: 500,
-                        fontSize: 17,
-                        color: "var(--text)",
-                        margin: 0,
-                      }}
-                    >
-                      {service.price}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt
-                      style={{
-                        fontFamily:
-                          "var(--font-geist-mono), monospace",
-                        fontSize: 10,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        color: "var(--text-3)",
-                        margin: 0,
-                        marginBottom: 8,
-                      }}
-                    >
-                      TIMELINE
-                    </dt>
-                    <dd
-                      style={{
-                        fontFamily:
-                          "var(--font-fraunces), Georgia, serif",
-                        fontWeight: 500,
-                        fontSize: 17,
-                        color: "var(--text)",
-                        margin: 0,
-                      }}
-                    >
-                      {service.timeline}
-                    </dd>
-                  </div>
-                </dl>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: 10,
-                    paddingTop: 24,
-                    borderTop: "1px dashed var(--border-2)",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-geist-mono), monospace",
-                      fontSize: 10,
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                      color: "var(--text-3)",
-                      paddingTop: 8,
-                    }}
-                  >
-                    Examples in the portfolio:
-                  </span>
-                  {service.examples.map((ex) => (
-                    <Link
-                      key={ex.name}
-                      href={ex.href}
-                      data-cursor="view"
-                      style={{
-                        paddingInline: 12,
-                        paddingBlock: 6,
-                        border: "1px solid var(--border-2)",
-                        borderRadius: 9999,
-                        fontFamily:
-                          "var(--font-geist-sans), system-ui, sans-serif",
-                        fontSize: 13,
-                        color: "var(--text)",
-                      }}
-                    >
-                      {ex.name} →
-                    </Link>
-                  ))}
-                </div>
               </div>
+
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                }}
+              >
+                {outcome.items.map((item) => (
+                  <li key={item.name}>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        data-cursor="view"
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "baseline",
+                          gap: 16,
+                          paddingBlock: 14,
+                          paddingInline: 18,
+                          borderRadius: 10,
+                          border: "1px solid var(--border-2)",
+                          color: "var(--text)",
+                          fontSize: 15,
+                          fontFamily:
+                            "var(--font-geist-sans), system-ui, sans-serif",
+                          textDecoration: "none",
+                          transition: "border-color 0.2s var(--ease-spring)",
+                        }}
+                        className="srv-item"
+                      >
+                        <span>{item.name}</span>
+                        <span
+                          style={{
+                            fontFamily:
+                              "var(--font-geist-mono), monospace",
+                            fontSize: 11,
+                            letterSpacing: "0.16em",
+                            color: "var(--text-3)",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          See study →
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        style={{
+                          display: "flex",
+                          alignItems: "baseline",
+                          gap: 16,
+                          paddingBlock: 14,
+                          paddingInline: 18,
+                          borderRadius: 10,
+                          border: "1px solid var(--border-2)",
+                          color: "var(--text-2)",
+                          fontSize: 15,
+                          fontFamily:
+                            "var(--font-geist-sans), system-ui, sans-serif",
+                        }}
+                      >
+                        {item.name}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </motion.article>
           ))}
+        </div>
+
+        <div>
+          <p
+            style={{
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: 11,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+              margin: 0,
+              marginBottom: 18,
+            }}
+          >
+            Indicative pricing
+          </p>
+          <h3
+            style={{
+              fontFamily: "var(--font-fraunces), Georgia, serif",
+              fontWeight: 400,
+              fontSize: "clamp(28px, 4vw, 44px)",
+              letterSpacing: "-0.02em",
+              color: "var(--text)",
+              margin: 0,
+              marginBottom: 32,
+              lineHeight: 1.08,
+              maxWidth: 720,
+            }}
+          >
+            What it costs, before we know what you need.
+          </h3>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 16,
+            }}
+            className="srv-tier-grid"
+          >
+            {TIERS.map((tier) => (
+              <div
+                key={tier.label}
+                style={{
+                  background: "var(--surface-1)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 12,
+                  padding: "28px 24px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 10,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-geist-mono), monospace",
+                    fontSize: 10,
+                    letterSpacing: "0.22em",
+                    textTransform: "uppercase",
+                    color: "var(--text-3)",
+                    margin: 0,
+                  }}
+                >
+                  {tier.label}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-fraunces), Georgia, serif",
+                    fontWeight: 500,
+                    fontSize: 22,
+                    color: "var(--text)",
+                    margin: 0,
+                  }}
+                >
+                  {tier.range}
+                </p>
+                <p
+                  style={{
+                    fontSize: 14,
+                    color: "var(--text-2)",
+                    lineHeight: 1.55,
+                    margin: 0,
+                  }}
+                >
+                  {tier.examples}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p
+            style={{
+              fontSize: 14,
+              color: "var(--text-3)",
+              marginTop: 24,
+              fontStyle: "italic",
+              lineHeight: 1.6,
+              maxWidth: 720,
+            }}
+          >
+            Pricing depends on scope, integrations, and timeline. Most projects
+            ship in 2 to 6 weeks. The studio takes a small number of new
+            engagements each month.
+          </p>
         </div>
       </div>
 
       <style jsx>{`
         @media (min-width: 900px) {
           :global(.srv-row) {
-            grid-template-columns: 300px 1fr !important;
-            gap: 64px !important;
+            grid-template-columns: 360px 1fr !important;
+            gap: 80px !important;
             align-items: start;
           }
           :global(.srv-row-left) {
             position: sticky;
             top: 120px;
           }
+          :global(.srv-tier-grid) {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+        :global(.srv-item:hover) {
+          border-color: var(--accent) !important;
         }
       `}</style>
     </section>
