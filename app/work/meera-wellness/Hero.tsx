@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function Hero() {
@@ -9,94 +10,116 @@ export default function Hero() {
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
         paddingInline: 24,
         paddingBlock: 96,
+        overflow: "hidden",
       }}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{ marginBottom: 32, opacity: 0.3 }}
-        aria-hidden
-      >
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 80 80"
-          fill="none"
-          stroke="var(--page-accent)"
-          strokeWidth="1"
-        >
-          <circle cx="40" cy="40" r="32" />
-          <circle cx="40" cy="40" r="22" />
-          <circle cx="40" cy="40" r="12" />
-          <line x1="40" y1="8" x2="40" y2="72" />
-          <line x1="8" y1="40" x2="72" y2="40" />
-          <line x1="17" y1="17" x2="63" y2="63" />
-          <line x1="63" y1="17" x2="17" y2="63" />
-        </svg>
-      </motion.div>
+      <div aria-hidden style={{ position: "absolute", inset: 0 }}>
+        <Image
+          src="/images/meera-wellness/hero-pose.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(110deg, rgba(248,246,242,0.92) 0%, rgba(248,246,242,0.55) 55%, rgba(248,246,242,0.1) 100%)",
+          }}
+        />
+      </div>
 
-      <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      <div
+        className="container-x"
         style={{
-          fontFamily: "var(--font-cormorant), Georgia, serif",
-          fontWeight: 300,
-          fontSize: "clamp(64px, 10vw, 120px)",
-          letterSpacing: "-0.02em",
-          lineHeight: 1.0,
-          margin: 0,
+          position: "relative",
+          maxWidth: 1320,
+          marginInline: "auto",
+          width: "100%",
         }}
       >
-        <span style={{ display: "block", color: "var(--page-text)" }}>
-          Meera
-        </span>
-        <span
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            display: "block",
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
             color: "var(--page-accent)",
-            fontStyle: "italic",
+            margin: 0,
+            marginBottom: 40,
           }}
         >
-          Wellness
-        </span>
-      </motion.h1>
+          MEERA WELLNESS · CASE STUDY 003 · DUBAI
+        </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          height: 1,
-          width: 60,
-          background: "var(--page-accent)",
-          marginBlock: 24,
-        }}
-        aria-hidden
-      />
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontWeight: 300,
+            fontSize: "clamp(64px, 11vw, 156px)",
+            letterSpacing: "-0.02em",
+            lineHeight: 0.98,
+            margin: 0,
+            maxWidth: 1100,
+          }}
+        >
+          <span style={{ display: "block", color: "var(--page-text)" }}>
+            Meera
+          </span>
+          <span
+            style={{
+              display: "block",
+              color: "var(--page-accent)",
+              fontStyle: "italic",
+            }}
+          >
+            Wellness
+          </span>
+        </motion.h1>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          fontSize: 17,
-          color: "var(--page-text-2)",
-          maxWidth: 440,
-          margin: 0,
-          lineHeight: 1.7,
-        }}
-      >
-        A complete wellness platform. Scheduling, client management, WhatsApp
-        integration, and personalized programs. All in one place.
-      </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1.0, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            height: 1,
+            width: 80,
+            background: "var(--page-accent)",
+            marginBlock: 32,
+            transformOrigin: "left center",
+          }}
+          aria-hidden
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontSize: 18,
+            color: "var(--page-text-2)",
+            maxWidth: 520,
+            margin: 0,
+            lineHeight: 1.75,
+          }}
+        >
+          A complete wellness platform built for a Dubai yoga instructor.
+          Scheduling, client portal, WhatsApp integration, and
+          personalized programs. All in one place.
+        </motion.p>
+      </div>
     </section>
   );
 }

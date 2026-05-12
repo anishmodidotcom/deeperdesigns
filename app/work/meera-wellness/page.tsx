@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
+import Breath from "./Breath";
 import Client from "./Client";
 import PanelHeading from "./PanelHeading";
 import SchedulingPanel from "./SchedulingPanel";
@@ -46,6 +48,8 @@ export default function MeeraWellnessPage() {
       style={pageStyle}
     >
       <Hero />
+      <Founder />
+      <Breath />
       <Client />
       <PanelHeading />
       <SchedulingPanel />
