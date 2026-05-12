@@ -602,7 +602,7 @@
   {
     "slug": "kadak-chai",
     "filename": "tea-grid",
-    "prompt": "Top-down editorial flat-lay photograph of 6 different chai blends arranged in 6 small piles on a dark warm wood surface, each pile a different color and texture (black tea with cardamom, masala chai, kashmiri kahwa, ginger chai, mint green chai, saffron chai), small handwritten chalk labels below each pile, single overhead warm light, photoreal, ultra-detailed tea textures, magazine quality, no humans, deep warm color grade",
+    "prompt": "Top-down editorial flat-lay of 6 distinct chai blends arranged in 6 small piles on a dark warm wood surface, each pile clearly different in color and texture (a black tea pile, a masala chai pile, a green herbal pile, a saffron pile, a ginger pile, a rose petal pile), no text or labels anywhere in the image, soft warm overhead light, photoreal, ultra-detailed tea and spice texture, magazine quality, no humans, deep warm color grade",
     "width": 1920,
     "height": 1080,
     "aspectRatio": "16:9"
@@ -666,7 +666,7 @@
   {
     "slug": "nomad-trails",
     "filename": "arjun-sneha-portrait",
-    "prompt": "Editorial double-portrait of Arjun and Sneha, an Indian couple in their early thirties, both seasoned mountaineers and trek guides, standing side-by-side wearing premium technical outdoor jackets (one in pine green, one in deep navy), backpacks on, snow-covered mountain landscape behind them, soft golden hour light, slight breeze visible in their hair and jacket fabric, confident weathered expressions looking off-camera, photoreal, ultra-sharp on their faces, magazine quality, Patagonia editorial aesthetic",
+    "prompt": "Editorial double-portrait of Arjun and Sneha, an Indian couple in their early thirties, both seasoned mountaineers and trek guides, standing side-by-side wearing unbranded technical outdoor jackets in solid colors (one in pine green, one in deep navy), NO logos, NO brand marks, NO labels visible anywhere on clothing or gear, plain unbranded backpacks, snow-covered Himalayan mountain landscape behind them, soft golden hour light, slight breeze visible in their hair and jacket fabric, confident weathered expressions looking off-camera, photoreal, ultra-sharp on their faces, magazine quality, editorial aesthetic",
     "width": 1920,
     "height": 1080,
     "aspectRatio": "16:9"
@@ -770,7 +770,7 @@
   {
     "slug": "sugar-lane",
     "filename": "cake-slice",
-    "prompt": "Editorial photograph of a single slice of layered birthday cake on a white plate, cross-section visible showing distinct cake layers, frosting, and strawberry filling, soft natural light, photoreal, ultra-detailed pastry texture, magazine quality, no humans, pastel color grade, premium patisserie aesthetic",
+    "prompt": "Editorial photograph of a single slice of Pistachio Rose cake on a small white plate, cross-section visible showing three pale green pistachio sponge layers separated by rose-pink buttercream and crushed pistachio pieces, soft natural side light, photoreal, ultra-detailed pastry texture, magazine quality, no humans, pastel color grade, premium patisserie aesthetic",
     "width": 1080,
     "height": 1350,
     "aspectRatio": "4:5"
@@ -818,7 +818,7 @@
   {
     "slug": "brightpath",
     "filename": "hero-classroom",
-    "prompt": "Editorial photograph of a clean modern tutoring classroom in the UAE, single student studying at a wooden desk with an open laptop and notebook, soft warm window light streaming in, no faces visible (over-the-shoulder view), photoreal, ultra-detailed, magazine quality, premium education editorial aesthetic, neutral warm color grade",
+    "prompt": "Editorial photograph of a one-on-one tutoring scene: a 14-year-old female student of Middle Eastern descent sitting at a wooden desk with an open math textbook and notebook, an adult male tutor of Middle Eastern descent leaning over from beside her pointing at an equation on a small whiteboard mounted on the desk, both visible in frame, soft warm late-afternoon window light from the left, premium tutoring center interior with shelves blurred in background, photoreal, ultra-detailed, magazine quality, neutral warm color grade, no logos visible, both faces partially visible but focus is on the moment of explanation",
     "width": 1920,
     "height": 1080,
     "aspectRatio": "16:9"
