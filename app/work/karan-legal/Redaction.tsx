@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -28,7 +28,11 @@ const TRANSCRIPT: Line[] = [
 
 export default function Redaction() {
   const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const barRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [revealed, setRevealed] = useState<boolean[]>(
+    () => TRANSCRIPT.map(() => false)
+  );
 
   useGSAP(
     () => {
@@ -41,20 +45,40 @@ export default function Redaction() {
 
       if (reduced) {
         gsap.set(bars, { xPercent: 110 });
+        setRevealed(TRANSCRIPT.map(() => true));
         return;
       }
 
       gsap.set(bars, { xPercent: 0 });
-      gsap.to(bars, {
-        xPercent: 110,
-        stagger: 0.08,
-        ease: "power2.inOut",
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 75%",
-          end: "bottom 30%",
+          start: "top top",
+          end: "+=120%",
+          pin: true,
           scrub: 1,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const idx = Math.floor(self.progress * bars.length);
+            setRevealed((prev) => {
+              if (prev.every((v, i) => v === i < idx)) return prev;
+              return TRANSCRIPT.map((_, i) => i < idx);
+            });
+          },
         },
+      });
+
+      bars.forEach((bar, i) => {
+        tl.to(
+          bar,
+          {
+            xPercent: 110,
+            duration: 0.7,
+            ease: "power2.inOut",
+          },
+          i * 0.6
+        );
       });
     },
     { scope: sectionRef }
@@ -64,13 +88,17 @@ export default function Redaction() {
     <section
       ref={sectionRef}
       style={{
-        paddingBlock: 144,
+        position: "relative",
+        minHeight: "100vh",
         borderTop: "1px solid var(--page-border)",
+        display: "flex",
+        alignItems: "center",
+        paddingBlock: 96,
       }}
     >
       <div
         className="container-x"
-        style={{ maxWidth: 1100, marginInline: "auto" }}
+        style={{ maxWidth: 1100, marginInline: "auto", width: "100%" }}
       >
         <motion.p
           initial={{ opacity: 0 }}
@@ -83,7 +111,7 @@ export default function Redaction() {
             letterSpacing: "0.18em",
             color: "var(--page-text)",
             margin: 0,
-            marginBottom: 32,
+            marginBottom: 24,
           }}
         >
           §02 · THE INTERVENTION
@@ -98,12 +126,12 @@ export default function Redaction() {
             fontFamily:
               "var(--font-spectral), 'Source Serif 4', Georgia, serif",
             fontWeight: 500,
-            fontSize: "clamp(36px, 5.4vw, 60px)",
+            fontSize: "clamp(32px, 5vw, 52px)",
             letterSpacing: "-0.02em",
             lineHeight: 1.1,
             color: "var(--page-text)",
             margin: 0,
-            marginBottom: 24,
+            marginBottom: 16,
           }}
         >
           What was underneath the noise.
@@ -115,21 +143,22 @@ export default function Redaction() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, delay: 0.1, ease: EASE }}
           style={{
-            fontSize: 16,
+            fontSize: 15,
             color: "var(--page-text-2)",
             lineHeight: 1.7,
             margin: 0,
-            marginBottom: 64,
+            marginBottom: 40,
             maxWidth: 560,
           }}
         >
           Below is an actual prospect intake from week one. Scroll to
-          reveal.
+          reveal, line by line.
         </motion.p>
 
         <div
+          ref={cardRef}
           style={{
-            maxWidth: 720,
+            maxWidth: 760,
             background: "var(--page-surface-1)",
             border: "1px solid var(--page-border)",
             padding: 32,
@@ -174,56 +203,19 @@ export default function Redaction() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: 14,
+              gap: 12,
             }}
           >
             {TRANSCRIPT.map((line, i) => (
-              <div
+              <TranscriptLine
                 key={i}
-                style={{
-                  position: "relative",
-                  overflow: "hidden",
-                  paddingBlock: 4,
+                line={line}
+                index={i}
+                revealed={revealed[i]}
+                barRef={(el) => {
+                  barRefs.current[i] = el;
                 }}
-              >
-                <p
-                  style={{
-                    fontFamily:
-                      "var(--font-geist-mono), monospace",
-                    fontSize: 13,
-                    lineHeight: 1.6,
-                    color: "var(--page-text)",
-                    margin: 0,
-                  }}
-                >
-                  <span
-                    style={{
-                      color:
-                        line.speaker === "QUALIFIER"
-                          ? "var(--page-oxblood)"
-                          : "var(--page-text-3)",
-                      letterSpacing: "0.06em",
-                      marginRight: 12,
-                    }}
-                  >
-                    {line.speaker}:
-                  </span>
-                  {line.text}
-                </p>
-                <div
-                  ref={(el) => {
-                    barRefs.current[i] = el;
-                  }}
-                  aria-hidden
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "var(--page-text)",
-                    transformOrigin: "left center",
-                    willChange: "transform",
-                  }}
-                />
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -236,12 +228,77 @@ export default function Redaction() {
             letterSpacing: "0.04em",
             color: "var(--page-text-2)",
             margin: 0,
-            marginTop: 28,
+            marginTop: 24,
           }}
         >
           This entire intake took 4 minutes. Karan never picked up.
         </p>
       </div>
     </section>
+  );
+}
+
+function TranscriptLine({
+  line,
+  revealed,
+  barRef,
+}: {
+  line: Line;
+  index: number;
+  revealed: boolean;
+  barRef: (el: HTMLDivElement | null) => void;
+}) {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => revealed && setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        paddingBlock: 6,
+        paddingInline: revealed && hover ? 10 : 0,
+        marginInline: revealed && hover ? -10 : 0,
+        background: revealed && hover ? "var(--page-surface-2)" : "transparent",
+        borderRadius: 2,
+        transition: "background 0.25s ease, padding 0.25s ease, margin 0.25s ease",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "var(--font-geist-mono), monospace",
+          fontSize: 13,
+          lineHeight: 1.6,
+          color: "var(--page-text)",
+          margin: 0,
+        }}
+      >
+        <span
+          style={{
+            color:
+              line.speaker === "QUALIFIER"
+                ? "var(--page-oxblood)"
+                : "var(--page-text-3)",
+            letterSpacing: "0.06em",
+            marginRight: 12,
+          }}
+        >
+          {line.speaker}:
+        </span>
+        {line.text}
+      </p>
+      <div
+        ref={barRef}
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "var(--page-text)",
+          transformOrigin: "left center",
+          willChange: "transform",
+        }}
+      />
+    </div>
   );
 }
