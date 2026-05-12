@@ -11,7 +11,8 @@ import VideoMoment from "./VideoMoment";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Fraunces stands in as the editorial serif for body and small display.
@@ -86,12 +87,18 @@ export default function EarthAndFirePage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="016"
-        archetype="a handmade ceramics studio"
-        timeline="9 weeks"
-        pattern="Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "earth-and-fire")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "9 weeks"}
+            pattern={meta.pattern ?? "Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Maker />
       <Wheel />
       <Collection />

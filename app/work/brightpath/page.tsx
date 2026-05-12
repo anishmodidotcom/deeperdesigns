@@ -9,7 +9,8 @@ import Portal from "./Portal";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Source Serif 4 carries the academic gravitas the brief asked for
@@ -81,12 +82,18 @@ export default function BrightPathPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="020"
-        archetype="a neighborhood tutoring practice"
-        timeline="9 weeks"
-        pattern="Tutors. Coaches. Any one-person education practice that needs to look like an institution."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "brightpath")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "9 weeks"}
+            pattern={meta.pattern ?? "Tutors. Coaches. Any one-person education practice that needs to look like an institution."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Omar />
       <Progress />
       <Programs />

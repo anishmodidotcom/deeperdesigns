@@ -10,7 +10,8 @@ import Atelier from "./Atelier";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const cormorant = Cormorant({
@@ -68,12 +69,18 @@ export default function OudAndEmberPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="009"
-        archetype="a bespoke perfume atelier"
-        timeline="11 days"
-        pattern="Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "oud-and-ember")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "11 days"}
+            pattern={meta.pattern ?? "Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Client />
       <Quiz />
       <Library />

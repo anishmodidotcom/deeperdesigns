@@ -9,7 +9,8 @@ import Studio from "./Studio";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Yellowtail carries the script-led personality (a single-weight
@@ -82,12 +83,18 @@ export default function SugarLanePage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="019"
-        archetype="a home bakery"
-        timeline="10 days"
-        pattern="Home bakeries. Caterers. Custom-order food businesses run by one person and the oven."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "sugar-lane")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Home bakeries. Caterers. Custom-order food businesses run by one person and the oven."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Farah />
       <CakeBuild />
       <Menu />

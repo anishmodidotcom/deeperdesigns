@@ -10,7 +10,8 @@ import Buyer from "./Buyer";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const outfit = Outfit({
@@ -64,12 +65,18 @@ export default function AutoBazaarPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="007"
-        archetype="a used-car dealership"
-        timeline="8 days"
-        pattern="Used-car lots. Dealerships. Any inventory business pricing by feel."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "autobazaar")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "8 days"}
+            pattern={meta.pattern ?? "Used-car lots. Dealerships. Any inventory business pricing by feel."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Lot />
       <Pricing />

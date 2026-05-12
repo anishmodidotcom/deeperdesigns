@@ -11,7 +11,8 @@ import Capabilities from "./Capabilities";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const spaceGrotesk = Space_Grotesk({
@@ -65,12 +66,18 @@ export default function BharatSteelPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="002"
-        archetype="a B2B steel trading company"
-        timeline="7 days"
-        pattern="Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "bharat-steel")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "7 days"}
+            pattern={meta.pattern ?? "Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Family />
       <Story />
       <RebarGrid />

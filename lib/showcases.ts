@@ -39,6 +39,9 @@ export type Showcase = {
   objectives: Objective[];
   live?: boolean;
   liveUrl?: string;
+  timeline?: string;
+  pains?: string[];
+  pattern?: string;
 };
 
 export const SHOWCASES: Showcase[] = [
@@ -67,6 +70,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/veda-glow/hero-bottle.webp",
     industries: ["Wellness / Beauty / Skincare", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    timeline: "5 days",
+    pains: [
+      "40 DMs a day. All asking the same thing.",
+      "Every customer needs a different combination.",
+      "Slow replies mean lost sales.",
+      "PDFs do not work. Nobody reads them.",
+    ],
+    pattern:
+      "Skincare brands. Wellness brands. Any D2C with high-volume customer questions.",
   },
   {
     number: "02",
@@ -79,6 +91,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/bharat-steel/hero-coil.webp",
     industries: ["Manufacturing / Industrial"],
     objectives: ["Operations", "Founder Overload"],
+    timeline: "7 days",
+    pains: [
+      "Quotes go out on WhatsApp. Half are forgotten.",
+      "Stock is a guess until someone walks the yard.",
+      "The price list lives in three different Excels.",
+      "A delivery slip is a photo on a phone.",
+    ],
+    pattern:
+      "Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp.",
   },
   {
     number: "03",
@@ -91,6 +112,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/meera-wellness/hero-pose.webp",
     industries: ["Wellness / Beauty / Skincare", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    timeline: "10 days",
+    pains: [
+      "Bookings live on three calendars and a notebook.",
+      "Renewals are remembered or forgotten by hand.",
+      "Every client needs a slightly different program.",
+      "The intake form is a PDF. Nobody fills it in.",
+    ],
+    pattern:
+      "Yoga studios. Pilates studios. Therapists. Any wellness practice with packages and renewals.",
   },
   {
     number: "04",
@@ -103,6 +133,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/zaatar-republic/hero-wrap.webp",
     industries: ["F&B / Restaurants"],
     objectives: ["Operations", "Founder Overload"],
+    timeline: "12 days",
+    pains: [
+      "Four locations. Four POS systems. No single view.",
+      "Demand is guessed. Waste is found in the trash bin.",
+      "Unit economics live in a manager's head.",
+      "The dashboard is a WhatsApp message at 11pm.",
+    ],
+    pattern:
+      "QSR chains. Multi-location restaurants. Any food brand running on gut feel and a POS dump.",
   },
   {
     number: "05",
@@ -115,6 +154,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/studio-noor/hero-room.webp",
     industries: ["Creative / Studios", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    timeline: "14 days",
+    pains: [
+      "Eight WhatsApp groups for one project.",
+      "Material approvals get lost between chats.",
+      "The client asks for status three times a day.",
+      "Invoices and selections live in different folders.",
+    ],
+    pattern:
+      "Interior designers. Architects. Any project-based service business juggling clients on WhatsApp.",
   },
   {
     number: "06",
@@ -127,6 +175,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/smilefirst/hero-clinic.webp",
     industries: ["Healthcare / Clinics"],
     objectives: ["Customer Experience", "Operations", "Growth"],
+    timeline: "10 days",
+    pains: [
+      "A recall list sits in a drawer.",
+      "No-shows eat a third of the week.",
+      "The patient form is on paper. The patient is on a phone.",
+      "Follow-up is one person, on slow days, when they remember.",
+    ],
+    pattern:
+      "Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up.",
   },
   {
     number: "07",
@@ -139,6 +196,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/autobazaar/hero-sedan.webp",
     industries: ["Retail / D2C"],
     objectives: ["Operations", "Growth"],
+    timeline: "8 days",
+    pains: [
+      "Sixty cars on the lot. Sixty pricing decisions made by feel.",
+      "The competitor across the road just dropped prices. We do not know.",
+      "Days on lot is a number nobody tracks.",
+      "Test drives get booked over phone calls and forgotten texts.",
+    ],
+    pattern:
+      "Used-car lots. Dealerships. Any inventory business pricing by feel.",
   },
   {
     number: "08",
@@ -151,6 +217,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/stumpvision/hero-batsman.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Growth"],
+    timeline: "10 days",
+    pains: [
+      "Parents on the sidelines, asking how is my child doing.",
+      "Stats live in a coach's notebook.",
+      "Match selection feels political. It is not, but it looks it.",
+      "Renewals depend on a single hand-written letter home.",
+    ],
+    pattern:
+      "Coaching academies. Music schools. Skill-building businesses with parents on the sidelines.",
   },
   {
     number: "09",
@@ -163,6 +238,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/oud-and-ember/hero-bottle.webp",
     industries: ["Wellness / Beauty / Skincare", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    timeline: "11 days",
+    pains: [
+      "Fifteen scents. Every customer asks which is for me.",
+      "Sampling is a counter conversation. It does not scale.",
+      "The bottle has a label. The customer wants their name on it.",
+      "Online conversion is half of what the boutique does.",
+    ],
+    pattern:
+      "Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give.",
   },
   {
     number: "10",
@@ -175,6 +259,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/hivedesk/hero-space.webp",
     industries: ["Hospitality / Travel", "Professional Services"],
     objectives: ["Operations", "Founder Overload"],
+    timeline: "22 days",
+    pains: [
+      "Six different tools. None of them talk to each other.",
+      "Churn happens silently, one missed renewal at a time.",
+      "Room bookings clash. Nobody knows whose fault it is.",
+      "The owner runs the floor and the spreadsheet.",
+    ],
+    pattern:
+      "Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving.",
   },
   {
     number: "11",
@@ -187,6 +280,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/malabar-spice/hero-pepper.webp",
     industries: ["F&B / Restaurants", "Retail / D2C"],
     objectives: ["Growth", "Customer Experience"],
+    timeline: "8 days",
+    pains: [
+      "Sixty-three years of work. A website that does not show it.",
+      "Buyers Google us and leave.",
+      "The archive lives in a wooden cabinet in Kochi.",
+      "New buyers ask for a brochure we do not have.",
+    ],
+    pattern:
+      "Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work.",
   },
   {
     number: "12",
@@ -199,6 +301,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/pawstay/hero-dog.webp",
     industries: ["Hospitality / Travel", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    timeline: "10 days",
+    pains: [
+      "Pet parents are anxious. They want a photo every hour.",
+      "Bookings are taken over WhatsApp. Some get missed.",
+      "Special instructions are written on a paper taped to the kennel.",
+      "Owners ask for the same camera link every day.",
+    ],
+    pattern:
+      "Boarding facilities. Salons. Service businesses with anxious clients.",
   },
   {
     number: "13",
@@ -211,6 +322,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/sahaja-farms/hero-field.webp",
     industries: ["Agriculture / Farms"],
     objectives: ["Operations", "Founder Overload"],
+    timeline: "12 days",
+    pains: [
+      "Two hundred acres. Decisions made over the kitchen table.",
+      "Subscribers cancel and we hear about it from the delivery boy.",
+      "What to plant next season is a hand-drawn map.",
+      "Compost cycles are tracked on the back of an invoice book.",
+    ],
+    pattern:
+      "CSA farms. Organic brands. Subscription-based food businesses with seasonal supply.",
   },
   {
     number: "14",
@@ -223,6 +343,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/karan-legal/hero-pen.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Growth", "Founder Overload"],
+    timeline: "9 days",
+    pains: [
+      "Forty intake calls a week. Three of them turn into clients.",
+      "The phone rings while we are in a hearing.",
+      "Every prospect needs the same five questions answered.",
+      "Half the leads are not even in our practice area.",
+    ],
+    pattern:
+      "Independent lawyers. CAs. Consultants. Any solo practice drowning in unqualified intakes.",
   },
   {
     number: "15",
@@ -235,6 +364,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/zara-fitness/hero-zara.webp",
     industries: ["Wellness / Beauty / Skincare", "Professional Services"],
     objectives: ["Growth", "Customer Experience"],
+    timeline: "12 days",
+    pains: [
+      "Two hundred and eighty thousand followers. No place to send them.",
+      "DMs come in. None convert. They scroll on.",
+      "The PDF programs feel like everyone else's PDF programs.",
+      "There is no membership. There is no merch. There is only Instagram.",
+    ],
+    pattern:
+      "Personal trainers. Fitness creators. Anyone trying to turn followers into paying members.",
   },
   {
     number: "16",
@@ -247,6 +385,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/earth-and-fire/hero-vase.webp",
     industries: ["Creative / Studios", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    timeline: "9 weeks",
+    pains: [
+      "Drops sell out in ninety minutes. Then silence for a month.",
+      "Comments asking for custom orders. No way to take them.",
+      "Photography eats half the week.",
+      "The maker is at the wheel and on Instagram and on email.",
+    ],
+    pattern:
+      "Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes.",
   },
   {
     number: "17",
@@ -259,6 +406,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/kadak-chai/hero-tin.webp",
     industries: ["F&B / Restaurants", "Retail / D2C"],
     objectives: ["Growth", "Customer Experience"],
+    timeline: "7 weeks",
+    pains: [
+      "Three generations of blends. No brand to carry them.",
+      "Wholesale is the whole business. Margins are thin.",
+      "Customers ask for tins. We sell in plastic packets.",
+      "The blends are stronger than the packaging.",
+    ],
+    pattern:
+      "Wholesale-to-D2C brands. Family supply businesses going direct. Any product worth a tin.",
   },
   {
     number: "18",
@@ -271,6 +427,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/nomad-trails/hero-ridge.webp",
     industries: ["Hospitality / Travel"],
     objectives: ["Customer Experience", "Growth"],
+    timeline: "10 days",
+    pains: [
+      "Three trips a year. Eight trekkers a trip. Sold out, but quietly.",
+      "Enquiries arrive at midnight and get answered at lunch.",
+      "The booking funnel is a Google Form and a prayer.",
+      "Past trekkers ask when the next one is. We have not told them.",
+    ],
+    pattern:
+      "Trek outfits. Small-group tours. Niche travel brands selling experience, not seats.",
   },
   {
     number: "19",
@@ -283,6 +448,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/sugar-lane/hero-cake.webp",
     industries: ["F&B / Restaurants"],
     objectives: ["Operations", "Founder Overload", "Customer Experience"],
+    timeline: "10 days",
+    pains: [
+      "Could bake forty cakes a week. Baked four.",
+      "Every order is a back-and-forth on WhatsApp.",
+      "Reference images get lost in the chat.",
+      "The oven is free. The baker is on the phone.",
+    ],
+    pattern:
+      "Home bakeries. Caterers. Custom-order food businesses run by one person and the oven.",
   },
   {
     number: "20",
@@ -295,6 +469,15 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/brightpath/hero-classroom.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Operations", "Founder Overload"],
+    timeline: "9 weeks",
+    pains: [
+      "Every parent wants a progress report. Every week.",
+      "Weekly emails are written by hand. They look it.",
+      "The tutor is in a class while the parent is on WhatsApp.",
+      "Renewals are awkward calls when the term ends.",
+    ],
+    pattern:
+      "Tutors. Coaches. Any one-person education practice that needs to look like an institution.",
   },
 ];
 

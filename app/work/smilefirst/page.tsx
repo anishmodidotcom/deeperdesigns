@@ -9,7 +9,8 @@ import Journey from "./Journey";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -63,12 +64,18 @@ export default function SmileFirstPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="006"
-        archetype="an urban dental clinic"
-        timeline="10 days"
-        pattern="Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "smilefirst")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Funnel />
       <System />

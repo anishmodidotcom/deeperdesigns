@@ -9,7 +9,8 @@ import Bridge from "./Bridge";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const instrument = Instrument_Serif({
@@ -64,12 +65,18 @@ export default function StudioNoorPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="005"
-        archetype="a boutique interior design studio"
-        timeline="14 days"
-        pattern="Interior designers. Architects. Any project-based service business juggling clients on WhatsApp."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "studio-noor")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "14 days"}
+            pattern={meta.pattern ?? "Interior designers. Architects. Any project-based service business juggling clients on WhatsApp."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Chaos />
       <Walkthrough />

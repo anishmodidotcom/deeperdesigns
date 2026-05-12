@@ -12,7 +12,8 @@ import Compost from "./Compost";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Bricolage Grotesque on Google Fonts ships normal-only. Italic display
@@ -75,12 +76,18 @@ export default function SahajaFarmsPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="013"
-        archetype="an organic farm CSA"
-        timeline="12 days"
-        pattern="CSA farms. Organic brands. Subscription-based food businesses with seasonal supply."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "sahaja-farms")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "12 days"}
+            pattern={meta.pattern ?? "CSA farms. Organic brands. Subscription-based food businesses with seasonal supply."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Farmer />
       <Dashboard />
       <WhatToPlant />

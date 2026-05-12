@@ -13,7 +13,8 @@ import DailyFlow from "./DailyFlow";
 import Impact from "./Impact";
 import About from "./About";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 const cormorant = Cormorant_Garamond({
@@ -73,12 +74,18 @@ export default function MeeraWellnessPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="003"
-        archetype="a yoga and wellness studio"
-        timeline="10 days"
-        pattern="Yoga studios. Pilates studios. Therapists. Any wellness practice with packages and renewals."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "meera-wellness")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "10 days"}
+            pattern={meta.pattern ?? "Yoga studios. Pilates studios. Therapists. Any wellness practice with packages and renewals."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Founder />
       <Breath />
       <Client />

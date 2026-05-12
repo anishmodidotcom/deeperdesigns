@@ -10,7 +10,8 @@ import VideoCTA from "./VideoCTA";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
-import PossibilityNote from "@/components/PossibilityNote";
+import PainBlock from "@/components/PainBlock";
+import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
 // Anton stands in for Druk Wide Bold (paid). Single regular weight, but
@@ -70,12 +71,18 @@ export default function ZaraFitnessPage() {
         })}
       />
       <Hero />
-      <PossibilityNote
-        number="015"
-        archetype="a personal-brand fitness platform"
-        timeline="12 days"
-        pattern="Personal trainers. Fitness creators. Anyone trying to turn followers into paying members."
-      />
+      {(() => {
+        const meta = SHOWCASES.find((s) => s.slug === "zara-fitness")!;
+        return (
+          <PainBlock
+            number={meta.number}
+            archetype={meta.archetype}
+            timeline={meta.timeline ?? "12 days"}
+            pattern={meta.pattern ?? "Personal trainers. Fitness creators. Anyone trying to turn followers into paying members."}
+            pains={meta.pains}
+          />
+        );
+      })()}
       <Problem />
       <Platform />
       <Programs />
