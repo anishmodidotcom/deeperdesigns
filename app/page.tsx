@@ -3,6 +3,7 @@ import Marquee from "@/components/sections/Marquee";
 import SoundLikeYou from "@/components/sections/SoundLikeYou";
 import WhatWeBuild from "@/components/sections/WhatWeBuild";
 import Portfolio from "@/components/sections/Portfolio";
+import LiveProducts from "@/components/sections/LiveProducts";
 import Manifesto from "@/components/sections/Manifesto";
 import HowItWorks from "@/components/sections/HowItWorks";
 import WhyNotDIY from "@/components/sections/WhyNotDIY";
@@ -17,6 +18,7 @@ export default function Home() {
       <SoundLikeYou />
       <WhatWeBuild />
       <Portfolio />
+      <LiveProducts />
       <Manifesto />
       <WhyNotDIY />
       <HowItWorks />
