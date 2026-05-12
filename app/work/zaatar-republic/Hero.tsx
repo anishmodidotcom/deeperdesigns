@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function Hero() {
@@ -9,84 +10,118 @@ export default function Hero() {
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
         paddingInline: 24,
         paddingBlock: 96,
         overflow: "hidden",
       }}
     >
+      <div aria-hidden style={{ position: "absolute", inset: 0 }}>
+        <Image
+          src="/images/zaatar-republic/hero-wrap.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(110deg, rgba(13,8,6,0.96) 0%, rgba(13,8,6,0.55) 55%, rgba(13,8,6,0.2) 100%)",
+          }}
+        />
+      </div>
+
       <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(circle at 50% 50%, rgba(232,93,42,0.18) 0%, rgba(232,93,42,0.05) 40%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <motion.h1
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="container-x"
         style={{
           position: "relative",
-          fontFamily: "var(--font-dm-sans), system-ui, sans-serif",
-          fontWeight: 700,
-          fontSize: "clamp(56px, 10vw, 110px)",
-          letterSpacing: "-0.04em",
-          lineHeight: 1.0,
-          margin: 0,
+          maxWidth: 1320,
+          marginInline: "auto",
+          width: "100%",
         }}
       >
-        <span style={{ display: "block", color: "var(--page-accent)" }}>
-          Zaatar
-        </span>
-        <span style={{ display: "block", color: "var(--page-text)" }}>
-          Republic
-        </span>
-      </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
+            color: "var(--page-accent)",
+            margin: 0,
+            marginBottom: 40,
+          }}
+        >
+          ZAATAR REPUBLIC · CASE STUDY 004 · SHARJAH
+        </motion.p>
 
-      <motion.p
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "relative",
-          fontFamily: "var(--font-geist-mono), monospace",
-          fontSize: 14,
-          textTransform: "uppercase",
-          letterSpacing: "0.1em",
-          color: "var(--page-text-2)",
-          margin: 0,
-          marginTop: 16,
-        }}
-      >
-        Operations Intelligence
-      </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            fontFamily: "var(--font-dm-sans), system-ui, sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(56px, 11vw, 156px)",
+            letterSpacing: "-0.04em",
+            lineHeight: 0.92,
+            margin: 0,
+            textTransform: "uppercase",
+            maxWidth: 1100,
+          }}
+        >
+          <span style={{ display: "block", color: "var(--page-accent)" }}>
+            Zaatar
+          </span>
+          <span style={{ display: "block", color: "var(--page-text)" }}>
+            Republic
+          </span>
+        </motion.h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "relative",
-          fontFamily: "var(--font-dm-sans), system-ui, sans-serif",
-          fontSize: 18,
-          color: "var(--page-text-2)",
-          maxWidth: 500,
-          margin: 0,
-          marginTop: 32,
-          lineHeight: 1.6,
-        }}
-      >
-        4 locations. 1,000 orders a day. Now running on data instead of gut
-        feel.
-      </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            marginTop: 40,
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            maxWidth: 540,
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: 12,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--page-accent-2)",
+              margin: 0,
+            }}
+          >
+            OPERATIONS INTELLIGENCE
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-dm-sans), system-ui, sans-serif",
+              fontSize: 19,
+              color: "var(--page-text-2)",
+              margin: 0,
+              lineHeight: 1.65,
+            }}
+          >
+            Four locations across Sharjah and Ajman. A thousand orders a
+            day. Now running on data instead of gut feel.
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }

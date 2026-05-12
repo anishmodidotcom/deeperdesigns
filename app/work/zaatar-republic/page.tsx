@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
 import Numbers from "./Numbers";
 import CoreProblem from "./CoreProblem";
 import Solution from "./Solution";
@@ -38,6 +39,7 @@ export default function ZaatarRepublicPage() {
   return (
     <div className={dmSans.variable} style={pageStyle}>
       <Hero />
+      <Founder />
       <Numbers />
       <CoreProblem />
       <Solution />
