@@ -107,6 +107,23 @@ export default function Manifesto() {
         >
           Systems that save time, lower hassle, and bring wow.
         </p>
+
+        <p
+          style={{
+            fontSize: "clamp(18px, 2.4vw, 24px)",
+            fontStyle: "italic",
+            fontFamily: "var(--font-geist-mono), monospace",
+            color: "var(--text-2)",
+            marginTop: 48,
+            maxWidth: 700,
+            lineHeight: 1.55,
+            letterSpacing: "-0.005em",
+          }}
+        >
+          &ldquo;Anish here. I am not interested in building the next
+          Salesforce. I am interested in building the next thing the chai
+          vendor at the corner wishes existed.&rdquo;
+        </p>
       </div>
     </section>
   );

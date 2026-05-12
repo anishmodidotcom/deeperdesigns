@@ -9,6 +9,7 @@ import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import IdleNudge from "@/components/IdleNudge";
 import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
@@ -63,6 +64,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <WhatsAppButton />
+            <IdleNudge />
           </SmoothScroll>
         </body>
       </html>

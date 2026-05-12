@@ -10,6 +10,7 @@ import NotDoing from "./NotDoing";
 import Contact from "./Contact";
 import FAQ from "./FAQ";
 import WhyNotDIY from "@/components/sections/WhyNotDIY";
+import LabNotes from "@/components/sections/LabNotes";
 import { StructuredData, ANISH_PERSON_LD } from "@/components/StructuredData";
 
 const fraunces = Fraunces({
@@ -36,6 +37,7 @@ export default function AboutPage() {
       <Studio />
       <WhyNotDIY />
       <Selectivity />
+      <LabNotes />
       <FAQ />
       <NotDoing />
       <Contact />
