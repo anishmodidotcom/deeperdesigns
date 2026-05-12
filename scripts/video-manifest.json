@@ -47,6 +47,27 @@
     "prompt": "Cinematic locked-off shot of a snow-covered Himalayan mountain ridge under a deep blue sky, fine wind-blown snow drifts continuously across the ridgeline from left to right, soft golden sunrise light catching the snow surface, no humans visible, no camera movement, photoreal, ultra-high detail on snow texture and ridge contours, magazine quality, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, National Geographic feature aesthetic, cold cinematic color grade, dramatic mountain landscape",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "oil-loop",
+    "prompt": "Cinematic locked-off close-up macro shot of golden amber Ayurvedic facial oil pouring slowly in a thin steady stream from an amber glass dropper bottle into a small brass bowl, deep warm brown background, single dramatic golden side light from the upper left catching the falling oil and creating reflections in the bowl, fine ripples on the oil surface as it pours, photoreal, ultra-high detail on oil texture and glass dropper, magazine quality, no humans, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, premium beauty editorial aesthetic, deep warm color grade",
+    "aspectRatio": "16:9",
+    "duration": 8
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "spit-loop",
+    "prompt": "Cinematic locked-off close-up of a vertical shawarma spit slowly rotating in a Lebanese restaurant kitchen, slow-roasted lamb glistening with juices dripping toward the heat source below, flames flickering gently behind the meat, single hot warm light, deep warm brown background, photoreal, ultra-high detail on meat and flame texture, magazine quality, no humans visible, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, late-night street-food editorial aesthetic, deep warm color grade",
+    "aspectRatio": "16:9",
+    "duration": 8
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "lot-loop",
+    "prompt": "Cinematic locked-off slow horizontal panning shot across a row of polished luxury sedans parked at night in a Dubai dealership lot, electric cyan neon lights reflecting on each car's hood as the camera moves, deep midnight blue sky with warm Dubai city glow in the distance, single dramatic light catching the chrome, photoreal, ultra-high detail on paint and reflection, magazine quality, no humans visible, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, midnight cinematic color grade, Carwow editorial aesthetic",
+    "aspectRatio": "16:9",
+    "duration": 8
   }
 ]
 

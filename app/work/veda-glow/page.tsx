@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
 import Problem from "./Problem";
 import Solution from "./Solution";
+import Quiz from "./Quiz";
 import Features from "./Features";
 import Metrics from "./Metrics";
 import About from "./About";
@@ -38,8 +40,10 @@ export default function VedaGlowPage() {
   return (
     <div className={playfair.variable} style={pageStyle}>
       <Hero />
+      <Founder />
       <Problem />
       <Solution />
+      <Quiz />
       <Features />
       <Metrics />
       <About />

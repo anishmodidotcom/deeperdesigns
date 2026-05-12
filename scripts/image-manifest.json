@@ -894,5 +894,645 @@
     "width": 1920,
     "height": 600,
     "aspectRatio": "16:9"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "hero-bottle",
+    "prompt": "Editorial luxury Ayurvedic skincare product photograph, a single tall amber glass dropper bottle with a black cap and minimalist label, sitting on a dark warm brown surface, soft single light from upper left creating dramatic shadow, fresh marigold flowers and a sprig of tulsi leaves arranged beside it, photoreal, ultra-detailed glass and oil texture, magazine quality, no humans, deep warm color grade, premium beauty editorial aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "priya-portrait",
+    "prompt": "Editorial portrait of Priya, a 32-year-old Indian female founder of an Ayurvedic skincare brand, sitting in her Jaipur studio, wearing a soft cream linen kurta, holding a small amber dropper bottle, soft warm window light from the side, looking thoughtfully off-camera with a slight smile, traditional Indian wooden interior blurred in background with brass bowls and dried herbs, photoreal, ultra-sharp on her face, magazine quality, warm color grade, founder portrait aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "ingredient-turmeric",
+    "prompt": "Macro photograph of fresh turmeric roots arranged on a dark slate surface, vivid orange-yellow color, water droplets visible on the skin, single dramatic side light, photoreal, ultra-detailed root texture, magazine quality, no humans, deep warm color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "ingredient-sandalwood",
+    "prompt": "Macro photograph of sandalwood shavings and a small sandalwood log on a dark warm brown surface, soft cream-colored wood with deep grain, single dramatic side light, photoreal, ultra-detailed wood texture and aromatic dust, magazine quality, no humans, deep warm color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "ingredient-rose",
+    "prompt": "Macro photograph of fresh damask rose petals piled on a dark warm brown surface, deep pink-red with dew, single dramatic side light, photoreal, ultra-detailed petal texture, magazine quality, no humans, deep warm color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "ingredient-neem",
+    "prompt": "Macro photograph of fresh neem leaves on a dark warm brown surface, deep green with serrated edges, single dramatic side light, photoreal, ultra-detailed leaf texture and veins, magazine quality, no humans, deep warm color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "product-line",
+    "prompt": "Editorial luxury skincare product line photograph, six amber glass dropper bottles and jars of different sizes arranged in a curated row on a dark warm brown surface, soft single light from upper left, minimalist labels, photoreal, ultra-detailed glass and label texture, magazine quality, no humans, deep warm color grade, premium beauty editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "hands-applying",
+    "prompt": "Close-up editorial photograph of a woman's hands applying golden oil to her cheek, soft warm window light, hands in soft focus, single dropper bottle visible in foreground, photoreal, ultra-detailed skin and oil texture, magazine quality, no face visible (cropped at chin), deep warm color grade, premium beauty aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "ayurvedic-kitchen",
+    "prompt": "Editorial photograph of a traditional Ayurvedic preparation kitchen, brass bowls of herbs and oils on a dark wooden table, copper pots in soft focus background, dried botanicals hanging, soft warm afternoon light, photoreal, ultra-detailed brass and wood texture, magazine quality, no humans, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "veda-glow",
+    "filename": "quiz-bg",
+    "prompt": "Editorial atmospheric photograph of a single amber dropper bottle on a dark warm brown wood surface with rich negative space around it, soft directional warm light, photoreal, ultra-detailed glass and wood grain, magazine quality, no humans, designed to sit behind a quiz UI overlay with lots of empty space, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "hero-coil",
+    "prompt": "Editorial industrial photograph of a tightly wound steel coil viewed close-up at an angle, brushed steel surface with subtle scratches and patina, single cold blue-white light from above, photoreal, ultra-detailed metal texture, magazine quality, no humans, cool desaturated industrial color grade, German Klöckner editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "warehouse-wide",
+    "prompt": "Editorial wide-angle photograph of a vast steel warehouse interior in Ahmedabad, towering racks of steel rebar and coils stretching into the distance, single overhead industrial fluorescent strip lighting, dust motes catching the light, photoreal, ultra-detailed steel and concrete texture, magazine quality, no humans visible, cool industrial color grade, brutalist aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "father-son-portrait",
+    "prompt": "Editorial portrait of a Gujarati father and son steel trading family, the father in his late fifties wearing a crisp white shirt, the son in his late twenties in a dark grey shirt, both standing side by side in their steel warehouse with stacks of rebar behind them, soft single industrial light from above, both confident expressions looking off-camera, photoreal, ultra-sharp on their faces, magazine quality, cool industrial color grade, family-business editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "rebar-stack",
+    "prompt": "Macro photograph of a stack of steel rebar rods of varying diameters viewed end-on, circular cross-sections forming a tight pattern, brushed steel surface, single cold light, photoreal, ultra-detailed steel texture, magazine quality, no humans, cool desaturated industrial color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "truck-loading",
+    "prompt": "Editorial photograph of a Tata truck being loaded with steel rebar at an Ahmedabad warehouse, overhead crane lowering a bundle of rebar onto the truck bed, single overhead light, photoreal, ultra-detailed metal and rust texture, magazine quality, no faces visible, cool industrial color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "blueprint-detail",
+    "prompt": "Macro photograph of a folded structural engineering blueprint on a dark steel desk, technical drawings of a reinforced concrete column visible in detail, a metal ruler and a mechanical pencil resting on it, single cold light from upper left, photoreal, ultra-detailed paper and ink texture, magazine quality, no humans, cool industrial color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "delivery-slip",
+    "prompt": "Macro photograph of a steel delivery challan slip on a dark steel surface, handwritten quantities in blue ink, official red stamp visible, slightly creased paper, single cold light, photoreal, ultra-detailed paper and ink texture, magazine quality, no humans, cool industrial color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "whatsapp-phone",
+    "prompt": "Editorial product photograph of a smartphone held in a worker's hand inside a steel warehouse, the phone screen showing a generic WhatsApp Business chat interface with messages visible, blurred steel rebar in the background, single cold light, photoreal, ultra-detailed screen and hand texture, magazine quality, partial hand only, cool industrial color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "rebar-diameter-grid",
+    "prompt": "Top-down editorial photograph of steel rebar samples of 8 different diameters arranged in a clean row from smallest to largest on a dark steel surface, end-on view showing circular cross-sections, single overhead cold light, photoreal, ultra-detailed brushed steel texture, magazine quality, no humans, cool industrial color grade, technical specification chart aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "bharat-steel",
+    "filename": "dashboard-bg-steel",
+    "prompt": "Abstract minimalist industrial texture, deep cold near-black with extremely subtle brushed steel grain barely visible, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "hero-pose",
+    "prompt": "Editorial photograph of a yoga instructor in her early thirties holding a graceful warrior pose on a natural-fiber yoga mat, soft morning window light streaming in from the side, light cream and sage interior with a few houseplants, wearing soft sage green activewear, calm focused expression, photoreal, ultra-detailed, magazine quality, soft pastel color grade, Glo yoga app editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "meera-portrait",
+    "prompt": "Editorial portrait of Meera, a 32-year-old Indian yoga instructor in Dubai, wearing a soft cream linen top, sitting cross-legged on a natural-fiber yoga mat, soft warm morning light from the side, looking thoughtfully off-camera with a calm smile, light cream studio interior with a single houseplant and a brass water bowl, photoreal, ultra-sharp on her face, magazine quality, soft pastel color grade, wellness brand portrait aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "mat-detail",
+    "prompt": "Macro photograph of a natural-fiber yoga mat surface, soft cream and sage texture, a single small smooth river stone resting on it, soft morning light, photoreal, ultra-detailed fiber and stone texture, magazine quality, no humans, soft pastel color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "dumbbell-flatlay",
+    "prompt": "Editorial flat-lay photograph of a single small cream-and-sage colored dumbbell, a rolled yoga mat, and a wooden block arranged on a light wood floor, soft morning light, photoreal, ultra-detailed material texture, magazine quality, no humans, soft pastel color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "phone-schedule",
+    "prompt": "Editorial photograph of a hand holding a smartphone showing a soft cream-and-sage wellness app interface with a weekly yoga schedule visible, light cream linen background visible behind, soft morning light, photoreal, ultra-detailed screen and hand texture, magazine quality, partial hand only, soft pastel color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "group-class",
+    "prompt": "Editorial wide-angle photograph of a small group yoga class with five women on natural-fiber mats holding a child's pose, soft morning light streaming through tall windows of a Dubai studio, light cream interior with a single houseplant, photoreal, ultra-detailed, magazine quality, no faces visible (overhead and side angle), soft pastel color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "savasana",
+    "prompt": "Editorial overhead photograph of a single woman in savasana corpse pose on a cream-and-sage natural-fiber yoga mat on a light wood floor, eyes closed, soft morning light, photoreal, ultra-detailed mat and floor texture, magazine quality, soft pastel color grade, wellness editorial aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "incense-macro",
+    "prompt": "Macro photograph of a single incense stick burning on a small brass holder, thin curl of smoke rising softly, dark warm background fading to light cream, single soft side light catching the smoke, photoreal, ultra-detailed smoke and ash texture, magazine quality, no humans, soft pastel color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "water-glass",
+    "prompt": "Editorial photograph of a clear glass tumbler of water resting on a rolled natural-fiber yoga mat on a light wood floor, condensation visible on the glass, soft morning light, photoreal, ultra-detailed glass and condensation texture, magazine quality, no humans, soft pastel color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "meera-wellness",
+    "filename": "journal-detail",
+    "prompt": "Macro photograph of an open beige linen-bound journal on a light wood surface, handwritten daily yoga and breathwork entries visible in soft pencil, a small dried flower pressed between the pages, soft morning side light, photoreal, ultra-detailed paper and pencil texture, magazine quality, no humans, soft pastel color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "hero-wrap",
+    "prompt": "Editorial macro photograph of a shawarma wrap being unwrapped, slow-roasted lamb shavings, tomato, pickle, and garlic toum visible inside soft warm flatbread, single hot warm light, juices dripping, photoreal, ultra-detailed food and bread texture, magazine quality, no humans, deep warm color grade, late-night street-food editorial aesthetic, Dishoom brand energy",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "restaurant-night",
+    "prompt": "Editorial photograph of a small bustling shawarma restaurant exterior at night in Sharjah UAE, warm orange neon signage glowing, condensation on the glass front, blurred customers visible inside, photoreal, ultra-detailed neon and glass texture, magazine quality, no faces visible, deep warm late-night color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "shawarma-shaving",
+    "prompt": "Editorial photograph of a Lebanese chef's hand shaving slow-roasted lamb shawarma from a vertical spit with a long knife, flames flickering visible on the spit, thin strips of meat falling toward the foreground, single hot warm light, blurred kitchen background, photoreal, ultra-detailed meat and flame texture, magazine quality, partial hand and knife only, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "toum-sauce",
+    "prompt": "Macro overhead photograph of a small white ceramic bowl of fluffy white garlic toum sauce being whipped, a wooden spoon mid-motion, a few raw garlic cloves and parsley sprigs scattered beside it on a dark wood surface, single hot warm light, photoreal, ultra-detailed sauce and garlic texture, magazine quality, no humans, deep warm color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "location-grid",
+    "prompt": "Editorial photograph of four small shawarma restaurant storefronts at night in the UAE arranged in a 2x2 photographic grid composite, each location with warm orange neon signage, distinct streetscapes, photoreal, ultra-detailed neon and storefront texture, magazine quality, no faces visible, deep warm late-night color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "customer-eating",
+    "prompt": "Editorial photograph of a customer's hands holding and biting into a shawarma wrap, late-night restaurant interior blurred warm in the background, single hot warm light, photoreal, ultra-detailed bread and skin texture, magazine quality, no face visible (cropped at chin), deep warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "packaging",
+    "prompt": "Editorial product photograph of a Zaatar Republic shawarma takeout box with bold orange and black branded paper sleeve, sitting on a warm wood surface with a small paper cup of toum sauce beside, single hot warm light, no readable text on the box, photoreal, ultra-detailed paper and food texture, magazine quality, no humans, deep warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "faisal-portrait",
+    "prompt": "Editorial portrait of Faisal, a 38-year-old Lebanese-Emirati shawarma restaurant owner, wearing a crisp white shirt and a dark apron, standing in his Sharjah kitchen with a vertical shawarma spit visible behind him, single warm overhead kitchen light, confident expression with a slight smile, photoreal, ultra-sharp on his face, magazine quality, deep warm color grade, restaurant owner portrait aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "kitchen-action",
+    "prompt": "Editorial wide-angle photograph of a busy shawarma kitchen in full action, two vertical spits with flames, prep counter with bowls of pickled vegetables and toum, blurred motion of a chef working, single hot overhead light, photoreal, ultra-detailed kitchen texture, magazine quality, no faces visible, deep warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "zaatar-republic",
+    "filename": "dashboard-bg-food",
+    "prompt": "Abstract minimalist texture, deep warm near-black with extremely subtle char and smoke pattern barely visible, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "ananya-portrait",
+    "prompt": "Editorial portrait of Ananya, a 33-year-old Indian female interior designer in Bangalore, wearing a soft cream blouse, sitting on a modernist linen sofa in her studio holding a fabric swatch book, soft warm window light from the side, calm focused expression looking off-camera with a slight smile, refined modernist interior with curated objects and a tall plant in soft focus, photoreal, ultra-sharp on her face, magazine quality, AD India editorial aesthetic, neutral warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "hero-room",
+    "prompt": "Editorial wide-angle photograph of a finished modernist living room interior in Bangalore designed by Studio Noor, oak floors, cream linen sofa, brass floor lamp, large oil painting on the wall, tall green palm in the corner, late afternoon natural light streaming through floor-to-ceiling windows, photoreal, ultra-detailed material texture, magazine quality, no humans, Cereal Magazine editorial aesthetic, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "mood-board",
+    "prompt": "Top-down editorial flat-lay of an interior design mood board on a light oak desk, fabric swatches in cream and rust and forest green, a small ceramic vase, a sample of oak wood, a brass tap, a piece of marble, all curated and arranged, soft natural light, photoreal, ultra-detailed material texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "blueprint-floorplan",
+    "prompt": "Macro photograph of an interior architecture floor plan blueprint on a light oak desk, a brass scale ruler and a fountain pen resting on it, technical lines and dimensions visible, soft natural side light, photoreal, ultra-detailed paper and ink texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "materials-swatches",
+    "prompt": "Top-down editorial photograph of a curated row of interior design material swatches on a light oak surface, a piece of carrara marble, a square of brass, a swatch of cream linen, a piece of rust velvet, a slab of oak wood, all neatly arranged, soft natural light, photoreal, ultra-detailed material texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "contractor-onsite",
+    "prompt": "Editorial photograph of an interior design site visit, an Indian contractor in a simple grey shirt pointing at a wall with a measuring tape extended, a half-finished modernist kitchen visible behind, exposed pipes and unfinished oak cabinetry, single industrial light, photoreal, ultra-detailed construction texture, magazine quality, no faces visible (back of head only), neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "before-after",
+    "prompt": "Side by side editorial photograph composite of an Indian apartment interior, left side showing the same room before renovation in a worn aged condition, right side showing it as a refined modernist Studio Noor finished space with cream sofa and brass lamp, same window and corner visible in both for comparison, photoreal, ultra-detailed material texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "finished-living",
+    "prompt": "Editorial photograph of a Studio Noor finished living room corner, a soft cream linen armchair beside a tall brass floor lamp, a small marble side table with an open book and a glass of water, oak floor, tall window with sheer curtain, late afternoon light, photoreal, ultra-detailed material texture, magazine quality, no humans, AD India aesthetic, neutral warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "finished-kitchen",
+    "prompt": "Editorial photograph of a Studio Noor finished kitchen, oak cabinetry, carrara marble counter, brass tap, single pendant light, small bowl of fresh lemons and a wooden cutting board on the counter, late afternoon light from a side window, photoreal, ultra-detailed material texture, magazine quality, no humans, AD India aesthetic, neutral warm color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "studio-noor",
+    "filename": "supervisor-whatsapp",
+    "prompt": "Editorial photograph of a smartphone resting on a folded set of interior design blueprints, the phone screen showing a WhatsApp Business chat with the site supervisor including a daily photo update, soft natural light, photoreal, ultra-detailed paper and screen texture, magazine quality, no humans, neutral warm color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "hero-clinic",
+    "prompt": "Editorial wide-angle photograph of a clean modern dental clinic interior in Noida, soft teal accent wall, light wood floor, modern dental chair in soft focus, large floor-to-ceiling window with sheer curtain, soft natural daylight, photoreal, ultra-detailed material texture, magazine quality, no humans visible, premium clinical editorial aesthetic, neutral cool color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "kavita-portrait",
+    "prompt": "Editorial portrait of Dr. Kavita, a 40-year-old Indian female dentist, wearing a clean white clinical coat over a soft teal blouse, soft warm clinic interior light from the side, calm confident expression with a slight smile looking off-camera, modern dental clinic blurred in background with subtle teal accents, photoreal, ultra-sharp on her face, magazine quality, premium medical professional aesthetic, neutral cool color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "tools-macro",
+    "prompt": "Macro overhead photograph of polished dental instruments arranged in a neat row on a sterile white tray, a mirror probe, an explorer, a scaler, a forceps, single soft overhead light catching the steel, photoreal, ultra-detailed metal texture, magazine quality, no humans, neutral cool color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "patient-chair",
+    "prompt": "Editorial photograph of a patient sitting in a modern dental treatment chair, viewed from behind so no face is visible, the back of the head and shoulders only, dental light overhead in soft focus, modern clinic interior with subtle teal accents, soft natural daylight, photoreal, ultra-detailed clinical texture, magazine quality, no face visible, neutral cool color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "tooth-model",
+    "prompt": "Macro photograph of a clean white anatomical tooth model on a sterile surface, single soft overhead light catching the polished plastic, photoreal, ultra-detailed model texture, magazine quality, no humans, neutral cool color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "reception",
+    "prompt": "Editorial photograph of a modern dental clinic reception area, light wood reception desk with soft teal accent, a single small plant, a tablet for check-in, soft natural daylight from a large window, photoreal, ultra-detailed material texture, magazine quality, no humans, premium clinical editorial aesthetic, neutral cool color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "treatment-in-progress",
+    "prompt": "Editorial photograph of a dentist's gloved hands holding a small dental mirror and probe, working in a patient's mouth, only hands and instruments visible, no face of patient or dentist visible, soft overhead clinical light, blurred clinical background with subtle teal accents, photoreal, ultra-detailed glove and instrument texture, magazine quality, neutral cool color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "parent-child-waiting",
+    "prompt": "Editorial photograph of a parent and child sitting on a modernist bench in a dental clinic waiting area, both viewed from behind so no faces visible, soft natural daylight, modern clinic interior with light wood and subtle teal accents, photoreal, ultra-detailed material texture, magazine quality, no faces visible, neutral cool color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "before-after-tooth",
+    "prompt": "Side by side editorial macro photograph of a clean tooth model showing before-and-after treatment results, left side showing a discolored tooth, right side showing a polished bright tooth, sterile white background, single soft overhead light, photoreal, ultra-detailed tooth texture, magazine quality, no humans, neutral cool color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "smilefirst",
+    "filename": "dashboard-bg-clinic",
+    "prompt": "Abstract minimalist texture, deep teal-black with extremely subtle medical-grid pattern barely visible, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
+    "width": 1920,
+    "height": 600,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "hero-sedan",
+    "prompt": "Editorial automotive photograph of a luxury black sedan parked at night in a Dubai dealership lot in Deira, electric cyan neon reflections on the wet polished hood, single dramatic side light, photoreal, ultra-detailed paint and metal texture, magazine quality, no humans, midnight cinematic color grade, Carwow editorial aesthetic",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "dealership-lot",
+    "prompt": "Editorial wide-angle photograph of a Deira Dubai used car dealership lot at dusk, rows of polished sedans and SUVs parked in formation, warm Dubai skyline visible in distance, electric cyan accent lights along the lot edge, single dramatic dusk light, photoreal, ultra-detailed automotive paint and city texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "tariq-portrait",
+    "prompt": "Editorial portrait of Tariq, a 35-year-old Pakistani-Emirati used car dealership owner in Dubai, wearing a crisp dark grey blazer over a black tshirt, standing in his dealership lot at night with cars parked behind him, electric cyan neon reflection on his blazer, single dramatic light, confident expression with a slight smile, photoreal, ultra-sharp on his face, magazine quality, midnight cinematic color grade, Dubai dealership owner portrait aesthetic",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "car-interior",
+    "prompt": "Editorial macro photograph of a luxury sedan interior, brown leather steering wheel and dashboard with the AutoBazaar logo on the digital display, single dramatic side light, photoreal, ultra-detailed leather and stitching texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "listing-mockup",
+    "prompt": "Editorial photograph of a smartphone resting on a car key fob and a printed Dubizzle-style car listing page on a dark surface, the phone screen showing a clean used-car listing mockup with photos and price, single warm cyan-tinted light, photoreal, ultra-detailed screen and paper texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "test-drive",
+    "prompt": "Editorial photograph of a customer in the drivers seat of a luxury sedan during a test drive at dusk, viewed from outside through the open window at an angle so no face is visible, only hands on the steering wheel and shoulders, electric cyan reflection on the windshield, photoreal, ultra-detailed leather and skin texture, magazine quality, no face visible, midnight cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "price-tag",
+    "prompt": "Macro photograph of a thick paper price tag tied to a car key fob with a piece of twine, the tag handwritten with a price in AED, on a polished black metal car surface, single dramatic side light with electric cyan tint, photoreal, ultra-detailed paper and metal texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "key-handover",
+    "prompt": "Editorial photograph of a car key fob being handed from one hand to another, both partial hands only with the key suspended in mid-handover, blurred dealership lot at night behind, electric cyan light reflection, photoreal, ultra-detailed key and skin texture, magazine quality, no faces visible, midnight cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "lot-grid-backdrop",
+    "prompt": "Editorial wide-angle aerial photograph of an organized used car dealership lot at night with 18 polished cars parked in a neat grid pattern, electric cyan light strips marking each parking row, photoreal, ultra-detailed automotive paint texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "autobazaar",
+    "filename": "speedometer-macro",
+    "prompt": "Macro photograph of a luxury sedan dashboard speedometer at night, illuminated needle and digital readout glowing softly with electric cyan tint, soft focus on numerical markings, photoreal, ultra-detailed glass and chrome texture, magazine quality, no humans, midnight cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "hero-batsman",
+    "prompt": "Editorial sports photograph of a 14-year-old Indian boy batting in dramatic floodlight at a cricket academy net session, mid-shot pose at the moment of impact with the ball, motion blur on the bat, dark green and gold cricket academy backdrop with floodlights flaring, photoreal, ultra-sharp on the batsman's face and posture, magazine quality, EA Sports cricket video game cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "coach-portrait",
+    "prompt": "Editorial portrait of Coach Deepak, a 45-year-old Indian male former cricket player and academy coach in Gurgaon, wearing a dark green coaching polo shirt with a small gold StumpVision crest on the chest, standing on a floodlit cricket pitch at dusk with a cricket bat resting on his shoulder, confident weathered expression with a slight smile, photoreal, ultra-sharp on his face, magazine quality, EA Sports cricket video game cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "bat-detail",
+    "prompt": "Macro editorial photograph of a polished cricket bat resting on a wooden bench, raw willow grain visible, a few worn edges and pencil marks where the sweet spot has hit balls, single dramatic side light with green tint, photoreal, ultra-detailed wood texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "pitch-wide",
+    "prompt": "Editorial wide-angle photograph of a cricket pitch at dusk with stumps in the foreground and floodlights blazing behind, fresh grass texture visible, an empty boundary rope in the distance, photoreal, ultra-detailed grass and stump texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "kids-nets",
+    "prompt": "Editorial photograph of three young Indian boys practicing batting in cricket nets at dusk, motion blur on the bat of the center boy, floodlights flaring behind, dark green academy interior visible, photoreal, ultra-detailed posture and motion, magazine quality, no clear faces visible (all in active motion), EA Sports cricket video game cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "trophy-detail",
+    "prompt": "Macro editorial photograph of a small gold cricket trophy on a dark green velvet surface with engraved nameplate barely visible, single dramatic side light catching the gold, photoreal, ultra-detailed metal and engraving texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "ground-dusk",
+    "prompt": "Editorial wide-angle photograph of a cricket academy ground at dusk in Gurgaon, floodlights blazing on, empty pitch in the center, dark green outfield, dramatic deep sky, photoreal, ultra-detailed grass and floodlight texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "parent-coach-huddle",
+    "prompt": "Editorial photograph of a small huddle between a parent (back of head visible) and a cricket coach (side of face visible) standing beside a cricket pitch boundary, both in casual sports attire, blurred floodlit pitch in the background, single dramatic side light, photoreal, ultra-detailed posture, magazine quality, no clear faces visible, EA Sports cricket video game cinematic color grade",
+    "width": 1080,
+    "height": 1350,
+    "aspectRatio": "4:5"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "ball-stitching",
+    "prompt": "Extreme macro photograph of a red cricket ball with visible stitching, on a textured green pitch surface, single dramatic side light catching the leather, photoreal, ultra-detailed leather and thread texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1"
+  },
+  {
+    "slug": "stumpvision",
+    "filename": "scoreboard",
+    "prompt": "Editorial photograph of a cricket academy digital scoreboard at dusk, glowing green LED numbers visible showing a match in progress, floodlights flaring in the background, photoreal, ultra-detailed LED and metal texture, magazine quality, no humans, EA Sports cricket video game cinematic color grade",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
   }
 ]
