@@ -87,7 +87,7 @@ export default function PortalPanel() {
                   return (
                     <a
                       key={item}
-                      href="#"
+                      href="/start-your-study"
                       data-cursor="pointer"
                       style={{
                         fontSize: 14,

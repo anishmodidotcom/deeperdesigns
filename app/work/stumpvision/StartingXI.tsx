@@ -22,12 +22,12 @@ type Player = {
 };
 
 const PLAYERS: Player[] = [
-  { num: "01", name: "Arjun S.", role: "Opener", age: 14, bat: "Right-hand", bowl: "—", rating: 92 },
-  { num: "02", name: "Karthik P.", role: "Opener", age: 13, bat: "Left-hand", bowl: "—", rating: 88 },
+  { num: "01", name: "Arjun S.", role: "Opener", age: 14, bat: "Right-hand", bowl: "·", rating: 92 },
+  { num: "02", name: "Karthik P.", role: "Opener", age: 13, bat: "Left-hand", bowl: "·", rating: 88 },
   { num: "03", name: "Veer M.", role: "No. 3", age: 14, bat: "Right-hand", bowl: "Leg-spin", rating: 90 },
   { num: "04", name: "Ishaan T.", role: "All-rounder", age: 15, bat: "Right-hand", bowl: "Right-arm medium", rating: 87 },
-  { num: "05", name: "Rohan G.", role: "Wicketkeeper", age: 14, bat: "Right-hand", bowl: "—", rating: 85 },
-  { num: "06", name: "Aarav D.", role: "Finisher", age: 15, bat: "Left-hand", bowl: "—", rating: 89 },
+  { num: "05", name: "Rohan G.", role: "Wicketkeeper", age: 14, bat: "Right-hand", bowl: "·", rating: 85 },
+  { num: "06", name: "Aarav D.", role: "Finisher", age: 15, bat: "Left-hand", bowl: "·", rating: 89 },
   { num: "07", name: "Shourya R.", role: "All-rounder", age: 14, bat: "Right-hand", bowl: "Off-spin", rating: 84 },
   { num: "08", name: "Kabir N.", role: "Pace", age: 15, bat: "Right-hand", bowl: "Right-arm fast", rating: 91 },
   { num: "09", name: "Aditya J.", role: "Spin", age: 13, bat: "Right-hand", bowl: "Left-arm spin", rating: 82 },

@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in weeks, not quarters.",
+    "Deeper Designs is an AI-led build studio. We design and ship custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
   openGraph: {
     type: "website",
     siteName: "Deeper Designs",
     url: "/",
     title: "Deeper Designs · AI-powered build studio",
     description:
-      "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it.",
+      "An AI-led build studio. Custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
     images: [
       {
         url: "/images/about/og-default.webp",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Deeper Designs · AI-powered build studio",
     description:
-      "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it.",
+      "An AI-led build studio. Custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
     images: ["/images/about/og-default.webp"],
   },
 };
