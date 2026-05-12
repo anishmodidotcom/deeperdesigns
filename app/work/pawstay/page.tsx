@@ -53,6 +53,7 @@ export default function PawStayPage() {
         number="012"
         archetype="a dog boarding facility"
         timeline="10 days"
+        pattern="Boarding facilities. Salons. Service businesses with anxious clients."
       />
       <Problem />
       <LiveCamera />

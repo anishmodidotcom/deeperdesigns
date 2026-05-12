@@ -1,3 +1,5 @@
+import { Link } from "next-view-transitions";
+
 export default function Footer() {
   const labelStyle: React.CSSProperties = {
     fontFamily: "var(--font-geist-mono), monospace",
@@ -32,13 +34,37 @@ export default function Footer() {
             color: "var(--text)",
             fontWeight: 500,
             margin: 0,
-            marginBottom: 80,
+            marginBottom: 32,
           }}
         >
-          Let&apos;s build something
+          Tell us what is
           <br />
-          that matters.
+          slowing you down.
         </h2>
+
+        <Link
+          href="/start-your-study"
+          data-cursor="pointer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            paddingInline: 24,
+            paddingBlock: 14,
+            background: "var(--accent)",
+            color: "#FFFFFF",
+            borderRadius: 9999,
+            fontSize: 14,
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+            marginBottom: 80,
+            fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+            textDecoration: "none",
+          }}
+        >
+          Start Your Possibility Study
+          <span aria-hidden>→</span>
+        </Link>
 
         <div
           style={{

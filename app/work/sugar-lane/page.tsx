@@ -62,6 +62,7 @@ export default function SugarLanePage() {
         number="019"
         archetype="a home bakery"
         timeline="10 days"
+        pattern="Home bakeries. Caterers. Custom-order food businesses run by one person and the oven."
       />
       <Farah />
       <CakeBuild />

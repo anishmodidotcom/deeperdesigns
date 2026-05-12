@@ -43,6 +43,7 @@ export default function StumpVisionPage() {
         number="008"
         archetype="a cricket coaching academy"
         timeline="10 days"
+        pattern="Coaching academies. Music schools. Skill-building businesses with parents on the sidelines."
       />
       <Card />
       <StartingXI />

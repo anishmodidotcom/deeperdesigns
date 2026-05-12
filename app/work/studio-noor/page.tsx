@@ -44,6 +44,7 @@ export default function StudioNoorPage() {
         number="005"
         archetype="a boutique interior design studio"
         timeline="14 days"
+        pattern="Interior designers. Architects. Any project-based service business juggling clients on WhatsApp."
       />
       <Founder />
       <Chaos />

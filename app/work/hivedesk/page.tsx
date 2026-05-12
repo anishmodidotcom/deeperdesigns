@@ -49,6 +49,7 @@ export default function HiveDeskPage() {
         number="010"
         archetype="a neighborhood coworking space"
         timeline="22 days"
+        pattern="Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving."
       />
       <Occupancy />
       <Problem />

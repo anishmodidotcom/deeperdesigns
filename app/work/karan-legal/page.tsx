@@ -55,6 +55,7 @@ export default function KaranLegalPage() {
         number="014"
         archetype="an independent legal practice"
         timeline="9 days"
+        pattern="Independent lawyers. CAs. Consultants. Any solo practice drowning in unqualified intakes."
       />
       <StatementOfFacts />
       <Redaction />

@@ -70,6 +70,7 @@ export default function NomadTrailsPage() {
         number="018"
         archetype="a Himalayan trek outfit"
         timeline="10 days"
+        pattern="Trek outfits. Small-group tours. Niche travel brands selling experience, not seats."
       />
       <Outfit />
       <Climb />

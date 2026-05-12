@@ -45,6 +45,7 @@ export default function BharatSteelPage() {
         number="002"
         archetype="a B2B steel trading company"
         timeline="7 days"
+        pattern="Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp."
       />
       <Family />
       <Story />

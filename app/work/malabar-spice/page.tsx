@@ -50,6 +50,7 @@ export default function MalabarSpicePage() {
         number="011"
         archetype="a heritage spice exporter"
         timeline="8 days"
+        pattern="Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work."
       />
       <Story />
       <Spices />

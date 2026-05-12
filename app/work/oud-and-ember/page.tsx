@@ -48,6 +48,7 @@ export default function OudAndEmberPage() {
         number="009"
         archetype="a bespoke perfume atelier"
         timeline="11 days"
+        pattern="Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give."
       />
       <Client />
       <Quiz />

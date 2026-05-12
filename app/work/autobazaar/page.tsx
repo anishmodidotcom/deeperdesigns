@@ -44,6 +44,7 @@ export default function AutoBazaarPage() {
         number="007"
         archetype="a used-car dealership"
         timeline="8 days"
+        pattern="Used-car lots. Dealerships. Any inventory business pricing by feel."
       />
       <Founder />
       <Lot />

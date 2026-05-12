@@ -58,6 +58,7 @@ export default function KadakChaiPage() {
         number="017"
         archetype="a craft chai brand"
         timeline="7 weeks"
+        pattern="Wholesale-to-D2C brands. Family supply businesses going direct. Any product worth a tin."
       />
       <Devika />
       <TheTin />

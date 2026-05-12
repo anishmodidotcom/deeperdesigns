@@ -53,6 +53,7 @@ export default function MeeraWellnessPage() {
         number="003"
         archetype="a yoga and wellness studio"
         timeline="10 days"
+        pattern="Yoga studios. Pilates studios. Therapists. Any wellness practice with packages and renewals."
       />
       <Founder />
       <Breath />

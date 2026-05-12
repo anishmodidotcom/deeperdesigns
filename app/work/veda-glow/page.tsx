@@ -45,6 +45,7 @@ export default function VedaGlowPage() {
         number="001"
         archetype="an Ayurvedic skincare D2C brand"
         timeline="5 days"
+        pattern="Skincare brands. Wellness brands. Any DTC with high-volume customer questions."
       />
       <Founder />
       <Problem />

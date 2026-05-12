@@ -66,6 +66,7 @@ export default function EarthAndFirePage() {
         number="016"
         archetype="a handmade ceramics studio"
         timeline="9 weeks"
+        pattern="Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes."
       />
       <Maker />
       <Wheel />

@@ -61,6 +61,7 @@ export default function BrightPathPage() {
         number="020"
         archetype="a neighborhood tutoring practice"
         timeline="9 weeks"
+        pattern="Tutors. Coaches. Any one-person education practice that needs to look like an institution."
       />
       <Omar />
       <Progress />

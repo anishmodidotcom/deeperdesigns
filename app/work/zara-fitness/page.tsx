@@ -50,6 +50,7 @@ export default function ZaraFitnessPage() {
         number="015"
         archetype="a personal-brand fitness platform"
         timeline="12 days"
+        pattern="Personal trainers. Fitness creators. Anyone trying to turn followers into paying members."
       />
       <Problem />
       <Platform />

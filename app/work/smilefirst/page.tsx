@@ -43,6 +43,7 @@ export default function SmileFirstPage() {
         number="006"
         archetype="an urban dental clinic"
         timeline="10 days"
+        pattern="Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up."
       />
       <Founder />
       <Funnel />

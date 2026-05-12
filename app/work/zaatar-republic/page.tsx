@@ -44,6 +44,7 @@ export default function ZaatarRepublicPage() {
         number="004"
         archetype="a regional QSR chain"
         timeline="12 days"
+        pattern="QSR chains. Multi-location restaurants. Any food brand running on gut feel and a POS dump."
       />
       <Founder />
       <Numbers />

@@ -1,18 +1,25 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Link } from "next-view-transitions";
 
 type Props = {
   number: string;
   archetype: string;
   timeline: string;
+  pattern?: string;
 };
 
-export default function PossibilityNote({ number, archetype, timeline }: Props) {
+export default function PossibilityNote({
+  number,
+  archetype,
+  timeline,
+  pattern,
+}: Props) {
   return (
     <section
       style={{
-        paddingBlock: 80,
+        paddingBlock: 96,
         borderTop: "1px solid var(--page-border, rgba(255,255,255,0.08))",
         borderBottom: "1px solid var(--page-border, rgba(255,255,255,0.08))",
       }}
@@ -46,7 +53,7 @@ export default function PossibilityNote({ number, archetype, timeline }: Props) 
               lineHeight: 1.5,
               color: "var(--page-text, var(--text))",
               margin: 0,
-              maxWidth: 760,
+              maxWidth: 780,
               fontWeight: 300,
               letterSpacing: "-0.01em",
             }}
@@ -64,18 +71,67 @@ export default function PossibilityNote({ number, archetype, timeline }: Props) 
             . The same system can be commissioned, customized, and shipped to
             your business in {timeline}.
           </p>
-          <p
+          {pattern ? (
+            <p
+              style={{
+                fontSize: 16,
+                color: "var(--page-text-2, var(--text-2))",
+                lineHeight: 1.6,
+                margin: 0,
+                marginTop: 24,
+                maxWidth: 720,
+              }}
+            >
+              <strong style={{ fontWeight: 500 }}>
+                Sound like your business?
+              </strong>{" "}
+              {pattern} The pattern is the same.
+            </p>
+          ) : null}
+          <div
             style={{
-              fontSize: 14,
-              color: "var(--page-text-3, var(--text-3))",
-              margin: 0,
-              marginTop: 18,
-              fontFamily: "var(--font-geist-mono), monospace",
-              letterSpacing: "0.04em",
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 16,
+              marginTop: 28,
             }}
           >
-            A traditional agency promises and pitches. We prototype and show.
-          </p>
+            <Link
+              href="/start-your-study"
+              data-cursor="pointer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                paddingInline: 22,
+                paddingBlock: 12,
+                background:
+                  "var(--page-accent, var(--accent))",
+                color: "#FFFFFF",
+                borderRadius: 9999,
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                textDecoration: "none",
+              }}
+            >
+              Let&apos;s Design Your System
+              <span aria-hidden>→</span>
+            </Link>
+            <span
+              style={{
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: 11,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "var(--page-text-3, var(--text-3))",
+              }}
+            >
+              We prototype. We do not pitch.
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>

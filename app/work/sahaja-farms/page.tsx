@@ -55,6 +55,7 @@ export default function SahajaFarmsPage() {
         number="013"
         archetype="an organic farm CSA"
         timeline="12 days"
+        pattern="CSA farms. Organic brands. Subscription-based food businesses with seasonal supply."
       />
       <Farmer />
       <Dashboard />
