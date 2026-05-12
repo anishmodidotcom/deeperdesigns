@@ -11,9 +11,36 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Deeper Designs",
+  metadataBase: new URL("https://deeperdesigns.in"),
+  title: {
+    default: "Deeper Designs · AI-powered build studio",
+    template: "%s",
+  },
   description:
-    "Deeper Designs is an AI-powered build studio that creates custom digital tools for businesses.",
+    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in 14 to 28 days.",
+  openGraph: {
+    type: "website",
+    siteName: "Deeper Designs",
+    url: "/",
+    title: "Deeper Designs · AI-powered build studio",
+    description:
+      "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it.",
+    images: [
+      {
+        url: "/images/about/og-default.webp",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deeper Designs · AI-powered build studio",
+    description:
+      "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it.",
+    images: ["/images/about/og-default.webp"],
+  },
 };
 
 export default function RootLayout({
