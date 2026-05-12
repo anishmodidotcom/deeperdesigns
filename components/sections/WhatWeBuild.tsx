@@ -133,8 +133,8 @@ export default function WhatWeBuild() {
           }}
         >
           Big companies have million-dollar software. Small businesses get
-          nothing. We change that. Custom AI tools, sites, and platforms built
-          in days, priced for real businesses.
+          nothing. We change that. Custom AI tools, sites, and platforms
+          designed carefully and shipped in weeks, priced for real businesses.
         </p>
 
         <div

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in 14 to 28 days.",
+    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. AI-led, taste-finished, shipped in weeks, not quarters.",
   openGraph: {
     type: "website",
     siteName: "Deeper Designs",

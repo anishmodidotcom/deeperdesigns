@@ -19,13 +19,13 @@ const STEPS: Step[] = [
     number: "02",
     title: "We design the solution",
     description:
-      "Within 48 hours you get a visual concept of your tool, site, or platform. Not a proposal deck. A working preview.",
+      "Within a week you get a visual concept of your tool, site, or platform. Not a proposal deck. A working preview.",
   },
   {
     number: "03",
-    title: "We build it. Fast.",
+    title: "We build it carefully",
     description:
-      "Your product gets built with AI-powered speed and human-grade quality. Most projects ship in 3 to 10 days.",
+      "Your product gets built with AI-powered speed and human-grade quality. Most projects ship in two to six weeks.",
   },
   {
     number: "04",
@@ -65,7 +65,7 @@ export default function HowItWorks() {
             maxWidth: 800,
           }}
         >
-          From idea to deployed. In days, not months.
+          From idea to deployed. Weeks, not quarters.
         </h2>
 
         <div className="how-grid">

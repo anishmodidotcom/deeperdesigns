@@ -27,8 +27,8 @@ const COMBINATIONS: { product: string; business: string }[] = [
 ];
 
 const SUBHEADLINE_LINES = [
-  "We build tools, sites, and digital products for businesses.",
-  "Deployed in days. At a fraction of what you'd expect.",
+  "We design and build custom digital tools for modern businesses.",
+  "Shipped in weeks, not quarters. Considered for longer.",
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
