@@ -3,6 +3,7 @@ import { Rajdhani } from "next/font/google";
 
 import Hero from "./Hero";
 import Card from "./Card";
+import StartingXI from "./StartingXI";
 import Features from "./Features";
 import Parent from "./Parent";
 import Metrics from "./Metrics";
@@ -38,6 +39,7 @@ export default function StumpVisionPage() {
     <div className={rajdhani.variable} style={pageStyle}>
       <Hero />
       <Card />
+      <StartingXI />
       <Features />
       <Parent />
       <Metrics />
