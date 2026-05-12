@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
+import { FORM_HREF, FORM_CTA, WHATSAPP_HREF } from "@/lib/contact";
 
 type Props = {
   number: string;
@@ -93,12 +94,14 @@ export default function PossibilityNote({
               display: "flex",
               alignItems: "center",
               flexWrap: "wrap",
-              gap: 16,
+              gap: 12,
               marginTop: 28,
             }}
           >
-            <Link
-              href="/start-your-study"
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="pointer"
               style={{
                 display: "inline-flex",
@@ -106,9 +109,8 @@ export default function PossibilityNote({
                 gap: 8,
                 paddingInline: 22,
                 paddingBlock: 12,
-                background:
-                  "var(--page-accent, var(--accent))",
-                color: "#FFFFFF",
+                background: "#25D366",
+                color: "#0F2A1B",
                 borderRadius: 9999,
                 fontSize: 13,
                 fontWeight: 600,
@@ -117,20 +119,33 @@ export default function PossibilityNote({
                 textDecoration: "none",
               }}
             >
-              Let&apos;s Design Your System
-              <span aria-hidden>→</span>
-            </Link>
-            <span
+              WhatsApp the studio
+              <span aria-hidden>↗</span>
+            </a>
+            <Link
+              href={FORM_HREF}
+              data-cursor="pointer"
               style={{
-                fontFamily: "var(--font-geist-mono), monospace",
-                fontSize: 11,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "var(--page-text-3, var(--text-3))",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                paddingInline: 22,
+                paddingBlock: 12,
+                background: "transparent",
+                color:
+                  "var(--page-text, var(--text))",
+                border: "1px solid var(--page-border, var(--border-2))",
+                borderRadius: 9999,
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                textDecoration: "none",
               }}
             >
-              We prototype. We do not pitch.
-            </span>
+              {FORM_CTA}
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </motion.div>
       </div>

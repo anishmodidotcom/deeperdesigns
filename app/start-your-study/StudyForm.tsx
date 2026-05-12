@@ -388,7 +388,7 @@ function nextLabel(
   if (otpSending && step === 5) return "Verifying...";
   if (step === 4) return "Send verification code →";
   if (step === 5) return verified ? "Continue →" : "Verify code →";
-  if (step === TOTAL_STEPS - 1) return "Submit and book →";
+  if (step === TOTAL_STEPS - 1) return "Send to studio →";
   return "Continue →";
 }
 
@@ -411,7 +411,7 @@ function renderStep(
             value={data.name}
             onChange={(e) => update("name", e.target.value)}
             style={inputStyle}
-            placeholder="Anish"
+            placeholder="First name"
           />
         </Question>
       );

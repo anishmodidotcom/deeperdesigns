@@ -84,6 +84,29 @@ export default function Contact() {
             flexWrap: "wrap",
           }}
         >
+          <a
+            href="https://wa.me/919968716498?text=Hi%20Deeper%20Designs%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="pointer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              paddingInline: 28,
+              paddingBlock: 16,
+              background: "#25D366",
+              color: "#0F2A1B",
+              borderRadius: 9999,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              textDecoration: "none",
+            }}
+          >
+            WhatsApp the studio ↗
+          </a>
           <Link
             href="/start-your-study"
             data-cursor="pointer"
@@ -93,8 +116,9 @@ export default function Contact() {
               gap: 10,
               paddingInline: 28,
               paddingBlock: 16,
-              background: "var(--accent)",
-              color: "#FFFFFF",
+              background: "transparent",
+              color: "var(--text)",
+              border: "1px solid var(--border-2)",
               borderRadius: 9999,
               fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
               fontSize: 14,
@@ -102,7 +126,7 @@ export default function Contact() {
               letterSpacing: "0.04em",
             }}
           >
-            Send us a brief
+            Let&apos;s explore possibilities →
           </Link>
           <Link
             href="/services"
