@@ -8,6 +8,7 @@ import Studio from "./Studio";
 import Selectivity from "./Selectivity";
 import NotDoing from "./NotDoing";
 import Contact from "./Contact";
+import WhyNotDIY from "@/components/sections/WhyNotDIY";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function AboutPage() {
       <Thesis />
       <HowWeWork />
       <Studio />
+      <WhyNotDIY />
       <Selectivity />
       <NotDoing />
       <Contact />

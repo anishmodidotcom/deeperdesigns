@@ -5,6 +5,7 @@ import WhatWeBuild from "@/components/sections/WhatWeBuild";
 import Portfolio from "@/components/sections/Portfolio";
 import Manifesto from "@/components/sections/Manifesto";
 import HowItWorks from "@/components/sections/HowItWorks";
+import WhyNotDIY from "@/components/sections/WhyNotDIY";
 import ContactCTA from "@/components/sections/ContactCTA";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <WhatWeBuild />
       <Portfolio />
       <Manifesto />
+      <WhyNotDIY />
       <HowItWorks />
       <ContactCTA />
     </>
