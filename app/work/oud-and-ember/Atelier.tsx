@@ -2,10 +2,74 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 
 export default function Atelier() {
+  const videoARef = useRef<HTMLVideoElement>(null);
+  const videoBRef = useRef<HTMLVideoElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobile = window.matchMedia("(max-width: 700px)").matches;
+    if (reduced || mobile) return;
+    setEnabled(true);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+    const a = videoARef.current;
+    const b = videoBRef.current;
+    if (!a || !b) return;
+    a.style.opacity = "1";
+    b.style.opacity = "0";
+    a.play().catch(() => {});
+    const FADE = 0.35;
+    function attach(self: HTMLVideoElement, other: HTMLVideoElement) {
+      const onTime = () => {
+        if (!self.duration) return;
+        const r = self.duration - self.currentTime;
+        if (r < FADE) {
+          if (other.paused) {
+            other.currentTime = 0;
+            other.play().catch(() => {});
+          }
+          const t = Math.max(0, Math.min(1, 1 - r / FADE));
+          self.style.opacity = String(1 - t);
+          other.style.opacity = String(t);
+        }
+      };
+      const onEnded = () => {
+        self.currentTime = 0;
+        self.style.opacity = "0";
+        const tick = () => {
+          const cur = parseFloat(other.style.opacity || "1");
+          if (cur < 1) {
+            other.style.opacity = String(Math.min(1, cur + 0.06));
+            rafRef.current = requestAnimationFrame(tick);
+          } else other.style.opacity = "1";
+        };
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      self.addEventListener("timeupdate", onTime);
+      self.addEventListener("ended", onEnded);
+      return () => {
+        self.removeEventListener("timeupdate", onTime);
+        self.removeEventListener("ended", onEnded);
+      };
+    }
+    const ca = attach(a, b);
+    const cb = attach(b, a);
+    return () => {
+      ca();
+      cb();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [enabled]);
+
   return (
     <section
       style={{
@@ -25,6 +89,43 @@ export default function Atelier() {
           objectPosition: "center",
         }}
       />
+
+      {enabled && (
+        <>
+          <video
+            ref={videoARef}
+            src="/videos/oud-and-ember/smoke-loop.mp4"
+            muted
+            playsInline
+            preload="auto"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: 0,
+              mixBlendMode: "screen",
+            }}
+          />
+          <video
+            ref={videoBRef}
+            src="/videos/oud-and-ember/smoke-loop.mp4"
+            muted
+            playsInline
+            preload="auto"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: 0,
+              mixBlendMode: "screen",
+            }}
+          />
+        </>
+      )}
 
       <div
         aria-hidden

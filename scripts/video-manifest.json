@@ -68,6 +68,13 @@
     "prompt": "Cinematic locked-off slow horizontal panning shot across a row of polished luxury sedans parked at night in a Dubai dealership lot, electric cyan neon lights reflecting on each car's hood as the camera moves, deep midnight blue sky with warm Dubai city glow in the distance, single dramatic light catching the chrome, photoreal, ultra-high detail on paint and reflection, magazine quality, no humans visible, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, midnight cinematic color grade, Carwow editorial aesthetic",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "oud-and-ember",
+    "filename": "smoke-loop",
+    "prompt": "Cinematic locked-off close-up of oud incense smoke curling slowly upward in a dark chamber, a single thin warm gold beam of light cutting horizontally across the smoke from upper left, the smoke billowing and unfurling continuously in soft swirls, deep purple-black background, photoreal, ultra-high detail on smoke texture and the light beam catching individual smoke particles, magazine quality, no humans, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, Tom Ford luxury fragrance editorial aesthetic, deep warm color grade",
+    "aspectRatio": "16:9",
+    "duration": 8
   }
 ]
 
