@@ -9,6 +9,7 @@ import Studio from "./Studio";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Yellowtail carries the script-led personality (a single-weight
 // cursive that handles display sizes well). DM Sans is the quiet
@@ -57,6 +58,11 @@ export default function SugarLanePage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="019"
+        archetype="a home bakery"
+        timeline="10 days"
+      />
       <Farah />
       <CakeBuild />
       <Menu />

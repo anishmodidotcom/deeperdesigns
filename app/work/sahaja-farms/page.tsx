@@ -12,6 +12,7 @@ import Compost from "./Compost";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Bricolage Grotesque on Google Fonts ships normal-only. Italic display
 // moments use CSS synthesized italic via fontStyle: italic; the variable
@@ -50,6 +51,11 @@ export default function SahajaFarmsPage() {
   return (
     <div className={bricolage.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="013"
+        archetype="an organic farm CSA"
+        timeline="12 days"
+      />
       <Farmer />
       <Dashboard />
       <WhatToPlant />

@@ -11,6 +11,7 @@ import Capabilities from "./Capabilities";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -40,6 +41,11 @@ export default function BharatSteelPage() {
   return (
     <div className={spaceGrotesk.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="002"
+        archetype="a B2B steel trading company"
+        timeline="7 days"
+      />
       <Family />
       <Story />
       <RebarGrid />

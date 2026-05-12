@@ -62,7 +62,7 @@ export default function Hero() {
                 marginBottom: 40,
               }}
             >
-              MUMBAI · CASE STUDY 017 · TEA
+              MUMBAI · POSSIBILITY STUDY · 017 OF 20 · TEA
             </motion.p>
 
             <h1

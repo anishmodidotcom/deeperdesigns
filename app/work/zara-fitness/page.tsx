@@ -10,6 +10,7 @@ import VideoCTA from "./VideoCTA";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Anton stands in for Druk Wide Bold (paid). Single regular weight, but
 // the condensed CAPS energy is the right brand register for the athletic
@@ -45,6 +46,11 @@ export default function ZaraFitnessPage() {
   return (
     <div className={anton.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="015"
+        archetype="a personal-brand fitness platform"
+        timeline="12 days"
+      />
       <Problem />
       <Platform />
       <Programs />

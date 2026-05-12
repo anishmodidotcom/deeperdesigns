@@ -10,6 +10,7 @@ import Kerala from "./Kerala";
 import Tray from "./Tray";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -45,6 +46,11 @@ export default function MalabarSpicePage() {
   return (
     <div className={fraunces.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="011"
+        archetype="a heritage spice exporter"
+        timeline="8 days"
+      />
       <Story />
       <Spices />
       <Hands />

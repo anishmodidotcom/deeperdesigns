@@ -74,7 +74,7 @@ export default function Hero() {
               marginBottom: 32,
             }}
           >
-            BHARAT STEEL CORP · CASE STUDY 002 · AHMEDABAD
+            BHARAT STEEL CORP · POSSIBILITY STUDY · 002 OF 20 · AHMEDABAD
           </motion.p>
 
           <h1

@@ -10,6 +10,7 @@ import HowItWorks from "./HowItWorks";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -39,6 +40,11 @@ export default function ZaatarRepublicPage() {
   return (
     <div className={dmSans.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="004"
+        archetype="a regional QSR chain"
+        timeline="12 days"
+      />
       <Founder />
       <Numbers />
       <CoreProblem />

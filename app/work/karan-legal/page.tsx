@@ -9,6 +9,7 @@ import Respondent from "./Respondent";
 import Outcomes from "./Outcomes";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Spectral covers the editorial slab-serif feel of GT Sectra Display
 // where Sectra is not on Google Fonts. Weights tuned for body and
@@ -50,6 +51,11 @@ export default function KaranLegalPage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="014"
+        archetype="an independent legal practice"
+        timeline="9 days"
+      />
       <StatementOfFacts />
       <Redaction />
       <Qualifier />

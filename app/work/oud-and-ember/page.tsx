@@ -10,6 +10,7 @@ import Atelier from "./Atelier";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -43,6 +44,11 @@ export default function OudAndEmberPage() {
   return (
     <div className={cormorant.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="009"
+        archetype="a bespoke perfume atelier"
+        timeline="11 days"
+      />
       <Client />
       <Quiz />
       <Library />

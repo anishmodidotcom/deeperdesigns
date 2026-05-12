@@ -10,6 +10,7 @@ import Steam from "./Steam";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Archivo Black is the closest open-source stand-in for the heavy
 // tin-can headline style we wanted (Druk Wide Bold). Crimson Pro
@@ -53,6 +54,11 @@ export default function KadakChaiPage() {
   return (
     <div className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="017"
+        archetype="a craft chai brand"
+        timeline="7 weeks"
+      />
       <Devika />
       <TheTin />
       <TheRange />

@@ -13,6 +13,7 @@ import PawDetail from "./PawDetail";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -48,6 +49,11 @@ export default function PawStayPage() {
     <div className={jakarta.variable} style={pageStyle}>
       <ActivityFeed />
       <Hero />
+      <PossibilityNote
+        number="012"
+        archetype="a dog boarding facility"
+        timeline="10 days"
+      />
       <Problem />
       <LiveCamera />
       <TheDay />

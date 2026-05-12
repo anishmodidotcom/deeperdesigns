@@ -13,6 +13,7 @@ import DailyFlow from "./DailyFlow";
 import Impact from "./Impact";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -48,6 +49,11 @@ export default function MeeraWellnessPage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="003"
+        archetype="a yoga and wellness studio"
+        timeline="10 days"
+      />
       <Founder />
       <Breath />
       <Client />

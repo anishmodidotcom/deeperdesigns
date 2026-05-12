@@ -9,6 +9,7 @@ import Portal from "./Portal";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Source Serif 4 carries the academic gravitas the brief asked for
 // (a contemporary cousin of the IBM Plex Serif). Source Sans 3 keeps
@@ -56,6 +57,11 @@ export default function BrightPathPage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="020"
+        archetype="a neighborhood tutoring practice"
+        timeline="9 weeks"
+      />
       <Omar />
       <Progress />
       <Programs />

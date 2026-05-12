@@ -10,6 +10,7 @@ import Ridge from "./Ridge";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Bodoni Moda gives the high-contrast editorial display the brief
 // asked for (Didot stand-in). Inter for body. IBM Plex Mono for the
@@ -65,6 +66,11 @@ export default function NomadTrailsPage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="018"
+        archetype="a Himalayan trek outfit"
+        timeline="10 days"
+      />
       <Outfit />
       <Climb />
       <Trips />

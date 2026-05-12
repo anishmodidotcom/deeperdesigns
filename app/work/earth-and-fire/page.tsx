@@ -11,6 +11,7 @@ import VideoMoment from "./VideoMoment";
 import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 // Fraunces stands in as the editorial serif for body and small display.
 // DM Serif Display covers the italic display headlines that anchor the
@@ -61,6 +62,11 @@ export default function EarthAndFirePage() {
       style={pageStyle}
     >
       <Hero />
+      <PossibilityNote
+        number="016"
+        archetype="a handmade ceramics studio"
+        timeline="9 weeks"
+      />
       <Maker />
       <Wheel />
       <Collection />

@@ -9,6 +9,7 @@ import Journey from "./Journey";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -38,6 +39,11 @@ export default function SmileFirstPage() {
   return (
     <div className={jakarta.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="006"
+        archetype="an urban dental clinic"
+        timeline="10 days"
+      />
       <Founder />
       <Funnel />
       <System />

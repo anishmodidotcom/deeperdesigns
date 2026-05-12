@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 type Pair = { label: string; value: string };
 
 const LEFT: Pair[] = [
-  { label: "CLIENT", value: "Bharat Steel Corp" },
+  { label: "POSSIBILITY", value: "Inspired by a B2B steel trading company" },
   { label: "INDUSTRY", value: "Steel Trading (B2B)" },
   { label: "LOCATION", value: "Ahmedabad, India" },
-  { label: "YEAR", value: "2025" },
+  { label: "STATUS", value: "Working prototype, ready to commission" },
 ];
 
 const RIGHT: Pair[] = [
@@ -16,7 +16,7 @@ const RIGHT: Pair[] = [
     label: "SERVICES",
     value: "Dashboard Development, AI Integration, WhatsApp Automation",
   },
-  { label: "TIMELINE", value: "7 days from brief to deployment" },
+  { label: "TIMELINE", value: "Shipped in 7 days, considered for longer" },
   { label: "STACK", value: "Next.js, WhatsApp Business API, Real-time Database" },
 ];
 

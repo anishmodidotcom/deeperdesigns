@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
 }
 
 const QUOTE =
-  "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. Not templates. Not no-code drag and drop. Custom tools, designed and coded for your specific business, deployed in days.";
+  "A traditional agency promises and pitches. We prototype and show. Twenty working studies, each inspired by a real operational bottleneck of a real business archetype. Pick the one that sounds like you. We will customize it, ship it, and hand you the keys.";
 
 export default function Manifesto() {
   const sectionRef = useRef<HTMLDivElement>(null);

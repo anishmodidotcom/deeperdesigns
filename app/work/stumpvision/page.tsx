@@ -9,6 +9,7 @@ import Parent from "./Parent";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -38,6 +39,11 @@ export default function StumpVisionPage() {
   return (
     <div className={rajdhani.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="008"
+        archetype="a cricket coaching academy"
+        timeline="10 days"
+      />
       <Card />
       <StartingXI />
       <Features />

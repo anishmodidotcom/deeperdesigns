@@ -11,6 +11,7 @@ import Details from "./Details";
 import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +45,11 @@ export default function HiveDeskPage() {
   return (
     <div className={inter.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="010"
+        archetype="a neighborhood coworking space"
+        timeline="22 days"
+      />
       <Occupancy />
       <Problem />
       <TwoHalves />

@@ -156,7 +156,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          AUTOBAZAAR · CASE STUDY 007 · DEIRA DUBAI
+          AUTOBAZAAR · POSSIBILITY STUDY · 007 OF 20 · DEIRA DUBAI
         </motion.p>
 
         <motion.h1

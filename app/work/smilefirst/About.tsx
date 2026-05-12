@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 type Pair = { label: string; value: string };
 
 const LEFT: Pair[] = [
-  { label: "CLIENT", value: "SmileFirst Dental" },
+  { label: "POSSIBILITY", value: "Inspired by an urban dental clinic" },
   { label: "INDUSTRY", value: "Healthcare (Dental Clinic)" },
   { label: "LOCATION", value: "Noida, India" },
-  { label: "YEAR", value: "2025" },
+  { label: "STATUS", value: "Working prototype, ready to commission" },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Patient CRM, Appointment System, WhatsApp Automation, Revenue Recovery Engine",
   },
-  { label: "TIMELINE", value: "10 days from brief to deployment" },
+  { label: "TIMELINE", value: "Shipped in 10 days, considered for longer" },
   {
     label: "STACK",
     value:

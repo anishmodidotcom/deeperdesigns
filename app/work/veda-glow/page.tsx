@@ -10,6 +10,7 @@ import Features from "./Features";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -40,6 +41,11 @@ export default function VedaGlowPage() {
   return (
     <div className={playfair.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="001"
+        archetype="an Ayurvedic skincare D2C brand"
+        timeline="5 days"
+      />
       <Founder />
       <Problem />
       <Solution />

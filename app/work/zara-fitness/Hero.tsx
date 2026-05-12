@@ -66,7 +66,7 @@ export default function Hero() {
               color: "var(--page-text-2)",
             }}
           >
-            ISSUE 015 · MAY 2026
+            POSSIBILITY STUDY · 015 OF 20
           </motion.span>
           <motion.span
             initial={{ opacity: 0, x: 8 }}

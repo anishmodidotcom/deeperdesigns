@@ -10,6 +10,7 @@ import Buyer from "./Buyer";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -39,6 +40,11 @@ export default function AutoBazaarPage() {
   return (
     <div className={outfit.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="007"
+        archetype="a used-car dealership"
+        timeline="8 days"
+      />
       <Founder />
       <Lot />
       <Pricing />

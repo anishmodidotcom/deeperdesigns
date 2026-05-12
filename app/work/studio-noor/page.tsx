@@ -9,6 +9,7 @@ import Bridge from "./Bridge";
 import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
+import PossibilityNote from "@/components/PossibilityNote";
 
 const instrument = Instrument_Serif({
   subsets: ["latin"],
@@ -39,6 +40,11 @@ export default function StudioNoorPage() {
   return (
     <div className={instrument.variable} style={pageStyle}>
       <Hero />
+      <PossibilityNote
+        number="005"
+        archetype="a boutique interior design studio"
+        timeline="14 days"
+      />
       <Founder />
       <Chaos />
       <Walkthrough />

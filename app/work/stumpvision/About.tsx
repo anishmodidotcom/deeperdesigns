@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 type Pair = { label: string; value: string };
 
 const LEFT: Pair[] = [
-  { label: "CLIENT", value: "StumpVision Cricket Academy" },
+  { label: "POSSIBILITY", value: "Inspired by a cricket coaching academy" },
   { label: "INDUSTRY", value: "Sports Education" },
   { label: "LOCATION", value: "Gurgaon, India" },
-  { label: "YEAR", value: "2025" },
+  { label: "STATUS", value: "Working prototype, ready to commission" },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Gamified Platform, Player Analytics, Coach Reporting System, Tournament Management",
   },
-  { label: "TIMELINE", value: "10 days from brief to deployment" },
+  { label: "TIMELINE", value: "Shipped in 10 days, considered for longer" },
   {
     label: "STACK",
     value:
