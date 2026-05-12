@@ -148,9 +148,32 @@
         "brightpath": { "images": 10, "videos": 0, "cost": 0.39 }
       },
       "result": "All 68 assets generated cleanly. Zero failures. Realized cost matches anticipated exactly."
+    },
+    {
+      "date": "2026-05-12T03:30:00Z",
+      "task": "Final push: fix flaws in tools 14-20, retrofit tools 1-8, polish tools 9-13, add /about /services /process pages, landing polish, contact form, SEO",
+      "images": 86,
+      "videos": 4,
+      "cost": 8.154,
+      "breakdown": {
+        "step-1-reprompts": { "images": 4, "videos": 0, "cost": 0.156, "scope": "BrightPath hero, Kadak Chai tea-grid, Nomad Trails portrait, Sugar Lane cake-slice" },
+        "step-2-tools-1-8": { "images": 80, "videos": 3, "cost": 6.72, "scope": "Veda Glow, Bharat Steel, Meera Wellness, Zaatar Republic, Studio Noor, SmileFirst, AutoBazaar, StumpVision plus zaatar spit-loop, autobazaar lot-loop, veda-glow oil-loop" },
+        "step-3-tools-9-13": { "images": 0, "videos": 1, "cost": 1.20, "scope": "Oud and Ember smoke-loop" },
+        "step-4-new-pages": { "images": 2, "videos": 0, "cost": 0.078, "scope": "Anish portrait, default OG image" }
+      },
+      "result": "All 90 assets generated cleanly across multiple gen-images and gen-videos runs. One transient Veo failure (PALM_API high demand) auto-resolved on retry. Final realized cost matches anticipated within rounding."
     }
   ],
-  "running_total": 12.77,
+  "running_total": 20.924,
   "deferred_total": 0.0,
-  "projected_total_after_generation": 12.77
+  "summary": {
+    "total_images_generated": 192,
+    "total_videos_generated": 11,
+    "total_cost_usd": 20.924,
+    "image_cost_usd": 7.488,
+    "video_cost_usd": 13.20,
+    "pages_built": 23,
+    "scroll_signatures_built": 22,
+    "session_runs": 5
+  }
 }
