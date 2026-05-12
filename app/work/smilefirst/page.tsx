@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import Hero from "./Hero";
+import Founder from "./Founder";
 import Funnel from "./Funnel";
 import System from "./System";
 import Journey from "./Journey";
