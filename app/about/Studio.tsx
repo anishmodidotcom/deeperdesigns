@@ -55,7 +55,7 @@ export default function Studio() {
                 marginBottom: 24,
               }}
             >
-              §03 · THE STUDIO
+              03 · THE STUDIO
             </p>
             <h2
               style={{

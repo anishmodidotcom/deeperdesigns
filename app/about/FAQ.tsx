@@ -11,7 +11,7 @@ type Item = {
 const ITEMS: Item[] = [
   {
     q: "What is Deeper Designs?",
-    a: "An AI-led build studio that designs and ships custom digital tools for modern businesses. We build websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
+    a: "Deeper Designs builds custom systems for modern businesses. Websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
   },
   {
     q: "Who is Anish Modi?",
@@ -19,7 +19,7 @@ const ITEMS: Item[] = [
   },
   {
     q: "How is this different from a regular agency?",
-    a: "A traditional agency promises and pitches. We prototype and show. The site you are reading is a gallery of twenty Possibility Studies, each a working concept inspired by a real operational bottleneck. We use AI to compress the build cycle so we can give you something working in weeks, not quarters.",
+    a: "A traditional agency promises and pitches. We prototype and show. The site you are reading is a gallery of Possibility Studies, each a working concept inspired by a real operational bottleneck. We use AI to compress the build cycle so we can give you something working in weeks, not quarters.",
   },
   {
     q: "What does it cost?",

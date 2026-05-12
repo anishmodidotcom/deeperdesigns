@@ -68,7 +68,7 @@ export default function Hero() {
               marginBottom: 28,
             }}
           >
-            PAWSTAY · POSSIBILITY STUDY · 012 OF 20
+            PAWSTAY · POSSIBILITY STUDY · 012
           </motion.p>
 
           <h1

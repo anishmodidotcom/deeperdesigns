@@ -39,7 +39,7 @@ export default function NextProject() {
               marginBottom: 32,
             }}
           >
-            NEXT CASE · §015
+            NEXT STUDY · 015
           </p>
           <h3
             style={{

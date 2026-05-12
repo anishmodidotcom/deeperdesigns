@@ -31,7 +31,7 @@ export default function Selectivity() {
             marginBottom: 32,
           }}
         >
-          §04 · THE MANIFESTO
+          05 · THE MANIFESTO
         </motion.p>
 
         <motion.blockquote

@@ -82,7 +82,7 @@ export default function Hero() {
               color: "var(--page-accent)",
             }}
           >
-            AL AIN · POSSIBILITY STUDY · 020 OF 20 · TUTORING
+            AL AIN · POSSIBILITY STUDY · 020 · TUTORING
           </span>
         </motion.div>
 

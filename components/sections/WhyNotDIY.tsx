@@ -17,7 +17,7 @@ const CARDS: Card[] = [
   },
   {
     eyebrow: "02 · THE THINKING",
-    heading: "Tools are easy. Knowing what to build is hard.",
+    heading: "Knowing what to build is the hard part.",
     body: "Ten years in business strategy. Marketing, brand, financial modeling, ops design. We know what to build because we have spent a decade fixing how businesses run. The AI just makes building it cheaper.",
   },
   {
@@ -61,7 +61,7 @@ export default function WhyNotDIY() {
             marginBottom: 24,
           }}
         >
-          Why not do this yourself with AI
+          04 · TOOLS VS THINKING
         </motion.p>
 
         <motion.h2

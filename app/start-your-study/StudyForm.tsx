@@ -1137,7 +1137,7 @@ function Confirmation({ name }: { name: string }) {
               textDecoration: "none",
             }}
           >
-            WhatsApp the studio ↗
+            Start a conversation ↗
           </a>
           <a
             href="/"

@@ -12,8 +12,8 @@ const HEADLINES = [
 ];
 
 const SUBHEADLINE_LINES = [
-  "We design and build custom digital tools for modern businesses.",
-  "Shipped in weeks, not quarters. Considered for longer.",
+  "Custom digital tools, sites, and operational systems.",
+  "Shipped in weeks. Considered for longer.",
 ];
 
 const TAGLINE = "Operational relief, designed carefully, shipped efficiently.";

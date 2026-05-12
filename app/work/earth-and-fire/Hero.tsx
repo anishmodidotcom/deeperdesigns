@@ -98,7 +98,7 @@ export default function Hero() {
                 marginBottom: 28,
               }}
             >
-              EARTH &amp; FIRE · POSSIBILITY STUDY · 016 OF 20
+              EARTH &amp; FIRE · POSSIBILITY STUDY · 016
             </motion.p>
 
             <h1

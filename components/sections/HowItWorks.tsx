@@ -50,7 +50,7 @@ export default function HowItWorks() {
             marginBottom: 32,
           }}
         >
-          THE PROCESS
+          05 · HOW WE WORK
         </p>
 
         <h2

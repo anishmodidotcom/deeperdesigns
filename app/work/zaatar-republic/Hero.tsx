@@ -58,7 +58,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          ZAATAR REPUBLIC · POSSIBILITY STUDY · 004 OF 20 · SHARJAH
+          ZAATAR REPUBLIC · POSSIBILITY STUDY · 004 · SHARJAH
         </motion.p>
 
         <motion.h1

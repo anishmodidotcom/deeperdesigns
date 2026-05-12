@@ -87,7 +87,7 @@ export default function HomepageFAQ() {
             marginBottom: 24,
           }}
         >
-          § FAQ
+          06 · QUESTIONS
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

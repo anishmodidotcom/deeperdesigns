@@ -58,7 +58,7 @@ export default function Hero() {
                   background: "var(--page-accent)",
                 }}
               />
-              MAPLE LENS · LIVE PRODUCT · FURNITURE MAKERS
+              01 · LIVE PRODUCT · FURNITURE MAKERS
             </motion.p>
 
             <motion.h1

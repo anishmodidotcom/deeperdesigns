@@ -49,7 +49,7 @@ export default function Solution() {
             marginBottom: 24,
           }}
         >
-          § THE PRODUCT
+          03 · THE PRODUCT
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

@@ -47,7 +47,7 @@ export default function Problem() {
             marginBottom: 24,
           }}
         >
-          § THE BOTTLENECK
+          02 · THE BOTTLENECK
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

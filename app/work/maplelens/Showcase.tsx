@@ -41,7 +41,7 @@ export default function Showcase() {
             marginBottom: 24,
           }}
         >
-          § BEFORE / AFTER
+          04 · BEFORE / AFTER
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

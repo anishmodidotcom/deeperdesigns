@@ -40,7 +40,7 @@ export default function Thesis() {
                 marginBottom: 24,
               }}
             >
-              §01 · THE THESIS
+              01 · THE THESIS
             </p>
             <h2
               style={{

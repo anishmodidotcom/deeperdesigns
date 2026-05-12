@@ -36,7 +36,7 @@ export default function HowWeWork() {
             marginBottom: 28,
           }}
         >
-          §02 · HOW WE WORK
+          02 · HOW WE WORK
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

@@ -38,7 +38,7 @@ export default function NextProject() {
               "color 0.6s cubic-bezier(0.19, 1, 0.22, 1)",
           }}
         >
-          NEXT CASE
+          NEXT STUDY
         </p>
 
         <h3

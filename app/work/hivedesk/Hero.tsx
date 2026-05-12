@@ -56,7 +56,7 @@ export default function Hero() {
               marginBottom: 28,
             }}
           >
-            HIVEDESK · POSSIBILITY STUDY · 010 OF 20
+            HIVEDESK · POSSIBILITY STUDY · 010
           </motion.p>
 
           <motion.h1

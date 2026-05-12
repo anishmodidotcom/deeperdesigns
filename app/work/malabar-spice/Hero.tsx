@@ -174,7 +174,7 @@ export default function Hero() {
                 marginBottom: 28,
               }}
             >
-              MALABAR SPICE HOUSE · POSSIBILITY STUDY · 011 OF 20
+              MALABAR SPICE HOUSE · POSSIBILITY STUDY · 011
             </motion.p>
 
             <h1

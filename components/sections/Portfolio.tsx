@@ -66,7 +66,7 @@ export default function Portfolio() {
             marginBottom: 24,
           }}
         >
-          Twenty Possibility Studies.
+          Possibility Studies.
         </h2>
 
         <p

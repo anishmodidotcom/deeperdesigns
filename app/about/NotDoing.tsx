@@ -51,7 +51,7 @@ export default function NotDoing() {
                 marginBottom: 24,
               }}
             >
-              §05 · WHAT WE DO NOT DO
+              06 · WHAT WE DO NOT DO
             </p>
             <h2
               style={{

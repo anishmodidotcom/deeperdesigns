@@ -49,7 +49,7 @@ export default function Hero() {
             marginBottom: 36,
           }}
         >
-          ABU DHABI · POSSIBILITY STUDY · 019 OF 20 · BAKERY
+          ABU DHABI · POSSIBILITY STUDY · 019 · BAKERY
         </motion.p>
 
         <div className="sl-hero-grid">

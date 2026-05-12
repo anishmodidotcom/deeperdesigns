@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
 }
 
 const PARAGRAPH =
-  "A traditional agency promises and pitches. We prototype and show. Twenty working studies, each inspired by a real operational bottleneck of a real business archetype. Pick the one that sounds like you. We will customize it, ship it, and hand you the keys.";
+  "We don't sell templates. We don't resell software. We sit with a business, find what's leaking time, what's frustrating customers, what's been broken for years, and we design a focused system around that. Sometimes it's a tool. Sometimes a workflow. Sometimes an interface that didn't exist yet.";
 
 export default function Manifesto() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -85,7 +85,7 @@ export default function Manifesto() {
             margin: 0,
           }}
         >
-          § THE STUDIO MIND
+          03 · THE THINKING BEHIND THE WORK
         </p>
 
         <h2
@@ -125,57 +125,6 @@ export default function Manifesto() {
             </span>
           ))}
         </p>
-
-        <p
-          style={{
-            fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: 14,
-            color: "var(--accent)",
-            margin: 0,
-            letterSpacing: "0.02em",
-          }}
-        >
-          Operational relief, designed carefully, shipped efficiently.
-        </p>
-
-        <figure
-          style={{
-            margin: 0,
-            paddingTop: 32,
-            borderTop: "1px solid var(--border)",
-            maxWidth: 820,
-          }}
-        >
-          <blockquote
-            style={{
-              margin: 0,
-              padding: 0,
-              fontFamily: "var(--font-fraunces), Georgia, serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: "clamp(22px, 3vw, 34px)",
-              lineHeight: 1.35,
-              color: "var(--text)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            &ldquo;I am not interested in building the next Salesforce. I am
-            interested in building the next thing the chai vendor at the
-            corner wishes existed.&rdquo;
-          </blockquote>
-          <figcaption
-            style={{
-              marginTop: 18,
-              fontFamily: "var(--font-geist-mono), monospace",
-              fontSize: 12,
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
-              color: "var(--text-3)",
-            }}
-          >
-            Anish Modi, Founder
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

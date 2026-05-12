@@ -59,7 +59,7 @@ export default function Founder() {
                 marginBottom: 24,
               }}
             >
-              § THE FOUNDER
+              04 · THE FOUNDER
             </p>
             <h2
               style={{

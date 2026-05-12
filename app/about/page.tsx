@@ -25,7 +25,14 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
   description:
-    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. Deeper Designs is an AI-led build studio operating between Dubai and Delhi.",
+    "Deeper Designs builds custom systems for modern businesses. A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+  openGraph: {
+    title: "About · Deeper Designs",
+    description:
+      "A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+    url: "/about",
+  },
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

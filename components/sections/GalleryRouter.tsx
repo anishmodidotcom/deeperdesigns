@@ -127,7 +127,7 @@ export default function GalleryRouter() {
             marginBottom: 24,
           }}
         >
-          POSSIBILITY GALLERY
+          02 · POSSIBILITY GALLERY
         </motion.p>
 
         <motion.h2

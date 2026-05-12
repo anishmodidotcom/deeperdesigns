@@ -71,7 +71,7 @@ export default function Hero() {
               marginBottom: 32,
             }}
           >
-            OUD &amp; EMBER · POSSIBILITY STUDY · 009 OF 20
+            OUD &amp; EMBER · POSSIBILITY STUDY · 009
           </motion.p>
 
           <h1

@@ -63,7 +63,7 @@ export default function Hero() {
                 marginBottom: 40,
               }}
             >
-              VEDA GLOW · POSSIBILITY STUDY · 001 OF 20 · AYURVEDIC SKINCARE
+              VEDA GLOW · POSSIBILITY STUDY · 001 · AYURVEDIC SKINCARE
             </motion.p>
 
             <motion.h1

@@ -79,7 +79,7 @@ export default function Footer() {
               textDecoration: "none",
             }}
           >
-            WhatsApp the studio
+            Start a conversation
             <span aria-hidden>↗</span>
           </a>
           <Link

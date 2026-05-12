@@ -51,7 +51,7 @@ export default function Qualifier() {
             marginBottom: 32,
           }}
         >
-          §03 · THE TOOL
+          03 · THE TOOL
         </motion.p>
 
         <motion.h2

@@ -84,7 +84,7 @@ export default function Outcomes() {
             marginBottom: 56,
           }}
         >
-          §05 · OUTCOMES
+          05 · OUTCOMES
         </motion.p>
 
         <ul

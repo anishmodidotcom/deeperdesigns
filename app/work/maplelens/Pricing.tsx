@@ -68,7 +68,7 @@ export default function Pricing() {
             marginBottom: 24,
           }}
         >
-          § PRICING
+          06 · PRICING
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

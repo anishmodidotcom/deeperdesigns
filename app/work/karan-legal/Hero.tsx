@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 const EASE = [0.7, 0, 0.3, 1] as const;
 
 const MARGINALIA = [
-  "POSSIBILITY STUDY · 014 OF 20",
+  "POSSIBILITY STUDY · 014",
   "FILED · MAY 2025",
   "JURISDICTION · MUMBAI, IN",
 ];

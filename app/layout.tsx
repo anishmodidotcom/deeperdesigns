@@ -15,18 +15,18 @@ import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 export const metadata: Metadata = {
   metadataBase: new URL("https://deeperdesigns.in"),
   title: {
-    default: "Deeper Designs · AI-powered build studio",
+    default: "Deeper Designs · Custom systems for modern businesses",
     template: "%s",
   },
   description:
-    "Deeper Designs is an AI-led build studio. We design and ship custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
+    "We design and build custom digital tools, sites, and operational systems for modern businesses. Two to six weeks. From ₹25,000.",
   openGraph: {
     type: "website",
     siteName: "Deeper Designs",
     url: "/",
-    title: "Deeper Designs · AI-powered build studio",
+    title: "Deeper Designs · Custom systems for modern businesses",
     description:
-      "An AI-led build studio. Custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
+      "Custom digital tools, sites, and operational systems for modern businesses. Two to six weeks. From ₹25,000.",
     images: [
       {
         url: "/images/about/og-default.webp",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deeper Designs · AI-powered build studio",
+    title: "Deeper Designs · Custom systems for modern businesses",
     description:
-      "An AI-led build studio. Custom tools, sites, and operational systems for modern businesses. Two to six weeks. ₹25,000 to ₹10L+.",
+      "Custom digital tools, sites, and operational systems for modern businesses. Two to six weeks. From ₹25,000.",
     images: ["/images/about/og-default.webp"],
   },
 };

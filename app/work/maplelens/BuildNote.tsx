@@ -47,7 +47,7 @@ export default function BuildNote() {
             marginBottom: 24,
           }}
         >
-          § ABOUT THIS BUILD
+          05 · THE BUILD
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
