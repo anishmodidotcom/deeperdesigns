@@ -143,7 +143,7 @@ export default function Studio() {
               {[
                 { k: "Founder", v: "Anish Modi" },
                 { k: "Based", v: "Dubai · Delhi" },
-                { k: "Founded", v: "2024" },
+                { k: "Founded", v: "2017" },
                 { k: "More", v: "anishmodi.com" },
               ].map((row) => (
                 <div key={row.k}>

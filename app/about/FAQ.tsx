@@ -11,11 +11,11 @@ type Item = {
 const ITEMS: Item[] = [
   {
     q: "What is Deeper Designs?",
-    a: "An AI-led build studio that designs and ships custom digital tools for modern businesses. We build websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai.",
+    a: "An AI-led build studio that designs and ships custom digital tools for modern businesses. We build websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
   },
   {
     q: "Who is Anish Modi?",
-    a: "Anish is the founder of Deeper Designs. Ten years across business strategy, marketing, brand, and operations design. Read more at anishmodi.com.",
+    a: "Anish is the founder of Deeper Designs and a business strategist. Ten years across marketing, brand, ops, and financial design. He runs Newfold Ventures LLC out of Dubai and lives between Dubai and Delhi. He leads strategy and the build call on every studio project. Read more at anishmodi.com.",
   },
   {
     q: "How is this different from a regular agency?",
@@ -23,11 +23,11 @@ const ITEMS: Item[] = [
   },
   {
     q: "What does it cost?",
-    a: "Single-tool builds start at roughly Rs. 1 lakh (around $1,200). Multi-tool systems run Rs. 3 to 10 lakh ($3,500 to $12,000). Full operational redesigns are Rs. 10 lakh and up. Most projects ship in two to six weeks. Pricing depends on scope and integrations.",
+    a: "Single small tools start at ₹25,000 (around $300). Custom tools land between ₹1L and ₹3L ($1,200 to $3,500). Multi-tool systems run ₹3L to ₹10L ($3,500 to $12,000). Full operational redesigns are ₹10L and up. Most projects ship in two to six weeks. Pricing depends on scope, integrations, and timeline.",
   },
   {
     q: "How long does a project take?",
-    a: "Most projects ship in two to six weeks. A single quiz or lead form can ship in days. A full multi-system operational redesign takes six weeks plus a polish window. We can scope this on the first call.",
+    a: "Two to six weeks for most projects. A single quiz or lead form can ship in days. A multi-system operational redesign takes six weeks plus a polish window. We can scope this on the first call.",
   },
   {
     q: "What is a Possibility Study?",
@@ -35,7 +35,7 @@ const ITEMS: Item[] = [
   },
   {
     q: "Who is the studio for?",
-    a: "Small and mid-size businesses that need a custom tool but cannot justify a six-month agency cycle. Founders running operations on WhatsApp. Practices losing leads to slow follow-up. Brands whose website does not match the work.",
+    a: "Indian SMBs, UAE founders, and global small businesses willing to pay in USD. Founders running operations on WhatsApp. Practices losing leads to slow follow-up. Brands whose website does not match the work. Currency is not the constraint. Fit is.",
   },
 ];
 
