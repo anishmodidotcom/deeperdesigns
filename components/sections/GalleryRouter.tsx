@@ -292,6 +292,7 @@ export default function GalleryRouter() {
                     />
                     {s.live ? (
                       <span
+                        className="dd-live-badge"
                         style={{
                           position: "absolute",
                           top: 14,
@@ -305,6 +306,9 @@ export default function GalleryRouter() {
                           paddingBlock: 4,
                           borderRadius: 4,
                           fontWeight: 600,
+                          zIndex: 2,
+                          animation:
+                            "dd-live-pulse 2.2s ease-in-out infinite",
                         }}
                       >
                         LIVE
@@ -327,32 +331,33 @@ export default function GalleryRouter() {
                           fontSize: 11,
                           textTransform: "uppercase",
                           letterSpacing: "0.16em",
-                          opacity: 0.7,
-                          marginBottom: 8,
+                          opacity: 0.65,
+                          marginBottom: 10,
                         }}
                       >
                         {s.number}
-                        {s.live ? " · LIVE PRODUCT" : ""}
+                        {s.live ? " · LIVE" : ""}
                       </span>
                       <span
                         style={{
                           fontSize: 18,
                           fontWeight: 500,
                           letterSpacing: "-0.01em",
-                          lineHeight: 1.2,
+                          lineHeight: 1.25,
                         }}
                       >
-                        {s.industryLabel}
+                        {s.cardLabel}
                       </span>
                       <span
                         style={{
-                          fontSize: 14,
-                          opacity: 0.8,
-                          marginTop: 2,
-                          fontFamily: "var(--font-geist-mono), monospace",
+                          fontSize: 13,
+                          opacity: 0.75,
+                          marginTop: 4,
+                          fontStyle: "italic",
+                          lineHeight: 1.5,
                         }}
                       >
-                        {s.toolKind}
+                        {s.cardDescription}
                       </span>
                     </div>
                   </Link>
@@ -393,6 +398,19 @@ export default function GalleryRouter() {
         :global(.portfolio-card:hover .portfolio-img) {
           transform: scale(1.06);
           opacity: 0.9;
+        }
+        @keyframes dd-live-pulse {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(94, 106, 210, 0.6);
+          }
+          50% {
+            box-shadow: 0 0 0 8px rgba(94, 106, 210, 0);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          :global(.dd-live-badge) {
+            animation: none !important;
+          }
         }
       `}</style>
     </section>
@@ -446,17 +464,17 @@ function FilterRow({
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 8,
-                paddingInline: 14,
-                paddingBlock: 10,
+                gap: 6,
+                paddingInline: 12,
+                paddingBlock: 7,
                 background: active ? "var(--accent)" : "transparent",
-                color: active ? "#FFFFFF" : "var(--text)",
+                color: active ? "#FFFFFF" : "var(--text-2)",
                 border: `1px solid ${
                   active ? "var(--accent)" : "var(--border-2)"
                 }`,
                 borderRadius: 9999,
                 fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-                fontSize: 13,
+                fontSize: 12,
                 fontWeight: 500,
                 cursor: "pointer",
                 transition:
@@ -471,13 +489,16 @@ function FilterRow({
         })}
       </div>
       <style jsx>{`
-        @media (max-width: 720px) {
+        @media (max-width: 900px) {
           :global(.dd-filter-scroll) {
             flex-wrap: nowrap !important;
             overflow-x: auto;
             padding-bottom: 6px;
             scroll-snap-type: x proximity;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            margin-inline: -24px;
+            padding-inline: 24px;
           }
           :global(.dd-filter-scroll::-webkit-scrollbar) {
             display: none;
