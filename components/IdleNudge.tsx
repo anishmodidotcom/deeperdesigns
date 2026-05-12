@@ -67,6 +67,7 @@ export default function IdleNudge() {
             boxShadow: "0 10px 40px -10px rgba(0,0,0,0.4)",
           }}
           role="status"
+          className="dd-idle-nudge"
         >
           <span>still here? want to talk?</span>
           <Link
@@ -101,6 +102,13 @@ export default function IdleNudge() {
           </button>
         </motion.div>
       ) : null}
+      <style jsx>{`
+        @media (max-width: 600px) {
+          :global(.dd-idle-nudge) {
+            display: none !important;
+          }
+        }
+      `}</style>
     </AnimatePresence>
   );
 }
