@@ -12,11 +12,11 @@ const ITEMS: Item[] = [
   },
   {
     q: "How long does it take?",
-    a: "Two to six weeks for most projects. The brief is one day. The build is the rest. Faster than most enterprise demo cycles.",
+    a: "Faster than traditional software. The brief is one day. The build is the rest. Faster than most enterprise demo cycles.",
   },
   {
-    q: "Do you build for non-Indian businesses?",
-    a: "Yes. We work with UAE founders directly and with global SMBs paying in USD. Currency is not the constraint, fit is.",
+    q: "Do you only work with Indian businesses?",
+    a: "Mostly, yes. We're set up for Indian SMBs, but we also work with select clients in the UAE. Anywhere else, we say no unless it's a strong fit.",
   },
   {
     q: "What if I don't know exactly what I need?",

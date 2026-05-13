@@ -67,26 +67,28 @@ type Tier = {
 
 const TIERS: Tier[] = [
   {
-    range: "From ₹25,000 / $300",
+    range: "From ₹25,000",
     label: "Single-tool builds",
     examples: "A simple quiz. A landing page. A WhatsApp form. A small dashboard.",
   },
   {
-    range: "₹1L to ₹3L / $1,200 to $3,500",
+    range: "₹1L to ₹3L",
     label: "Custom tools",
     examples: "Custom calculators, recommendation engines, single-purpose AI tools, branded sites that convert.",
   },
   {
-    range: "₹3L to ₹10L / $3,500 to $12,000",
+    range: "₹3L to ₹10L",
     label: "Multi-tool systems",
     examples: "A portal and a dashboard. A site, a booking flow, and an inventory system. A brand world and a store.",
   },
   {
-    range: "₹10L+ / $12,000+",
+    range: "₹10L+",
     label: "Full operational redesigns",
     examples: "The operating system for a business. Brand, site, internal tools, customer-facing tools, the works.",
   },
 ];
+
+const UAE_LINE = "UAE clients: from AED 1,100.";
 
 export default function Services() {
   return (
@@ -385,16 +387,29 @@ export default function Services() {
           <p
             style={{
               fontSize: 14,
-              color: "var(--text-3)",
+              color: "var(--text-2)",
               marginTop: 16,
+              lineHeight: 1.6,
+              maxWidth: 760,
+              fontFamily: "var(--font-geist-mono), monospace",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {UAE_LINE}
+          </p>
+
+          <p
+            style={{
+              fontSize: 14,
+              color: "var(--text-3)",
+              marginTop: 12,
               fontStyle: "italic",
               lineHeight: 1.6,
               maxWidth: 760,
             }}
           >
-            Pricing depends on scope, integrations, and timeline. Most projects
-            ship in 2 to 6 weeks. We take a small number of new
-            engagements each month.
+            Pricing depends on scope, integrations, and timeline. We take a
+            small number of new engagements each month.
           </p>
 
           <div

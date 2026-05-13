@@ -53,7 +53,7 @@ export default function Contact() {
             marginBottom: 36,
           }}
         >
-          Day one is a phone call.
+          It starts with a real conversation.
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 12 }}

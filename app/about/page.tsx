@@ -21,11 +21,11 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
   description:
-    "Deeper Designs builds custom systems for modern businesses. A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+    "Deeper Designs is an India-first studio building custom digital tools for ambitious businesses. Based in Delhi, with select clients in the UAE.",
   openGraph: {
     title: "About · Deeper Designs",
     description:
-      "A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+      "India-first studio building custom digital tools. Delhi, with select clients in the UAE.",
     url: "/about",
   },
   alternates: { canonical: "/about" },

@@ -7,7 +7,6 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import WhyNotDIY from "@/components/sections/WhyNotDIY";
 import SpeedNote from "@/components/sections/SpeedNote";
 import HomepageFAQ from "@/components/sections/HomepageFAQ";
-import ContactCTA from "@/components/sections/ContactCTA";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <HowItWorks />
       <SpeedNote />
       <HomepageFAQ />
-      <ContactCTA />
     </>
   );
 }

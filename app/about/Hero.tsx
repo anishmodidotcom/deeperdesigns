@@ -52,7 +52,7 @@ export default function Hero() {
             maxWidth: 1200,
           }}
         >
-          Custom systems for modern businesses.{" "}
+          Custom systems for Indian businesses.{" "}
           <em style={{ fontStyle: "italic", color: "var(--accent-2)" }}>
             From ₹25,000.
           </em>
@@ -84,9 +84,11 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          We are a small team operating between Dubai and Delhi. We make
-          custom software for small and mid-sized businesses, and we ship in
-          weeks, not quarters.
+          Deeper Designs is an India-first studio building custom digital
+          tools for ambitious businesses. We work primarily out of Delhi,
+          with select clients in the UAE. Most of what we ship starts with
+          a founder telling us something is broken, and ends with us
+          building the thing that fixes it.
         </motion.p>
       </div>
     </section>

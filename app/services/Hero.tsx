@@ -67,10 +67,9 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          Each engagement is scoped to a single deliverable that we can
-          ship clean in two to four weeks. The prices below are
-          indicative starting points. The real number arrives with the
-          brief.
+          Each engagement is scoped to a single deliverable that we ship
+          clean. The prices below are indicative starting points. The real
+          number arrives with the brief.
         </motion.p>
       </div>
     </section>

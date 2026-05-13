@@ -53,9 +53,9 @@ export default function Contact() {
             marginBottom: 32,
           }}
         >
-          Tell us the problem.
+          Tell us what&apos;s slowing your business down.
           <br />
-          We will name the shape.
+          We&apos;ll figure out what to build.
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 12 }}

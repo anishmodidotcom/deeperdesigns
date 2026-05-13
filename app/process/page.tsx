@@ -16,11 +16,10 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Process · Deeper Designs",
   description:
-    "The four-step build process. Discovery, design, build, ship. Two to six weeks from kickoff to live tool.",
+    "The four-step build process. Discovery, design, build, ship.",
   openGraph: {
     title: "Process · Deeper Designs",
-    description:
-      "Discovery, design, build, ship. Two to six weeks from kickoff to live tool.",
+    description: "Discovery, design, build, ship.",
     url: "/process",
   },
   alternates: { canonical: "/process" },

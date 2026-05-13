@@ -96,16 +96,14 @@ export default function Founder() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Ten years across marketing, brand, ops, and financial design.
-                Founder of Newfold Ventures LLC, registered in Dubai. Based
-                between Dubai and Delhi.
-              </p>
-              <p style={{ margin: 0 }}>
-                Anish leads strategy and the build call on every Deeper
-                Designs project. The thinking, the scoping, the relationship,
-                those stay with him. We run with a small bench of trusted
-                specialists for heavier engineering, brand systems, and
-                motion when a build needs it.
+                Anish runs two things: a strategy practice for founders,
+                and Deeper Designs, where he builds the actual tools those
+                conversations point to. Most of what he works on starts
+                with a founder telling him something is broken, and ends
+                with shipping something specific to fix it. After a decade
+                running businesses across Dubai and Delhi, he has learned
+                that most companies do not need more advice. They need
+                someone who can think with them and then build the thing.
               </p>
             </div>
             <a

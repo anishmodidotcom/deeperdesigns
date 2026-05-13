@@ -45,9 +45,9 @@ export default function Footer() {
             marginBottom: 32,
           }}
         >
-          Tell us what is
+          Tell us what&apos;s slowing
           <br />
-          slowing you down.
+          your business down.
         </h2>
 
         <div
@@ -177,7 +177,7 @@ export default function Footer() {
         >
           <span>© 2026 Deeper Designs</span>
           <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>
-            Delhi · Dubai
+            Delhi · Dubai · India-first
           </span>
         </div>
       </div>

@@ -9,10 +9,10 @@ const STORAGE_KEY = "dd-study-form-state-v1";
 
 type TeamSize = "Solo" | "2 to 10" | "11 to 50" | "50+";
 type Budget =
-  | "Under ₹1L / under $1k"
-  | "₹1L to 5L / $1k to $5k"
-  | "₹5L to 15L / $5k to $15k"
-  | "₹15L+ / $15k+"
+  | "Under ₹1L"
+  | "₹1L to 5L"
+  | "₹5L to 15L"
+  | "₹15L+"
   | "Not sure yet";
 type Country = "IN" | "AE" | "Other";
 
@@ -47,10 +47,10 @@ const INITIAL: FormState = {
 const TEAM_SIZES: TeamSize[] = ["Solo", "2 to 10", "11 to 50", "50+"];
 
 const BUDGETS: Budget[] = [
-  "Under ₹1L / under $1k",
-  "₹1L to 5L / $1k to $5k",
-  "₹5L to 15L / $5k to $15k",
-  "₹15L+ / $15k+",
+  "Under ₹1L",
+  "₹1L to 5L",
+  "₹5L to 15L",
+  "₹15L+",
   "Not sure yet",
 ];
 

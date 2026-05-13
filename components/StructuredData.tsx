@@ -22,7 +22,7 @@ export const ORGANIZATION_LD: JsonLd = {
   url: "https://deeperdesigns.in",
   logo: "https://deeperdesigns.in/icon.svg",
   description:
-    "Custom systems for modern businesses. We design and build digital tools, sites, and operational systems. Possibility Studies plus live products.",
+    "Custom systems for Indian businesses. We design and build digital tools, sites, and operational systems. Possibility Studies plus live products.",
   founder: {
     "@type": "Person",
     name: "Anish Modi",

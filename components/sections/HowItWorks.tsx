@@ -25,7 +25,7 @@ const STEPS: Step[] = [
     number: "03",
     title: "We build it carefully",
     description:
-      "Your product gets built with AI-powered speed and human-grade quality. Most projects ship in two to six weeks.",
+      "Your product gets built with AI-powered speed and human-grade quality. We move fast and stay in the loop.",
   },
   {
     number: "04",

@@ -61,6 +61,9 @@ export default function Occupancy() {
       counters.forEach((c) => {
         const el = c.ref.current;
         if (!el) return;
+        // Paint starting value so the cell is never blank before the
+        // ScrollTrigger fires on first visit.
+        el.textContent = c.format(0);
         if (reduced) {
           el.textContent = c.format(c.to);
           return;
@@ -72,7 +75,7 @@ export default function Occupancy() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 85%",
             end: "bottom 50%",
             scrub: 0.6,
           },
@@ -81,6 +84,13 @@ export default function Occupancy() {
           },
         });
       });
+
+      // Refresh after Lenis settles so positions are accurate on first
+      // visit.
+      const refreshId = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 120);
+      return () => window.clearTimeout(refreshId);
     },
     { scope: sectionRef }
   );
