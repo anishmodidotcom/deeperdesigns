@@ -1,186 +1,35 @@
-import { Link } from "next-view-transitions";
-import {
-  WHATSAPP_HREF,
-  STUDIO_EMAIL,
-  STUDIO_EMAIL_HREF,
-  FORM_HREF,
-  FORM_CTA,
-} from "@/lib/contact";
-
 export default function Footer() {
-  const labelStyle: React.CSSProperties = {
-    fontFamily: "var(--font-geist-mono), monospace",
-    fontSize: 12,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-    color: "var(--text-3)",
-    marginBottom: 12,
-  };
-
-  const linkStyle: React.CSSProperties = {
-    color: "var(--text)",
-    fontSize: 16,
-    transition: "color var(--t-base) var(--ease-spring)",
-    display: "inline-block",
-  };
-
   return (
-    <footer
-      id="site-footer"
-      style={{
-        borderTop: "1px solid var(--border)",
-        paddingBlockStart: 128,
-        paddingBlockEnd: 48,
-      }}
-    >
-      <div className="container-x">
-        <h2
-          style={{
-            fontSize: "clamp(48px, 8vw, 80px)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
-            color: "var(--text)",
-            fontWeight: 500,
-            margin: 0,
-            marginBottom: 32,
-          }}
-        >
-          Tell us what&apos;s slowing
-          <br />
-          your business down.
-        </h2>
-
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            flexWrap: "wrap",
-            marginBottom: 80,
-          }}
-        >
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="pointer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              paddingInline: 24,
-              paddingBlock: 14,
-              background: "#25D366",
-              color: "#0F2A1B",
-              borderRadius: 9999,
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: "0.02em",
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              textDecoration: "none",
-            }}
-          >
-            Start a conversation
-            <span aria-hidden>↗</span>
-          </a>
-          <Link
-            href={FORM_HREF}
-            data-cursor="pointer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              paddingInline: 24,
-              paddingBlock: 14,
-              background: "transparent",
-              color: "var(--text)",
-              border: "1px solid var(--border-2)",
-              borderRadius: 9999,
-              fontSize: 14,
-              fontWeight: 600,
-              letterSpacing: "0.02em",
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              textDecoration: "none",
-            }}
-          >
-            {FORM_CTA}
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: 32,
-            marginBottom: 96,
-          }}
-        >
+    <footer style={{ borderTop: "1px solid var(--border)", padding: "var(--section-py) 0 40px", marginTop: "120px" }}>
+      <div className="container">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "48px", marginBottom: "80px" }} className="footer-grid">
           <div>
-            <div style={labelStyle}>Email</div>
-            <a
-              href={STUDIO_EMAIL_HREF}
-              data-cursor="pointer"
-              style={linkStyle}
-            >
-              {STUDIO_EMAIL}
-            </a>
+            <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "12px" }}>Email</p>
+            <a href="mailto:anish.modi@deeperdesigns.in" style={{ fontSize: "16px" }}>anish.modi@deeperdesigns.in</a>
           </div>
-
           <div>
-            <div style={labelStyle}>WhatsApp</div>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="pointer"
-              style={linkStyle}
-            >
-              +91 99687 16498
-            </a>
+            <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "12px" }}>WhatsApp</p>
+            <a href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business." style={{ fontSize: "16px" }}>+91 99687 16498</a>
           </div>
-
           <div>
-            <div style={labelStyle}>Social</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <a
-                href="https://instagram.com/deeperdesignsco"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="pointer"
-                style={linkStyle}
-              >
-                Instagram
-              </a>
-              <a
-                href="https://linkedin.com/company/deeperdesigns"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="pointer"
-                style={linkStyle}
-              >
-                LinkedIn
-              </a>
+            <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "12px" }}>Social</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <a href="https://instagram.com/deeperdesignsco" target="_blank" rel="noopener noreferrer" style={{ fontSize: "16px" }}>Instagram</a>
+              <a href="https://linkedin.com/company/deeperdesigns" target="_blank" rel="noopener noreferrer" style={{ fontSize: "16px" }}>LinkedIn</a>
             </div>
           </div>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 16,
-            color: "var(--text-3)",
-            fontSize: 13,
-          }}
-        >
-          <span>© 2026 Deeper Designs</span>
-          <span style={{ fontFamily: "var(--font-geist-mono), monospace" }}>
-            Delhi · Dubai · India-first
-          </span>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "24px", borderTop: "1px solid var(--border)", fontSize: "13px", color: "var(--fg-dim)" }} className="footer-bottom">
+          <p>© 2026 Deeper Designs</p>
+          <p>Delhi · Dubai · India-first</p>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start !important; }
+        }
+      `}</style>
     </footer>
   );
 }

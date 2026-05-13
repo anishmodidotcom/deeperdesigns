@@ -1,25 +1,23 @@
-import Hero from "@/components/sections/Hero";
-import Marquee from "@/components/sections/Marquee";
-import WhatWeBuild from "@/components/sections/WhatWeBuild";
-import GalleryRouter from "@/components/sections/GalleryRouter";
-import Manifesto from "@/components/sections/Manifesto";
-import HowItWorks from "@/components/sections/HowItWorks";
-import WhyNotDIY from "@/components/sections/WhyNotDIY";
-import SpeedNote from "@/components/sections/SpeedNote";
-import HomepageFAQ from "@/components/sections/HomepageFAQ";
+import HomeHero from "./_home/HomeHero";
+import HomeWhatWeBuild from "./_home/HomeWhatWeBuild";
+import HomeGallery from "./_home/HomeGallery";
+import HomeStudioMind from "./_home/HomeStudioMind";
+import HomeWhyNotDIY from "./_home/HomeWhyNotDIY";
+import HomeStack from "./_home/HomeStack";
+import HomeFAQ from "./_home/HomeFAQ";
+import HomeCTA from "./_home/HomeCTA";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Marquee />
-      <WhatWeBuild />
-      <GalleryRouter />
-      <Manifesto />
-      <WhyNotDIY />
-      <HowItWorks />
-      <SpeedNote />
-      <HomepageFAQ />
-    </>
+    <main>
+      <HomeHero />
+      <HomeWhatWeBuild />
+      <HomeGallery />
+      <HomeStudioMind />
+      <HomeWhyNotDIY />
+      <HomeStack />
+      <HomeFAQ />
+      <HomeCTA />
+    </main>
   );
 }

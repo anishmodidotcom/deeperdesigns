@@ -1,391 +1,114 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Link } from "next-view-transitions";
-import { AnimatePresence, motion } from "motion/react";
-import { WHATSAPP_HREF, FORM_HREF, FORM_CTA } from "@/lib/contact";
-
-const NAV_ITEMS = [
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/process", label: "Process" },
-];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
-    onScroll();
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when drawer is open.
   useEffect(() => {
-    if (menuOpen) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = prev;
-      };
-    }
-  }, [menuOpen]);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
-  // Escape closes the drawer.
-  useEffect(() => {
-    if (!menuOpen) return;
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setMenuOpen(false);
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [menuOpen]);
-
-  return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        background: scrolled
-          ? "var(--nav-bg-scrolled, rgba(8,9,10,0.8))"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
-        transition:
-          "background var(--t-base) var(--ease-spring), backdrop-filter var(--t-base) var(--ease-spring)",
-      }}
-    >
-      <div
-        className="container-x"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingBlock: 16,
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: 13,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            color: "var(--text-2)",
-            transition: "color var(--t-base) var(--ease-spring)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--text)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "var(--text-2)";
-          }}
-        >
-          DEEPER DESIGNS
-        </Link>
-
-        <nav
-          className="dd-nav-desktop"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-          }}
-        >
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              data-cursor="pointer"
-              className="nav-link"
-              style={{
-                fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-                fontSize: 13,
-                color: "var(--text-2)",
-                transition: "color var(--t-base) var(--ease-spring)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--text)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--text-2)";
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          <Link
-            href={FORM_HREF}
-            data-cursor="pointer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingInline: 16,
-              paddingBlock: 8,
-              borderRadius: 9999,
-              border: "1px solid var(--border-2)",
-              color: "var(--text-2)",
-              fontSize: 13,
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              transition:
-                "background var(--t-base) var(--ease-spring), color var(--t-base) var(--ease-spring), border-color var(--t-base) var(--ease-spring)",
-              background: "transparent",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "var(--accent)";
-              e.currentTarget.style.color = "#ffffff";
-              e.currentTarget.style.borderColor = "var(--accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "var(--text-2)";
-              e.currentTarget.style.borderColor = "var(--border-2)";
-            }}
-          >
-            {FORM_CTA}
-          </Link>
-        </nav>
-
-        <button
-          type="button"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-          aria-expanded={menuOpen}
-          aria-controls="dd-mobile-menu"
-          className="dd-nav-burger"
-          data-cursor="pointer"
-          style={{
-            display: "none",
-            background: "transparent",
-            border: "1px solid var(--border-2)",
-            color: "var(--text)",
-            width: 40,
-            height: 40,
-            borderRadius: 9999,
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 0,
-            cursor: "pointer",
-          }}
-        >
-          <svg
-            width="18"
-            height="14"
-            viewBox="0 0 18 14"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            aria-hidden
-          >
-            <line x1="1" y1="2" x2="17" y2="2" />
-            <line x1="1" y1="7" x2="17" y2="7" />
-            <line x1="1" y1="12" x2="17" y2="12" />
-          </svg>
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {menuOpen ? (
-          <MobileDrawer onClose={() => setMenuOpen(false)} />
-        ) : null}
-      </AnimatePresence>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          :global(.dd-nav-desktop) {
-            display: none !important;
-          }
-          :global(.dd-nav-burger) {
-            display: inline-flex !important;
-          }
-        }
-      `}</style>
-    </header>
-  );
-}
-
-function MobileDrawer({ onClose }: { onClose: () => void }) {
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-        onClick={onClose}
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(0,0,0,0.6)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
-          zIndex: 110,
-        }}
-        aria-hidden
-      />
-      <motion.div
-        id="dd-mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site menu"
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      <nav
         style={{
           position: "fixed",
           top: 0,
+          left: 0,
           right: 0,
-          bottom: 0,
-          width: "min(360px, 86vw)",
-          background: "var(--bg)",
-          borderLeft: "1px solid var(--border)",
-          zIndex: 120,
-          display: "flex",
-          flexDirection: "column",
-          padding: 24,
+          zIndex: 50,
+          padding: "20px var(--container-px)",
+          background: scrolled ? "rgba(10,10,10,0.85)" : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+          transition: "background 300ms, border-color 300ms, backdrop-filter 300ms",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 48,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--font-geist-mono), monospace",
-              fontSize: 12,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--text-3)",
-            }}
-          >
-            MENU
-          </span>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: "var(--container-max)", margin: "0 auto" }}>
+          <Link href="/" className="mono" style={{ letterSpacing: "0.16em", fontSize: "13px" }}>
+            DEEPER DESIGNS
+          </Link>
+
+          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+            <Link href="/about" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>About</Link>
+            <Link href="/services" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Services</Link>
+            <Link href="/process" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Process</Link>
+            <Link href="/start-your-study" className="btn-outline" style={{ padding: "10px 20px", fontSize: "14px" }}>
+              Let&apos;s explore possibilities
+            </Link>
+          </div>
+
           <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close menu"
-            data-cursor="pointer"
-            style={{
-              background: "transparent",
-              border: "1px solid var(--border-2)",
-              color: "var(--text)",
-              width: 40,
-              height: 40,
-              borderRadius: 9999,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 0,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              fontSize: 16,
-              lineHeight: 1,
-            }}
+            className="nav-mobile-trigger"
+            aria-label="Open menu"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            style={{ display: "none", width: "40px", height: "40px", alignItems: "center", justifyContent: "center" }}
           >
-            ×
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
           </button>
         </div>
+      </nav>
 
-        <nav
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 18,
-          }}
-        >
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onClose}
-              data-cursor="pointer"
-              style={{
-                fontSize: 28,
-                fontWeight: 400,
-                color: "var(--text)",
-                letterSpacing: "-0.02em",
-                textDecoration: "none",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
+      {open && (
         <div
           style={{
-            marginTop: 48,
-            paddingTop: 32,
-            borderTop: "1px solid var(--border)",
+            position: "fixed",
+            inset: 0,
+            zIndex: 100,
+            background: "rgba(10,10,10,0.98)",
+            backdropFilter: "blur(20px)",
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            padding: "20px var(--container-px)",
           }}
         >
-          <Link
-            href={FORM_HREF}
-            onClick={onClose}
-            data-cursor="pointer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              paddingInline: 22,
-              paddingBlock: 14,
-              background: "var(--accent)",
-              color: "#FFFFFF",
-              borderRadius: 9999,
-              fontSize: 14,
-              fontWeight: 600,
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              textDecoration: "none",
-            }}
-          >
-            {FORM_CTA}
-            <span aria-hidden>→</span>
-          </Link>
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="pointer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              paddingInline: 22,
-              paddingBlock: 14,
-              background: "transparent",
-              color: "var(--text)",
-              border: "1px solid var(--border-2)",
-              borderRadius: 9999,
-              fontSize: 14,
-              fontWeight: 600,
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              textDecoration: "none",
-            }}
-          >
-            WhatsApp ↗
-          </a>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "60px" }}>
+            <span className="mono" style={{ letterSpacing: "0.16em", fontSize: "13px" }}>DEEPER DESIGNS</span>
+            <button aria-label="Close menu" onClick={() => setOpen(false)} style={{ width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+          <nav style={{ display: "flex", flexDirection: "column", gap: "24px", fontSize: "32px" }}>
+            <Link href="/about" onClick={() => setOpen(false)}>About</Link>
+            <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
+            <Link href="/process" onClick={() => setOpen(false)}>Process</Link>
+          </nav>
+          <div style={{ marginTop: "auto", paddingBottom: "40px", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <a href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business." className="btn-whatsapp" onClick={() => setOpen(false)}>
+              Start a conversation
+            </a>
+            <Link href="/start-your-study" className="btn-outline" onClick={() => setOpen(false)}>
+              Let&apos;s explore possibilities
+            </Link>
+          </div>
         </div>
-      </motion.div>
+      )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .nav-desktop { display: none !important; }
+          .nav-mobile-trigger { display: flex !important; }
+        }
+      `}</style>
     </>
   );
 }

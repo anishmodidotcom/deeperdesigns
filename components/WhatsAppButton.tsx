@@ -1,219 +1,54 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { WHATSAPP_HREF } from "@/lib/contact";
-
-const DISMISS_KEY = "dd-whatsapp-nudge-dismissed-v1";
 
 export default function WhatsAppButton() {
   const [nudgeVisible, setNudgeVisible] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
-  const [mountTime] = useState(() => Date.now());
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    try {
-      if (sessionStorage.getItem(DISMISS_KEY)) return;
-    } catch {
-      // Ignore storage errors.
-    }
+    const wasDismissed = sessionStorage.getItem("wa-nudge-dismissed");
+    if (wasDismissed) { setDismissed(true); return; }
 
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    let scrollFired = false;
-
-    function show() {
-      if (scrollFired) return;
-      // Minimum dwell time, even if scroll fires immediately on long pages.
-      if (Date.now() - mountTime < 15_000) return;
-      scrollFired = true;
-      setNudgeVisible(true);
-    }
-
-    timeoutId = setTimeout(() => {
-      scrollFired = true;
-      setNudgeVisible(true);
-    }, 30_000);
-
-    function onScroll() {
-      const max =
-        document.documentElement.scrollHeight - window.innerHeight;
-      if (max <= 0) return;
-      if (window.scrollY / max >= 0.5) show();
-    }
-
+    const timer = setTimeout(() => setNudgeVisible(true), 30000);
+    const onScroll = () => {
+      const pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (pct > 0.5) setNudgeVisible(true);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+      clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [mountTime]);
-
-  // Hide the nudge when the footer comes into view.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const footer = document.getElementById("site-footer");
-    if (!footer) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setFooterVisible(entries.some((e) => e.isIntersecting));
-      },
-      { rootMargin: "0px 0px -10% 0px" }
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
   }, []);
 
-  function dismiss() {
+  const dismiss = () => {
     setNudgeVisible(false);
-    try {
-      sessionStorage.setItem(DISMISS_KEY, "1");
-    } catch {
-      // Ignore storage errors.
-    }
-  }
-
-  const showNudge = nudgeVisible && !footerVisible;
+    setDismissed(true);
+    sessionStorage.setItem("wa-nudge-dismissed", "1");
+  };
 
   return (
     <>
+      {nudgeVisible && !dismissed && (
+        <div style={{ position: "fixed", bottom: "96px", right: "24px", zIndex: 40, background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "12px", padding: "12px 14px", display: "flex", alignItems: "center", gap: "10px", maxWidth: "260px", fontSize: "13px", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
+          <span>Just want to chat? Message us on WhatsApp.</span>
+          <button aria-label="Dismiss" onClick={dismiss} style={{ width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--fg-dim)" }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      )}
       <a
-        href={WHATSAPP_HREF}
+        href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        data-cursor="pointer"
-        className="dd-whatsapp-btn"
-        style={{
-          position: "fixed",
-          bottom: 24,
-          right: 24,
-          width: 56,
-          height: 56,
-          borderRadius: 9999,
-          background: "#25D366",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 99,
-          boxShadow: "0 12px 28px rgba(37, 211, 102, 0.35)",
-          transition:
-            "transform var(--t-base) var(--ease-spring), box-shadow var(--t-base) var(--ease-spring)",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.08)";
-          e.currentTarget.style.boxShadow =
-            "0 18px 38px rgba(37, 211, 102, 0.45)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow =
-            "0 12px 28px rgba(37, 211, 102, 0.35)";
-        }}
+        aria-label="WhatsApp us"
+        style={{ position: "fixed", bottom: "24px", right: "24px", zIndex: 40, width: "56px", height: "56px", background: "var(--whatsapp)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 24px rgba(37,211,102,0.4)", transition: "transform 200ms" }}
       >
-        <span
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: -6,
-            borderRadius: 9999,
-            background: "#25D366",
-            opacity: 0,
-            animation: "dd-pulse 5s ease-out infinite",
-            zIndex: -1,
-          }}
-        />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-          width="28"
-          height="28"
-          fill="#ffffff"
-          aria-hidden
-        >
-          <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.4-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.553-.7 2.768-1.51.1-.387.1-.74.057-.832-.058-.144-.214-.215-.487-.358-.488-.244-1.806-.78-2.106-.78z" />
-          <path d="M16.014 0C7.207 0 .024 7.182.024 16c0 2.85.756 5.62 2.20 8.067L0 32l8.108-2.115a15.99 15.99 0 0 0 7.906 2.063h.007c8.81 0 15.99-7.18 15.99-16C32.01 7.18 24.825 0 16.013 0zm0 29.252h-.005a13.243 13.243 0 0 1-6.756-1.852l-.485-.288-5.024 1.31 1.34-4.91-.318-.5A13.27 13.27 0 0 1 2.755 16C2.755 8.69 8.7 2.745 16.018 2.745c3.55 0 6.882 1.382 9.39 3.892a13.184 13.184 0 0 1 3.886 9.387c-.005 7.31-5.948 13.228-13.28 13.228z" />
-        </svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
-
-      <AnimatePresence>
-        {showNudge ? (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              position: "fixed",
-              right: 24,
-              bottom: 96,
-              zIndex: 98,
-              background: "var(--surface-1)",
-              border: "1px solid var(--border-2)",
-              borderRadius: 12,
-              paddingInline: 14,
-              paddingBlock: 10,
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              maxWidth: 320,
-              fontSize: 13,
-              color: "var(--text)",
-              boxShadow: "0 16px 40px -10px rgba(0,0,0,0.45)",
-            }}
-            role="status"
-          >
-            <span style={{ lineHeight: 1.35 }}>
-              Just want to chat? Message us on WhatsApp.
-            </span>
-            <button
-              type="button"
-              onClick={dismiss}
-              aria-label="Dismiss"
-              data-cursor="pointer"
-              style={{
-                background: "transparent",
-                border: "none",
-                color: "var(--text-3)",
-                cursor: "pointer",
-                padding: 4,
-                fontSize: 16,
-                lineHeight: 1,
-              }}
-            >
-              ×
-            </button>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-
-      <style jsx global>{`
-        @keyframes dd-pulse {
-          0% {
-            opacity: 0.5;
-            transform: scale(0.95);
-          }
-          60% {
-            opacity: 0;
-            transform: scale(1.5);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(1.6);
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .dd-whatsapp-btn span[aria-hidden] {
-            animation: none !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .dd-whatsapp-btn {
-            width: 48px !important;
-            height: 48px !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

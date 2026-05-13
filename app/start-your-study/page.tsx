@@ -3,17 +3,14 @@ import StudyForm from "./StudyForm";
 
 export const metadata: Metadata = {
   title: "Let's explore possibilities · Deeper Designs",
-  description:
-    "Tell us what is slowing your business down. Nine quick questions, a verified phone, and a plan, a timeline, and a number back within 24 hours.",
-  openGraph: {
-    title: "Let's explore possibilities · Deeper Designs",
-    description:
-      "Tell us what is slowing your business down. Nine quick questions, a verified phone, and a reply within 24 hours.",
-    url: "/start-your-study",
-  },
-  alternates: { canonical: "/start-your-study" },
+  description: "Nine quick questions. A verified email. We come back within 24 hours with a plan, a timeline, and a number.",
+  alternates: { canonical: "https://deeperdesigns.in/start-your-study" },
 };
 
-export default function StartYourStudyPage() {
-  return <StudyForm />;
+export default function StartYourStudy() {
+  return (
+    <main style={{ paddingTop: "120px", minHeight: "100vh" }}>
+      <StudyForm />
+    </main>
+  );
 }
