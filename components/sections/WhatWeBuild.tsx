@@ -22,32 +22,9 @@ const ICON_PROPS = {
 
 const CAPABILITIES: Capability[] = [
   {
-    title: "AI-Powered Tools",
+    title: "Internal tools that replace spreadsheets",
     description:
-      "Calculators, visualizers, configurators, quizzes. Custom tools that solve specific problems in your business.",
-    icon: (
-      <svg {...ICON_PROPS} aria-hidden>
-        <polyline points="8 7 3 12 8 17" />
-        <polyline points="16 7 21 12 16 17" />
-      </svg>
-    ),
-  },
-  {
-    title: "Websites That Convert",
-    description:
-      "Not templates. Custom-built sites designed to make your brand look like a million bucks and turn visitors into customers.",
-    icon: (
-      <svg {...ICON_PROPS} aria-hidden>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18" />
-        <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0 -18" />
-      </svg>
-    ),
-  },
-  {
-    title: "Dashboards and Portals",
-    description:
-      "Real-time dashboards, client portals, internal tools. Your data, organized and visual, updated live.",
+      "Inventory trackers, booking systems, client portals, team dashboards. The kind of tools your team has been managing in Excel and WhatsApp for years.",
     icon: (
       <svg {...ICON_PROPS} aria-hidden>
         <line x1="4" y1="20" x2="4" y2="10" />
@@ -58,9 +35,32 @@ const CAPABILITIES: Capability[] = [
     ),
   },
   {
-    title: "Chatbots and Agents",
+    title: "Customer-facing tools that look expensive",
     description:
-      "WhatsApp bots, sales agents, customer support AI. Handles the conversations so you can focus on the work.",
+      "Configurators, quizzes, recommendation engines, calculators. The kind of tools that turn a browser into a buyer.",
+    icon: (
+      <svg {...ICON_PROPS} aria-hidden>
+        <polyline points="8 7 3 12 8 17" />
+        <polyline points="16 7 21 12 16 17" />
+      </svg>
+    ),
+  },
+  {
+    title: "Websites that actually convert",
+    description:
+      "Not a template, not a Wix site. Custom-built sites with the conversion logic baked in. For brands that need to look serious.",
+    icon: (
+      <svg {...ICON_PROPS} aria-hidden>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0 -18" />
+      </svg>
+    ),
+  },
+  {
+    title: "WhatsApp agents and chatbots",
+    description:
+      "AI that handles repetitive customer questions, books appointments, sends reminders, and only escalates to you when needed.",
     icon: (
       <svg {...ICON_PROPS} aria-hidden>
         <path d="M21 12a8 8 0 0 1 -8 8a9 9 0 0 1 -4 -1l-5 1l1 -4a8 8 0 1 1 16 -4z" />
@@ -68,9 +68,9 @@ const CAPABILITIES: Capability[] = [
     ),
   },
   {
-    title: "E-commerce",
+    title: "Operational systems",
     description:
-      "Stores built to sell. Product builders, custom ordering flows, inventory systems. From Shopify to fully custom.",
+      "When a business has outgrown the manual way of doing things. We design the system end to end and ship the tools that run it.",
     icon: (
       <svg {...ICON_PROPS} aria-hidden>
         <path d="M3 7h18l-1.5 12a2 2 0 0 1 -2 2h-11a2 2 0 0 1 -2 -2z" />
@@ -79,9 +79,9 @@ const CAPABILITIES: Capability[] = [
     ),
   },
   {
-    title: "Marketing and Growth",
+    title: "Brand and identity",
     description:
-      "Content systems, lead magnets, ad management, social media engines. The systems that bring people to your door.",
+      "When the brand itself is the bottleneck. Naming, visual identity, packaging direction, and a site that holds it all together.",
     icon: (
       <svg {...ICON_PROPS} aria-hidden>
         <path d="M3 11l18 -7v16l-18 -7z" />

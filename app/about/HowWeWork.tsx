@@ -5,13 +5,6 @@ import { Link } from "next-view-transitions";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const NUMBERS = [
-  { v: "14-28", l: "Days from kickoff to live tool" },
-  { v: "1", l: "Single point of contact (Anish)" },
-  { v: "≤ 3", l: "Active builds at any time" },
-  { v: "0", l: "Subscription tiers" },
-];
-
 export default function HowWeWork() {
   return (
     <section
@@ -55,10 +48,7 @@ export default function HowWeWork() {
             maxWidth: 1000,
           }}
         >
-          Two to four weeks.{" "}
-          <em style={{ fontStyle: "italic", color: "var(--accent-2)" }}>
-            AI-led, taste-finished.
-          </em>
+          We work fast because we work small.
         </motion.h2>
 
         <motion.p
@@ -75,56 +65,12 @@ export default function HowWeWork() {
             maxWidth: 720,
           }}
         >
-          We use AI for the boring middle of the build (boilerplate, copy
-          drafts, image generation, mockups) and reserve human judgement
-          for the parts that matter (the brief, the system architecture,
-          the taste, the final ship). Every project ships with one of us
-          on the line until it is live.
+          First call is usually a long conversation about what is actually
+          slowing the business down. We pick one thing worth building. A
+          rough idea comes back the next day. We sharpen it together, then
+          start building. You stay in the loop the whole time. No long
+          brief. No waiting around.
         </motion.p>
-
-        <div className="abt-numbers-grid">
-          {NUMBERS.map((n, i) => (
-            <motion.div
-              key={n.l}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: EASE }}
-              style={{
-                paddingBlock: 28,
-                borderTop: "1px solid var(--border)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-fraunces), Georgia, serif",
-                  fontWeight: 400,
-                  fontSize: "clamp(40px, 5vw, 64px)",
-                  letterSpacing: "-0.02em",
-                  color: "var(--accent-2)",
-                  margin: 0,
-                  lineHeight: 1,
-                }}
-              >
-                {n.v}
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-geist-mono), monospace",
-                  fontSize: 11,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "var(--text-2)",
-                  margin: 0,
-                  marginTop: 14,
-                  maxWidth: 220,
-                }}
-              >
-                {n.l}
-              </p>
-            </motion.div>
-          ))}
-        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -154,20 +100,6 @@ export default function HowWeWork() {
           </Link>
         </motion.div>
       </div>
-
-      <style jsx>{`
-        .abt-numbers-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px;
-        }
-        @media (min-width: 900px) {
-          .abt-numbers-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-          }
-        }
-      `}</style>
     </section>
   );
 }

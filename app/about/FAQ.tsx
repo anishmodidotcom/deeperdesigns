@@ -11,7 +11,7 @@ type Item = {
 const ITEMS: Item[] = [
   {
     q: "What is Deeper Designs?",
-    a: "Deeper Designs builds custom systems for modern businesses. Websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
+    a: "Deeper Designs builds custom systems for Indian businesses. Websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
   },
   {
     q: "Who is Anish Modi?",
@@ -23,11 +23,11 @@ const ITEMS: Item[] = [
   },
   {
     q: "What does it cost?",
-    a: "Single small tools start at ₹25,000 (around $300). Custom tools land between ₹1L and ₹3L ($1,200 to $3,500). Multi-tool systems run ₹3L to ₹10L ($3,500 to $12,000). Full operational redesigns are ₹10L and up. Most projects ship in two to six weeks. Pricing depends on scope, integrations, and timeline.",
+    a: "Single small tools start at ₹25,000 (UAE clients: from AED 1,100). Custom tools land between ₹1L and ₹3L. Multi-tool systems run ₹3L to ₹10L. Full operational redesigns are ₹10L and up. Pricing depends on scope, integrations, and timeline.",
   },
   {
     q: "How long does a project take?",
-    a: "Two to six weeks for most projects. A single quiz or lead form can ship in days. A multi-system operational redesign takes six weeks plus a polish window. We can scope this on the first call.",
+    a: "Most projects ship faster than traditional software. A single quiz or lead form can ship in days. A multi-system operational redesign needs more polish time. We scope this on the first call.",
   },
   {
     q: "What is a Possibility Study?",

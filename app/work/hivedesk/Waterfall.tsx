@@ -64,11 +64,15 @@ export default function Waterfall() {
         const el = fills[i];
         const val = values[i];
         if (!el || !val) return;
+        // Paint starting value so the bar value is never blank before
+        // the ScrollTrigger fires on first visit.
+        el.style.height = "0%";
+        val.textContent = "0";
         const obj = { h: 0 };
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
+            start: "top 85%",
             once: true,
           },
         });
@@ -103,6 +107,13 @@ export default function Waterfall() {
           );
         }
       });
+
+      // Refresh after Lenis settles so positions are accurate on first
+      // visit.
+      const refreshId = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 120);
+      return () => window.clearTimeout(refreshId);
     },
     { scope: sectionRef }
   );

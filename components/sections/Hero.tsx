@@ -5,19 +5,19 @@ import { AnimatePresence, motion } from "motion/react";
 import AmbientCanvas from "@/components/AmbientCanvas";
 
 const HEADLINES = [
+  "Custom tools for Indian businesses.",
   "We design better ways to run a business.",
-  "Custom digital tools for modern businesses.",
   "Less chaos. Better systems.",
   "Possibility, designed.",
   "Your business deserves better tools.",
 ];
 
 const SUBHEADLINE_LINES = [
-  "Custom digital tools, sites, and operational systems.",
-  "Shipped in weeks. Considered for longer.",
+  "Custom digital tools and operational systems for Indian businesses.",
+  "Built faster than traditional software. Designed to fit.",
 ];
 
-const TAGLINE = "Operational relief, designed carefully, shipped efficiently.";
+const TAGLINE = "Practical tools. Thoughtful design. Built for Indian businesses.";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

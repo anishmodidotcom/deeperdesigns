@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Yellowtail, DM_Sans } from "next/font/google";
+import { Playfair_Display_SC, Playfair_Display, DM_Sans } from "next/font/google";
 
 import Hero from "./Hero";
 import Farah from "./Farah";
@@ -13,12 +13,17 @@ import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 
-// Yellowtail carries the script-led personality (a single-weight
-// cursive that handles display sizes well). DM Sans is the quiet
-// modern body sans the script needs to read against.
-const yellowtail = Yellowtail({
+const playfairSc = Playfair_Display_SC({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700", "900"],
+  variable: "--font-display-sc",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-display-script",
   display: "swap",
 });
@@ -51,17 +56,19 @@ export const metadata: Metadata = {
 };
 
 const pageStyle = {
-  "--page-bg": "#FFF8F2",
-  "--page-surface-1": "#FCEDE3",
-  "--page-surface-2": "#F8E0D2",
-  "--page-blush": "rgba(242,212,201,0.45)",
-  "--page-border": "rgba(74,46,58,0.12)",
-  "--page-accent": "#C9405A",
-  "--page-accent-deep": "#6B2F44",
-  "--page-text": "#4A2E3A",
-  "--page-text-2": "#7E5C68",
-  "--page-text-3": "#A88E97",
-  background: "var(--page-bg)",
+  "--page-bg": "#FAF5EE",
+  "--page-bg-top": "#FFFFFF",
+  "--page-surface-1": "#FFFFFF",
+  "--page-surface-2": "#F4EBDF",
+  "--page-blush": "rgba(161,74,92,0.08)",
+  "--page-border": "rgba(42,31,26,0.12)",
+  "--page-accent": "#A14A5C",
+  "--page-accent-deep": "#7A3848",
+  "--page-text": "#2A1F1A",
+  "--page-text-2": "#5A463F",
+  "--page-text-3": "#8B7B6E",
+  background:
+    "linear-gradient(180deg, #FFFFFF 0%, #FAF5EE 60%, #FAF5EE 100%)",
   color: "var(--page-text)",
   colorScheme: "light",
 } as React.CSSProperties;
@@ -70,7 +77,7 @@ export default function SugarLanePage() {
   return (
     <div
       data-theme="light"
-      className={`${yellowtail.variable} ${dmSans.variable}`}
+      className={`${playfairSc.variable} ${playfair.variable} ${dmSans.variable}`}
       style={pageStyle}
     >
       <StructuredData
