@@ -2,242 +2,205 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+// useLayoutEffect runs synchronously after DOM mutation, before paint.
+// In SSR it falls back to useEffect to avoid a warning.
+const useIsoLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 export default function Hero() {
+  const [phase, setPhase] = useState<"before" | "after">("after");
+  const [reduced, setReduced] = useState(false);
+
+  // Force the page to the top before paint so the user does not see a
+  // mid-scroll flash on navigation. Belt-and-suspenders next to the
+  // SmoothScroll component's scrollTo on path change.
+  useIsoLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+  }, []);
+
+  useEffect(() => {
+    if (reduced) return;
+    const id = window.setInterval(() => {
+      setPhase((p) => (p === "after" ? "before" : "after"));
+    }, 3800);
+    return () => window.clearInterval(id);
+  }, [reduced]);
+
   return (
     <section
       style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "92vh",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
         paddingInline: 24,
         paddingBlock: 96,
         overflow: "hidden",
       }}
     >
-      <div
-        className="container-x"
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE }}
         style={{
-          position: "relative",
-          maxWidth: 1320,
-          marginInline: "auto",
-          width: "100%",
+          fontFamily: "var(--font-geist-mono), monospace",
+          fontSize: 11,
+          textTransform: "uppercase",
+          letterSpacing: "0.22em",
+          color: "var(--page-accent)",
+          margin: 0,
+          marginBottom: 28,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "6px 14px",
+          border: "1px solid var(--page-border)",
+          borderRadius: 9999,
+          background: "rgba(200,149,109,0.05)",
         }}
       >
-        <div className="ml-hero-grid">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE }}
-              style={{
-                fontFamily: "var(--font-geist-mono), monospace",
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.22em",
-                color: "var(--page-accent)",
-                margin: 0,
-                marginBottom: 40,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "6px 12px",
-                border: "1px solid var(--page-border)",
-                borderRadius: 9999,
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: 6,
-                  height: 6,
-                  borderRadius: 9999,
-                  background: "var(--page-accent)",
-                }}
-              />
-              MAPLE LENS · LIVE PRODUCT · FURNITURE MAKERS
-            </motion.p>
+        <span
+          aria-hidden
+          style={{
+            display: "inline-block",
+            width: 6,
+            height: 6,
+            borderRadius: 9999,
+            background: "var(--page-accent)",
+          }}
+        />
+        01 · LIVE PRODUCT · FURNITURE MAKERS
+      </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: EASE }}
-              style={{
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
-                fontWeight: 600,
-                fontSize: "clamp(44px, 7.4vw, 96px)",
-                letterSpacing: "-0.04em",
-                lineHeight: 1.02,
-                margin: 0,
-              }}
-            >
-              Workshop photo in.
-              <br />
-              <span style={{ color: "var(--page-accent)" }}>
-                Studio shot out.
-              </span>
-            </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.1, ease: EASE }}
+        style={{
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+          fontWeight: 600,
+          fontSize: "clamp(44px, 7vw, 88px)",
+          letterSpacing: "-0.04em",
+          lineHeight: 1.02,
+          margin: 0,
+          maxWidth: 920,
+        }}
+      >
+        Workshop photo in.{" "}
+        <span style={{ color: "var(--page-accent)" }}>Studio shot out.</span>
+      </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-              style={{
-                fontSize: 18,
-                color: "var(--page-text-2)",
-                maxWidth: 520,
-                margin: 0,
-                marginTop: 32,
-                lineHeight: 1.65,
-              }}
-            >
-              Catalog-ready studio and lifestyle images from a phone photo.
-              Built for Indian furniture makers who do not have a catalog
-              studio budget.
-            </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
+        style={{
+          fontSize: 18,
+          color: "var(--page-text-2)",
+          maxWidth: 560,
+          margin: 0,
+          marginTop: 24,
+          lineHeight: 1.65,
+        }}
+      >
+        Catalog-ready studio and lifestyle images from a phone photo. Built
+        for Indian furniture makers who do not have a studio budget.
+      </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-              style={{
-                display: "flex",
-                gap: 12,
-                flexWrap: "wrap",
-                marginTop: 40,
-              }}
-            >
-              <a
-                href="https://maplelens.vercel.app/app"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="pointer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  paddingInline: 24,
-                  paddingBlock: 14,
-                  background: "var(--page-accent)",
-                  color: "#1A1612",
-                  borderRadius: 9999,
-                  fontFamily:
-                    "var(--font-inter), system-ui, sans-serif",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  letterSpacing: "0.02em",
-                  textDecoration: "none",
-                }}
-              >
-                Try Maple Lens
-                <span aria-hidden>↗</span>
-              </a>
-              <a
-                href="#showcase"
-                data-cursor="pointer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  paddingInline: 24,
-                  paddingBlock: 14,
-                  background: "transparent",
-                  color: "var(--page-text)",
-                  border: "1px solid var(--page-border)",
-                  borderRadius: 9999,
-                  fontFamily:
-                    "var(--font-inter), system-ui, sans-serif",
-                  fontSize: 14,
-                  fontWeight: 500,
-                  textDecoration: "none",
-                }}
-              >
-                See before / after
-              </a>
-            </motion.div>
-          </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.1, delay: 0.4, ease: EASE }}
+        style={{
+          position: "relative",
+          width: "min(520px, 90vw)",
+          aspectRatio: "4 / 5",
+          marginTop: 56,
+          borderRadius: 12,
+          overflow: "hidden",
+          border: "1px solid var(--page-border)",
+          background: "var(--page-surface)",
+          boxShadow: "0 30px 80px -30px rgba(200, 149, 109, 0.25)",
+        }}
+      >
+        <Image
+          src="/images/maplelens/hero-workshop.webp"
+          alt="A workshop photo of a wooden chair before Maple Lens"
+          fill
+          priority
+          sizes="(min-width: 900px) 520px, 90vw"
+          style={{
+            objectFit: "cover",
+            opacity: phase === "before" ? 1 : 0,
+            transition: "opacity 0.9s ease-in-out",
+          }}
+        />
+        <Image
+          src="/images/maplelens/hero-catalog.webp"
+          alt="The same chair after Maple Lens, a catalog-ready studio image"
+          fill
+          priority
+          sizes="(min-width: 900px) 520px, 90vw"
+          style={{
+            objectFit: "cover",
+            opacity: phase === "after" ? 1 : 0,
+            transition: "opacity 0.9s ease-in-out",
+          }}
+        />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-            className="ml-hero-pair"
-          >
-            <div className="ml-hero-card ml-hero-before">
-              <span className="ml-hero-tag">PHONE PHOTO</span>
-              <Image
-                src="/images/maplelens/hero-workshop.webp"
-                alt="A workshop photo of a wooden chair before Maple Lens"
-                fill
-                priority
-                sizes="(min-width: 1024px) 360px, 50vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div className="ml-hero-card ml-hero-after">
-              <span className="ml-hero-tag" style={{ background: "var(--page-accent)", color: "#1A1612" }}>
-                CATALOG SHOT
-              </span>
-              <Image
-                src="/images/maplelens/hero-catalog.webp"
-                alt="A catalog-ready studio image of the same chair after Maple Lens"
-                fill
-                priority
-                sizes="(min-width: 1024px) 360px, 50vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
+        <motion.span
+          key={phase}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          style={{
+            position: "absolute",
+            top: 16,
+            left: 16,
+            background:
+              phase === "after" ? "var(--page-accent)" : "rgba(15,12,10,0.78)",
+            color: phase === "after" ? "#1A1410" : "var(--page-text)",
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 10,
+            letterSpacing: "0.18em",
+            padding: "5px 9px",
+            borderRadius: 4,
+            fontWeight: 600,
+          }}
+        >
+          {phase === "after" ? "AFTER" : "BEFORE"}
+        </motion.span>
 
-      <style jsx>{`
-        .ml-hero-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 64px;
-          align-items: center;
-        }
-        .ml-hero-pair {
-          position: relative;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
-          width: 100%;
-          max-width: 540px;
-          margin-inline: auto;
-        }
-        .ml-hero-card {
-          position: relative;
-          aspect-ratio: 4 / 5;
-          overflow: hidden;
-          border-radius: 8px;
-          border: 1px solid var(--page-border);
-          background: var(--page-surface);
-        }
-        .ml-hero-tag {
-          position: absolute;
-          top: 12px;
-          left: 12px;
-          z-index: 2;
-          background: rgba(15, 12, 10, 0.78);
-          color: var(--page-text);
-          font-family: var(--font-geist-mono), monospace;
-          font-size: 10px;
-          letter-spacing: 0.18em;
-          padding: 5px 8px;
-          border-radius: 4px;
-          font-weight: 600;
-        }
-        @media (min-width: 1024px) {
-          .ml-hero-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 96px;
-          }
-        }
-      `}</style>
+        <span
+          aria-hidden
+          style={{
+            position: "absolute",
+            bottom: 16,
+            right: 16,
+            fontFamily: "var(--font-geist-mono), monospace",
+            fontSize: 10,
+            letterSpacing: "0.16em",
+            color: "var(--page-text-2)",
+            background: "rgba(15,12,10,0.55)",
+            padding: "4px 8px",
+            borderRadius: 4,
+          }}
+        >
+          MAPLE LENS
+        </span>
+      </motion.div>
     </section>
   );
 }

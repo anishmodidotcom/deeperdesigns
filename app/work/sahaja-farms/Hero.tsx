@@ -139,7 +139,7 @@ export default function Hero() {
                 marginBottom: 28,
               }}
             >
-              SAHAJA FARMS · POSSIBILITY STUDY · 013 OF 20
+              SAHAJA FARMS
             </motion.p>
 
             <h1

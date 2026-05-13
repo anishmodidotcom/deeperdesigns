@@ -56,7 +56,7 @@ export default function Hero() {
               marginBottom: 28,
             }}
           >
-            HIVEDESK · POSSIBILITY STUDY · 010 OF 20
+            HIVEDESK
           </motion.p>
 
           <motion.h1
@@ -134,9 +134,7 @@ export default function Hero() {
             </Link>
 
             <a
-              href="https://hivedesk.example"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#about-build"
               data-cursor="pointer"
               style={{
                 fontFamily:
@@ -152,7 +150,7 @@ export default function Hero() {
                 e.currentTarget.style.color = "var(--page-text-2)";
               }}
             >
-              Live demo →
+              See the build →
             </a>
           </motion.div>
 

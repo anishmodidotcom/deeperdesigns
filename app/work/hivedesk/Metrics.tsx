@@ -81,6 +81,9 @@ export default function Metrics() {
       stats.forEach((s) => {
         const el = s.ref.current;
         if (!el) return;
+        // Always paint the starting value so the placeholder is never
+        // blank before ScrollTrigger fires.
+        el.textContent = s.display(s.from);
         if (reduced) {
           el.textContent = s.display(s.to);
           return;
@@ -92,7 +95,7 @@ export default function Metrics() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 75%",
+            start: "top 85%",
             once: true,
           },
           onUpdate: () => {
@@ -100,6 +103,14 @@ export default function Metrics() {
           },
         });
       });
+
+      // Refresh after Lenis settles so positions are accurate on first
+      // visit. Without this the trigger can miss-fire when scroll height
+      // changes after route-level smooth scroll completes.
+      const refreshId = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 120);
+      return () => window.clearTimeout(refreshId);
     },
     { scope: sectionRef }
   );

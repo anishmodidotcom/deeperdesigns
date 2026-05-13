@@ -4,13 +4,9 @@ import { Fraunces } from "next/font/google";
 import Hero from "./Hero";
 import Thesis from "./Thesis";
 import HowWeWork from "./HowWeWork";
-import Studio from "./Studio";
 import Founder from "./Founder";
-import Selectivity from "./Selectivity";
-import NotDoing from "./NotDoing";
-import Contact from "./Contact";
 import FAQ from "./FAQ";
-import WhyNotDIY from "@/components/sections/WhyNotDIY";
+import Contact from "./Contact";
 import LabNotes from "@/components/sections/LabNotes";
 import { StructuredData, ANISH_PERSON_LD } from "@/components/StructuredData";
 
@@ -25,7 +21,14 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
   description:
-    "Enterprise software costs a million dollars. We build the same thing for businesses that could never afford it. Deeper Designs is an AI-led build studio operating between Dubai and Delhi.",
+    "Deeper Designs builds custom systems for modern businesses. A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+  openGraph: {
+    title: "About · Deeper Designs",
+    description:
+      "A small team between Dubai and Delhi. Founded 2017, rebuilt around AI in 2024.",
+    url: "/about",
+  },
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -35,13 +38,9 @@ export default function AboutPage() {
       <Hero />
       <Thesis />
       <HowWeWork />
-      <Studio />
       <Founder />
-      <WhyNotDIY />
-      <Selectivity />
-      <LabNotes />
       <FAQ />
-      <NotDoing />
+      <LabNotes />
       <Contact />
     </div>
   );

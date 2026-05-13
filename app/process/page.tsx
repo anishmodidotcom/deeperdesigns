@@ -16,7 +16,14 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Process · Deeper Designs",
   description:
-    "The Deeper Designs four-step build process. Discovery, Design, Build, Ship and iterate. 14 to 28 days from kickoff to live tool.",
+    "The four-step build process. Discovery, design, build, ship. Two to six weeks from kickoff to live tool.",
+  openGraph: {
+    title: "Process · Deeper Designs",
+    description:
+      "Discovery, design, build, ship. Two to six weeks from kickoff to live tool.",
+    url: "/process",
+  },
+  alternates: { canonical: "/process" },
 };
 
 export default function ProcessPage() {

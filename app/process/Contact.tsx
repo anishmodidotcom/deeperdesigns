@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { WHATSAPP_HREF } from "@/lib/contact";
 import { Link } from "next-view-transitions";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -67,7 +68,7 @@ export default function Contact() {
           }}
         >
           <a
-            href="https://wa.me/919968716498?text=Hi%20Deeper%20Designs%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business"
+            href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="pointer"
@@ -87,7 +88,7 @@ export default function Contact() {
               textDecoration: "none",
             }}
           >
-            WhatsApp the studio ↗
+            Start a conversation ↗
           </a>
           <Link
             href="/start-your-study"

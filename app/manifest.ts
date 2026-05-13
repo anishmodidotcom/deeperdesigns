@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Deeper Designs",
     short_name: "Deeper Designs",
     description:
-      "An AI-led build studio. Custom digital tools, designed carefully and shipped in weeks.",
+      "Custom digital tools, sites, and operational systems for modern businesses. Designed carefully and shipped in weeks.",
     start_url: "/",
     display: "standalone",
     background_color: "#0B0B0E",

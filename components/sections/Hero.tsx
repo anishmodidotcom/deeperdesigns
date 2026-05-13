@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import AmbientCanvas from "@/components/AmbientCanvas";
 
 const HEADLINES = [
   "We design better ways to run a business.",
@@ -12,8 +13,8 @@ const HEADLINES = [
 ];
 
 const SUBHEADLINE_LINES = [
-  "We design and build custom digital tools for modern businesses.",
-  "Shipped in weeks, not quarters. Considered for longer.",
+  "Custom digital tools, sites, and operational systems.",
+  "Shipped in weeks. Considered for longer.",
 ];
 
 const TAGLINE = "Operational relief, designed carefully, shipped efficiently.";
@@ -51,8 +52,10 @@ export default function Hero() {
         position: "relative",
         paddingInline: 24,
         paddingBlock: 96,
+        overflow: "hidden",
       }}
     >
+      <AmbientCanvas />
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -64,9 +67,11 @@ export default function Hero() {
           letterSpacing: "0.08em",
           color: "var(--text-3)",
           marginBottom: 32,
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        AI-POWERED BUILD STUDIO
+        DEEPER DESIGNS
       </motion.div>
 
       <h1
@@ -80,6 +85,7 @@ export default function Hero() {
           maxWidth: 1100,
           minHeight: "1.2em",
           position: "relative",
+          zIndex: 1,
         }}
       >
         <span
@@ -114,6 +120,8 @@ export default function Hero() {
           color: "var(--text-2)",
           fontSize: "clamp(16px, 2vw, 22px)",
           lineHeight: 1.5,
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {SUBHEADLINE_LINES.map((line, i) => (
@@ -151,6 +159,8 @@ export default function Hero() {
           letterSpacing: "0.22em",
           textTransform: "uppercase",
           color: "var(--accent)",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {TAGLINE}

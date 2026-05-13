@@ -1,10 +1,10 @@
-// In-memory OTP store used as a default for local dev when no third-party
-// provider (Supabase, MSG91, Twilio Verify) is configured. Resets on each
-// server boot, which is the right behaviour for short-lived codes.
+// In-memory OTP store keyed by email address (post-v3) or any string
+// identifier. Resets on each server boot; short-lived codes are the
+// intended use, so a process-local store is correct here.
 
 type Entry = { code: string; createdAt: number; attempts: number };
 
-const TTL_MS = 5 * 60 * 1000;
+const TTL_MS = 10 * 60 * 1000;
 const MAX_ATTEMPTS = 5;
 const store = new Map<string, Entry>();
 
@@ -38,6 +38,6 @@ export function verifyCode(
   return { ok: true };
 }
 
-export function phoneKey(country: string, phone: string): string {
-  return `${country}:${phone}`;
+export function emailKey(email: string): string {
+  return `email:${email.trim().toLowerCase()}`;
 }

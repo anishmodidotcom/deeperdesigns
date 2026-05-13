@@ -38,7 +38,7 @@ export default function AboutBuild() {
             marginBottom: 32,
           }}
         >
-          §06 · BRIEF SUMMARY
+          06 · BRIEF SUMMARY
         </motion.p>
 
         <motion.h2

@@ -106,7 +106,7 @@ export default function WhatWeBuild() {
             marginBottom: 32,
           }}
         >
-          WHAT WE DO
+          01 · WHAT WE BUILD
         </p>
 
         <h2
@@ -120,7 +120,7 @@ export default function WhatWeBuild() {
             maxWidth: 900,
           }}
         >
-          Enterprise-grade tools for businesses that could never afford them.
+          Custom-built operational tools. From ₹25,000.
         </h2>
 
         <p
@@ -132,9 +132,9 @@ export default function WhatWeBuild() {
             lineHeight: 1.6,
           }}
         >
-          Big companies have million-dollar software. Small businesses get
-          nothing. We change that. Custom AI tools, sites, and platforms
-          designed carefully and shipped in weeks, priced for real businesses.
+          Tools. Sites. Dashboards. WhatsApp agents. Quizzes. Portals.
+          Designed for the specific shape of your business, shipped in
+          weeks, priced like a tool and not a procurement project.
         </p>
 
         <div

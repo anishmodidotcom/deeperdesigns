@@ -63,7 +63,7 @@ export default function ActivityFeed() {
       className="pawstay-activity-feed"
       style={{
         position: "fixed",
-        right: 24,
+        left: 24,
         top: "50%",
         transform: "translateY(-50%)",
         width: 280,

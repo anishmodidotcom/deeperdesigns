@@ -11,8 +11,8 @@ export default function NextProject() {
       style={{
         position: "relative",
         paddingBlock: 128,
-        background:
-          "linear-gradient(to bottom, var(--page-bg) 0%, var(--page-bg) 30%, var(--bg) 100%)",
+        background: "#0A0A0A",
+        color: "#F7F8F8",
       }}
     >
       <Link
@@ -28,7 +28,7 @@ export default function NextProject() {
             fontSize: 13,
             textTransform: "uppercase",
             letterSpacing: "0.08em",
-            color: "var(--page-text-2)",
+            color: "rgba(247,248,248,0.7)",
             margin: 0,
             marginBottom: 24,
           }}
@@ -42,7 +42,7 @@ export default function NextProject() {
             fontSize: "clamp(32px, 5vw, 64px)",
             fontWeight: 300,
             letterSpacing: "-0.04em",
-            color: hover ? "var(--accent)" : "var(--text)",
+            color: hover ? "#7DA08E" : "#F7F8F8",
             transition: "color var(--t-base) var(--ease-spring)",
             margin: 0,
             lineHeight: 1.05,
@@ -54,7 +54,7 @@ export default function NextProject() {
         <p
           style={{
             fontSize: 18,
-            color: "var(--text-2)",
+            color: "rgba(247,248,248,0.6)",
             margin: 0,
             marginTop: 12,
           }}

@@ -6,7 +6,6 @@ import Problem from "./Problem";
 import Solution from "./Solution";
 import Showcase from "./Showcase";
 import BuildNote from "./BuildNote";
-import Pricing from "./Pricing";
 import FloatingCTA from "./FloatingCTA";
 import NextProject from "./NextProject";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
@@ -47,15 +46,15 @@ export const metadata: Metadata = {
 };
 
 const pageStyle = {
-  "--page-bg": "#0E0C0A",
-  "--page-surface": "#161311",
-  "--page-surface-2": "#1E1A16",
-  "--page-border": "rgba(212,168,87,0.18)",
-  "--page-accent": "#D4A857",
-  "--page-accent-2": "#F2E5C7",
-  "--page-text": "#F5F1E8",
-  "--page-text-2": "#B5AC9A",
-  "--page-text-3": "#6C6357",
+  "--page-bg": "#1A1410",
+  "--page-surface": "#231B15",
+  "--page-surface-2": "#2C2218",
+  "--page-border": "rgba(200,149,109,0.18)",
+  "--page-accent": "#C8956D",
+  "--page-accent-2": "#8B6F47",
+  "--page-text": "#F5EFE6",
+  "--page-text-2": "#B6A28A",
+  "--page-text-3": "#6B5D4F",
   background: "var(--page-bg)",
   color: "var(--page-text)",
 } as React.CSSProperties;
@@ -77,7 +76,6 @@ export default function MapleLensPage() {
       <Solution />
       <Showcase />
       <BuildNote />
-      <Pricing />
       <FloatingCTA />
       <NextProject />
     </div>

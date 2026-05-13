@@ -34,7 +34,7 @@ export default function Hero() {
             marginBottom: 48,
           }}
         >
-          ABOUT · 2025
+          ABOUT
         </motion.p>
 
         <motion.h1
@@ -52,10 +52,9 @@ export default function Hero() {
             maxWidth: 1200,
           }}
         >
-          Enterprise software costs a million dollars. We build the same
-          thing for businesses that could{" "}
+          Custom systems for modern businesses.{" "}
           <em style={{ fontStyle: "italic", color: "var(--accent-2)" }}>
-            never afford it.
+            From ₹25,000.
           </em>
         </motion.h1>
 
@@ -85,10 +84,9 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          Deeper Designs is a tiny AI-led build studio operating between
-          Dubai and Delhi. We make custom software for small and
-          mid-sized businesses, and we do it on the timeline an enterprise
-          consultancy spends on a Discovery deck.
+          We are a small team operating between Dubai and Delhi. We make
+          custom software for small and mid-sized businesses, and we ship in
+          weeks, not quarters.
         </motion.p>
       </div>
     </section>

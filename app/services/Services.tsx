@@ -393,7 +393,7 @@ export default function Services() {
             }}
           >
             Pricing depends on scope, integrations, and timeline. Most projects
-            ship in 2 to 6 weeks. The studio takes a small number of new
+            ship in 2 to 6 weeks. We take a small number of new
             engagements each month.
           </p>
 

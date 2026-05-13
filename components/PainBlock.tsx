@@ -69,7 +69,7 @@ export default function PainBlock({
               marginBottom: 20,
             }}
           >
-            POSSIBILITY STUDY · {number} OF 20
+            POSSIBILITY STUDY · {number}
           </p>
 
           {phrases.length > 0 ? (
@@ -205,7 +205,7 @@ export default function PainBlock({
                 textDecoration: "none",
               }}
             >
-              WhatsApp the studio
+              Start a conversation
               <span aria-hidden>↗</span>
             </a>
             <Link

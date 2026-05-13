@@ -8,6 +8,8 @@ const DISMISS_KEY = "dd-whatsapp-nudge-dismissed-v1";
 
 export default function WhatsAppButton() {
   const [nudgeVisible, setNudgeVisible] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+  const [mountTime] = useState(() => Date.now());
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -20,19 +22,24 @@ export default function WhatsAppButton() {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
     let scrollFired = false;
 
-    function showOnce() {
+    function show() {
       if (scrollFired) return;
+      // Minimum dwell time, even if scroll fires immediately on long pages.
+      if (Date.now() - mountTime < 15_000) return;
       scrollFired = true;
       setNudgeVisible(true);
     }
 
-    timeoutId = setTimeout(showOnce, 30_000);
+    timeoutId = setTimeout(() => {
+      scrollFired = true;
+      setNudgeVisible(true);
+    }, 30_000);
 
     function onScroll() {
       const max =
         document.documentElement.scrollHeight - window.innerHeight;
       if (max <= 0) return;
-      if (window.scrollY / max >= 0.5) showOnce();
+      if (window.scrollY / max >= 0.5) show();
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,6 +47,21 @@ export default function WhatsAppButton() {
       if (timeoutId) clearTimeout(timeoutId);
       window.removeEventListener("scroll", onScroll);
     };
+  }, [mountTime]);
+
+  // Hide the nudge when the footer comes into view.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setFooterVisible(entries.some((e) => e.isIntersecting));
+      },
+      { rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
   }, []);
 
   function dismiss() {
@@ -50,6 +72,8 @@ export default function WhatsAppButton() {
       // Ignore storage errors.
     }
   }
+
+  const showNudge = nudgeVisible && !footerVisible;
 
   return (
     <>
@@ -113,7 +137,7 @@ export default function WhatsAppButton() {
       </a>
 
       <AnimatePresence>
-        {nudgeVisible ? (
+        {showNudge ? (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}

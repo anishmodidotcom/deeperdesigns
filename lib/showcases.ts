@@ -42,6 +42,8 @@ export type Showcase = {
   timeline?: string;
   pains?: string[];
   pattern?: string;
+  cardLabel: string;
+  cardDescription: string;
 };
 
 export const SHOWCASES: Showcase[] = [
@@ -56,6 +58,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/maplelens/hero-catalog.webp",
     industries: ["Retail / D2C", "Creative / Studios"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "A photo studio for furniture makers",
+    cardDescription: "Turns workshop photos into catalog-ready studio shots.",
     live: true,
     liveUrl: "https://maplelens.vercel.app/app",
   },
@@ -70,6 +74,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/veda-glow/hero-bottle.webp",
     industries: ["Wellness / Beauty / Skincare", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "A skin advisor for an Ayurvedic brand",
+    cardDescription: "Recommends a routine based on skin, lifestyle, and goals.",
     timeline: "5 days",
     pains: [
       "40 DMs a day. All asking the same thing.",
@@ -91,6 +97,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/bharat-steel/hero-coil.webp",
     industries: ["Manufacturing / Industrial"],
     objectives: ["Operations", "Founder Overload"],
+    cardLabel: "An inventory brain for a steel trader",
+    cardDescription: "Knows what you have, what's moving, and what's about to run out.",
     timeline: "7 days",
     pains: [
       "Quotes go out on WhatsApp. Half are forgotten.",
@@ -112,6 +120,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/meera-wellness/hero-pose.webp",
     industries: ["Wellness / Beauty / Skincare", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    cardLabel: "A wellness hub for a yoga studio",
+    cardDescription: "Holds the schedule, the packages, and the renewals in one place.",
     timeline: "10 days",
     pains: [
       "Bookings live on three calendars and a notebook.",
@@ -133,6 +143,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/zaatar-republic/hero-wrap.webp",
     industries: ["F&B / Restaurants"],
     objectives: ["Operations", "Founder Overload"],
+    cardLabel: "An ops dashboard for a QSR chain",
+    cardDescription: "Reads four POS feeds at once and tells you where the day is going.",
     timeline: "12 days",
     pains: [
       "Four locations. Four POS systems. No single view.",
@@ -154,6 +166,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/studio-noor/hero-room.webp",
     industries: ["Creative / Studios", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    cardLabel: "A client portal for an interior studio",
+    cardDescription: "Replaces six WhatsApp groups with one shared project space.",
     timeline: "14 days",
     pains: [
       "Eight WhatsApp groups for one project.",
@@ -175,6 +189,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/smilefirst/hero-clinic.webp",
     industries: ["Healthcare / Clinics"],
     objectives: ["Customer Experience", "Operations", "Growth"],
+    cardLabel: "A patient flow manager for a dental clinic",
+    cardDescription: "Books, reminds, and re-engages without anyone lifting a phone.",
     timeline: "10 days",
     pains: [
       "A recall list sits in a drawer.",
@@ -196,6 +212,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/autobazaar/hero-sedan.webp",
     industries: ["Retail / D2C"],
     objectives: ["Operations", "Growth"],
+    cardLabel: "A pricing engine for a used-car lot",
+    cardDescription: "Prices each car daily on market data, days on lot, and competitors.",
     timeline: "8 days",
     pains: [
       "Sixty cars on the lot. Sixty pricing decisions made by feel.",
@@ -217,6 +235,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/stumpvision/hero-batsman.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "An academy platform for a cricket coaching centre",
+    cardDescription: "Player cards, match stats, and parent updates without paperwork.",
     timeline: "10 days",
     pains: [
       "Parents on the sidelines, asking how is my child doing.",
@@ -238,6 +258,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/oud-and-ember/hero-bottle.webp",
     industries: ["Wellness / Beauty / Skincare", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "A fragrance finder for a perfume atelier",
+    cardDescription: "Turns a five-question quiz into a personalised bottle.",
     timeline: "11 days",
     pains: [
       "Fifteen scents. Every customer asks which is for me.",
@@ -259,6 +281,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/hivedesk/hero-space.webp",
     industries: ["Hospitality / Travel", "Professional Services"],
     objectives: ["Operations", "Founder Overload"],
+    cardLabel: "A member hub for a coworking space",
+    cardDescription: "Runs the floor, profiles every member, and flags churn early.",
     timeline: "22 days",
     pains: [
       "Six different tools. None of them talk to each other.",
@@ -280,6 +304,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/malabar-spice/hero-pepper.webp",
     industries: ["F&B / Restaurants", "Retail / D2C"],
     objectives: ["Growth", "Customer Experience"],
+    cardLabel: "A brand site for a heritage spice exporter",
+    cardDescription: "Sixty-three years of work, finally on a site that looks like Kerala.",
     timeline: "8 days",
     pains: [
       "Sixty-three years of work. A website that does not show it.",
@@ -301,6 +327,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/pawstay/hero-dog.webp",
     industries: ["Hospitality / Travel", "Professional Services"],
     objectives: ["Customer Experience", "Operations"],
+    cardLabel: "A parent portal for a dog boarding facility",
+    cardDescription: "Live camera, daily tracker, and bookings, anxiety down to zero.",
     timeline: "10 days",
     pains: [
       "Pet parents are anxious. They want a photo every hour.",
@@ -322,6 +350,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/sahaja-farms/hero-field.webp",
     industries: ["Agriculture / Farms"],
     objectives: ["Operations", "Founder Overload"],
+    cardLabel: "A farm dashboard for an organic CSA",
+    cardDescription: "Plans planting, harvest, and subscriber retention from one screen.",
     timeline: "12 days",
     pains: [
       "Two hundred acres. Decisions made over the kitchen table.",
@@ -343,6 +373,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/karan-legal/hero-pen.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Growth", "Founder Overload"],
+    cardLabel: "A lead qualifier for an independent lawyer",
+    cardDescription: "Intakes every prospect before the phone gets answered.",
     timeline: "9 days",
     pains: [
       "Forty intake calls a week. Three of them turn into clients.",
@@ -364,6 +396,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/zara-fitness/hero-zara.webp",
     industries: ["Wellness / Beauty / Skincare", "Professional Services"],
     objectives: ["Growth", "Customer Experience"],
+    cardLabel: "A training platform for a fitness creator",
+    cardDescription: "Turns 280K followers into members, programs, and a product line.",
     timeline: "12 days",
     pains: [
       "Two hundred and eighty thousand followers. No place to send them.",
@@ -385,6 +419,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/earth-and-fire/hero-vase.webp",
     industries: ["Creative / Studios", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "A product builder for a ceramics studio",
+    cardDescription: "Shape, glaze, finish, and a queue that the maker can live with.",
     timeline: "9 weeks",
     pains: [
       "Drops sell out in ninety minutes. Then silence for a month.",
@@ -406,6 +442,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/kadak-chai/hero-tin.webp",
     industries: ["F&B / Restaurants", "Retail / D2C"],
     objectives: ["Growth", "Customer Experience"],
+    cardLabel: "A brand world for a craft chai company",
+    cardDescription: "Tin, tea range, quiz, and a site that reads like a strong cup.",
     timeline: "7 weeks",
     pains: [
       "Three generations of blends. No brand to carry them.",
@@ -427,6 +465,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/nomad-trails/hero-ridge.webp",
     industries: ["Hospitality / Travel"],
     objectives: ["Customer Experience", "Growth"],
+    cardLabel: "A trip companion for a Himalayan trek outfit",
+    cardDescription: "Editorial site, kit list, and bookings for three trips a year.",
     timeline: "10 days",
     pains: [
       "Three trips a year. Eight trekkers a trip. Sold out, but quietly.",
@@ -448,6 +488,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/sugar-lane/hero-cake.webp",
     industries: ["F&B / Restaurants"],
     objectives: ["Operations", "Founder Overload", "Customer Experience"],
+    cardLabel: "An order studio for a home bakery",
+    cardDescription: "Custom cake briefs become orders the baker can actually deliver.",
     timeline: "10 days",
     pains: [
       "Could bake forty cakes a week. Baked four.",
@@ -469,6 +511,8 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/brightpath/hero-classroom.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Operations", "Founder Overload"],
+    cardLabel: "A parent portal for a tutoring practice",
+    cardDescription: "Auto weekly summaries in the parent's language. No more reports by hand.",
     timeline: "9 weeks",
     pains: [
       "Every parent wants a progress report. Every week.",

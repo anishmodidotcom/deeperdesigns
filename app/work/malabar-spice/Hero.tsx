@@ -174,7 +174,7 @@ export default function Hero() {
                 marginBottom: 28,
               }}
             >
-              MALABAR SPICE HOUSE · POSSIBILITY STUDY · 011 OF 20
+              MALABAR SPICE HOUSE
             </motion.p>
 
             <h1
@@ -216,37 +216,21 @@ export default function Hero() {
               with the same dignity as the one his grandfather built in 1962.
             </motion.p>
 
-            <motion.a
+            <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 1.85, ease: EASE }}
-              href="https://malabarspice.example"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="pointer"
-              className="ms-hero-cta"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                marginTop: 36,
-                fontFamily:
-                  "var(--font-geist-mono), monospace",
-                fontSize: 12,
+                marginTop: 28,
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: 11,
+                letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: "var(--page-accent)",
-                paddingBlock: 12,
-                borderBottom: "1px solid var(--page-accent)",
-                transition: "color 0.9s cubic-bezier(0.25, 1, 0.5, 1)",
+                color: "var(--page-text-3)",
               }}
             >
-              Visit Malabar Spice House
-              <span className="ms-hero-arrow" style={{
-                display: "inline-block",
-                transition: "transform 0.9s cubic-bezier(0.25, 1, 0.5, 1)",
-              }}>→</span>
-            </motion.a>
+              A concept build.
+            </motion.p>
           </div>
         </div>
       </motion.div>

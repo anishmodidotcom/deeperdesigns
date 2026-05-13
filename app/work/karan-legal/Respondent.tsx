@@ -34,7 +34,7 @@ export default function Respondent() {
                 marginBottom: 32,
               }}
             >
-              §04 · THE RESPONDENT
+              04 · THE RESPONDENT
             </p>
 
             <h2

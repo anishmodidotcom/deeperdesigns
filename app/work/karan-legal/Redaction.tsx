@@ -114,7 +114,7 @@ export default function Redaction() {
             marginBottom: 24,
           }}
         >
-          §02 · THE INTERVENTION
+          02 · THE INTERVENTION
         </motion.p>
 
         <motion.h2

@@ -39,7 +39,7 @@ export default function NextProject() {
               transition: "color 0.4s cubic-bezier(0.7, 0, 0.2, 1)",
             }}
           >
-            NEXT · 020
+            NEXT STUDY · 020
           </p>
           <h3
             style={{

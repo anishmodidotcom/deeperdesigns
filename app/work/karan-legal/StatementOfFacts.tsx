@@ -50,7 +50,7 @@ export default function StatementOfFacts() {
             marginBottom: 56,
           }}
         >
-          §01 · STATEMENT OF FACTS
+          01 · STATEMENT OF FACTS
         </motion.p>
 
         <ol

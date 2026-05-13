@@ -1,71 +1,93 @@
 import { NextResponse } from "next/server";
-import { generateCode, phoneKey, setCode } from "@/lib/otp-store";
+import {
+  LIMITS,
+  checkRate,
+  clientKey,
+  originAllowed,
+} from "@/lib/api-guards";
+import { emailKey, generateCode, setCode } from "@/lib/otp-store";
 
-// Provider integration points. Configure one of these envs to enable real
-// SMS delivery. Without them, the route falls back to dev mode and returns
-// the code in the response so the form is still walkable.
-//
-// MSG91:        MSG91_AUTH_KEY, MSG91_SENDER_ID, MSG91_TEMPLATE_ID
-// Twilio:       TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SID
-// Supabase:     SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (use auth.signInWithOtp)
-//
-// TODO Anish: pick one provider, drop the keys into Vercel envs.
-
-const COUNTRY_CODES: Record<string, string> = {
-  IN: "91",
-  AE: "971",
-};
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
+  if (!originAllowed(req)) {
+    return NextResponse.json(
+      { ok: false, error: "Forbidden." },
+      { status: 403 }
+    );
+  }
+
+  const rate = checkRate(
+    `otpSend:${clientKey(req)}`,
+    LIMITS.otpSend.limit,
+    LIMITS.otpSend.windowMs
+  );
+  if (!rate.ok) {
+    return NextResponse.json(
+      { ok: false, error: "Too many code requests. Try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rate.retryAfterSeconds) },
+      }
+    );
+  }
+
   try {
-    const body = (await req.json()) as { country?: string; phone?: string };
-    const country = body.country ?? "";
-    const phone = body.phone ?? "";
-    const cc = COUNTRY_CODES[country];
-    if (!cc) {
+    const body = (await req.json()) as { email?: string };
+    const email = (body.email ?? "").trim().toLowerCase();
+    if (!EMAIL_RE.test(email)) {
       return NextResponse.json(
-        { ok: false, error: "Unsupported country." },
-        { status: 400 }
-      );
-    }
-    if (!/^[0-9]{7,12}$/.test(phone)) {
-      return NextResponse.json(
-        { ok: false, error: "Invalid phone number." },
+        { ok: false, error: "Enter a valid email." },
         { status: 400 }
       );
     }
 
     const code = generateCode();
-    const fullNumber = `+${cc}${phone}`;
-    const key = phoneKey(country, phone);
+    setCode(emailKey(email), code);
 
-    if (process.env.MSG91_AUTH_KEY) {
-      const senderId = process.env.MSG91_SENDER_ID ?? "DDESGN";
-      const templateId = process.env.MSG91_TEMPLATE_ID ?? "";
-      const url = "https://control.msg91.com/api/v5/otp";
-      const params = new URLSearchParams({
-        otp: code,
-        mobile: `${cc}${phone}`,
-        authkey: process.env.MSG91_AUTH_KEY,
-        sender: senderId,
-        template_id: templateId,
-      });
-      const res = await fetch(`${url}?${params.toString()}`, {
+    if (process.env.RESEND_API_KEY) {
+      const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from:
+            process.env.RESEND_FROM ??
+            "Deeper Designs <no-reply@deeperdesigns.in>",
+          to: [email],
+          subject: "Your Deeper Designs verification code",
+          text: `Your code is ${code}. Expires in 10 minutes. If you didn't request this, ignore.`,
+          html: `<!doctype html><html><body style="background:#f7f8f8;padding:24px;font-family:system-ui,sans-serif;color:#111">
+            <div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-radius:12px;padding:28px;text-align:center">
+              <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">DEEPER DESIGNS</p>
+              <h1 style="margin:0 0 18px;font:300 22px/1.2 system-ui;letter-spacing:-0.02em">Your verification code</h1>
+              <div style="display:inline-block;padding:14px 24px;background:#0A0A0A;color:#fff;border-radius:10px;font:600 30px/1 monospace;letter-spacing:0.4em;margin:8px 0 18px">${code}</div>
+              <p style="margin:0;font:13px/1.6 system-ui;color:#666">Expires in 10 minutes. If you did not request this, ignore.</p>
+            </div>
+          </body></html>`,
+        }),
       });
       if (!res.ok) {
         return NextResponse.json(
-          { ok: false, error: "Provider failed. Try again." },
+          { ok: false, error: "Could not send the code. Try again." },
           { status: 502 }
         );
       }
-      setCode(key, code);
       return NextResponse.json({ ok: true });
     }
 
-    setCode(key, code);
-    console.log(`[otp-send dev] ${fullNumber} -> ${code}`);
-    return NextResponse.json({ ok: true, devCode: code });
+    // Dev fallback: surface the code in the response so the form is
+    // walkable. Gated behind NODE_ENV so production never leaks codes.
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`[otp-send dev] ${email} -> ${code}`);
+      return NextResponse.json({ ok: true, devCode: code });
+    }
+    return NextResponse.json(
+      { ok: false, error: "Email delivery is not configured." },
+      { status: 500 }
+    );
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unknown error";
     return NextResponse.json({ ok: false, error: msg }, { status: 500 });

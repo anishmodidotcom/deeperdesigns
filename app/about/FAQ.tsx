@@ -11,15 +11,15 @@ type Item = {
 const ITEMS: Item[] = [
   {
     q: "What is Deeper Designs?",
-    a: "An AI-led build studio that designs and ships custom digital tools for modern businesses. We build websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
+    a: "Deeper Designs builds custom systems for modern businesses. Websites, dashboards, portals, quizzes, and operational tools, designed carefully and shipped in weeks. We are based between Delhi and Dubai, founded in 2017 as a design agency and rebuilt around AI in 2024.",
   },
   {
     q: "Who is Anish Modi?",
-    a: "Anish is the founder of Deeper Designs and a business strategist. Ten years across marketing, brand, ops, and financial design. He runs Newfold Ventures LLC out of Dubai and lives between Dubai and Delhi. He leads strategy and the build call on every studio project. Read more at anishmodi.com.",
+    a: "Anish is the founder of Deeper Designs and a business strategist. Ten years across marketing, brand, ops, and financial design. He runs Newfold Ventures LLC out of Dubai and lives between Dubai and Delhi. He leads strategy and the build call on every project. Read more at anishmodi.com.",
   },
   {
     q: "How is this different from a regular agency?",
-    a: "A traditional agency promises and pitches. We prototype and show. The site you are reading is a gallery of twenty Possibility Studies, each a working concept inspired by a real operational bottleneck. We use AI to compress the build cycle so we can give you something working in weeks, not quarters.",
+    a: "A traditional agency promises and pitches. We prototype and show. The site you are reading is a gallery of Possibility Studies, each a working concept inspired by a real operational bottleneck. We use AI to compress the build cycle so we can give you something working in weeks, not quarters.",
   },
   {
     q: "What does it cost?",
@@ -31,10 +31,10 @@ const ITEMS: Item[] = [
   },
   {
     q: "What is a Possibility Study?",
-    a: "A working prototype we built end to end, inspired by the real operational bottleneck of a real business archetype. Twenty studies on the site, one per archetype. Each can be commissioned, customized, and shipped to your business.",
+    a: "A working prototype we built end to end, inspired by the real operational bottleneck of a real business archetype. Each can be commissioned, customized, and shipped to your business.",
   },
   {
-    q: "Who is the studio for?",
+    q: "Who is this for?",
     a: "Indian SMBs, UAE founders, and global small businesses willing to pay in USD. Founders running operations on WhatsApp. Practices losing leads to slow follow-up. Brands whose website does not match the work. Currency is not the constraint. Fit is.",
   },
 ];
@@ -79,7 +79,7 @@ export default function FAQ() {
             marginBottom: 24,
           }}
         >
-          FAQ
+          04 · QUESTIONS
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

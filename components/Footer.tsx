@@ -26,6 +26,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="site-footer"
       style={{
         borderTop: "1px solid var(--border)",
         paddingBlockStart: 128,
@@ -78,7 +79,7 @@ export default function Footer() {
               textDecoration: "none",
             }}
           >
-            WhatsApp the studio
+            Start a conversation
             <span aria-hidden>↗</span>
           </a>
           <Link
