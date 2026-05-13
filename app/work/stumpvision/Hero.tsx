@@ -58,7 +58,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          STUMPVISION · POSSIBILITY STUDY · 008 · GURGAON
+          STUMPVISION · GURGAON
         </motion.p>
 
         <motion.h1

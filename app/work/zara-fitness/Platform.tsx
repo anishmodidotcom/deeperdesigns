@@ -98,13 +98,13 @@ export default function Platform() {
             style={{
               position: "relative",
               width: "100%",
-              maxWidth: 380,
+              maxWidth: 320,
               margin: "0 auto",
               aspectRatio: "9 / 19.5",
               background: "#070707",
               border: "1px solid var(--page-accent)",
-              borderRadius: 44,
-              padding: 12,
+              borderRadius: 38,
+              padding: 10,
               boxShadow:
                 "0 60px 120px -60px rgba(215,255,92,0.25), 0 0 0 1px rgba(255,255,255,0.04) inset",
             }}

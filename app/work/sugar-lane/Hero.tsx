@@ -49,7 +49,7 @@ export default function Hero() {
             marginBottom: 36,
           }}
         >
-          ABU DHABI · POSSIBILITY STUDY · 019 · BAKERY
+          ABU DHABI · BAKERY
         </motion.p>
 
         <div className="sl-hero-grid">
@@ -60,10 +60,11 @@ export default function Hero() {
                 fontFamily:
                   "var(--font-display-script), 'Yellowtail', cursive",
                 fontWeight: 400,
-                fontSize: "clamp(80px, 14vw, 200px)",
+                fontSize: "clamp(72px, 12vw, 180px)",
                 letterSpacing: "-0.01em",
-                lineHeight: 0.85,
+                lineHeight: 1.05,
                 color: "var(--page-text)",
+                paddingBlock: "0.08em",
               }}
             >
               <Reveal text="Sugar" delay={0.1} />
@@ -71,7 +72,6 @@ export default function Hero() {
                 style={{
                   display: "block",
                   color: "var(--page-accent)",
-                  marginTop: "-0.1em",
                 }}
               >
                 <Reveal text="Lane" delay={0.25} />
@@ -153,29 +153,20 @@ export default function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40, rotate: -4 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: SPRING }}
             className="sl-hero-cake"
           >
             <div
               style={{
-                position: "absolute",
-                inset: -16,
-                background: "var(--page-blush)",
-                borderRadius: "50%",
-                zIndex: 0,
-              }}
-            />
-            <div
-              style={{
                 position: "relative",
                 width: "100%",
-                aspectRatio: "1 / 1",
-                borderRadius: "50%",
+                aspectRatio: "4 / 5",
+                borderRadius: 12,
                 overflow: "hidden",
                 zIndex: 1,
-                boxShadow: "0 50px 100px -40px rgba(201,64,90,0.3)",
+                boxShadow: "0 50px 100px -40px rgba(201,64,90,0.25)",
               }}
             >
               <Image
@@ -187,38 +178,6 @@ export default function Hero() {
                 style={{ objectFit: "cover" }}
               />
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1.1, ease: SPRING }}
-              aria-hidden
-              style={{
-                position: "absolute",
-                top: -24,
-                right: -24,
-                width: 100,
-                height: 100,
-                background: "var(--page-accent)",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily:
-                  "var(--font-display-script), 'Yellowtail', cursive",
-                fontSize: 18,
-                color: "#FFFFFF",
-                transform: "rotate(8deg)",
-                lineHeight: 1.1,
-                textAlign: "center",
-                zIndex: 2,
-                boxShadow: "0 12px 30px -10px rgba(201,64,90,0.5)",
-              }}
-            >
-              made
-              <br />
-              by hand
-            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -249,7 +208,13 @@ export default function Hero() {
 
 function Reveal({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
-    <span style={{ display: "inline-block", overflow: "hidden" }}>
+    <span
+      style={{
+        display: "inline-block",
+        overflow: "hidden",
+        paddingBottom: "0.16em",
+      }}
+    >
       <motion.span
         initial={{ y: "110%" }}
         animate={{ y: "0%" }}

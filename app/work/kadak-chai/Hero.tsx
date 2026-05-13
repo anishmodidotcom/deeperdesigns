@@ -62,7 +62,7 @@ export default function Hero() {
                 marginBottom: 40,
               }}
             >
-              MUMBAI · POSSIBILITY STUDY · 017 · TEA
+              MUMBAI · TEA
             </motion.p>
 
             <h1

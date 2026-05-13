@@ -16,47 +16,35 @@ type Activity = {
 
 const ACTIVITY: Activity[] = [
   {
-    time: "07:45",
+    time: "this morning",
     label: "DROP-OFF",
-    note: "Settled within 4 minutes",
+    note: "Bruno settled within four minutes",
     dot: "sage",
   },
   {
-    time: "08:30",
-    label: "BREAKFAST",
-    note: "Finished her bowl",
-    dot: "amber",
-  },
-  {
-    time: "10:15",
+    time: "2 hours ago",
     label: "MORNING WALK",
-    note: "30 min · park loop",
+    note: "Park loop, thirty minutes",
     thumb: "/images/pawstay/walk-outdoor.webp",
     thumbAlt: "Dogs walking through a leafy park at golden hour",
   },
   {
-    time: "11:30",
-    label: "NAP",
-    note: "Slept on the green cushion",
+    time: "45 min ago",
+    label: "LUNCH",
+    note: "Half portion, normal appetite",
+    dot: "amber",
+  },
+  {
+    time: "12 min ago",
+    label: "PLAY",
+    note: "Twenty minutes with Max, the golden lab",
     thumb: "/images/pawstay/happy-dog-1.webp",
     thumbAlt: "Indie dog resting on a beige cushion",
   },
   {
-    time: "13:00",
-    label: "LUNCH",
-    note: "Half portion, normal",
-    dot: "amber",
-  },
-  {
-    time: "13:45",
-    label: "PLAY",
-    note: "20 min with Max (golden lab)",
-    dot: "sage",
-  },
-  {
-    time: "14:30",
+    time: "Just now",
     label: "NAP",
-    note: "Currently resting",
+    note: "Currently resting on the green cushion",
     dot: "live",
   },
 ];

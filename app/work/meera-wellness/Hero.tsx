@@ -58,7 +58,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          MEERA WELLNESS · POSSIBILITY STUDY · 003 · DUBAI
+          MEERA WELLNESS · DUBAI
         </motion.p>
 
         <motion.h1

@@ -24,25 +24,6 @@ export default function Hero() {
           sizes="(min-width: 1024px) 60vw, 100vw"
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: EASE }}
-          style={{
-            position: "absolute",
-            left: 32,
-            bottom: 24,
-            background: "var(--page-accent)",
-            color: "#0E0E0E",
-            paddingInline: 10,
-            paddingBlock: 6,
-            fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: 10,
-            letterSpacing: "0.14em",
-          }}
-        >
-          PHOTOGRAPHED MAY 2026 · DUBAI
-        </motion.div>
       </div>
 
       <div className="zf-hero-cover">
@@ -66,7 +47,7 @@ export default function Hero() {
               color: "var(--page-text-2)",
             }}
           >
-            POSSIBILITY STUDY · 015
+            ISSUE 015
           </motion.span>
           <motion.span
             initial={{ opacity: 0, x: 8 }}

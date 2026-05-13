@@ -47,7 +47,7 @@ export default function FloatingCTA() {
             bottom: 96,
             zIndex: 70,
             background: "var(--page-accent)",
-            color: "#1A1612",
+            color: "#1A1410",
             borderRadius: 9999,
             paddingInline: 22,
             paddingBlock: 14,
@@ -59,7 +59,7 @@ export default function FloatingCTA() {
             alignItems: "center",
             gap: 8,
             textDecoration: "none",
-            boxShadow: "0 0 0 0 rgba(212, 168, 87, 0.55), 0 18px 40px -10px rgba(212, 168, 87, 0.45)",
+            boxShadow: "0 0 0 0 rgba(200, 149, 109, 0.55), 0 18px 40px -10px rgba(200, 149, 109, 0.45)",
             animation: "ml-glow 2.6s ease-in-out infinite",
           }}
           className="ml-floating-cta"
@@ -72,7 +72,7 @@ export default function FloatingCTA() {
               width: 8,
               height: 8,
               borderRadius: 9999,
-              background: "#1A1612",
+              background: "#1A1410",
             }}
           />
           Try Maple Lens
@@ -81,13 +81,13 @@ export default function FloatingCTA() {
             @keyframes ml-glow {
               0%, 100% {
                 box-shadow:
-                  0 0 0 0 rgba(212, 168, 87, 0.55),
-                  0 18px 40px -10px rgba(212, 168, 87, 0.45);
+                  0 0 0 0 rgba(200, 149, 109, 0.55),
+                  0 18px 40px -10px rgba(200, 149, 109, 0.45);
               }
               50% {
                 box-shadow:
-                  0 0 0 12px rgba(212, 168, 87, 0),
-                  0 18px 40px -10px rgba(212, 168, 87, 0.45);
+                  0 0 0 12px rgba(200, 149, 109, 0),
+                  0 18px 40px -10px rgba(200, 149, 109, 0.45);
               }
             }
             @media (prefers-reduced-motion: reduce) {

@@ -2,13 +2,25 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+// useLayoutEffect runs synchronously after DOM mutation, before paint.
+// In SSR it falls back to useEffect to avoid a warning.
+const useIsoLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 export default function Hero() {
   const [phase, setPhase] = useState<"before" | "after">("after");
   const [reduced, setReduced] = useState(false);
+
+  // Force the page to the top before paint so the user does not see a
+  // mid-scroll flash on navigation. Belt-and-suspenders next to the
+  // SmoothScroll component's scrollTo on path change.
+  useIsoLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -56,7 +68,7 @@ export default function Hero() {
           padding: "6px 14px",
           border: "1px solid var(--page-border)",
           borderRadius: 9999,
-          background: "rgba(212,168,87,0.05)",
+          background: "rgba(200,149,109,0.05)",
         }}
       >
         <span
@@ -120,7 +132,7 @@ export default function Hero() {
           overflow: "hidden",
           border: "1px solid var(--page-border)",
           background: "var(--page-surface)",
-          boxShadow: "0 30px 80px -30px rgba(212, 168, 87, 0.25)",
+          boxShadow: "0 30px 80px -30px rgba(200, 149, 109, 0.25)",
         }}
       >
         <Image
@@ -159,7 +171,7 @@ export default function Hero() {
             left: 16,
             background:
               phase === "after" ? "var(--page-accent)" : "rgba(15,12,10,0.78)",
-            color: phase === "after" ? "#1A1612" : "var(--page-text)",
+            color: phase === "after" ? "#1A1410" : "var(--page-text)",
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 10,
             letterSpacing: "0.18em",

@@ -14,7 +14,7 @@ export default function Hero() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         overflow: "hidden",
       }}
     >
@@ -69,7 +69,7 @@ export default function Hero() {
             opacity: 0.85,
           }}
         >
-          NOMAD TRAILS · POSSIBILITY STUDY · 018 · HIMALAYAS
+          NOMAD TRAILS · HIMALAYAS
         </motion.p>
 
         <div className="nt-hero-headline">
@@ -180,7 +180,14 @@ export default function Hero() {
 
 function Reveal({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
-    <span style={{ display: "inline-block", overflow: "hidden" }}>
+    <span
+      style={{
+        display: "inline-block",
+        overflow: "hidden",
+        paddingBottom: "0.12em",
+        verticalAlign: "bottom",
+      }}
+    >
       <motion.span
         initial={{ y: "110%" }}
         animate={{ y: "0%" }}

@@ -782,10 +782,10 @@ export default function Walkthrough() {
           .sn-walk-grid {
             grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
             gap: 96px;
-            align-items: start;
           }
           .sn-walk-stickycol {
             display: block;
+            height: 100%;
           }
           .sn-walk-sticky {
             position: sticky;

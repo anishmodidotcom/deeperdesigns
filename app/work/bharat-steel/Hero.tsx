@@ -49,7 +49,7 @@ export default function Hero() {
       </div>
 
       <div
-        className="container-x"
+        className="container-x bs-hero-grid"
         style={{
           position: "relative",
           display: "grid",
@@ -74,7 +74,7 @@ export default function Hero() {
               marginBottom: 32,
             }}
           >
-            BHARAT STEEL CORP · POSSIBILITY STUDY · 002 · AHMEDABAD
+            BHARAT STEEL CORP · AHMEDABAD
           </motion.p>
 
           <h1
@@ -154,7 +154,7 @@ export default function Hero() {
           box-shadow: 0 50px 120px -30px rgba(59, 130, 246, 0.2);
         }
         @media (min-width: 1024px) {
-          :global(.container-x) {
+          .bs-hero-grid {
             grid-template-columns: 60fr 40fr !important;
           }
         }

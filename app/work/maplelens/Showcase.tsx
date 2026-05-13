@@ -140,7 +140,7 @@ export default function Showcase() {
                       top: 10,
                       left: 10,
                       background: "var(--page-accent)",
-                      color: "#1A1612",
+                      color: "#1A1410",
                       fontFamily: "var(--font-geist-mono), monospace",
                       fontSize: 10,
                       letterSpacing: "0.16em",
