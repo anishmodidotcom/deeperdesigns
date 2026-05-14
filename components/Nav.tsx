@@ -44,8 +44,8 @@ export default function Nav() {
             <Link href="/about" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>About</Link>
             <Link href="/services" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Services</Link>
             <Link href="/process" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Process</Link>
-            <Link href="/start-your-study" className="btn-outline" style={{ padding: "10px 20px", fontSize: "14px" }}>
-              Let&apos;s explore possibilities
+            <Link href="/start-your-study" className="btn-whatsapp" style={{ padding: "10px 20px", fontSize: "14px" }}>
+              Talk to us
             </Link>
           </div>
 
@@ -93,11 +93,11 @@ export default function Nav() {
             <Link href="/process" onClick={() => setOpen(false)}>Process</Link>
           </nav>
           <div style={{ marginTop: "auto", paddingBottom: "40px", display: "flex", flexDirection: "column", gap: "12px" }}>
-            <a href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business." className="btn-whatsapp" onClick={() => setOpen(false)}>
-              Start a conversation
-            </a>
-            <Link href="/start-your-study" className="btn-outline" onClick={() => setOpen(false)}>
-              Let&apos;s explore possibilities
+            <Link href="/start-your-study" className="btn-whatsapp" onClick={() => setOpen(false)}>
+              Talk to us
+            </Link>
+            <Link href="/#gallery" className="btn-outline" onClick={() => setOpen(false)}>
+              Let&apos;s explore ideas
             </Link>
           </div>
         </div>

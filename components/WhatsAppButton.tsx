@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export default function WhatsAppButton() {
   const [nudgeVisible, setNudgeVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [hiddenByFooter, setHiddenByFooter] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -24,11 +25,25 @@ export default function WhatsAppButton() {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const io = new IntersectionObserver(
+      (entries) => setHiddenByFooter(entries.some(e => e.isIntersecting)),
+      { rootMargin: "0px 0px -10% 0px" }
+    );
+    io.observe(footer);
+    return () => io.disconnect();
+  }, []);
+
   const dismiss = () => {
     setNudgeVisible(false);
     setDismissed(true);
     sessionStorage.setItem("wa-nudge-dismissed", "1");
   };
+
+  if (hiddenByFooter) return null;
 
   return (
     <>
