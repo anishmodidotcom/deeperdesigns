@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid var(--border)", padding: "var(--section-py) 0 40px", marginTop: "120px" }}>
+    <footer id="site-footer" style={{ borderTop: "1px solid var(--border)", padding: "var(--section-py) 0 40px", marginTop: "120px" }}>
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "48px", marginBottom: "80px" }} className="footer-grid">
           <div>
@@ -19,15 +19,18 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "24px", borderTop: "1px solid var(--border)", fontSize: "13px", color: "var(--fg-dim)" }} className="footer-bottom">
-          <p>© 2026 Deeper Designs</p>
-          <p>Delhi · Dubai · India-first</p>
+        <div style={{ paddingTop: "24px", borderTop: "1px solid var(--border)", fontSize: "13px", color: "var(--fg-dim)" }} className="footer-bottom">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} className="footer-bottom-row">
+            <p>© 2026 Deeper Designs</p>
+            <p>Delhi · Dubai · India-first</p>
+          </div>
+          <p style={{ fontSize: "12px", color: "var(--fg-dim)", marginTop: "8px" }}>Built in Delhi by Anish Modi.</p>
         </div>
       </div>
       <style>{`
         @media (max-width: 768px) {
           .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start !important; }
+          .footer-bottom-row { flex-direction: column; gap: 12px; align-items: flex-start !important; }
         }
       `}</style>
     </footer>

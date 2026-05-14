@@ -44,6 +44,7 @@ export type Showcase = {
   pattern?: string;
   cardLabel: string;
   cardDescription: string;
+  outcome: string;
 };
 
 export const SHOWCASES: Showcase[] = [
@@ -60,6 +61,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A photo studio for furniture makers",
     cardDescription: "Turns workshop photos into catalog-ready studio shots.",
+    outcome: "Saves ₹2L per catalog shoot",
     live: true,
     liveUrl: "https://maplelens.vercel.app/app",
   },
@@ -76,6 +78,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A skin advisor for an Ayurvedic brand",
     cardDescription: "Recommends a routine based on skin, lifestyle, and goals.",
+    outcome: "Doubles consult-to-purchase rate",
     timeline: "5 days",
     pains: [
       "40 DMs a day. All asking the same thing.",
@@ -99,6 +102,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Founder Overload"],
     cardLabel: "An inventory brain for a steel trader",
     cardDescription: "Knows what you have, what's moving, and what's about to run out.",
+    outcome: "Cuts inventory checks to zero",
     timeline: "7 days",
     pains: [
       "Quotes go out on WhatsApp. Half are forgotten.",
@@ -122,6 +126,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Operations"],
     cardLabel: "A wellness hub for a yoga studio",
     cardDescription: "Holds the schedule, the packages, and the renewals in one place.",
+    outcome: "Reduces no-shows by half",
     timeline: "10 days",
     pains: [
       "Bookings live on three calendars and a notebook.",
@@ -145,6 +150,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Founder Overload"],
     cardLabel: "An ops dashboard for a QSR chain",
     cardDescription: "Reads four POS feeds at once and tells you where the day is going.",
+    outcome: "Sees the day before it goes sideways",
     timeline: "12 days",
     pains: [
       "Four locations. Four POS systems. No single view.",
@@ -168,6 +174,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Operations"],
     cardLabel: "A client portal for an interior studio",
     cardDescription: "Replaces six WhatsApp groups with one shared project space.",
+    outcome: "Replaces six WhatsApp groups",
     timeline: "14 days",
     pains: [
       "Eight WhatsApp groups for one project.",
@@ -191,6 +198,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Operations", "Growth"],
     cardLabel: "A patient flow manager for a dental clinic",
     cardDescription: "Books, reminds, and re-engages without anyone lifting a phone.",
+    outcome: "Books a third more chairs without a receptionist",
     timeline: "10 days",
     pains: [
       "A recall list sits in a drawer.",
@@ -214,6 +222,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Growth"],
     cardLabel: "A pricing engine for a used-car lot",
     cardDescription: "Prices each car daily on market data, days on lot, and competitors.",
+    outcome: "Prices every car overnight",
     timeline: "8 days",
     pains: [
       "Sixty cars on the lot. Sixty pricing decisions made by feel.",
@@ -237,6 +246,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "An academy platform for a cricket coaching centre",
     cardDescription: "Player cards, match stats, and parent updates without paperwork.",
+    outcome: "Turns parents into paying members",
     timeline: "10 days",
     pains: [
       "Parents on the sidelines, asking how is my child doing.",
@@ -260,6 +270,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A fragrance finder for a perfume atelier",
     cardDescription: "Turns a five-question quiz into a personalised bottle.",
+    outcome: "Personalised bottles in under 90 seconds",
     timeline: "11 days",
     pains: [
       "Fifteen scents. Every customer asks which is for me.",
@@ -283,6 +294,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Founder Overload"],
     cardLabel: "A member hub for a coworking space",
     cardDescription: "Runs the floor, profiles every member, and flags churn early.",
+    outcome: "Catches member churn 30 days early",
     timeline: "22 days",
     pains: [
       "Six different tools. None of them talk to each other.",
@@ -306,6 +318,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Growth", "Customer Experience"],
     cardLabel: "A brand site for a heritage spice exporter",
     cardDescription: "Sixty-three years of work, finally on a site that looks like Kerala.",
+    outcome: "Sixty-three years, finally online",
     timeline: "8 days",
     pains: [
       "Sixty-three years of work. A website that does not show it.",
@@ -329,6 +342,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Operations"],
     cardLabel: "A parent portal for a dog boarding facility",
     cardDescription: "Live camera, daily tracker, and bookings, anxiety down to zero.",
+    outcome: "Anxiety down to zero, retention up",
     timeline: "10 days",
     pains: [
       "Pet parents are anxious. They want a photo every hour.",
@@ -352,6 +366,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Founder Overload"],
     cardLabel: "A farm dashboard for an organic CSA",
     cardDescription: "Plans planting, harvest, and subscriber retention from one screen.",
+    outcome: "Plans the season in one screen",
     timeline: "12 days",
     pains: [
       "Two hundred acres. Decisions made over the kitchen table.",
@@ -375,6 +390,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth", "Founder Overload"],
     cardLabel: "A lead qualifier for an independent lawyer",
     cardDescription: "Intakes every prospect before the phone gets answered.",
+    outcome: "Filters out 80% of bad leads",
     timeline: "9 days",
     pains: [
       "Forty intake calls a week. Three of them turn into clients.",
@@ -398,6 +414,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Growth", "Customer Experience"],
     cardLabel: "A training platform for a fitness creator",
     cardDescription: "Turns 280K followers into members, programs, and a product line.",
+    outcome: "Turns 280K followers into 1,200 members",
     timeline: "12 days",
     pains: [
       "Two hundred and eighty thousand followers. No place to send them.",
@@ -421,6 +438,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A product builder for a ceramics studio",
     cardDescription: "Shape, glaze, finish, and a queue that the maker can live with.",
+    outcome: "Made-to-order without the back-and-forth",
     timeline: "9 weeks",
     pains: [
       "Drops sell out in ninety minutes. Then silence for a month.",
@@ -444,6 +462,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Growth", "Customer Experience"],
     cardLabel: "A brand world for a craft chai company",
     cardDescription: "Tin, tea range, quiz, and a site that reads like a strong cup.",
+    outcome: "A brand that reads like a strong cup",
     timeline: "7 weeks",
     pains: [
       "Three generations of blends. No brand to carry them.",
@@ -467,6 +486,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A trip companion for a Himalayan trek outfit",
     cardDescription: "Editorial site, kit list, and bookings for three trips a year.",
+    outcome: "Fills three trips a year, on autopilot",
     timeline: "10 days",
     pains: [
       "Three trips a year. Eight trekkers a trip. Sold out, but quietly.",
@@ -490,6 +510,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Operations", "Founder Overload", "Customer Experience"],
     cardLabel: "An order studio for a home bakery",
     cardDescription: "Custom cake briefs become orders the baker can actually deliver.",
+    outcome: "Custom cakes, briefed and queued",
     timeline: "10 days",
     pains: [
       "Could bake forty cakes a week. Baked four.",
@@ -513,6 +534,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Operations", "Founder Overload"],
     cardLabel: "A parent portal for a tutoring practice",
     cardDescription: "Auto weekly summaries in the parent's language. No more reports by hand.",
+    outcome: "Weekly parent updates, written in their language",
     timeline: "9 weeks",
     pains: [
       "Every parent wants a progress report. Every week.",
