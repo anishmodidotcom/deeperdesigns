@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by a used-car dealership" },
   { label: "INDUSTRY", value: "Automotive (Used Car Sales)" },
   { label: "LOCATION", value: "Deira, Dubai, UAE" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Dynamic Pricing Engine, Inventory Dashboard, Buyer-Facing Listings, Test Drive Booking",
   },
-  { label: "TIMELINE", value: "Shipped in 8 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 8 days" },
   {
     label: "STACK",
     value: "Next.js, Market Data APIs, AI Pricing Model, WhatsApp Booking",

@@ -113,10 +113,10 @@ export default function Hero() {
             maxWidth: 580,
           }}
         >
-          Karan was answering every call. We built him a brief that answers
-          first. The chatbot intakes every prospect before he picks up the
-          phone. He sees only the clients worth his time. The rest get a
-          fair, fast, machine-mediated triage.
+          Karan was answering every call himself, and most were not worth
+          his time. Now a qualifier intakes every prospect first. He sees
+          only the clients worth a partner. The rest get a fast, fair
+          triage.
         </motion.p>
 
         <motion.a

@@ -76,9 +76,9 @@ export default function Facility() {
               lineHeight: 1.7,
             }}
           >
-            20 dogs. One sun-drenched room. A camera in every corner. The
-            portal does not replace the care. It opens the door so parents
-            can see it.
+            Twenty dogs, one sun-drenched room, a camera in every corner.
+            The portal does not replace the care. It opens the door so
+            parents can see it.
           </p>
         </motion.div>
       </div>

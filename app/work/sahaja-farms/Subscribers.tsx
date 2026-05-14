@@ -153,11 +153,11 @@ export default function Subscribers() {
                 maxWidth: 520,
               }}
             >
-              Each box delivered gets logged. Each unopened email noticed.
-              Each delayed renewal flagged. The dashboard scores
-              subscribers on engagement and flags the 5 to 8 percent who
-              go quiet before they cancel. Lata calls them herself. Most
-              stay.
+              Every box delivered is logged. Every unopened email
+              noticed. Every late renewal flagged. The dashboard scores
+              subscribers on engagement and flags the five to eight
+              percent who go quiet before they cancel. Lata calls them
+              herself. Most stay.
             </p>
 
             <div

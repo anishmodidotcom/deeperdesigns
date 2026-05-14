@@ -79,13 +79,13 @@ export default function AboutBuild() {
                 maxWidth: 560,
               }}
             >
-              Built in 28 days. Custom farm management dashboard, crop
-              calendar with planting algorithms, subscription CRM with
-              churn scoring, wholesale order portal, restaurant inventory
-              tracking, weather and seasonal forecast integration, and a
-              daily morning summary sent to her phone at 6 AM. Built from
-              her existing notebooks. The model learns from her decisions,
-              not the other way around.
+              Built in 28 days. A farm management dashboard, a crop
+              calendar with planting algorithms, a subscription CRM with
+              churn scoring, a wholesale order portal, restaurant
+              inventory tracking, weather and seasonal forecasts, and a
+              6 AM summary to her phone. Built from her own notebooks.
+              The model learns from her decisions, not the other way
+              around.
             </p>
 
             <dl

@@ -104,9 +104,10 @@ export default function Hero() {
               lineHeight: 1.7,
             }}
           >
-            Bespoke Arabian perfumery, distilled into a digital atelier.
-            Fifteen signature scents. One quiz that finds the one made for
-            you.
+            Seventy percent of inquiries arrived online, and the atelier
+            magic did not survive twenty WhatsApp messages. Now an
+            eight-question quiz finds the scent and shows the customer a
+            bottle with their name on it.
           </motion.p>
 
           <motion.div

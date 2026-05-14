@@ -28,7 +28,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Meera Wellness · Wellness Hub · Deeper Designs",
   description:
-    "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
+    "A Dubai yoga instructor got her time back. One platform handles scheduling, client portals, and WhatsApp bookings, so she teaches instead of doing admin.",
   openGraph: {
     title: "Meera Wellness · Wellness Hub · Deeper Designs",
     description: "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",

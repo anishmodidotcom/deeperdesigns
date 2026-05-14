@@ -87,27 +87,24 @@ export default function Farmer() {
             >
               <p style={{ margin: 0 }}>
                 Lata is one of the best organic farmers in South
-                Karnataka. Her soil is alive. Her produce is consistent.
-                Her restaurant on the property sells out every weekend. The
-                problem is the thirty other organic farms in her market,
-                none of whom can match her quality, all of whom have
-                better marketing.
+                Karnataka. Her soil is alive, her produce is consistent,
+                her farm restaurant sells out every weekend. The problem
+                is the thirty other organic farms in her market, none who
+                can match her quality, all with better marketing.
               </p>
               <p style={{ margin: 0 }}>
-                She was losing subscribers to whoever ran a discount. Her
-                wholesale partners called when they needed something, not
-                when she had a surplus. Half her crop rotation decisions
-                were made in her head, based on memory of last year. When
-                she got sick for two weeks, the farm coasted, but she lost
-                three weeks of planning.
+                She was losing subscribers to whoever ran a discount.
+                Wholesale partners called when they needed something, not
+                when she had a surplus. Half her crop decisions lived in
+                her head, from memory of last year. When she got sick
+                for two weeks, she lost three weeks of planning.
               </p>
               <p style={{ margin: 0 }}>
-                We did not build her a marketing tool. That was advised
-                separately. We built her a brain that survives if she takes
-                a Sunday off. A farm management dashboard that holds her
-                process, predicts what to plant based on subscription
-                demand, flags subscribers at churn risk, and gives her a
-                single screen to run the whole operation.
+                We did not build her a marketing tool. We built her a
+                brain that survives if she takes a Sunday off. It holds
+                her process, plans the planting from real subscriber
+                demand, flags subscribers at churn risk, and runs the
+                whole operation on one screen.
               </p>
             </div>
 

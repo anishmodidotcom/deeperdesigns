@@ -63,12 +63,11 @@ export default function Output() {
                 maxWidth: 540,
               }}
             >
-              After the quiz, the customer sees a fully visualized bottle
-              with her name on the label, a poetic name for the scent
-              auto-generated from her answers, and the full note pyramid.
-              She can order it directly. The bottle is rendered with her
-              name before she has even smelled it. Conversion happens in
-              the imagination.
+              After the quiz, the customer sees a finished bottle with
+              her name on the label, a scent name generated from her
+              answers, and the full note pyramid. She can order it right
+              there. The conversion happens in the imagination, before
+              she has even smelled it.
             </p>
 
             <div
