@@ -130,6 +130,16 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="bs-hero-coil"
+          style={{
+            position: "relative",
+            width: "100%",
+            maxWidth: 520,
+            aspectRatio: "4 / 5",
+            marginInline: "auto",
+            overflow: "hidden",
+            borderRadius: 4,
+            boxShadow: "0 50px 120px -30px rgba(59, 130, 246, 0.2)",
+          }}
         >
           <Image
             src="/images/bharat-steel/hero-coil.webp"
@@ -143,16 +153,6 @@ export default function Hero() {
       </div>
 
       <style jsx>{`
-        .bs-hero-coil {
-          position: relative;
-          width: 100%;
-          max-width: 520px;
-          aspect-ratio: 4 / 5;
-          margin-inline: auto;
-          overflow: hidden;
-          border-radius: 4px;
-          box-shadow: 0 50px 120px -30px rgba(59, 130, 246, 0.2);
-        }
         @media (min-width: 1024px) {
           .bs-hero-grid {
             grid-template-columns: 60fr 40fr !important;

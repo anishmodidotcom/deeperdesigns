@@ -153,21 +153,23 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 1.04, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.2, ease: STRONG }}
-            className="kc-hero-tin"
-          >
-            <Image
-              src="/images/kadak-chai/hero-tin.webp"
-              alt="An ornate cylindrical metallic chai tin on a dark warm wood surface, dramatic side light"
-              fill
-              sizes="(min-width: 1024px) 50vw, 90vw"
-              priority
-              style={{ objectFit: "cover" }}
-            />
-          </motion.div>
+          <div className="kc-hero-tin">
+            <motion.div
+              initial={{ opacity: 0, scale: 1.04, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.2, ease: STRONG }}
+              style={{ position: "relative", width: "100%", height: "100%" }}
+            >
+              <Image
+                src="/images/kadak-chai/hero-tin.webp"
+                alt="An ornate cylindrical metallic chai tin on a dark warm wood surface, dramatic side light"
+                fill
+                sizes="(min-width: 1024px) 50vw, 90vw"
+                priority
+                style={{ objectFit: "cover" }}
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
 

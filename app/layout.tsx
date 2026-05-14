@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ShowcaseNavigator from "@/components/ShowcaseNavigator";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <Footer />
             <WhatsAppButton />
+            <ShowcaseNavigator />
           </SmoothScroll>
         </body>
       </html>
