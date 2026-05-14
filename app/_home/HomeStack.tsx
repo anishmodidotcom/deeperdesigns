@@ -48,12 +48,11 @@ export default function HomeStack() {
   return (
     <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
       <div className="container">
-        <p className="eyebrow" style={{ marginBottom: "24px" }}>05 · THE STACK</p>
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-          These are the tools. The thinking is ours.
+          Stacked with the engines that move the world right now.
         </h2>
-        <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "64px", maxWidth: "600px" }}>
-          The stack changes every month. The judgment about what to build does not.
+        <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "64px", maxWidth: "640px" }}>
+          The tools change every month. The judgment doesn&apos;t.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
           {GROUPS.map(g => (
@@ -61,9 +60,9 @@ export default function HomeStack() {
               <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "16px" }}>{g.label}</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
                 {g.items.map(it => (
-                  <div key={it.name} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 16px", border: "1px solid var(--border)", borderRadius: "10px", background: "var(--bg-card)" }}>
-                    <Image src={it.logo} alt={it.name} width={20} height={20} style={{ filter: "grayscale(1) opacity(0.7)" }} />
-                    <span style={{ fontSize: "14px" }}>{it.name}</span>
+                  <div key={it.name} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 16px", border: "1px solid var(--border)", borderRadius: "10px", background: "#FFFFFF" }}>
+                    <Image src={it.logo} alt={it.name} width={20} height={20} />
+                    <span style={{ fontSize: "14px", color: "#0A0A0A" }}>{it.name}</span>
                   </div>
                 ))}
               </div>

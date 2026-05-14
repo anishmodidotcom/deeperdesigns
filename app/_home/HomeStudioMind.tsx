@@ -1,16 +1,15 @@
 export default function HomeStudioMind() {
   return (
     <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
-      <div className="container" style={{ maxWidth: "880px" }}>
-        <p className="eyebrow" style={{ marginBottom: "24px" }}>03 · THE THINKING</p>
+      <div className="container" style={{ maxWidth: "880px", textAlign: "center" }}>
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "40px" }}>
-          We help businesses build the small tools that quietly make them better.
+          We build the small tools that quietly make a business better.
         </h2>
         <p style={{ fontSize: "19px", color: "var(--fg-muted)", lineHeight: 1.6, marginBottom: "24px" }}>
-          We don&apos;t sell templates. We don&apos;t resell software. We sit with a business, find what is leaking time, what is frustrating customers, what has been broken for years, and we design a focused system around it.
+          Most businesses don&apos;t need more advice. They need someone to sit with them, find the bottleneck, and build the thing that fixes it. That&apos;s our work.
         </p>
         <p style={{ fontSize: "19px", color: "var(--fg-muted)", lineHeight: 1.6 }}>
-          Sometimes the answer is a tool. Sometimes a workflow. Sometimes an interface that did not exist yet. The thing we sell is judgment about which one your business actually needs.
+          Sometimes the answer is a dashboard. Sometimes a customer-facing tool. Sometimes a workflow nobody&apos;s mapped yet. We figure out which, then we ship it.
         </p>
       </div>
     </section>
