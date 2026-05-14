@@ -71,17 +71,16 @@ export default function Problem() {
           }}
         >
           <p style={{ margin: 0 }}>
-            Amit&rsquo;s 120-seat floor in Indiranagar lives in the middle of
-            Bangalore&rsquo;s tech churn. Members are WeWork-trained. They
-            expect a slack channel, a working calendar, an espresso machine
-            that does not run out at 4pm. The supply side of the business is
-            being judged by SaaS standards.
+            Amit&rsquo;s 120-seat floor in Indiranagar sits in the middle of
+            Bangalore&rsquo;s tech churn. His members are WeWork-trained.
+            They expect a working calendar, a Slack channel, an espresso
+            machine that does not run dry at 4pm.
           </p>
           <p style={{ margin: 0 }}>
-            The operator was running on Excel and goodwill. Renewals were
-            chased on WhatsApp the day they lapsed. He did not have a member
-            problem. He had an instrumentation problem. You cannot fix what
-            you cannot see.
+            He was running it on Excel and goodwill, chasing renewals on
+            WhatsApp the day they lapsed. It was never a member problem.
+            He just could not see what was happening until it had already
+            happened.
           </p>
         </motion.div>
 

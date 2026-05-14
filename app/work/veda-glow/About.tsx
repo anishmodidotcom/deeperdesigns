@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by an Ayurvedic skincare D2C brand" },
   { label: "INDUSTRY", value: "Ayurvedic Skincare (D2C)" },
   { label: "LOCATION", value: "Jaipur, India" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -16,7 +16,7 @@ const RIGHT: Pair[] = [
     label: "SERVICES",
     value: "AI Tool Development, UX Design, Brand Integration",
   },
-  { label: "TIMELINE", value: "Shipped in 5 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 5 days" },
   { label: "STACK", value: "Next.js, Claude API, Shopify Integration" },
 ];
 

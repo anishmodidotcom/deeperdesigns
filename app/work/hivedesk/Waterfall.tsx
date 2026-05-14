@@ -182,10 +182,9 @@ export default function Waterfall() {
             marginInline: "auto",
           }}
         >
-          The cohort visualization Amit had never seen. Below is
-          January&rsquo;s intake, watched across five months. Bars shrink as
-          the month progresses. We built this view first because seeing the
-          leak is half the fix.
+          The cohort view Amit had never seen. January&rsquo;s intake,
+          watched across five months, each bar shrinking. We built this
+          first, because seeing the leak is half of fixing it.
         </motion.p>
 
         <div

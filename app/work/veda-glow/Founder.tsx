@@ -112,16 +112,15 @@ export default function Founder() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Priya trained for six years at an Ayurvedic college in
-                Hardwar before opening her studio in Jaipur. She blends
-                every product personally. Forty SKUs across face, body,
-                and hair, all formulated for a different doshic
-                imbalance.
+                Priya trained six years at an Ayurvedic college in Hardwar
+                before opening her studio in Jaipur. She blends every
+                product herself. Forty SKUs across face, body, and hair,
+                each one for a different doshic balance.
               </p>
               <p style={{ margin: 0 }}>
-                The problem was never the product. It was the
-                consultation. Every customer needed a personal answer.
-                The DMs ate her week.
+                The product was never the problem. The consultation was.
+                Every customer needed a personal answer, and answering
+                them by hand ate her week.
               </p>
             </div>
 

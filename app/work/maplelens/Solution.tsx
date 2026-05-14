@@ -8,17 +8,17 @@ const STEPS = [
   {
     n: "01",
     h: "Snap one phone photo.",
-    b: "From your workshop. Any angle. Any light.",
+    b: "From the workshop floor. Any angle, any light.",
   },
   {
     n: "02",
     h: "Pick a scene.",
-    b: "Studio white, warm modern living room, minimal terrace, neutral lifestyle. New scenes ship every week.",
+    b: "Studio white, a warm living room, a minimal terrace. New scenes every week.",
   },
   {
     n: "03",
-    h: "Catalog shot in thirty seconds.",
-    b: "Your piece, preserved. The room, rebuilt around it. Download in catalog and social ratios.",
+    h: "Download the shot.",
+    b: "Your piece, untouched. The room, rebuilt. Sized for your catalog and your feed.",
   },
 ];
 
@@ -68,7 +68,8 @@ export default function Solution() {
             maxWidth: 820,
           }}
         >
-          Maple Lens. Three steps, thirty seconds.
+          Maple Lens. One photo in, a catalog shot out, thirty seconds
+          later.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -84,8 +85,9 @@ export default function Solution() {
             maxWidth: 700,
           }}
         >
-          Phone photo to catalog-ready image. Preserves the design, rebuilds
-          the room. Tuned for Indian aesthetics, light, and listing platforms.
+          It keeps your piece exactly as it is and rebuilds the room around
+          it. Tuned for Indian light, Indian rooms, and the sizes that
+          marketplaces actually want.
         </motion.p>
 
         <div

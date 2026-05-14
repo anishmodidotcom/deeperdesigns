@@ -94,17 +94,16 @@ export default function Founder() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Dr. Kavita and her two partners see between forty and
-                fifty patients a day across three chairs. Every patient
-                needs a recall, a six-month cleaning reminder, a
-                treatment-plan follow-up, or an insurance receipt sent
-                to a parent. The front desk handles it from memory.
+                Dr. Kavita and her two partners see forty to fifty patients
+                a day across three chairs. Every patient needs a recall, a
+                cleaning reminder, a treatment follow-up, or a receipt sent
+                to a parent. The front desk was holding all of it in their
+                heads.
               </p>
               <p style={{ margin: 0 }}>
-                The new system handles the memory for them. SmileFirst
-                routes every recall, dispatches the right message at the
-                right interval, and surfaces the patients about to drop
-                off before they go quiet.
+                Now the system holds it. It routes every recall, sends the
+                right message at the right time, and surfaces the patients
+                about to go quiet before they do.
               </p>
             </div>
             <div

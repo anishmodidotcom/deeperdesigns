@@ -49,13 +49,13 @@ const STEPS: Step[] = [
   {
     title: "AI Analyzes",
     description:
-      "Demand patterns, waste trends, margin calculations, and pricing opportunities. Updated every hour.",
+      "Demand patterns, waste, margins, pricing gaps. Updated every hour.",
     icon: BrainIcon,
   },
   {
     title: "Decisions Out",
     description:
-      "How much chicken to order. Which items to promote. When to run offers. Faisal decides with data, not guesses.",
+      "How much chicken to order. What to promote. When to run an offer. Faisal decides on data, not a guess.",
     icon: CheckIcon,
   },
 ];

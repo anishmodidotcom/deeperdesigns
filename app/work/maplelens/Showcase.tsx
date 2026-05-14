@@ -60,7 +60,7 @@ export default function Showcase() {
             maxWidth: 720,
           }}
         >
-          Phone photo on the left. Maple Lens on the right.
+          Phone photo on the left. What the catalog gets on the right.
         </motion.h2>
 
         <div

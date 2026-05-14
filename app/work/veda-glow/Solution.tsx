@@ -198,7 +198,7 @@ export default function Solution() {
             marginBottom: 64,
           }}
         >
-          A personal Ayurvedic consultant. Online. Instant. Always available.
+          A skin advisor that answers like she would, every time, instantly.
         </h2>
 
         <div

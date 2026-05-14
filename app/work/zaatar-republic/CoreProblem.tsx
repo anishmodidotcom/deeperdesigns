@@ -41,9 +41,9 @@ export default function CoreProblem() {
             lineHeight: 1.6,
           }}
         >
-          Without unit economics data, Faisal is flying blind. He knows
-          monthly profit but cannot tell you which dish earns and which dish
-          bleeds.
+          Without unit economics, Faisal is flying blind. He knows the
+          monthly profit. He cannot tell you which dish earns and which
+          dish bleeds.
         </p>
 
         <div

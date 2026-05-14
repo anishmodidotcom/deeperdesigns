@@ -196,14 +196,14 @@ export default function Founder() {
             >
               <p style={{ margin: 0 }}>
                 Faisal opened the first Zaatar Republic above a tailor in
-                Sharjah in 2019. The lamb is slow-roasted, the bread is
-                pressed in-house, the toum is whipped twice a day.
-                People queued. He opened a second location. Then two more.
+                Sharjah in 2019. Slow-roasted lamb, bread pressed
+                in-house, toum whipped twice a day. People queued. He
+                opened a second branch. Then two more.
               </p>
               <p style={{ margin: 0 }}>
                 Four locations. A thousand orders a day. Three managers
-                he has to call. A WhatsApp group that pings every minute.
-                Inventory decisions made by gut. We built him the
+                to call and a WhatsApp group that never stops. Every
+                inventory decision made by gut. So we built him the
                 dashboard.
               </p>
             </div>

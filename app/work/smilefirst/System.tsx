@@ -351,28 +351,28 @@ const CARDS: Card[] = [
     icon: UserIcon,
     title: "Every patient, every visit, every detail",
     description:
-      "Complete digital records. Treatment history, X-rays, notes, billing. No more paper files.",
+      "Complete digital records. Treatment history, X-rays, notes, billing. The paper files are gone.",
     mockup: <PatientMockup />,
   },
   {
     icon: BellIcon,
     title: "Automatic reminders that bring patients back",
     description:
-      "Cleaning done in January? The system reminds them in July. Root canal recommended but not booked? Follow-up sequence starts in 48 hours.",
+      "A cleaning in January gets a reminder in July. A recommended root canal that was not booked starts a follow-up in 48 hours.",
     mockup: <RecallsMockup />,
   },
   {
     icon: CalIcon,
     title: "Bookings that run themselves",
     description:
-      "Online booking, WhatsApp booking, walk-in management. Automatic slot allocation across 3 dentists and 2 hygienists. No double-booking.",
+      "Online, WhatsApp, and walk-in bookings, allocated across three dentists and two hygienists. No double-booking.",
     mockup: <CalendarMockup />,
   },
   {
     icon: TrendIcon,
     title: "Turn recommended treatments into completed treatments",
     description:
-      "AI-powered follow-up sequences. Personalized messaging. Payment plan offers for expensive procedures. The 60% who disappear start coming back.",
+      "Personalised follow-up sequences and payment-plan offers. The sixty percent who used to disappear start coming back.",
     mockup: <RevenueMockup />,
   },
 ];

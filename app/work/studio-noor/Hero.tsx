@@ -116,9 +116,10 @@ export default function Hero() {
             lineHeight: 1.75,
           }}
         >
-          A living workspace where interior design clients track every
-          detail of their home transformation. Updated daily by the site
-          supervisor. No more chasing updates over WhatsApp.
+          Six homes in progress, each one a six-month build and one
+          anxious homeowner. Now every client watches their project move
+          in a single portal, updated daily, and nobody chases the
+          designer for status.
         </motion.p>
       </div>
     </section>

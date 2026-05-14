@@ -117,8 +117,9 @@ export default function Hero() {
               lineHeight: 1.65,
             }}
           >
-            Four locations across Sharjah and Ajman. A thousand orders a
-            day. Now running on data instead of gut feel.
+            Four locations, a thousand orders a day, every inventory call
+            made by gut. Now one dashboard runs all four on data, and the
+            owner can see which dish actually earns.
           </p>
         </motion.div>
       </div>

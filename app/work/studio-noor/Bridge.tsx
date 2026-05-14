@@ -204,8 +204,8 @@ export default function Bridge() {
             lineHeight: 1.6,
           }}
         >
-          No app downloads for the site team. No training. They just use
-          WhatsApp like they already do.
+          No app for the site team to download. No training. They use
+          WhatsApp, the way they already do.
         </p>
       </div>
 

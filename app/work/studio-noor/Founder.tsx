@@ -96,16 +96,15 @@ export default function Founder() {
             >
               <p style={{ margin: 0 }}>
                 Ananya runs Studio Noor with one project manager and a
-                rotating bench of trusted contractors. Six homes in
-                progress at any time. Each one a six-month build with
-                forty material decisions, three vendor cycles, and one
-                anxious homeowner.
+                rotating bench of trusted contractors. Six homes at any
+                time, each with forty material decisions, three vendor
+                cycles, and one nervous homeowner.
               </p>
               <p style={{ margin: 0 }}>
-                The portal turns that anxiety into a quiet feed. Every
+                The portal turns the nerves into a quiet feed. Every
                 morning the site supervisor posts a photo, a status, and
-                what is next. The client opens the app instead of
-                texting Ananya.
+                what is next. The client opens the app instead of texting
+                Ananya.
               </p>
             </div>
 

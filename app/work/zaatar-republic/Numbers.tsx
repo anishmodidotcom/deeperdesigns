@@ -36,7 +36,7 @@ const CARDS: Card[] = [
     sub: "Over-ordering chicken, bread, vegetables based on gut feel",
   },
   {
-    number: "???",
+    number: "Unknown",
     numberColor: "var(--page-accent)",
     description: "Actual margin per dish",
     sub: "Best-seller might be the worst earner. No data to prove it.",

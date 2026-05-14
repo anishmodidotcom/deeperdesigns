@@ -24,7 +24,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
   description:
-    "4 locations. 1,000 orders a day. Now running on data instead of gut feel. A live operations dashboard for a UAE shawarma chain.",
+    "A four-location shawarma chain stopped guessing. One dashboard reads every POS feed, cuts food waste from 15% to 3%, and shows the real margin on every dish.",
   openGraph: {
     title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
     description: "4 locations. 1,000 orders a day. Now running on data instead of gut feel. A live operations dashboard for a UAE shawarma chain.",

@@ -115,8 +115,9 @@ export default function Hero() {
           lineHeight: 1.65,
         }}
       >
-        Catalog-ready studio and lifestyle images from a phone photo. Built
-        for Indian furniture makers who do not have a studio budget.
+        A furniture maker shoots one phone photo and gets back a catalog
+        shot. No studio, no shoot day, no ₹40,000 invoice. Live and working
+        for makers across India.
       </motion.p>
 
       <motion.div

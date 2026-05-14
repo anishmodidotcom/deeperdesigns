@@ -189,7 +189,7 @@ export default function Solution() {
             marginBottom: 64,
           }}
         >
-          One dashboard. Everything in real time.
+          One dashboard. Live stock, instant quotes.
         </h2>
 
         <motion.div

@@ -24,7 +24,7 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Studio Noor · Client Portal · Deeper Designs",
   description:
-    "A living workspace where interior design clients track every detail of their home transformation. Updated daily through WhatsApp.",
+    "An interior design studio replaced six WhatsApp groups per project with one portal. Clients see progress without asking, and projects close faster.",
   openGraph: {
     title: "Studio Noor · Client Portal · Deeper Designs",
     description: "A living workspace where interior design clients track every detail of their home transformation. Updated daily through WhatsApp.",
