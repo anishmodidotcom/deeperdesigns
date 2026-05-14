@@ -128,6 +128,16 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="vg-hero-bottle"
+            style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: 480,
+              aspectRatio: "4 / 5",
+              marginInline: "auto",
+              borderRadius: 4,
+              overflow: "hidden",
+              boxShadow: "0 50px 120px -30px rgba(212, 165, 116, 0.25)",
+            }}
           >
             <Image
               src="/images/veda-glow/hero-bottle.webp"
@@ -147,16 +157,6 @@ export default function Hero() {
           grid-template-columns: 1fr;
           gap: 64px;
           align-items: center;
-        }
-        .vg-hero-bottle {
-          position: relative;
-          width: 100%;
-          max-width: 480px;
-          aspect-ratio: 4 / 5;
-          margin-inline: auto;
-          border-radius: 4px;
-          overflow: hidden;
-          box-shadow: 0 50px 120px -30px rgba(212, 165, 116, 0.25);
         }
         @media (min-width: 1024px) {
           .vg-hero-grid {
