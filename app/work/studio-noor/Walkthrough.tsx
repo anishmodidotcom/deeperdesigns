@@ -237,16 +237,16 @@ function State1() {
 function State2() {
   const updates = [
     {
-      date: "May 10",
+      date: "Today",
       text: "Kitchen cabinet laminate samples arrived. 3 options. Photos attached.",
       hasImage: true,
     },
     {
-      date: "May 9",
+      date: "Yesterday",
       text: "Electrician completed bedroom wiring. Supervisor verified.",
     },
     {
-      date: "May 8",
+      date: "2 days ago",
       text: "Dining table wood selected: Sheesham, natural finish. Approved by client.",
     },
   ];
@@ -461,7 +461,7 @@ function State3() {
           { label: "Advance", state: "Paid", color: "#22C55E", glyph: "✓" },
           {
             label: "Midpoint",
-            state: "Due May 20",
+            state: "Due in 10 days",
             color: "#EAB308",
             glyph: "◷",
           },

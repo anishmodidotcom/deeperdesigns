@@ -37,7 +37,7 @@ export default function NextProject() {
             transition: "color 0.15s var(--ease-spring)",
           }}
         >
-          NEXT STUDY
+          NEXT STUDY · 011
         </p>
 
         <h3

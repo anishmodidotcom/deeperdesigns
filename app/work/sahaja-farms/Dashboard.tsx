@@ -555,7 +555,7 @@ export default function Dashboard() {
             marginTop: 24,
           }}
         >
-          Sahaja HQ · Friday, May 8 · Live snapshot
+          Sahaja HQ · Live snapshot
         </p>
       </div>
 

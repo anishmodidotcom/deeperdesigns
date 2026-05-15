@@ -770,7 +770,7 @@ export default function Dashboard() {
             marginTop: 24,
           }}
         >
-          Indiranagar HQ · Monday, May 11 · Live snapshot
+          Indiranagar HQ · Live snapshot
         </p>
       </div>
 

@@ -36,7 +36,7 @@ export default function NextProject() {
             marginBottom: 24,
           }}
         >
-          Next Project
+          NEXT STUDY · 002
         </p>
 
         <h3
