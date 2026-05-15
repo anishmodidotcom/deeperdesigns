@@ -58,17 +58,23 @@ export default function Occupancy() {
   useGSAP(
     () => {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const section = sectionRef.current;
+      const rect = section?.getBoundingClientRect();
+      const belowFold = rect ? rect.top > window.innerHeight * 0.85 : true;
+
       counters.forEach((c) => {
         const el = c.ref.current;
         if (!el) return;
-        // Paint starting value so the cell is never blank before the
-        // ScrollTrigger fires on first visit.
-        el.textContent = c.format(0);
         if (reduced) {
           el.textContent = c.format(c.to);
           return;
         }
+        if (!belowFold) {
+          el.textContent = c.format(c.to);
+          return;
+        }
         const obj = { v: 0 };
+        el.textContent = c.format(0);
         gsap.to(obj, {
           v: c.to,
           duration: 1.4,
@@ -76,17 +82,17 @@ export default function Occupancy() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 85%",
-            end: "bottom 50%",
-            scrub: 0.6,
+            once: true,
           },
           onUpdate: () => {
             el.textContent = c.format(obj.v);
           },
+          onComplete: () => {
+            el.textContent = c.format(c.to);
+          },
         });
       });
 
-      // Refresh after Lenis settles so positions are accurate on first
-      // visit.
       const refreshId = window.setTimeout(() => {
         ScrollTrigger.refresh();
       }, 120);
@@ -138,7 +144,7 @@ export default function Occupancy() {
               margin: 0,
             }}
           >
-            08 NOV · 14:32 IST
+            UPDATED MOMENTS AGO
           </p>
         </div>
 
@@ -163,7 +169,7 @@ export default function Occupancy() {
                   lineHeight: 1,
                 }}
               >
-                <span ref={c.ref}>{c.format(0)}</span>
+                <span ref={c.ref}>{c.format(c.to)}</span>
               </p>
               <p
                 style={{

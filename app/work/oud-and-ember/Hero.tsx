@@ -253,27 +253,28 @@ function WordReveal({ text }: { text: string }) {
   return (
     <span style={{ display: "inline-block" }}>
       {words.map((w, i) => (
-        <span
-          key={`${w}-${i}`}
-          style={{
-            display: "inline-block",
-            overflow: "hidden",
-            verticalAlign: "top",
-          }}
-        >
-          <motion.span
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: "0%", opacity: 1 }}
-            transition={{
-              duration: 1.2,
-              delay: 0.2 + i * 0.08,
-              ease: EASE,
+        <span key={`${w}-${i}`}>
+          <span
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+              verticalAlign: "top",
             }}
-            style={{ display: "inline-block" }}
           >
-            {w}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
+            <motion.span
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{
+                duration: 1.2,
+                delay: 0.2 + i * 0.08,
+                ease: EASE,
+              }}
+              style={{ display: "inline-block" }}
+            >
+              {w}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </span>

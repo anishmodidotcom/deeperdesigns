@@ -22,7 +22,7 @@ export const ORGANIZATION_LD: JsonLd = {
   url: "https://deeperdesigns.in",
   logo: "https://deeperdesigns.in/icon.svg",
   description:
-    "Custom systems for Indian businesses. We design and build digital tools, sites, and operational systems. Possibility Studies plus live products.",
+    "Custom systems for Indian businesses. We design and build digital tools, sites, and operational systems.",
   founder: {
     "@type": "Person",
     name: "Anish Modi",
@@ -65,7 +65,7 @@ export function creativeWorkLd(args: {
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: `${args.name} · Possibility Study`,
+    name: args.name,
     description: args.description,
     url: `https://deeperdesigns.in/work/${args.slug}`,
     image: `https://deeperdesigns.in${args.image}`,

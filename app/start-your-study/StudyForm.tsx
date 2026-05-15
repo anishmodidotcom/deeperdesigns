@@ -280,7 +280,7 @@ export default function StudyForm() {
         <div style={{ width: "100%", maxWidth: "640px" }}>
           {step === "intro" && (
             <div>
-              <p className="eyebrow" style={{ marginBottom: "24px" }}>POSSIBILITY STUDY</p>
+              <p className="eyebrow" style={{ marginBottom: "24px" }}>NEW PROJECT</p>
               <h1 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "24px" }}>
                 Let&apos;s explore possibilities.
               </h1>

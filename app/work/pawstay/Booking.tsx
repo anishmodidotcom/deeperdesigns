@@ -146,7 +146,7 @@ export default function Booking() {
                     margin: 0,
                   }}
                 >
-                  May 2026
+                  This month
                 </p>
                 <span
                   style={{
@@ -211,7 +211,7 @@ export default function Booking() {
                   letterSpacing: "0.06em",
                 }}
               >
-                ● 2 spots left · Sat May 16
+                ● 2 spots left · next Saturday
               </p>
             </div>
           </motion.div>
