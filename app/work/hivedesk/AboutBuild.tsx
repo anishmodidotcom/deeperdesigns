@@ -77,12 +77,11 @@ export default function AboutBuild() {
                 maxWidth: 560,
               }}
             >
-              Built in 22 days. Custom dashboard, member CRM, room booking
-              with capacity logic, churn scoring model trained on 18 months
-              of his old Excel exports, Razorpay integration for renewals,
-              WhatsApp Business API for nudges. Replaced six tools and a
-              whiteboard. The hardest part was the data import. The most
-              useful part was the at-risk list.
+              Built in 22 days. A custom dashboard, member CRM, room
+              booking with capacity logic, a churn model trained on 18
+              months of his old Excel exports, Razorpay for renewals,
+              WhatsApp for nudges. It replaced six tools and a whiteboard.
+              The at-risk list is the part he opens first.
             </p>
 
             <dl

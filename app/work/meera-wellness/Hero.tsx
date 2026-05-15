@@ -115,9 +115,9 @@ export default function Hero() {
             lineHeight: 1.75,
           }}
         >
-          A complete wellness platform built for a Dubai yoga instructor.
-          Scheduling, client portal, WhatsApp integration, and
-          personalized programs. All in one place.
+          Three kinds of session, two studios, and a notebook full of
+          bookings. Now one platform holds the schedule, the packages, and
+          the renewals, and Meera gets three hours of her day back.
         </motion.p>
       </div>
     </section>

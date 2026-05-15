@@ -177,10 +177,10 @@ export default function Hero() {
                 marginTop: 28,
               }}
             >
-              A farm management dashboard that knows what to plant, when to
-              harvest, and which subscribers are about to cancel. For
-              Lata&rsquo;s 200-acre organic farm and the 400 Bangalore
-              families who eat from it.
+              Two hundred acres, four hundred subscriber families, and
+              every decision made over the kitchen table. Now one
+              dashboard plans the planting, tracks the harvest, and
+              catches subscribers before they cancel.
             </motion.p>
 
             <motion.div

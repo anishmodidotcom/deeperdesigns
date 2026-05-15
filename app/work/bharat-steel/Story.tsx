@@ -106,9 +106,9 @@ export default function Story() {
                 letterSpacing: "-0.01em",
               }}
             >
-              When a buyer calls asking for 12mm TMT bars, Fe500D grade, 20
-              tonnes, Rahul has to call the office. Someone checks the
-              Excel. Calls back. 15 to 30 minutes.
+              A buyer asks for 12mm TMT, Fe500D, twenty tonnes. Rahul
+              calls the office. Someone checks the Excel. Calls back.
+              Fifteen to thirty minutes, every time.
             </p>
           </div>
 

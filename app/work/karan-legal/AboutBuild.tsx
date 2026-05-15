@@ -74,12 +74,12 @@ export default function AboutBuild() {
             maxWidth: 660,
           }}
         >
-          Built in 9 days. Custom GPT-4 qualifier trained on Karan&rsquo;s
-          intake notes, Calendly integration for partner-track calls,
-          Razorpay payment links for template work, automated PDF
-          generation for templated documents. The smallest build we have
-          shipped. Also the most efficient ROI. Some practices need an
-          army. Karan needed a doorman.
+          Built in 9 days. A custom qualifier trained on Karan&rsquo;s
+          intake notes, Calendly for partner-track calls, Razorpay links
+          for template work, automated PDF generation for templated
+          documents. The smallest build we have shipped, and one of the
+          most efficient. Some practices need an army. Karan needed a
+          doorman.
         </motion.p>
 
         <dl

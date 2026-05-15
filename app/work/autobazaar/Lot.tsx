@@ -173,8 +173,8 @@ export default function Lot() {
             lineHeight: 1.6,
           }}
         >
-          The longer a car sits, the more money Tariq loses. Yard rent,
-          insurance, depreciation. But he has no idea which cars are aging
+          The longer a car sits, the more it costs him. Yard rent,
+          insurance, depreciation. And he has no idea which cars are aging
           out.
         </p>
       </div>

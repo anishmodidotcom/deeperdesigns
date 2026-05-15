@@ -225,7 +225,7 @@ export default function Solution() {
                 fontSize: 12,
               }}
             >
-              <span>Today, May 11 2026</span>
+              <span>Today</span>
               <span
                 style={{
                   display: "inline-flex",

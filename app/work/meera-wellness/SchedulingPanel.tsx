@@ -63,8 +63,8 @@ export default function SchedulingPanel() {
               }}
             >
               Group classes, private sessions, online bookings. Different
-              prices, different durations, different locations. The calendar
-              handles all of it. Clients book directly. No more WhatsApp
+              prices, durations, locations. The calendar handles all of
+              it, and clients book themselves. No more WhatsApp
               back-and-forth.
             </p>
           </div>

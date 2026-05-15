@@ -124,9 +124,9 @@ export default function Hero() {
             lineHeight: 1.75,
           }}
         >
-          Patient CRM, automated recalls, appointment management, dental
-          records, and intelligent follow-up. A full clinic operating
-          system for a three-chair practice seeing 40-50 patients a day.
+          Three dentists, forty to fifty patients a day, and a third of the
+          follow-ups slipping through. Now every recall and reminder runs
+          on its own, and the patients who used to disappear come back.
         </motion.p>
       </div>
     </section>

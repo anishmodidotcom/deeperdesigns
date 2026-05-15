@@ -111,10 +111,10 @@ export default function Studio() {
                 maxWidth: 480,
               }}
             >
-              Pick a base. Pick a flavour. Pick a size. Choose the
-              date. Upload a reference photo if you have one. Pay the
-              deposit. Farah gets one neat brief instead of thirty
-              messages. You get a date.
+              Pick a base, a flavour, a size. Choose the date. Upload a
+              reference photo if you have one. Pay the deposit. Farah
+              gets one clean brief instead of thirty messages. You get
+              a date.
             </p>
 
             <div

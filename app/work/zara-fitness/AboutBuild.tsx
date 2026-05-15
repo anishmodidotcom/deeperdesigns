@@ -9,7 +9,7 @@ const INFO: [string, string][] = [
   ["Client", "Zara Bakir · Zara Fitness"],
   ["Industry", "Fitness, creator economy"],
   ["Location", "Dubai, UAE"],
-  ["Timeline", "24 days"],
+  ["Timeline", "12 days"],
   ["Year", "2026"],
 ];
 
@@ -97,7 +97,7 @@ export default function AboutBuild() {
                 textTransform: "uppercase",
               }}
             >
-              Built in 24 days.
+              Built in 12 days.
             </h2>
             <p
               style={{
@@ -108,13 +108,12 @@ export default function AboutBuild() {
                 maxWidth: 560,
               }}
             >
-              Web app with member auth, full workout program engine with
-              progression logic, exercise video library with custom Zara
-              content, real-time chat with Zara via an AI agent trained on
-              her tone and methodology, integrated checkout for sportswear,
-              push notifications, HealthKit and Apple Watch sync, Stripe
-              and Tabby for payments. Built end-to-end. No outside agency.
-              The 15-lakh quote we replaced.
+              A web app with member auth, a full workout engine with
+              progression logic, an exercise video library with custom
+              Zara content, a chat with Zara through an AI agent trained
+              on her tone and method, checkout for sportswear, push
+              notifications, and HealthKit and Apple Watch sync. Built
+              end to end, no outside agency.
             </p>
 
             <dl

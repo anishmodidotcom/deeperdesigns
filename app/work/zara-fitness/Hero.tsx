@@ -126,8 +126,9 @@ export default function Hero() {
             letterSpacing: "0.02em",
           }}
         >
-          280,000 watched her workouts. Then they got their own. The
-          platform that turned an audience into a community.
+          280,000 people watched her workouts and had nowhere to go
+          next. We built the platform that turned the audience into
+          12,400 paying members.
         </motion.p>
 
         <div

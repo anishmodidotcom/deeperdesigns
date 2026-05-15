@@ -191,7 +191,7 @@ export default function Funnel() {
             letterSpacing: "-0.01em",
           }}
         >
-          That is lakhs in lost revenue. Every single month.
+          That is lakhs walking out the door. Every month.
         </p>
       </div>
     </section>

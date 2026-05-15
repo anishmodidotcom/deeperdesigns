@@ -38,7 +38,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Sugar Lane · Home Bakery · Deeper Designs",
   description:
-    "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
+    "An Abu Dhabi home baker could make forty cakes a week but only made four. An order studio captures the brief in three minutes, and now she makes fourteen.",
   openGraph: {
     title: "Sugar Lane · Home Bakery · Deeper Designs",
     description: "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",

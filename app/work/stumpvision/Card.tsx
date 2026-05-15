@@ -348,8 +348,8 @@ export default function Card() {
             lineHeight: 1.6,
           }}
         >
-          Kids obsess over their stats. Parents share the cards. Coaches use
-          them for selections. The card is the marketing.
+          Kids obsess over their stats. Parents share the cards. Coaches
+          use them for selection. The card does the marketing.
         </p>
       </div>
 

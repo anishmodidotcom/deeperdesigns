@@ -113,10 +113,10 @@ export default function Booking() {
                 maxWidth: 460,
               }}
             >
-              Pet parents book directly through the portal. The calendar
+              Parents book straight through the portal. The calendar
               shows real availability per dog, with breed and size limits
-              enforced automatically. No overbooking. No phone tag. Deposit
-              taken at confirmation.
+              enforced automatically. No overbooking, no phone tag.
+              Deposit taken at confirmation.
             </p>
 
             <div
@@ -260,9 +260,9 @@ export default function Booking() {
                 maxWidth: 460,
               }}
             >
-              Parents add services at booking or mid-stay. Pooja gets a
-              push notification and the next morning&rsquo;s prep list
-              updates itself.
+              Treats, grooming, vet visits. One tap, at booking or
+              mid-stay. Pooja gets a notification and the next
+              morning&rsquo;s prep list updates itself.
             </p>
 
             <ul

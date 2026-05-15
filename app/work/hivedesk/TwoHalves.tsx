@@ -111,8 +111,8 @@ export default function TwoHalves() {
             marginTop: 20,
           }}
         >
-          Filling the pipeline and keeping people past month four require
-          completely different machinery. We built both, separated cleanly.
+          Filling the floor and keeping people past month four need
+          different machinery. We built both, kept them separate.
         </motion.p>
 
         <div className="hd-halves" style={{ marginTop: 64 }}>

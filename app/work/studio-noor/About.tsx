@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by a boutique interior design studio" },
   { label: "INDUSTRY", value: "Interior Design (B2C)" },
   { label: "LOCATION", value: "Bangalore, India" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Client Portal, Project Management, WhatsApp Integration, Document Management",
   },
-  { label: "TIMELINE", value: "Shipped in 14 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 14 days" },
   {
     label: "STACK",
     value: "Next.js, WhatsApp Business API, Cloud Storage, Real-time Updates",

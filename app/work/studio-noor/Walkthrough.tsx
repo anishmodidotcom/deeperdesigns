@@ -16,22 +16,22 @@ const BLOCKS: { title: string; description: string }[] = [
   {
     title: "See the big picture",
     description:
-      "A living timeline of your entire project. Which phase you are in, what is done, what is next. Updated by the site supervisor daily through WhatsApp.",
+      "A living timeline of the whole project. Which phase you are in, what is done, what is next. Updated by the site supervisor every day over WhatsApp.",
   },
   {
     title: "Daily updates without asking",
     description:
-      "Every day, the portal shows what happened. Photos from the site, material arrivals, decisions made. No more calling Ananya at 11pm asking for status.",
+      "Every day, the portal shows what happened. Site photos, material arrivals, decisions made. No more 11pm status calls.",
   },
   {
     title: "Know where every rupee went",
     description:
-      "Real-time budget tracking broken down by category. Payment schedule with automatic reminders. No more compiling receipts into spreadsheets.",
+      "Real-time budget tracking by category, with a payment schedule and automatic reminders. No more compiling receipts into a spreadsheet.",
   },
   {
     title: "Everything in one place",
     description:
-      "Floor plans, renders, invoices, material selections. All stored, organized, and accessible. Not scattered across email, Drive, and WhatsApp.",
+      "Floor plans, renders, invoices, material selections. All stored, organised, and one tap away. Not buried in WhatsApp.",
   },
 ];
 

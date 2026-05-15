@@ -170,9 +170,9 @@ export default function Chaos() {
             lineHeight: 1.6,
           }}
         >
-          Mood boards on Pinterest. Floor plans as PDFs on Drive. Material
-          photos on WhatsApp. Invoices as screenshots. Updates scattered
-          across six different apps.
+          Mood boards on Pinterest. Floor plans on Drive. Material photos
+          on WhatsApp. Invoices as screenshots. One project, scattered
+          across six apps.
         </p>
 
         <p

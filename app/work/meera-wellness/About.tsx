@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by a yoga and wellness studio" },
   { label: "INDUSTRY", value: "Yoga & Wellness (B2C)" },
   { label: "LOCATION", value: "Dubai, UAE" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Platform Development, WhatsApp AI, Client Portal, Booking System",
   },
-  { label: "TIMELINE", value: "Shipped in 10 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 10 days" },
   {
     label: "STACK",
     value:

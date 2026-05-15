@@ -67,15 +67,15 @@ export default function Founder() {
             >
               <p style={{ margin: 0 }}>
                 Meera left a corporate consulting job to teach hatha yoga
-                full time in Dubai. She has 24 active clients across
-                ashtanga, prenatal, and breathwork programs. Each one
-                needs scheduling, programme briefs, lesson notes, and
-                gentle WhatsApp follow-ups.
+                full time in Dubai. Twenty-four active clients across
+                ashtanga, prenatal, and breathwork. Each one needs
+                scheduling, programme briefs, lesson notes, and the
+                occasional gentle nudge.
               </p>
               <p style={{ margin: 0 }}>
-                The old system was three Google calendars, a notes app,
-                and a WhatsApp Business that she answered between sessions.
-                The new platform replaces all of it.
+                The old setup was three Google calendars, a notes app,
+                and a WhatsApp Business she answered between sessions.
+                The platform replaces all of it.
               </p>
             </div>
           </motion.div>

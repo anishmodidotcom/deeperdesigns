@@ -78,13 +78,12 @@ export default function AboutBuild() {
                 maxWidth: 560,
               }}
             >
-              Built in 19 days. Live camera streaming via Twilio Video,
-              real-time activity tracker with WebSockets, phone-number OTP
-              auth, dog and owner profile system, booking calendar with
-              capacity logic, Razorpay for deposits, addon ordering, and
-              automated daily summary emails. Replaced the WhatsApp chaos
-              with a portal that respects how much parents actually love
-              their dogs.
+              Built in 19 days. Live camera streaming, a real-time
+              activity tracker, phone-OTP login, dog and owner profiles, a
+              booking calendar with capacity logic, Razorpay for deposits,
+              addon ordering, and automated daily summaries. It replaced
+              the WhatsApp chaos with a portal that respects how much
+              parents love their dogs.
             </p>
 
             <dl

@@ -26,17 +26,17 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
   description:
-    "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+    "A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
   openGraph: {
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
-    description: "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+    description: "Sixty-four years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
     url: "/work/malabar-spice",
     images: [{ url: "/images/malabar-spice/hero-pepper.webp", width: 1200, height: 800, alt: "Malabar Spice House · Heritage Brand Site · Deeper Designs" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
-    description: "Sixty-three years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
+    description: "Sixty-four years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
     images: ["/images/malabar-spice/hero-pepper.webp"],
   },
   alternates: { canonical: "/work/malabar-spice" },

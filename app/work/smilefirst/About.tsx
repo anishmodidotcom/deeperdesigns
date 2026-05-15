@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by an urban dental clinic" },
   { label: "INDUSTRY", value: "Healthcare (Dental Clinic)" },
   { label: "LOCATION", value: "Noida, India" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Patient CRM, Appointment System, WhatsApp Automation, Revenue Recovery Engine",
   },
-  { label: "TIMELINE", value: "Shipped in 10 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 10 days" },
   {
     label: "STACK",
     value:

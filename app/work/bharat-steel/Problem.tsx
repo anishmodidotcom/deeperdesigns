@@ -110,8 +110,8 @@ export default function Problem() {
             letterSpacing: "-0.01em",
           }}
         >
-          By the time Rahul replies, the buyer has already called the next
-          trader.
+          By the time Rahul calls back, the buyer has already called the
+          next trader.
         </p>
       </div>
 

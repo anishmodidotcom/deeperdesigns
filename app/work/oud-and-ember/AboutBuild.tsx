@@ -47,10 +47,10 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              Built in 18 days. Custom quiz engine, AI-generated bottle
-              visualization for each customer, integrated WhatsApp handoff
-              for atelier bookings, Stripe for direct purchases. Designed
-              in close partnership with Nadia to honor the heritage of the
+              Built in 18 days. A custom quiz engine, an AI-generated
+              bottle visualisation for each customer, a WhatsApp handoff
+              for atelier bookings, and Stripe for direct purchases.
+              Designed closely with Nadia, to honour the heritage of the
               house while opening a digital front door.
             </p>
 

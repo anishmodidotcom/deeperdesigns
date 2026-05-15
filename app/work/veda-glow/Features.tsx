@@ -9,19 +9,19 @@ const FEATURES: Feature[] = [
     number: "01",
     title: "Personalized Routines",
     description:
-      "Morning and evening routines built around skin type, concerns, age, and lifestyle. Every recommendation mapped to Veda Glow's actual product catalog.",
+      "Morning and evening routines built around skin type, concern, age, and lifestyle. Every step mapped to a real Veda Glow product.",
   },
   {
     number: "02",
     title: "Diet and Lifestyle Guidance",
     description:
-      "Ayurvedic wisdom meets modern science. Sleep schedules, food recommendations, and seasonal adjustments included in every consultation.",
+      "Sleep, food, and seasonal advice in every consultation. The Ayurvedic part Priya would always add herself.",
   },
   {
     number: "03",
     title: "Direct to Purchase",
     description:
-      "Every recommended product links directly to the Shopify store. The consultation becomes the sales funnel. Zero friction from advice to checkout.",
+      "Every recommended product links straight to the store. The consultation is the sales funnel.",
   },
 ];
 

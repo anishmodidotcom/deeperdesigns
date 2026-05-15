@@ -24,7 +24,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
   description:
-    "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
+    "A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
   openGraph: {
     title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
     description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",

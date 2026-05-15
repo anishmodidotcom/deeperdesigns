@@ -6,16 +6,16 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const PAIN = [
   {
-    h: "A studio shoot costs ₹40,000 to ₹80,000 per collection.",
-    b: "For a maker shipping ten to twenty pieces a month, that math does not work. The photo budget is the first thing cut.",
+    h: "A studio shoot runs ₹40,000 to ₹80,000 a collection.",
+    b: "For a maker shipping ten to twenty pieces a month, that is the first cost cut. So the catalog never gets the shoot.",
   },
   {
-    h: "Listings underperform because the images are workshop photos.",
-    b: "A buyer on Instagram or a marketplace cannot see past sawdust and warehouse light. The piece looks worse than the work.",
+    h: "Workshop photos make good furniture look cheap.",
+    b: "Sawdust, tube light, a phone camera. The buyer scrolling a marketplace cannot see the craft. The piece looks worse than it is.",
   },
   {
-    h: "Studio time means a long round trip and a held inventory.",
-    b: "Booking a studio, driving the piece across town, waiting on edits, doing it again. Days per collection. Inventory sits idle.",
+    h: "A studio booking is a day lost.",
+    b: "Pack the piece, drive across town, wait for edits, do it again next month. Days gone, inventory sitting idle.",
   },
 ];
 
@@ -66,8 +66,8 @@ export default function Problem() {
             maxWidth: 820,
           }}
         >
-          Indian furniture makers cannot afford studio photography. Their
-          listings underperform. Their products look worse than their craft.
+          Great furniture, photographed badly, sells for less than it
+          should.
         </motion.h2>
 
         <ul

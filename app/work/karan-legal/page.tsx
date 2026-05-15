@@ -27,7 +27,7 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   title: "Karan Legal · Lead Qualifier · Deeper Designs",
   description:
-    "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
+    "A solo Mumbai lawyer stopped answering forty intake calls a week. A qualifier intakes every prospect first, so he only spends time on the clients worth it.",
   openGraph: {
     title: "Karan Legal · Lead Qualifier · Deeper Designs",
     description: "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",

@@ -73,7 +73,7 @@ export default function Hero() {
               margin: 0,
             }}
           >
-            Stop guessing why members leave.
+            See members leaving before they do.
           </motion.h1>
 
           <motion.p
@@ -89,8 +89,9 @@ export default function Hero() {
               marginTop: 24,
             }}
           >
-            A coworking operating system that runs the floor, profiles every
-            member, and tells the owner where the revenue actually leaks.
+            One operating system runs the floor, profiles every member, and
+            shows the owner exactly where revenue is leaking. Churn gets
+            caught thirty days early, not on the day the desk goes empty.
           </motion.p>
 
           <motion.div

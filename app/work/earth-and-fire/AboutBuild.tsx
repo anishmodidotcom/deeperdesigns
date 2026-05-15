@@ -107,10 +107,10 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              We built Earth and Fire as a heritage-first ceramics brand with a
-              custom builder, a queue-based ordering system, and a story-led
-              site that lets Nia spend her hours at the wheel, not in the
-              comments. Drops are quieter. The work is louder.
+              We built Earth and Fire as a heritage-first ceramics brand,
+              with a custom builder, a queue-based ordering system, and a
+              story-led site. Nia spends her hours at the wheel, not in
+              the comments. The drops are quieter. The work is louder.
             </p>
 
             <ul

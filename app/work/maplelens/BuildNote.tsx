@@ -66,7 +66,7 @@ export default function BuildNote() {
             maxWidth: 780,
           }}
         >
-          Built end to end by Deeper Designs. Maple Lens is live.
+          Built end to end by Deeper Designs. Live, paid, and running.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -82,11 +82,10 @@ export default function BuildNote() {
             maxWidth: 680,
           }}
         >
-          Designed, engineered, and shipped by Deeper Designs. A paid SaaS
-          product running for furniture makers across India. The catalog
-          engine is tuned for Indian aesthetics, low-light workshop input,
-          and the ratios that Instagram and marketplace listings actually
-          want.
+          We designed it, built it, and shipped it. Furniture makers across
+          India pay for it and use it every week. It is tuned for low-light
+          workshop photos, Indian interiors, and the exact ratios a
+          marketplace listing needs.
         </motion.p>
 
         <dl

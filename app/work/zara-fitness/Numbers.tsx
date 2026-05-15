@@ -45,7 +45,7 @@ export default function Numbers() {
         {
           ref: agencyRef,
           to: 0,
-          display: () => "Rs. 0",
+          display: () => "AED 0",
           label: "agency",
         },
         {
@@ -87,7 +87,7 @@ export default function Numbers() {
     { ref: stuckRef, init: "0%", label: "Stuck past week three (vs PDF 11%)" },
     {
       ref: agencyRef,
-      init: "Rs. 0",
+      init: "AED 0",
       label: "Paid to a dev agency. Built end-to-end by DD.",
     },
     { ref: revenueRef, init: "+0X", label: "Revenue vs the PDF era" },

@@ -135,9 +135,9 @@ export default function Programs() {
               lineHeight: 1.65,
             }}
           >
-            Omar only teaches what he can teach well. No franchise model.
-            No subject he is winging. Three subjects, all to A-grade
-            standard, all evaluated weekly.
+            Omar only teaches what he can teach well. No franchise
+            model, no subject he is winging. Three subjects, all to
+            A-grade standard, all reviewed weekly.
           </motion.p>
         </div>
 

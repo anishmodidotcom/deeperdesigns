@@ -90,16 +90,15 @@ export default function Founder() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Tariq runs AutoBazaar out of a Deira side street that
-                Dubai-locals know but no one else does. Sixty cars on the
-                lot at any time. Every car priced last night by Tariq
-                walking the lot with a clipboard, calling the Dubizzle
-                page on his phone for each competitor listing.
+                Tariq runs AutoBazaar from a Deira side street that locals
+                know and nobody else does. Sixty cars on the lot. Every one
+                priced last night by Tariq walking the lot with a
+                clipboard, checking each competitor listing on his phone.
               </p>
               <p style={{ margin: 0 }}>
                 Two hours every evening. Cars that sat too long lost
-                margin. Cars that moved fast were under-priced. We built
-                Tariq an engine that prices the entire lot every morning
+                margin. Cars that moved fast were underpriced. We built
+                him an engine that prices the whole lot every morning
                 before he gets there.
               </p>
             </div>

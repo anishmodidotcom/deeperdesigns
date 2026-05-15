@@ -73,19 +73,19 @@ export default function Devika() {
             >
               <p style={{ margin: 0 }}>
                 Devika is the third generation in a tea family that has
-                supplied wholesalers in Mumbai since 1958. The blends are
-                the family&rsquo;s. The palate is hers. The tin is new.
+                supplied Mumbai wholesalers since 1958. The blends are the
+                family&rsquo;s. The palate is hers. The tin is new.
               </p>
               <p style={{ margin: 0 }}>
                 For sixty years the business sold loose-leaf chai by the
                 kilo to other tea shops, who put their own names on the
                 packaging and marked it up four times over. Devika watched
-                this happen through her teens and decided to flip it.
+                it through her teens and decided to flip it.
               </p>
               <p style={{ margin: 0 }}>
-                We built her a direct brand. Tins. A range. A site that
-                reads like a strong cup. Same blends. Twice the margin.
-                The middleman is gone.
+                We built her a direct brand. Tins, a range, a site that
+                reads like a strong cup. Same blends, twice the margin, no
+                middleman.
               </p>
             </div>
           </motion.div>

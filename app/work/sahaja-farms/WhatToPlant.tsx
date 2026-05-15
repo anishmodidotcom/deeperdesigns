@@ -159,10 +159,10 @@ export default function WhatToPlant() {
             maxWidth: 720,
           }}
         >
-          The forecasting model takes last week&rsquo;s subscriber orders,
-          the wholesale partner forecasts, the restaurant&rsquo;s projected
-          covers, plus weather and seasonal patterns, and outputs a planting
-          list. Lata sees it on her phone at 6 AM.
+          The model takes last week&rsquo;s subscriber orders, the
+          wholesale forecasts, the restaurant&rsquo;s projected covers,
+          and the season, and outputs a planting list. Lata reads it on
+          her phone at 6 AM.
         </motion.p>
 
         <div

@@ -118,10 +118,9 @@ export default function Hero() {
               lineHeight: 1.6,
             }}
           >
-            A live inventory dashboard with instant quote generation. Fed by
-            warehouse delivery slips sent over WhatsApp by a father-son
-            family business that ran the steel yard on paper for thirty
-            years.
+            A father-son steel business ran the yard on paper for thirty
+            years. Now stock is live and a quote takes thirty seconds, fed
+            by delivery slips sent over WhatsApp.
           </motion.p>
         </div>
 

@@ -88,17 +88,17 @@ export default function Family() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Rajesh started Bharat Steel in 1992 with three rebar
-                suppliers and a Tata 407. Rahul joined the business in
-                2018 after an engineering degree. The yard runs on
-                paper challans, WhatsApp photos of delivery slips, and a
-                single shared Excel sheet that nobody trusts.
+                Rajesh started Bharat Steel in 1992 with three suppliers
+                and a Tata 407. Rahul joined in 2018 after an engineering
+                degree. The yard ran on paper challans, WhatsApp photos of
+                delivery slips, and one shared Excel sheet nobody fully
+                trusted.
               </p>
               <p style={{ margin: 0 }}>
-                When a buyer calls asking for 20 tonnes of 12mm TMT bars,
-                someone has to physically walk the yard. Then call back.
-                Then handwrite a quote. Then negotiate. Half the calls
-                end in silence because a competitor answered faster.
+                A buyer calls for twenty tonnes of 12mm TMT. Someone walks
+                the yard. Calls back. Handwrites a quote. Negotiates. Half
+                the calls end in silence because a competitor answered
+                faster.
               </p>
             </div>
           </motion.div>

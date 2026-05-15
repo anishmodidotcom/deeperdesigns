@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by a regional QSR chain" },
   { label: "INDUSTRY", value: "Food & Beverage (QSR Chain)" },
   { label: "LOCATION", value: "Sharjah & Ajman, UAE" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -17,7 +17,7 @@ const RIGHT: Pair[] = [
     value:
       "Operations Dashboard, Demand Forecasting, Unit Economics Engine, Dynamic Pricing",
   },
-  { label: "TIMELINE", value: "Shipped in 12 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 12 days" },
   {
     label: "STACK",
     value: "Next.js, Real-time Analytics, POS Integration, AI Forecasting",

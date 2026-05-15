@@ -85,10 +85,10 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              We took Kadak Chai from a wholesale supply chain into a
-              direct-to-consumer brand in seven weeks. Tin design,
-              illustrated typography, a quiz-led store, and a subscription
-              loop. The blends did not change. Everything around them did.
+              We took Kadak Chai from a wholesale supply chain to a
+              direct brand in seven weeks. Tin design, illustrated
+              typography, a quiz-led store, and a subscription loop. The
+              blends did not change. Everything around them did.
             </p>
 
             <ul

@@ -8,7 +8,7 @@ const LEFT: Pair[] = [
   { label: "POSSIBILITY", value: "Inspired by a B2B steel trading company" },
   { label: "INDUSTRY", value: "Steel Trading (B2B)" },
   { label: "LOCATION", value: "Ahmedabad, India" },
-  { label: "STATUS", value: "Working prototype, ready to commission" },
+  { label: "STATUS", value: "A working prototype. We can build yours." },
 ];
 
 const RIGHT: Pair[] = [
@@ -16,7 +16,7 @@ const RIGHT: Pair[] = [
     label: "SERVICES",
     value: "Dashboard Development, AI Integration, WhatsApp Automation",
   },
-  { label: "TIMELINE", value: "Shipped in 7 days, considered for longer" },
+  { label: "TIMELINE", value: "Built in 7 days" },
   { label: "STACK", value: "Next.js, WhatsApp Business API, Real-time Database" },
 ];
 

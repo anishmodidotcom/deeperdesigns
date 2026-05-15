@@ -195,9 +195,9 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          A dynamic pricing engine and live inventory system for a 60-car
-          Deira dealership. Every car priced daily on market data, days on
-          lot, and competitor pull.
+          Sixty cars, sixty pricing decisions made by gut every night. Now
+          an engine prices the whole lot before the owner arrives, and cars
+          stop aging out unnoticed.
         </motion.p>
       </div>
     </section>

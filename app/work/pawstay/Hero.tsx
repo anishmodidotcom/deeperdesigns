@@ -106,9 +106,10 @@ export default function Hero() {
               marginTop: 28,
             }}
           >
-            A pet parent portal with live camera, real-time daily tracker,
-            and zero panicked WhatsApp messages. For Pooja&rsquo;s 20-dog
-            Delhi daycare and the parents who finally relax.
+            Twenty dogs, and every drop-off triggered a dozen anxious
+            WhatsApp messages. Now parents watch a live camera and a
+            real-time tracker, and the owner gets two hours of her day
+            back.
           </motion.p>
 
           <motion.div

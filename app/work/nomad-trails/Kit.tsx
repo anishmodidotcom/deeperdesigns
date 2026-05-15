@@ -106,7 +106,7 @@ export default function Kit() {
             }}
           >
             Two weeks before your trip you get a kit checklist and a
-            video walkthrough from Arjun showing how to pack each item.
+            video walkthrough from Arjun, showing how to pack each item.
           </motion.p>
         </div>
 

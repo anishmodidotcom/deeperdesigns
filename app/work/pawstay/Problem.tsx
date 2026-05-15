@@ -73,17 +73,16 @@ export default function Problem() {
           }}
         >
           <p style={{ margin: 0 }}>
-            Pooja runs a premium 20-dog facility in Chattarpur. Pet parents
-            pay top of market for the care. They are anxious, and they should
-            be: their dog is their child. Every drop-off triggered six to
-            twelve WhatsApp messages over the day. &ldquo;Is she eating?
-            Did she nap? Can I see her?&rdquo;
+            Pooja runs a premium 20-dog facility in Chattarpur. Parents pay
+            top of market, and they are anxious, because the dog is their
+            child. Every drop-off meant six to twelve WhatsApp messages
+            over the day. Is she eating? Did she nap? Can I see her?
           </p>
           <p style={{ margin: 0 }}>
-            Pooja sent photos. Then videos. Then she lost two hours a day to
-            it. The customer service was eating the business. We did not
-            change how much parents wanted to check in. We changed what they
-            had to send a message to do it.
+            Pooja sent photos. Then videos. Then she lost two hours a day
+            to it. The customer service was eating the business. We did
+            not change how much parents wanted to check in. We changed
+            what they had to do to check in.
           </p>
         </motion.div>
 

@@ -8,17 +8,17 @@ const CARDS: Card[] = [
   {
     quote: "Which product is right for my skin type?",
     description:
-      "Priya's inbox floods with this question every single day. One person answers DMs manually. They can't keep up.",
+      "This question lands in her inbox every single day. One person answers by hand. They cannot keep up.",
   },
   {
     quote: "I have dry skin and acne. What should I use?",
     description:
-      "Every customer needs a different combination from 40 SKUs across face care, body care, and hair care. A PDF guide didn't work. Nobody reads it.",
+      "Every customer needs a different mix from forty SKUs. The PDF guide did not work. Nobody read it.",
   },
   {
     quote: "I messaged 2 days ago...",
     description:
-      "Slow replies mean lost sales. By the time Priya responds, customers have already bought from someone else.",
+      "A slow reply is a lost sale. By the time she answers, the customer has already bought somewhere else.",
   },
 ];
 

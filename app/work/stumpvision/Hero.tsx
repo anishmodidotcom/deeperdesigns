@@ -98,9 +98,10 @@ export default function Hero() {
             lineHeight: 1.65,
           }}
         >
-          A gamified academy platform built like a fantasy-cricket app.
-          Trading-card player profiles, match stats, parent reports, and
-          coach attendance for a 250-player academy in Gurgaon.
+          Two hundred and fifty players, stats living in a coach's
+          notebook, parents on the sideline with no real answers. Now
+          every player has a card, every parent sees the progress, and
+          selection runs on data.
         </motion.p>
       </div>
     </section>

@@ -417,25 +417,25 @@ const FEATURES: Feature[] = [
   {
     title: "Full player profiles with lifetime records",
     description:
-      "Every match, every innings, every wicket recorded. Season averages, personal bests, improvement graphs. The player's entire cricket journey in one place.",
+      "Every match, every innings, every wicket recorded. Season averages, personal bests, improvement graphs. A player's whole cricket journey in one place.",
     visual: <ProfileMockup />,
   },
   {
     title: "Leaderboards and hall of fame",
     description:
-      "Top run scorers. Best bowlers. Most improved. Season MVPs. A competitive leaderboard that makes kids push harder every practice session.",
+      "Top run scorers, best bowlers, most improved, season MVPs. A leaderboard that makes kids push harder every session.",
     visual: <LeaderboardMockup />,
   },
   {
     title: "Session reports from coaches",
     description:
-      "After each session or monthly, coaches submit a quick report. Batting technique, bowling action, fitness, attitude. Parents see the progress. No more guessing.",
+      "After each session, coaches submit a quick report. Technique, action, fitness, attitude. Parents see the progress instead of guessing.",
     visual: <ReportMockup />,
   },
   {
     title: "Matches, tournaments, registrations",
     description:
-      "Upcoming fixtures, team sheets, live scoring, results. Parents register for tournaments directly. No phone calls, no paper forms.",
+      "Fixtures, team sheets, live scoring, results. Parents register for tournaments directly. No phone calls, no paper forms.",
     visual: <BracketMockup />,
   },
 ];

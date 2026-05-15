@@ -65,7 +65,7 @@ export default function Hands() {
               fontVariationSettings: "'opsz' 144",
             }}
           >
-            Our hands have done this for sixty-three years.
+            Our hands have done this for sixty-four years.
           </p>
           <p
             style={{

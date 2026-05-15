@@ -35,7 +35,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "BrightPath · Tutoring Practice · Deeper Designs",
   description:
-    "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
+    "A one-man tutoring practice in Al Ain got a parent portal that does the talking. Every parent renews, and there is a waitlist by design.",
   openGraph: {
     title: "BrightPath · Tutoring Practice · Deeper Designs",
     description: "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",

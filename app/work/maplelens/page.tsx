@@ -20,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Maple Lens · Live Product · Deeper Designs",
   description:
-    "Catalog-ready studio and lifestyle images from a phone photo. Built by Deeper Designs for Indian furniture makers. Live, working, and yours to try.",
+    "A working photo tool for Indian furniture makers. Turns a phone photo into a catalog-ready studio shot, and saves the cost of a studio shoot. Live and yours to try.",
   openGraph: {
     title: "Maple Lens · Live Product · Deeper Designs",
     description:

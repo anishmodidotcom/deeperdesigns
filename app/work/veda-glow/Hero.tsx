@@ -118,8 +118,9 @@ export default function Hero() {
                 lineHeight: 1.7,
               }}
             >
-              AI-powered Ayurvedic skin consultation that replaces a 45-minute
-              DM conversation with a personalized routine in 2 minutes.
+              The founder was answering forty skin questions a day by hand.
+              Now a two-minute advisor does it, and every customer gets a
+              routine built for them.
             </motion.p>
           </div>
 

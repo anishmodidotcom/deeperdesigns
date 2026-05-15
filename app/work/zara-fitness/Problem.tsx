@@ -83,10 +83,9 @@ export default function Problem() {
             marginInline: "auto",
           }}
         >
-          280K followers. A PDF workout guide. A 3-week dropoff cliff. And
-          a 15-lakh dev-agency quote that almost killed the idea. The
-          influencer business model was failing her. The trainer in her
-          needed a product.
+          280K followers, a PDF workout guide, and a three-week dropoff
+          cliff. The influencer model was failing her. The trainer in her
+          needed a real product.
         </motion.p>
       </div>
 

@@ -93,11 +93,11 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              We took Omar&rsquo;s handwritten habit and turned it into a
-              system. The parent portal does the talking. The auto-summary
-              email does the reassurance. Omar gets back the hours he
-              used to spend writing reports and replying to status
-              checks. The roster stays full. The renewals are silent.
+              We took Omar&rsquo;s handwritten habit and turned it into
+              a system. The portal does the talking. The weekly summary
+              does the reassurance. Omar gets back the hours he used to
+              lose to reports and status checks. The roster stays full,
+              and the renewals are silent.
             </p>
 
             <ul

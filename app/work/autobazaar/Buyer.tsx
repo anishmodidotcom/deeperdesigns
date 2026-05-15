@@ -50,13 +50,13 @@ const FEATURES: Feature[] = [
   {
     title: "Book a Test Drive",
     description:
-      "Pick a car, pick a time. Confirmation via WhatsApp. No phone tag.",
+      "Pick a car, pick a time. Confirmation on WhatsApp. No phone tag.",
     icon: CalendarIcon,
   },
   {
     title: "Area-Wide Listings",
     description:
-      "Not just Tariq's inventory. Cars from neighboring dealers listed with a commission. Buyers get more options. Tariq earns on every sale.",
+      "Cars from neighbouring dealers listed too, on commission. Buyers get more choice. Tariq earns on every sale.",
     icon: NetworkIcon,
   },
 ];

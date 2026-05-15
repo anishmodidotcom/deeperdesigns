@@ -9,25 +9,25 @@ const CAPS: Cap[] = [
     number: "01",
     title: "Live Inventory",
     description:
-      "Every product, grade, and quantity updated in real time. No more outdated Excel sheets.",
+      "Every product, grade, and quantity, current. The Excel sheet is retired.",
   },
   {
     number: "02",
     title: "Instant Quotes",
     description:
-      "Product, quantity, destination. The dashboard calculates base price, shipping, and total in seconds.",
+      "Product, quantity, destination. Base price, shipping, and total in seconds.",
   },
   {
     number: "03",
     title: "WhatsApp Intake",
     description:
-      "Warehouse staff send a photo of the delivery slip or a text message. AI processes it. Inventory updates.",
+      "Warehouse staff send a photo of the delivery slip. The system reads it and updates stock.",
   },
   {
     number: "04",
     title: "Price Intelligence",
     description:
-      "Market rates, competitor pricing, and margin recommendations. All factored into every quote automatically.",
+      "Market rates and margin guidance built into every quote.",
   },
 ];
 

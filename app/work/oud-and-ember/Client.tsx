@@ -88,16 +88,16 @@ export default function Client() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Nadia is a third-generation perfumer. Her atelier in Al Quoz
-                is where custom blends are crafted in person across 90-minute
-                consultations. Glass droppers. Chilled rose water. Notes
-                rebalanced until something settles into place.
+                Nadia is a third-generation perfumer. Her atelier in Al
+                Quoz is where custom blends are built in person, across
+                90-minute consultations. Glass droppers, chilled rose
+                water, notes rebalanced until something settles.
               </p>
               <p style={{ margin: 0 }}>
                 Seventy percent of her inquiries arrive online. The magic
-                does not survive twenty messages on WhatsApp. Customers
-                ghost. The atelier was never the bottleneck. The bridge to
-                it was.
+                does not survive twenty messages on WhatsApp, so customers
+                ghost. The atelier was never the bottleneck. The bridge
+                to it was.
               </p>
             </div>
 

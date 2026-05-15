@@ -106,23 +106,23 @@ export default function Maker() {
             >
               <p style={{ margin: 0 }}>
                 Nia&rsquo;s Jaipur workshop sits on the second floor of a
-                weathered courtyard building. She trained in the craft as a
-                teenager and built a 45K Instagram following on nothing but
-                pure work-of-the-hand process videos. The wheel. The kiln.
-                The brush.
+                weathered courtyard building. She trained in the craft as
+                a teenager and built a 45K Instagram following on pure
+                work-of-the-hand process videos. The wheel, the kiln, the
+                brush.
               </p>
               <p style={{ margin: 0 }}>
-                Her drops sell out in 90 minutes. That is not a humble brag.
-                That is a business problem. She underprices the work because
-                she is racing the audience, and fast followers in
-                neighbouring cities copy her designs the same week. The
-                ceiling is mathematical: she only has two hands.
+                Her drops sold out in 90 minutes. That is not a humble
+                brag, it is a business problem. She underpriced the work
+                to race the audience, and fast followers in other cities
+                copied her designs the same week. The ceiling was
+                mathematical. She only has two hands.
               </p>
               <p style={{ margin: 0 }}>
-                We shifted the model. Fewer pieces. Higher prices. Longer
-                lead times. Customizable through a builder UI that lets the
-                customer pick the shape, the size, the pattern, the glaze.
-                Rajasthani heritage front and centre. A queue, not a race.
+                We shifted the model. Fewer pieces, higher prices, longer
+                lead times. A builder UI lets the customer pick the
+                shape, the size, the pattern, the glaze. Rajasthani
+                heritage front and centre. A queue, not a race.
               </p>
             </div>
 

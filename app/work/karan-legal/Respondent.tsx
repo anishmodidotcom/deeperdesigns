@@ -68,15 +68,15 @@ export default function Respondent() {
                 Karan structures his week now. Partner-track work Monday,
                 Wednesday, Friday. Deep transactional work Tuesday and
                 Thursday. No calls on weekends. The qualifier handles
-                anything that arrives outside the lanes he set for himself.
+                anything that arrives outside the lanes he set.
               </p>
               <p style={{ margin: 0 }}>
-                He raised his fees on custom work by forty percent. Template
-                work prices held steady because the volume is now
-                self-service. The clients who used to argue over a Rs.
-                15,000 SAFE are now reading the price on screen, paying it,
-                and getting the document in 24 hours. The clients who could
-                afford a real partner are now getting one.
+                He raised his fees on custom work by forty percent.
+                Template prices held, because the volume is self-service
+                now. The clients who used to argue over a Rs. 15,000 SAFE
+                read the price on screen, pay it, and get the document in
+                24 hours. The clients who can afford a real partner now
+                get one.
               </p>
             </div>
 

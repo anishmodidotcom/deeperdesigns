@@ -139,9 +139,9 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              We rebuilt Sugar Lane around the moment Farah lost the most
-              time: WhatsApp. The Order Studio captures the brief
-              upfront, takes a deposit, and lands a clean PDF in Farah&rsquo;s
+              We rebuilt Sugar Lane around the moment Farah lost the
+              most time, WhatsApp. The order studio captures the brief
+              upfront, takes a deposit, and lands a clean PDF in her
               inbox. The site looks like a bakery. The plumbing thinks
               like a project tool.
             </p>

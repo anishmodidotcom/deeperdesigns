@@ -125,8 +125,10 @@ export default function Hero() {
                   maxWidth: 440,
                 }}
               >
-                A Mumbai tea family selling sample-room blends out of a
-                wholesale yard. We made it a brand.
+                A tea family sold sample-room blends out of a wholesale
+                yard for sixty years, while resellers marked them up four
+                times over. We made it a direct brand. Same blends, twice
+                the margin.
               </p>
               <a
                 href="#the-tin"
