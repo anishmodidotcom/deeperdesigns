@@ -140,11 +140,11 @@ export default function AboutBuild() {
                 maxWidth: 540,
               }}
             >
-              We rebuilt Nomad Trails around its constraint. Small groups,
-              long phone calls, three trips a year. The site sells the
-              constraint as the offer, the photography earns the price,
-              the enquiry form is a conversation starter rather than a
-              checkout.
+              We rebuilt Nomad Trails around its constraint. Small
+              groups, long phone calls, three trips a year. The site
+              sells the constraint as the offer, the photography earns
+              the price, and the enquiry form opens a conversation
+              instead of a checkout.
             </p>
 
             <ul

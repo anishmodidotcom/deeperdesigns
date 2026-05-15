@@ -83,20 +83,19 @@ export default function Omar() {
               <p style={{ margin: 0 }}>
                 Omar Al Mansouri taught maths and physics at an Al Ain
                 international school for eight years before going
-                independent. He charges three times what the school
-                paid him. He earns his fee one parent at a time.
+                independent. He charges three times what the school paid
+                him, and he earns it one parent at a time.
               </p>
               <p style={{ margin: 0 }}>
                 Parents pay for results they cannot see in real time.
-                Most tutors disappear into the lesson. Omar wrote his
+                Most tutors vanish into the lesson. Omar wrote his
                 lesson summaries by hand for years. We turned the habit
                 into a system.
               </p>
               <p style={{ margin: 0 }}>
-                The BrightPath parent portal logs every lesson with a
-                topic tag, a mood note, a homework checklist, and a
-                progress score. Parents see the picture without ever
-                having to ask, &ldquo;how is it going?&rdquo;
+                The portal logs every lesson with a topic, a mood note,
+                a homework check, and a score. Parents see the picture
+                without ever having to ask how it is going.
               </p>
             </div>
 

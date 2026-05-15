@@ -114,9 +114,9 @@ export default function Quiz() {
                 maxWidth: 460,
               }}
             >
-              First-time tea drinkers do not know cardamom from cinnamon
-              from cumin. The quiz speaks the language of taste, not of
-              spice cabinets. Three taps. A blend. Optional subscription.
+              First-time tea drinkers do not know cardamom from cinnamon.
+              The quiz speaks the language of taste, not of spice
+              cabinets. Three taps, a blend, an optional subscription.
               That is the funnel.
             </p>
 

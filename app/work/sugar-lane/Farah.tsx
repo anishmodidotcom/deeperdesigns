@@ -102,21 +102,20 @@ export default function Farah() {
             >
               <p style={{ margin: 0 }}>
                 Farah bakes celebration cakes out of her kitchen in Abu
-                Dhabi. Birthdays mostly. Weddings sometimes. She is the
-                bake, the buttercream, the delivery and the
-                WhatsApp.
+                Dhabi. Birthdays mostly, weddings sometimes. She is the
+                bake, the buttercream, the delivery, and the WhatsApp.
               </p>
               <p style={{ margin: 0 }}>
-                Most of her time was being eaten by the order: WhatsApp
+                Most of her time went to the order. WhatsApp
                 back-and-forth on flavour, size, design, dates, dietary,
-                payment. By the time she had a confirmed order she had
-                done 30 minutes of admin per cake.
+                payment. By the time an order was confirmed she had done
+                thirty minutes of admin per cake.
               </p>
               <p style={{ margin: 0 }}>
-                We built her an order studio. Pick the cake. Build the
-                top. Send the brief. Pay the deposit. All in one tab,
+                We built her an order studio. Pick the cake, build the
+                top, send the brief, pay the deposit, all in one tab,
                 without losing the warmth of working with her directly.
-                Same Farah. Different funnel.
+                Same Farah, different funnel.
               </p>
             </div>
 

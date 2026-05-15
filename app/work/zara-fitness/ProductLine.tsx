@@ -140,9 +140,9 @@ export default function ProductLine() {
                 maxWidth: 460,
               }}
             >
-              Zara&rsquo;s own sportswear line launches with the platform.
-              Members get first access. Each piece sold builds the
-              community deeper.
+              Zara&rsquo;s own sportswear line launches with the
+              platform. Members get first access. Every piece sold builds
+              the community deeper.
             </p>
 
             <ul

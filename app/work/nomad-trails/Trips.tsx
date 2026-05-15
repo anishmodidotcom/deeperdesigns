@@ -135,8 +135,8 @@ export default function Trips() {
               lineHeight: 1.65,
             }}
           >
-            We do three trips a year. Spring shoulder, late summer,
-            autumn. Quiet seasons. You will not be sharing the pass.
+            Three trips a year. Spring shoulder, late summer, autumn.
+            Quiet seasons. You will not be sharing the pass.
           </motion.p>
         </div>
 

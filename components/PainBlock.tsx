@@ -69,7 +69,7 @@ export default function PainBlock({
               marginBottom: 20,
             }}
           >
-            POSSIBILITY STUDY · {number}
+            STUDY · {number}
           </p>
 
           {phrases.length > 0 ? (
@@ -118,8 +118,8 @@ export default function PainBlock({
               letterSpacing: "-0.005em",
             }}
           >
-            A possibility study. We built this concept end to end as a working
-            prototype, inspired by the real operational bottleneck of{" "}
+            We built this as a working prototype, inspired by the real
+            bottleneck of{" "}
             <em
               style={{
                 fontStyle: "italic",
@@ -128,8 +128,8 @@ export default function PainBlock({
             >
               {archetype}
             </em>
-            . The same system can be commissioned, customized, and shipped to
-            your business in {timeline}.
+            . If this sounds like your business, we can build and ship your
+            version in about {timeline}.
           </p>
 
           {pattern ? (
@@ -160,7 +160,7 @@ export default function PainBlock({
               lineHeight: 1.6,
             }}
           >
-            We have already imagined this.{" "}
+            If this sounds like your business,{" "}
             <Link
               href={FORM_HREF}
               data-cursor="pointer"
@@ -171,7 +171,7 @@ export default function PainBlock({
                 textDecorationThickness: 1,
               }}
             >
-              Let&apos;s explore yours →
+              let&apos;s build yours →
             </Link>
           </p>
 

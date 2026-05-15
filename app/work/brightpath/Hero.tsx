@@ -128,18 +128,9 @@ export default function Hero() {
               maxWidth: 460,
             }}
           >
-            BrightPath is Omar&rsquo;s one-man IGCSE and SAT tutoring
-            practice in Al Ain. We built him a parent portal that
-            answers the question parents are too polite to ask:
-            <em
-              style={{
-                fontStyle: "italic",
-                color: "var(--page-text)",
-              }}
-            >
-              {" "}
-              is this working?
-            </em>
+            Omar&rsquo;s one-man tutoring practice now answers the
+            question parents are too polite to ask. A parent portal shows
+            the progress, every parent renews, and the roster stays full.
           </motion.p>
 
           <motion.div

@@ -184,11 +184,11 @@ export default function Ledger() {
                 maxWidth: 540,
               }}
             >
-              Every shipment since 1962 has been recorded by hand. We scanned
-              sixty-four years of ledger pages and built a private archive
-              that Rashid&rsquo;s grandchildren can browse. The original
-              ledgers still live in the office. The digital version lives
-              forever.
+              Every shipment since 1962 has been recorded by hand. We
+              scanned sixty-four years of ledger pages and built a
+              private archive Rashid&rsquo;s grandchildren can browse.
+              The originals still live in the office. The digital version
+              lives forever.
             </p>
 
             <div

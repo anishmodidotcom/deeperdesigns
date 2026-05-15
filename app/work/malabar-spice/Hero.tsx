@@ -190,7 +190,7 @@ export default function Hero() {
                 fontVariationSettings: "'opsz' 144",
               }}
             >
-              <WordReveal text="Sixty-three years. Forty-five buyers." delayStart={0.1} />
+              <WordReveal text="Sixty-four years. Forty-five buyers." delayStart={0.1} />
               <span style={{ display: "block" }}>
                 <WordReveal
                   text="One website that finally feels like Kerala."
@@ -212,8 +212,10 @@ export default function Hero() {
                 marginTop: 28,
               }}
             >
-              Rashid did not need a dashboard. He needed a digital warehouse
-              with the same dignity as the one his grandfather built in 1962.
+              Rashid did not need a dashboard. He needed a digital
+              warehouse with the same dignity as the one his grandfather
+              built in 1962, and a quiet door for the next buyer in
+              Copenhagen to find.
             </motion.p>
 
             <motion.p

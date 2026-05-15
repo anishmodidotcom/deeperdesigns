@@ -117,8 +117,10 @@ export default function Hero() {
               opacity: 0.92,
             }}
           >
-            A Himalayan trekking outfit run by a husband-and-wife guide
-            team out of Leh. Small groups. No flag-following. No noise.
+            Three trips a year, eight trekkers a trip, sold out but
+            quietly and cheaply. Now an editorial site sells the
+            constraint as the offer. Direct bookings went from 18% to
+            62%.
           </motion.p>
 
           <motion.div

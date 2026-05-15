@@ -69,8 +69,10 @@ export default function Hero() {
           lineHeight: 1.55,
         }}
       >
-        One short form. One reference photo. A confirmed date and a deposit.
-        Replaces the thirty-message WhatsApp dance.
+        Farah could bake forty cakes a week. She baked four, because
+        every order was a thirty-message WhatsApp dance. Now one short
+        form takes the brief, the photo, the date, and the deposit, and
+        she bakes fourteen.
       </motion.p>
 
       <motion.div

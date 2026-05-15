@@ -103,17 +103,17 @@ export default function Outfit() {
               <p style={{ margin: 0 }}>
                 Arjun and Sneha started Nomad Trails after eight seasons
                 guiding for other outfits. They got tired of group sizes
-                of twenty. Tired of clients picking treks off a brochure
+                of twenty, and of clients picking treks off a brochure
                 they could not pronounce.
               </p>
               <p style={{ margin: 0 }}>
-                Their model is the opposite. Maximum eight trekkers per
+                Their model is the opposite. Maximum eight trekkers a
                 trip. Always one of them on the trail. A long phone call
                 before you sign, not a credit-card form.
               </p>
               <p style={{ margin: 0 }}>
-                The site we built sells the same way. No carousels. No
-                fake reviews. Three trips at a time, full briefs, real
+                The site sells the same way. No carousels, no fake
+                reviews. Three trips at a time, full briefs, real
                 photographs, real numbers. The phone call still happens.
               </p>
             </div>

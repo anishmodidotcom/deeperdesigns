@@ -78,11 +78,11 @@ export default function AboutBuild() {
                 maxWidth: 560,
               }}
             >
-              Built in 14 days. A beautifully designed marketing website with
-              the catalog, the heritage archive, and a single contact form
-              that emails Rashid directly. No CRM. No analytics dashboard.
-              No automation. Some businesses are not broken. We just gave
-              this one its rightful presence online.
+              Built in 14 days. A designed marketing site with the
+              catalogue, the heritage archive, and a single contact form
+              that emails Rashid directly. No CRM, no dashboard, no
+              automation. This business was not broken. We just gave it
+              its rightful presence online.
             </p>
 
             <dl

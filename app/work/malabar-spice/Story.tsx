@@ -87,13 +87,11 @@ export default function Story() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Rashid&rsquo;s grandfather opened the warehouse in 1962. The
-                ledger entries from that first year, written in Malayalam and
+                Rashid&rsquo;s grandfather opened the warehouse in 1962.
+                The ledger entries from that first year, Malayalam and
                 English in the same disciplined hand, still sit on a high
-                shelf in the office. Buyers in Hamburg, Marseille, and New
-                York remember the price of cardamom in 1978. Some of them
-                remember which monsoon failed in 1983 and how the family
-                rationed inventory through it.
+                shelf. Buyers in Hamburg, Marseille, and New York remember
+                the price of cardamom in 1978.
               </p>
             </div>
 
@@ -152,20 +150,19 @@ export default function Story() {
               }}
             >
               <p style={{ margin: 0 }}>
-                The business runs on relationships. Forty-five buyers, two to
-                four shipments a year, calls that begin with &ldquo;How is
-                your son&rsquo;s wedding?&rdquo; before they begin with
-                &ldquo;What is the price per kilo on Tellicherry pepper?&rdquo;
-                This is not a business that needs a CRM. The CRM is in
-                Rashid&rsquo;s head, and it has a longer memory than any
-                database we could have built him.
+                The business runs on relationships. Forty-five buyers,
+                two to four shipments a year, calls that begin with how
+                is your son&rsquo;s wedding before they begin with what
+                is the price per kilo. The CRM is in Rashid&rsquo;s head,
+                and it has a longer memory than any database we could
+                build.
               </p>
               <p style={{ margin: 0 }}>
-                So we did not build a tool. We built an heirloom. A website
-                with the same patience as the warehouse, the same care as the
-                ledger, and a quiet door that opens when a new buyer in
-                Copenhagen or Casablanca finds his way here. The instrument
-                is the same one his grandfather used. We just gave it a URL.
+                So we did not build a tool. We built an heirloom. A
+                website with the same patience as the warehouse, the
+                same care as the ledger, and a quiet door that opens
+                when a new buyer finds their way here. Same instrument
+                his grandfather used. We just gave it a URL.
               </p>
             </div>
           </motion.div>

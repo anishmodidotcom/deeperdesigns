@@ -133,8 +133,9 @@ export default function Portal() {
               }}
             >
               Every lesson logs a topic, a mood read, a homework status,
-              and a score update. Parents open the portal once a week and
-              see the picture without ever sending a polite WhatsApp.
+              and a score. Parents open the portal once a week and see
+              the whole picture, without sending a single polite
+              WhatsApp.
             </p>
 
             <ul

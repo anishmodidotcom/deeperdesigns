@@ -136,8 +136,10 @@ export default function Hero() {
                 maxWidth: 460,
               }}
             >
-              A Jaipur ceramicist who sells out in 90 minutes. We built her a
-              way to slow down and charge more.
+              A Jaipur ceramicist sold out every drop in 90 minutes and
+              underpriced the work to do it. Now a custom builder takes
+              orders, the lead time is the feature, and the average order
+              is up 340%.
             </motion.p>
 
             <motion.a
