@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1128 191" role="img" aria-label="Deeper Designs · LinkedIn company banner">
+  <title>Deeper Designs · LinkedIn company banner</title>
+  <defs>
+    <style>
+      .wordmark { font-family: "Geist", Inter, system-ui, sans-serif; font-size: 32px; font-weight: 600; letter-spacing: 0.18em; fill: #F5F5F5; }
+      .tagline  { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 22px; font-weight: 400; fill: #A8A8A8; }
+      .eyebrow  { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; fill: #6B6B6B; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="1128" height="191" fill="#0A0A0A"/>
+  <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+    <line x1="0" y1="32" x2="1128" y2="32"/>
+    <line x1="0" y1="159" x2="1128" y2="159"/>
+  </g>
+
+  <text class="eyebrow" x="56" y="58">AI-POWERED BUILD STUDIO · INDIA</text>
+  <text class="wordmark" x="56" y="106">DEEPER DESIGNS</text>
+  <text class="tagline"  x="56" y="142">Custom tools, built around how your business actually works.</text>
+
+  <!-- Monogram right -->
+  <g transform="translate(936, 50)" fill="#6366F1" fill-rule="evenodd">
+    <g transform="scale(3)">
+      <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
+      <path d="M36 0 L48 0 A12 16 0 0 1 48 32 L36 32 Z M42 6 L48 6 A6 10 0 0 1 48 26 L42 26 Z"/>
+    </g>
+  </g>
+  <rect x="930" y="92" width="200" height="12" fill="#0A0A0A"/>
+</svg>

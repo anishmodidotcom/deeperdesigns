@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="IG post template — Build showcase">
+  <title>IG post template · Build showcase</title>
+  <defs>
+    <linearGradient id="showcaseDim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#0A0A0A" stop-opacity="0.65"/>
+      <stop offset="35%"  stop-color="#0A0A0A" stop-opacity="0.0"/>
+      <stop offset="65%"  stop-color="#0A0A0A" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0.78"/>
+    </linearGradient>
+    <style>
+      .eyebrow  { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.28em; fill: #F5F5F5; text-transform: uppercase; }
+      .study    { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.28em; fill: #6366F1; text-transform: uppercase; }
+      .title    { font-family: "Geist", Inter, system-ui, sans-serif; font-size: 64px; font-weight: 600; letter-spacing: -0.02em; fill: #F5F5F5; }
+      .outcome  { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 36px; fill: #F5F5F5; }
+      .handle   { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.20em; fill: #F5F5F5; text-transform: uppercase; }
+      .placeholder { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; fill: #3A3A3A; letter-spacing: 0.10em; }
+      .mockText { font-family: "Geist Mono", ui-monospace, monospace; font-size: 18px; fill: #2A2A2A; letter-spacing: 0.10em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <!-- Full-bleed mockup placeholder -->
+  <rect width="1080" height="1080" fill="#161616"/>
+  <text class="mockText" x="540" y="540" text-anchor="middle">[ FULL-BLEED SHOWCASE MOCKUP ]</text>
+
+  <!-- Subtle frame inside the placeholder so users see the safe area -->
+  <rect x="40" y="40" width="1000" height="1000" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- Top + bottom gradient dim for legibility -->
+  <rect width="1080" height="1080" fill="url(#showcaseDim)"/>
+
+  <!-- Top-left title overlay -->
+  <text class="study"   x="80" y="92">STUDY · NN</text>
+  <text class="title"   x="80" y="172">[ Showcase title ]</text>
+  <text class="eyebrow" x="80" y="208">[ Subtitle / archetype ]</text>
+
+  <!-- Bottom-left outcome line in italic serif -->
+  <text class="outcome" x="80" y="920">[ Outcome line, single sentence, italic. ]</text>
+
+  <!-- Footer -->
+  <g transform="translate(80, 1006)" fill="#F5F5F5" fill-rule="evenodd">
+    <g transform="scale(1.25)">
+      <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
+      <path d="M36 0 L48 0 A12 16 0 0 1 48 32 L36 32 Z M42 6 L48 6 A6 10 0 0 1 48 26 L42 26 Z"/>
+    </g>
+  </g>
+  <rect x="76" y="1023" width="84" height="5" fill="#161616"/>
+  <text class="handle" x="180" y="1043">@DEEPERDESIGNSCO</text>
+  <text class="handle" x="1000" y="1043" text-anchor="end">DEEPERDESIGNS.IN</text>
+  <text class="placeholder" x="540" y="1075" text-anchor="middle">TEMPLATE — PILLAR 3 (BEHIND-THE-BUILDS)</text>
+</svg>

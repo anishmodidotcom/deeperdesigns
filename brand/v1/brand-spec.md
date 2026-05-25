@@ -96,8 +96,10 @@ Everything in this folder. Source SVGs are canonical; PNGs are pre-rendered for 
 ```
 brand/v1/
 ├── brand-spec.md                      this file
+├── colors.md                          canonical hex reference (v1.1)
 ├── tokens.css                         canonical CSS tokens
 ├── rasterize.mjs                      Sharp script to regenerate PNGs
+├── preview-circular-crop.mjs          LinkedIn circle-crop verifier (v1.1)
 ├── logo/
 │   ├── logo-wordmark-white.svg
 │   ├── logo-wordmark-black.svg
@@ -113,21 +115,32 @@ brand/v1/
 │   ├── favicon-32.svg / .png
 │   ├── favicon.ico                    (= favicon-32.png; modern browsers also accept PNG)
 │   ├── apple-touch-180.svg / .png
-│   ├── instagram-avatar-indigo.svg / .png
-│   ├── instagram-avatar-dark.svg / .png
+│   ├── instagram-avatar-indigo.svg / .png   (personal account)
+│   ├── instagram-avatar-dark.svg / .png     (personal account)
 │   ├── whatsapp-profile.svg / .png
-│   ├── linkedin-banner.svg / .png
-│   ├── twitter-header.svg / .png
-│   ├── og-image-template.svg / .png
+│   ├── linkedin-banner.svg / .png           (personal profile, 1584×396)
+│   ├── twitter-header.svg / .png            (1500×500)
+│   ├── og-image-template.svg / .png         (template; use og-deeperdesigns.png for the live default)
 │   ├── notion-header.svg / .png
 │   ├── video-signoff-frame.svg / .png
 │   └── email-signature.html
+├── linkedin-company-avatar.svg / .png       (v1.1, 300×300, circular-crop verified)
+├── linkedin-company-banner.svg / .png       (v1.1, 1128×191, company page)
+├── og-deeperdesigns.svg / .png              (v1.1, 1200×630, deployed default)
+├── instagram-post-template-statement.svg / .png   (v1.1, 1080×1080, Pillar 1/quote)
+├── instagram-post-template-diagnosis.svg / .png   (v1.1, 1080×1080, Pillar 1/bottleneck)
+├── instagram-post-template-showcase.svg / .png    (v1.1, 1080×1080, Pillar 3/builds)
+├── instagram-story-template.svg / .png      (v1.1, 1080×1920)
 └── preview/
     ├── monogram-primary.png
     ├── monogram-scales-preview.png
     ├── logo-wordmark-{white,black,indigo}.png
-    └── swatch-sheet.png
+    ├── swatch-sheet.png
+    ├── linkedin-avatar-circular.png         (v1.1, circular-crop test result)
+    └── linkedin-avatar-overlay.png          (v1.1, circular-crop boundary overlay)
 ```
+
+The deployed OG image is `og-deeperdesigns.png`. A copy is placed at `public/brand/og-deeperdesigns.png` so it resolves at `https://deeperdesigns.in/brand/og-deeperdesigns.png`. `app/layout.tsx` references that URL for both `openGraph.images` and `twitter.images`.
 
 To regenerate PNGs after editing an SVG: `node brand/v1/rasterize.mjs`.
 
