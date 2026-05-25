@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Deeper Designs">
+  <title>Deeper Designs</title>
+  <defs>
+    <mask id="cut16" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+      <rect width="16" height="16" fill="#fff"/>
+      <rect x="0" y="7.5" width="16" height="1" fill="#000"/>
+    </mask>
+  </defs>
+  <rect width="16" height="16" fill="#0A0A0A"/>
+  <g fill="#F5F5F5" fill-rule="evenodd" mask="url(#cut16)">
+    <path d="M2.5 4 L5 4 A2.5 4 0 0 1 5 12 L2.5 12 Z M3.75 5.25 L5 5.25 A1.25 2.5 0 0 1 5 10.75 L3.75 10.75 Z"/>
+    <path d="M8.5 4 L11 4 A2.5 4 0 0 1 11 12 L8.5 12 Z M9.75 5.25 L11 5.25 A1.25 2.5 0 0 1 11 10.75 L9.75 10.75 Z"/>
+  </g>
+</svg>

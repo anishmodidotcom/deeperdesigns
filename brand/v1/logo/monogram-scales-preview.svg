@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-label="DD monogram at 16, 32, 64, 128, 512px widths">
+  <title>DD monogram scale test</title>
+  <defs>
+    <symbol id="dd" viewBox="0 0 64 32">
+      <mask id="dd-cut-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="32">
+        <rect width="64" height="32" fill="#fff"/>
+        <rect x="0" y="14" width="64" height="4" fill="#000"/>
+      </mask>
+      <g fill="currentColor" fill-rule="evenodd" mask="url(#dd-cut-mask)">
+        <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
+        <path d="M36 0 L48 0 A12 16 0 0 1 48 32 L36 32 Z M42 6 L48 6 A6 10 0 0 1 48 26 L42 26 Z"/>
+      </g>
+    </symbol>
+    <style>
+      .label { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; fill: #6B6B6B; text-transform: uppercase; }
+      .panel { fill: #111111; }
+      .frame { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="960" height="560" fill="#0A0A0A"/>
+
+  <!-- Small sizes row -->
+  <g color="#F5F5F5">
+    <!-- 16px wide -->
+    <g transform="translate(80, 80)">
+      <use href="#dd" width="16" height="8"/>
+      <text class="label" x="0" y="36">16 PX</text>
+    </g>
+    <!-- 32px wide -->
+    <g transform="translate(180, 72)">
+      <use href="#dd" width="32" height="16"/>
+      <text class="label" x="0" y="44">32 PX</text>
+    </g>
+    <!-- 64px wide -->
+    <g transform="translate(280, 64)">
+      <use href="#dd" width="64" height="32"/>
+      <text class="label" x="0" y="60">64 PX</text>
+    </g>
+    <!-- 128px wide -->
+    <g transform="translate(440, 48)">
+      <use href="#dd" width="128" height="64"/>
+      <text class="label" x="0" y="92">128 PX</text>
+    </g>
+    <!-- 256px wide for reference -->
+    <g transform="translate(640, 16)">
+      <use href="#dd" width="256" height="128"/>
+      <text class="label" x="0" y="156">256 PX</text>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="80" y1="240" x2="880" y2="240" class="frame"/>
+
+  <!-- 512px hero -->
+  <g transform="translate(224, 270)" color="#F5F5F5">
+    <use href="#dd" width="512" height="256"/>
+    <text class="label" x="0" y="284">512 PX · PRIMARY DISPLAY</text>
+  </g>
+</svg>
