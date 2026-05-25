@@ -1,0 +1,123 @@
+/* =====================================================================
+ * Deeper Designs · Brand v1 · Tokens
+ *
+ * This file defines the canonical CSS custom properties for the brand.
+ * It supersedes the ad-hoc tokens in app/globals.css. Import or alias
+ * the legacy --bg, --fg, --accent names from these new --dd-* tokens.
+ *
+ * Colors are 6-digit hex only. Use rgba() for transparency.
+ * ===================================================================== */
+
+:root {
+  /* ---------- Anchor: surface and text ---------- */
+  --dd-bg:            #0A0A0A;   /* page background */
+  --dd-surface-1:     #111111;   /* card / panel */
+  --dd-surface-2:     #161616;   /* nested card / well */
+  --dd-surface-3:     #1F1F1F;   /* hover lift, focus ring backing */
+
+  --dd-text-high:     #F5F5F5;   /* primary text on dark */
+  --dd-text-mid:      #A8A8A8;   /* secondary text */
+  --dd-text-low:      #6B6B6B;   /* tertiary text, captions */
+  --dd-text-faint:    #3A3A3A;   /* disabled, dim labels */
+
+  --dd-border:        rgba(255, 255, 255, 0.08);
+  --dd-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Light-mode inversions (for print, light overlays) */
+  --dd-bg-light:      #FAFAF7;
+  --dd-text-on-light: #0A0A0A;
+
+  /* ---------- Brand accents ---------- */
+  --dd-indigo:        #6366F1;   /* primary brand */
+  --dd-indigo-deep:   #4F46E5;   /* hover, pressed */
+  --dd-indigo-soft:   #818CF8;   /* lift, glow */
+  --dd-signal:        #25D366;   /* secondary, action signal */
+  --dd-signal-deep:   #1FB855;   /* hover */
+
+  /* Editorial / accent neutrals */
+  --dd-bone:          #F5F4EF;   /* warm off-white for editorial moments */
+  --dd-graphite:      #2A2A2A;   /* dark accent for inverted blocks */
+
+  /* ---------- Per-showcase accents ----------
+   * Each showcase has a locked accent that defines its world.
+   * Names map to the showcase slug (lib/showcases.ts).
+   */
+  --dd-acc-maplelens:        #C8956D;  /* sand brown */
+  --dd-acc-veda-glow:        #D4A574;  /* amber gold */
+  --dd-acc-bharat-steel:     #3B82F6;  /* industrial blue */
+  --dd-acc-meera-wellness:   #5B7F6E;  /* sage green */
+  --dd-acc-zaatar-republic:  #E85D2A;  /* harissa orange */
+  --dd-acc-studio-noor:      #9B7EC8;  /* lilac dusk */
+  --dd-acc-smilefirst:       #0FA89A;  /* clinical jade */
+  --dd-acc-autobazaar:       #22D3EE;  /* showroom cyan */
+  --dd-acc-stumpvision:      #4ADE80;  /* turf green */
+  --dd-acc-oud-and-ember:    #C9A84C;  /* burnished brass */
+  --dd-acc-hivedesk:         #8B5CF6;  /* desk violet */
+  --dd-acc-malabar-spice:    #E89B2D;  /* turmeric */
+  --dd-acc-pawstay:          #E8A557;  /* paw amber */
+  --dd-acc-sahaja-farms:     #D4A537;  /* harvest gold */
+  --dd-acc-karan-legal:      #1A1A1A;  /* counsel black */
+  --dd-acc-zara-fitness:     #D7FF5C;  /* acid lime */
+  --dd-acc-earth-and-fire:   #B85530;  /* kiln rust */
+  --dd-acc-kadak-chai:       #C9803A;  /* boiled chai */
+  --dd-acc-nomad-trails:     #C44536;  /* dust red */
+  --dd-acc-sugar-lane:       #A14A5C;  /* berry plum */
+  --dd-acc-brightpath:       #D4A857;  /* mentor gold */
+
+  /* ---------- Typography ---------- */
+  --dd-font-sans:     "Geist", "Geist Sans", Inter, system-ui, -apple-system, sans-serif;
+  --dd-font-mono:     "Geist Mono", ui-monospace, "JetBrains Mono", monospace;
+  --dd-font-serif:    "Instrument Serif", "DM Serif Display", Georgia, serif;
+
+  --dd-fs-display:    clamp(64px, 7vw, 96px);
+  --dd-fs-h1:         clamp(40px, 5vw, 64px);
+  --dd-fs-h2:         clamp(28px, 3.5vw, 44px);
+  --dd-fs-h3:         clamp(20px, 2vw, 28px);
+  --dd-fs-edit:       clamp(36px, 4vw, 56px);   /* Instrument Serif italic moments */
+  --dd-fs-body-l:     18px;
+  --dd-fs-body:       16px;
+  --dd-fs-eyebrow:    12px;
+  --dd-fs-caption:    11px;
+
+  --dd-lh-display:    1.02;
+  --dd-lh-heading:    1.08;
+  --dd-lh-edit:       1.12;
+  --dd-lh-body:       1.55;
+  --dd-lh-mono:       1.4;
+
+  --dd-ls-display:    -0.03em;
+  --dd-ls-heading:    -0.02em;
+  --dd-ls-body:       0;
+  --dd-ls-mono:       0.08em;
+  --dd-ls-eyebrow:    0.18em;
+
+  --dd-fw-regular:    400;
+  --dd-fw-medium:     500;
+  --dd-fw-semibold:   600;
+  --dd-fw-bold:       700;
+
+  /* ---------- Space and layout ---------- */
+  --dd-section-py:    clamp(80px, 12vh, 160px);
+  --dd-container-max: 1280px;
+  --dd-container-px:  clamp(20px, 4vw, 48px);
+
+  --dd-radius-sm:     6px;
+  --dd-radius-md:     12px;
+  --dd-radius-lg:     20px;
+  --dd-radius-pill:   9999px;
+
+  /* ---------- Motion ----------
+   * Three signature behaviours; see brand-spec.md.
+   *  A. Thinking reveal: opacity + 6px y + 0.5s, on view.
+   *  B. System hover:    150ms, ease-out, no scale jumps.
+   *  C. OS transition:   subtle parallax, <= 20px range.
+   */
+  --dd-ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dd-ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dd-ease-os:       cubic-bezier(0.7, 0, 0.2, 1);
+
+  --dd-dur-hover:     150ms;   /* system hover */
+  --dd-dur-base:      400ms;   /* default UI */
+  --dd-dur-reveal:    600ms;   /* thinking reveal */
+  --dd-dur-os:        900ms;   /* OS transitions */
+}

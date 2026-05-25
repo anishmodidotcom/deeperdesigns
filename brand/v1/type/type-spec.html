@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Deeper Designs · Brand v1 · Type spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface-1: #111111;
+    --text-high: #F5F5F5;
+    --text-mid: #A8A8A8;
+    --text-low: #6B6B6B;
+    --indigo: #6366F1;
+    --border: rgba(255,255,255,0.08);
+    --sans: "Geist", Inter, system-ui, sans-serif;
+    --mono: "Geist Mono", ui-monospace, monospace;
+    --serif: "Instrument Serif", "DM Serif Display", Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text-high); font-family: var(--sans); padding: 64px 48px 96px; max-width: 1200px; margin-inline: auto; }
+  .header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 64px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .header .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.18em; color: var(--text-low); text-transform: uppercase; }
+  .header h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-high); }
+  .row { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding-block: 36px; border-bottom: 1px solid var(--border); align-items: baseline; }
+  .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-low); line-height: 1.6; }
+  .meta strong { display: block; color: var(--text-high); font-weight: 500; margin-bottom: 8px; }
+
+  /* Roles */
+  .display { font-family: var(--sans); font-size: clamp(64px, 7vw, 96px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; }
+  .h1      { font-family: var(--sans); font-size: clamp(40px, 5vw, 64px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; }
+  .h2      { font-family: var(--sans); font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+  .h3      { font-family: var(--sans); font-size: clamp(20px, 2vw, 28px); font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; }
+  .edit    { font-family: var(--serif); font-style: italic; font-size: clamp(36px, 4vw, 56px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.12; color: var(--text-high); }
+  .bodyL   { font-family: var(--sans); font-size: 18px; font-weight: 400; line-height: 1.55; color: var(--text-mid); }
+  .bodyM   { font-family: var(--sans); font-size: 16px; font-weight: 400; line-height: 1.55; color: var(--text-mid); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--indigo); }
+  .caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--text-low); }
+  em.acc { color: var(--indigo); font-style: italic; font-family: var(--serif); font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="eyebrow">DEEPER DESIGNS · BRAND V1</span>
+  <h1>Type</h1>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Display</strong>Geist 600<br/>96 / 1.02 / -0.03em</div>
+  <div class="display">We think with you. Then we ship the thing.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Heading 1</strong>Geist 600<br/>64 / 1.08 / -0.02em</div>
+  <div class="h1">Custom tools, built around how your business actually works.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Heading 2</strong>Geist 600<br/>44 / 1.10 / -0.02em</div>
+  <div class="h2">Senior thinking, modern AI, productised speed.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Heading 3</strong>Geist 500<br/>28 / 1.20 / -0.01em</div>
+  <div class="h3">For ambitious Indian businesses.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Editorial</strong>Instrument Serif italic<br/>56 / 1.12 / -0.01em</div>
+  <div class="edit">a heritage spice exporter who finally has a website worth visiting.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Body L</strong>Geist 400<br/>18 / 1.55 / 0</div>
+  <div class="bodyL">280K followers, a PDF workout guide, and a three-week dropoff cliff. The influencer model was failing her. The trainer in her needed a real product, and we built it in twelve days.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Body M</strong>Geist 400<br/>16 / 1.55 / 0</div>
+  <div class="bodyM">Eleven quick questions. A verified email. We come back within 24 hours with a plan, a timeline, and a number. Or, if you'd rather just talk, WhatsApp us.</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Eyebrow</strong>Geist Mono 500<br/>12 / 1.4 / +0.18em / UPPER</div>
+  <div class="eyebrow">STUDY · 11 · MALABAR SPICE HOUSE</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Caption</strong>Geist Mono 400<br/>11 / 1.4 / +0.08em</div>
+  <div class="caption">FIG. 03 — DASHBOARD LIVE SNAPSHOT · UPDATED MOMENTS AGO</div>
+</div>
+
+<div class="row">
+  <div class="meta"><strong>Mixed sample</strong>One paragraph using<br/>all three families</div>
+  <div class="bodyL">
+    We build for ambitious Indian businesses. <em class="acc">A real product, not a brochure.</em> Senior thinking. Modern AI. Productised speed. Pricing that respects your margin.
+  </div>
+</div>
+
+</body>
+</html>
