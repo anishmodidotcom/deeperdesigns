@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-label="IG story template — Big statement">
+  <title>IG story template · Big statement</title>
+  <defs>
+    <radialGradient id="storyGlow" cx="100%" cy="0%" r="70%">
+      <stop offset="0%"  stop-color="#6366F1" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .eyebrow { font-family: "Geist Mono", ui-monospace, monospace; font-size: 22px; font-weight: 500; letter-spacing: 0.30em; fill: #6B6B6B; text-transform: uppercase; }
+      .quote   { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 86px; font-weight: 400; fill: #F5F5F5; }
+      .quoteAcc{ font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 86px; font-weight: 400; fill: #6366F1; }
+      .handle  { font-family: "Geist Mono", ui-monospace, monospace; font-size: 18px; font-weight: 500; letter-spacing: 0.22em; fill: #A8A8A8; text-transform: uppercase; }
+      .safeLabel { font-family: "Geist Mono", ui-monospace, monospace; font-size: 13px; fill: #3A3A3A; letter-spacing: 0.16em; text-transform: uppercase; }
+      .placeholder { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; fill: #3A3A3A; letter-spacing: 0.10em; }
+    </style>
+  </defs>
+
+  <rect width="1080" height="1920" fill="#0A0A0A"/>
+  <rect width="1080" height="1920" fill="url(#storyGlow)"/>
+
+  <!-- Safe area boundaries (top 250, bottom 250 reserved for IG UI) -->
+  <g stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 6">
+    <line x1="60" y1="250"  x2="1020" y2="250"/>
+    <line x1="60" y1="1670" x2="1020" y2="1670"/>
+  </g>
+  <text class="safeLabel" x="80" y="240">SAFE AREA TOP — KEEP PROFILE/STICKERS OUT</text>
+  <text class="safeLabel" x="80" y="1697">SAFE AREA BOTTOM — KEEP REPLY/STICKERS OUT</text>
+
+  <!-- Content -->
+  <text class="eyebrow" x="80" y="310">DEEPER DESIGNS · A NOTE</text>
+
+  <text class="quote"    x="80" y="600">[ statement goes ]</text>
+  <text class="quote"    x="80" y="720">[ here. three lines ]</text>
+  <text class="quote"    x="80" y="840">[ max. ]</text>
+  <text class="quoteAcc" x="80" y="960">[ one accent. ]</text>
+
+  <!-- Monogram + handle near bottom safe area -->
+  <g transform="translate(80, 1520)" fill="#F5F5F5" fill-rule="evenodd">
+    <g transform="scale(2)">
+      <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
+      <path d="M36 0 L48 0 A12 16 0 0 1 48 32 L36 32 Z M42 6 L48 6 A6 10 0 0 1 48 26 L42 26 Z"/>
+    </g>
+  </g>
+  <rect x="76" y="1548" width="132" height="8" fill="#0A0A0A"/>
+  <text class="handle" x="80" y="1620">@DEEPERDESIGNSCO</text>
+  <text class="handle" x="1000" y="1620" text-anchor="end">DEEPERDESIGNS.IN</text>
+
+  <text class="placeholder" x="540" y="1900" text-anchor="middle">STORY TEMPLATE — REPLACE BRACKETED TEXT</text>
+</svg>

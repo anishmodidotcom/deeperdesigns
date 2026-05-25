@@ -30,6 +30,15 @@ const jobs = [
   { svg: "assets/og-image-template.svg",         out: "assets/og-image-template.png",         w: 1200 },
   { svg: "assets/notion-header.svg",             out: "assets/notion-header.png",             w: 1500 },
   { svg: "assets/video-signoff-frame.svg",       out: "assets/video-signoff-frame.png",       w: 1920 },
+
+  // v1.1 — platform assets
+  { svg: "linkedin-company-avatar.svg",          out: "linkedin-company-avatar.png",          w: 300  },
+  { svg: "linkedin-company-banner.svg",          out: "linkedin-company-banner.png",          w: 1128 },
+  { svg: "og-deeperdesigns.svg",                 out: "og-deeperdesigns.png",                 w: 1200 },
+  { svg: "instagram-post-template-statement.svg", out: "instagram-post-template-statement.png", w: 1080 },
+  { svg: "instagram-post-template-diagnosis.svg", out: "instagram-post-template-diagnosis.png", w: 1080 },
+  { svg: "instagram-post-template-showcase.svg",  out: "instagram-post-template-showcase.png",  w: 1080 },
+  { svg: "instagram-story-template.svg",          out: "instagram-story-template.png",          w: 1080 },
 ];
 
 for (const j of jobs) {

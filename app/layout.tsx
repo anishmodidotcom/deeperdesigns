@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
     url: "https://deeperdesigns.in",
     siteName: "Deeper Designs",
-    images: [{ url: "/images/about/og-default.webp", width: 1200, height: 630 }],
+    images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Deeper Designs · Custom tools, built around how your business actually works." }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Deeper Designs · Custom tools for Indian businesses",
     description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
-    images: ["/images/about/og-default.webp"],
+    images: ["/brand/og-deeperdesigns.png"],
   },
   icons: { icon: "/icon.svg" },
 };
