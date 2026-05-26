@@ -89,7 +89,7 @@ export default function HowWeThink() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .hwt-list {
           display: flex;
           flex-direction: column;

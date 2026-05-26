@@ -49,9 +49,9 @@ export default function Hero() {
         <div className="kc-hero-grid">
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0.4, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: SOFT }}
+              transition={{ duration: 0.6, ease: SOFT }}
               style={{
                 fontFamily: "var(--font-geist-mono), monospace",
                 fontSize: 11,
@@ -93,9 +93,9 @@ export default function Hero() {
             </h1>
 
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0.4, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, ease: SOFT }}
+              transition={{ duration: 0.7, delay: 0.3, ease: SOFT }}
               style={{
                 marginTop: 56,
                 maxWidth: 480,
@@ -225,11 +225,11 @@ export default function Hero() {
 
 function SlideUp({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
-    <span style={{ display: "inline-block", overflow: "hidden" }}>
+    <span style={{ display: "inline-block" }}>
       <motion.span
-        initial={{ y: "110%" }}
-        animate={{ y: "0%" }}
-        transition={{ duration: 0.9, delay, ease: STRONG }}
+        initial={{ y: 10, opacity: 0.35 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, delay, ease: STRONG }}
         style={{ display: "inline-block" }}
       >
         {text}

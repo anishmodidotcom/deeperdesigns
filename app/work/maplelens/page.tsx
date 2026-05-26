@@ -53,6 +53,8 @@ const pageStyle = {
   "--page-surface-2": "#2C2218",
   "--page-border": "rgba(200,149,109,0.18)",
   "--page-accent": "#C8956D",
+
+  "--accent": "var(--page-accent)",
   "--page-accent-2": "#8B6F47",
   "--page-text": "#F5EFE6",
   "--page-text-2": "#B6A28A",
