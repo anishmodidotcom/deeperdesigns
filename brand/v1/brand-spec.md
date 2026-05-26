@@ -122,8 +122,10 @@ brand/v1/
 │   ├── twitter-header.svg / .png            (1500×500)
 │   ├── og-image-template.svg / .png         (template; use og-deeperdesigns.png for the live default)
 │   ├── notion-header.svg / .png
-│   ├── video-signoff-frame.svg / .png
-│   └── email-signature.html
+│   └── video-signoff-frame.svg / .png
+├── email-signature.html                     canonical pasteable signature for Gmail/Outlook/Apple Mail (Anish Modi, table-based, inline CSS, image-linked monogram)
+├── email-signature-preview.html             standalone preview wrapper for browser inspection before paste
+├── email-monogram.svg                       source for the 96px email monogram PNG
 ├── linkedin-company-avatar.svg / .png       (v1.1, 300×300, circular-crop verified)
 ├── linkedin-company-banner.svg / .png       (v1.1, 1128×191, company page)
 ├── og-deeperdesigns.svg / .png              (v1.1, 1200×630, deployed default)
@@ -141,6 +143,8 @@ brand/v1/
 ```
 
 The deployed OG image is `og-deeperdesigns.png`. A copy is placed at `public/brand/og-deeperdesigns.png` so it resolves at `https://deeperdesigns.in/brand/og-deeperdesigns.png`. `app/layout.tsx` references that URL for both `openGraph.images` and `twitter.images`.
+
+The email signature monogram is at `public/brand/monogram-email.png` (96×96, indigo DD with stencil cut on white). `email-signature.html` references it at `https://www.deeperdesigns.in/brand/monogram-email.png` so any email client that allows external images renders it.
 
 To regenerate PNGs after editing an SVG: `node brand/v1/rasterize.mjs`.
 
