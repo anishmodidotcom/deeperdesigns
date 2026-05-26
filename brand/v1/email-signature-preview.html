@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Deeper Designs · email signature preview</title>
+<style>
+  body {
+    margin: 0;
+    padding: 48px 32px;
+    background: #F4F4F2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1A1A1A;
+  }
+  .preview-shell {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .preview-title {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 12px;
+  }
+  .preview-meta {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 24px;
+  }
+  .preview-email {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+  .preview-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #1A1A1A;
+    margin: 0 0 18px;
+  }
+  .preview-divider {
+    height: 1px;
+    background: #E5E5E5;
+    margin: 0 0 18px;
+  }
+  .preview-footnote {
+    font-size: 12px;
+    color: #999;
+    margin: 24px 0 0;
+  }
+</style>
+</head>
+<body>
+<div class="preview-shell">
+  <p class="preview-title">DEEPER DESIGNS · EMAIL SIGNATURE PREVIEW</p>
+  <p class="preview-meta">A mock inbox view to sanity-check the signature before pasting into Gmail. The signature block below is the exact HTML in <code>email-signature.html</code>.</p>
+
+  <div class="preview-email">
+    <p class="preview-body">
+      Hi Priya,
+    </p>
+    <p class="preview-body">
+      Thanks for the note. Quick yes from us. I'll send a fifteen-minute calendar invite for tomorrow.
+    </p>
+    <p class="preview-body">
+      Best,<br/>
+      Anish
+    </p>
+    <div class="preview-divider"></div>
+
+    <!-- ===== PASTE-IN BLOCK STARTS HERE ===== -->
+    <table cellpadding="0" cellspacing="0" border="0" role="presentation"
+           style="border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1A1A1A;line-height:1.45;max-width:600px;">
+      <tr>
+        <td valign="middle" align="center"
+            style="padding:0 18px 0 0;border-right:1px solid #E5E5E5;width:64px;">
+          <a href="https://www.deeperdesigns.in/" style="text-decoration:none;border:0;outline:none;">
+            <img src="https://www.deeperdesigns.in/brand/monogram-email.png"
+                 alt="Deeper Designs"
+                 width="48" height="48"
+                 style="display:block;border:0;outline:none;width:48px;height:48px;"/>
+          </a>
+        </td>
+        <td valign="middle" style="padding:0 0 0 18px;">
+          <div style="font-size:14px;font-weight:600;color:#1A1A1A;letter-spacing:-0.005em;margin:0 0 2px 0;">
+            Anish Modi
+          </div>
+          <div style="font-size:13px;font-weight:400;color:#555555;margin:0 0 8px 0;">
+            Founder, Deeper Designs
+          </div>
+          <div style="font-size:12px;font-weight:400;color:#777777;margin:0 0 2px 0;">
+            <a href="mailto:anish.modi@deeperdesigns.in"
+               style="color:#4F46E5;text-decoration:none;">anish.modi@deeperdesigns.in</a>
+            &nbsp;·&nbsp;<a href="https://wa.me/919968716498"
+               style="color:#1A1A1A;text-decoration:none;">+91 99687 16498</a>
+          </div>
+          <div style="font-size:12px;font-weight:400;color:#777777;margin:0;">
+            <a href="https://www.deeperdesigns.in/"
+               style="color:#4F46E5;text-decoration:none;">deeperdesigns.in</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <!-- ===== PASTE-IN BLOCK ENDS HERE ===== -->
+
+  </div>
+
+  <p class="preview-footnote">
+    The monogram is served from <code>https://www.deeperdesigns.in/brand/monogram-email.png</code>.
+    The file lives under <code>public/brand/monogram-email.png</code> in this repo and ships
+    with the next deploy. If you'd rather embed the monogram as inline base64 so it works
+    offline / in Outlook's image-blocking mode, swap the <code>&lt;img src="..."&gt;</code>
+    line for a base64 data URI before pasting.
+  </p>
+</div>
+</body>
+</html>
