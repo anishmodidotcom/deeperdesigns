@@ -52,6 +52,7 @@
   --page-accent-nomad-trails:     #C44536;
   --page-accent-sugar-lane:       #A14A5C;
   --page-accent-brightpath:       #D4A857;
+  --page-accent-deeper-content:   #6366F1;
 
   /* Type scale */
   --fs-display: clamp(48px, 7vw, 96px);

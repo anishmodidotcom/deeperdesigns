@@ -44,13 +44,13 @@ export default function HomeGallery() {
     <section id="gallery" style={{ padding: "var(--section-py) 0" }}>
       <div className="container">
         <p className="eyebrow" style={{ marginBottom: "16px", color: "var(--accent)" }}>
-          21 BUILT · MORE COMING
+          22 BUILT · MORE COMING
         </p>
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "900px" }}>
           What kind of tool would change everything for you?
         </h2>
         <p style={{ fontSize: "17px", color: "var(--fg-muted)", maxWidth: "640px", marginBottom: "40px" }}>
-          Pick a lane, or scroll. We&apos;ve imagined tools for 21 kinds of business.
+          Pick a lane, or scroll. We&apos;ve imagined tools for 22 kinds of business.
         </p>
 
         {/* Filter rows */}
@@ -155,8 +155,8 @@ export default function HomeGallery() {
                 </Link>
               );
             })}
-            {/* Placeholder cards: 4 of them */}
-            {[1, 2, 3, 4].map((n) => (
+            {/* Placeholder cards: 3 of them (22 builds + 3 placeholders = 25 slots) */}
+            {[1, 2, 3].map((n) => (
               <div key={`placeholder-${n}`} className="gallery-placeholder">
                 <span>+ MORE COMING</span>
               </div>
