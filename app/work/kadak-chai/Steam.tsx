@@ -82,6 +82,7 @@ export default function Steam() {
       style={{
         position: "relative",
         background: "var(--page-bg)",
+        overflow: "hidden",
       }}
     >
       <motion.div

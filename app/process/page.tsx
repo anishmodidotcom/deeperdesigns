@@ -4,7 +4,7 @@ import AnishNote from "@/components/AnishNote";
 export const metadata: Metadata = {
   title: "Process · Deeper Designs",
   description: "From conversation to live, in two to four weeks. Five steps, no long brief.",
-  alternates: { canonical: "https://deeperdesigns.in/process" },
+  alternates: { canonical: "https://www.deeperdesigns.in/process" },
 };
 
 const STEPS = [

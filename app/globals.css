@@ -90,8 +90,8 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  overflow-x: hidden;
+html, body {
+  overflow-x: clip;
 }
 
 a {

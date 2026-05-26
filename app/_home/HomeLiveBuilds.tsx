@@ -85,7 +85,7 @@ export default function HomeLiveBuilds() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .hlb-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);

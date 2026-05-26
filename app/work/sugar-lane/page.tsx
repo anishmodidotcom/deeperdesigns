@@ -65,6 +65,8 @@ const pageStyle = {
   "--page-blush": "rgba(161,74,92,0.08)",
   "--page-border": "rgba(42,31,26,0.12)",
   "--page-accent": "#A14A5C",
+
+  "--accent": "var(--page-accent)",
   "--page-accent-deep": "#7A3848",
   "--page-text": "#2A1F1A",
   "--page-text-2": "#5A463F",

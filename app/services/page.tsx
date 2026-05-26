@@ -4,7 +4,7 @@ import AnishNote from "@/components/AnishNote";
 export const metadata: Metadata = {
   title: "Services · Deeper Designs",
   description: "Custom internal tools, customer-facing tools, websites, AI agents, operational systems. From ₹25,000.",
-  alternates: { canonical: "https://deeperdesigns.in/services" },
+  alternates: { canonical: "https://www.deeperdesigns.in/services" },
 };
 
 const TIERS: { name: string; price: string; body: string; examples: string[] }[] = [

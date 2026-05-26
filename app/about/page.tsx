@@ -6,7 +6,7 @@ import HowWeThink from "./HowWeThink";
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
   description: "A studio that builds custom tools and operational systems for ambitious businesses. Founded 2017.",
-  alternates: { canonical: "https://deeperdesigns.in/about" },
+  alternates: { canonical: "https://www.deeperdesigns.in/about" },
 };
 
 export default function About() {

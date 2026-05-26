@@ -1,30 +1,50 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const DISMISS_KEY = "dd-whatsapp-tooltip-dismissed";
+const AUTO_HIDE_MS = 5000;
+const INITIAL_DELAY_MS = 1200;
 
 export default function WhatsAppButton() {
   const [nudgeVisible, setNudgeVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissedPermanent, setDismissedPermanent] = useState(false);
   const [hiddenByFooter, setHiddenByFooter] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const hideTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const wasDismissed = sessionStorage.getItem("wa-nudge-dismissed");
-    if (wasDismissed) { setDismissed(true); return; }
 
-    const timer = setTimeout(() => setNudgeVisible(true), 30000);
-    const onScroll = () => {
-      const pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-      if (pct > 0.5) setNudgeVisible(true);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const mobile = window.matchMedia("(max-width: 639px)").matches;
+    setIsMobile(mobile);
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", onScroll);
-    };
+    if (localStorage.getItem(DISMISS_KEY) === "true") {
+      setDismissedPermanent(true);
+      return;
+    }
+    if (mobile) {
+      // Don't auto-show the tooltip on small viewports; the FAB alone is enough.
+      return;
+    }
+
+    const showTimer = window.setTimeout(() => setNudgeVisible(true), INITIAL_DELAY_MS);
+    return () => window.clearTimeout(showTimer);
   }, []);
 
+  // Auto-hide after AUTO_HIDE_MS once visible, and hide on first scroll.
+  useEffect(() => {
+    if (!nudgeVisible) return;
+    hideTimerRef.current = window.setTimeout(() => setNudgeVisible(false), AUTO_HIDE_MS);
+    const onScroll = () => setNudgeVisible(false);
+    window.addEventListener("scroll", onScroll, { passive: true, once: true });
+    return () => {
+      if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [nudgeVisible]);
+
+  // Hide the entire FAB when the footer is in view.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const footer = document.querySelector("footer");
@@ -37,20 +57,20 @@ export default function WhatsAppButton() {
     return () => io.disconnect();
   }, []);
 
-  const dismiss = () => {
+  const dismissPermanently = () => {
     setNudgeVisible(false);
-    setDismissed(true);
-    sessionStorage.setItem("wa-nudge-dismissed", "1");
+    setDismissedPermanent(true);
+    try { localStorage.setItem(DISMISS_KEY, "true"); } catch {}
   };
 
   if (hiddenByFooter) return null;
 
   return (
     <>
-      {nudgeVisible && !dismissed && (
+      {nudgeVisible && !dismissedPermanent && !isMobile && (
         <div style={{ position: "fixed", bottom: "96px", right: "24px", zIndex: 40, background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "12px", padding: "12px 14px", display: "flex", alignItems: "center", gap: "10px", maxWidth: "260px", fontSize: "13px", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
           <span>Just want to chat? Message us on WhatsApp.</span>
-          <button aria-label="Dismiss" onClick={dismiss} style={{ width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--fg-dim)" }}>
+          <button aria-label="Dismiss" onClick={dismissPermanently} style={{ width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--fg-dim)" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>

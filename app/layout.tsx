@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -20,14 +20,23 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://deeperdesigns.in"),
+  metadataBase: new URL("https://www.deeperdesigns.in"),
   title: "Deeper Designs · Custom tools for Indian businesses",
   description: "Deeper Designs is an India-first studio building custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
+  alternates: { canonical: "https://www.deeperdesigns.in/" },
   openGraph: {
     title: "Deeper Designs · Custom tools for Indian businesses",
     description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
-    url: "https://deeperdesigns.in",
+    url: "https://www.deeperdesigns.in/",
     siteName: "Deeper Designs",
     images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Deeper Designs · Custom tools, built around how your business actually works." }],
     type: "website",
@@ -44,7 +53,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
-      <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <html
+        lang="en"
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      >
         <body>
           <SmoothScroll>
             <Nav />
