@@ -37,7 +37,7 @@ export default function Hero() {
           }}
         >
           <motion.span
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0.4 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: EASE }}
             style={{
@@ -50,7 +50,7 @@ export default function Hero() {
             ISSUE 015
           </motion.span>
           <motion.span
-            initial={{ opacity: 0, x: 8 }}
+            initial={{ opacity: 0.4, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.1, ease: EASE }}
             style={{
@@ -112,9 +112,9 @@ export default function Hero() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0.4, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7, ease: EASE }}
+          transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
           style={{
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 12,
@@ -244,15 +244,14 @@ function MaskReveal({
     <span
       style={{
         display: "block",
-        overflow: "hidden",
         verticalAlign: "top",
       }}
     >
       <motion.span
-        initial={{ y: "110%", opacity: 0 }}
-        animate={{ y: "0%", opacity: 1 }}
+        initial={{ y: 8, opacity: 0.35 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
-          duration: 0.5,
+          duration: 0.55,
           delay,
           ease: EASE,
         }}

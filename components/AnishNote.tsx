@@ -33,7 +33,7 @@ export default function AnishNote({
         </p>
         <p className="anish-note__text">{text}</p>
       </motion.div>
-      <style jsx>{`
+      <style>{`
         .anish-note {
           display: block;
         }
@@ -61,15 +61,13 @@ export default function AnishNote({
           background: currentColor;
         }
         .anish-note__text {
-          font-family: "Instrument Serif", Georgia, serif;
+          font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
           font-style: italic;
           font-size: 16px;
           line-height: 1.45;
           color: var(--dd-text-mid);
           margin: 0;
         }
-
-        /* Margin variant on desktop: float right of parent, max 280px wide. */
         @media (min-width: 1024px) {
           .anish-note--margin {
             max-width: 280px;
@@ -86,8 +84,6 @@ export default function AnishNote({
             margin-left: 0;
           }
         }
-
-        /* Margin variant on mobile + inline variant everywhere: full-width inline block. */
         @media (max-width: 1023px) {
           .anish-note--margin {
             float: none;

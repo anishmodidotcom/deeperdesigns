@@ -50,7 +50,7 @@ export default function EditorialPullQuote({
           ) : null}
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .epq {
           padding-block: 96px;
         }
@@ -74,7 +74,7 @@ export default function EditorialPullQuote({
           min-width: 0;
         }
         .epq__quote {
-          font-family: "Instrument Serif", Georgia, serif;
+          font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
           font-style: italic;
           font-weight: 400;
           font-size: clamp(30px, 4.6vw, 52px);

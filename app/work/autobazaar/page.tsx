@@ -49,6 +49,8 @@ const pageStyle = {
   "--page-text": "#EAEDF0",
   "--page-text-2": "#787E8C",
   "--page-accent": "#22D3EE",
+
+  "--accent": "var(--page-accent)",
   "--page-accent-2": "#67E8F9",
   background: "var(--page-bg)",
   color: "var(--page-text)",

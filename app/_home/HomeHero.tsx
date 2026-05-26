@@ -107,6 +107,7 @@ export default function HomeHero() {
             <Image
               src={`/images/_ambient/${img.slug}.webp`}
               alt=""
+              role="presentation"
               width={img.width}
               height={Math.round(img.width * 0.625)}
               style={{ display: "block", width: "100%", height: "auto" }}
