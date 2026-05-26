@@ -14,6 +14,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -78,6 +80,12 @@ export default function BharatSteelPage() {
           />
         );
       })()}
+      <AnishNote
+        text="The Excel sheet that ran the yard for thirty years wasn't the problem. The Excel sheet that nobody trusted at 7am was."
+        align="right"
+        variant="inline"
+      />
+
       <Family />
       <Story />
       <RebarGrid />
@@ -86,6 +94,11 @@ export default function BharatSteelPage() {
       <Capabilities />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="A buyer calls. Someone walks the yard. The buyer calls the next trader."
+        attribution="BHARAT STEEL · CONCEPT"
+        accent="var(--page-accent-bharat-steel)"
+      />
       <NextProject />
     </div>
   );

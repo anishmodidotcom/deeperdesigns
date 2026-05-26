@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -81,6 +83,12 @@ export default function OudAndEmberPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Heritage doesn't translate to a contact form. It translates to a quiz that earns the customer's interest before the atelier ever opens its door."
+        align="right"
+        variant="inline"
+      />
+
       <Client />
       <Quiz />
       <Library />
@@ -88,6 +96,11 @@ export default function OudAndEmberPage() {
       <Atelier />
       <Metrics />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="The atelier magic does not survive twenty WhatsApp messages."
+        attribution="OUD & EMBER · CONCEPT"
+        accent="var(--page-accent-oud-and-ember)"
+      />
       <NextProject />
     </div>
   );

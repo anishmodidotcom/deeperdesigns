@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -78,6 +80,12 @@ export default function VedaGlowPage() {
           />
         );
       })()}
+      <AnishNote
+        text="An Ayurvedic founder shouldn't be writing forty DM replies a day. The product knows skin. The system should know how to recommend it."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Problem />
       <Solution />
@@ -85,6 +93,11 @@ export default function VedaGlowPage() {
       <Features />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="The product was never the problem. The consultation was."
+        attribution="VEDA GLOW · CONCEPT"
+        accent="var(--page-accent-veda-glow)"
+      />
       <NextProject />
     </div>
   );

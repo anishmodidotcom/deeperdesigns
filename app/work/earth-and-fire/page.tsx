@@ -14,6 +14,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Fraunces stands in as the editorial serif for body and small display.
 // DM Serif Display covers the italic display headlines that anchor the
@@ -99,6 +101,12 @@ export default function EarthAndFirePage() {
           />
         );
       })()}
+      <AnishNote
+        text="Selling out in 90 minutes sounds like a win. It's a ceiling. The builder turns the constraint, Nia's two hands, into the offer."
+        align="right"
+        variant="inline"
+      />
+
       <Maker />
       <Wheel />
       <Collection />
@@ -107,6 +115,11 @@ export default function EarthAndFirePage() {
       <VideoMoment />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Her drops sold out in 90 minutes. That is not a humble brag. That is a business problem."
+        attribution="EARTH & FIRE · CONCEPT"
+        accent="var(--page-accent-earth-and-fire)"
+      />
       <NextProject />
     </div>
   );

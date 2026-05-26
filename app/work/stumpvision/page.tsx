@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -76,12 +78,23 @@ export default function StumpVisionPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Parents pay for cricket coaching but can't see if their kid is improving. The card tells the story. The card sells the renewal."
+        align="right"
+        variant="inline"
+      />
+
       <Card />
       <StartingXI />
       <Features />
       <Parent />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="Two hundred and fifty players. Stats in a coach's notebook. Parents on the sideline with no real answers."
+        attribution="STUMPVISION · CONCEPT"
+        accent="var(--page-accent-stumpvision)"
+      />
       <NextProject />
     </div>
   );

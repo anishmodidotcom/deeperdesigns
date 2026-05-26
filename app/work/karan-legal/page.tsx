@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Spectral covers the editorial slab-serif feel of GT Sectra Display
 // where Sectra is not on Google Fonts. Weights tuned for body and
@@ -88,12 +90,23 @@ export default function KaranLegalPage() {
           />
         );
       })()}
+      <AnishNote
+        text="The right number of clients to take is the number you can actually serve well. The qualifier protects Karan from his own Yes-to-everyone tendency."
+        align="right"
+        variant="inline"
+      />
+
       <StatementOfFacts />
       <Redaction />
       <Qualifier />
       <Respondent />
       <Outcomes />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Karan was answering every call himself, and most were not worth his time."
+        attribution="KARAN LEGAL · CONCEPT"
+        accent="var(--page-accent-karan-legal)"
+      />
       <NextProject />
     </div>
   );

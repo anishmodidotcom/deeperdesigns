@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -83,6 +85,12 @@ export default function MalabarSpicePage() {
           />
         );
       })()}
+      <AnishNote
+        text="Some businesses don't need a dashboard. They need a digital warehouse with the same dignity as the physical one. Rashid's grandfather built one in 1962. We built the second."
+        align="right"
+        variant="inline"
+      />
+
       <Story />
       <Spices />
       <Hands />
@@ -90,6 +98,11 @@ export default function MalabarSpicePage() {
       <Kerala />
       <Tray />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Some businesses don't need to be optimized. They need to be honored."
+        attribution="MALABAR SPICE HOUSE · CONCEPT"
+        accent="var(--page-accent-malabar-spice)"
+      />
       <NextProject />
     </div>
   );

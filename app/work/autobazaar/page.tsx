@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -77,6 +79,12 @@ export default function AutoBazaarPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Pricing every car on the lot by walking around with a clipboard at 9pm. Two hours every night. Now it's done by the time Tariq finishes his coffee."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Lot />
       <Pricing />
@@ -84,6 +92,11 @@ export default function AutoBazaarPage() {
       <Buyer />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="Sixty cars priced last night by Tariq walking the lot with a clipboard."
+        attribution="AUTOBAZAAR · CONCEPT"
+        accent="var(--page-accent-autobazaar)"
+      />
       <NextProject />
     </div>
   );

@@ -16,6 +16,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -86,6 +88,12 @@ export default function PawStayPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Pooja was losing two hours a day to update messages. She wasn't going to charge more. She just needed her time back. So did the parents."
+        align="right"
+        variant="inline"
+      />
+
       <Problem />
       <LiveCamera />
       <TheDay />
@@ -95,6 +103,11 @@ export default function PawStayPage() {
       <PawDetail />
       <Metrics />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Pooja sent photos. Then videos. Then she lost two hours a day to it."
+        attribution="PAWSTAY · CONCEPT"
+        accent="var(--page-accent-pawstay)"
+      />
       <NextProject />
     </div>
   );
