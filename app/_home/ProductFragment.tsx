@@ -333,6 +333,72 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
+    case "deeper-content":
+      return (
+        <div style={fragWrap}>
+          <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "5px", alignItems: "center" }}>
+            {/* Three inputs at top */}
+            <div style={{ display: "flex", gap: "5px" }}>
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    width: "4px",
+                    height: "4px",
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    boxShadow: "0 0 4px var(--accent)",
+                    opacity: 0.8 - i * 0.12,
+                  }}
+                />
+              ))}
+            </div>
+            {/* Engine: monoline diamond */}
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                border: "1px solid var(--accent)",
+                transform: "rotate(45deg)",
+                boxShadow: "0 0 6px rgba(99,102,241,0.4)",
+                marginBlock: "2px",
+              }}
+            />
+            {/* Output grid (3x2) */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "2px",
+                width: "44px",
+              }}
+            >
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    aspectRatio: "1 / 1",
+                    background: i % 2 === 0 ? "rgba(99,102,241,0.7)" : "rgba(99,102,241,0.3)",
+                    borderRadius: "1px",
+                  }}
+                />
+              ))}
+            </div>
+            <div
+              style={{
+                fontSize: "7px",
+                color: "var(--fg-muted)",
+                fontFamily: "var(--font-geist-mono)",
+                letterSpacing: "0.10em",
+                marginTop: "2px",
+              }}
+            >
+              ENGINE · LIVE
+            </div>
+          </div>
+        </div>
+      );
+
     default:
       return (
         <div style={fragWrap}>

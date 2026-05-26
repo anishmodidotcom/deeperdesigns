@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 const SLUGS = [
   "maplelens",
+  "deeper-content",
   "veda-glow",
   "bharat-steel",
   "meera-wellness",
@@ -25,7 +26,7 @@ const SLUGS = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://deeperdesigns.in";
+  const base = "https://www.deeperdesigns.in";
   const now = new Date();
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
