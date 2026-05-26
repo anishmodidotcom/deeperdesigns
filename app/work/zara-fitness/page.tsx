@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Anton stands in for Druk Wide Bold (paid). Single regular weight, but
 // the condensed CAPS energy is the right brand register for the athletic
@@ -83,6 +85,12 @@ export default function ZaraFitnessPage() {
           />
         );
       })()}
+      <AnishNote
+        text="280K followers and a PDF guide is not a product. The platform is. So is the sportswear line that ships with it."
+        align="right"
+        variant="inline"
+      />
+
       <Problem />
       <Platform />
       <Programs />
@@ -90,6 +98,11 @@ export default function ZaraFitnessPage() {
       <VideoCTA />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="280,000 followers. A PDF workout guide. A three-week dropoff cliff."
+        attribution="ZARA FITNESS · CONCEPT"
+        accent="var(--page-accent-zara-fitness)"
+      />
       <NextProject />
     </div>
   );

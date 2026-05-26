@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Archivo Black is the closest open-source stand-in for the heavy
 // tin-can headline style we wanted (Druk Wide Bold). Crimson Pro
@@ -91,6 +93,12 @@ export default function KadakChaiPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Three generations of the family ran a wholesale business. Devika is the first to sell direct. Same blends. Half the middlemen. Twice the margin."
+        align="right"
+        variant="inline"
+      />
+
       <Devika />
       <TheTin />
       <TheRange />
@@ -98,6 +106,11 @@ export default function KadakChaiPage() {
       <Steam />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="For sixty years the family sold loose-leaf chai to other tea shops, who put their own names on the packaging."
+        attribution="KADAK CHAI · CONCEPT"
+        accent="var(--page-accent-kadak-chai)"
+      />
       <NextProject />
     </div>
   );

@@ -15,6 +15,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Bricolage Grotesque on Google Fonts ships normal-only. Italic display
 // moments use CSS synthesized italic via fontStyle: italic; the variable
@@ -88,6 +90,12 @@ export default function SahajaFarmsPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Lata isn't a tech founder. She's the best organic farmer in her region. The dashboard isn't there to teach her farming. It's there to make sure the farm survives if she takes a Sunday off."
+        align="right"
+        variant="inline"
+      />
+
       <Farmer />
       <Dashboard />
       <WhatToPlant />
@@ -97,6 +105,11 @@ export default function SahajaFarmsPage() {
       <Compost />
       <Metrics />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Half her crop decisions lived in her head, from memory of last year."
+        attribution="SAHAJA FARMS · CONCEPT"
+        accent="var(--page-accent-sahaja-farms)"
+      />
       <NextProject />
     </div>
   );

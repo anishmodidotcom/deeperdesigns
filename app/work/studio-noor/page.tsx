@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const instrument = Instrument_Serif({
   subsets: ["latin"],
@@ -77,12 +79,23 @@ export default function StudioNoorPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Clients aren't anxious because the project is late. They're anxious because they can't see it. Show them. The anxiety goes away."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Chaos />
       <Walkthrough />
       <Bridge />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="Mood boards on Pinterest. Floor plans on Drive. Material photos on WhatsApp. Invoices as screenshots."
+        attribution="STUDIO NOOR · CONCEPT"
+        accent="var(--page-accent-studio-noor)"
+      />
       <NextProject />
     </div>
   );

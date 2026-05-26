@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AnishNote from "@/components/AnishNote";
 
 export const metadata: Metadata = {
   title: "Process · Deeper Designs",
@@ -31,7 +32,12 @@ export default function Process() {
 
       <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <AnishNote
+            text="Most of the work is done on the call. By the time we send you a scope, we already know what we're building and why."
+            align="right"
+            variant="margin"
+          />
+          <div style={{ clear: "both", display: "flex", flexDirection: "column", gap: "0" }}>
             {STEPS.map((s, i) => (
               <div key={s.n} style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: "32px", padding: "48px 0", borderBottom: i === STEPS.length - 1 ? "none" : "1px solid var(--border)" }}>
                 <p className="mono" style={{ color: "var(--accent)", fontSize: "14px", paddingTop: "6px" }}>{s.n}</p>

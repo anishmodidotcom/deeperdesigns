@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Source Serif 4 carries the academic gravitas the brief asked for
 // (a contemporary cousin of the IBM Plex Serif). Source Sans 3 keeps
@@ -94,12 +96,23 @@ export default function BrightPathPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Every parent of every tutoring client wants to know the same thing. Is my kid improving. The portal answers that before they ask."
+        align="right"
+        variant="inline"
+      />
+
       <Omar />
       <Progress />
       <Programs />
       <Portal />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Parents pay for results they cannot see in real time."
+        attribution="BRIGHTPATH · CONCEPT"
+        accent="var(--page-accent-brightpath)"
+      />
       <NextProject />
     </div>
   );

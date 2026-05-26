@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const playfairSc = Playfair_Display_SC({
   subsets: ["latin"],
@@ -102,12 +104,23 @@ export default function SugarLanePage() {
           />
         );
       })()}
+      <AnishNote
+        text="Forty cakes a week is what Farah could bake. Four was what she was getting to, because thirty messages on WhatsApp ate the rest of her time. Now the brief is one form."
+        align="right"
+        variant="inline"
+      />
+
       <Farah />
       <CakeBuild />
       <Menu />
       <Studio />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="Farah could bake forty cakes a week. She baked four."
+        attribution="SUGAR LANE · CONCEPT"
+        accent="var(--page-accent-sugar-lane)"
+      />
       <NextProject />
     </div>
   );

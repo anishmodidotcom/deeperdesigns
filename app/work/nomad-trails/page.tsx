@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 // Bodoni Moda gives the high-contrast editorial display the brief
 // asked for (Didot stand-in). Inter for body. IBM Plex Mono for the
@@ -103,6 +105,12 @@ export default function NomadTrailsPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Selling spots in a treking trip is a booking funnel. Selling an experience is a phone call. The site is built for the call, not the cart."
+        align="right"
+        variant="inline"
+      />
+
       <Outfit />
       <Climb />
       <Trips />
@@ -110,6 +118,11 @@ export default function NomadTrailsPage() {
       <Ridge />
       <Numbers />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="They got tired of group sizes of twenty, and of clients picking treks off a brochure they couldn't pronounce."
+        attribution="NOMAD TRAILS · CONCEPT"
+        accent="var(--page-accent-nomad-trails)"
+      />
       <NextProject />
     </div>
   );

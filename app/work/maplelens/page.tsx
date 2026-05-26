@@ -9,6 +9,8 @@ import BuildNote from "./BuildNote";
 import FloatingCTA from "./FloatingCTA";
 import NextProject from "./NextProject";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,11 +74,21 @@ export default function MapleLensPage() {
         })}
       />
       <Hero />
+      <AnishNote
+        text="We built this end to end. It's earning. Furniture makers in three cities use it every week."
+        align="right"
+        variant="inline"
+      />
       <Problem />
       <Solution />
       <Showcase />
       <BuildNote />
       <FloatingCTA />
+      <EditorialPullQuote
+        quote="The shoot used to take a day, cost forty thousand, and still not look like the catalog needed it to."
+        attribution="MAPLE LENS · LIVE BUILD"
+        accent="var(--page-accent-maplelens)"
+      />
       <NextProject />
     </div>
   );

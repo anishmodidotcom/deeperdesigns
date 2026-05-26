@@ -16,6 +16,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -86,6 +88,12 @@ export default function MeeraWellnessPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Three hours a day spent on scheduling is three hours not spent teaching. The math is simple."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Breath />
       <Client />
@@ -96,6 +104,11 @@ export default function MeeraWellnessPage() {
       <DailyFlow />
       <Impact />
       <About />
+      <EditorialPullQuote
+        quote="Three Google calendars, a notes app, and a WhatsApp she answered between sessions."
+        attribution="MEERA WELLNESS · CONCEPT"
+        accent="var(--page-accent-meera-wellness)"
+      />
       <NextProject />
     </div>
   );

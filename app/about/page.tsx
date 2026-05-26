@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import AnishNote from "@/components/AnishNote";
+import HowWeThink from "./HowWeThink";
 
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
@@ -13,10 +15,15 @@ export default function About() {
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>ABOUT</p>
+          <AnishNote
+            text="I started this because most Indian businesses get one of two things, a deck from a consultant, or a quote from a dev shop. Neither builds the thing. Deeper Designs does."
+            align="right"
+            variant="margin"
+          />
           <h1 style={{ fontSize: "var(--fs-display)", fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "32px" }}>
             We build the small tools that quietly make a business better.
           </h1>
-          <p style={{ fontSize: "21px", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "21px", color: "var(--fg-muted)", lineHeight: 1.6, clear: "both" }}>
             A studio for founders who don&apos;t need another deck. We sit, we listen, we figure out what to build, and then we build it.
           </p>
         </div>
@@ -46,6 +53,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <HowWeThink />
 
       <section style={{ padding: "var(--section-py) 0" }}>
         <div className="container" style={{ maxWidth: "880px" }}>

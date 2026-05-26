@@ -12,6 +12,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -76,12 +78,23 @@ export default function SmileFirstPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Sixty percent of recommended treatments never get booked. That's not a treatment problem. That's a follow-up problem. We solved the follow-up."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Funnel />
       <System />
       <Journey />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="Forty patients a day. Three dentists. A front desk holding every recall in their heads."
+        attribution="SMILEFIRST · CONCEPT"
+        accent="var(--page-accent-smilefirst)"
+      />
       <NextProject />
     </div>
   );

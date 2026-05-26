@@ -13,6 +13,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -77,6 +79,12 @@ export default function ZaatarRepublicPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Faisal doesn't need a McKinsey report. He needs to know if the wrap is the best seller or the worst earner. The dashboard tells him."
+        align="right"
+        variant="inline"
+      />
+
       <Founder />
       <Numbers />
       <CoreProblem />
@@ -84,6 +92,11 @@ export default function ZaatarRepublicPage() {
       <HowItWorks />
       <Metrics />
       <About />
+      <EditorialPullQuote
+        quote="The most popular item on the menu might also be losing money. There's no way to know."
+        attribution="ZAATAR REPUBLIC · CONCEPT"
+        accent="var(--page-accent-zaatar-republic)"
+      />
       <NextProject />
     </div>
   );

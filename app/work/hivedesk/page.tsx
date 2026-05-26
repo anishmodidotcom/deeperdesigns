@@ -14,6 +14,8 @@ import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
 import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import AnishNote from "@/components/AnishNote";
+import EditorialPullQuote from "@/components/EditorialPullQuote";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,6 +84,12 @@ export default function HiveDeskPage() {
           />
         );
       })()}
+      <AnishNote
+        text="Amit could feel the churn. He couldn't see it. Once he saw it, the conversation with members changed completely."
+        align="right"
+        variant="inline"
+      />
+
       <Occupancy />
       <Problem />
       <TwoHalves />
@@ -90,6 +98,11 @@ export default function HiveDeskPage() {
       <Details />
       <Metrics />
       <AboutBuild />
+      <EditorialPullQuote
+        quote="He was running it on Excel and goodwill, chasing renewals on WhatsApp the day they lapsed."
+        attribution="HIVEDESK · CONCEPT"
+        accent="var(--page-accent-hivedesk)"
+      />
       <NextProject />
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AnishNote from "@/components/AnishNote";
 
 export const metadata: Metadata = {
   title: "Services · Deeper Designs",
@@ -6,11 +7,47 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://deeperdesigns.in/services" },
 };
 
-const TIERS = [
-  { name: "Single tool",           price: "From ₹25,000", body: "A quiz. A calculator. A small dashboard. One focused tool that quietly removes a daily headache." },
-  { name: "Custom build",          price: "₹1L to ₹3L",   body: "Configurators, AI tools, brand sites built to convert. The kind of work that turns visitors into buyers." },
-  { name: "Multi-tool system",     price: "₹3L to ₹10L",  body: "A portal and a dashboard. A site, a booking flow, and an inventory brain. Multiple parts, designed to work together." },
-  { name: "Operational redesign",  price: "₹10L+",        body: "The operating system for a business. Brand, site, internal tools, customer tools, the works." },
+const TIERS: { name: string; price: string; body: string; examples: string[] }[] = [
+  {
+    name: "Single tool",
+    price: "From ₹25,000",
+    body: "A quiz. A calculator. A small dashboard. One focused tool that quietly removes a daily headache.",
+    examples: [
+      "A WhatsApp agent that books appointments",
+      "A skin or product quiz that ends in a purchase",
+      "A small dashboard that replaces a daily spreadsheet check",
+    ],
+  },
+  {
+    name: "Custom build",
+    price: "₹1L to ₹3L",
+    body: "Configurators, AI tools, brand sites built to convert. The kind of work that turns visitors into buyers.",
+    examples: [
+      "A made-to-order product builder with custom pricing logic",
+      "A lead qualifier that filters and routes inquiries",
+      "A brand site with a smart configurator that converts",
+    ],
+  },
+  {
+    name: "Multi-tool system",
+    price: "₹3L to ₹10L",
+    body: "A portal and a dashboard. A site, a booking flow, and an inventory brain. Multiple parts, designed to work together.",
+    examples: [
+      "A client portal plus an internal ops dashboard plus a booking flow",
+      "A pricing engine plus a buyer-facing site plus inventory sync",
+      "A member CRM plus a retention engine plus an analytics view",
+    ],
+  },
+  {
+    name: "Operational redesign",
+    price: "₹10L+",
+    body: "The operating system for a business. Brand, site, internal tools, customer tools, the works.",
+    examples: [
+      "The full operating system for a regional QSR chain",
+      "A heritage brand's entire digital presence and trade tooling",
+      "A creator's training platform, sportswear store, and AI chat combined",
+    ],
+  },
 ];
 
 export default function Services() {
@@ -30,12 +67,47 @@ export default function Services() {
 
       <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1px", background: "var(--border)", border: "1px solid var(--border)" }}>
+          <div style={{ maxWidth: "880px", marginBottom: "40px" }}>
+            <AnishNote
+              text="The price ranges below are where most builds land. We custom-quote after a 15-minute call. No proposals, no decks. Just a conversation and a number."
+              align="left"
+              variant="margin"
+            />
+          </div>
+          <div style={{ clear: "both", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1px", background: "var(--border)", border: "1px solid var(--border)" }}>
             {TIERS.map(t => (
               <div key={t.name} style={{ background: "var(--bg)", padding: "48px 32px" }}>
                 <h3 style={{ fontSize: "var(--fs-h3)", fontWeight: 500, marginBottom: "12px" }}>{t.name}</h3>
                 <p style={{ fontSize: "28px", color: "var(--accent)", marginBottom: "24px", fontWeight: 500 }}>{t.price}</p>
                 <p style={{ fontSize: "15px", color: "var(--fg-muted)", lineHeight: 1.6 }}>{t.body}</p>
+                <p style={{
+                  fontFamily: "var(--font-geist-mono), ui-monospace, monospace",
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--dd-text-faint)",
+                  marginTop: "24px",
+                  marginBottom: "10px",
+                }}>
+                  Examples
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {t.examples.map(ex => (
+                    <li
+                      key={ex}
+                      style={{
+                        fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                        fontSize: "14px",
+                        color: "var(--dd-text-mid)",
+                        lineHeight: 1.6,
+                        marginBottom: "4px",
+                      }}
+                    >
+                      ·&nbsp;{ex}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

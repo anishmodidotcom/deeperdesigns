@@ -138,6 +138,7 @@ export default function HomeGallery() {
                   data-dim={!isVisible ? "true" : undefined}
                   aria-hidden={!isVisible}
                   tabIndex={!isVisible ? -1 : 0}
+                  style={{ ["--card-accent" as string]: `var(--page-accent-${s.slug})` }}
                 >
                   {s.live && (
                     <span className="live-badge">LIVE</span>
@@ -169,6 +170,7 @@ export default function HomeGallery() {
                 key={`m-${s.slug}`}
                 href={`/work/${s.slug}`}
                 className="slider-card"
+                style={{ ["--card-accent" as string]: `var(--page-accent-${s.slug})` }}
               >
                 {s.live && <span className="live-badge">LIVE</span>}
                 <div className="card-fragment">
@@ -232,10 +234,19 @@ export default function HomeGallery() {
           pointer-events: none;
           filter: grayscale(0.6);
         }
+        .gallery-card {
+          transition: transform 240ms var(--ease-out), border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+        }
         .gallery-card:hover {
           transform: translateY(-3px);
-          border-color: var(--accent);
-          box-shadow: 0 0 0 1px var(--accent), 0 16px 40px rgba(99, 102, 241, 0.18), 0 0 30px rgba(99, 102, 241, 0.15);
+          border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 80%, transparent);
+          box-shadow:
+            0 0 0 1px color-mix(in srgb, var(--card-accent, var(--accent)) 80%, transparent),
+            inset 0 0 60px color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent),
+            0 16px 40px rgba(0, 0, 0, 0.25);
+        }
+        .gallery-card:hover .outcome-text {
+          color: var(--dd-text-high);
         }
         .card-fragment {
           flex: 1;
@@ -278,11 +289,12 @@ export default function HomeGallery() {
         }
         .outcome-text {
           font-size: 10px;
-          color: var(--accent);
+          color: var(--dd-text-mid);
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
           line-height: 1.3;
+          transition: color 240ms var(--ease-out);
         }
         .live-badge {
           position: absolute;
