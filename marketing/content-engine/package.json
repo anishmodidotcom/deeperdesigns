@@ -6,6 +6,7 @@
   "scripts": {
     "setup-fonts": "tsx scripts/setup-fonts.ts",
     "sync-from-sheet": "tsx scripts/sync-from-sheet.ts",
+    "sync-from-seed": "tsx scripts/sync-from-seed.ts",
     "generate": "tsx generators/generate-all.ts",
     "generate-one": "tsx generators/generate-post.ts",
     "sync-to-drive": "tsx scripts/sync-to-drive.ts",

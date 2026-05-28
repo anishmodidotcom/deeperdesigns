@@ -101,10 +101,22 @@ export async function generatePost(post: Post): Promise<{ slug: string; panels: 
     errors.push(`unknown format: ${format}`);
   }
 
-  // Write manifest
+  // Write manifest (spec'd shape — every post gets one).
+  const repoBaseUrl =
+    'https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output';
+  const manifest = {
+    post_number:  Number(post['Post #']),
+    slug:         post['Slug'],
+    format:       format,
+    files:        produced,
+    panel_count:  produced.length,
+    raw_base_url: `${repoBaseUrl}/${slug}`,
+    accent,
+    errors,
+  };
   writeFileSync(
     resolve(outDir, 'manifest.json'),
-    JSON.stringify({ slug, accent, format, produced, errors }, null, 2),
+    JSON.stringify(manifest, null, 2),
   );
 
   if (errors.length) {
