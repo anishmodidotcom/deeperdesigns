@@ -12,6 +12,15 @@
     "panel-07.png"
   ],
   "panel_count": 7,
+  "archetypes": [
+    "Statement",
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "Statement",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/08-zaatar-republic-qsr-ops",
   "accent": "#D4A053",
   "errors": []

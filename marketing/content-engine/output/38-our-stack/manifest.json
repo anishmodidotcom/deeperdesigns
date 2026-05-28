@@ -10,6 +10,13 @@
     "panel-05.png"
   ],
   "panel_count": 5,
+  "archetypes": [
+    "Statement",
+    "IndexCard",
+    "StepGrid",
+    "StepGrid",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/38-our-stack",
   "accent": "#6366F1",
   "errors": []

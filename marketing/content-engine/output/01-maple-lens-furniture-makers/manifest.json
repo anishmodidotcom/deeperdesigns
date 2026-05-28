@@ -12,6 +12,15 @@
     "panel-07.png"
   ],
   "panel_count": 7,
+  "archetypes": [
+    "Statement",
+    "Product",
+    "Statement",
+    "Product",
+    "Product",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/01-maple-lens-furniture-makers",
   "accent": "#6366F1",
   "errors": []

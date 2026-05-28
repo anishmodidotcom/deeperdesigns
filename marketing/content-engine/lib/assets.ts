@@ -126,6 +126,25 @@ export async function loadAmbientPngBuffer(absPath: string, width = 1024): Promi
   return sharp(absPath).resize({ width }).png({ compressionLevel: 9 }).toBuffer();
 }
 
+// Reject a source as too dark to read once cover-cropped. Returns true
+// when the cropped buffer's mean luminance is below `minMean` (default
+// 25/255 ≈ near-black). Used by the router to fall back to a non-image
+// archetype when the source would render as a black slab.
+export async function isCroppedTooDark(
+  absPath: string,
+  width: number,
+  height: number,
+  minMean = 25,
+): Promise<boolean> {
+  if (!existsSync(absPath)) return true;
+  const stats = await sharp(absPath)
+    .resize({ width, height, fit: 'cover', position: 'centre' })
+    .greyscale()
+    .stats();
+  const mean = stats.channels[0]?.mean ?? 0;
+  return mean < minMean;
+}
+
 // Cover-crop a source asset to exact panel dimensions, centred. Satori's
 // `object-fit: cover` does not apply reliably when the parent is sized
 // by flex-grow, so we pre-crop with sharp and embed the already-correct

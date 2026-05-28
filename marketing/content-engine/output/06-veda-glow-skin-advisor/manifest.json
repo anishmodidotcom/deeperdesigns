@@ -11,6 +11,14 @@
     "panel-06.png"
   ],
   "panel_count": 6,
+  "archetypes": [
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "StepGrid",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/06-veda-glow-skin-advisor",
   "accent": "#4A6741",
   "errors": []

@@ -11,6 +11,14 @@
     "panel-06.png"
   ],
   "panel_count": 6,
+  "archetypes": [
+    "Statement",
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/17-pawstay-dog-boarding",
   "accent": "#6366F1",
   "errors": []

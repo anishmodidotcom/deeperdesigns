@@ -6,6 +6,9 @@
     "card.png"
   ],
   "panel_count": 1,
+  "archetypes": [
+    "BigStat"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/02-bharat-steel-quote-time",
   "accent": "#4A6FA5",
   "errors": []

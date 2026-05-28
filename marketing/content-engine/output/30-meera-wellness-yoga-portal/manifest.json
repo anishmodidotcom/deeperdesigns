@@ -11,6 +11,14 @@
     "panel-06.png"
   ],
   "panel_count": 6,
+  "archetypes": [
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "StepGrid",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/30-meera-wellness-yoga-portal",
   "accent": "#7A8C7A",
   "errors": []

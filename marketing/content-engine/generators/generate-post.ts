@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TOKENS, accentForSlug } from '../lib/tokens.js';
+import { accentForSlug } from '../lib/tokens.js';
 import {
   MONOGRAM_SVG,
   WORDMARK_WHITE_SVG,
@@ -10,18 +10,20 @@ import {
   pngBufferToDataUri,
   pickImageAssetForPanel,
   cropToPanelBuffer,
+  isCroppedTooDark,
   logAssetStatus,
 } from '../lib/assets.js';
-import { parseBrief, type ParsedPanel } from './parse-brief.js';
+import { parseBrief } from './parse-brief.js';
 import { renderToPng } from './render-png.js';
+import { routePanels, type RouteDecision } from './route-archetype.js';
 
-import { StatementCard }   from '../templates/statement-card.js';
-import { CarouselHook }    from '../templates/carousel-hook.js';
-import { CarouselContent } from '../templates/carousel-content.js';
-import { CarouselStat }    from '../templates/carousel-stat.js';
-import { CarouselImage, PANEL_IMAGE_DIMS } from '../templates/carousel-image.js';
-import { CarouselDivider } from '../templates/carousel-divider.js';
-import { CarouselCta }     from '../templates/carousel-cta.js';
+import { StatementArchetype } from '../templates/archetypes/statement.js';
+import { BigStatArchetype }   from '../templates/archetypes/bigstat.js';
+import { SplitArchetype }     from '../templates/archetypes/split.js';
+import { StepGridArchetype }  from '../templates/archetypes/stepgrid.js';
+import { ProductArchetype, PRODUCT_IMAGE_DIMS } from '../templates/archetypes/product.js';
+import { IndexCardArchetype } from '../templates/archetypes/index-card.js';
+import { CtaArchetype }       from '../templates/archetypes/cta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = dirname(__filename);
@@ -41,13 +43,17 @@ function postSlug(post: Post): string {
   return `${num}-${post['Slug']}`;
 }
 
-export async function generatePost(post: Post): Promise<{ slug: string; panels: string[]; errors: string[] }> {
+export async function generatePost(post: Post): Promise<{
+  slug: string;
+  panels: string[];
+  archetypes: string[];
+  errors: string[];
+}> {
   const slug   = postSlug(post);
   const accent = accentForSlug(slug);
   const outDir = resolve(ROOT, 'output', slug);
   mkdirSync(outDir, { recursive: true });
 
-  // Brand marks once per post.
   const monogramPng = MONOGRAM_SVG
     ? pngBufferToDataUri(await svgToPngBuffer(MONOGRAM_SVG, 192))
     : undefined;
@@ -57,60 +63,51 @@ export async function generatePost(post: Post): Promise<{ slug: string; panels: 
 
   const errors: string[] = [];
   const produced: string[] = [];
+  const archetypes: string[] = [];
 
   const format = post['Format'];
   const brief  = (post['Graphic Brief'] ?? post['Caption'] ?? '') as string;
 
-  if (format === 'statement-card' || format === 'text') {
-    const parsed = parseBrief(format, brief);
-    errors.push(...parsed.errors);
-    const card = parsed.panels[0];
-    if (!card || !card.fields.quote) {
-      errors.push('no parseable quote');
-    } else {
-      const file = resolve(outDir, 'card.png');
-      await renderToPng(
-        StatementCard({
-          quote:    card.fields.quote!,
-          label:    card.fields.label ?? 'DEEPER DESIGNS',
-          accent,
-          monogramPng,
-          wordmarkPng,
-        }),
-        file,
-      );
-      produced.push('card.png');
-    }
-  } else if (format === 'carousel') {
-    const parsed = parseBrief(format, brief);
-    errors.push(...parsed.errors);
+  // Parse into role-tagged panels (existing parser, unchanged).
+  const parsed = parseBrief(format, brief);
+  errors.push(...parsed.errors);
 
-    let i = 1;
-    for (const panel of parsed.panels) {
-      const filename = `panel-${String(i).padStart(2, '0')}.png`;
-      const file = resolve(outDir, filename);
-      try {
-        await renderPanel(panel, i, file, accent, monogramPng, wordmarkPng, slug);
-        produced.push(filename);
-      } catch (e) {
-        const msg = (e as Error).message;
-        errors.push(`panel ${i}: ${msg}`);
-      }
-      i++;
+  // Route to archetype decisions.
+  const decisions = routePanels(parsed.panels, slug);
+
+  const isCarousel = format === 'carousel';
+  const filenameAt = (i: number): string =>
+    isCarousel ? `panel-${String(i + 1).padStart(2, '0')}.png` : 'card.png';
+
+  for (let i = 0; i < decisions.length; i++) {
+    const filename = filenameAt(i);
+    const file = resolve(outDir, filename);
+    try {
+      const arch = await renderDecision(
+        decisions[i],
+        file,
+        accent,
+        monogramPng,
+        wordmarkPng,
+        slug,
+      );
+      produced.push(filename);
+      archetypes.push(arch);
+    } catch (e) {
+      const msg = (e as Error).message;
+      errors.push(`panel ${i + 1}: ${msg}`);
     }
-  } else {
-    errors.push(`unknown format: ${format}`);
   }
 
-  // Write manifest (spec'd shape — every post gets one).
   const repoBaseUrl =
     'https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output';
   const manifest = {
     post_number:  Number(post['Post #']),
     slug:         post['Slug'],
-    format:       format,
+    format,
     files:        produced,
     panel_count:  produced.length,
+    archetypes,
     raw_base_url: `${repoBaseUrl}/${slug}`,
     accent,
     errors,
@@ -122,106 +119,136 @@ export async function generatePost(post: Post): Promise<{ slug: string; panels: 
 
   if (errors.length) {
     writeFileSync(resolve(outDir, 'ERROR.txt'), errors.join('\n'));
+  } else if (existsSync(resolve(outDir, 'ERROR.txt'))) {
+    // Clear stale error file from a previous run.
+    writeFileSync(resolve(outDir, 'ERROR.txt'), '');
   }
 
-  return { slug, panels: produced, errors };
+  return { slug, panels: produced, archetypes, errors };
 }
 
-async function renderPanel(
-  panel: ParsedPanel,
-  panelIndex: number,
+async function renderDecision(
+  decision: RouteDecision,
   file: string,
   accent: string,
   monogramPng: string | undefined,
   wordmarkPng: string | undefined,
   slug: string,
-) {
-  switch (panel.role) {
-    case 'hook':
+): Promise<string> {
+  switch (decision.archetype) {
+    case 'Statement':
       await renderToPng(
-        CarouselHook({
-          hook:   panel.fields.hook ?? '',
-          kicker: panel.fields.kicker,
+        StatementArchetype({
+          quote:  decision.props.quote,
+          kicker: decision.props.kicker,
           accent,
           monogramPng,
         }),
         file,
       );
-      return;
-    case 'content':
+      return 'Statement';
+
+    case 'BigStat':
       await renderToPng(
-        CarouselContent({
-          step:  panel.fields.step,
-          title: panel.fields.title ?? '',
-          body:  panel.fields.body  ?? '',
+        BigStatArchetype({
+          primary:   decision.props.primary,
+          secondary: decision.props.secondary,
+          kicker:    decision.props.kicker,
           accent,
           monogramPng,
         }),
         file,
       );
-      return;
-    case 'stat':
+      return 'BigStat';
+
+    case 'Split':
       await renderToPng(
-        CarouselStat({
-          items: panel.fields.items ?? [],
+        SplitArchetype({
+          leftLabel:  decision.props.leftLabel,
+          leftBody:   decision.props.leftBody,
+          rightLabel: decision.props.rightLabel,
+          rightBody:  decision.props.rightBody,
+          kicker:     decision.props.kicker,
           accent,
           monogramPng,
         }),
         file,
       );
-      return;
-    case 'image': {
-      // Per-post / per-panel picker decides which real asset to embed,
-      // or returns null when no source looks intentional cover-cropped
-      // (08 zaatar, 17 pawstay). Null -> fall back to a clean content
-      // panel rather than ship a half-empty image.
-      const src = pickImageAssetForPanel(slug, panelIndex);
-      if (!src) {
-        // Image asset unsuitable for cover-crop (content concentrated in
-        // one zone of the source). Degrade to CarouselDivider — the
-        // caption centred as a Geist 600 headline above the accent
-        // rule. Reads as a section break, not a half-empty image.
+      return 'Split';
+
+    case 'StepGrid':
+      await renderToPng(
+        StepGridArchetype({
+          heading: decision.props.heading,
+          steps:   decision.props.steps,
+          kicker:  decision.props.kicker,
+          accent,
+          monogramPng,
+        }),
+        file,
+      );
+      return 'StepGrid';
+
+    case 'IndexCard':
+      await renderToPng(
+        IndexCardArchetype({
+          heading: decision.props.heading,
+          rows:    decision.props.rows,
+          kicker:  decision.props.kicker,
+          accent,
+          monogramPng,
+        }),
+        file,
+      );
+      return 'IndexCard';
+
+    case 'Product': {
+      // Look up the image source. If missing or too dark, degrade to a
+      // Statement using the caption-as-quote.
+      const src = pickImageAssetForPanel(slug, decision.props.panelIndex);
+      const tooDark = src
+        ? await isCroppedTooDark(src, PRODUCT_IMAGE_DIMS.width, PRODUCT_IMAGE_DIMS.height)
+        : true;
+      if (!src || tooDark) {
         await renderToPng(
-          CarouselDivider({
-            caption: panel.fields.caption ?? 'THE KIND OF TOOL WE BUILD',
+          StatementArchetype({
+            quote:  decision.props.caption,
+            kicker: decision.props.kicker,
             accent,
             monogramPng,
           }),
           file,
         );
-        return;
+        return 'Statement';
       }
-      // Sharp-crop to the exact panel dimensions so Satori embeds an
-      // already-correct buffer (satori does not apply object-fit: cover
-      // when the parent is flex-grow sized).
       const imgBuf = await cropToPanelBuffer(
         src,
-        PANEL_IMAGE_DIMS.width,
-        PANEL_IMAGE_DIMS.height,
+        PRODUCT_IMAGE_DIMS.width,
+        PRODUCT_IMAGE_DIMS.height,
       );
       await renderToPng(
-        CarouselImage({
+        ProductArchetype({
           imgPng:  pngBufferToDataUri(imgBuf),
-          caption: panel.fields.caption ?? 'THE KIND OF TOOL WE BUILD',
+          caption: decision.props.caption,
+          kicker:  decision.props.kicker,
           accent,
           monogramPng,
         }),
         file,
       );
-      return;
+      return 'Product';
     }
-    case 'cta':
+
+    case 'Cta':
       await renderToPng(
-        CarouselCta({
-          line: panel.fields.line ?? '',
+        CtaArchetype({
+          line: decision.props.line,
           accent,
           wordmarkPng,
         }),
         file,
       );
-      return;
-    case 'card':
-      throw new Error('card role not valid in carousel');
+      return 'Cta';
   }
 }
 

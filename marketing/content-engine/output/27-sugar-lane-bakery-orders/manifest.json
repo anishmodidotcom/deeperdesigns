@@ -10,6 +10,13 @@
     "panel-05.png"
   ],
   "panel_count": 5,
+  "archetypes": [
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "IndexCard",
+    "Cta"
+  ],
   "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/27-sugar-lane-bakery-orders",
   "accent": "#6366F1",
   "errors": []
