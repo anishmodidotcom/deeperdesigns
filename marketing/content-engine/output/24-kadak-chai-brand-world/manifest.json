@@ -1,0 +1,16 @@
+{
+  "post_number": 24,
+  "slug": "kadak-chai-brand-world",
+  "format": "carousel",
+  "files": [
+    "panel-01.png",
+    "panel-02.png",
+    "panel-03.png",
+    "panel-04.png",
+    "panel-05.png"
+  ],
+  "panel_count": 5,
+  "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/24-kadak-chai-brand-world",
+  "accent": "#D4A053",
+  "errors": []
+}

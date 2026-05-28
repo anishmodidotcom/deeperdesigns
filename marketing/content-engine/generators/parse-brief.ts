@@ -122,18 +122,42 @@ function scrubLabel(label: string | null): string {
   return joined.replace(/\s+/g, ' ').trim();
 }
 
-function classifyRole(panelText: string, isFirst: boolean): PanelRole {
-  const t = panelText.toLowerCase();
+function classifyRole(panelText: string, isFirst: boolean, roleHint?: string): PanelRole {
+  const t = ((roleHint ?? '') + ' ' + panelText).toLowerCase();
   if (/\bcta\b|wa\.me|deeperdesigns\.in/.test(t)) return 'cta';
   if (/stat block|stacked|\bstats?\b|\|/.test(t)) return 'stat';
-  if (/(photo|mockup|screenshot|ui|dashboard\b|image panel)/.test(t)) return 'image';
+  if (/(photo|mockup|screenshot|\bui\b|dashboard\b|image panel|\bimage\b)/.test(t)) return 'image';
   if (/italic serif|opening|hook/.test(t) || isFirst) return 'hook';
   return 'content';
 }
 
-function extractTitleAndBody(text: string): { title: string; body: string } {
-  // Title: a short Title-Case or bolded phrase. Body: the rest.
-  // Look for the first sentence under 8 words as title, else the first 6 words.
+// Pull a quoted field by keyword. The briefs use `title 'X' body 'Y'
+// step '01'` style markup. Matches single, double, or smart quotes.
+function quotedField(text: string, key: string): string | null {
+  const re = new RegExp(
+    `\\b${key}\\s*[:.]?\\s*(?:'([^']{1,200})'|"([^"]{1,200})"|[‘“]([^’”]{1,200})[’”])`,
+    'i',
+  );
+  const m = text.match(re);
+  if (!m) return null;
+  return sanitize(m[1] ?? m[2] ?? m[3] ?? '');
+}
+
+function extractTitleAndBody(text: string): {
+  title: string;
+  body: string;
+  step?: string;
+} {
+  // Briefs use structured markup: "title 'X' body 'Y' step '01'".
+  // Try that first.
+  const t = quotedField(text, 'title');
+  const b = quotedField(text, 'body');
+  const s = quotedField(text, 'step');
+  if (t && b) {
+    return { title: t, body: b, step: s ?? undefined };
+  }
+
+  // Fallback: first short sentence is title, the rest is body.
   const cleaned = sanitize(text);
   const sentences = cleaned.split(/(?<=[.!?])\s+/).filter(Boolean);
   let title = '';
@@ -149,15 +173,35 @@ function extractTitleAndBody(text: string): { title: string; body: string } {
       body = first;
     }
   }
-  return { title, body };
+  return { title, body, step: s ?? undefined };
 }
 
 function extractStatItems(text: string): { label: string; value: string }[] {
-  const chunks = text.split('|').map(s => s.trim()).filter(Boolean);
+  // Briefs format: "stat: 'A 5 | B 3 | C 5 DAYS'." Pull the quoted content
+  // first if present so we don't include the "stat:" marker in chunks.
+  const quoted = extractQuote(text);
+  const source = quoted ?? text;
+
+  const chunks = source.split('|').map(s => s.trim()).filter(Boolean);
   const out: { label: string; value: string }[] = [];
   for (const c of chunks) {
-    const cleaned = sanitize(c);
-    // Try "<value> <label>" — last numeric / short token is value.
+    const cleaned = sanitize(c)
+      .replace(/^stat\s*[:.]?\s*/i, '')
+      .replace(/^stats?\s+block\s*[:.]?\s*/i, '');
+    if (!cleaned) continue;
+
+    // Locate the first token that contains a digit; everything from there
+    // to the end is the value. Anything before is the label.
+    const tokens = cleaned.split(/\s+/);
+    const valueStart = tokens.findIndex(t => /\d/.test(t));
+    if (valueStart > 0) {
+      const label = tokens.slice(0, valueStart).join(' ').toUpperCase();
+      const value = tokens.slice(valueStart).join(' ');
+      out.push({ label, value });
+      continue;
+    }
+
+    // No digit — split last word as value (e.g. "STATUS LIVE").
     const m = cleaned.match(/^(.+?)\s+(\S+)$/);
     if (m) {
       out.push({ label: m[1].toUpperCase(), value: m[2] });
@@ -187,10 +231,15 @@ export function parseBrief(format: string, briefText: string): ParseResult {
     };
   }
 
-  // carousel
-  const panelMatches = [...text.matchAll(/P(\d+):\s*/g)];
+  // carousel — match the bare panel marker "P<n>". The briefs use any of:
+  //   "P1:"        "P5 hook:"        "P3 (hook):"
+  //   "P5 CTA."    "P7 stat block:"  "P4 content: title 'X'..."
+  // We split on the bare number marker, keep everything between markers as
+  // the panel body, and let classifyRole find the role keyword inside.
+  const PANEL_MARKER = /\bP(\d+)\b[:.\s)(-]*/g;
+  const panelMatches = [...text.matchAll(PANEL_MARKER)];
   if (!panelMatches.length) {
-    errors.push('carousel format but no P1: markers found; falling back to statement-card');
+    errors.push('carousel format but no P-markers found; falling back to statement-card');
     return parseBrief('statement-card', text);
   }
 
@@ -211,8 +260,13 @@ export function parseBrief(format: string, briefText: string): ParseResult {
         break;
       }
       case 'content': {
-        const { title, body } = extractTitleAndBody(panelText);
-        fields.step  = `STEP ${String(i + 1).padStart(2, '0')}`;
+        const { title, body, step } = extractTitleAndBody(panelText);
+        // Prefer the brief's explicit step ("step '01'", "step 'DAY 1-3'");
+        // fall back to a generic step indexed by panel position only if the
+        // brief asked for one (we detect that by the presence of any "step"
+        // keyword in the panel text).
+        fields.step  = step
+          ?? (panelText.toLowerCase().includes('step') ? `STEP ${String(i + 1).padStart(2, '0')}` : undefined);
         fields.title = title;
         fields.body  = body;
         if (!body) errors.push(`P${i + 1}: empty body`);
@@ -231,9 +285,18 @@ export function parseBrief(format: string, briefText: string): ParseResult {
         break;
       }
       case 'cta': {
-        const line = extractQuote(panelText) ?? extractLongestSentence(panelText);
+        // Many briefs end with terse "P5 CTA. <Accent> accent." with no
+        // quoted line. When the extracted line is empty or is a color
+        // directive (e.g. "Indigo accent"), fall back to the documented
+        // brand CTA line "We will build yours." (appears verbatim in
+        // posts 06 and 01 in the seed).
+        const quoted = extractQuote(panelText);
+        const longest = extractLongestSentence(panelText);
+        const isColorOnly =
+          longest && /^(indigo|amber|jade|teal|sage|blue|green)\s+accent[.\s]*$/i
+            .test(longest.trim());
+        const line = quoted ?? (isColorOnly || !longest ? 'We will build yours.' : longest);
         fields.line = line;
-        if (!line) errors.push(`P${i + 1}: empty CTA line`);
         break;
       }
       case 'card': // not used in carousel context
