@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
 import Hero from "./Hero";
-import Product from "./Product";
-import Examples from "./Examples";
-import Engine from "./Engine";
-import Outcomes from "./Outcomes";
+import Problem from "./Problem";
+import Gap from "./Gap";
+import HowItWorks from "./HowItWorks";
+import Brands from "./Brands";
+import BeyondTool from "./BeyondTool";
+import Output from "./Output";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import AnishNote from "@/components/AnishNote";
@@ -14,18 +16,18 @@ import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 export const metadata: Metadata = {
   title: "Deeper Content · Live Product · Deeper Designs",
   description:
-    "An AI engine that produces strategic content in your brand voice. Custom-installed once. Running forever. By Deeper Designs.",
+    "An AI engine that reasons before it generates. Funnel stage, audience, brand, thought through before any image is made. Brand-consistent social creative, by Deeper Designs.",
   openGraph: {
     title: "Deeper Content · Live Product · Deeper Designs",
     description:
-      "An AI engine that produces strategic content in your brand voice. Custom-installed once. Running forever.",
+      "An AI engine that reasons before it generates. Brand-consistent social creative, by Deeper Designs.",
     url: "/work/deeper-content",
     images: [
       {
-        url: "/images/deeper-content/hero-screenshot.png",
-        width: 1440,
-        height: 900,
-        alt: "Deeper Content · Live AI engine for brand-aware content generation",
+        url: "/images/deeper-content/card.jpg",
+        width: 1200,
+        height: 720,
+        alt: "Deeper Content · sample outputs across three brands",
       },
     ],
   },
@@ -33,8 +35,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Deeper Content · Live Product · Deeper Designs",
     description:
-      "An AI engine that produces strategic content in your brand voice. Custom-installed once. Running forever.",
-    images: ["/images/deeper-content/hero-screenshot.png"],
+      "An AI engine that reasons before it generates. Brand-consistent social creative, by Deeper Designs.",
+    images: ["/images/deeper-content/card.jpg"],
   },
   alternates: { canonical: "https://www.deeperdesigns.in/work/deeper-content" },
 };
@@ -62,26 +64,28 @@ export default function DeeperContentPage() {
           name: "Deeper Content",
           description: metadata.description as string,
           slug: "deeper-content",
-          image: "/images/deeper-content/hero-screenshot.png",
+          image: "/images/deeper-content/card.jpg",
           archetype: "a Deeper Designs product",
         })}
       />
       <Hero />
       <AnishNote
-        text="We built this because every brand we worked with kept asking for the same thing. Content that sounds like them, every time, without having to brief a designer. So we built the engine. Then we used it for ourselves first."
+        text="We kept hitting the same wall building content tools for clients. The AI made beautiful images that looked like nobody's brand. So we built the part that was missing, the reasoning layer that thinks about your brand before it makes anything."
         align="right"
         variant="inline"
       />
-      <Product />
-      <Examples />
-      <Engine />
-      <Outcomes />
-      <AboutBuild />
+      <Problem />
+      <Gap />
+      <HowItWorks />
+      <Brands />
+      <BeyondTool />
+      <Output />
       <EditorialPullQuote
-        quote="Generic AI content is the gap your audience can already see. We close it by making your tone, your audience, and your visual world part of the engine itself."
+        quote="Generic AI makes generic content. The reasoning layer is the whole product."
         attribution="DEEPER CONTENT · LIVE PRODUCT"
         accent="var(--page-accent-deeper-content)"
       />
+      <AboutBuild />
       <NextProject />
     </div>
   );
