@@ -29,6 +29,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = dirname(__filename);
 const ROOT       = resolve(__dirname, '..');
 
+// Posts that map to a live work page on deeperdesigns.in. Keyed by
+// post-number-prefixed slug. Anything not listed gets an empty string.
+// Verified resolvable (HTTP 200) before being added here.
+const SHOWCASE_URLS: Record<string, string> = {
+  '01-maple-lens-furniture-makers': 'https://deeperdesigns.in/work/maplelens',
+  '04-deeper-content-three-steps':  'https://deeperdesigns.in/work/deeper-content',
+  '06-veda-glow-skin-advisor':      'https://deeperdesigns.in/work/veda-glow',
+  '08-zaatar-republic-qsr-ops':     'https://deeperdesigns.in/work/zaatar-republic',
+  '10-smilefirst-dental-retention': 'https://deeperdesigns.in/work/smilefirst',
+  '13-stumpvision-cricket-academy': 'https://deeperdesigns.in/work/stumpvision',
+  '17-pawstay-dog-boarding':        'https://deeperdesigns.in/work/pawstay',
+  '20-karan-legal-lead-qualifier':  'https://deeperdesigns.in/work/karan-legal',
+  // 22-earth-fire-product-builder: /work/earth-fire 404s — left empty.
+  '24-kadak-chai-brand-world':      'https://deeperdesigns.in/work/kadak-chai',
+  '30-meera-wellness-yoga-portal':  'https://deeperdesigns.in/work/meera-wellness',
+};
+
 export type Post = {
   'Post #': string | number;
   'Slug': string;
@@ -109,6 +126,7 @@ export async function generatePost(post: Post): Promise<{
     panel_count:  produced.length,
     archetypes,
     raw_base_url: `${repoBaseUrl}/${slug}`,
+    showcase_url: SHOWCASE_URLS[slug] ?? '',
     accent,
     errors,
   };
