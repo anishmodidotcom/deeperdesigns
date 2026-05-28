@@ -32,14 +32,23 @@ export const TOKENS = {
 
 export type AccentName = keyof typeof TOKENS.colors;
 
-// Deterministic accent map by slug. Matched on slug substring.
-// Default = indigo.
+// Deterministic accent map by slug. Matched on slug-prefix.
+// Default = indigo. Anish-approved registry — never invent new mappings
+// here without an explicit go-ahead.
 const ACCENT_RULES: { match: RegExp; accent: AccentName }[] = [
-  { match: /^04-deeper-content-/, accent: 'teal' },
-  { match: /^06-veda-glow-/,       accent: 'jade' },
-  { match: /^30-meera-wellness-/,  accent: 'jade' },
-  { match: /^24-kadak-chai-/,      accent: 'amber' },
-  { match: /^02-bharat-steel-/,    accent: 'blue' },
+  // Brand product
+  { match: /^04-deeper-content-/,      accent: 'teal'  },
+  // Trade / industrial
+  { match: /^02-bharat-steel-/,        accent: 'blue'  },
+  // F&B / chai / heritage food brands
+  { match: /^08-zaatar-republic-/,     accent: 'amber' },
+  { match: /^16-malabar-spice-/,       accent: 'amber' },
+  { match: /^24-kadak-chai-/,          accent: 'amber' },
+  // Skincare / wellness / yoga / sage-coded calm
+  { match: /^06-veda-glow-/,           accent: 'jade'  },
+  { match: /^19-sahaja-farms-/,        accent: 'jade'  },
+  { match: /^26-nomad-trails-/,        accent: 'sage' },
+  { match: /^30-meera-wellness-/,      accent: 'sage' },
 ];
 
 export function accentForSlug(slug: string): string {
@@ -49,11 +58,15 @@ export function accentForSlug(slug: string): string {
   return TOKENS.colors.indigo;
 }
 
-// Same map but exposed by raw slug-fragment key for direct lookup.
+// Same map but exposed by exact slug for direct lookup.
 export const ACCENT_BY_SLUG: Record<string, string> = {
+  '02-bharat-steel-quote-time':    TOKENS.colors.blue,
   '04-deeper-content-three-steps': TOKENS.colors.teal,
   '06-veda-glow-skin-advisor':     TOKENS.colors.jade,
+  '08-zaatar-republic-qsr-ops':    TOKENS.colors.amber,
+  '16-malabar-spice-heritage':     TOKENS.colors.amber,
+  '19-sahaja-farms-csa':           TOKENS.colors.jade,
   '24-kadak-chai-brand-world':     TOKENS.colors.amber,
-  '02-bharat-steel-trusted-source': TOKENS.colors.blue,
-  '30-meera-wellness-yoga-portal': TOKENS.colors.jade,
+  '26-nomad-trails-trek-editorial': TOKENS.colors.sage,
+  '30-meera-wellness-yoga-portal': TOKENS.colors.sage,
 };
