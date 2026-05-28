@@ -41,7 +41,7 @@ const SHOWCASE_URLS: Record<string, string> = {
   '13-stumpvision-cricket-academy': 'https://deeperdesigns.in/work/stumpvision',
   '17-pawstay-dog-boarding':        'https://deeperdesigns.in/work/pawstay',
   '20-karan-legal-lead-qualifier':  'https://deeperdesigns.in/work/karan-legal',
-  // 22-earth-fire-product-builder: /work/earth-fire 404s — left empty.
+  '22-earth-fire-product-builder':  'https://deeperdesigns.in/work/earth-and-fire',
   '24-kadak-chai-brand-world':      'https://deeperdesigns.in/work/kadak-chai',
   '30-meera-wellness-yoga-portal':  'https://deeperdesigns.in/work/meera-wellness',
 };
