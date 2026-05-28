@@ -1,0 +1,15 @@
+{
+  "post_number": 37,
+  "slug": "thirty-second-demo-rule",
+  "format": "statement-card",
+  "files": [
+    "card.png"
+  ],
+  "panel_count": 1,
+  "archetypes": [
+    "Statement"
+  ],
+  "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/37-thirty-second-demo-rule",
+  "accent": "#6366F1",
+  "errors": []
+}

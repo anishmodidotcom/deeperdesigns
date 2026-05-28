@@ -1,0 +1,15 @@
+{
+  "post_number": 11,
+  "slug": "autobazaar-pricing-engine",
+  "format": "text",
+  "files": [
+    "card.png"
+  ],
+  "panel_count": 1,
+  "archetypes": [
+    "Statement"
+  ],
+  "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/11-autobazaar-pricing-engine",
+  "accent": "#6366F1",
+  "errors": []
+}

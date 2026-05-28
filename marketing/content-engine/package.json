@@ -1,0 +1,30 @@
+{
+  "name": "dd-content-engine",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup-fonts": "tsx scripts/setup-fonts.ts",
+    "sync-from-sheet": "tsx scripts/sync-from-sheet.ts",
+    "sync-from-seed": "tsx scripts/sync-from-seed.ts",
+    "generate": "tsx generators/generate-all.ts",
+    "generate-one": "tsx generators/generate-post.ts",
+    "sync-to-drive": "tsx scripts/sync-to-drive.ts",
+    "all": "bash scripts/run-all.sh"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0",
+    "react": "^18.3.1",
+    "satori": "^0.12.1",
+    "sharp": "^0.33.5",
+    "wawoff2": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

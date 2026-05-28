@@ -1,0 +1,25 @@
+{
+  "post_number": 30,
+  "slug": "meera-wellness-yoga-portal",
+  "format": "carousel",
+  "files": [
+    "panel-01.png",
+    "panel-02.png",
+    "panel-03.png",
+    "panel-04.png",
+    "panel-05.png",
+    "panel-06.png"
+  ],
+  "panel_count": 6,
+  "archetypes": [
+    "Statement",
+    "StepGrid",
+    "StepGrid",
+    "StepGrid",
+    "IndexCard",
+    "Cta"
+  ],
+  "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/30-meera-wellness-yoga-portal",
+  "accent": "#7A8C7A",
+  "errors": []
+}

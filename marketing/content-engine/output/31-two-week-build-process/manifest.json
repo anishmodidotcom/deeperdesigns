@@ -1,0 +1,19 @@
+{
+  "post_number": 31,
+  "slug": "two-week-build-process",
+  "format": "carousel",
+  "files": [
+    "panel-01.png",
+    "panel-02.png",
+    "panel-03.png"
+  ],
+  "panel_count": 3,
+  "archetypes": [
+    "Statement",
+    "StepGrid",
+    "Cta"
+  ],
+  "raw_base_url": "https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output/31-two-week-build-process",
+  "accent": "#6366F1",
+  "errors": []
+}
