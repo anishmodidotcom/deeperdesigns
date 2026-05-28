@@ -8,8 +8,8 @@ import {
   WORDMARK_WHITE_SVG,
   svgToPngBuffer,
   pngBufferToDataUri,
-  pickAmbientForSlug,
-  loadAmbientPngBuffer,
+  pickImageAssetForPanel,
+  cropToPanelBuffer,
   logAssetStatus,
 } from '../lib/assets.js';
 import { parseBrief, type ParsedPanel } from './parse-brief.js';
@@ -19,7 +19,8 @@ import { StatementCard }   from '../templates/statement-card.js';
 import { CarouselHook }    from '../templates/carousel-hook.js';
 import { CarouselContent } from '../templates/carousel-content.js';
 import { CarouselStat }    from '../templates/carousel-stat.js';
-import { CarouselImage }   from '../templates/carousel-image.js';
+import { CarouselImage, PANEL_IMAGE_DIMS } from '../templates/carousel-image.js';
+import { CarouselDivider } from '../templates/carousel-divider.js';
 import { CarouselCta }     from '../templates/carousel-cta.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -89,7 +90,7 @@ export async function generatePost(post: Post): Promise<{ slug: string; panels: 
       const filename = `panel-${String(i).padStart(2, '0')}.png`;
       const file = resolve(outDir, filename);
       try {
-        await renderPanel(panel, file, accent, monogramPng, wordmarkPng, slug);
+        await renderPanel(panel, i, file, accent, monogramPng, wordmarkPng, slug);
         produced.push(filename);
       } catch (e) {
         const msg = (e as Error).message;
@@ -128,6 +129,7 @@ export async function generatePost(post: Post): Promise<{ slug: string; panels: 
 
 async function renderPanel(
   panel: ParsedPanel,
+  panelIndex: number,
   file: string,
   accent: string,
   monogramPng: string | undefined,
@@ -169,13 +171,19 @@ async function renderPanel(
       );
       return;
     case 'image': {
-      const ambientPath = pickAmbientForSlug(slug);
-      if (!ambientPath) {
-        // Fallback: degrade to a content panel using whatever body text we have.
+      // Per-post / per-panel picker decides which real asset to embed,
+      // or returns null when no source looks intentional cover-cropped
+      // (08 zaatar, 17 pawstay). Null -> fall back to a clean content
+      // panel rather than ship a half-empty image.
+      const src = pickImageAssetForPanel(slug, panelIndex);
+      if (!src) {
+        // Image asset unsuitable for cover-crop (content concentrated in
+        // one zone of the source). Degrade to CarouselDivider — the
+        // caption centred as a Geist 600 headline above the accent
+        // rule. Reads as a section break, not a half-empty image.
         await renderToPng(
-          CarouselContent({
-            title: panel.fields.caption ?? 'THE KIND OF TOOL WE BUILD',
-            body:  panel.fields.body ?? 'Custom built for the operation underneath.',
+          CarouselDivider({
+            caption: panel.fields.caption ?? 'THE KIND OF TOOL WE BUILD',
             accent,
             monogramPng,
           }),
@@ -183,7 +191,14 @@ async function renderPanel(
         );
         return;
       }
-      const imgBuf = await loadAmbientPngBuffer(ambientPath, 1024);
+      // Sharp-crop to the exact panel dimensions so Satori embeds an
+      // already-correct buffer (satori does not apply object-fit: cover
+      // when the parent is flex-grow sized).
+      const imgBuf = await cropToPanelBuffer(
+        src,
+        PANEL_IMAGE_DIMS.width,
+        PANEL_IMAGE_DIMS.height,
+      );
       await renderToPng(
         CarouselImage({
           imgPng:  pngBufferToDataUri(imgBuf),

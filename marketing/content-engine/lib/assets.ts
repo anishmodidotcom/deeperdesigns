@@ -125,3 +125,67 @@ export async function loadAmbientPngBuffer(absPath: string, width = 1024): Promi
   if (!existsSync(absPath)) throw new Error(`Ambient asset not found: ${absPath}`);
   return sharp(absPath).resize({ width }).png({ compressionLevel: 9 }).toBuffer();
 }
+
+// Cover-crop a source asset to exact panel dimensions, centred. Satori's
+// `object-fit: cover` does not apply reliably when the parent is sized
+// by flex-grow, so we pre-crop with sharp and embed the already-correct
+// buffer instead.
+export async function cropToPanelBuffer(
+  absPath: string,
+  width: number,
+  height: number,
+): Promise<Buffer> {
+  if (!existsSync(absPath)) throw new Error(`Image asset not found: ${absPath}`);
+  return sharp(absPath)
+    .resize({ width, height, fit: 'cover', position: 'centre' })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+}
+
+// Per-post override of which source(s) to use for each image panel.
+// `panelIndex` is 1-based. Returns:
+//   - an absolute path to a file in /public/images/...  (preferred when
+//     real product photography exists for that slug)
+//   - null  (no good image; caller should fall back to a text/content
+//     panel rather than ship a half-empty crop)
+//
+// Reasoning per slug:
+//   01-maple-lens-furniture-makers
+//     Real 1024x1024 product photography lives in /public/images/maplelens/.
+//     Three image panels carry the workshop -> studio narrative:
+//       P2 "WORKSHOP FLOOR · PHONE · ANY ANGLE"  -> hero-workshop
+//       P4 "PHONE TO SHOT"                       -> hero-catalog
+//       P5 "PICK THE SCENE · NEW ONES WEEKLY"    -> after-02 (alt scene)
+//
+//   10-smilefirst-dental-retention, 13-stumpvision-cricket-academy
+//     Only the _ambient/ tile exists. Cover-cropped centre reads as an
+//     intentional designed UI grid (smilefirst 2x2 panels) / a row of
+//     player cards (stumpvision). Keep the ambient.
+//
+//   08-zaatar-republic-qsr-ops, 17-pawstay-dog-boarding
+//     Source content is concentrated in one zone (zaatar dashboard at
+//     top, pawstay phone at left). Centre-cropping leaves half the
+//     frame empty. Return null -> caller falls back to a text panel.
+export function pickImageAssetForPanel(
+  slug: string,
+  panelIndex: number,
+): string | null {
+  const repoImages = (p: string) => resolve(REPO_ROOT, 'public/images', p);
+
+  if (slug === '01-maple-lens-furniture-makers') {
+    if (panelIndex === 2) return repoImages('maplelens/hero-workshop.webp');
+    if (panelIndex === 4) return repoImages('maplelens/hero-catalog.webp');
+    if (panelIndex === 5) return repoImages('maplelens/after-02.webp');
+  }
+  if (slug === '10-smilefirst-dental-retention') {
+    return repoImages('_ambient/smilefirst.webp');
+  }
+  if (slug === '13-stumpvision-cricket-academy') {
+    return repoImages('_ambient/stumpvision.webp');
+  }
+  if (slug === '08-zaatar-republic-qsr-ops')  return null;
+  if (slug === '17-pawstay-dog-boarding')     return null;
+
+  // Fallback: anything else still in this batch -> try the ambient match.
+  return pickAmbientForSlug(slug);
+}
