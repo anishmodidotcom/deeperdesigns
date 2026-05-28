@@ -100,7 +100,7 @@ export async function generatePost(post: Post): Promise<{
   }
 
   const repoBaseUrl =
-    'https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/feat/content-engine/marketing/content-engine/output';
+    'https://raw.githubusercontent.com/anishmodidotcom/deeperdesigns/main/marketing/content-engine/output';
   const manifest = {
     post_number:  Number(post['Post #']),
     slug:         post['Slug'],
