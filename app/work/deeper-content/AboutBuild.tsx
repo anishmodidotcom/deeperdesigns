@@ -5,36 +5,45 @@ import { motion } from "motion/react";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const META = [
-  { k: "Product", v: "Deeper Content" },
-  { k: "Status", v: "Live, paid installations" },
-  { k: "Setup", v: "2 to 4 weeks" },
-  { k: "Live URL", v: "cge.deeperdesigns.in" },
+  { k: "Product", v: "Deeper Content (powered by CGE)" },
+  { k: "Status", v: "Live, demo-led sales" },
+  { k: "Tool", v: "cge.deeperdesigns.in" },
+  { k: "Custom installs", v: "2 to 4 weeks" },
 ];
 
 const STACK = [
-  "Claude",
-  "Gemini",
-  "Veo 3",
+  "Claude (reasoning + brief)",
+  "Gemini (image)",
+  "Veo 3 (video)",
   "Next.js",
   "Vercel",
   "Supabase",
 ];
 
 const CAPABILITIES = [
-  "Brand voice training",
-  "Persona depth layer",
-  "Visual world calibration",
-  "Custom-installed private instance",
-  "Strategic content generation",
-  "Multi-format outputs (static, carousel, reel)",
+  "Brand layer (voice, palette, register, audience, avoid-list)",
+  "Strategic reasoning engine (funnel stage, idea mode)",
+  "Brief generation before image generation",
+  "Multi-format output (static, carousel, reel)",
+  "Custom per-brand installs with private subdomains",
+  "Locked brand consistency across every generation",
 ];
 
 export default function AboutBuild() {
   return (
-    <section style={{ paddingBlock: 144, borderTop: "1px solid var(--page-border)" }}>
+    <section
+      style={{
+        paddingBlock: 144,
+        borderTop: "1px solid var(--page-border)",
+      }}
+    >
       <div
         className="container-x"
-        style={{ maxWidth: 1080, marginInline: "auto", paddingInline: "clamp(20px, 4vw, 48px)" }}
+        style={{
+          maxWidth: 1080,
+          marginInline: "auto",
+          paddingInline: "clamp(20px, 4vw, 48px)",
+        }}
       >
         <motion.p
           initial={{ opacity: 0, y: 6 }}
@@ -84,10 +93,14 @@ export default function AboutBuild() {
             color: "var(--page-text-2)",
             margin: 0,
             marginBottom: 64,
-            maxWidth: 740,
+            maxWidth: 760,
           }}
         >
-          Deeper Content is a Deeper Designs product. We designed it, built it, and use it for our own brand. The engine is live, running, and available to install for select brands. Every install is custom, trained on your voice, your visual world, your audience. We do the setup. You run it. Forever.
+          Deeper Content is a Deeper Designs product, powered by our Content
+          Generation Engine. We designed it, built it, and use it for our own
+          brand. The public tool works on any product. Brands that want the full
+          engine get a custom install, with their brand layer, their UI, their
+          voice rules, on their own subdomain.
         </motion.p>
 
         <div className="dc-build-grid">
@@ -141,7 +154,7 @@ export default function AboutBuild() {
         }
         .dc-build-row {
           display: grid;
-          grid-template-columns: 110px 1fr;
+          grid-template-columns: 140px 1fr;
           gap: 14px;
           padding-block: 10px;
           border-top: 1px solid var(--page-border);
@@ -176,13 +189,14 @@ export default function AboutBuild() {
           font-family: var(--font-geist-sans), system-ui, sans-serif;
           font-size: 14px;
           color: var(--page-text);
+          line-height: 1.45;
         }
         .dc-build-list li:last-child {
           border-bottom: 1px solid var(--page-border);
         }
         @media (min-width: 768px) {
           .dc-build-grid {
-            grid-template-columns: 1.1fr 1fr 1fr;
+            grid-template-columns: 1.1fr 1fr 1.2fr;
             gap: 48px;
           }
         }
