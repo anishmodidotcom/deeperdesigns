@@ -47,13 +47,15 @@ function showcaseCard(slug: string): CardInput | null {
 }
 
 async function loadMonogram(): Promise<string> {
-  // Read the source SVG and bake in white fill so satori does not depend
-  // on currentColor inheritance.
+  // Read the source SVG, bake in white fill so satori does not depend
+  // on currentColor inheritance, then base64-encode for the <img> src.
+  // satori's <img> SVG handling is reliable with data:image/svg+xml;base64.
   const svg = await readFile(
     join(process.cwd(), "brand/v1/logo/monogram-primary.svg"),
     "utf8",
   );
-  return svg.replace(/currentColor/g, "#FAFAFA");
+  const baked = svg.replace(/currentColor/g, "#FAFAFA");
+  return `data:image/svg+xml;base64,${Buffer.from(baked).toString("base64")}`;
 }
 
 async function loadFontBuffer(rel: string): Promise<ArrayBuffer> {
@@ -129,7 +131,7 @@ export async function GET(
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`data:image/svg+xml;utf8,${encodeURIComponent(monogram)}`}
+            src={monogram}
             width={64}
             height={32}
             alt=""
