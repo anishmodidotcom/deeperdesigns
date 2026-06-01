@@ -37,6 +37,13 @@ const SECURITY_HEADERS = [
   { key: "Content-Security-Policy", value: CSP },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Cross-Origin-Resource-Policy", value: "same-site" },
+  // F14: override any upstream-injected wildcard. Our codebase never sets
+  // ACAO, but the v15.0 audit caught `Access-Control-Allow-Origin: *` on
+  // the HTML document response. That can only be coming from the Vercel
+  // edge (e.g. on redirect responses or CDN defaults). Pinning it to our
+  // own origin here makes user-defined-header precedence win and locks
+  // the document to same-origin reads.
+  { key: "Access-Control-Allow-Origin", value: "https://www.deeperdesigns.in" },
 ] as const;
 
 const nextConfig: NextConfig = {
