@@ -32,13 +32,20 @@ export const metadata: Metadata = {
     title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
     description: "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
     url: "/work/oud-and-ember",
-    images: [{ url: "/images/oud-and-ember/hero-bottle.webp", width: 1200, height: 800, alt: "Oud & Ember · Find Your Fragrance · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/oud-and-ember",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/oud-and-ember",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
     description: "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
-    images: ["/images/oud-and-ember/hero-bottle.webp"],
+    images: ["/api/og/oud-and-ember"],
   },
   alternates: { canonical: "/work/oud-and-ember" },
 

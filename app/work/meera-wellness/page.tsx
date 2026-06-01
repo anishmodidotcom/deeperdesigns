@@ -35,13 +35,20 @@ export const metadata: Metadata = {
     title: "Meera Wellness · Wellness Hub · Deeper Designs",
     description: "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
     url: "/work/meera-wellness",
-    images: [{ url: "/images/meera-wellness/hero-pose.webp", width: 1200, height: 800, alt: "Meera Wellness · Wellness Hub · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/meera-wellness",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/meera-wellness",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Meera Wellness · Wellness Hub · Deeper Designs",
     description: "A complete wellness platform. Scheduling, client management, WhatsApp integration, and personalized programs. All in one place.",
-    images: ["/images/meera-wellness/hero-pose.webp"],
+    images: ["/api/og/meera-wellness"],
   },
   alternates: { canonical: "/work/meera-wellness" },
 

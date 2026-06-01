@@ -34,13 +34,20 @@ export const metadata: Metadata = {
     title: "Zara Fitness · Training Platform · Deeper Designs",
     description: "From followers to members. A web platform, workout engine, AI trainer, and sportswear launch for a Dubai-based fitness creator with 280K followers.",
     url: "/work/zara-fitness",
-    images: [{ url: "/images/zara-fitness/hero-zara.webp", width: 1200, height: 800, alt: "Zara Fitness · Training Platform · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/zara-fitness",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/zara-fitness",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Zara Fitness · Training Platform · Deeper Designs",
     description: "From followers to members. A web platform, workout engine, AI trainer, and sportswear launch for a Dubai-based fitness creator with 280K followers.",
-    images: ["/images/zara-fitness/hero-zara.webp"],
+    images: ["/api/og/zara-fitness"],
   },
   alternates: { canonical: "/work/zara-fitness" },
 

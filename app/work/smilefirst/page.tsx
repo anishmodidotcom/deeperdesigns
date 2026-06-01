@@ -30,13 +30,20 @@ export const metadata: Metadata = {
     title: "SmileFirst · Clinic Manager · Deeper Designs",
     description: "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
     url: "/work/smilefirst",
-    images: [{ url: "/images/smilefirst/hero-clinic.webp", width: 1200, height: 800, alt: "SmileFirst · Clinic Manager · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/smilefirst",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/smilefirst",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SmileFirst · Clinic Manager · Deeper Designs",
     description: "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
-    images: ["/images/smilefirst/hero-clinic.webp"],
+    images: ["/api/og/smilefirst"],
   },
   alternates: { canonical: "/work/smilefirst" },
 

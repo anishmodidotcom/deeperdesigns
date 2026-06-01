@@ -44,13 +44,20 @@ export const metadata: Metadata = {
     title: "Earth and Fire · Pottery Brand · Deeper Designs",
     description: "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
     url: "/work/earth-and-fire",
-    images: [{ url: "/images/earth-and-fire/hero-vase.webp", width: 1200, height: 800, alt: "Earth and Fire · Pottery Brand · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/earth-and-fire",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/earth-and-fire",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Earth and Fire · Pottery Brand · Deeper Designs",
     description: "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
-    images: ["/images/earth-and-fire/hero-vase.webp"],
+    images: ["/api/og/earth-and-fire"],
   },
   alternates: { canonical: "/work/earth-and-fire" },
 

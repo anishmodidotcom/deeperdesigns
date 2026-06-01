@@ -32,13 +32,20 @@ export const metadata: Metadata = {
     title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
     description: "A live inventory dashboard with instant quote generation. Fed by warehouse delivery slips sent over WhatsApp.",
     url: "/work/bharat-steel",
-    images: [{ url: "/images/bharat-steel/hero-coil.webp", width: 1200, height: 800, alt: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/bharat-steel",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/bharat-steel",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
     description: "A live inventory dashboard with instant quote generation. Fed by warehouse delivery slips sent over WhatsApp.",
-    images: ["/images/bharat-steel/hero-coil.webp"],
+    images: ["/api/og/bharat-steel"],
   },
   alternates: { canonical: "/work/bharat-steel" },
 

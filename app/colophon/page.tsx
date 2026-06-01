@@ -11,6 +11,20 @@ export const metadata: Metadata = {
     description: "The materials and methods of Deeper Designs.",
     url: "https://www.deeperdesigns.in/colophon",
     type: "article",
+    images: [
+      {
+        url: "/api/og/colophon",
+        width: 1200,
+        height: 630,
+        alt: "Colophon · Deeper Designs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Colophon · Deeper Designs",
+    description: "The materials and methods of Deeper Designs.",
+    images: ["/api/og/colophon"],
   },
 };
 

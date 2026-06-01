@@ -42,13 +42,20 @@ export const metadata: Metadata = {
     title: "Kadak Chai · Tea Brand · Deeper Designs",
     description: "A third-generation Mumbai tea family selling sample-room blends out of a wholesale yard. We made it a brand. Tins. A range. A site that reads like a strong cup.",
     url: "/work/kadak-chai",
-    images: [{ url: "/images/kadak-chai/hero-tin.webp", width: 1200, height: 800, alt: "Kadak Chai · Tea Brand · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/kadak-chai",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/kadak-chai",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kadak Chai · Tea Brand · Deeper Designs",
     description: "A third-generation Mumbai tea family selling sample-room blends out of a wholesale yard. We made it a brand. Tins. A range. A site that reads like a strong cup.",
-    images: ["/images/kadak-chai/hero-tin.webp"],
+    images: ["/api/og/kadak-chai"],
   },
   alternates: { canonical: "/work/kadak-chai" },
 

@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     url: "/work/deeper-content",
     images: [
       {
-        url: "/images/deeper-content/card.jpg",
+        url: "/api/og/deeper-content",
         width: 1200,
-        height: 720,
-        alt: "Deeper Content · sample outputs across three brands",
+        height: 630,
+        alt: "Deeper Designs · /work/deeper-content",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Deeper Content · Live Product · Deeper Designs",
     description:
       "An AI engine that reasons before it generates. Brand-consistent social creative, by Deeper Designs.",
-    images: ["/images/deeper-content/card.jpg"],
+    images: ["/api/og/deeper-content"],
   },
   alternates: { canonical: "https://www.deeperdesigns.in/work/deeper-content" },
 };

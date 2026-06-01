@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     url: "/work/maplelens",
     images: [
       {
-        url: "/images/maplelens/hero-catalog.webp",
-        width: 1024,
-        height: 1024,
-        alt: "Maple Lens · catalog generator for Indian furniture makers",
+        url: "/api/og/maplelens",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/maplelens",
       },
     ],
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Maple Lens · Live Product · Deeper Designs",
     description:
       "Workshop photo in. Studio shot out. A catalog generator for Indian furniture makers.",
-    images: ["/images/maplelens/hero-catalog.webp"],
+    images: ["/api/og/maplelens"],
   },
   alternates: { canonical: "/work/maplelens" },
 };
