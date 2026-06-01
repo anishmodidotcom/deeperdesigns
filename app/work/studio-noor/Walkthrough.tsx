@@ -458,7 +458,7 @@ function State3() {
           Payment Schedule
         </p>
         {[
-          { label: "Advance", state: "Paid", color: "#22C55E", glyph: "✓" },
+          { label: "Advance", state: "Paid", color: "#22C55E", glyph: "●" },
           {
             label: "Midpoint",
             state: "Due in 10 days",

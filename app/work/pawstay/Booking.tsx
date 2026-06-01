@@ -311,7 +311,7 @@ export default function Booking() {
                       flexShrink: 0,
                     }}
                   >
-                    {i % 2 === 0 ? "✓" : ""}
+                    {i % 2 === 0 ? "●" : ""}
                   </span>
                   <span
                     style={{

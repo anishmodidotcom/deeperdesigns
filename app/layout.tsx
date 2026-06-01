@@ -48,7 +48,14 @@ export const metadata: Metadata = {
     description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
     images: ["/brand/og-deeperdesigns.png"],
   },
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", media: "(prefers-color-scheme: dark)" },
+      { url: "/icon-light.svg", media: "(prefers-color-scheme: light)" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

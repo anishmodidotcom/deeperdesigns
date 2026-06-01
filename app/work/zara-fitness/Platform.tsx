@@ -255,7 +255,7 @@ export default function Platform() {
                         fontWeight: 700,
                       }}
                     >
-                      {e.checked ? "✓" : ""}
+                      {e.checked ? "●" : ""}
                     </span>
                   </li>
                 ))}

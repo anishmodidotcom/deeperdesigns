@@ -16,47 +16,86 @@ export default function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
     <>
       <nav
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
           padding: "20px var(--container-px)",
+          // State-driven background + blur stay inline; can't be a static
+          // Tailwind class because they animate between two values.
           background: scrolled ? "rgba(10,10,10,0.85)" : "transparent",
           backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-          transition: "background 300ms, border-color 300ms, backdrop-filter 300ms",
+          borderBottom: scrolled
+            ? "1px solid var(--border)"
+            : "1px solid transparent",
+          transition:
+            "background 300ms, border-color 300ms, backdrop-filter 300ms",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: "var(--container-max)", margin: "0 auto" }}>
-          <Link href="/" className="mono" style={{ letterSpacing: "0.16em", fontSize: "13px" }}>
+        <div
+          className="flex items-center justify-between mx-auto"
+          style={{ maxWidth: "var(--container-max)" }}
+        >
+          <Link
+            href="/"
+            className="mono"
+            style={{ letterSpacing: "0.16em", fontSize: "13px" }}
+          >
             DEEPER DESIGNS
           </Link>
 
-          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "32px" }}>
-            <Link href="/about" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>About</Link>
-            <Link href="/services" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Services</Link>
-            <Link href="/process" style={{ fontSize: "14px", color: "var(--fg-muted)", transition: "color 200ms" }}>Process</Link>
-            <Link href="/start-your-study" className="btn-whatsapp" style={{ padding: "10px 20px", fontSize: "14px" }}>
+          <div className="nav-desktop flex items-center gap-8">
+            <Link
+              href="/about"
+              className="text-sm transition-colors duration-200"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              About
+            </Link>
+            <Link
+              href="/services"
+              className="text-sm transition-colors duration-200"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              Services
+            </Link>
+            <Link
+              href="/process"
+              className="text-sm transition-colors duration-200"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              Process
+            </Link>
+            <Link
+              href="/start-your-study"
+              className="btn-whatsapp text-sm"
+              style={{ padding: "10px 20px" }}
+            >
               Talk to us
             </Link>
           </div>
 
           <button
-            className="nav-mobile-trigger"
+            className="nav-mobile-trigger w-10 h-10 items-center justify-center"
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            style={{ display: "none", width: "40px", height: "40px", alignItems: "center", justifyContent: "center" }}
+            style={{ display: "none" }}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
@@ -67,43 +106,71 @@ export default function Nav() {
 
       {open && (
         <div
+          className="fixed inset-0 z-[100] flex flex-col"
           style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 100,
             background: "rgba(10,10,10,0.98)",
             backdropFilter: "blur(20px)",
-            display: "flex",
-            flexDirection: "column",
             padding: "20px var(--container-px)",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "60px" }}>
-            <span className="mono" style={{ letterSpacing: "0.16em", fontSize: "13px" }}>DEEPER DESIGNS</span>
-            <button aria-label="Close menu" onClick={() => setOpen(false)} style={{ width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="flex justify-between items-center mb-[60px]">
+            <span
+              className="mono"
+              style={{ letterSpacing: "0.16em", fontSize: "13px" }}
+            >
+              DEEPER DESIGNS
+            </span>
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
           </div>
-          <nav style={{ display: "flex", flexDirection: "column", gap: "24px", fontSize: "32px" }}>
-            <Link href="/about" onClick={() => setOpen(false)}>About</Link>
-            <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
-            <Link href="/process" onClick={() => setOpen(false)}>Process</Link>
+          <nav className="flex flex-col gap-6 text-[32px]">
+            <Link href="/about" onClick={() => setOpen(false)}>
+              About
+            </Link>
+            <Link href="/services" onClick={() => setOpen(false)}>
+              Services
+            </Link>
+            <Link href="/process" onClick={() => setOpen(false)}>
+              Process
+            </Link>
           </nav>
-          <div style={{ marginTop: "auto", paddingBottom: "40px", display: "flex", flexDirection: "column", gap: "12px" }}>
-            <Link href="/start-your-study" className="btn-whatsapp" onClick={() => setOpen(false)}>
+          <div className="mt-auto pb-10 flex flex-col gap-3">
+            <Link
+              href="/start-your-study"
+              className="btn-whatsapp"
+              onClick={() => setOpen(false)}
+            >
               Talk to us
             </Link>
-            <Link href="/#gallery" className="btn-outline" onClick={() => setOpen(false)}>
+            <Link
+              href="/#gallery"
+              className="btn-outline"
+              onClick={() => setOpen(false)}
+            >
               Let&apos;s explore ideas
             </Link>
           </div>
         </div>
       )}
 
-      <style jsx>{`
+      {/* Mobile media-query toggle stays as a plain <style> block (v12
+          pattern: never re-introduce styled-jsx). */}
+      <style>{`
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
           .nav-mobile-trigger { display: flex !important; }
