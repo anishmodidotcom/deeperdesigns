@@ -14,8 +14,8 @@
   <!-- Subtle indigo glow in top-left corner -->
   <defs>
     <radialGradient id="cornerGlow" cx="0%" cy="0%" r="60%">
-      <stop offset="0%"  stop-color="#6366F1" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+      <stop offset="0%"  stop-color="#7C6CFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#7C6CFF" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#cornerGlow)"/>
@@ -36,7 +36,7 @@
   <text class="tagline" x="600" y="408" text-anchor="middle">your business actually works.</text>
 
   <!-- Bottom-left: small monogram + url -->
-  <g transform="translate(60, 552)" fill="#6366F1" fill-rule="evenodd">
+  <g transform="translate(60, 552)" fill="#7C6CFF" fill-rule="evenodd">
     <g transform="scale(0.9375)">
       <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
       <path d="M36 0 L48 0 A12 16 0 0 1 48 32 L36 32 Z M42 6 L48 6 A6 10 0 0 1 48 26 L42 26 Z"/>

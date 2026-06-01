@@ -177,7 +177,7 @@ export default function Portal() {
                       flexShrink: 0,
                     }}
                   >
-                    ✓
+                    ●
                   </span>
                   {feature}
                 </li>

@@ -30,13 +30,20 @@ export const metadata: Metadata = {
     title: "StumpVision · Academy Platform · Deeper Designs",
     description: "Gamified player profiles, trading card stats, match records, and coach reports for a 250-player cricket academy in Gurgaon.",
     url: "/work/stumpvision",
-    images: [{ url: "/images/stumpvision/hero-batsman.webp", width: 1200, height: 800, alt: "StumpVision · Academy Platform · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/stumpvision",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/stumpvision",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "StumpVision · Academy Platform · Deeper Designs",
     description: "Gamified player profiles, trading card stats, match records, and coach reports for a 250-player cricket academy in Gurgaon.",
-    images: ["/images/stumpvision/hero-batsman.webp"],
+    images: ["/api/og/stumpvision"],
   },
   alternates: { canonical: "/work/stumpvision" },
 

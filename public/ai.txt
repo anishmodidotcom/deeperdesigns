@@ -1,0 +1,20 @@
+# AI Crawling and Training Data Policy
+# Deeper Designs (www.deeperdesigns.in)
+# Last updated: 2026-06-01
+
+This site is open to AI crawlers by default. We are an AI-native studio and
+we believe in reciprocal access to public information.
+
+Content on this site MAY be used for:
+- Training general-purpose language models
+- Indexing for retrieval-augmented search
+- Use in answer engines and AI assistants
+
+Content MAY NOT be used for:
+- Generating direct copies of our brand assets (wordmark, monogram, brand v1 visual system)
+- Generating client-facing case studies that misrepresent our work
+- Training models intended to compete with our content engine (Deeper Content / CGE)
+
+Attribution requested but not required.
+
+For questions: anish.modi@deeperdesigns.in

@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     url: "/work/deeper-content",
     images: [
       {
-        url: "/images/deeper-content/card.jpg",
+        url: "/api/og/deeper-content",
         width: 1200,
-        height: 720,
-        alt: "Deeper Content · sample outputs across three brands",
+        height: 630,
+        alt: "Deeper Designs · /work/deeper-content",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Deeper Content · Live Product · Deeper Designs",
     description:
       "An AI engine that reasons before it generates. Brand-consistent social creative, by Deeper Designs.",
-    images: ["/images/deeper-content/card.jpg"],
+    images: ["/api/og/deeper-content"],
   },
   alternates: { canonical: "https://www.deeperdesigns.in/work/deeper-content" },
 };
@@ -45,8 +45,8 @@ const pageStyle = {
   "--page-bg": "#0A0A12",
   "--page-surface": "#10101A",
   "--page-surface-2": "#171724",
-  "--page-border": "rgba(99,102,241,0.16)",
-  "--page-accent": "#6366F1",
+  "--page-border": "rgba(124,108,255,0.18)",
+  "--page-accent": "#7C6CFF",
   "--accent": "var(--page-accent)",
   "--page-accent-2": "#818CF8",
   "--page-text": "#F5F5F5",

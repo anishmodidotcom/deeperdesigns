@@ -45,13 +45,20 @@ export const metadata: Metadata = {
     title: "Sugar Lane · Home Bakery · Deeper Designs",
     description: "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
     url: "/work/sugar-lane",
-    images: [{ url: "/images/sugar-lane/hero-cake.webp", width: 1200, height: 800, alt: "Sugar Lane · Home Bakery · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/sugar-lane",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/sugar-lane",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sugar Lane · Home Bakery · Deeper Designs",
     description: "A home bakery in Abu Dhabi run by Farah, who could bake forty cakes a week but only baked four. We rebuilt the order so she gets the cakes back.",
-    images: ["/images/sugar-lane/hero-cake.webp"],
+    images: ["/api/og/sugar-lane"],
   },
   alternates: { canonical: "/work/sugar-lane" },
 

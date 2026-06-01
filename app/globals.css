@@ -8,7 +8,7 @@
   --fg: #F5F5F5;
   --fg-muted: #A8A8A8;
   --fg-dim: #6B6B6B;
-  --accent: #6366F1;
+  --accent: #7C6CFF;
   --accent-dim: #4F46E5;
   --whatsapp: #25D366;
   --whatsapp-hover: #1FB855;
@@ -24,7 +24,7 @@
   --dd-text-mid: #A8A8A8;
   --dd-text-low: #6B6B6B;
   --dd-text-faint: #3A3A3A;
-  --dd-accent-primary: #6366F1;
+  --dd-accent-primary: #7C6CFF;
   --dd-accent-signal: #25D366;
   --dd-bone: #F5F4EF;
 
@@ -52,7 +52,7 @@
   --page-accent-nomad-trails:     #C44536;
   --page-accent-sugar-lane:       #A14A5C;
   --page-accent-brightpath:       #D4A857;
-  --page-accent-deeper-content:   #6366F1;
+  --page-accent-deeper-content:   #7C6CFF;
 
   /* Type scale */
   --fs-display: clamp(48px, 7vw, 96px);

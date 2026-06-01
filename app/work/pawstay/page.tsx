@@ -35,13 +35,20 @@ export const metadata: Metadata = {
     title: "PawStay · Pet Parent Portal · Deeper Designs",
     description: "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
     url: "/work/pawstay",
-    images: [{ url: "/images/pawstay/hero-dog.webp", width: 1200, height: 800, alt: "PawStay · Pet Parent Portal · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/pawstay",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/pawstay",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "PawStay · Pet Parent Portal · Deeper Designs",
     description: "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
-    images: ["/images/pawstay/hero-dog.webp"],
+    images: ["/api/og/pawstay"],
   },
   alternates: { canonical: "/work/pawstay" },
 

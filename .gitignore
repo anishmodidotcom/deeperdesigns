@@ -10,6 +10,14 @@
 !.yarn/releases
 !.yarn/versions
 
+# Lockfiles from other package managers. The project is bun-only;
+# bun.lock is the single source of truth. Vercel install pinned to bun
+# via vercel.json so foreign lockfiles cannot trigger frozen-lockfile
+# installs.
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
 # testing
 /coverage
 
@@ -39,3 +47,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Internal AI co-worker scaffolding — never commit, future sessions carry their own context.
+AGENTS.md
+CLAUDE.md
+*.agent.md
+
+# Internal cost + manifest artifacts — workshop-only, never public.
+scripts/cost-log.json
+scripts/cost-log.*.json

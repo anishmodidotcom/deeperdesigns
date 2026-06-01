@@ -1,0 +1,43 @@
+# Deeper Designs
+
+> Custom AI-powered tools for ambitious Indian businesses. We sit with founders, find the bottleneck, build the fix. From ₹25,000.
+
+## Studio
+
+- [About](https://www.deeperdesigns.in/about): Studio philosophy and founder voice
+- [Services](https://www.deeperdesigns.in/services): Productised offers and pricing tiers
+- [Process](https://www.deeperdesigns.in/process): How we work, WhatsApp to ship
+- [Colophon](https://www.deeperdesigns.in/colophon): Build stack and AI co-worker disclosure
+
+## Live products
+
+- [Maple Lens](https://www.deeperdesigns.in/work/maplelens): Workshop phone photo to catalog studio shot in 30 seconds. Live and paid.
+- [Deeper Content (CGE)](https://www.deeperdesigns.in/work/deeper-content): Brand-consistent social creative engine that reasons before it generates. Live at cge.deeperdesigns.in.
+
+## Showcases (concept builds)
+
+- [Veda Glow](https://www.deeperdesigns.in/work/veda-glow): Skin advisor for an Ayurvedic skincare brand
+- [Bharat Steel](https://www.deeperdesigns.in/work/bharat-steel): Inventory brain for a steel trader
+- [Meera Wellness](https://www.deeperdesigns.in/work/meera-wellness): Wellness hub for a yoga studio
+- [Zaatar Republic](https://www.deeperdesigns.in/work/zaatar-republic): Ops dashboard for a QSR chain
+- [Studio Noor](https://www.deeperdesigns.in/work/studio-noor): Client portal for an interior studio
+- [SmileFirst](https://www.deeperdesigns.in/work/smilefirst): Patient flow manager for a dental clinic
+- [AutoBazaar](https://www.deeperdesigns.in/work/autobazaar): Pricing engine for a used-car lot
+- [StumpVision](https://www.deeperdesigns.in/work/stumpvision): Academy platform for a cricket coaching centre
+- [Oud and Ember](https://www.deeperdesigns.in/work/oud-and-ember): Fragrance finder for a perfume atelier
+- [HiveDesk](https://www.deeperdesigns.in/work/hivedesk): Member hub for a coworking space
+- [Malabar Spice House](https://www.deeperdesigns.in/work/malabar-spice): Brand site for a heritage spice exporter
+- [PawStay](https://www.deeperdesigns.in/work/pawstay): Parent portal for a dog boarding facility
+- [Sahaja Farms](https://www.deeperdesigns.in/work/sahaja-farms): Farm dashboard for an organic CSA
+- [Karan Legal](https://www.deeperdesigns.in/work/karan-legal): Lead qualifier for an independent lawyer
+- [Zara Fitness](https://www.deeperdesigns.in/work/zara-fitness): Training platform for a fitness creator
+- [Earth and Fire](https://www.deeperdesigns.in/work/earth-and-fire): Product builder for a ceramics studio
+- [Kadak Chai](https://www.deeperdesigns.in/work/kadak-chai): Brand world for a craft chai company
+- [Nomad Trails](https://www.deeperdesigns.in/work/nomad-trails): Trip companion for a Himalayan trek outfit
+- [Sugar Lane](https://www.deeperdesigns.in/work/sugar-lane): Order studio for a home bakery
+- [BrightPath](https://www.deeperdesigns.in/work/brightpath): Parent portal for a tutoring practice
+
+## Contact
+
+- WhatsApp: https://wa.me/919968716498
+- Email: anish.modi@deeperdesigns.in

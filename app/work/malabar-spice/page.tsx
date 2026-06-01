@@ -33,13 +33,20 @@ export const metadata: Metadata = {
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
     description: "Sixty-four years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
     url: "/work/malabar-spice",
-    images: [{ url: "/images/malabar-spice/hero-pepper.webp", width: 1200, height: 800, alt: "Malabar Spice House · Heritage Brand Site · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/malabar-spice",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/malabar-spice",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
     description: "Sixty-four years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
-    images: ["/images/malabar-spice/hero-pepper.webp"],
+    images: ["/api/og/malabar-spice"],
   },
   alternates: { canonical: "/work/malabar-spice" },
 

@@ -25,7 +25,7 @@ Used across every marketing page (`/`, `/about`, `/services`, `/process`, `/star
 
 | Name | CSS variable | Hex | Usage |
 |---|---|---|---|
-| DD Indigo | `--dd-indigo` (legacy `--accent`) | `#6366F1` | Primary brand color. Eyebrows, links, italic accent text, monogram tint on marketing assets. |
+| DD Indigo | `--dd-indigo` (legacy `--accent`) | `#7C6CFF` | Primary brand color. Eyebrows, links, italic accent text, monogram tint on marketing assets. Canonical per DNA section 7. The pre-v15 hex `#6366F1` is deprecated. |
 | DD Indigo Deep | `--dd-indigo-deep` (legacy `--accent-dim`) | `#4F46E5` | Hover and pressed states for indigo elements. |
 | DD Indigo Soft | `--dd-indigo-soft` | `#818CF8` | Subtle lift / glow against dark surfaces. |
 | DD Signal | `--dd-signal` (legacy `--whatsapp`) | `#25D366` | Secondary action color. WhatsApp "Talk to us" CTA, success states. |

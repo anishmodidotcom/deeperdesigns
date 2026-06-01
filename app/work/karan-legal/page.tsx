@@ -34,13 +34,20 @@ export const metadata: Metadata = {
     title: "Karan Legal · Lead Qualifier · Deeper Designs",
     description: "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
     url: "/work/karan-legal",
-    images: [{ url: "/images/karan-legal/hero-pen.webp", width: 1200, height: 800, alt: "Karan Legal · Lead Qualifier · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/karan-legal",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/karan-legal",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Karan Legal · Lead Qualifier · Deeper Designs",
     description: "A custom prospect qualifier built for a Mumbai boutique startup lawyer. The chatbot intakes every prospect before he picks up the phone.",
-    images: ["/images/karan-legal/hero-pen.webp"],
+    images: ["/api/og/karan-legal"],
   },
   alternates: { canonical: "/work/karan-legal" },
 

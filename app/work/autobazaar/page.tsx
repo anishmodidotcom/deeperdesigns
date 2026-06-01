@@ -31,13 +31,20 @@ export const metadata: Metadata = {
     title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
     description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
     url: "/work/autobazaar",
-    images: [{ url: "/images/autobazaar/hero-sedan.webp", width: 1200, height: 800, alt: "AutoBazaar · Dynamic Pricing · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/autobazaar",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/autobazaar",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
     description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
-    images: ["/images/autobazaar/hero-sedan.webp"],
+    images: ["/api/og/autobazaar"],
   },
   alternates: { canonical: "/work/autobazaar" },
 

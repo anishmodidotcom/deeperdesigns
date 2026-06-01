@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const rate = checkRate(
+  const rate = await checkRate(
     `otpSend:${clientKey(req)}`,
     LIMITS.otpSend.limit,
     LIMITS.otpSend.windowMs
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     }
 
     const code = generateCode();
-    setCode(emailKey(email), code);
+    await setCode(emailKey(email), code);
 
     if (process.env.RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {

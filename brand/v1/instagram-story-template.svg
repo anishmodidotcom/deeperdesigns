@@ -2,13 +2,13 @@
   <title>IG story template · Big statement</title>
   <defs>
     <radialGradient id="storyGlow" cx="100%" cy="0%" r="70%">
-      <stop offset="0%"  stop-color="#6366F1" stop-opacity="0.30"/>
-      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+      <stop offset="0%"  stop-color="#7C6CFF" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#7C6CFF" stop-opacity="0"/>
     </radialGradient>
     <style>
       .eyebrow { font-family: "Geist Mono", ui-monospace, monospace; font-size: 22px; font-weight: 500; letter-spacing: 0.30em; fill: #6B6B6B; text-transform: uppercase; }
       .quote   { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 86px; font-weight: 400; fill: #F5F5F5; }
-      .quoteAcc{ font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 86px; font-weight: 400; fill: #6366F1; }
+      .quoteAcc{ font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 86px; font-weight: 400; fill: #7C6CFF; }
       .handle  { font-family: "Geist Mono", ui-monospace, monospace; font-size: 18px; font-weight: 500; letter-spacing: 0.22em; fill: #A8A8A8; text-transform: uppercase; }
       .safeLabel { font-family: "Geist Mono", ui-monospace, monospace; font-size: 13px; fill: #3A3A3A; letter-spacing: 0.16em; text-transform: uppercase; }
       .placeholder { font-family: "Geist Mono", ui-monospace, monospace; font-size: 14px; fill: #3A3A3A; letter-spacing: 0.10em; }

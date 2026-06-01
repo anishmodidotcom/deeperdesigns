@@ -31,13 +31,20 @@ export const metadata: Metadata = {
     title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
     description: "4 locations. 1,000 orders a day. Now running on data instead of gut feel. A live operations dashboard for a UAE shawarma chain.",
     url: "/work/zaatar-republic",
-    images: [{ url: "/images/zaatar-republic/hero-wrap.webp", width: 1200, height: 800, alt: "Zaatar Republic · Operations Intelligence · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/zaatar-republic",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/zaatar-republic",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
     description: "4 locations. 1,000 orders a day. Now running on data instead of gut feel. A live operations dashboard for a UAE shawarma chain.",
-    images: ["/images/zaatar-republic/hero-wrap.webp"],
+    images: ["/api/og/zaatar-republic"],
   },
   alternates: { canonical: "/work/zaatar-republic" },
 

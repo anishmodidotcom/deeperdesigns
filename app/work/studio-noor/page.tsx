@@ -31,13 +31,20 @@ export const metadata: Metadata = {
     title: "Studio Noor · Client Portal · Deeper Designs",
     description: "A living workspace where interior design clients track every detail of their home transformation. Updated daily through WhatsApp.",
     url: "/work/studio-noor",
-    images: [{ url: "/images/studio-noor/hero-room.webp", width: 1200, height: 800, alt: "Studio Noor · Client Portal · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/studio-noor",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/studio-noor",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Studio Noor · Client Portal · Deeper Designs",
     description: "A living workspace where interior design clients track every detail of their home transformation. Updated daily through WhatsApp.",
-    images: ["/images/studio-noor/hero-room.webp"],
+    images: ["/api/og/studio-noor"],
   },
   alternates: { canonical: "/work/studio-noor" },
 

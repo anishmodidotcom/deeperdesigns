@@ -2,16 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// v15 audience axis, max 4 categories: FOUNDERS, OPERATORS, TEAMS, STUDIOS.
+// Picked the strongest line per bucket from the v14 9-card set; the rest are
+// covered by individual showcase pages and the live products.
 const CARDS = [
-  { label: "FOR OPERATIONS", headline: "Your inventory updates itself.",                       sub: "No more 9 PM stock counts. No more guess-orders." },
-  { label: "FOR CUSTOMERS",  headline: "Your customers find what they came for.",              sub: "Guided journeys, smart configurators, recommendations that convert." },
-  { label: "FOR THE TEAM",   headline: "Your team stops chasing the same 6 things.",           sub: "One dashboard. One view. One source of truth." },
-  { label: "FOR PROFIT",     headline: "Pricing that responds to the market.",                 sub: "Daily, automatic, based on data your team already has." },
-  { label: "FOR THE FOUNDER",headline: "You see the bottleneck before it costs you.",          sub: "Real signals from the floor, surfaced before they become problems." },
-  { label: "FOR THE BRAND",  headline: "A site that actually sells.",                          sub: "Built around how your buyer decides, not a template." },
-  { label: "FOR REPETITION", headline: "AI handles the 80% you keep doing manually.",          sub: "WhatsApp answers, booking follow-ups, reminders, light triage." },
-  { label: "FOR SCALE",      headline: "Systems that grow with the business.",                 sub: "Not the kind you rebuild in 18 months." },
-  { label: "FOR CLARITY",    headline: "Numbers you trust, in one place.",                     sub: "Revenue, costs, customers, ops, all live, all yours." },
+  { label: "FOR FOUNDERS", headline: "You see the bottleneck before it costs you.",  sub: "Real signals from the floor, surfaced before they become problems." },
+  { label: "FOR OPERATORS", headline: "Your inventory updates itself.",              sub: "No more 9 PM stock counts. No more guess-orders." },
+  { label: "FOR TEAMS",    headline: "Your team stops chasing the same 6 things.",   sub: "One dashboard. One view. One source of truth." },
+  { label: "FOR STUDIOS",  headline: "A site that actually sells.",                   sub: "Built around how your buyer decides, not a template." },
 ];
 
 export default function HomeOutcomes() {
@@ -64,7 +62,7 @@ export default function HomeOutcomes() {
       <style>{`
         .outcomes-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 1px;
           background: var(--border);
           border: 1px solid var(--border);
@@ -80,7 +78,7 @@ export default function HomeOutcomes() {
           border-color: var(--accent);
         }
         .outcome-card:hover .outcome-headline {
-          text-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
+          text-shadow: 0 0 24px rgba(124, 108, 255, 0.45);
         }
         .outcome-label {
           font-family: var(--font-geist-mono), ui-monospace, monospace;

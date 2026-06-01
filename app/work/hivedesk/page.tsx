@@ -32,13 +32,20 @@ export const metadata: Metadata = {
     title: "HiveDesk · Member Hub · Deeper Designs",
     description: "A coworking operating system that runs the floor, profiles every member, and tells the owner where the revenue actually leaks.",
     url: "/work/hivedesk",
-    images: [{ url: "/images/hivedesk/hero-space.webp", width: 1200, height: 800, alt: "HiveDesk · Member Hub · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/hivedesk",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/hivedesk",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "HiveDesk · Member Hub · Deeper Designs",
     description: "A coworking operating system that runs the floor, profiles every member, and tells the owner where the revenue actually leaks.",
-    images: ["/images/hivedesk/hero-space.webp"],
+    images: ["/api/og/hivedesk"],
   },
   alternates: { canonical: "/work/hivedesk" },
 

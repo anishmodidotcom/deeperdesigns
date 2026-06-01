@@ -15,7 +15,7 @@ export default function HomeFounderQuote() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse at 50% 30%, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0) 60%)",
+            "radial-gradient(ellipse at 50% 30%, rgba(124, 108, 255, 0.06) 0%, rgba(124, 108, 255, 0) 60%)",
           pointerEvents: "none",
         }}
       />

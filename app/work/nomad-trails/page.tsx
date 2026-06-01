@@ -49,13 +49,20 @@ export const metadata: Metadata = {
     title: "Nomad Trails · Trek Outfit · Deeper Designs",
     description: "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
     url: "/work/nomad-trails",
-    images: [{ url: "/images/nomad-trails/hero-ridge.webp", width: 1200, height: 800, alt: "Nomad Trails · Trek Outfit · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/nomad-trails",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/nomad-trails",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nomad Trails · Trek Outfit · Deeper Designs",
     description: "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
-    images: ["/images/nomad-trails/hero-ridge.webp"],
+    images: ["/api/og/nomad-trails"],
   },
   alternates: { canonical: "/work/nomad-trails" },
 

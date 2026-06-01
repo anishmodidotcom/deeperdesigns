@@ -37,13 +37,20 @@ export const metadata: Metadata = {
     title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
     description: "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
     url: "/work/sahaja-farms",
-    images: [{ url: "/images/sahaja-farms/hero-field.webp", width: 1200, height: 800, alt: "Sahaja Farms · Farm Management Dashboard · Deeper Designs" }],
+    images: [
+      {
+        url: "/api/og/sahaja-farms",
+        width: 1200,
+        height: 630,
+        alt: "Deeper Designs · /work/sahaja-farms",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
     description: "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
-    images: ["/images/sahaja-farms/hero-field.webp"],
+    images: ["/api/og/sahaja-farms"],
   },
   alternates: { canonical: "/work/sahaja-farms" },
 

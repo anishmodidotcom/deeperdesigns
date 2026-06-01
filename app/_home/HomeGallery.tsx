@@ -279,7 +279,7 @@ export default function HomeGallery() {
           right: 0;
           bottom: -100%;
           padding: 10px 12px;
-          background: linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.16) 100%);
+          background: linear-gradient(180deg, transparent 0%, rgba(124,108,255,0.16) 100%);
           backdrop-filter: blur(2px);
           border-top: 1px solid var(--accent);
           transition: bottom 280ms cubic-bezier(0.16, 1, 0.3, 1);
