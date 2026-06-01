@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "An Ayurvedic skincare brand got a skin advisor that answers every customer in two minutes, so the founder stopped losing her week to DMs.",
   openGraph: {
     title: "Veda Glow · Skin Advisor · Deeper Designs",
-    description: "AI-powered Ayurvedic skin consultation. A 2-minute personalized routine that replaces a 45-minute DM conversation.",
+    description: "A skin advisor for an Ayurvedic skincare brand that recommends like the founder would, every time, in under two minutes.",
     url: "/work/veda-glow",
     images: [
       {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Veda Glow · Skin Advisor · Deeper Designs",
-    description: "AI-powered Ayurvedic skin consultation. A 2-minute personalized routine that replaces a 45-minute DM conversation.",
+    description: "A skin advisor for an Ayurvedic skincare brand that recommends like the founder would, every time, in under two minutes.",
     images: ["/api/og/veda-glow"],
   },
   alternates: { canonical: "/work/veda-glow" },
