@@ -1,42 +1,36 @@
 import Image from "next/image";
 
+// v15 discipline axis, max 3: DESIGN, BUILD, OPS.
+// Tooling consolidated from the earlier 7-group taxonomy. BUILD now spans
+// AI models + framework + data; OPS spans automation + analytics + distribution.
 const GROUPS = [
-  { label: "AI + MODELS", items: [
+  { label: "DESIGN", items: [
+    { name: "Figma", logo: "/logos/figma.svg" },
+    { name: "Framer", logo: "/logos/framer.svg" },
+  ]},
+  { label: "BUILD", items: [
     { name: "Claude", logo: "/logos/anthropic.svg" },
     { name: "ChatGPT", logo: "/logos/openai.svg" },
     { name: "Gemini", logo: "/logos/googlegemini.svg" },
-    { name: "Perplexity", logo: "/logos/perplexity.svg" },
-  ]},
-  { label: "BUILD + CODE", items: [
+    { name: "Claude Code", logo: "/logos/claude.svg" },
+    { name: "Cursor", logo: "/logos/cursor.svg" },
     { name: "Next.js", logo: "/logos/nextdotjs.svg" },
     { name: "React", logo: "/logos/react.svg" },
     { name: "Vercel", logo: "/logos/vercel.svg" },
     { name: "GitHub", logo: "/logos/github.svg" },
-    { name: "Cursor", logo: "/logos/cursor.svg" },
-    { name: "Claude Code", logo: "/logos/claude.svg" },
-  ]},
-  { label: "BACKEND + DATA", items: [
     { name: "Supabase", logo: "/logos/supabase.svg" },
     { name: "PostgreSQL", logo: "/logos/postgresql.svg" },
     { name: "Resend", logo: "/logos/resend.svg" },
     { name: "Cloudflare", logo: "/logos/cloudflare.svg" },
   ]},
-  { label: "AUTOMATION", items: [
+  { label: "OPS", items: [
     { name: "n8n", logo: "/logos/n8n.svg" },
     { name: "Zapier", logo: "/logos/zapier.svg" },
     { name: "Make", logo: "/logos/make.svg" },
-  ]},
-  { label: "DESIGN", items: [
-    { name: "Figma", logo: "/logos/figma.svg" },
-    { name: "Framer", logo: "/logos/framer.svg" },
-  ]},
-  { label: "OPS + ANALYTICS", items: [
     { name: "PostHog", logo: "/logos/posthog.svg" },
-    { name: "Notion", logo: "/logos/notion.svg" },
     { name: "Linear", logo: "/logos/linear.svg" },
+    { name: "Notion", logo: "/logos/notion.svg" },
     { name: "Google Analytics", logo: "/logos/googleanalytics.svg" },
-  ]},
-  { label: "DISTRIBUTION", items: [
     { name: "WhatsApp", logo: "/logos/whatsapp.svg" },
     { name: "Meta Ads", logo: "/logos/meta.svg" },
     { name: "Google Ads", logo: "/logos/googleads.svg" },
