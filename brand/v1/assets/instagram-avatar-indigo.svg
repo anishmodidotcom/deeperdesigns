@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Deeper Designs">
   <title>Deeper Designs · Instagram avatar</title>
-  <rect width="1080" height="1080" fill="#6366F1"/>
+  <rect width="1080" height="1080" fill="#7C6CFF"/>
   <g transform="translate(220, 380)" fill="#0A0A0A" fill-rule="evenodd">
     <g transform="scale(10)">
       <path d="M4 0 L16 0 A12 16 0 0 1 16 32 L4 32 Z M10 6 L16 6 A6 10 0 0 1 16 26 L10 26 Z"/>
@@ -8,5 +8,5 @@
     </g>
   </g>
   <!-- Stencil cut: paint bg color over middle of monogram -->
-  <rect x="0" y="520" width="1080" height="40" fill="#6366F1"/>
+  <rect x="0" y="520" width="1080" height="40" fill="#7C6CFF"/>
 </svg>

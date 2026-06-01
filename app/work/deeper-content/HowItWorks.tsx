@@ -309,8 +309,8 @@ export default function HowItWorks() {
         }
         .dc-hw-chip--on {
           color: var(--page-accent-2);
-          border-color: rgba(99,102,241,0.5);
-          background: rgba(99,102,241,0.08);
+          border-color: rgba(124,108,255,0.5);
+          background: rgba(124,108,255,0.08);
         }
         .dc-hw-brief {
           padding-top: 22px;

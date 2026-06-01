@@ -100,7 +100,7 @@ export default function HomeHero() {
               transform: `rotate(${img.rotate}deg)`,
               borderRadius: "12px",
               overflow: "hidden",
-              boxShadow: "0 0 80px 8px rgba(99, 102, 241, 0.25), 0 20px 60px rgba(0,0,0,0.6)",
+              boxShadow: "0 0 80px 8px rgba(124, 108, 255, 0.25), 0 20px 60px rgba(0,0,0,0.6)",
               animationDelay: `${img.delay}s`,
             }}
           >

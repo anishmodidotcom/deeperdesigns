@@ -28,7 +28,7 @@
   --dd-text-on-light: #0A0A0A;
 
   /* ---------- Brand accents ---------- */
-  --dd-indigo:        #6366F1;   /* primary brand */
+  --dd-indigo:        #7C6CFF;   /* primary brand (canonical DD Indigo, DNA section 7) */
   --dd-indigo-deep:   #4F46E5;   /* hover, pressed */
   --dd-indigo-soft:   #818CF8;   /* lift, glow */
   --dd-signal:        #25D366;   /* secondary, action signal */

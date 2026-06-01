@@ -93,9 +93,9 @@
   <text class="h2" x="64" y="616">BRAND · PRIMARY + SIGNAL</text>
   <g transform="translate(64, 636)">
     <g>
-      <rect width="140" height="140" fill="#6366F1"/>
+      <rect width="140" height="140" fill="#7C6CFF"/>
       <text class="name"  x="12" y="106">DD INDIGO</text>
-      <text class="hex"   x="12" y="124">#6366F1</text>
+      <text class="hex"   x="12" y="124">#7C6CFF</text>
     </g>
     <g transform="translate(156,0)">
       <rect width="140" height="140" fill="#4F46E5"/>

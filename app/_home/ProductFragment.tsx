@@ -45,7 +45,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
             </div>
             <div style={{ display: "flex", gap: "4px" }}>
               {["VATA", "PITTA", "KAPHA"].map((d, i) => (
-                <span key={d} style={{ fontSize: "7px", padding: "2px 5px", borderRadius: "8px", border: "1px solid", borderColor: i === 0 ? "var(--accent)" : "var(--border)", color: i === 0 ? "var(--accent)" : "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.06em", background: i === 0 ? "rgba(99,102,241,0.1)" : "transparent" }}>{d}</span>
+                <span key={d} style={{ fontSize: "7px", padding: "2px 5px", borderRadius: "8px", border: "1px solid", borderColor: i === 0 ? "var(--accent)" : "var(--border)", color: i === 0 ? "var(--accent)" : "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.06em", background: i === 0 ? "rgba(124,108,255,0.1)" : "transparent" }}>{d}</span>
               ))}
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
       return (
         <div style={fragWrap}>
           <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px", fontWeight: 600, color: "#fff", boxShadow: "0 0 12px rgba(99,102,241,0.4)" }}>R</div>
+            <div style={{ width: "40px", height: "40px", borderRadius: "8px", background: "linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px", fontWeight: 600, color: "#fff", boxShadow: "0 0 12px rgba(124,108,255,0.4)" }}>R</div>
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               <div style={{ fontSize: "10px", color: "var(--fg)", fontWeight: 500 }}>RAHUL S.</div>
               <div style={{ display: "flex", gap: "8px" }}>
@@ -206,7 +206,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         <div style={fragWrap}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
             <svg width="22" height="36" viewBox="0 0 24 40" fill="none">
-              <path d="M9 4h6v6h2v4h-1v22a2 2 0 01-2 2H10a2 2 0 01-2-2V14H7v-4h2V4z" stroke="var(--accent)" strokeWidth="1" fill="rgba(99,102,241,0.08)"/>
+              <path d="M9 4h6v6h2v4h-1v22a2 2 0 01-2 2H10a2 2 0 01-2-2V14H7v-4h2V4z" stroke="var(--accent)" strokeWidth="1" fill="rgba(124,108,255,0.08)"/>
               <line x1="11" y1="20" x2="13" y2="20" stroke="var(--accent)" strokeWidth="1"/>
             </svg>
             <div style={{ fontSize: "8px", color: "var(--fg-muted)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>YOUR BLEND</div>
@@ -236,7 +236,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
               { w: "40%", label: "48" },
               { w: "20%", label: "12" }
             ].map((s, i) => (
-              <div key={i} style={{ width: s.w, height: "7px", background: i === 3 ? "var(--accent)" : "rgba(99,102,241,0.3)", borderRadius: "1px", boxShadow: i === 3 ? "0 0 4px var(--accent)" : "none", display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: "4px" }}>
+              <div key={i} style={{ width: s.w, height: "7px", background: i === 3 ? "var(--accent)" : "rgba(124,108,255,0.3)", borderRadius: "1px", boxShadow: i === 3 ? "0 0 4px var(--accent)" : "none", display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: "4px" }}>
                 <span style={{ fontSize: "6px", color: i === 3 ? "#fff" : "var(--fg-dim)", fontFamily: "var(--font-geist-mono)" }}>{s.label}</span>
               </div>
             ))}
@@ -248,7 +248,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
       return (
         <div style={fragWrap}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
-            <div style={{ fontSize: "28px", fontWeight: 500, color: "var(--accent)", lineHeight: 1, textShadow: "0 0 16px rgba(99,102,241,0.5)" }}>1,200</div>
+            <div style={{ fontSize: "28px", fontWeight: 500, color: "var(--accent)", lineHeight: 1, textShadow: "0 0 16px rgba(124,108,255,0.5)" }}>1,200</div>
             <div style={{ fontSize: "8px", color: "var(--fg-muted)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.12em" }}>MEMBERS</div>
           </div>
         </div>
@@ -259,7 +259,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         <div style={fragWrap}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
             <svg width="28" height="36" viewBox="0 0 30 36" fill="none">
-              <path d="M8 6 Q15 4 22 6 L22 16 Q22 32 15 32 Q8 32 8 16 Z" stroke="var(--accent)" strokeWidth="1" fill="rgba(99,102,241,0.06)"/>
+              <path d="M8 6 Q15 4 22 6 L22 16 Q22 32 15 32 Q8 32 8 16 Z" stroke="var(--accent)" strokeWidth="1" fill="rgba(124,108,255,0.06)"/>
             </svg>
             <div style={{ display: "flex", gap: "4px" }}>
               {["#8B4513", "#D4A373", "#3D5A4C"].map((c, i) => (
@@ -305,8 +305,8 @@ export default function ProductFragment({ slug }: FragmentProps) {
         <div style={fragWrap}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
             <svg width="32" height="28" viewBox="0 0 32 28" fill="none">
-              <rect x="6" y="14" width="20" height="10" rx="1" fill="rgba(99,102,241,0.15)" stroke="var(--accent)" strokeWidth="1"/>
-              <rect x="9" y="9" width="14" height="6" rx="1" fill="rgba(99,102,241,0.25)" stroke="var(--accent)" strokeWidth="1"/>
+              <rect x="6" y="14" width="20" height="10" rx="1" fill="rgba(124,108,255,0.15)" stroke="var(--accent)" strokeWidth="1"/>
+              <rect x="9" y="9" width="14" height="6" rx="1" fill="rgba(124,108,255,0.25)" stroke="var(--accent)" strokeWidth="1"/>
               <circle cx="12" cy="6" r="1" fill="var(--accent)"/>
               <circle cx="16" cy="6" r="1" fill="var(--accent)"/>
               <circle cx="20" cy="6" r="1" fill="var(--accent)"/>
@@ -360,7 +360,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
                 height: "16px",
                 border: "1px solid var(--accent)",
                 transform: "rotate(45deg)",
-                boxShadow: "0 0 6px rgba(99,102,241,0.4)",
+                boxShadow: "0 0 6px rgba(124,108,255,0.4)",
                 marginBlock: "2px",
               }}
             />
@@ -378,7 +378,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
                   key={i}
                   style={{
                     aspectRatio: "1 / 1",
-                    background: i % 2 === 0 ? "rgba(99,102,241,0.7)" : "rgba(99,102,241,0.3)",
+                    background: i % 2 === 0 ? "rgba(124,108,255,0.7)" : "rgba(124,108,255,0.3)",
                     borderRadius: "1px",
                   }}
                 />

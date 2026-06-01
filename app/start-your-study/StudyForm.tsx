@@ -459,7 +459,7 @@ function PillRadio({ active, onClick, children }: { active: boolean; onClick: ()
         borderRadius: "10px",
         border: "1px solid",
         borderColor: active ? "var(--accent)" : "var(--border-strong)",
-        background: active ? "rgba(99,102,241,0.12)" : "transparent",
+        background: active ? "rgba(124,108,255,0.12)" : "transparent",
         color: active ? "var(--fg)" : "var(--fg-muted)",
         fontSize: "15px",
         transition: "all 150ms var(--ease-out)",

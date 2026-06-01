@@ -85,7 +85,7 @@ export default function Hero() {
             padding: "6px 14px",
             borderRadius: 9999,
             border: "1px solid var(--page-border)",
-            background: "rgba(99,102,241,0.08)",
+            background: "rgba(124,108,255,0.08)",
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 11,
             letterSpacing: "0.22em",

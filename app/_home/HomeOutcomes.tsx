@@ -80,7 +80,7 @@ export default function HomeOutcomes() {
           border-color: var(--accent);
         }
         .outcome-card:hover .outcome-headline {
-          text-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
+          text-shadow: 0 0 24px rgba(124, 108, 255, 0.45);
         }
         .outcome-label {
           font-family: var(--font-geist-mono), ui-monospace, monospace;

@@ -100,7 +100,7 @@ export default function HomeLiveBuilds() {
         }
         .hlb-card:hover {
           transform: translateY(-2px);
-          border-color: rgba(99, 102, 241, 0.3);
+          border-color: rgba(124, 108, 255, 0.3);
         }
         .hlb-status {
           font-family: var(--font-geist-mono), ui-monospace, monospace;

@@ -7,7 +7,7 @@ A short, opinionated spec. The system is editorial-meets-OS: type does most of t
 ### Wordmark — "DEEPER DESIGNS"
 
 - Geist Sans, weight 600, all caps, letter-spacing `0.16em`.
-- Three locked colors: `#F5F5F5` (white), `#0A0A0A` (black), `#6366F1` (indigo).
+- Three locked colors: `#F5F5F5` (white), `#0A0A0A` (black), `#7C6CFF` (indigo).
 - Clearspace: minimum `0.5x` cap height on all sides.
 - Minimum render size: 88px wide (any smaller, use the monogram).
 - Files: `logo/logo-wordmark-{white,black,indigo}.svg`.
@@ -43,7 +43,7 @@ See `tokens.css` for the full set. Live swatch sheet at `palette/swatch-sheet.sv
 | Text high | `--dd-text-high` | `#F5F5F5` |
 | Text mid | `--dd-text-mid` | `#A8A8A8` |
 | Text low | `--dd-text-low` | `#6B6B6B` |
-| Primary brand | `--dd-indigo` | `#6366F1` |
+| Primary brand | `--dd-indigo` | `#7C6CFF` |
 | Signal / action | `--dd-signal` | `#25D366` |
 
 All 21 showcase accents are namespaced `--dd-acc-<slug>` and locked to the slug. Do not reuse one showcase's accent on a different page.
