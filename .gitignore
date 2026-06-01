@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Internal AI co-worker scaffolding — never commit, future sessions carry their own context.
+AGENTS.md
+CLAUDE.md
+*.agent.md
+
+# Internal cost + manifest artifacts — workshop-only, never public.
+scripts/cost-log.json
+scripts/cost-log.*.json
