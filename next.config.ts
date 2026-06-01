@@ -1,16 +1,24 @@
 import type { NextConfig } from "next";
 
 // Content-Security-Policy.
-// Tailwind v4 and the inline-styled showcase pages need `style-src 'unsafe-inline'`.
-// Vercel Analytics needs vercel.live + va.vercel-scripts.com on script/connect.
-// Per-site links into deeperdesigns subdomains (cge.deeperdesigns.in, etc.)
-// land via img + connect; allow *.deeperdesigns.in across the relevant directives.
+//
+// v15.2 reality check on A+: every page in this site is statically
+// prerendered, so Next.js cannot inject the per-request nonce into the
+// framework chunk <script> tags (the runtime never sees the request that
+// would carry the nonce — the HTML was baked at build time). Forcing
+// every page through `connection()` to opt out of static prerendering
+// would cost site-wide TTFB for one letter on securityheaders.com.
+// Per v15.2 spec, A is accepted as the platform constraint and we stay
+// with `'unsafe-inline'` on script-src.
+//
+// Tailwind v4 and the inline-styled showcase pages also need
+// `style-src 'unsafe-inline'`.
+// Vercel Analytics needs vercel.live + va.vercel-scripts.com on
+// script/connect. Per-site links into deeperdesigns subdomains
+// (cge.deeperdesigns.in, etc.) land via img + connect; allow
+// *.deeperdesigns.in across the relevant directives.
 const CSP = [
   "default-src 'self'",
-  // 'unsafe-inline' is required for the Next.js App Router hydration boot
-  // and route-prefetch scripts. 'unsafe-eval' is kept defensively for
-  // libraries that compile expressions at runtime (some font / analytics
-  // shims need it). Tighten to a nonce-based policy in a follow-up PR.
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' data: https://fonts.gstatic.com",
