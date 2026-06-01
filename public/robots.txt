@@ -1,0 +1,46 @@
+# Deeper Designs is built by and for an AI-native studio.
+# We do not block AI crawlers by default.
+# Our training-data policy is at https://www.deeperdesigns.in/ai.txt
+# Our LLM disclosure policy is at https://www.deeperdesigns.in/llm.txt
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgili
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+Host: https://www.deeperdesigns.in
+Sitemap: https://www.deeperdesigns.in/sitemap.xml
