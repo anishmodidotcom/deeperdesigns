@@ -10,6 +10,14 @@
 !.yarn/releases
 !.yarn/versions
 
+# Lockfiles from other package managers. The project is bun-only;
+# bun.lock is the single source of truth. Vercel install pinned to bun
+# via vercel.json so foreign lockfiles cannot trigger frozen-lockfile
+# installs.
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
 # testing
 /coverage
 
