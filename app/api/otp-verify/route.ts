@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const rate = checkRate(
+  const rate = await checkRate(
     `otpVerify:${clientKey(req)}`,
     LIMITS.otpVerify.limit,
     LIMITS.otpVerify.windowMs
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const result = verifyCode(emailKey(email), otp);
+    const result = await verifyCode(emailKey(email), otp);
     if (!result.ok) {
       return NextResponse.json(
         { ok: false, error: result.reason },

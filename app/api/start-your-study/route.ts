@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const rate = checkRate(
+  const rate = await checkRate(
     `submit:${clientKey(req)}`,
     LIMITS.submit.limit,
     LIMITS.submit.windowMs

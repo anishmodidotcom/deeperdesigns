@@ -1,10 +1,17 @@
-// In-memory rate limiter and Origin guard for API routes.
-// Buckets reset on server boot. Good enough for the launch volume;
-// move to Upstash or Vercel KV when traffic grows.
+// Rate limiter and Origin guard for API routes.
+//
+// Storage strategy: Vercel KV (Redis) when KV_REST_API_URL is set,
+// in-memory Map otherwise. The in-memory fallback is intentional —
+// pre-flight 2 of v15 requires this path to keep working before the
+// KV instance is provisioned in the Vercel dashboard.
+
+import { kv } from "@vercel/kv";
+
+const KV_ENABLED = !!process.env.KV_REST_API_URL;
 
 type Bucket = { count: number; resetAt: number };
 
-const buckets = new Map<string, Bucket>();
+const inMemoryBuckets = new Map<string, Bucket>();
 
 const ALLOWED_ORIGINS = [
   "https://deeperdesigns.in",
@@ -26,16 +33,36 @@ export function clientKey(req: Request): string {
   return ip;
 }
 
-// Returns true if request is within limit, false if rate limit hit.
-export function checkRate(
+async function readBucket(key: string): Promise<Bucket | null> {
+  if (KV_ENABLED) {
+    return (await kv.get<Bucket>(key)) ?? null;
+  }
+  return inMemoryBuckets.get(key) ?? null;
+}
+
+async function writeBucket(key: string, bucket: Bucket, ttlSec: number): Promise<void> {
+  if (KV_ENABLED) {
+    await kv.set(key, bucket, { ex: ttlSec });
+    return;
+  }
+  inMemoryBuckets.set(key, bucket);
+}
+
+// Returns ok=true if request is within limit, ok=false if rate limit hit.
+export async function checkRate(
   key: string,
   limit: number,
-  windowMs: number
-): { ok: true } | { ok: false; retryAfterSeconds: number } {
+  windowMs: number,
+): Promise<{ ok: true } | { ok: false; retryAfterSeconds: number }> {
+  const fullKey = `rl:${key}`;
   const now = Date.now();
-  const bucket = buckets.get(key);
+  const bucket = await readBucket(fullKey);
   if (!bucket || bucket.resetAt < now) {
-    buckets.set(key, { count: 1, resetAt: now + windowMs });
+    await writeBucket(
+      fullKey,
+      { count: 1, resetAt: now + windowMs },
+      Math.ceil(windowMs / 1000),
+    );
     return { ok: true };
   }
   if (bucket.count >= limit) {
@@ -44,7 +71,11 @@ export function checkRate(
       retryAfterSeconds: Math.max(1, Math.ceil((bucket.resetAt - now) / 1000)),
     };
   }
-  bucket.count += 1;
+  await writeBucket(
+    fullKey,
+    { count: bucket.count + 1, resetAt: bucket.resetAt },
+    Math.max(1, Math.ceil((bucket.resetAt - now) / 1000)),
+  );
   return { ok: true };
 }
 
