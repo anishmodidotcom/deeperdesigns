@@ -7,6 +7,20 @@ export const metadata: Metadata = {
   title: "About · Deeper Designs",
   description: "A studio that builds custom tools and operational systems for ambitious businesses. Founded 2017.",
   alternates: { canonical: "https://www.deeperdesigns.in/about" },
+  openGraph: {
+    title: "About · Deeper Designs",
+    description: "A studio that builds custom tools and operational systems for ambitious businesses. Founded 2017.",
+    url: "https://www.deeperdesigns.in/about",
+    siteName: "Deeper Designs",
+    images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "About · Deeper Designs" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About · Deeper Designs",
+    description: "A studio that builds custom tools and operational systems for ambitious businesses. Founded 2017.",
+    images: ["/brand/og-deeperdesigns.png"],
+  },
 };
 
 export default function About() {

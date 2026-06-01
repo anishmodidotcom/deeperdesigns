@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: "Process · Deeper Designs",
   description: "From conversation to live, in two to four weeks. Five steps, no long brief.",
   alternates: { canonical: "https://www.deeperdesigns.in/process" },
+  openGraph: {
+    title: "Process · Deeper Designs",
+    description: "From conversation to live, in two to four weeks. Five steps, no long brief.",
+    url: "https://www.deeperdesigns.in/process",
+    siteName: "Deeper Designs",
+    images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Process · Deeper Designs" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Process · Deeper Designs",
+    description: "From conversation to live, in two to four weeks. Five steps, no long brief.",
+    images: ["/brand/og-deeperdesigns.png"],
+  },
 };
 
 const STEPS = [

@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: "Services · Deeper Designs",
   description: "Custom internal tools, customer-facing tools, websites, AI agents, operational systems. From ₹25,000.",
   alternates: { canonical: "https://www.deeperdesigns.in/services" },
+  openGraph: {
+    title: "Services · Deeper Designs",
+    description: "Custom internal tools, customer-facing tools, websites, AI agents, operational systems. From ₹25,000.",
+    url: "https://www.deeperdesigns.in/services",
+    siteName: "Deeper Designs",
+    images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Services · Deeper Designs" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services · Deeper Designs",
+    description: "Custom internal tools, customer-facing tools, websites, AI agents, operational systems. From ₹25,000.",
+    images: ["/brand/og-deeperdesigns.png"],
+  },
 };
 
 const TIERS: { name: string; price: string; body: string; examples: string[] }[] = [
