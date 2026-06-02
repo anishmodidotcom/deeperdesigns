@@ -149,7 +149,7 @@ export default function Hero() {
               }}
             >
               <motion.span
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0.35 }}
                 animate={{ opacity: 1 }}
                 transition={{
                   duration: 0.4,
@@ -182,7 +182,7 @@ export default function Hero() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.35 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 1.2, ease: EASE }}
           style={{

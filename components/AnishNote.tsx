@@ -97,6 +97,24 @@ export default function AnishNote({
           margin: 48px auto;
           padding-inline: var(--container-px, 24px);
         }
+        /* F9 (v16): on desktop, even the "inline" variant aligns to the
+           right margin of the container so the note reads as a margin
+           annotation, consistent with the homepage and /about pattern.
+           Mobile stays centred for column legibility. */
+        @media (min-width: 1024px) {
+          .anish-note--inline.anish-note--right {
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: 0;
+            padding-right: var(--container-px, 24px);
+          }
+          .anish-note--inline.anish-note--left {
+            max-width: 420px;
+            margin-right: auto;
+            margin-left: 0;
+            padding-left: var(--container-px, 24px);
+          }
+        }
       `}</style>
     </aside>
   );

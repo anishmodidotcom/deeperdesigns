@@ -27,6 +27,22 @@ const FEED: Event[] = [
 export default function ActivityFeed() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(0);
+  // F5 (v16): the LIVE FEED card is position:fixed and was bleeding into
+  // the global footer. Hide it when the footer enters view, same pattern
+  // as components/WhatsAppButton.
+  const [hiddenByFooter, setHiddenByFooter] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const io = new IntersectionObserver(
+      (entries) => setHiddenByFooter(entries.some((e) => e.isIntersecting)),
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(footer);
+    return () => io.disconnect();
+  }, []);
 
   useGSAP(
     () => {
@@ -55,6 +71,8 @@ export default function ActivityFeed() {
       });
     };
   }, []);
+
+  if (hiddenByFooter) return null;
 
   return (
     <div

@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/studio-noor/hero-room.webp"
-          alt=""
+          alt="Studio Noor — minimal Indian interior at golden hour, layered linen and stone"
           fill
           sizes="100vw"
           priority
@@ -45,7 +45,7 @@ export default function Hero() {
         }}
       >
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0.35, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
@@ -62,7 +62,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0.35, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           style={{
@@ -90,7 +90,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
+          initial={{ opacity: 0.35, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
@@ -105,7 +105,7 @@ export default function Hero() {
         />
 
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0.35, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{

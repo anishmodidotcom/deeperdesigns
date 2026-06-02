@@ -58,7 +58,7 @@ export default function Hero() {
       >
         <div className="oe-hero-text">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0.35, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: EASE }}
             style={{
@@ -92,7 +92,7 @@ export default function Hero() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0.35, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.7, ease: EASE }}
             style={{
@@ -111,7 +111,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0.35, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.9, ease: EASE }}
             style={{
@@ -189,7 +189,7 @@ export default function Hero() {
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 1.02, y: 30 }}
+            initial={{ opacity: 0.35, scale: 1.02, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.2, ease: EASE }}
             style={{
@@ -262,7 +262,7 @@ function WordReveal({ text }: { text: string }) {
             }}
           >
             <motion.span
-              initial={{ y: "100%", opacity: 0 }}
+              initial={{ y: "100%", opacity: 0.35 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
                 duration: 1.2,

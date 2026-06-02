@@ -126,7 +126,7 @@ export default function Hero() {
         >
           <div style={{ maxWidth: 820 }}>
             <motion.p
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0.35, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE }}
               style={{
@@ -165,7 +165,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0.35, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4, ease: EASE }}
               style={{
@@ -184,7 +184,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0.35, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.6, ease: EASE }}
               style={{ marginTop: 36 }}
@@ -225,7 +225,7 @@ export default function Hero() {
       </div>
 
       <motion.p
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.35 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.6, delay: 1.6, ease: EASE }}
         style={{
@@ -263,7 +263,7 @@ function WordReveal({ text, delay = 0 }: { text: string; delay?: number }) {
             }}
           >
             <motion.span
-              initial={{ y: "110%", opacity: 0 }}
+              initial={{ y: "110%", opacity: 0.35 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
                 duration: 0.8,

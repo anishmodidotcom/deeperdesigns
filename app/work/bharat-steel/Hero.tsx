@@ -32,7 +32,7 @@ export default function Hero() {
       >
         <Image
           src="/images/bharat-steel/warehouse-wide.webp"
-          alt=""
+          alt="Bharat Steel — wide-angle of a warehouse stacked with TMT bars under industrial light"
           fill
           sizes="100vw"
           priority
@@ -61,7 +61,7 @@ export default function Hero() {
       >
         <div style={{ maxWidth: 720 }}>
           <motion.p
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0.35, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             style={{
@@ -92,7 +92,7 @@ export default function Hero() {
             {HEADLINE_LINES.map((line, i) => (
               <motion.span
                 key={line.text}
-                initial={{ opacity: 0, x: -40 }}
+                initial={{ opacity: 0.35, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
                   duration: 0.7,
@@ -107,7 +107,7 @@ export default function Hero() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0.35, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
             style={{
@@ -126,7 +126,7 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0.35, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="bs-hero-coil"

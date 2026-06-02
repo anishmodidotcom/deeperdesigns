@@ -33,6 +33,7 @@ export default function Studio() {
         <Image
           src="/images/sugar-lane/order-form-bg.webp"
           alt=""
+          role="presentation"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

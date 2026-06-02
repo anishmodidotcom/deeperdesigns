@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="ef-hero-grid">
           <div className="ef-hero-image-col">
             <motion.div
-              initial={{ opacity: 0, scale: 1.02, y: 24 }}
+              initial={{ opacity: 0.35, scale: 1.02, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.9, ease: SOFT }}
               style={{
@@ -83,7 +83,7 @@ export default function Hero() {
 
           <div className="ef-hero-text-col">
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0.35, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: SOFT }}
               style={{
@@ -124,7 +124,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0.35, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.7, ease: SOFT }}
               style={{
@@ -143,7 +143,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.a
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0.35, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.85, ease: SOFT }}
               href="#the-maker"
@@ -166,7 +166,7 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0.35, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.0, delay: 0.6, ease: EASE }}
           aria-hidden

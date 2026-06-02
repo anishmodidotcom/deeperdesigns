@@ -89,6 +89,7 @@ export default function Builder() {
             <Image
               src="/images/earth-and-fire/pottery-builder-bg.webp"
               alt=""
+              role="presentation"
               fill
               sizes="100vw"
               style={{ objectFit: "cover" }}
