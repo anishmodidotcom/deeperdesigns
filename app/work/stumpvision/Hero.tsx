@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/stumpvision/hero-batsman.webp"
-          alt=""
+          alt="StumpVision · cricket batsman mid-swing on a turf wicket at practice"
           fill
           sizes="100vw"
           priority
@@ -45,7 +45,7 @@ export default function Hero() {
         }}
       >
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0.35, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{
@@ -62,7 +62,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, scale: 1.02, y: 20 }}
+          initial={{ opacity: 0.35, scale: 1.02, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
@@ -85,7 +85,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0.35, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           style={{

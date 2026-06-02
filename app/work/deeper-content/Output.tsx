@@ -116,6 +116,7 @@ export default function Output() {
               <Image
                 src={`/images/deeper-content/samples/${code}.jpg`}
                 alt=""
+                role="presentation"
                 fill
                 sizes="(min-width: 1100px) 16vw, (min-width: 700px) 25vw, 50vw"
                 style={{ objectFit: "cover" }}

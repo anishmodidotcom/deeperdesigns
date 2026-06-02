@@ -47,6 +47,7 @@ export default function Hero() {
               <Image
                 src={`/images/deeper-content/samples/${code}.jpg`}
                 alt=""
+                role="presentation"
                 fill
                 priority={i < 4}
                 sizes="(min-width: 1024px) 25vw, 50vw"

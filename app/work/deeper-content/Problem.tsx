@@ -94,6 +94,7 @@ export default function Problem() {
               <Image
                 src={`/images/deeper-content/samples/${code}.jpg`}
                 alt=""
+                role="presentation"
                 fill
                 sizes="(min-width: 1100px) 16vw, 33vw"
                 style={{ objectFit: "cover" }}

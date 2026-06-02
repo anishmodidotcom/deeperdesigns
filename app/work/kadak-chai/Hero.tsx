@@ -21,7 +21,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.4 }}>
         <Image
           src="/images/kadak-chai/mumbai-evening.webp"
-          alt=""
+          alt="Kadak Chai · Mumbai evening street scene, kettle steam over a chai counter"
           fill
           sizes="100vw"
           priority
@@ -57,7 +57,7 @@ export default function Hero() {
                 fontSize: 11,
                 textTransform: "uppercase",
                 letterSpacing: "0.22em",
-                color: "var(--page-accent)",
+                color: "var(--page-eyebrow, var(--page-accent))",
                 margin: 0,
                 marginBottom: 40,
               }}
@@ -157,7 +157,7 @@ export default function Hero() {
 
           <div className="kc-hero-tin">
             <motion.div
-              initial={{ opacity: 0, scale: 1.04, y: 24 }}
+              initial={{ opacity: 0.35, scale: 1.04, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 0.2, ease: STRONG }}
               style={{ position: "relative", width: "100%", height: "100%" }}

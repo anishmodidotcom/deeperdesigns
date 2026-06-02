@@ -2,14 +2,21 @@ import type { NextConfig } from "next";
 
 // Content-Security-Policy.
 //
-// v15.2 reality check on A+: every page in this site is statically
-// prerendered, so Next.js cannot inject the per-request nonce into the
-// framework chunk <script> tags (the runtime never sees the request that
-// would carry the nonce — the HTML was baked at build time). Forcing
-// every page through `connection()` to opt out of static prerendering
-// would cost site-wide TTFB for one letter on securityheaders.com.
-// Per v15.2 spec, A is accepted as the platform constraint and we stay
-// with `'unsafe-inline'` on script-src.
+// F8 v16 retry on A+ (the v15.2 deferred item): the nonce-based migration
+// hit the same wall a second time.
+//   - With 'strict-dynamic' + nonce, framework chunk <script src=...>
+//     tags were blocked (v15.2 finding).
+//   - Without 'strict-dynamic', script chunks load via 'self' fine, but
+//     Next.js's inline RSC bootstrap scripts are blocked — they cannot
+//     receive an auto-nonce on statically-prerendered pages because the
+//     render-time HTML mutation never happens at request time.
+// Static prerendering is the architectural constraint. Forcing every
+// page through `connection()` to opt out would cost site-wide TTFB for
+// one letter on securityheaders.com.
+// Per spec, A is accepted and we keep 'unsafe-inline' on script-src.
+// Path to A+ in a future PR: pick the highest-traffic surfaces (root,
+// /work/maplelens, /work/deeper-content), force them dynamic with
+// `await connection()`, measure TTFB, ratchet outward if acceptable.
 //
 // Tailwind v4 and the inline-styled showcase pages also need
 // `style-src 'unsafe-inline'`.

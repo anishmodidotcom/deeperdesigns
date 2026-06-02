@@ -43,7 +43,7 @@ export default function Hero() {
       >
         <div style={{ width: "100%", maxWidth: 560 }}>
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0.35, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, ease: EASE }}
             style={{
@@ -60,7 +60,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0.35, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.05, ease: EASE }}
             style={{
@@ -77,7 +77,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0.35, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.13, ease: EASE }}
             style={{
@@ -95,7 +95,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0.35, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.21, ease: EASE }}
             style={{
@@ -156,7 +156,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0.35, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.29, ease: EASE }}
             style={{

@@ -22,7 +22,7 @@ export default function Hero() {
       >
         <Image
           src="/images/veda-glow/ayurvedic-kitchen.webp"
-          alt=""
+          alt="Veda Glow · Ayurvedic preparation kitchen with copper pots and bottled tinctures"
           fill
           sizes="100vw"
           priority
@@ -50,7 +50,7 @@ export default function Hero() {
         <div className="vg-hero-grid">
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0.35, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               style={{
@@ -58,7 +58,7 @@ export default function Hero() {
                 fontSize: 11,
                 textTransform: "uppercase",
                 letterSpacing: "0.22em",
-                color: "var(--page-accent)",
+                color: "var(--page-eyebrow, var(--page-accent))",
                 margin: 0,
                 marginBottom: 40,
               }}
@@ -67,7 +67,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, scale: 1.02 }}
+              initial={{ opacity: 0.35, scale: 1.02 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               style={{
@@ -94,7 +94,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
+              initial={{ opacity: 0.35, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               style={{
@@ -107,7 +107,7 @@ export default function Hero() {
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0.35, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               style={{
@@ -125,7 +125,7 @@ export default function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0.35, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="vg-hero-bottle"

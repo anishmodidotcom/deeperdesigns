@@ -76,7 +76,7 @@ export default function RebarGrid() {
       >
         <Image
           src="/images/bharat-steel/rebar-stack.webp"
-          alt=""
+          alt="A tight stack of TMT rebar, photographed straight-on with industrial dignity"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

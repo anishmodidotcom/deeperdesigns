@@ -43,6 +43,7 @@ export default function Quiz() {
         <Image
           src="/images/kadak-chai/quiz-bg.webp"
           alt=""
+          role="presentation"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

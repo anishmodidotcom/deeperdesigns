@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type Country = "IN" | "AE";
 
@@ -93,6 +93,10 @@ export default function StudyForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  // F4 (v16): step container ref for scroll-to-top on advance, so the
+  // current question lands below the sticky nav + progress bar instead
+  // of falling into the overlap zone.
+  const stepRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     try {
@@ -113,6 +117,13 @@ export default function StudyForm() {
   }, [data, hydrated]);
 
   useEffect(() => {
+    // F4: scroll the active step into view with header offset, then focus.
+    // scrollIntoView with block:start respects scroll-margin-top on the
+    // wrapper section (set to 100px in page.tsx), which clears both the
+    // sticky nav (~80px) and the sticky progress bar (~40px).
+    if (step !== "intro" && stepRef.current) {
+      stepRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     if (inputRef.current) inputRef.current.focus();
   }, [step]);
 
@@ -264,7 +275,7 @@ export default function StudyForm() {
   })();
 
   return (
-    <div style={{ minHeight: "calc(100vh - 200px)", display: "flex", flexDirection: "column" }}>
+    <div ref={stepRef} style={{ minHeight: "calc(100vh - 200px)", display: "flex", flexDirection: "column", scrollMarginTop: "100px" }}>
       <div style={{ position: "sticky", top: "80px", zIndex: 10, background: "var(--bg)", padding: "12px 0", borderBottom: "1px solid var(--border)" }}>
         <div className="container" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <div style={{ flex: 1, height: "2px", background: "var(--border)", borderRadius: "999px", overflow: "hidden" }}>
@@ -280,14 +291,14 @@ export default function StudyForm() {
         <div style={{ width: "100%", maxWidth: "640px" }}>
           {step === "intro" && (
             <div>
-              <p className="eyebrow" style={{ marginBottom: "24px" }}>NEW PROJECT</p>
-              <h1 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "24px" }}>
-                Let&apos;s explore possibilities.
-              </h1>
+              <p className="eyebrow" style={{ marginBottom: "24px" }}>11-QUESTION STUDY</p>
+              <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "24px" }}>
+                Or send a written brief.
+              </h2>
               <p style={{ fontSize: "18px", color: "var(--fg-muted)", lineHeight: 1.6, marginBottom: "40px" }}>
-                Eleven quick questions. A verified email. We come back within 24 hours with a plan, a timeline, and a number. Or, if you&apos;d rather just talk, WhatsApp us at +91 99687 16498.
+                Eleven quick questions, a verified email, a reply within 24 hours with a plan, a timeline, and a number. If you have already pinged us on WhatsApp, you can skip this.
               </p>
-              <button onClick={() => goNext("firstName")} className="btn-outline" style={{ background: "var(--accent)", borderColor: "var(--accent)", color: "#fff" }}>Start</button>
+              <button onClick={() => goNext("firstName")} className="btn-outline" style={{ background: "var(--accent)", borderColor: "var(--accent)", color: "#fff" }}>Start the 11 questions</button>
             </div>
           )}
 
@@ -438,12 +449,24 @@ export default function StudyForm() {
 }
 
 function Field({ label, labelMono, sub, children }: { label: string; labelMono: string; sub?: string; children: React.ReactNode }) {
+  // F11 (v16): the H2 question doubles as the input's accessible name.
+  // We attach a stable id from the mono label index ("01" → "study-q-01")
+  // and surface it to the input via aria-labelledby cloned into children.
+  const id = `study-q-${labelMono.replace(/[^a-z0-9]/gi, "").toLowerCase()}`;
+  const subId = sub ? `${id}-sub` : undefined;
+  const labelledBy = subId ? `${id} ${subId}` : id;
+  const enhancedChildren = React.Children.map(children, (child) => {
+    if (!React.isValidElement(child)) return child;
+    return React.cloneElement(child as React.ReactElement<{ "aria-labelledby"?: string }>, {
+      "aria-labelledby": labelledBy,
+    });
+  });
   return (
     <div>
       <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "12px" }}>{labelMono}</p>
-      <h2 style={{ fontSize: "var(--fs-h2)", fontWeight: 500, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: sub ? "8px" : "24px" }}>{label}</h2>
-      {sub && <p style={{ fontSize: "15px", color: "var(--fg-muted)", marginBottom: "24px", lineHeight: 1.5 }}>{sub}</p>}
-      {children}
+      <h2 id={id} style={{ fontSize: "var(--fs-h2)", fontWeight: 500, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: sub ? "8px" : "24px" }}>{label}</h2>
+      {sub && <p id={subId} style={{ fontSize: "15px", color: "var(--fg-muted)", marginBottom: "24px", lineHeight: 1.5 }}>{sub}</p>}
+      {enhancedChildren}
     </div>
   );
 }

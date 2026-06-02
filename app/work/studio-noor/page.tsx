@@ -59,6 +59,8 @@ const pageStyle = {
 
   "--accent": "var(--page-accent)",
   "--page-accent-2": "#B89EDB",
+  // F2: lilac brightened for eyebrow AA contrast.
+  "--page-eyebrow": "#D6C2EE",
   background: "var(--page-bg)",
   color: "var(--page-text)",
 } as React.CSSProperties;

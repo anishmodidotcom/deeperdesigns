@@ -81,6 +81,7 @@ export default function Quiz() {
         <Image
           src="/images/veda-glow/quiz-bg.webp"
           alt=""
+          role="presentation"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

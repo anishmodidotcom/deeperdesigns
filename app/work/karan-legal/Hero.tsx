@@ -36,7 +36,7 @@ export default function Hero() {
         />
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.35 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: EASE }}
           style={{
@@ -82,7 +82,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.35 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: EASE }}
           style={{
@@ -101,7 +101,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.35 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6, ease: EASE }}
           style={{
@@ -122,7 +122,7 @@ export default function Hero() {
         <motion.a
           href="#statement-of-facts"
           data-cursor="pointer"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.35 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8, ease: EASE }}
           style={{
@@ -142,7 +142,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.35 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.6, delay: 1.0, ease: EASE }}
         style={{

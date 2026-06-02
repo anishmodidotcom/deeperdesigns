@@ -71,7 +71,7 @@ export default function Breath() {
       <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.4 }}>
         <Image
           src="/images/meera-wellness/savasana.webp"
-          alt=""
+          alt="A figure in savasana, eyes closed, hands open, breath at rest"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

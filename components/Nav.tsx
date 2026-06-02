@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [onLight, setOnLight] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -21,21 +22,58 @@ export default function Nav() {
     };
   }, [open]);
 
+  // F1 (v16): light-theme showcases (karan-legal, meera-wellness,
+  // earth-and-fire, sugar-lane, nomad-trails) set `data-theme="light"`
+  // on the page wrapper. When the wrapper overlaps the top viewport
+  // area where the sticky nav sits, switch the nav's colors so the
+  // wordmark + links stay readable.
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>('[data-theme="light"]');
+    if (targets.length === 0) {
+      setOnLight(false);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        // The element is "behind" the nav when any part of it sits in
+        // the top 120px of the viewport.
+        const anyOverlaps = entries.some((e) => e.isIntersecting);
+        setOnLight(anyOverlaps);
+      },
+      { rootMargin: "0px 0px -100% 0px", threshold: 0 },
+    );
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
+  // Light state colour values are inline since they're a function of
+  // two booleans (scrolled, onLight) interacting; a Tailwind class
+  // matrix would be noisier than the inline ternary.
+  const navBg = scrolled
+    ? onLight
+      ? "rgba(244,242,238,0.88)"
+      : "rgba(10,10,10,0.85)"
+    : "transparent";
+  const navBorder = scrolled
+    ? onLight
+      ? "1px solid rgba(26,26,26,0.12)"
+      : "1px solid var(--border)"
+    : "1px solid transparent";
+  const wordmarkColor = onLight ? "#0A0A0A" : undefined;
+  const linkColor = onLight ? "#2A2A2A" : "var(--fg-muted)";
+
   return (
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50"
+        data-on-light={onLight ? "true" : "false"}
         style={{
           padding: "20px var(--container-px)",
-          // State-driven background + blur stay inline; can't be a static
-          // Tailwind class because they animate between two values.
-          background: scrolled ? "rgba(10,10,10,0.85)" : "transparent",
+          background: navBg,
           backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled
-            ? "1px solid var(--border)"
-            : "1px solid transparent",
+          borderBottom: navBorder,
           transition:
-            "background 300ms, border-color 300ms, backdrop-filter 300ms",
+            "background 300ms, border-color 300ms, backdrop-filter 300ms, color 300ms",
         }}
       >
         <div
@@ -45,7 +83,12 @@ export default function Nav() {
           <Link
             href="/"
             className="mono"
-            style={{ letterSpacing: "0.16em", fontSize: "13px" }}
+            style={{
+              letterSpacing: "0.16em",
+              fontSize: "13px",
+              color: wordmarkColor,
+              transition: "color 300ms",
+            }}
           >
             DEEPER DESIGNS
           </Link>
@@ -54,21 +97,21 @@ export default function Nav() {
             <Link
               href="/about"
               className="text-sm transition-colors duration-200"
-              style={{ color: "var(--fg-muted)" }}
+              style={{ color: linkColor, transition: "color 300ms" }}
             >
               About
             </Link>
             <Link
               href="/services"
               className="text-sm transition-colors duration-200"
-              style={{ color: "var(--fg-muted)" }}
+              style={{ color: linkColor, transition: "color 300ms" }}
             >
               Services
             </Link>
             <Link
               href="/process"
               className="text-sm transition-colors duration-200"
-              style={{ color: "var(--fg-muted)" }}
+              style={{ color: linkColor, transition: "color 300ms" }}
             >
               Process
             </Link>
@@ -86,7 +129,7 @@ export default function Nav() {
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            style={{ display: "none" }}
+            style={{ display: "none", color: wordmarkColor }}
           >
             <svg
               width="22"

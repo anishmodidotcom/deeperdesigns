@@ -53,6 +53,7 @@ export default function Portal() {
         <Image
           src="/images/brightpath/dashboard-bg-edu.webp"
           alt=""
+          role="presentation"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

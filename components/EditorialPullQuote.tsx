@@ -89,7 +89,7 @@ export default function EditorialPullQuote({
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: var(--dd-text-faint);
+          color: var(--dd-eyebrow-on-dark);
           margin: 24px 0 0;
         }
         @media (max-width: 767px) {

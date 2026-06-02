@@ -179,6 +179,7 @@ export default function Dashboard() {
             <Image
               src="/images/sahaja-farms/dashboard-bg-organic.webp"
               alt=""
+              role="presentation"
               fill
               sizes="100vw"
               style={{ objectFit: "cover" }}
