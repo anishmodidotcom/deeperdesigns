@@ -32,7 +32,7 @@ export default function Hero() {
       >
         <Image
           src="/images/bharat-steel/warehouse-wide.webp"
-          alt="Bharat Steel — wide-angle of a warehouse stacked with TMT bars under industrial light"
+          alt="Bharat Steel · wide-angle of a warehouse stacked with TMT bars under industrial light"
           fill
           sizes="100vw"
           priority

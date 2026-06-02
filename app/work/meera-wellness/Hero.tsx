@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/meera-wellness/hero-pose.webp"
-          alt="Meera Wellness — yoga teacher mid-pose on a sage-toned studio floor"
+          alt="Meera Wellness · yoga teacher mid-pose on a sage-toned studio floor"
           fill
           sizes="100vw"
           priority

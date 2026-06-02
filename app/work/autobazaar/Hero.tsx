@@ -83,7 +83,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/autobazaar/hero-sedan.webp"
-          alt="AutoBazaar — used sedan on a dealership lot, dawn light raking across the body"
+          alt="AutoBazaar · used sedan on a dealership lot, dawn light raking across the body"
           fill
           sizes="100vw"
           priority

@@ -22,7 +22,7 @@ export default function Hero() {
       >
         <Image
           src="/images/veda-glow/ayurvedic-kitchen.webp"
-          alt="Veda Glow — Ayurvedic preparation kitchen with copper pots and bottled tinctures"
+          alt="Veda Glow · Ayurvedic preparation kitchen with copper pots and bottled tinctures"
           fill
           sizes="100vw"
           priority

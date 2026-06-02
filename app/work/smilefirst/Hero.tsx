@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/smilefirst/hero-clinic.webp"
-          alt="SmileFirst — modern dental clinic reception with soft daylight"
+          alt="SmileFirst · modern dental clinic reception with soft daylight"
           fill
           sizes="100vw"
           priority

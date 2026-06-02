@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/zaatar-republic/hero-wrap.webp"
-          alt="Zaatar Republic — shawarma wrap photographed against warm kitchen light"
+          alt="Zaatar Republic · shawarma wrap photographed against warm kitchen light"
           fill
           sizes="100vw"
           priority

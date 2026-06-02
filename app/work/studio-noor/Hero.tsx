@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/studio-noor/hero-room.webp"
-          alt="Studio Noor — minimal Indian interior at golden hour, layered linen and stone"
+          alt="Studio Noor · minimal Indian interior at golden hour, layered linen and stone"
           fill
           sizes="100vw"
           priority

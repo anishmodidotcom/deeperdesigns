@@ -21,7 +21,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.4 }}>
         <Image
           src="/images/kadak-chai/mumbai-evening.webp"
-          alt="Kadak Chai — Mumbai evening street scene, kettle steam over a chai counter"
+          alt="Kadak Chai · Mumbai evening street scene, kettle steam over a chai counter"
           fill
           sizes="100vw"
           priority

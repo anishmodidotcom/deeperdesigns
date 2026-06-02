@@ -60,7 +60,7 @@ const pageStyle = {
 
   "--accent": "var(--page-accent)",
   "--page-accent-2": "#60A5FA",
-  // F2: mono eyebrow contrast — lifted to a brighter blue that hits AA on near-black.
+  // F2: mono eyebrow contrast, lifted to a brighter blue that hits AA on near-black.
   "--page-eyebrow": "#93C5FD",
   background: "var(--page-bg)",
   color: "var(--page-text)",

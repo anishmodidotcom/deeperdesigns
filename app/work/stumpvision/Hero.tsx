@@ -19,7 +19,7 @@ export default function Hero() {
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
           src="/images/stumpvision/hero-batsman.webp"
-          alt="StumpVision — cricket batsman mid-swing on a turf wicket at practice"
+          alt="StumpVision · cricket batsman mid-swing on a turf wicket at practice"
           fill
           sizes="100vw"
           priority
