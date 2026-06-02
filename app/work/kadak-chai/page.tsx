@@ -70,6 +70,8 @@ const pageStyle = {
 
   "--accent": "var(--page-accent)",
   "--page-accent-2": "#F2E5C7",
+  // F2: chai brown brightened for eyebrow AA contrast.
+  "--page-eyebrow": "#E8B07F",
   "--page-text": "#F5E5CC",
   "--page-text-2": "#C9B89A",
   "--page-text-3": "#85705A",

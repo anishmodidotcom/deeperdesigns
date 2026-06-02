@@ -57,7 +57,7 @@ export default function Hero() {
                 fontSize: 11,
                 textTransform: "uppercase",
                 letterSpacing: "0.22em",
-                color: "var(--page-accent)",
+                color: "var(--page-eyebrow, var(--page-accent))",
                 margin: 0,
                 marginBottom: 40,
               }}

@@ -69,7 +69,8 @@ export default function Hero() {
               fontSize: 11,
               textTransform: "uppercase",
               letterSpacing: "0.22em",
-              color: "var(--page-accent)",
+              // F2: inline eyebrow now opts into the per-page --page-eyebrow token.
+              color: "var(--page-eyebrow, var(--page-accent))",
               margin: 0,
               marginBottom: 32,
             }}

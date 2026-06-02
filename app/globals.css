@@ -28,6 +28,14 @@
   --dd-accent-signal: #25D366;
   --dd-bone: #F5F4EF;
 
+  /* F2 (v16): mono eyebrow contrast-safe defaults. Calibrated to ≥4.5:1
+     contrast on near-black bg (dark variant) and on cream bg (light
+     variant). Showcase pages can override per-page via --page-eyebrow
+     in their pageStyle when an accent-tinted eyebrow is needed and the
+     accent itself passes AA on the page background. */
+  --dd-eyebrow-on-dark: #C8C8C8;
+  --dd-eyebrow-on-light: #4A4A4A;
+
   /* Per-showcase accents, exposed globally so cross-cutting components
    * (gallery hover, etc.) can reference a slug's color without
    * re-reading each work page. Matches brand/v1/tokens.css --dd-acc-*. */
@@ -133,7 +141,10 @@ button {
   font-size: var(--fs-mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  /* F2 (v16): use --page-eyebrow when a showcase opts in to a calibrated
+     contrast-safe value, else fall back to --accent. Default global value
+     is a bright neutral that always hits ≥4.5:1 on near-black bg. */
+  color: var(--page-eyebrow, var(--dd-eyebrow-on-dark, #C8C8C8));
   display: inline-block;
 }
 

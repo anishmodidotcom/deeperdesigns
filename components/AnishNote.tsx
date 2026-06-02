@@ -40,7 +40,7 @@ export default function AnishNote({
         .anish-note__body {
           position: relative;
           padding-left: 16px;
-          border-left: 1px solid var(--dd-text-faint);
+          border-left: 1px solid var(--dd-eyebrow-on-dark);
         }
         .anish-note__label {
           font-family: var(--font-geist-mono), ui-monospace, monospace;
@@ -48,7 +48,7 @@ export default function AnishNote({
           font-weight: 500;
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          color: var(--dd-text-faint);
+          color: var(--dd-eyebrow-on-dark);
           margin: 0 0 8px;
           display: inline-flex;
           align-items: center;

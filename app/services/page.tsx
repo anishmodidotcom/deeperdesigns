@@ -100,7 +100,8 @@ export default function Services() {
                   fontWeight: 500,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "var(--dd-text-faint)",
+                  // F2: was --dd-text-faint (#3A3A3A, ~1.7:1 on near-black, AA fail). Lifted.
+                  color: "var(--dd-eyebrow-on-dark)",
                   marginTop: "24px",
                   marginBottom: "10px",
                 }}>
