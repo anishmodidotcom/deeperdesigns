@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -84,6 +85,8 @@ export default function StumpVisionPage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Coaching academies. Music schools. Skill-building businesses with parents on the sidelines."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -105,6 +108,7 @@ export default function StumpVisionPage() {
         accent="var(--page-accent-stumpvision)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="stumpvision" name="StumpVision" industry="Coaching Academy" />
     </div>
   );
 }

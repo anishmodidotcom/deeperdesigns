@@ -18,6 +18,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -94,6 +95,8 @@ export default function PawStayPage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Boarding facilities. Salons. Service businesses with anxious clients."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -118,6 +121,7 @@ export default function PawStayPage() {
         accent="var(--page-accent-pawstay)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="pawstay" name="PawStay" industry="Pet Boarding" />
     </div>
   );
 }

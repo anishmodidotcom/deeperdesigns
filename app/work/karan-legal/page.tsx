@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Spectral covers the editorial slab-serif feel of GT Sectra Display
 // where Sectra is not on Google Fonts. Weights tuned for body and
@@ -96,6 +97,8 @@ export default function KaranLegalPage() {
             timeline={meta.timeline ?? "9 days"}
             pattern={meta.pattern ?? "Independent lawyers. CAs. Consultants. Any solo practice drowning in unqualified intakes."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -117,6 +120,7 @@ export default function KaranLegalPage() {
         accent="var(--page-accent-karan-legal)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="karan-legal" name="Karan Legal" industry="Legal Practice" />
     </div>
   );
 }

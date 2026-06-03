@@ -8,7 +8,7 @@ import { trackPageView } from "@/lib/meta-events";
 //
 // The base Pixel code in MetaPixel.tsx fires one PageView on initial
 // load. After hydration, Next's App Router does soft navigations that
-// never re-execute the base script — so we manually mirror those.
+// never re-execute the base script, so we manually mirror those.
 //
 // We skip the initial mount to avoid a duplicate of the base-code
 // PageView (which already deduplicates server-side via event_id, but

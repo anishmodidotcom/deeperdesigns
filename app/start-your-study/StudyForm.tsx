@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 type Country = "IN" | "AE";
 
@@ -422,7 +423,7 @@ export default function StudyForm() {
               <p style={{ fontSize: "18px", color: "var(--fg-muted)", lineHeight: 1.6, marginBottom: "32px" }}>
                 We&apos;ll come back within 24 hours with a plan, a timeline, and a number. If you&apos;d rather talk now, WhatsApp us at +91 99687 16498.
               </p>
-              <a href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business." className="btn-whatsapp">Start a conversation</a>
+              <TrackedWhatsAppLink href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business." className="btn-whatsapp">Start a conversation</TrackedWhatsAppLink>
             </div>
           )}
 

@@ -1,3 +1,6 @@
+import TrackedEmailLink from "@/components/TrackedEmailLink";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+
 export default function Footer() {
   return (
     <footer
@@ -15,23 +18,23 @@ export default function Footer() {
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
               Email
             </p>
-            <a
+            <TrackedEmailLink
               href="mailto:anish.modi@deeperdesigns.in"
               className="text-base"
             >
               anish.modi@deeperdesigns.in
-            </a>
+            </TrackedEmailLink>
           </div>
           <div>
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
               WhatsApp
             </p>
-            <a
+            <TrackedWhatsAppLink
               href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business."
               className="text-base"
             >
               +91 99687 16498
-            </a>
+            </TrackedWhatsAppLink>
           </div>
           <div>
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>

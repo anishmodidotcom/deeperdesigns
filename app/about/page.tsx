@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import AnishNote from "@/components/AnishNote";
 import HowWeThink from "./HowWeThink";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
@@ -101,7 +102,7 @@ export default function About() {
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
-            <a href="/start-your-study" className="btn-whatsapp">Talk to us</a>
+            <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
           </div>
         </div>
       </section>

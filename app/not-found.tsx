@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 export const metadata: Metadata = {
   title: "Not found · Deeper Designs",
@@ -124,7 +125,7 @@ export default function NotFound() {
           ))}
         </nav>
 
-        <a
+        <TrackedWhatsAppLink
           href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business."
           target="_blank"
           rel="noopener noreferrer"
@@ -143,7 +144,7 @@ export default function NotFound() {
           }}
         >
           Lost? Talk to us · wa.me/919968716498
-        </a>
+        </TrackedWhatsAppLink>
       </div>
 
       <style>{`

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 const PHRASES = [
   "What if your operations ran themselves?",
@@ -138,7 +139,7 @@ export default function HomeHero() {
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <a href="#gallery" onClick={onExploreClick} className="btn-outline">Let&apos;s explore ideas</a>
-          <a href="/start-your-study" className="btn-whatsapp">Talk to us</a>
+          <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
         </div>
       </div>
 

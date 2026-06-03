@@ -112,7 +112,7 @@ export async function POST(req: Request) {
     );
     if (!res.ok) {
       const text = await res.text();
-      // Log status only — no body, no PII.
+      // Log status only, no body, no PII.
       // eslint-disable-next-line no-console
       console.error(`[meta-capi] ${event_name} failed ${res.status}`, text.slice(0, 200));
       return NextResponse.json(

@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Anton stands in for Druk Wide Bold (paid). Single regular weight, but
 // the condensed CAPS energy is the right brand register for the athletic
@@ -91,6 +92,8 @@ export default function ZaraFitnessPage() {
             timeline={meta.timeline ?? "12 days"}
             pattern={meta.pattern ?? "Personal trainers. Fitness creators. Anyone trying to turn followers into paying members."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -113,6 +116,7 @@ export default function ZaraFitnessPage() {
         accent="var(--page-accent-zara-fitness)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="zara-fitness" name="Zara Fitness" industry="Ceramics Studio" />
     </div>
   );
 }

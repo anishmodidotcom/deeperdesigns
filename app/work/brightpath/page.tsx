@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Source Serif 4 carries the academic gravitas the brief asked for
 // (a contemporary cousin of the IBM Plex Serif). Source Sans 3 keeps
@@ -102,6 +103,8 @@ export default function BrightPathPage() {
             timeline={meta.timeline ?? "9 weeks"}
             pattern={meta.pattern ?? "Tutors. Coaches. Any one-person education practice that needs to look like an institution."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -123,6 +126,7 @@ export default function BrightPathPage() {
         accent="var(--page-accent-brightpath)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="brightpath" name="BrightPath" industry="Tutoring Practice" />
     </div>
   );
 }

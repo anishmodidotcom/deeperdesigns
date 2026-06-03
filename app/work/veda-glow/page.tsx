@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -88,6 +89,8 @@ export default function VedaGlowPage() {
             timeline={meta.timeline ?? "5 days"}
             pattern={meta.pattern ?? "Skincare brands. Wellness brands. Any DTC with high-volume customer questions."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -110,6 +113,7 @@ export default function VedaGlowPage() {
         accent="var(--page-accent-veda-glow)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="veda-glow" name="Veda Glow" industry="B2B Industrial" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StudyForm from "./StudyForm";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 export const metadata: Metadata = {
   title: "Start Your Study · Deeper Designs",
@@ -67,7 +68,7 @@ export default function StartYourStudy() {
               marginBottom: "48px",
             }}
           >
-            <a
+            <TrackedWhatsAppLink
               href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business."
               className="btn-whatsapp"
               target="_blank"
@@ -75,7 +76,7 @@ export default function StartYourStudy() {
               style={{ padding: "16px 24px", fontSize: "16px" }}
             >
               Start on WhatsApp · +91 99687 16498
-            </a>
+            </TrackedWhatsAppLink>
           </div>
           <p
             style={{
