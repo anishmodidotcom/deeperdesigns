@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { trackLead } from "@/lib/meta-events";
+import {
+  trackLead,
+  trackLiveProductCTAClick,
+  trackWhatsAppOpenedFromShowcase,
+} from "@/lib/meta-events";
+import { useShowcaseContext } from "@/components/ShowcaseContext";
 
 const DISMISS_KEY = "dd-whatsapp-tooltip-dismissed";
 const AUTO_HIDE_MS = 5000;
@@ -10,6 +15,7 @@ const INITIAL_DELAY_MS = 1200;
 
 export default function WhatsAppButton() {
   const pathname = usePathname() ?? "";
+  const ctx = useShowcaseContext();
   const [nudgeVisible, setNudgeVisible] = useState(false);
   const [dismissedPermanent, setDismissedPermanent] = useState(false);
   const [hiddenByFooter, setHiddenByFooter] = useState(false);
@@ -19,6 +25,17 @@ export default function WhatsAppButton() {
   const onWhatsAppClick = () => {
     try {
       trackLead(pathname);
+      // v17.3: triple-stack on showcase pages, same logic as
+      // TrackedWhatsAppLink.
+      if (ctx?.slug) {
+        trackWhatsAppOpenedFromShowcase(ctx.slug, ctx.industry);
+      }
+      if (
+        ctx?.isLiveProduct &&
+        (ctx.slug === "maplelens" || ctx.slug === "deeper-content")
+      ) {
+        trackLiveProductCTAClick(ctx.slug);
+      }
     } catch {
       // Never block navigation.
     }

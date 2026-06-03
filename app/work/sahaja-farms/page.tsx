@@ -123,7 +123,7 @@ export default function SahajaFarmsPage() {
         accent="var(--page-accent-sahaja-farms)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="sahaja-farms" name="Sahaja Farms" industry="Legal Practice" />
+      <ShowcaseAnalytics slug="sahaja-farms" name="Sahaja Farms" industry="Organic Farm" />
     </div>
   );
 }

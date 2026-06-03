@@ -116,7 +116,7 @@ export default function MalabarSpicePage() {
         accent="var(--page-accent-malabar-spice)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="malabar-spice" name="Malabar Spice House" industry="Pet Boarding" />
+      <ShowcaseAnalytics slug="malabar-spice" name="Malabar Spice House" industry="Heritage Exporter" />
     </div>
   );
 }

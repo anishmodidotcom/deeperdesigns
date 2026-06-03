@@ -122,7 +122,7 @@ export default function MeeraWellnessPage() {
         accent="var(--page-accent-meera-wellness)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="meera-wellness" name="Meera Wellness" industry="QSR Chain" />
+      <ShowcaseAnalytics slug="meera-wellness" name="Meera Wellness" industry="Wellness Studio" />
     </div>
   );
 }

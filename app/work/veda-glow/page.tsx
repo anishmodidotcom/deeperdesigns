@@ -113,7 +113,7 @@ export default function VedaGlowPage() {
         accent="var(--page-accent-veda-glow)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="veda-glow" name="Veda Glow" industry="B2B Industrial" />
+      <ShowcaseAnalytics slug="veda-glow" name="Veda Glow" industry="Ayurvedic D2C" />
     </div>
   );
 }

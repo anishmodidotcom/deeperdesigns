@@ -134,7 +134,7 @@ export default function SugarLanePage() {
         accent="var(--page-accent-sugar-lane)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="sugar-lane" name="Sugar Lane" industry="Tutoring Practice" />
+      <ShowcaseAnalytics slug="sugar-lane" name="Sugar Lane" industry="Home Bakery" />
     </div>
   );
 }

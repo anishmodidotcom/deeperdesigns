@@ -10,6 +10,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ShowcaseNavigator from "@/components/ShowcaseNavigator";
 import MetaPixel from "@/components/MetaPixel";
 import MetaPageViewOnRouteChange from "@/components/MetaPageViewOnRouteChange";
+import ShowcaseRouteProvider from "@/components/ShowcaseRouteProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,13 +74,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
       >
         <body>
-          <SmoothScroll>
-            <Nav />
-            {children}
-            <Footer />
-            <WhatsAppButton />
-            <ShowcaseNavigator />
-          </SmoothScroll>
+          <ShowcaseRouteProvider>
+            <SmoothScroll>
+              <Nav />
+              {children}
+              <Footer />
+              <WhatsAppButton />
+              <ShowcaseNavigator />
+            </SmoothScroll>
+          </ShowcaseRouteProvider>
           <Analytics />
           <MetaPixel />
           <MetaPageViewOnRouteChange />

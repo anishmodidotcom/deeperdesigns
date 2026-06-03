@@ -110,43 +110,69 @@ async function fireServer(
   }
 }
 
-// Production showed every event except the base-code PageView dropped
-// silently. Two bugs:
-//   1. window.fbq is defined by MetaPixel's afterInteractive Script,
-//      which executes after React hydration. ShowcaseAnalytics'
-//      useEffect runs at hydration time, so the first ViewContent call
-//      lands BEFORE fbq exists and the old guard `if (!window.fbq)
-//      return;` silently dropped it. Same race burns any click that
-//      happens before the script lands.
-//   2. fbq('track', name) only works for Meta's Standard Events. The
-//      4 DD custom events were silently dropped browser-side; only
-//      the server CAPI mirror fired.
-// Fix: wait up to ~1s for fbq to materialise (50ms × 20 attempts),
-// then route through 'track' or 'trackCustom' based on STANDARD_EVENTS.
+// v17.2 used a per-call setTimeout retry loop with a 1 s cap. On slow
+// ad-click profiles the MetaPixel afterInteractive script lands later
+// than that, the retry expires, and the event is dropped. v17.3 swaps
+// to a shared queue + single poller with no per-call expiry:
+//   - Every browser call lands in a pending queue when fbq is missing.
+//   - One module-scoped poller wakes every 100 ms checking for fbq.
+//   - When fbq lands, the poller drains the entire queue, then stops.
+//   - If fbq never lands (CSP block, ad-blocker), the queue sits
+//     until page unload and gets garbage-collected. No leak.
+// Standard vs custom routing stays: STANDARD_EVENTS gates 'track' vs
+// 'trackCustom'.
+
+type PendingEvent = {
+  event_name: EventName;
+  event_id: string;
+  custom_data: CustomData;
+};
+
+const browserQueue: PendingEvent[] = [];
+let pollerHandle: number | null = null;
+
+function callFbq(ev: PendingEvent): void {
+  if (typeof window === "undefined" || !window.fbq) return;
+  const action: "track" | "trackCustom" = STANDARD_EVENTS.has(ev.event_name)
+    ? "track"
+    : "trackCustom";
+  try {
+    window.fbq(action, ev.event_name, ev.custom_data, { eventID: ev.event_id });
+  } catch {
+    // fbq throwing — silently drop, never block UX.
+  }
+}
+
+function drainIfReady(): void {
+  if (typeof window === "undefined" || !window.fbq) return;
+  while (browserQueue.length > 0) {
+    const ev = browserQueue.shift();
+    if (ev) callFbq(ev);
+  }
+  if (pollerHandle !== null) {
+    window.clearInterval(pollerHandle);
+    pollerHandle = null;
+  }
+}
+
+function ensurePoller(): void {
+  if (typeof window === "undefined") return;
+  if (pollerHandle !== null) return;
+  pollerHandle = window.setInterval(drainIfReady, 100);
+}
+
 function fireBrowser(
   event_name: EventName,
   event_id: string,
   custom_data: CustomData,
-  attempt = 0,
 ): void {
   if (typeof window === "undefined") return;
-  if (!window.fbq) {
-    if (attempt < 20) {
-      window.setTimeout(
-        () => fireBrowser(event_name, event_id, custom_data, attempt + 1),
-        50,
-      );
-    }
+  if (window.fbq) {
+    callFbq({ event_name, event_id, custom_data });
     return;
   }
-  const action: "track" | "trackCustom" = STANDARD_EVENTS.has(event_name)
-    ? "track"
-    : "trackCustom";
-  try {
-    window.fbq(action, event_name, custom_data, { eventID: event_id });
-  } catch {
-    // fbq throwing — silently drop, never block UX.
-  }
+  browserQueue.push({ event_name, event_id, custom_data });
+  ensurePoller();
 }
 
 export function trackEvent(
