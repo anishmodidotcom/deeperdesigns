@@ -114,7 +114,7 @@ export default function OudAndEmberPage() {
         accent="var(--page-accent-oud-and-ember)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="oud-and-ember" name="Oud and Ember" industry="Coworking Space" />
+      <ShowcaseAnalytics slug="oud-and-ember" name="Oud and Ember" industry="Perfume Atelier" />
     </div>
   );
 }

@@ -110,7 +110,7 @@ export default function AutoBazaarPage() {
         accent="var(--page-accent-autobazaar)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Coaching Academy" />
+      <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Used-Car Lot" />
     </div>
   );
 }

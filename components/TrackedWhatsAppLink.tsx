@@ -7,6 +7,7 @@ import {
   trackLiveProductCTAClick,
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
+import { useShowcaseContext } from "@/components/ShowcaseContext";
 
 type LiveProduct = "maplelens" | "deeper-content";
 
@@ -18,18 +19,21 @@ type Props = {
   target?: string;
   rel?: string;
   ariaLabel?: string;
-  // Showcase context, if the link sits on a /work/<slug> page. When
-  // present, trackWhatsAppOpenedFromShowcase fires alongside trackLead.
+  // Explicit overrides. Useful for in-content CTAs that want to assert
+  // showcase identity even if context is missing. When omitted, the
+  // values are read from ShowcaseContext (populated by the showcase
+  // page wrapper).
   showcaseSlug?: string;
   showcaseIndustry?: string;
-  // If the link sits on a live product page, trackLiveProductCTAClick
-  // fires alongside trackLead.
   liveProduct?: LiveProduct;
 };
 
-// Sitewide WhatsApp CTA wrapper. Always fires trackLead. Optionally
-// fires the showcase-context or live-product variant. Tracking is
-// fire-and-forget so the link navigates normally.
+// Sitewide WhatsApp CTA wrapper.
+// Always fires trackLead. When rendered inside a ShowcaseProvider or
+// when the explicit override props are present, additionally fires
+// trackWhatsAppOpenedFromShowcase and (for live products only)
+// trackLiveProductCTAClick. Tracking is fire-and-forget, never blocks
+// navigation.
 export default function TrackedWhatsAppLink({
   href,
   children,
@@ -43,15 +47,27 @@ export default function TrackedWhatsAppLink({
   liveProduct,
 }: Props) {
   const pathname = usePathname() ?? "";
+  const ctx = useShowcaseContext();
+
+  // Explicit props win; otherwise inherit from context. liveProduct on
+  // context is gated by isLiveProduct so concept showcases never fire
+  // LiveProductCTAClick.
+  const effectiveSlug = showcaseSlug ?? ctx?.slug;
+  const effectiveIndustry = showcaseIndustry ?? ctx?.industry;
+  const effectiveLiveProduct: LiveProduct | undefined =
+    liveProduct ??
+    (ctx?.isLiveProduct && (ctx.slug === "maplelens" || ctx.slug === "deeper-content")
+      ? ctx.slug
+      : undefined);
 
   const onClick = () => {
     try {
       trackLead(pathname);
-      if (showcaseSlug) {
-        trackWhatsAppOpenedFromShowcase(showcaseSlug, showcaseIndustry ?? "");
+      if (effectiveSlug) {
+        trackWhatsAppOpenedFromShowcase(effectiveSlug, effectiveIndustry ?? "");
       }
-      if (liveProduct) {
-        trackLiveProductCTAClick(liveProduct);
+      if (effectiveLiveProduct) {
+        trackLiveProductCTAClick(effectiveLiveProduct);
       }
     } catch {
       // Never block navigation.

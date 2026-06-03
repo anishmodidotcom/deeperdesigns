@@ -93,7 +93,7 @@ export default function MapleLensPage() {
         accent="var(--page-accent-maplelens)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="maplelens" name="Maple Lens" industry="Deeper Designs" />
+      <ShowcaseAnalytics slug="maplelens" name="Maple Lens" industry="Furniture Maker" />
     </div>
   );
 }

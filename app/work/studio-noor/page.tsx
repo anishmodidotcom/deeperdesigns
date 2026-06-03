@@ -111,7 +111,7 @@ export default function StudioNoorPage() {
         accent="var(--page-accent-studio-noor)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="studio-noor" name="Studio Noor" industry="Dental Clinic" />
+      <ShowcaseAnalytics slug="studio-noor" name="Studio Noor" industry="Interior Design" />
     </div>
   );
 }

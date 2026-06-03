@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { trackLead } from "@/lib/meta-events";
+import {
+  trackLead,
+  trackLiveProductCTAClick,
+  trackWhatsAppOpenedFromShowcase,
+} from "@/lib/meta-events";
+import { useShowcaseContext } from "@/components/ShowcaseContext";
 
 export default function Nav() {
   const pathname = usePathname() ?? "";
+  const ctx = useShowcaseContext();
   const [scrolled, setScrolled] = useState(false);
   const [onLight, setOnLight] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,6 +20,17 @@ export default function Nav() {
   const onTalkToUs = () => {
     try {
       trackLead(pathname);
+      // v17.3: when Nav is rendered on a showcase page, stack the
+      // showcase-context events the same way TrackedWhatsAppLink does.
+      if (ctx?.slug) {
+        trackWhatsAppOpenedFromShowcase(ctx.slug, ctx.industry);
+      }
+      if (
+        ctx?.isLiveProduct &&
+        (ctx.slug === "maplelens" || ctx.slug === "deeper-content")
+      ) {
+        trackLiveProductCTAClick(ctx.slug);
+      }
     } catch {
       // Never block navigation.
     }

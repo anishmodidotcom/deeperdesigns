@@ -126,7 +126,7 @@ export default function KadakChaiPage() {
         accent="var(--page-accent-kadak-chai)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="kadak-chai" name="Kadak Chai" industry="Trek Outfit" />
+      <ShowcaseAnalytics slug="kadak-chai" name="Kadak Chai" industry="Craft Tea Brand" />
     </div>
   );
 }

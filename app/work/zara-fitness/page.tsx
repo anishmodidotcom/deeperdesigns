@@ -116,7 +116,7 @@ export default function ZaraFitnessPage() {
         accent="var(--page-accent-zara-fitness)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="zara-fitness" name="Zara Fitness" industry="Ceramics Studio" />
+      <ShowcaseAnalytics slug="zara-fitness" name="Zara Fitness" industry="Fitness Creator" />
     </div>
   );
 }
