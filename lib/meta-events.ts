@@ -19,6 +19,20 @@ type EventName =
   | "WhatsAppOpenedFromShowcase"
   | "CGEDemoRequest";
 
+// Meta's standard event allowlist. Anything not in here is a custom
+// event and must be sent via fbq('trackCustom', ...) instead of
+// fbq('track', ...). Using 'track' on a custom name silently drops the
+// browser beacon while server-side CAPI still fires — that's exactly
+// what production saw for ShowcaseScrolled75, LiveProductCTAClick,
+// WhatsAppOpenedFromShowcase, and CGEDemoRequest.
+const STANDARD_EVENTS = new Set<EventName>([
+  "PageView",
+  "ViewContent",
+  "Lead",
+  "Contact",
+  "InitiateCheckout",
+]);
+
 type UserData = {
   em?: string;
   ph?: string;
@@ -65,28 +79,73 @@ async function fireServer(
   user_data: UserData,
   custom_data: CustomData,
 ): Promise<void> {
+  const body = JSON.stringify({
+    event_name,
+    event_id,
+    user_data,
+    custom_data,
+  });
+  // Use sendBeacon when available so the request survives same-tab
+  // unloads (e.g. an internal Link nav after a Lead click). Fall back
+  // to fetch+keepalive on browsers without sendBeacon or when the
+  // beacon API rejects the payload.
+  if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+    try {
+      const blob = new Blob([body], { type: "application/json" });
+      const ok = navigator.sendBeacon("/api/meta-capi", blob);
+      if (ok) return;
+    } catch {
+      // fall through to fetch fallback
+    }
+  }
   try {
     await fetch("/api/meta-capi", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ event_name, event_id, user_data, custom_data }),
+      body,
       keepalive: true,
     });
   } catch {
-    // Network-level failure — silently drop, don't block UX.
+    // Network-level failure, silently drop.
   }
 }
 
+// Production showed every event except the base-code PageView dropped
+// silently. Two bugs:
+//   1. window.fbq is defined by MetaPixel's afterInteractive Script,
+//      which executes after React hydration. ShowcaseAnalytics'
+//      useEffect runs at hydration time, so the first ViewContent call
+//      lands BEFORE fbq exists and the old guard `if (!window.fbq)
+//      return;` silently dropped it. Same race burns any click that
+//      happens before the script lands.
+//   2. fbq('track', name) only works for Meta's Standard Events. The
+//      4 DD custom events were silently dropped browser-side; only
+//      the server CAPI mirror fired.
+// Fix: wait up to ~1s for fbq to materialise (50ms × 20 attempts),
+// then route through 'track' or 'trackCustom' based on STANDARD_EVENTS.
 function fireBrowser(
   event_name: EventName,
   event_id: string,
   custom_data: CustomData,
+  attempt = 0,
 ): void {
-  if (typeof window === "undefined" || !window.fbq) return;
+  if (typeof window === "undefined") return;
+  if (!window.fbq) {
+    if (attempt < 20) {
+      window.setTimeout(
+        () => fireBrowser(event_name, event_id, custom_data, attempt + 1),
+        50,
+      );
+    }
+    return;
+  }
+  const action: "track" | "trackCustom" = STANDARD_EVENTS.has(event_name)
+    ? "track"
+    : "trackCustom";
   try {
-    window.fbq("track", event_name, custom_data, { eventID: event_id });
+    window.fbq(action, event_name, custom_data, { eventID: event_id });
   } catch {
-    // fbq missing or throwing — silently drop.
+    // fbq throwing — silently drop, never block UX.
   }
 }
 
