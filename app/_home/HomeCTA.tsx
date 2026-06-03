@@ -1,5 +1,7 @@
 "use client";
 
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+
 export default function HomeCTA() {
   const onExplore = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ export default function HomeCTA() {
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <a href="#gallery" onClick={onExplore} className="btn-outline">Let&apos;s explore ideas</a>
-          <a href="/start-your-study" className="btn-whatsapp">Talk to us</a>
+          <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
         </div>
       </div>
     </section>

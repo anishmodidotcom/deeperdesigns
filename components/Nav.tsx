@@ -1,12 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { trackLead } from "@/lib/meta-events";
 
 export default function Nav() {
+  const pathname = usePathname() ?? "";
   const [scrolled, setScrolled] = useState(false);
   const [onLight, setOnLight] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const onTalkToUs = () => {
+    try {
+      trackLead(pathname);
+    } catch {
+      // Never block navigation.
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -118,6 +129,7 @@ export default function Nav() {
             <Link
               href="/start-your-study"
               className="btn-whatsapp text-sm"
+              onClick={onTalkToUs}
               style={{ padding: "10px 20px" }}
             >
               Talk to us
@@ -196,7 +208,7 @@ export default function Nav() {
             <Link
               href="/start-your-study"
               className="btn-whatsapp"
-              onClick={() => setOpen(false)}
+              onClick={() => { onTalkToUs(); setOpen(false); }}
             >
               Talk to us
             </Link>

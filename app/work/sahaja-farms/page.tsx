@@ -17,6 +17,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Bricolage Grotesque on Google Fonts ships normal-only. Italic display
 // moments use CSS synthesized italic via fontStyle: italic; the variable
@@ -96,6 +97,8 @@ export default function SahajaFarmsPage() {
             timeline={meta.timeline ?? "12 days"}
             pattern={meta.pattern ?? "CSA farms. Organic brands. Subscription-based food businesses with seasonal supply."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -120,6 +123,7 @@ export default function SahajaFarmsPage() {
         accent="var(--page-accent-sahaja-farms)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="sahaja-farms" name="Sahaja Farms" industry="Legal Practice" />
     </div>
   );
 }

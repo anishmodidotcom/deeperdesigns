@@ -12,6 +12,7 @@ import NextProject from "./NextProject";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 export const metadata: Metadata = {
   title: "Deeper Content · Live Product · Deeper Designs",
@@ -87,6 +88,7 @@ export default function DeeperContentPage() {
       />
       <AboutBuild />
       <NextProject />
+      <ShowcaseAnalytics slug="deeper-content" name="Deeper Content" industry="Deeper Designs" />
     </div>
   );
 }

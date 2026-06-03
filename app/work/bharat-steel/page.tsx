@@ -16,6 +16,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -88,6 +89,8 @@ export default function BharatSteelPage() {
             timeline={meta.timeline ?? "7 days"}
             pattern={meta.pattern ?? "Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -111,6 +114,7 @@ export default function BharatSteelPage() {
         accent="var(--page-accent-bharat-steel)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="bharat-steel" name="Bharat Steel Corp" industry="B2B Industrial" />
     </div>
   );
 }

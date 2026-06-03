@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -84,6 +85,8 @@ export default function SmileFirstPage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -105,6 +108,7 @@ export default function SmileFirstPage() {
         accent="var(--page-accent-smilefirst)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="smilefirst" name="SmileFirst" industry="Dental Clinic" />
     </div>
   );
 }

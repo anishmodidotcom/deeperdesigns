@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Archivo Black is the closest open-source stand-in for the heavy
 // tin-can headline style we wanted (Druk Wide Bold). Crimson Pro
@@ -101,6 +102,8 @@ export default function KadakChaiPage() {
             timeline={meta.timeline ?? "7 weeks"}
             pattern={meta.pattern ?? "Wholesale-to-D2C brands. Family supply businesses going direct. Any product worth a tin."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -123,6 +126,7 @@ export default function KadakChaiPage() {
         accent="var(--page-accent-kadak-chai)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="kadak-chai" name="Kadak Chai" industry="Trek Outfit" />
     </div>
   );
 }

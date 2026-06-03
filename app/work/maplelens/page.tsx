@@ -11,6 +11,7 @@ import NextProject from "./NextProject";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -92,6 +93,7 @@ export default function MapleLensPage() {
         accent="var(--page-accent-maplelens)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="maplelens" name="Maple Lens" industry="Deeper Designs" />
     </div>
   );
 }

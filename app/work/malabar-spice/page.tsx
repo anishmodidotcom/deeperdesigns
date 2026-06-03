@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -91,6 +92,8 @@ export default function MalabarSpicePage() {
             timeline={meta.timeline ?? "8 days"}
             pattern={meta.pattern ?? "Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -113,6 +116,7 @@ export default function MalabarSpicePage() {
         accent="var(--page-accent-malabar-spice)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="malabar-spice" name="Malabar Spice House" industry="Pet Boarding" />
     </div>
   );
 }

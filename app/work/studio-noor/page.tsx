@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const instrument = Instrument_Serif({
   subsets: ["latin"],
@@ -87,6 +88,8 @@ export default function StudioNoorPage() {
             timeline={meta.timeline ?? "14 days"}
             pattern={meta.pattern ?? "Interior designers. Architects. Any project-based service business juggling clients on WhatsApp."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -108,6 +111,7 @@ export default function StudioNoorPage() {
         accent="var(--page-accent-studio-noor)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="studio-noor" name="Studio Noor" industry="Dental Clinic" />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import AnishNote from "@/components/AnishNote";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import TrackedTierCTA from "./TrackedTierCTA";
 
 export const metadata: Metadata = {
   title: "Services · Deeper Designs",
@@ -123,6 +125,7 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
+                <TrackedTierCTA tierName={t.name} tierPriceBand={t.price} />
               </div>
             ))}
           </div>
@@ -136,7 +139,7 @@ export default function Services() {
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
-            <a href="/start-your-study" className="btn-whatsapp">Talk to us</a>
+            <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
           </div>
         </div>
       </section>

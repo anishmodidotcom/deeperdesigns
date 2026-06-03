@@ -14,6 +14,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const playfairSc = Playfair_Display_SC({
   subsets: ["latin"],
@@ -110,6 +111,8 @@ export default function SugarLanePage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Home bakeries. Caterers. Custom-order food businesses run by one person and the oven."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -131,6 +134,7 @@ export default function SugarLanePage() {
         accent="var(--page-accent-sugar-lane)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="sugar-lane" name="Sugar Lane" industry="Tutoring Practice" />
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Bodoni Moda gives the high-contrast editorial display the brief
 // asked for (Didot stand-in). Inter for body. IBM Plex Mono for the
@@ -111,6 +112,8 @@ export default function NomadTrailsPage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Trek outfits. Small-group tours. Niche travel brands selling experience, not seats."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -133,6 +136,7 @@ export default function NomadTrailsPage() {
         accent="var(--page-accent-nomad-trails)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="nomad-trails" name="Nomad Trails" industry="Trek Outfit" />
     </div>
   );
 }

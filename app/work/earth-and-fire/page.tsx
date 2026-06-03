@@ -16,6 +16,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 // Fraunces stands in as the editorial serif for body and small display.
 // DM Serif Display covers the italic display headlines that anchor the
@@ -107,6 +108,8 @@ export default function EarthAndFirePage() {
             timeline={meta.timeline ?? "9 weeks"}
             pattern={meta.pattern ?? "Ceramicists. Woodworkers. Any maker selling drops and running out of stock in minutes."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -130,6 +133,7 @@ export default function EarthAndFirePage() {
         accent="var(--page-accent-earth-and-fire)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="earth-and-fire" name="Earth and Fire" industry="Ceramics Studio" />
     </div>
   );
 }

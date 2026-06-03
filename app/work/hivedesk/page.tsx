@@ -16,6 +16,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -90,6 +91,8 @@ export default function HiveDeskPage() {
             timeline={meta.timeline ?? "22 days"}
             pattern={meta.pattern ?? "Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -113,6 +116,7 @@ export default function HiveDeskPage() {
         accent="var(--page-accent-hivedesk)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="hivedesk" name="HiveDesk" industry="Coworking Space" />
     </div>
   );
 }

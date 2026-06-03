@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "next-view-transitions";
 import { FORM_HREF, FORM_CTA, WHATSAPP_HREF } from "@/lib/contact";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 type Props = {
   number: string;
@@ -11,6 +12,10 @@ type Props = {
   timeline: string;
   pattern?: string;
   pains?: string[];
+  // Showcase context (v17). When present, the WhatsApp CTA fires
+  // trackWhatsAppOpenedFromShowcase alongside trackLead.
+  showcaseSlug?: string;
+  showcaseIndustry?: string;
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -21,6 +26,8 @@ export default function PainBlock({
   timeline,
   pattern,
   pains,
+  showcaseSlug,
+  showcaseIndustry,
 }: Props) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -184,11 +191,19 @@ export default function PainBlock({
               marginTop: 28,
             }}
           >
-            <a
+            <TrackedWhatsAppLink
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor="pointer"
+              showcaseSlug={showcaseSlug}
+              showcaseIndustry={showcaseIndustry}
+              liveProduct={
+                showcaseSlug === "maplelens"
+                  ? "maplelens"
+                  : showcaseSlug === "deeper-content"
+                  ? "deeper-content"
+                  : undefined
+              }
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -207,7 +222,7 @@ export default function PainBlock({
             >
               Start a conversation
               <span aria-hidden>↗</span>
-            </a>
+            </TrackedWhatsAppLink>
             <Link
               href={FORM_HREF}
               data-cursor="pointer"

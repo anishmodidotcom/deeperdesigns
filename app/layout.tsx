@@ -8,6 +8,8 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ShowcaseNavigator from "@/components/ShowcaseNavigator";
+import MetaPixel from "@/components/MetaPixel";
+import MetaPageViewOnRouteChange from "@/components/MetaPageViewOnRouteChange";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +58,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
+  // Meta domain verification (v17). Required for Business Manager to
+  // attribute deeperdesigns.in to the DD ad account.
+  other: {
+    "facebook-domain-verification": "ctti8c403wm28szc3zwnntg41ljhgc",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -74,6 +81,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ShowcaseNavigator />
           </SmoothScroll>
           <Analytics />
+          <MetaPixel />
+          <MetaPageViewOnRouteChange />
         </body>
       </html>
     </ViewTransitions>

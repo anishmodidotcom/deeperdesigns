@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -85,6 +86,8 @@ export default function AutoBazaarPage() {
             timeline={meta.timeline ?? "8 days"}
             pattern={meta.pattern ?? "Used-car lots. Dealerships. Any inventory business pricing by feel."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -107,6 +110,7 @@ export default function AutoBazaarPage() {
         accent="var(--page-accent-autobazaar)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Coaching Academy" />
     </div>
   );
 }

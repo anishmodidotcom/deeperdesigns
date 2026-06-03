@@ -18,6 +18,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -94,6 +95,8 @@ export default function MeeraWellnessPage() {
             timeline={meta.timeline ?? "10 days"}
             pattern={meta.pattern ?? "Yoga studios. Pilates studios. Therapists. Any wellness practice with packages and renewals."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -119,6 +122,7 @@ export default function MeeraWellnessPage() {
         accent="var(--page-accent-meera-wellness)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="meera-wellness" name="Meera Wellness" industry="QSR Chain" />
     </div>
   );
 }

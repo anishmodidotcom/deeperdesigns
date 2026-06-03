@@ -15,6 +15,7 @@ import { SHOWCASES } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
+import ShowcaseAnalytics from "@/components/ShowcaseAnalytics";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -89,6 +90,8 @@ export default function OudAndEmberPage() {
             timeline={meta.timeline ?? "11 days"}
             pattern={meta.pattern ?? "Bespoke perfumeries. Custom blends. Any taste-led product business with a quiz to give."}
             pains={meta.pains}
+            showcaseSlug={meta.slug}
+            showcaseIndustry={meta.industryLabel}
           />
         );
       })()}
@@ -111,6 +114,7 @@ export default function OudAndEmberPage() {
         accent="var(--page-accent-oud-and-ember)"
       />
       <NextProject />
+      <ShowcaseAnalytics slug="oud-and-ember" name="Oud and Ember" industry="Coworking Space" />
     </div>
   );
 }
