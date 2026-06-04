@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "A bespoke perfume house stopped losing online customers to twenty-message WhatsApp threads. A quiz finds their scent and shows them the bottle with their name on it.",
   openGraph: {
     title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A digital atelier for a bespoke Arabian perfume house. Fifteen signature scents, a personality quiz, and an AI-rendered bottle named for the customer.",
     url: "/work/oud-and-ember",
     images: [

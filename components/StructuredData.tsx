@@ -19,10 +19,10 @@ export const ORGANIZATION_LD: JsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Deeper Designs",
-  url: "https://deeperdesigns.in",
-  logo: "https://deeperdesigns.in/icon.svg",
+  url: "https://www.deeperdesigns.in",
+  logo: "https://www.deeperdesigns.in/brand/og-deeperdesigns.png",
   description:
-    "Custom systems for Indian businesses. We design and build digital tools, sites, and operational systems.",
+    "India-first AI-led build studio for ambitious businesses. We design and build digital tools, sites, and operational systems.",
   founder: {
     "@type": "Person",
     name: "Anish Modi",
@@ -32,6 +32,14 @@ export const ORGANIZATION_LD: JsonLd = {
     "@type": "PostalAddress",
     addressLocality: "Delhi · Dubai",
     addressCountry: ["IN", "AE"],
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91-99687-16498",
+    contactType: "Customer Service",
+    email: "anish.modi@deeperdesigns.in",
+    areaServed: ["IN", "AE"],
+    availableLanguage: ["en"],
   },
   sameAs: [
     "https://instagram.com/deeperdesignsco",

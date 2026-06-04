@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     "A Jaipur ceramicist who sold out in 90 minutes got a heritage brand, a custom builder, and a queue. Slower drops, higher prices, a better business.",
   openGraph: {
     title: "Earth and Fire · Pottery Brand · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A Jaipur ceramicist who sells out in 90 minutes. We built her a heritage brand, a custom builder, and a queue. Slower drops. Higher prices. Better business.",
     url: "/work/earth-and-fire",
     images: [

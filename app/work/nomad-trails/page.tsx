@@ -48,6 +48,7 @@ export const metadata: Metadata = {
     "A husband-and-wife Himalayan trek outfit got an editorial site, not a booking funnel. Direct bookings tripled, and the trip rate tripled with them.",
   openGraph: {
     title: "Nomad Trails · Trek Outfit · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A husband-and-wife Himalayan trek outfitter based in Leh. Eight trekkers per trip. Three trips a year. We built them an editorial site, not a booking funnel.",
     url: "/work/nomad-trails",
     images: [

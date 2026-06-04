@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.deeperdesigns.in/colophon" },
   openGraph: {
     title: "Colophon · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "The materials and methods of Deeper Designs.",
     url: "https://www.deeperdesigns.in/colophon",
     type: "article",

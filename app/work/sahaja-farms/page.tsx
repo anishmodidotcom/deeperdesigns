@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "A 200-acre organic farm got a brain that survives the founder taking a Sunday off. It plans planting from real demand and flags subscribers before they cancel.",
   openGraph: {
     title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A farm management dashboard that knows what to plant, when to harvest, and which subscribers are about to cancel. Built for a 200-acre organic farm outside Mysore.",
     url: "/work/sahaja-farms",
     images: [

@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
   openGraph: {
     title: "HiveDesk · Member Hub · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A coworking operating system that runs the floor, profiles every member, and tells the owner where the revenue actually leaks.",
     url: "/work/hivedesk",
     images: [

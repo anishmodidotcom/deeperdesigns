@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "A working photo tool for Indian furniture makers. Turns a phone photo into a catalog-ready studio shot, and saves the cost of a studio shoot. Live and yours to try.",
   openGraph: {
     title: "Maple Lens · Live Product · Deeper Designs",
+    siteName: "Deeper Designs",
     description:
       "Workshop photo in. Studio shot out. A catalog generator for Indian furniture makers.",
     url: "/work/maplelens",

@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
   openGraph: {
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "Sixty-four years, forty-five buyers, one website that finally feels like Kerala. An editorial brand site and digital archive for a third-generation Kochi spice exporter.",
     url: "/work/malabar-spice",
     images: [

@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "An Ayurvedic skincare brand got a skin advisor that answers every customer in two minutes, so the founder stopped losing her week to DMs.",
   openGraph: {
     title: "Veda Glow · Skin Advisor · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A skin advisor for an Ayurvedic skincare brand that recommends like the founder would, every time, in under two minutes.",
     url: "/work/veda-glow",
     images: [
