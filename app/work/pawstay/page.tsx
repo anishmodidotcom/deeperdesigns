@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "A Delhi dog boarding facility gave anxious parents a live window in. The owner got two hours of her day back, and the panicked WhatsApp messages stopped.",
   openGraph: {
     title: "PawStay · Pet Parent Portal · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A pet parent portal with live camera, real-time daily tracker, and a booking system. For Pooja's 20-dog Delhi daycare and the parents who finally relax.",
     url: "/work/pawstay",
     images: [

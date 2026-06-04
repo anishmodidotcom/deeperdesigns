@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "A father-son steel trader went from thirty-minute phone quotes to thirty-second ones, with a live inventory dashboard fed straight from WhatsApp.",
   openGraph: {
     title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "A live inventory dashboard with instant quote generation. Fed by warehouse delivery slips sent over WhatsApp.",
     url: "/work/bharat-steel",
     images: [

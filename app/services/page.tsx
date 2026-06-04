@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AnishNote from "@/components/AnishNote";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import TrackedTierCTA from "./TrackedTierCTA";
+import { StructuredData } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   title: "Services · Deeper Designs",
@@ -66,9 +67,39 @@ const TIERS: { name: string; price: string; body: string; examples: string[] }[]
   },
 ];
 
+// v18: emit a Service-typed JSON-LD entry per tier so each priced
+// offering is independently indexable. ItemList wraps the four so
+// Google reads them as a coherent product line.
+const SERVICES_LD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: TIERS.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: t.name,
+      description: t.body,
+      provider: {
+        "@type": "Organization",
+        name: "Deeper Designs",
+        url: "https://www.deeperdesigns.in",
+      },
+      areaServed: ["IN", "AE"],
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        price: t.price,
+        availability: "https://schema.org/InStock",
+      },
+    },
+  })),
+};
+
 export default function Services() {
   return (
     <main style={{ paddingTop: "120px" }}>
+      <StructuredData data={SERVICES_LD} />
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>SERVICES</p>

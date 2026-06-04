@@ -11,6 +11,7 @@ import ShowcaseNavigator from "@/components/ShowcaseNavigator";
 import MetaPixel from "@/components/MetaPixel";
 import MetaPageViewOnRouteChange from "@/components/MetaPageViewOnRouteChange";
 import ShowcaseRouteProvider from "@/components/ShowcaseRouteProvider";
+import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,8 +62,11 @@ export const metadata: Metadata = {
   },
   // Meta domain verification (v17). Required for Business Manager to
   // attribute deeperdesigns.in to the DD ad account.
+  // Google Search Console verification (v18) added alongside so GSC
+  // can confirm ownership when Cowork submits the sitemap.
   other: {
     "facebook-domain-verification": "ctti8c403wm28szc3zwnntg41ljhgc",
+    "google-site-verification": "xBf34m461jwmjJwAyBWOmSr5PsnrDPcQ21Ut6rzEVfM",
   },
 };
 
@@ -83,6 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ShowcaseNavigator />
             </SmoothScroll>
           </ShowcaseRouteProvider>
+          {/* v18: Organization JSON-LD lives in the head for every route. */}
+          <StructuredData data={ORGANIZATION_LD} />
           <Analytics />
           <MetaPixel />
           <MetaPageViewOnRouteChange />

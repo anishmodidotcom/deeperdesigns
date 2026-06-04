@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "An AI engine that reasons before it generates. Funnel stage, audience, brand, thought through before any image is made. Brand-consistent social creative, by Deeper Designs.",
   openGraph: {
     title: "Deeper Content · Live Product · Deeper Designs",
+    siteName: "Deeper Designs",
     description:
       "An AI engine that reasons before it generates. Brand-consistent social creative, by Deeper Designs.",
     url: "/work/deeper-content",

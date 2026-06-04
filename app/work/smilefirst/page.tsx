@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     "A three-chair dental clinic turned recommended treatments into booked ones. Follow-up runs itself, and the clinic recovers ₹2.4L a month it used to lose.",
   openGraph: {
     title: "SmileFirst · Clinic Manager · Deeper Designs",
+    siteName: "Deeper Designs",
     description: "Patient CRM, automated recalls, appointment management, dental records, and intelligent follow-up. A full clinic operating system for a 3-chair dental practice.",
     url: "/work/smilefirst",
     images: [
