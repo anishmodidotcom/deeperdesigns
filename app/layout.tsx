@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
@@ -78,6 +79,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
       >
         <body>
+          {/* v18.1: dd_visitor_id cookie, set once per browser, BEFORE
+              hydration / any tracking event fires. Hashed and sent as
+              external_id on every CAPI event so returning visitors
+              aggregate in Meta. 1-year expiry, SameSite=Lax. */}
+          <Script id="dd-visitor-id" strategy="beforeInteractive">
+            {`(function(){
+              try {
+                if (!/(^|;\\s*)dd_visitor_id=/.test(document.cookie)) {
+                  var id = (window.crypto && crypto.randomUUID)
+                    ? crypto.randomUUID()
+                    : (Date.now() + '-' + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
+                  document.cookie = 'dd_visitor_id=' + id + '; path=/; max-age=31536000; SameSite=Lax';
+                }
+              } catch (e) { /* cookies disabled, silent */ }
+            })();`}
+          </Script>
           <ShowcaseRouteProvider>
             <SmoothScroll>
               <Nav />
