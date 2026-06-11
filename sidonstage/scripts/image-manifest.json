@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "atmos",
+    "filename": "spotlight-cone",
+    "width": 1600,
+    "height": 1600,
+    "aspectRatio": "1:1",
+    "prompt": "Soft warm white volumetric stage spotlight cone descending from upper center on pure black background. Visible light beam with haze and dust suspended inside, soft falloff at edges, no objects, no people, no text. Cinematic, premium, restrained. Photographic realism."
+  },
+  {
+    "slug": "atmos",
+    "filename": "haze-1",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9",
+    "prompt": "Wide drifting blue stage haze on transparent feeling black background. Slow horizontal smoke movement, cool indigo blue tint, low density, atmospheric, no people, no objects, no text. Photorealistic."
+  },
+  {
+    "slug": "atmos",
+    "filename": "haze-2",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9",
+    "prompt": "Different angle of drifting blue stage haze on black, denser at the upper edge, lighter below, electric blue grade, photorealistic, no people, no objects, no text."
+  },
+  {
+    "slug": "atmos",
+    "filename": "bokeh-blue",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9",
+    "prompt": "Out of focus blue stage light bokeh field on pure black, large soft circles, varying sizes, electric blue and cyan dominant, very shallow depth of field, no text, no logos, no shapes other than bokeh circles."
+  },
+  {
+    "slug": "atmos",
+    "filename": "light-beams",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9",
+    "prompt": "Thin radiating blue stage light beams on pure black background, beams angling from top down, soft volumetric glow, cool electric blue, no people, no objects, no text, photographic."
+  },
+  {
+    "slug": "atmos",
+    "filename": "particles",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9",
+    "prompt": "Faint floating dust particles backlit by cool blue stage light on pure black background, soft tiny specks of warm and cool light, photorealistic, no people, no objects, no text."
+  },
+  {
+    "slug": "atmos",
+    "filename": "grain",
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": "1:1",
+    "prompt": "Fine seamless film grain texture tile, neutral gray, subtle, tileable, photographic, no patterns, no text, no objects."
+  }
+]
