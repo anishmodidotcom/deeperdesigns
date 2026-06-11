@@ -1,0 +1,98 @@
+{
+  "name": "DD Marketing — Social Assets Library",
+  "description": "Tool/brand logos and tactile editorial photography for Deeper Designs social and content use.",
+  "version": 1,
+  "generated": "2026-06-11",
+  "aesthetic": "Editorial dark-mode photography. Deep black background #0A0A0A. Cool natural light from upper left. Slight indigo grade in shadows. High contrast. Minimal, negative space. 50mm f/1.8 feel. No faces. Hands and objects only. Real and tactile, not stock, not 3D render.",
+  "logos": [
+    { "slug": "anthropic", "file": "logos/anthropic.svg", "category": "ai-models" },
+    { "slug": "claude", "file": "logos/claude.svg", "category": "ai-models" },
+    { "slug": "openai", "file": "logos/openai.svg", "category": "ai-models" },
+    { "slug": "googlegemini", "file": "logos/googlegemini.svg", "category": "ai-models" },
+    { "slug": "perplexity", "file": "logos/perplexity.svg", "category": "ai-models" },
+    { "slug": "cursor", "file": "logos/cursor.svg", "category": "development" },
+    { "slug": "github", "file": "logos/github.svg", "category": "development" },
+    { "slug": "nextdotjs", "file": "logos/nextdotjs.svg", "category": "development" },
+    { "slug": "react", "file": "logos/react.svg", "category": "development" },
+    { "slug": "make", "file": "logos/make.svg", "category": "automation" },
+    { "slug": "n8n", "file": "logos/n8n.svg", "category": "automation" },
+    { "slug": "zapier", "file": "logos/zapier.svg", "category": "automation" },
+    { "slug": "figma", "file": "logos/figma.svg", "category": "design" },
+    { "slug": "framer", "file": "logos/framer.svg", "category": "design" },
+    { "slug": "cloudflare", "file": "logos/cloudflare.svg", "category": "infrastructure" },
+    { "slug": "vercel", "file": "logos/vercel.svg", "category": "infrastructure" },
+    { "slug": "resend", "file": "logos/resend.svg", "category": "infrastructure" },
+    { "slug": "supabase", "file": "logos/supabase.svg", "category": "data" },
+    { "slug": "postgresql", "file": "logos/postgresql.svg", "category": "data" },
+    { "slug": "linear", "file": "logos/linear.svg", "category": "productivity" },
+    { "slug": "notion", "file": "logos/notion.svg", "category": "productivity" },
+    { "slug": "googleanalytics", "file": "logos/googleanalytics.svg", "category": "analytics" },
+    { "slug": "posthog", "file": "logos/posthog.svg", "category": "analytics" },
+    { "slug": "googleads", "file": "logos/googleads.svg", "category": "advertising" },
+    { "slug": "meta", "file": "logos/meta.svg", "category": "advertising" },
+    { "slug": "whatsapp", "file": "logos/whatsapp.svg", "category": "communication" },
+    { "slug": "linkedin", "file": "logos/linkedin.svg", "category": "communication" }
+  ],
+  "photos": [
+    {
+      "slug": "notebook-notes",
+      "file": "photos/notebook-notes.jpg",
+      "description": "Leather notebook open to hand-drawn workflow diagrams, pen beside it, top-down."
+    },
+    {
+      "slug": "laptop-dashboard",
+      "file": "photos/laptop-dashboard.jpg",
+      "description": "Laptop on wood desk, blurred dark dashboard with indigo charts, coffee beside."
+    },
+    {
+      "slug": "phone-whatsapp",
+      "file": "photos/phone-whatsapp.jpg",
+      "description": "Phone in one hand, WhatsApp Business chat with unread counters, slight blur."
+    },
+    {
+      "slug": "whiteboard-sketch",
+      "file": "photos/whiteboard-sketch.jpg",
+      "description": "Whiteboard close-up, hand-drawn process diagram, INPUT to OUTPUT labels."
+    },
+    {
+      "slug": "keyboard-hands",
+      "file": "photos/keyboard-hands.jpg",
+      "description": "Hands on mechanical keyboard, screen blurred behind showing structured doc."
+    },
+    {
+      "slug": "sticky-notes-wall",
+      "file": "photos/sticky-notes-wall.jpg",
+      "description": "Wall of dark sticky notes with handwritten workflow steps, side indigo light."
+    },
+    {
+      "slug": "screen-glow",
+      "file": "photos/screen-glow.jpg",
+      "description": "Monitor edge, screen glow casting indigo into a dark room, atmospheric."
+    },
+    {
+      "slug": "tablet-stylus",
+      "file": "photos/tablet-stylus.jpg",
+      "description": "Tablet with stylus mid-stroke, dashboard wireframe on screen."
+    },
+    {
+      "slug": "paper-printout",
+      "file": "photos/paper-printout.jpg",
+      "description": "Printed doc with red-pen annotations, highlights, coffee ring."
+    },
+    {
+      "slug": "cables-desk",
+      "file": "photos/cables-desk.jpg",
+      "description": "Clean desk, few cables, phone face-down, mug, just-stepped-away vibe."
+    },
+    {
+      "slug": "window-light-desk",
+      "file": "photos/window-light-desk.jpg",
+      "description": "Desk by window, soft late-afternoon light, notebook open, two empty mugs."
+    },
+    {
+      "slug": "monogram-texture",
+      "file": "photos/monogram-texture.jpg",
+      "description": "Abstract dark paper/fabric with a thin indigo light streak diagonal."
+    }
+  ]
+}
