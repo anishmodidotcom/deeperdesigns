@@ -76,9 +76,22 @@ export default function IndustryCTA({
               {cta.body}
             </p>
 
+            {cta.pillsIntro ? (
+              <p
+                style={{
+                  marginTop: 32,
+                  marginBottom: 0,
+                  fontSize: 13.5,
+                  color: "var(--dd-text-low, #6B6B6B)",
+                }}
+              >
+                {cta.pillsIntro}
+              </p>
+            ) : null}
+
             <div
               style={{
-                marginTop: 28,
+                marginTop: cta.pillsIntro ? 14 : 28,
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 10,
@@ -125,7 +138,7 @@ export default function IndustryCTA({
                   gap: 8,
                 }}
               >
-                Book a teardown
+                Book a 30-min call
               </Link>
               <TrackedWhatsAppLink
                 href={WHATSAPP_HREF}

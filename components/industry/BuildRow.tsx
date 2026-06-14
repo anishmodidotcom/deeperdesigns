@@ -1,8 +1,12 @@
 "use client";
 
+import { Link } from "next-view-transitions";
 import { motion } from "motion/react";
 import type { IndustryBuild } from "@/lib/industries";
 import { getDemo } from "./demos/registry";
+import BrowserFrame from "./frames/BrowserFrame";
+import PhoneFrame from "./frames/PhoneFrame";
+import { FORM_HREF } from "@/lib/contact";
 import { renderSerif, renderBold } from "./text";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -14,6 +18,8 @@ export default function BuildRow({
   build: IndustryBuild;
   position: number; // 0-based, decides which side the demo sits on
 }) {
+  // v19.1: prefer a real screenshot inside a device frame; fall back to a
+  // legacy CSS widget only if no frame/shot is declared.
   const Demo = getDemo(build.demo);
   const demoFirst = position % 2 === 1; // alternate sides
 
@@ -117,6 +123,14 @@ export default function BuildRow({
               </li>
             ))}
           </ul>
+
+          {/* Per-block CTA to the site's primary lead form. */}
+          <Link href={FORM_HREF} className="ind-build__cta">
+            Get this for your brand
+            <span aria-hidden className="ind-build__cta-arrow">
+              →
+            </span>
+          </Link>
         </motion.div>
 
         {/* Demo column */}
@@ -127,7 +141,24 @@ export default function BuildRow({
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="ind-build__demo"
         >
-          {Demo ? <Demo /> : null}
+          {build.frame === "browser" && build.shot ? (
+            <BrowserFrame
+              src={build.shot}
+              alt={`${build.kicker} build, a real screenshot`}
+              url={build.demoUrl ?? ""}
+              width={build.shotW ?? 1440}
+              height={build.shotH ?? 900}
+            />
+          ) : build.frame === "phone" && build.shot ? (
+            <PhoneFrame
+              src={build.shot}
+              alt={`${build.kicker} build, a real screenshot`}
+              width={build.shotW ?? 390}
+              height={build.shotH ?? 844}
+            />
+          ) : Demo ? (
+            <Demo />
+          ) : null}
         </motion.div>
       </div>
 
@@ -142,6 +173,23 @@ export default function BuildRow({
           display: flex;
           justify-content: center;
         }
+        .ind-build__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          margin-top: 30px;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--page-accent);
+          text-decoration: none;
+          width: fit-content;
+        }
+        .ind-build__cta-arrow {
+          display: inline-block;
+          transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .ind-build__cta:hover .ind-build__cta-arrow { transform: translateX(5px); }
+        .ind-build__cta:active { transform: translateY(1px); }
         @media (min-width: 1024px) {
           .ind-build {
             grid-template-columns: 1fr 1fr;

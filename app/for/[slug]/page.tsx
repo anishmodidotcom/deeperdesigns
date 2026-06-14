@@ -9,6 +9,7 @@ import DayShift from "@/components/industry/DayShift";
 import BuildRow from "@/components/industry/BuildRow";
 import PaybackLedger from "@/components/industry/PaybackLedger";
 import IndustryVoices from "@/components/industry/IndustryVoices";
+import IndustryPersonas from "@/components/industry/IndustryPersonas";
 import IndustryCTA from "@/components/industry/IndustryCTA";
 import IndustrySwitcher from "@/components/industry/IndustrySwitcher";
 import IndustryScaffold from "@/components/industry/IndustryScaffold";
@@ -167,7 +168,15 @@ export default async function IndustryPage({
 
       {industry.payback ? <PaybackLedger payback={industry.payback} /> : null}
 
-      {industry.voices ? <IndustryVoices voices={industry.voices} /> : null}
+      {industry.personas && industry.personas.length > 0 ? (
+        <IndustryPersonas
+          headline={industry.personasHeadline as string}
+          intro={industry.personasIntro as string}
+          personas={industry.personas}
+        />
+      ) : industry.voices ? (
+        <IndustryVoices voices={industry.voices} />
+      ) : null}
 
       {industry.cta ? (
         <IndustryCTA cta={industry.cta} slug={industry.slug} name={industry.name} />

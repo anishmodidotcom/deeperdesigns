@@ -20,7 +20,19 @@ export type IndustryBuild = {
   headline: string; // may contain a {serif} span marker
   body: string;
   bullets: string[]; // 4 each, <b> markers allowed
-  demo: string; // key selecting which build-demo component to render
+  demo: string; // legacy key, kept for any future CSS-widget fallback
+  // v19.1: real builds shown as screenshots inside a device frame.
+  frame?: "browser" | "phone";
+  shot?: string; // screenshot path under /public
+  shotW?: number;
+  shotH?: number;
+  demoUrl?: string; // shown in the BrowserFrame URL bar
+};
+
+export type Persona = {
+  quote: string;
+  persona: string; // e.g. "Founder, skincare label"
+  tag: string; // the build that answers it
 };
 
 export type StatPanel = {
@@ -72,7 +84,18 @@ export type Industry = {
     after: { quote: string; who: string };
   };
 
-  cta?: { headline: string; body: string; chips: string[] };
+  // v19.1: a wall of representative voices, each a different persona with
+  // a different problem.
+  personasHeadline?: string;
+  personasIntro?: string;
+  personas?: Persona[];
+
+  cta?: {
+    headline: string;
+    body: string;
+    pillsIntro?: string;
+    chips: string[];
+  };
 
   // One Anish margin note and one editorial pull quote, so these pages
   // carry the same human-edit layer as the rest of the site.
@@ -182,6 +205,10 @@ export const INDUSTRIES: Industry[] = [
         index: "01",
         kicker: "BEHAVIOUR RECOVERY ENGINE",
         demo: "BehaviourRecoveryDemo",
+        frame: "phone",
+        shot: "/builds/d2c/behaviour-recovery.png",
+        shotW: 390,
+        shotH: 844,
         headline:
           "It watches what each visitor looked at. {serif}Then it brings them back.{/serif}",
         body: "Most recovery messages say you left something behind. Yours shows them exactly what, the product they hovered on, with the photo, ready to buy in one tap.",
@@ -196,6 +223,11 @@ export const INDUSTRIES: Industry[] = [
         index: "02",
         kicker: "PROFIT COMMAND",
         demo: "ProfitCommandDemo",
+        frame: "browser",
+        shot: "/builds/d2c/profit-command.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.aarka.in/profit",
         headline:
           "The one screen that tells you {serif}the truth about each order.{/serif}",
         body: "Not ROAS. Real contribution margin after returns, shipping and fees, broken down by product and by the pincodes quietly eating your profit.",
@@ -210,6 +242,11 @@ export const INDUSTRIES: Industry[] = [
         index: "03",
         kicker: "COD CONFIRM AGENT",
         demo: "CODConfirmDemo",
+        frame: "browser",
+        shot: "/builds/d2c/cod-confirm.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.aarka.in/orders/confirm",
         headline: "Catch the fake order {serif}before the courier moves.{/serif}",
         body: "The cheapest way to cut returns is to never ship the bad ones. An agent confirms every COD order in seconds, on the channel your buyer already lives on.",
         bullets: [
@@ -223,6 +260,11 @@ export const INDUSTRIES: Industry[] = [
         index: "04",
         kicker: "STUDIO ENGINE",
         demo: "StudioEngineDemo",
+        frame: "browser",
+        shot: "/builds/d2c/studio-engine.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.aarka.in/studio",
         headline: "Stop paying for shoots. {serif}Generate them.{/serif}",
         body: "A phone photo of the product on your packing table becomes a studio shot, a lifestyle scene, an on-model image. The whole catalogue, in an afternoon, in your brand's look.",
         bullets: [
@@ -254,28 +296,66 @@ export const INDUSTRIES: Industry[] = [
       note: "Ranges drawn from common Indian D2C benchmarks, not a single client. Your real figures decide the build.",
     },
 
-    voices: {
-      before: {
+    personasHeadline: "Different brands. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every D2C founder we meet is bleeding somewhere specific. Here is where, in their words.",
+    personas: [
+      {
         quote:
-          "My ads are doing fine. I just don't understand where the money disappears by the end of the month.",
-        who: "The voice of a D2C founder before the system. Representative, not a specific client.",
+          "Half my COD orders in tier-2 come back. I had started treating it as the cost of doing business.",
+        persona: "Founder, home and kitchen brand",
+        tag: "COD Confirm",
       },
-      after: {
+      {
         quote:
-          "I stopped guessing. I can see which orders make money, and the rest fixes itself while I sleep.",
-        who: "The shift we build toward. Representative, not a specific client.",
+          "People fill the cart and vanish. I never had a way to bring them back that did not feel like spam.",
+        persona: "Founder, skincare label",
+        tag: "Behaviour Recovery",
       },
-    },
+      {
+        quote:
+          "Every channel told me a different number. I genuinely did not know which products made money.",
+        persona: "Founder, apparel brand",
+        tag: "Profit Command",
+      },
+      {
+        quote: "I was paying Meta to win back customers who already loved us.",
+        persona: "Founder, supplements brand",
+        tag: "Win-Back Flows",
+      },
+      {
+        quote:
+          "Every new drop meant a shoot, a stylist, a week gone. Small brand, big bill.",
+        persona: "Founder, fashion label",
+        tag: "Studio Engine",
+      },
+      {
+        quote:
+          "My team spent the whole day answering where is my order on WhatsApp.",
+        persona: "Founder, accessories brand",
+        tag: "Order-Status Assistant",
+      },
+    ],
 
     cta: {
-      headline: "Pick three. {serif}Scope them in one meeting.{/serif}",
-      body: "Thirty minutes. We map your real leaks to a real build and tell you what it costs and what it returns. No deck.",
+      headline:
+        "Not sure where your money leaks? {serif}That is what the call is for.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your brand actually runs and we will tell you which of these fits, or whether something else does. You do not have to know what you need. That is our job.",
+      pillsIntro:
+        "A few of the things we have built for D2C brands. Pick what fits, or let us point you.",
       chips: [
         "Behaviour Recovery",
         "Profit Command",
         "COD Confirm",
         "Studio Engine",
         "Win-Back Flows",
+        "WhatsApp Catalog and Checkout",
+        "Loyalty and Referrals",
+        "Returns Automation",
+        "Inventory and Demand Forecast",
+        "Marketplace Reconciliation",
+        "Reviews and UGC Engine",
+        "Order-Status Assistant",
       ],
     },
 
