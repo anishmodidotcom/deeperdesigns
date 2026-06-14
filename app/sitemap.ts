@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { INDUSTRIES } from "@/lib/industries";
 
 const SLUGS = [
   "maplelens",
@@ -40,6 +41,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    // /for/[slug] industry pages. The live page ranks alongside the core
+    // marketing pages; the scaffolds carry a lower priority until built.
+    ...INDUSTRIES.map((ind) => ({
+      url: `${base}/for/${ind.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: ind.live ? 0.8 : 0.5,
     })),
   ];
 }

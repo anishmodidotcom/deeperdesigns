@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   trackLead,
   trackLiveProductCTAClick,
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
 import { useShowcaseContext } from "@/components/ShowcaseContext";
+import { INDUSTRIES } from "@/lib/industries";
 
 export default function Nav() {
   const pathname = usePathname() ?? "";
@@ -16,6 +17,12 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [onLight, setOnLight] = useState(false);
   const [open, setOpen] = useState(false);
+  // "Browse by industry" dropdown (desktop) + mobile section toggle.
+  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const industriesRef = useRef<HTMLDivElement>(null);
+  const currentIndustry = pathname.startsWith("/for/")
+    ? pathname.replace("/for/", "")
+    : null;
 
   const onTalkToUs = () => {
     try {
@@ -49,6 +56,33 @@ export default function Nav() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Close the industries dropdown on route change.
+  useEffect(() => {
+    setIndustriesOpen(false);
+  }, [pathname]);
+
+  // Close the industries dropdown on Escape or a click outside it.
+  useEffect(() => {
+    if (!industriesOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIndustriesOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (
+        industriesRef.current &&
+        !industriesRef.current.contains(e.target as Node)
+      ) {
+        setIndustriesOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [industriesOpen]);
 
   // F1 (v16): light-theme showcases (karan-legal, meera-wellness,
   // earth-and-fire, sugar-lane, nomad-trails) set `data-theme="light"`
@@ -143,6 +177,125 @@ export default function Nav() {
             >
               Process
             </Link>
+
+            {/* Browse by industry: opens a panel listing all verticals. */}
+            <div ref={industriesRef} style={{ position: "relative" }}>
+              <button
+                type="button"
+                className="text-sm"
+                aria-haspopup="true"
+                aria-expanded={industriesOpen}
+                onClick={() => setIndustriesOpen((v) => !v)}
+                style={{
+                  color: linkColor,
+                  transition: "color 300ms",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  cursor: "pointer",
+                }}
+              >
+                Browse by industry
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden
+                  style={{
+                    transform: industriesOpen ? "rotate(180deg)" : "none",
+                    transition: "transform 200ms",
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+
+              {industriesOpen && (
+                <div
+                  role="menu"
+                  aria-label="Industries"
+                  style={{
+                    position: "absolute",
+                    top: "calc(100% + 16px)",
+                    right: 0,
+                    width: 540,
+                    maxWidth: "calc(100vw - 48px)",
+                    background: "rgba(17,17,17,0.96)",
+                    backdropFilter: "blur(16px)",
+                    WebkitBackdropFilter: "blur(16px)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 16,
+                    padding: 14,
+                    boxShadow: "0 40px 80px -40px rgba(0,0,0,0.7)",
+                  }}
+                >
+                  <p
+                    className="mono"
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.16em",
+                      color: "var(--fg-dim)",
+                      margin: "4px 8px 12px",
+                    }}
+                  >
+                    {String(INDUSTRIES.length).padStart(2, "0")} INDUSTRIES WE BUILD FOR
+                  </p>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 2,
+                    }}
+                  >
+                    {INDUSTRIES.map((ind) => {
+                      const active = ind.slug === currentIndustry;
+                      return (
+                        <Link
+                          key={ind.slug}
+                          href={`/for/${ind.slug}`}
+                          role="menuitem"
+                          aria-current={active ? "page" : undefined}
+                          onClick={() => setIndustriesOpen(false)}
+                          className="nav-industry-item"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            gap: 10,
+                            padding: "10px 12px",
+                            borderRadius: 9,
+                            fontSize: 14,
+                            color: active ? "#FFFFFF" : "var(--fg-muted)",
+                            background: active
+                              ? "rgba(255,255,255,0.08)"
+                              : "transparent",
+                            textDecoration: "none",
+                          }}
+                        >
+                          <span>{ind.name}</span>
+                          {!ind.live && (
+                            <span
+                              className="mono"
+                              style={{
+                                fontSize: 9,
+                                letterSpacing: "0.1em",
+                                color: "var(--fg-dim)",
+                              }}
+                            >
+                              SOON
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link
               href="/start-your-study"
               className="btn-whatsapp text-sm"
@@ -220,7 +373,86 @@ export default function Nav() {
             <Link href="/process" onClick={() => setOpen(false)}>
               Process
             </Link>
+            <button
+              type="button"
+              aria-expanded={industriesOpen}
+              onClick={() => setIndustriesOpen((v) => !v)}
+              className="text-[32px]"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                textAlign: "left",
+              }}
+            >
+              Industries
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                aria-hidden
+                style={{
+                  transform: industriesOpen ? "rotate(180deg)" : "none",
+                  transition: "transform 200ms",
+                }}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
           </nav>
+
+          {industriesOpen && (
+            <div
+              style={{
+                marginTop: 20,
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 2,
+                overflowY: "auto",
+              }}
+            >
+              {INDUSTRIES.map((ind) => {
+                const active = ind.slug === currentIndustry;
+                return (
+                  <Link
+                    key={ind.slug}
+                    href={`/for/${ind.slug}`}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => {
+                      setIndustriesOpen(false);
+                      setOpen(false);
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 8,
+                      padding: "10px 0",
+                      fontSize: 15,
+                      color: active ? "#FFFFFF" : "var(--fg-muted)",
+                    }}
+                  >
+                    <span>{ind.name}</span>
+                    {!ind.live && (
+                      <span
+                        className="mono"
+                        style={{
+                          fontSize: 9,
+                          letterSpacing: "0.1em",
+                          color: "var(--fg-dim)",
+                        }}
+                      >
+                        SOON
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
           <div className="mt-auto pb-10 flex flex-col gap-3">
             <Link
               href="/start-your-study"
@@ -247,6 +479,11 @@ export default function Nav() {
           .nav-desktop { display: none !important; }
           .nav-mobile-trigger { display: flex !important; }
         }
+        .nav-industry-item:hover {
+          background: rgba(255,255,255,0.06) !important;
+          color: #FFFFFF !important;
+        }
+        .nav-industry-item:active { transform: translateY(1px); }
       `}</style>
     </>
   );

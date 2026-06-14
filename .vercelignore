@@ -2,3 +2,7 @@
 # The content-engine has its own package.json + node_modules and is run
 # locally / from GitHub Actions, never from the deployment.
 marketing/
+
+# Reference screenshots of the /for build demos, kept for marketing reuse.
+# Not served by the site, so they stay out of the deployment bundle.
+build-artifacts/
