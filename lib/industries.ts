@@ -1796,8 +1796,8 @@ export const INDUSTRIES: Industry[] = [
         demo: "FashionRunwayDemo",
         frame: "video",
         poster: "/builds/fashion/runway-poster.webp",
-        // v19.3: fal (Kling) clip is added via scripts/gen-fal-video.ts once
-        // a FAL key is supplied; until then VideoFrame renders the poster.
+        // v19.3: fal (Kling) runway clip, generated via scripts/gen-fal-video.ts.
+        video: "/videos/fashion/runway.mp4",
         videoAspect: "9:16",
         videoDuration: "0:05",
         headline: "Your product, on a model, {serif}moving, today.{/serif}",
