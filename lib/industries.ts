@@ -1675,22 +1675,262 @@ export const INDUSTRIES: Industry[] = [
       attribution: "DEEPER DESIGNS · FOR JEWELLERY",
     },
   },
+  // =====================================================================
+  // 08 · MSME MANUFACTURING & DISTRIBUTION · fully built (v19.4)
+  // =====================================================================
   {
     slug: "manufacturing",
     name: "MSME Manufacturing",
-    live: false,
+    live: true,
     accent: "#E8602C",
     accentSoft: "#FF9263",
-    money: "#F5B544",
-    heroEyebrow: "FOR MSME MANUFACTURING",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR MANUFACTURERS AND DISTRIBUTORS",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "IndiaMART sends 50 leads. {serif}45 are junk.{/serif}",
     heroSub:
-      "We build the system that finds the 5, quotes in seconds, and follows up on its own.",
+      "You chase all fifty, quote on WhatsApp, lose the file, and the real buyer goes cold while you sort the noise. We build the system that finds the five, quotes in seconds, and follows up on its own.",
+
     meta: {
-      title: "For MSME Manufacturing · Deeper Designs",
+      title: "For Manufacturers and Distributors · Deeper Designs",
       description:
-        "IndiaMART sends 50 leads and 45 are junk. We build the system that finds the 5, quotes in seconds, and follows up on its own.",
+        "IndiaMART sends fifty leads and forty-five are junk. We build the system that finds the five, quotes in seconds, and follows up on its own.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A MANUFACTURER LOSES TO JUNK LEADS AND SLOW QUOTES, EVERY MONTH",
+      target: 700000,
+      caption:
+        "Time burned on dead enquiries, real buyers lost to a slow quote, and orders that slipped because nobody followed up.",
+      rows: [
+        { k: "Portal leads that are junk", v: "most of them" },
+        { k: "Time to send a quotation", v: "a day or more" },
+        { k: "Distributor orders tracked on Excel", v: "still" },
+      ],
+    },
+
+    nowHeadline: "You make a real product. {serif}The selling runs on Excel.{/serif}",
+    nowIntro:
+      "B2B manufacturing still runs on portals, phone calls and spreadsheets. Here is where the orders quietly leak.",
+    nowItems: [
+      {
+        label: "THE JUNK LEAD",
+        title: "Fifty enquiries, five are real",
+        body: "IndiaMART and JustDial dump fifty leads on you. Most are price-checkers, students, competitors. You burn the day calling all of them and the real buyer waits.",
+        stat: "most portal leads are junk",
+      },
+      {
+        label: "THE SLOW QUOTE",
+        title: "The file took a day",
+        body: "A serious buyer wants a quotation. It takes a day to work out specs, rates and terms by hand, and by then they have a quote from someone faster.",
+        stat: "real buyers lost to slow quotes",
+      },
+      {
+        label: "THE EXCEL DISTRIBUTOR",
+        title: "Two hundred relationships in a sheet",
+        body: "Orders, credit, dispatch, all in one Excel that one person guards. A reorder gets missed, a payment slips, and nobody sees it until month end.",
+        stat: "distributor orders, untracked",
+      },
+      {
+        label: "THE COLD FOLLOW-UP",
+        title: "The quote sent, then silence",
+        body: "Quotes go out and nobody follows up. The order goes to the supplier who called back twice. Yours is sitting unanswered in an inbox.",
+        stat: "orders lost to no follow-up",
+      },
+    ],
+
+    aiHeadline: "Same product. Same buyers. {serif}The noise filtered out.{/serif}",
+    aiIntro:
+      "Not a generic CRM. A system shaped to how a manufacturer and distributor actually sells.",
+    aiItems: [
+      {
+        label: "THE FIVE, FOUND",
+        title: "Junk filtered at the door",
+        body: "Every enquiry is verified and scored, OTP and intent checked, so the real buyers are pinged to your rep in seconds and the junk never wastes a call.",
+        stat: "the five real leads, surfaced",
+      },
+      {
+        label: "QUOTED IN SECONDS",
+        title: "Specs in, branded quote out",
+        body: "Enter the specs and a clean branded quotation generates in seconds, with rates, terms and GST, ready to send before the buyer cools.",
+        stat: "quotes out in seconds",
+      },
+      {
+        label: "OUTREACH THAT RUNS ITSELF",
+        title: "Buyers found and worked for you",
+        body: "An agent scrapes and enriches buyer and distributor lists, then runs personalised email and WhatsApp outreach with follow-up, covering a week of business development in an hour.",
+        stat: "a week of BD in an hour",
+      },
+      {
+        label: "EVERY ORDER VISIBLE",
+        title: "Distributors, off the spreadsheet",
+        body: "Orders, credit and dispatch in one portal, reorders and payments chased automatically. The Excel that one person guarded becomes a system everyone can see.",
+        stat: "the sales floor, finally visible",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "LEAD FILTER",
+        demo: "ManufacturingLeadFilterDemo",
+        frame: "browser",
+        shot: "/builds/manufacturing/lead-filter.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.bharatindustries.in/leads",
+        headline: "Find the five real buyers, {serif}ignore the forty-five.{/serif}",
+        body: "Every enquiry from every portal is verified and scored, so your rep is pinged about the serious buyers in seconds and never burns a day on junk.",
+        bullets: [
+          "Leads from <b>IndiaMART, JustDial, TradeIndia, WhatsApp</b>, unified",
+          "<b>OTP and intent verified</b>, junk killed at the door",
+          "Hot buyers <b>pinged to the rep in seconds</b>",
+          "Source and quality, <b>measured</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "QUOTE ENGINE",
+        demo: "ManufacturingQuoteEngineDemo",
+        frame: "browser",
+        shot: "/builds/manufacturing/quote-engine.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.bharatindustries.in/quotes",
+        headline: "Specs in, {serif}branded quote out in seconds.{/serif}",
+        body: "Enter the requirement and a clean, branded quotation generates instantly, rates, terms, GST, ready to send before the buyer talks to anyone else.",
+        bullets: [
+          "<b>Spec to quotation</b> in seconds",
+          "Your <b>rates, terms and GST</b> built in",
+          "Branded <b>PDF, sent on WhatsApp or email</b>",
+          "Quote-to-order, <b>tracked</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "OUTREACH AGENT",
+        demo: "ManufacturingOutreachDemo",
+        frame: "browser",
+        shot: "/builds/manufacturing/outreach.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.bharatindustries.in/outreach",
+        headline: "A week of business development, {serif}done in an hour.{/serif}",
+        body: "An agent finds buyers and distributors, enriches the list, and runs personalised outreach with follow-up. You wake up to replies, not a blank pipeline.",
+        bullets: [
+          "Scrapes and <b>enriches buyer and distributor lists</b>",
+          "Personalised <b>email and WhatsApp</b> outreach",
+          "<b>Automatic follow-up</b> until they reply",
+          "Replies dropped <b>into your pipeline</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "DISTRIBUTOR PORTAL",
+        demo: "ManufacturingDistributorPortalDemo",
+        frame: "browser",
+        shot: "/builds/manufacturing/distributor-portal.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.bharatindustries.in/distributors",
+        headline: "Two hundred distributors, {serif}off the spreadsheet.{/serif}",
+        body: "Orders, credit and dispatch in one portal, reorders and payments chased on their own. The sheet one person guarded becomes a system the whole floor can see.",
+        bullets: [
+          "Distributor <b>ordering and reorder portal</b>",
+          "<b>Credit and payment</b> tracking with reminders",
+          "<b>Dispatch and field-sales</b> updates, live",
+          "One view of <b>every order and every account</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a mid-size manufacturer running portal leads and a distributor network. Filtering junk and quoting faster usually covers the build in a quarter. We size it to your pipeline in the first call.",
+      before: [
+        { k: "Rep time burned on junk leads", v: "₹1,80,000" },
+        { k: "Orders lost to slow quotes", v: "₹2,40,000" },
+        { k: "Reorders and payments slipping", v: "₹1,60,000" },
+        { k: "Manual lead and order processing", v: "₹80,000" },
+      ],
+      beforeTotal: { k: "Leaking every month", v: "₹6,60,000" },
+      after: [
+        { k: "Reps focused on real buyers", v: "₹1,60,000" },
+        { k: "Faster quotes winning orders", v: "₹2,10,000" },
+        { k: "Reorders and payments captured", v: "₹1,40,000" },
+        { k: "Processing time freed", v: "₹70,000" },
+      ],
+      afterTotal: { k: "Back in the business", v: "₹5,80,000" },
+      note: "Ranges from common MSME B2B patterns, not a single client. Faster quoting and junk filtering usually pay for the build inside a quarter.",
+    },
+
+    personasHeadline: "Different floors. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every manufacturer and distributor leaks somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote:
+          "IndiaMART sends me fifty enquiries and forty-five are time-wasters. I chase them anyway.",
+        persona: "Industrial components maker",
+        tag: "Lead Filter",
+      },
+      {
+        quote: "By the time I work out a quote by hand, the buyer has gone with someone faster.",
+        persona: "Packaging manufacturer",
+        tag: "Quote Engine",
+      },
+      {
+        quote:
+          "My whole distributor network lives in one Excel sheet that only my manager understands.",
+        persona: "FMCG distributor",
+        tag: "Distributor Portal",
+      },
+      {
+        quote: "I have no way to find new buyers except cold calls and trade fairs.",
+        persona: "Auto-parts manufacturer",
+        tag: "Outreach Agent",
+      },
+      {
+        quote: "Quotes go out and then nothing. Nobody follows up and the order goes elsewhere.",
+        persona: "Textile mill",
+        tag: "Outreach Agent",
+      },
+      {
+        quote: "Reorders get missed because it all depends on one person remembering.",
+        persona: "Chemicals distributor",
+        tag: "Distributor Portal",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your orders leak? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your sales floor actually runs and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for manufacturers and distributors. Pick what fits, or let us point you.",
+      chips: [
+        "Lead Filter",
+        "Quote Engine",
+        "Outreach Agent",
+        "Distributor Portal",
+        "Catalogue and Spec Sheets",
+        "WhatsApp Product Assistant",
+        "RFQ to Order Pipeline",
+        "Field-Sales Dashboard",
+        "Credit and Payment Tracking",
+        "Export Document Automation",
+        "Inventory and Dispatch",
+        "GST Invoicing",
+      ],
+    },
+
+    anishNote:
+      "The factory floor got lean decades ago. The sales floor never did. It still runs on a portal full of junk and a spreadsheet one person guards. That is where the next margin is hiding.",
+    pullQuote: {
+      quote:
+        "The order never went to the best product. It went to the supplier who answered first and quoted before the buyer cooled.",
+      attribution: "DEEPER DESIGNS · FOR MANUFACTURING",
     },
   },
   // =====================================================================
@@ -2006,40 +2246,515 @@ export const INDUSTRIES: Industry[] = [
         "Your fleet runs on WhatsApp groups and registers, and that is where the money leaks. We build the control room that sees every trip and flags every leak.",
     },
   },
+  // =====================================================================
+  // 09 · AUTOMOTIVE (DEALERS & SERVICE) · fully built (v19.4)
+  // =====================================================================
   {
     slug: "automotive",
     name: "Automotive",
-    live: false,
+    live: true,
     accent: "#C92A2A",
     accentSoft: "#E36464",
-    money: "#F5B544",
-    heroEyebrow: "FOR AUTOMOTIVE",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR AUTO DEALERS AND SERVICE",
     heroEyebrowNote: "One of 13 industries we build for",
-    heroHeadline: "You sell a ₹15L car {serif}with photos shot in a dusty lot.{/serif}",
+    heroHeadline: "You sell a 15 lakh car {serif}with photos shot in a dusty lot.{/serif}",
     heroSub:
-      "We build the showroom-grade shots, the test-drive bookings, and the service desk that runs on WhatsApp.",
+      "Buyers scroll past dull listings, test-drive enquiries go cold, and the service bay forgets to call them back. We build the showroom-grade shots, the bookings that get answered, and the service desk that runs on WhatsApp.",
+
     meta: {
-      title: "For Automotive · Deeper Designs",
+      title: "For Automotive Dealers and Service · Deeper Designs",
       description:
-        "You sell a ₹15L car with photos shot in a dusty lot. We build the showroom-grade shots, the test-drive bookings, and the service desk that runs on WhatsApp.",
+        "You sell a fifteen lakh car with photos shot in a dusty lot. We build the showroom-grade shots, the bookings that get answered, and the service desk that runs on WhatsApp.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A DEALER LOSES TO WEAK LISTINGS AND MISSED FOLLOW-UPS, EVERY MONTH",
+      target: 1800000,
+      caption:
+        "Test-drive enquiries that went cold, service customers never reminded, and listings that looked like everyone else's.",
+      rows: [
+        { k: "Enquiries that never got a callback", v: "too many" },
+        { k: "Service customers never reminded", v: "most" },
+        { k: "Cars shot on a phone in the lot", v: "nearly all" },
+      ],
+    },
+
+    nowHeadline: "The car is worth lakhs. {serif}The listing looks like a classified.{/serif}",
+    nowIntro:
+      "A dealership runs on showroom footfall, test drives and service returns. Here is where each one slips.",
+    nowItems: [
+      {
+        label: "THE DULL LISTING",
+        title: "Shot in a dusty lot",
+        body: "Phone photos against a wall, bad light, a number plate showing. A fifteen lakh car looks like a roadside classified, and the buyer scrolls to the dealer with real photos.",
+        stat: "listings that look cheap",
+      },
+      {
+        label: "THE COLD TEST DRIVE",
+        title: "Nobody called back",
+        body: "A buyer asks for a test drive online. The enquiry sits in someone's WhatsApp, the callback never happens, and they book one with the dealer down the road.",
+        stat: "test-drive enquiries gone cold",
+      },
+      {
+        label: "THE FORGOTTEN SERVICE",
+        title: "The bay never called",
+        body: "A customer is due for a service or insurance renewal. No reminder goes out, they go to a local garage, and you lose the recurring revenue the showroom was built on.",
+        stat: "service customers drifting away",
+      },
+      {
+        label: "THE BUSY SERVICE DESK",
+        title: "The phone, the queue, the chaos",
+        body: "Service status updates, pickup times and approvals all happen by phone tag. Customers call to ask if the car is ready, and the desk drowns.",
+        stat: "service run on phone tag",
+      },
+    ],
+
+    aiHeadline: "Same cars. Same bay. {serif}Nothing left on the lot.{/serif}",
+    aiIntro:
+      "Not a heavy DMS. A layer that makes the inventory sell and the service desk run itself.",
+    aiItems: [
+      {
+        label: "SHOT TO SELL",
+        title: "Showroom-grade in minutes",
+        body: "Lot photos become clean showroom-grade shots, backgrounds replaced, plates blurred, plus a smooth walkaround video for every car. Your listings finally look like the price.",
+        stat: "inventory that looks the part",
+      },
+      {
+        label: "ANSWERED FAST",
+        title: "Every test drive booked",
+        body: "A test-drive enquiry gets an instant response and a booked slot, confirmed on WhatsApp, so the lead never cools waiting for a callback.",
+        stat: "test drives, booked not lost",
+      },
+      {
+        label: "SERVICE THAT RETURNS",
+        title: "Reminded at the right time",
+        body: "Service, insurance and warranty reminders go out automatically, so the customer comes back to you instead of the local garage.",
+        stat: "recurring revenue, kept",
+      },
+      {
+        label: "THE DESK, AUTOMATED",
+        title: "Status and bookings on WhatsApp",
+        body: "A service advisor on WhatsApp handles status, approvals and pickup, so customers stop calling to ask and the desk stops drowning.",
+        stat: "the service bay, calm",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "WALKAROUND",
+        demo: "AutomotiveWalkaroundDemo",
+        frame: "video",
+        poster: "/builds/automotive/walkaround-poster.webp",
+        video: "/videos/automotive/walkaround.mp4",
+        videoAspect: "9:16",
+        videoDuration: "0:05",
+        headline: "Your car, showroom-grade, {serif}turning in the light.{/serif}",
+        body: "Lot photos become clean showroom shots and a smooth walkaround video for every car. The fifteen lakh machine finally looks like fifteen lakh.",
+        bullets: [
+          "Lot photo to <b>showroom-grade shot</b>",
+          "<b>Backgrounds replaced, plates blurred</b>",
+          "A smooth <b>360 walkaround video</b> per car",
+          "Listing-ready <b>the day it arrives on the lot</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "TEST-DRIVE DESK",
+        demo: "AutomotiveTestDriveDeskDemo",
+        frame: "browser",
+        shot: "/builds/automotive/test-drive-desk.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.highwaymotors.in/sales",
+        headline: "Every enquiry answered, {serif}every test drive booked.{/serif}",
+        body: "A test-drive or buying enquiry gets an instant response and a confirmed slot on WhatsApp, so the lead never cools waiting on a callback.",
+        bullets: [
+          "Enquiries from <b>portals, site and WhatsApp</b>, unified",
+          "Instant response and a <b>booked test-drive slot</b>",
+          "<b>Confirmed and reminded</b> on WhatsApp",
+          "Hot buyers <b>surfaced to the sales team</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "SERVICE RECALL",
+        demo: "AutomotiveServiceRecallDemo",
+        frame: "phone",
+        shot: "/builds/automotive/service-recall.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "They come back to you, {serif}not the local garage.{/serif}",
+        body: "Service, insurance and warranty reminders go out on WhatsApp at the right time, so the recurring revenue the showroom was built on actually returns.",
+        bullets: [
+          "<b>Service and insurance reminders</b>, automatic",
+          "Timed to the <b>car and the kilometres</b>",
+          "<b>Book the slot</b> from the message",
+          "Lapsed customers <b>brought back</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "SERVICE DESK",
+        demo: "AutomotiveServiceDeskDemo",
+        frame: "browser",
+        shot: "/builds/automotive/service-desk.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.highwaymotors.in/service",
+        headline: "Status, approvals and pickup, {serif}off the phone.{/serif}",
+        body: "A service advisor on WhatsApp handles status updates, repair approvals and pickup times, so customers stop calling to ask and the desk stops drowning.",
+        bullets: [
+          "<b>Live service status</b> to the customer",
+          "<b>Repair approvals</b> on WhatsApp",
+          "Pickup and delivery <b>scheduled</b>",
+          "The whole bay <b>on one screen</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a single dealership with a service bay. Given the ticket sizes, one extra car sold or a season of retained service covers the build. We size it to your numbers in the first call.",
+      before: [
+        { k: "Test-drive enquiries gone cold", v: "₹8,00,000 pipeline" },
+        { k: "Service customers lost to local garages", v: "₹5,00,000" },
+        { k: "Listings underperforming", v: "₹4,00,000 pipeline" },
+        { k: "Shoot and video production", v: "₹1,00,000" },
+      ],
+      beforeTotal: { k: "Slipping away", v: "₹18,00,000" },
+      after: [
+        { k: "Faster response, more test drives", v: "₹7,00,000" },
+        { k: "Service customers retained", v: "₹4,50,000" },
+        { k: "Listings that pull enquiry", v: "₹3,60,000" },
+        { k: "Shoot cost removed", v: "₹90,000" },
+      ],
+      afterTotal: { k: "Back in the dealership", v: "₹16,00,000" },
+      note: "Mix of pipeline and recurring service revenue, not booked sales. One extra car or a retained service season usually covers the build.",
+    },
+
+    personasHeadline: "Different dealers. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every dealership and service centre leaks somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote: "My listings look like roadside classifieds next to the big dealer's photos.",
+        persona: "Used-car dealer",
+        tag: "Walkaround",
+      },
+      {
+        quote: "Test-drive enquiries sit in WhatsApp and half never get a callback.",
+        persona: "New-car dealership",
+        tag: "Test-Drive Desk",
+      },
+      {
+        quote: "Customers come once for service and then drift to the cheap local garage.",
+        persona: "Multi-brand service centre",
+        tag: "Service Recall",
+      },
+      {
+        quote: "My service desk spends all day telling people whether their car is ready.",
+        persona: "Authorised service centre",
+        tag: "Service Desk",
+      },
+      {
+        quote: "I cannot shoot every car properly, so the good ones look ordinary online.",
+        persona: "Pre-owned luxury dealer",
+        tag: "Walkaround",
+      },
+      {
+        quote: "Insurance and warranty renewals lapse because nobody reminds the customer.",
+        persona: "Two-wheeler dealership",
+        tag: "Service Recall",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your dealership leaks? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your showroom and service bay actually run and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for dealers and service centres. Pick what fits, or let us point you.",
+      chips: [
+        "Walkaround",
+        "Test-Drive Desk",
+        "Service Recall",
+        "Service Desk",
+        "Inventory Microsite",
+        "Finance and EMI Calculator",
+        "Exchange Valuation",
+        "Parts Inventory",
+        "WhatsApp Sales Assistant",
+        "Insurance Renewal Engine",
+        "Reviews and Reputation",
+        "Walk-in Capture",
+      ],
+    },
+
+    anishNote:
+      "A dealership makes its real money on the second visit, the service, the renewal, the next car. Yet almost no dealer has a way to bring that customer back. The whole business is built on a relationship nobody is keeping.",
+    pullQuote: {
+      quote:
+        "The buyer judged a fifteen lakh car by a photo shot against a dusty wall, and quietly scrolled to the dealer who made it look like the price.",
+      attribution: "DEEPER DESIGNS · FOR AUTOMOTIVE",
     },
   },
+  // =====================================================================
+  // 10 · HOTELS & HOSPITALITY · fully built (v19.4)
+  // =====================================================================
   {
     slug: "hotels",
     name: "Hotels & Hospitality",
-    live: false,
+    live: true,
     accent: "#9B5DE5",
     accentSoft: "#BC8DEF",
-    money: "#F5B544",
-    heroEyebrow: "FOR HOTELS & HOSPITALITY",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR HOTELS AND HOSPITALITY",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "OTAs take a fifth of every booking {serif}and own your guest.{/serif}",
     heroSub:
-      "We build the direct-booking engine and the concierge that takes them back.",
+      "Booking.com and the rest take their cut, your photos do not do the property justice, and the guest who loved their stay belongs to the platform, not to you. We build the direct-booking engine and the concierge that brings them back.",
+
     meta: {
-      title: "For Hotels & Hospitality · Deeper Designs",
+      title: "For Hotels and Hospitality · Deeper Designs",
       description:
-        "OTAs take a fifth of every booking and own your guest. We build the direct-booking engine and the concierge that takes them back.",
+        "OTAs take a fifth of every booking and own your guest. We build the direct-booking engine and the concierge that brings them back.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A PROPERTY LOSES TO OTA COMMISSIONS AND LOST GUESTS, EVERY MONTH",
+      target: 400000,
+      caption:
+        "The commission on every OTA booking, the direct bookings you never captured, and the guests you cannot contact again.",
+      rows: [
+        { k: "Commission on every OTA booking", v: "15 to 25%" },
+        { k: "Guests you can rebook directly", v: "almost none" },
+        { k: "Enquiries answered after they booked elsewhere", v: "many" },
+      ],
+    },
+
+    nowHeadline: "The stay is lovely. {serif}The platform keeps the guest.{/serif}",
+    nowIntro:
+      "A property runs on bookings, reviews and repeat guests. Here is where the platforms quietly take the relationship.",
+    nowItems: [
+      {
+        label: "THE OTA CUT",
+        title: "A fifth of every booking, gone",
+        body: "Every booking through an OTA hands over 15 to 25 percent, and the guest details belong to the platform, not to you. You cannot even thank them directly.",
+        stat: "a fifth of revenue, to the platform",
+      },
+      {
+        label: "THE FLAT PHOTOS",
+        title: "They do not do it justice",
+        body: "Phone photos of the rooms under bad light. The property looks ordinary next to the one with a real shoot, and the booking goes there.",
+        stat: "listings that undersell the stay",
+      },
+      {
+        label: "THE SLOW ENQUIRY",
+        title: "Answered after they booked",
+        body: "A guest messages with a question at night. By the time someone replies in the morning, they have already booked elsewhere.",
+        stat: "enquiries answered too late",
+      },
+      {
+        label: "THE LOST GUEST",
+        title: "Loved it, never came back",
+        body: "A guest had a wonderful stay. No way to reach them, no reason to return sent. Next time they book through the platform again, and you pay the cut again.",
+        stat: "repeat guests, never recalled",
+      },
+    ],
+
+    aiHeadline: "Same property. Same warmth. {serif}The guest, back with you.{/serif}",
+    aiIntro:
+      "Not a heavy PMS. A layer that captures the direct booking and keeps the guest yours.",
+    aiItems: [
+      {
+        label: "BOOKED DIRECT",
+        title: "Off the commission",
+        body: "A direct-booking engine on your own site and WhatsApp, with payment, so guests book with you instead of handing a fifth to the platform.",
+        stat: "the booking, finally yours",
+      },
+      {
+        label: "SHOT TO SELL",
+        title: "The property at its best",
+        body: "Phone photos become magazine-grade room and property shots, plus a short cinematic reel, so the stay looks as good online as it feels in person.",
+        stat: "a property that sells itself",
+      },
+      {
+        label: "ANSWERED INSTANTLY",
+        title: "A concierge that never sleeps",
+        body: "An AI concierge answers enquiries day and night, quotes availability, and closes the booking before the guest looks elsewhere.",
+        stat: "enquiries closed, not lost",
+      },
+      {
+        label: "GUESTS WHO RETURN",
+        title: "Brought back directly",
+        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays you do not pay a platform for.",
+        stat: "the guest, back direct",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "DIRECT BOOKING ENGINE",
+        demo: "HotelsDirectBookingDemo",
+        frame: "browser",
+        shot: "/builds/hotels/direct-booking.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.banyanhouse.in/bookings",
+        headline: "Your rooms, booked direct, {serif}off the commission.{/serif}",
+        body: "A booking engine on your own site and WhatsApp, with live availability and payment, so guests book with you and the platform stops taking its fifth.",
+        bullets: [
+          "<b>Direct booking</b> on your site and WhatsApp",
+          "Live <b>availability and rates</b>",
+          "<b>Payment and confirmation</b> built in",
+          "The guest's details, <b>finally yours</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "PROPERTY FILM",
+        demo: "HotelsPropertyFilmDemo",
+        frame: "video",
+        poster: "/builds/hotels/property-poster.webp",
+        video: "/videos/hotels/property-film.mp4",
+        videoAspect: "16:9",
+        videoDuration: "0:05",
+        headline: "The property at its best, {serif}before they book.{/serif}",
+        body: "Phone photos become magazine-grade room and property shots and a short cinematic reel, so the stay looks as good online as it feels in person.",
+        bullets: [
+          "Phone photo to <b>magazine-grade room shots</b>",
+          "A short <b>cinematic property reel</b>",
+          "For your site, <b>OTAs and social</b>",
+          "The property <b>shown at its best</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "AI CONCIERGE",
+        demo: "HotelsConciergeDemo",
+        frame: "phone",
+        shot: "/builds/hotels/concierge.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "A concierge that answers {serif}at two in the morning.{/serif}",
+        body: "An AI concierge replies to enquiries day and night, quotes availability, and closes the booking before the guest goes back to the platform.",
+        bullets: [
+          "Answers <b>enquiries 24/7</b> on WhatsApp",
+          "Quotes <b>availability and rates</b>",
+          "<b>Closes the booking</b> in the chat",
+          "Handles <b>questions through the stay</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "GUEST RETURN",
+        demo: "HotelsGuestReturnDemo",
+        frame: "browser",
+        shot: "/builds/hotels/guest-return.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.banyanhouse.in/guests",
+        headline: "The guest who loved it, {serif}back without the platform.{/serif}",
+        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays and referrals you do not pay a commission on.",
+        bullets: [
+          "Past guests <b>recalled at the right time</b>",
+          "<b>Personalised offers</b> and seasonal nudges",
+          "<b>Reviews</b> captured and answered",
+          "Repeat and referral stays, <b>direct</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a boutique property with a couple of dozen rooms. Shifting a slice of bookings to direct covers the build. We size it to your channel mix in the first call.",
+      before: [
+        { k: "OTA commission on bookings", v: "₹2,20,000" },
+        { k: "Direct bookings never captured", v: "₹90,000" },
+        { k: "Enquiries lost to slow replies", v: "₹60,000" },
+        { k: "Photo and reel production", v: "₹50,000" },
+      ],
+      beforeTotal: { k: "Leaking every month", v: "₹4,20,000" },
+      after: [
+        { k: "Bookings shifted direct, off commission", v: "₹1,80,000" },
+        { k: "Direct bookings captured", v: "₹80,000" },
+        { k: "Enquiries closed by the concierge", v: "₹50,000" },
+        { k: "Shoot cost removed", v: "₹45,000" },
+      ],
+      afterTotal: { k: "Back in the property", v: "₹3,55,000" },
+      note: "Ranges from common hospitality patterns, not a single client. Shifting even a slice of OTA bookings to direct usually pays for the build.",
+    },
+
+    personasHeadline: "Different properties. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every property loses to the platforms somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote:
+          "A fifth of every booking goes to the OTA, and I never even get the guest's number.",
+        persona: "Boutique hotel owner",
+        tag: "Direct Booking Engine",
+      },
+      {
+        quote: "My rooms look ordinary online because I shoot them on my phone.",
+        persona: "Homestay host",
+        tag: "Property Film",
+      },
+      {
+        quote: "Guests message at night and by morning they have booked somewhere else.",
+        persona: "Guesthouse manager",
+        tag: "AI Concierge",
+      },
+      {
+        quote: "Guests have a wonderful stay and I have no way to ever reach them again.",
+        persona: "Resort owner",
+        tag: "Guest Return",
+      },
+      {
+        quote: "The platform owns my best guests, so I pay the commission again and again.",
+        persona: "Serviced-apartment operator",
+        tag: "Direct Booking Engine",
+      },
+      {
+        quote: "My property is gorgeous in person and flat in the listing photos.",
+        persona: "Heritage villa host",
+        tag: "Property Film",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your bookings leak? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your property actually runs and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for properties. Pick what fits, or let us point you.",
+      chips: [
+        "Direct Booking Engine",
+        "Property Film",
+        "AI Concierge",
+        "Guest Return",
+        "Channel Manager Sync",
+        "Dynamic Pricing",
+        "Review Management",
+        "Upsell and Add-ons",
+        "WhatsApp Check-in",
+        "Housekeeping Dashboard",
+        "Referral Program",
+        "Seasonal Campaigns",
+      ],
+    },
+
+    anishNote:
+      "The OTA did not just take a commission, it took the guest. You served them tea, remembered their anniversary, and still cannot send them a single message. Owning that relationship back is the whole game.",
+    pullQuote: {
+      quote:
+        "You can be fully booked through the platforms and still not own a single guest. The warmth was yours, the relationship was theirs.",
+      attribution: "DEEPER DESIGNS · FOR HOTELS",
     },
   },
 ];
