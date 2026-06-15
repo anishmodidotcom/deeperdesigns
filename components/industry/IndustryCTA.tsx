@@ -4,6 +4,7 @@ import { Link } from "next-view-transitions";
 import { motion } from "motion/react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { trackForLeadCTAClick } from "@/lib/meta-events";
 import type { Industry } from "@/lib/industries";
 import { renderSerif } from "./text";
 
@@ -124,8 +125,15 @@ export default function IndustryCTA({
               }}
             >
               <Link
-                href="/start-your-study"
+                href={`/start-your-study?from=${slug}`}
                 className="ind-cta-primary"
+                onClick={() => {
+                  try {
+                    trackForLeadCTAClick(slug, "book");
+                  } catch {
+                    // analytics must never block navigation
+                  }
+                }}
                 style={{
                   background: "var(--page-accent)",
                   color: "#0A0A0A",
@@ -146,6 +154,7 @@ export default function IndustryCTA({
                 rel="noopener noreferrer"
                 showcaseSlug={slug}
                 showcaseIndustry={name}
+                extraTrack={() => trackForLeadCTAClick(slug, "whatsapp")}
                 className="ind-cta-wa"
                 style={{
                   background: "var(--whatsapp, #25D366)",

@@ -26,6 +26,10 @@ type Props = {
   showcaseSlug?: string;
   showcaseIndustry?: string;
   liveProduct?: LiveProduct;
+  // v19.7: optional extra tracking fired alongside the existing Lead +
+  // showcase events, e.g. ForLeadCTAClick on /for pages. Additive; never
+  // replaces the existing behaviour.
+  extraTrack?: () => void;
 };
 
 // Sitewide WhatsApp CTA wrapper.
@@ -45,6 +49,7 @@ export default function TrackedWhatsAppLink({
   showcaseSlug,
   showcaseIndustry,
   liveProduct,
+  extraTrack,
 }: Props) {
   const pathname = usePathname() ?? "";
   const ctx = useShowcaseContext();
@@ -69,6 +74,7 @@ export default function TrackedWhatsAppLink({
       if (effectiveLiveProduct) {
         trackLiveProductCTAClick(effectiveLiveProduct);
       }
+      if (extraTrack) extraTrack();
     } catch {
       // Never block navigation.
     }

@@ -63,6 +63,41 @@ export const ANISH_PERSON_LD: JsonLd = {
   sameAs: ["https://anishmodi.com", "https://linkedin.com/in/anishmodi"],
 };
 
+// v19.7: per /for/[slug] industry page. A Service node provided by Deeper
+// Designs, with an OfferCatalog of the page's builds as the services offered.
+// References the existing Organization brand identity; no fabricated reviews.
+export function forIndustryLd(args: {
+  name: string;
+  slug: string;
+  description: string;
+  builds: string[];
+  areaServed: string[];
+}): JsonLd {
+  const url = `https://www.deeperdesigns.in/for/${args.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `AI systems for ${args.name}`,
+    serviceType: `AI build studio for ${args.name}`,
+    description: args.description,
+    url,
+    provider: {
+      "@type": "Organization",
+      name: "Deeper Designs",
+      url: "https://www.deeperdesigns.in",
+    },
+    areaServed: args.areaServed.map((c) => ({ "@type": "Country", name: c })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `Builds for ${args.name}`,
+      itemListElement: args.builds.map((b) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: b },
+      })),
+    },
+  };
+}
+
 export function creativeWorkLd(args: {
   name: string;
   description: string;
