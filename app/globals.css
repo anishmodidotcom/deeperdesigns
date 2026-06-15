@@ -148,8 +148,11 @@ button {
   display: inline-block;
 }
 
+/* v19.6: the shared "Talk to us" CTA pill reads DD indigo, not WhatsApp
+   green, so the site chrome is ink-black + indigo. Genuine in-page
+   "WhatsApp us" affordances keep var(--whatsapp). */
 .btn-whatsapp {
-  background: var(--whatsapp);
+  background: var(--dd-indigo, #7C6CFF);
   color: #0A0A0A;
   padding: 14px 24px;
   border-radius: 999px;
@@ -157,9 +160,10 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: filter var(--dur-fast) var(--ease-out);
 }
-.btn-whatsapp:hover { background: var(--whatsapp-hover); }
+.btn-whatsapp:hover { filter: brightness(1.08); }
+.btn-whatsapp:active { transform: translateY(1px); }
 
 .btn-outline {
   border: 1px solid var(--border-strong);

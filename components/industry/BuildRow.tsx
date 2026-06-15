@@ -161,6 +161,7 @@ export default function BuildRow({
             <VideoFrame
               poster={build.poster}
               src={build.video}
+              before={build.before}
               alt={`${build.kicker} build, a property walkthrough film`}
               aspect={build.videoAspect ?? "16:9"}
               duration={build.videoDuration ?? "0:08"}

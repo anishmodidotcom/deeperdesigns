@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#5A6ACF";
+const ACCENT = "#6D5ACF";
 const MONEY = "#5BC8A0";
 const GOOD = "#5BC8A0";
 const WARN = "#E5847C";
@@ -59,7 +59,7 @@ export default function DocumentPortalDemo() {
         {NAV.map((n, i) => {
           const active = i === 0;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(90,106,207,0.18)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(109,90,207,0.18)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -77,7 +77,7 @@ export default function DocumentPortalDemo() {
             {CLIENTS.map((c) => {
               const pct = Math.round((c.done / c.total) * 100);
               return (
-                <div key={c.name} style={{ padding: "13px 22px", borderTop: "1px solid rgba(255,255,255,0.06)", background: c.active ? "rgba(90,106,207,0.08)" : "transparent", borderLeft: c.active ? `2px solid ${ACCENT}` : "2px solid transparent" }}>
+                <div key={c.name} style={{ padding: "13px 22px", borderTop: "1px solid rgba(255,255,255,0.06)", background: c.active ? "rgba(109,90,207,0.08)" : "transparent", borderLeft: c.active ? `2px solid ${ACCENT}` : "2px solid transparent" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                     <span style={{ fontSize: 14, fontWeight: 600 }}>{c.name}</span>
                     <span style={{ fontSize: 11.5, color: pct === 100 ? GOOD : WAIT, fontFamily: "var(--font-geist-mono), monospace" }}>{c.done}/{c.total}</span>

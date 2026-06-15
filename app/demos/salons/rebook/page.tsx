@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#D6336C";
+const ACCENT = "#B5179E";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 
@@ -48,7 +48,7 @@ export default function RebookDemo() {
         {NAV.map((n, i) => {
           const active = i === 1;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(214,51,108,0.18)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(181,23,158,0.18)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -81,8 +81,8 @@ export default function RebookDemo() {
             <p style={{ margin: "0 0 12px", fontSize: 13.5, fontWeight: 600 }}>Due to rebook</p>
             <div style={{ display: "flex", flexDirection: "column" }}>
               {DUE.map((d) => (
-                <div key={d.name} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderTop: "1px solid rgba(255,255,255,0.06)", background: d.active ? "rgba(214,51,108,0.07)" : "transparent" }}>
-                  <span style={{ width: 32, height: 32, flexShrink: 0, borderRadius: "50%", background: "rgba(214,51,108,0.16)", color: "#EE6F9C", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600 }}>
+                <div key={d.name} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderTop: "1px solid rgba(255,255,255,0.06)", background: d.active ? "rgba(181,23,158,0.07)" : "transparent" }}>
+                  <span style={{ width: 32, height: 32, flexShrink: 0, borderRadius: "50%", background: "rgba(181,23,158,0.16)", color: "#D65BBE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600 }}>
                     {d.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
                   </span>
                   <div style={{ flex: 1 }}>

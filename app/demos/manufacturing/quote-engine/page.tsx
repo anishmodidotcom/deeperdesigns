@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#E8602C";
+const ACCENT = "#C2410C";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 
@@ -46,7 +46,7 @@ export default function QuoteEngineDemo() {
         {NAV.map((n, i) => {
           const active = i === 1;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(232,96,44,0.16)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(194,65,12,0.16)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>

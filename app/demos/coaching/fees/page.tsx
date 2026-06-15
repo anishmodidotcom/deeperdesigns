@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#F25F4C";
+const ACCENT = "#F0A92B";
 const HEADER = "#1F2C34";
 const CHAT_BG = "#0B141A";
 const IN_BUBBLE = "#1F2C34";
@@ -42,7 +42,7 @@ export default function FeesDemo() {
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9EDEF" strokeWidth="2.2" aria-hidden>
           <polyline points="15 18 9 12 15 6" />
         </svg>
-        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #F25F4C, #B5371F)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 15, flexShrink: 0 }}>
+        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #F0A92B, #B57A10)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 15, flexShrink: 0 }}>
           P
         </div>
         <div style={{ flex: 1, minWidth: 0, lineHeight: 1.2 }}>
