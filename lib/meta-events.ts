@@ -17,7 +17,13 @@ type EventName =
   | "ShowcaseScrolled75"
   | "LiveProductCTAClick"
   | "WhatsAppOpenedFromShowcase"
-  | "CGEDemoRequest";
+  | "CGEDemoRequest"
+  // v19.7: /for/[slug] industry-page custom events. All custom (not in
+  // STANDARD_EVENTS), so they route through fbq('trackCustom', ...).
+  | "ForPageView"
+  | "ForScrolled75"
+  | "ForBuildCTAClick"
+  | "ForLeadCTAClick";
 
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
@@ -251,4 +257,42 @@ export function trackWhatsAppOpenedFromShowcase(
 // TODO(cge): fire once cge.deeperdesigns.in/request-access form exists.
 export function trackCGEDemoRequest(): void {
   trackEvent("CGEDemoRequest", {});
+}
+
+// ---------- v19.7: /for/[slug] industry-page events ----------
+// All custom events; `industry` is the slug so Meta audiences segment by
+// vertical without URL parsing.
+
+export function trackForPageView(industry: string): void {
+  trackEvent("ForPageView", { industry });
+}
+
+export function trackForScrolled75(industry: string): void {
+  trackEvent("ForScrolled75", { industry });
+}
+
+export function trackForBuildCTAClick(industry: string, build: string): void {
+  trackEvent("ForBuildCTAClick", { industry, build });
+}
+
+export function trackForLeadCTAClick(
+  industry: string,
+  cta: "book" | "whatsapp",
+): void {
+  trackEvent("ForLeadCTAClick", { industry, cta });
+}
+
+// v19.7: Lead on /start-your-study submit, attributed to the originating
+// industry page (via ?from) when present, and EMQ-enriched with the
+// verified email/phone the form already collected.
+export function trackFormLead(args: {
+  industry: string;
+  email?: string;
+  phone?: string;
+}): void {
+  trackEvent(
+    "Lead",
+    { source_page: "/start-your-study", industry: args.industry },
+    { em: args.email, ph: args.phone },
+  );
 }

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import { trackFormLead } from "@/lib/meta-events";
 
 type Country = "IN" | "AE";
 
@@ -213,6 +214,23 @@ export default function StudyForm() {
       if (!json.ok) {
         setSubmitError(json.error || "Could not submit.");
         return;
+      }
+      // v19.7: fire Lead (browser + CAPI) on a real form submit, attributed
+      // to the originating /for industry via ?from when present (else the
+      // industry the user picked), and EMQ-enriched with the verified
+      // email/phone. Fire-and-forget; never block the success transition.
+      try {
+        const from =
+          typeof window !== "undefined"
+            ? new URLSearchParams(window.location.search).get("from")
+            : null;
+        trackFormLead({
+          industry: from || data.industry || "",
+          email: data.email,
+          phone: data.phone,
+        });
+      } catch {
+        // analytics must never block the form
       }
       try { localStorage.removeItem(LS_KEY); } catch {}
       goNext("success");

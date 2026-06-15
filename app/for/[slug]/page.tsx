@@ -13,6 +13,8 @@ import IndustryPersonas from "@/components/industry/IndustryPersonas";
 import IndustryCTA from "@/components/industry/IndustryCTA";
 import IndustrySwitcher from "@/components/industry/IndustrySwitcher";
 import IndustryScaffold from "@/components/industry/IndustryScaffold";
+import ForAnalytics from "@/components/industry/ForAnalytics";
+import { StructuredData, forIndustryLd } from "@/components/StructuredData";
 
 export function generateStaticParams() {
   return INDUSTRIES.map((i) => ({ slug: i.slug }));
@@ -30,6 +32,9 @@ export async function generateMetadata({
   }
   const url = `/for/${industry.slug}`;
   const { title, description } = industry.meta;
+  // v19.7: branded per-industry OG card from the dynamic /api/og route, so
+  // shares render the vertical's accent and headline, not the generic card.
+  const ogImage = `/api/og/${industry.slug}`;
   return {
     title,
     description,
@@ -44,7 +49,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/brand/og-deeperdesigns.png",
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `Deeper Designs · ${industry.name}`,
@@ -55,7 +60,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/brand/og-deeperdesigns.png"],
+      images: [ogImage],
     },
   };
 }
@@ -87,8 +92,24 @@ export default async function IndustryPage({
     );
   }
 
+  // v19.7: per-industry Service schema with the builds as an offer catalog,
+  // India everywhere plus UAE on real-estate (the page already notes Dubai/GCC).
+  const areaServed =
+    industry.slug === "real-estate"
+      ? ["India", "United Arab Emirates"]
+      : ["India"];
+  const industryLd = forIndustryLd({
+    name: industry.name,
+    slug: industry.slug,
+    description: industry.meta.description,
+    builds: (industry.builds ?? []).map((b) => b.kicker),
+    areaServed,
+  });
+
   return (
     <main style={pageStyle}>
+      <ForAnalytics slug={industry.slug} />
+      <StructuredData data={industryLd} />
       <IndustryHero industry={industry} />
 
       {industry.anishNote ? (
@@ -160,7 +181,7 @@ export default async function IndustryPage({
             style={{ maxWidth: "var(--dd-container-max, 1280px)", marginTop: 16 }}
           >
             {industry.builds.map((b, i) => (
-              <BuildRow key={b.index} build={b} position={i} />
+              <BuildRow key={b.index} build={b} position={i} slug={industry.slug} />
             ))}
           </div>
         </section>

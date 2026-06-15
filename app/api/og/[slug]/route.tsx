@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { SHOWCASES } from "@/lib/showcases";
+import { INDUSTRIES, getIndustry } from "@/lib/industries";
 import { SLUG_ACCENTS, accentWash } from "@/lib/og";
 
 export const runtime = "nodejs";
@@ -46,6 +47,20 @@ function showcaseCard(slug: string): CardInput | null {
   };
 }
 
+// v19.7: branded card for a live /for/[slug] industry page. Industry slugs
+// never collide with showcase slugs, so this is tried after showcaseCard.
+function forCard(slug: string): CardInput | null {
+  const ind = getIndustry(slug);
+  if (!ind || !ind.live) return null;
+  return {
+    eyebrow: ind.heroEyebrow,
+    headline: ind.name,
+    tagline: ind.heroHeadline.replace(/\{\/?serif\}/g, ""),
+    url: `deeperdesigns.in/for/${slug}`,
+    accent: ind.accent,
+  };
+}
+
 async function loadMonogram(): Promise<string> {
   // Read the source SVG, bake in white fill so satori does not depend
   // on currentColor inheritance, then base64-encode for the <img> src.
@@ -69,7 +84,10 @@ export async function GET(
 ) {
   const { slug } = await ctx.params;
 
-  const card = slug === "colophon" ? colophonCard() : showcaseCard(slug);
+  const card =
+    slug === "colophon"
+      ? colophonCard()
+      : showcaseCard(slug) ?? forCard(slug);
   if (!card) {
     return new Response("Not found", { status: 404 });
   }
@@ -230,6 +248,7 @@ export async function GET(
 export function generateStaticParams() {
   return [
     ...SHOWCASES.map((s) => ({ slug: s.slug })),
+    ...INDUSTRIES.filter((i) => i.live).map((i) => ({ slug: i.slug })),
     { slug: "colophon" },
   ];
 }

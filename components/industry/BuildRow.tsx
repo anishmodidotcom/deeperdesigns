@@ -8,6 +8,7 @@ import BrowserFrame from "./frames/BrowserFrame";
 import PhoneFrame from "./frames/PhoneFrame";
 import VideoFrame from "./frames/VideoFrame";
 import { FORM_HREF } from "@/lib/contact";
+import { trackForBuildCTAClick } from "@/lib/meta-events";
 import { renderSerif, renderBold } from "./text";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -15,9 +16,11 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function BuildRow({
   build,
   position,
+  slug,
 }: {
   build: IndustryBuild;
   position: number; // 0-based, decides which side the demo sits on
+  slug?: string; // v19.7: industry slug for ForBuildCTAClick + ?from attribution
 }) {
   // v19.1: prefer a real screenshot inside a device frame; fall back to a
   // legacy CSS widget only if no frame/shot is declared.
@@ -125,8 +128,22 @@ export default function BuildRow({
             ))}
           </ul>
 
-          {/* Per-block CTA to the site's primary lead form. */}
-          <Link href={FORM_HREF} className="ind-build__cta">
+          {/* Per-block CTA to the site's primary lead form. v19.7: carries the
+              originating industry via ?from and fires ForBuildCTAClick so we
+              know which build pulled the click. */}
+          <Link
+            href={slug ? `${FORM_HREF}?from=${slug}` : FORM_HREF}
+            className="ind-build__cta"
+            onClick={() => {
+              if (slug) {
+                try {
+                  trackForBuildCTAClick(slug, build.kicker);
+                } catch {
+                  // analytics must never block navigation
+                }
+              }
+            }}
+          >
             Get this for your brand
             <span aria-hidden className="ind-build__cta-arrow">
               →
