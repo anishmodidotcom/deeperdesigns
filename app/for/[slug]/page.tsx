@@ -39,6 +39,18 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: url },
+    // v19.8: assert indexability explicitly. The pages were always
+    // index-able in code (no noindex is emitted for a live industry), but a
+    // Bing audit showed three of them cached as "Indexing allowed: No" after
+    // being crawled during their preview-deploy window (Vercel adds
+    // X-Robots-Tag: noindex to non-production deploys). A positive
+    // index,follow directive is the strongest signal to flip that cached
+    // verdict on re-crawl.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
     // openGraph does not deep-merge with the root layout here, so siteName
     // and every other field are set explicitly on each route.
     openGraph: {
