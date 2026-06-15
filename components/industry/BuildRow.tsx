@@ -6,6 +6,7 @@ import type { IndustryBuild } from "@/lib/industries";
 import { getDemo } from "./demos/registry";
 import BrowserFrame from "./frames/BrowserFrame";
 import PhoneFrame from "./frames/PhoneFrame";
+import VideoFrame from "./frames/VideoFrame";
 import { FORM_HREF } from "@/lib/contact";
 import { renderSerif, renderBold } from "./text";
 
@@ -155,6 +156,14 @@ export default function BuildRow({
               alt={`${build.kicker} build, a real screenshot`}
               width={build.shotW ?? 390}
               height={build.shotH ?? 844}
+            />
+          ) : build.frame === "video" && build.poster ? (
+            <VideoFrame
+              poster={build.poster}
+              src={build.video}
+              alt={`${build.kicker} build, a property walkthrough film`}
+              aspect={build.videoAspect ?? "16:9"}
+              duration={build.videoDuration ?? "0:08"}
             />
           ) : Demo ? (
             <Demo />
