@@ -2191,59 +2191,771 @@ export const INDUSTRIES: Industry[] = [
       attribution: "DEEPER DESIGNS · FOR FASHION",
     },
   },
+  // =====================================================================
+  // 11 · CA & PROFESSIONAL SERVICES · fully built (v19.5)
+  // money is a mint/spring green (#5BC8A0), deliberately clear of teal.
+  // =====================================================================
   {
     slug: "ca-firms",
     name: "CA & Professional Services",
-    live: false,
+    live: true,
     accent: "#5A6ACF",
     accentSoft: "#8C97E0",
-    money: "#F5B544",
-    heroEyebrow: "FOR CA & PROFESSIONAL SERVICES",
+    money: "#5BC8A0",
+
+    heroEyebrow: "FOR CA AND PROFESSIONAL SERVICES",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "You don't have a work problem. {serif}You have a chasing-clients problem.{/serif}",
     heroSub:
-      "We build the system that collects documents, tracks every filing, and ends the WhatsApp chaos.",
+      "Documents arrive late and in the wrong format, deadlines live in your head, and client conversations are scattered across a hundred WhatsApp chats. We build the system that collects the documents, tracks every filing, and ends the chaos.",
+
     meta: {
-      title: "For CA & Professional Services · Deeper Designs",
+      title: "For CA and Professional Services · Deeper Designs",
       description:
-        "You don't have a work problem, you have a chasing-clients problem. We build the system that collects documents, tracks every filing, and ends the WhatsApp chaos.",
+        "You do not have a work problem, you have a chasing-clients problem. We build the system that collects documents, tracks every filing, and ends the WhatsApp chaos.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A FIRM LOSES TO DOCUMENT CHASING AND DEADLINE CHAOS, EVERY MONTH",
+      target: 300000,
+      caption:
+        "Hours burned chasing clients for documents, penalties risked on missed deadlines, and the work that piles up because nothing is in one place.",
+      rows: [
+        { k: "Time spent chasing client documents", v: "hours every week" },
+        { k: "Client conversations scattered on WhatsApp", v: "all of them" },
+        { k: "Deadlines tracked in someone's head", v: "too many" },
+      ],
+    },
+
+    nowHeadline: "The work is fine. {serif}Getting to it is the problem.{/serif}",
+    nowIntro:
+      "A practice does not drown in filings. It drowns in chasing the inputs for them. Here is where the week goes.",
+    nowItems: [
+      {
+        label: "THE MISSING DOCUMENT",
+        title: "Chased for the tenth time",
+        body: "A client owes you a bank statement, sends a blurry photo of the wrong page, then goes quiet. You chase, you remind, you chase again. The filing waits on it.",
+        stat: "hours a week, just chasing",
+      },
+      {
+        label: "THE DEADLINE IN YOUR HEAD",
+        title: "GST, ITR, TDS, ROC",
+        body: "A dozen deadlines a month across a hundred clients, tracked in your memory and a spreadsheet. One slip is a penalty and an awkward call.",
+        stat: "deadlines that depend on memory",
+      },
+      {
+        label: "THE WHATSAPP CHAOS",
+        title: "A hundred chats, no record",
+        body: "Every client conversation lives in a separate WhatsApp thread on your personal number. When an article clerk leaves, the context leaves with them.",
+        stat: "client comms with no system",
+      },
+      {
+        label: "THE MANUAL ENTRY",
+        title: "Typed in by hand",
+        body: "Invoices and statements keyed in line by line, reconciled against GSTR-2B by eye. Slow, and a mistake waiting to happen.",
+        stat: "data entry that should be automatic",
+      },
+    ],
+
+    aiHeadline: "Same filings. Same clients. {serif}Nothing chased twice.{/serif}",
+    aiIntro:
+      "Not generic practice software. A system shaped to how an Indian CA firm actually runs its month.",
+    aiItems: [
+      {
+        label: "DOCUMENTS, COLLECTED",
+        title: "The client portal does the chasing",
+        body: "Each client gets a simple request list and automatic reminders until the right document, in the right format, is in. You stop being the follow-up service.",
+        stat: "documents in, without the chasing",
+      },
+      {
+        label: "DEADLINES, TRACKED",
+        title: "Nothing slips, nothing penalised",
+        body: "Every GST, ITR, TDS and ROC deadline across every client on one board, with alerts well before the date. The penalties stop.",
+        stat: "every filing, on time",
+      },
+      {
+        label: "COMMS, IN ONE PLACE",
+        title: "Off your personal number",
+        body: "Client conversations move into one hub tied to the client record, so context stays with the firm even when staff change.",
+        stat: "the chaos, replaced by a record",
+      },
+      {
+        label: "DATA, EXTRACTED",
+        title: "Statements read automatically",
+        body: "Invoices and statements read and entered automatically, reconciled against GSTR-2B, so the clerk checks instead of types.",
+        stat: "entry that does itself",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "CLIENT DOCUMENT PORTAL",
+        demo: "CaFirmsDocumentPortalDemo",
+        frame: "browser",
+        shot: "/builds/ca-firms/document-portal.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.mehtaassociates.in/documents",
+        headline: "The portal chases the documents, {serif}so you don't.{/serif}",
+        body: "Each client gets a clear request list and automatic reminders until the right document, in the right format, is in. You stop being the unpaid follow-up service.",
+        bullets: [
+          "A <b>request list per client</b>, by filing",
+          "<b>Automatic reminders</b> until it is in",
+          "Wrong format <b>flagged on upload</b>",
+          "You see <b>what is pending, at a glance</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "COMPLIANCE CALENDAR",
+        demo: "CaFirmsComplianceCalendarDemo",
+        frame: "browser",
+        shot: "/builds/ca-firms/compliance-calendar.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.mehtaassociates.in/calendar",
+        headline: "Every deadline, every client, {serif}on one board.{/serif}",
+        body: "GST, ITR, TDS and ROC across your whole client base on a single board, with alerts well before each date. The missed-deadline penalty becomes a thing of the past.",
+        bullets: [
+          "<b>GST, ITR, TDS, ROC</b> across every client",
+          "Alerts <b>well before the date</b>",
+          "Status per filing: <b>pending, in progress, filed</b>",
+          "Workload <b>balanced across the team</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "CLIENT HUB",
+        demo: "CaFirmsClientHubDemo",
+        frame: "phone",
+        shot: "/builds/ca-firms/client-hub.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "Client conversations, {serif}off your personal number.{/serif}",
+        body: "Every client conversation moves into one hub tied to the client record, so context stays with the firm even when an article clerk moves on.",
+        bullets: [
+          "Client comms <b>in one place, per client</b>",
+          "Document requests and reminders <b>from the hub</b>",
+          "History <b>stays with the firm</b>, not the staff",
+          "Off your <b>personal WhatsApp</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "DOC EXTRACTION",
+        demo: "CaFirmsExtractionDemo",
+        frame: "browser",
+        shot: "/builds/ca-firms/extraction.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.mehtaassociates.in/reconcile",
+        headline: "Statements read and entered, {serif}you just check.{/serif}",
+        body: "Invoices and statements read and entered automatically, reconciled against GSTR-2B, so your clerk reviews instead of keying in line by line.",
+        bullets: [
+          "Invoices and statements <b>read automatically</b>",
+          "Reconciled against <b>GSTR-2B</b>",
+          "Mismatches <b>flagged for review</b>",
+          "A maker-checker <b>audit trail</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a small firm with a hundred-odd clients. Freeing the hours lost to chasing and entry usually covers the build well inside a season. We size it to your client base in the first call.",
+      before: [
+        { k: "Hours chasing documents", v: "₹1,20,000" },
+        { k: "Penalty and rework risk on deadlines", v: "₹80,000" },
+        { k: "Manual data entry and reconciliation", v: "₹70,000" },
+        { k: "Context lost when staff leave", v: "₹30,000" },
+      ],
+      beforeTotal: { k: "Lost every month", v: "₹3,00,000" },
+      after: [
+        { k: "Documents collected automatically", v: "₹1,10,000" },
+        { k: "Deadlines tracked, penalties avoided", v: "₹75,000" },
+        { k: "Entry and reconciliation automated", v: "₹60,000" },
+        { k: "Context retained in the firm", v: "₹25,000" },
+      ],
+      afterTotal: { k: "Back in the practice", v: "₹2,70,000" },
+      note: "Ranges from common small-firm patterns, not a single client. This handles the workflow around filings, not the professional judgment in them.",
+    },
+
+    personasHeadline: "Different practices. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every firm loses the week somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote: "I spend more time chasing clients for documents than actually doing the work.",
+        persona: "Solo chartered accountant",
+        tag: "Client Document Portal",
+      },
+      {
+        quote: "A dozen deadlines a month live in my head. One slip is a penalty and an apology.",
+        persona: "Two-partner CA firm",
+        tag: "Compliance Calendar",
+      },
+      {
+        quote: "Every client is a separate WhatsApp chat on my personal phone. It is chaos.",
+        persona: "Tax consultant",
+        tag: "Client Hub",
+      },
+      {
+        quote: "When an article clerk leaves, all the client context walks out with them.",
+        persona: "Mid-size practice",
+        tag: "Client Hub",
+      },
+      {
+        quote: "My team keys in invoices line by line and reconciles against 2B by eye.",
+        persona: "GST practitioner",
+        tag: "Doc Extraction",
+      },
+      {
+        quote: "I run a company-secretary practice and ROC dates are scattered everywhere.",
+        persona: "Company-secretary firm",
+        tag: "Compliance Calendar",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your week goes? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your practice actually runs a month and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for professional-services firms. Pick what fits, or let us point you.",
+      chips: [
+        "Client Document Portal",
+        "Compliance Calendar",
+        "Client Hub",
+        "Doc Extraction",
+        "Engagement and Billing",
+        "Task and Workflow Board",
+        "Client Onboarding",
+        "E-sign and Approvals",
+        "Notice and Query Tracker",
+        "Knowledge Base Assistant",
+        "Practice Dashboard",
+        "WhatsApp Client Updates",
+      ],
+    },
+
+    anishNote:
+      "Every CA I meet is brilliant at the work and buried under the chasing of it. The judgment was never the bottleneck. The bank statement that arrives a week late, in the wrong format, was.",
+    pullQuote: {
+      quote:
+        "The practice was never short on expertise. It was short on the bank statement that never came, chased across a hundred WhatsApp chats nobody owned.",
+      attribution: "DEEPER DESIGNS · FOR CA FIRMS",
     },
   },
+  // =====================================================================
+  // 12 · SALONS, SPAS & WELLNESS · fully built (v19.5)
+  // =====================================================================
   {
     slug: "salons",
     name: "Salons & Wellness",
-    live: false,
+    live: true,
     accent: "#D6336C",
     accentSoft: "#EE6F9C",
-    money: "#F5B544",
-    heroEyebrow: "FOR SALONS & WELLNESS",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR SALONS, SPAS AND WELLNESS",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "An empty chair at 4pm {serif}is money you never get back.{/serif}",
     heroSub:
-      "We build the calendar that fills itself, rebooks every client, and lets them see the look before they sit down.",
+      "No-shows leave gaps, bookings come from five places at once, and the client who loved their cut is never reminded to return. We build the calendar that fills itself, rebooks every client, and lets them see the look before they sit down.",
+
     meta: {
-      title: "For Salons & Wellness · Deeper Designs",
+      title: "For Salons and Wellness · Deeper Designs",
       description:
-        "An empty chair at 4pm is money you never get back. We build the calendar that fills itself, rebooks every client, and lets them see the look before they sit down.",
+        "An empty chair at 4pm is money you never get back. We build the calendar that fills itself, rebooks every client, and stops the no-shows.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A SALON LOSES TO NO-SHOWS AND CLIENTS WHO DON'T REBOOK, EVERY MONTH",
+      target: 250000,
+      caption:
+        "Chairs left empty by no-shows, missed calls during a service, and regulars who simply were never reminded to come back.",
+      rows: [
+        { k: "Appointments lost to no-shows", v: "more than you think" },
+        { k: "Calls missed during a service", v: "every busy day" },
+        { k: "Clients never reminded to rebook", v: "most" },
+      ],
+    },
+
+    nowHeadline: "The work is great. {serif}The chair sits empty anyway.{/serif}",
+    nowIntro:
+      "A salon lives on a full chair and a returning client. Here is where both quietly slip.",
+    nowItems: [
+      {
+        label: "THE NO-SHOW",
+        title: "A gap you find out about at 4pm",
+        body: "A booking is made, then forgotten. No reminder went out, the client did not come, and a prime slot sits empty with no time to fill it.",
+        stat: "prime slots lost to no-shows",
+      },
+      {
+        label: "THE MISSED CALL",
+        title: "Both hands were busy",
+        body: "The phone rings mid-service. Nobody can answer, the caller wanted to book, and they call the salon down the road instead.",
+        stat: "bookings lost to a busy chair",
+      },
+      {
+        label: "THE CLIENT WHO DRIFTED",
+        title: "Loved the cut, never came back",
+        body: "A happy client left six weeks ago. No reminder, no nudge, and they are now overdue and drifting to whoever is nearest. The relationship just fades.",
+        stat: "regulars never rebooked",
+      },
+      {
+        label: "THE BOOKING CHAOS",
+        title: "Five places at once",
+        body: "Walk-ins, calls, Instagram DMs, a paper diary. Double-bookings happen, staff schedules clash, and nobody has the real picture of the day.",
+        stat: "bookings scattered everywhere",
+      },
+    ],
+
+    aiHeadline: "Same chairs. Same hands. {serif}Nothing sits empty.{/serif}",
+    aiIntro:
+      "Not a clunky booking app. A system shaped to how a salon's day actually runs.",
+    aiItems: [
+      {
+        label: "FILLED AND CONFIRMED",
+        title: "Reminders that stop no-shows",
+        body: "Every booking is confirmed and reminded, with a deposit option for prime slots, and a cancellation gets offered to the waitlist before the chair goes cold.",
+        stat: "the chair, kept full",
+      },
+      {
+        label: "ALWAYS ANSWERED",
+        title: "A receptionist for the missed call",
+        body: "An assistant answers the call you cannot, books the slot, and confirms on WhatsApp, so a busy chair never costs you a booking.",
+        stat: "every booking caught",
+      },
+      {
+        label: "REBOOKED ON TIME",
+        title: "The regular brought back",
+        body: "Clients get a warm reminder when they are due, tied to what they had last time, so the regular returns instead of drifting away.",
+        stat: "regulars who come back",
+      },
+      {
+        label: "ONE CALENDAR",
+        title: "Every booking, every chair",
+        body: "Walk-ins, calls and DMs land in one calendar with staff schedules and no double-bookings. You finally see the whole day.",
+        stat: "the day, finally clear",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "SMART CALENDAR",
+        demo: "SalonsCalendarDemo",
+        frame: "browser",
+        shot: "/builds/salons/calendar.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.glowstudio.in/calendar",
+        headline: "A calendar that fills itself {serif}and stays full.{/serif}",
+        body: "Bookings from every source in one place, confirmations and reminders that stop no-shows, and cancellations refilled from the waitlist before the chair goes cold.",
+        bullets: [
+          "Walk-ins, calls and DMs <b>in one calendar</b>",
+          "Confirmations and reminders, <b>deposits on prime slots</b>",
+          "Cancellations <b>refilled from the waitlist</b>",
+          "Staff schedules, <b>no double-bookings</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "BOOKING ASSISTANT",
+        demo: "SalonsBookingAssistantDemo",
+        frame: "phone",
+        shot: "/builds/salons/booking-assistant.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "The booking you'd have missed, {serif}caught anyway.{/serif}",
+        body: "An assistant answers the call and the DM you cannot reach mid-service, books the slot, and confirms on WhatsApp, so the busy chair never costs you a client.",
+        bullets: [
+          "Answers <b>calls and Instagram DMs</b>",
+          "Books and <b>confirms on WhatsApp</b>",
+          "Knows your <b>services, prices and slots</b>",
+          "Never lets a <b>busy chair lose a booking</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "REBOOK ENGINE",
+        demo: "SalonsRebookDemo",
+        frame: "browser",
+        shot: "/builds/salons/rebook.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.glowstudio.in/clients",
+        headline: "The regular who drifted, {serif}back in the chair.{/serif}",
+        body: "Clients get a warm, well-timed nudge when they are due, tied to what they had last time, so they return instead of drifting to whoever is nearest.",
+        bullets: [
+          "Rebooking nudges <b>timed to the service</b>",
+          "Personalised to <b>their last visit</b>",
+          "Win-back for <b>lapsed clients</b>",
+          "Memberships and packages, <b>tracked</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "STUDIO DESK",
+        demo: "SalonsStudioDeskDemo",
+        frame: "browser",
+        shot: "/builds/salons/studio-desk.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.glowstudio.in/today",
+        headline: "The chair, the staff, the day, {serif}on one screen.{/serif}",
+        body: "Revenue, staff commissions, inventory and the day's chairs in one view, so the salon runs like a business instead of a busy room.",
+        bullets: [
+          "Revenue and <b>chair utilisation</b>, live",
+          "<b>Staff commission</b> worked out automatically",
+          "<b>Product inventory</b> deducted as used",
+          "The day's <b>load at a glance</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a busy multi-chair salon. Cutting no-shows and rebooking lapsed clients usually covers the build inside a month. We size it to your chairs in the first call.",
+      before: [
+        { k: "Prime slots lost to no-shows", v: "₹90,000" },
+        { k: "Bookings missed on busy days", v: "₹60,000" },
+        { k: "Regulars who never rebooked", v: "₹80,000" },
+        { k: "Owner and front-desk admin time", v: "₹20,000" },
+      ],
+      beforeTotal: { k: "Walking out the door", v: "₹2,50,000" },
+      after: [
+        { k: "No-shows cut by reminders and deposits", v: "₹80,000" },
+        { k: "Missed bookings captured", v: "₹55,000" },
+        { k: "Regulars rebooked", v: "₹70,000" },
+        { k: "Admin time freed", v: "₹18,000" },
+      ],
+      afterTotal: { k: "Back in the chair", v: "₹2,23,000" },
+      note: "Ranges from common salon and wellness patterns, not a single client. No-show reduction alone often pays for the build.",
+    },
+
+    personasHeadline: "Different chairs. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every salon and studio loses it somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote: "A no-show at 4pm is a prime slot I can never sell again that day.",
+        persona: "Hair salon owner",
+        tag: "Smart Calendar",
+      },
+      {
+        quote: "The phone rings while my hands are in someone's hair, and that booking is gone.",
+        persona: "Unisex salon",
+        tag: "Booking Assistant",
+      },
+      {
+        quote: "Clients love the work but I have no way to remind them it is time to come back.",
+        persona: "Spa owner",
+        tag: "Rebook Engine",
+      },
+      {
+        quote: "Walk-ins, calls and Instagram DMs, and somehow I still get double-booked.",
+        persona: "Beauty studio",
+        tag: "Smart Calendar",
+      },
+      {
+        quote: "Working out staff commissions every month is its own part-time job.",
+        persona: "Multi-chair salon",
+        tag: "Studio Desk",
+      },
+      {
+        quote: "My regulars drift to whoever is nearest because nobody nudged them.",
+        persona: "Wellness and grooming studio",
+        tag: "Rebook Engine",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your chairs sit empty? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your salon actually runs a day and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for salons and studios. Pick what fits, or let us point you.",
+      chips: [
+        "Smart Calendar",
+        "Booking Assistant",
+        "Rebook Engine",
+        "Studio Desk",
+        "Membership and Packages",
+        "Look Preview",
+        "Reviews and Reputation",
+        "Staff Commission",
+        "Inventory Tracking",
+        "Loyalty Program",
+        "WhatsApp Reminders",
+        "Walk-in Capture",
+      ],
+    },
+
+    anishNote:
+      "A salon's best asset is the regular who loves their stylist, and it is the one asset nobody is protecting. A single warm nudge at the right week is the difference between a regular and a stranger.",
+    pullQuote: {
+      quote:
+        "The empty chair at four was never a marketing problem. It was a reminder that never went out and a regular nobody asked back.",
+      attribution: "DEEPER DESIGNS · FOR SALONS",
     },
   },
+  // =====================================================================
+  // 13 · LOGISTICS & FLEET · fully built (v19.5)
+  // =====================================================================
   {
     slug: "logistics",
     name: "Logistics & Fleet",
-    live: false,
+    live: true,
     accent: "#F59F00",
     accentSoft: "#FFC04D",
-    money: "#F5B544",
-    heroEyebrow: "FOR LOGISTICS & FLEET",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR LOGISTICS AND FLEET",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline:
       "Your fleet runs on WhatsApp groups and registers. {serif}That is where the money leaks.{/serif}",
     heroSub:
-      "We build the control room that sees every trip and flags every leak.",
+      "Drivers chased for updates all day, proof of delivery on paper, fuel and freight bills nobody can verify. We build the control room that sees every trip and flags every leak.",
+
     meta: {
-      title: "For Logistics & Fleet · Deeper Designs",
+      title: "For Logistics and Fleet · Deeper Designs",
       description:
         "Your fleet runs on WhatsApp groups and registers, and that is where the money leaks. We build the control room that sees every trip and flags every leak.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A FLEET LOSES TO BLIND TRIPS AND UNCHECKED BILLS, EVERY MONTH",
+      target: 600000,
+      caption:
+        "Coordination calls that eat the day, fuel and freight no one can verify, and disputes lost for want of proof.",
+      rows: [
+        { k: "Daily calls chasing driver updates", v: "dozens" },
+        { k: "Fuel as a share of operating cost", v: "35 to 40%" },
+        { k: "Proof of delivery on paper", v: "still" },
+      ],
+    },
+
+    nowHeadline: "The trucks move. {serif}The visibility does not.{/serif}",
+    nowIntro:
+      "A transport business runs on trips, proof and bills, and right now all three live on paper and phone calls. Here is where it leaks.",
+    nowItems: [
+      {
+        label: "THE BLIND TRIP",
+        title: "Chasing drivers all day",
+        body: "Where is the truck, has it loaded, did it deliver. You find out by calling the driver, again and again. Dozens of calls a day just to know what is happening.",
+        stat: "the day lost to coordination calls",
+      },
+      {
+        label: "THE PAPER POD",
+        title: "Proof you cannot find",
+        body: "Delivery is confirmed on a paper slip that arrives days later, if at all. A payment dispute comes up and the proof is in a folder in another city.",
+        stat: "disputes lost for want of proof",
+      },
+      {
+        label: "THE FUEL LEAK",
+        title: "A third of cost, unchecked",
+        body: "Fuel is the biggest line and the least watched. Skimming, wrong routes and idle running quietly eat the margin, and the numbers only show up at month end.",
+        stat: "fuel leaks, caught too late",
+      },
+      {
+        label: "THE FREIGHT BILL",
+        title: "Overcharged and unverified",
+        body: "Freight invoices and detention charges come in and get paid because checking each one by hand is impossible. Overbilling slips straight through.",
+        stat: "bills paid without a check",
+      },
+    ],
+
+    aiHeadline: "Same trucks. Same routes. {serif}Nothing unaccounted for.{/serif}",
+    aiIntro:
+      "Not a heavy enterprise TMS. A control layer that makes every trip and every rupee visible.",
+    aiItems: [
+      {
+        label: "EVERY TRIP VISIBLE",
+        title: "A control room, not a phone",
+        body: "Live status on every trip in one screen, with WhatsApp tracking links for drivers and customers, so you stop calling to ask where the truck is.",
+        stat: "the fleet, finally visible",
+      },
+      {
+        label: "PROOF, INSTANT",
+        title: "Delivery confirmed on the spot",
+        body: "Drivers capture proof of delivery from the phone the moment it lands, with exceptions flagged, so a dispute is settled with a tap, not a folder.",
+        stat: "proof, the instant it happens",
+      },
+      {
+        label: "FUEL, WATCHED",
+        title: "Leaks flagged as they happen",
+        body: "Fuel, route and idle anomalies surfaced as they occur, not at month end, so the biggest cost line finally gets watched.",
+        stat: "the fuel leak, caught early",
+      },
+      {
+        label: "BILLS, CHECKED",
+        title: "Overbilling caught automatically",
+        body: "Freight invoices and detention charges checked against the trip automatically, so overbilling is flagged before you pay it.",
+        stat: "every bill, verified",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "CONTROL ROOM",
+        demo: "LogisticsControlRoomDemo",
+        frame: "browser",
+        shot: "/builds/logistics/control-room.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sharmatransport.in/control",
+        headline: "Every trip on one screen, {serif}no more chasing.{/serif}",
+        body: "Live status on every trip in one dashboard, with WhatsApp tracking links for drivers and customers, so you stop spending the day on the phone asking where the truck is.",
+        bullets: [
+          "Live status on <b>every trip and vehicle</b>",
+          "<b>WhatsApp tracking links</b>, no app to install",
+          "Dispatch and <b>allocation in one place</b>",
+          "Delays and exceptions <b>flagged</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "EPOD",
+        demo: "LogisticsEpodDemo",
+        frame: "phone",
+        shot: "/builds/logistics/epod.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "Proof of delivery, {serif}the moment it lands.{/serif}",
+        body: "Drivers capture proof from the phone the instant a delivery happens, with exceptions flagged, so a payment dispute is settled with a tap instead of a hunt through folders.",
+        bullets: [
+          "Proof captured <b>from the driver's phone</b>",
+          "<b>Photo, signature and time-stamp</b>",
+          "Exceptions and <b>short-deliveries flagged</b>",
+          "A dispute settled <b>with a tap</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "FUEL AND ROUTE WATCH",
+        demo: "LogisticsFuelWatchDemo",
+        frame: "browser",
+        shot: "/builds/logistics/fuel-watch.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sharmatransport.in/fuel",
+        headline: "The biggest cost line, {serif}finally watched.{/serif}",
+        body: "Fuel, route and idle anomalies surfaced as they happen, not at month end, so skimming and wasteful running get caught while you can still act.",
+        bullets: [
+          "<b>Fuel anomalies</b> flagged as they occur",
+          "<b>Route deviation and idle</b> running surfaced",
+          "Cost per <b>trip and per kilometre</b>",
+          "Savings, <b>measured not guessed</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "FREIGHT AUDIT",
+        demo: "LogisticsFreightAuditDemo",
+        frame: "browser",
+        shot: "/builds/logistics/freight-audit.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sharmatransport.in/audit",
+        headline: "Every invoice checked, {serif}before you pay it.{/serif}",
+        body: "Freight invoices, detention and other charges checked against the actual trip automatically, so overbilling is flagged before it leaves your account.",
+        bullets: [
+          "Invoices matched to the <b>actual trip</b>",
+          "<b>Detention and extra charges</b> verified",
+          "<b>Overbilling flagged</b> for review",
+          "E-way bill and <b>compliance</b>, in order",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a mid-size transporter running a few dozen vehicles. Catching fuel and freight leaks usually covers the build inside a quarter. We size it to your fleet in the first call.",
+      before: [
+        { k: "Time lost to coordination calls", v: "₹1,20,000" },
+        { k: "Fuel skimming and idle running", v: "₹2,40,000" },
+        { k: "Overbilling paid unchecked", v: "₹1,60,000" },
+        { k: "Disputes lost for want of proof", v: "₹80,000" },
+      ],
+      beforeTotal: { k: "Leaking every month", v: "₹6,00,000" },
+      after: [
+        { k: "Coordination time freed", v: "₹1,10,000" },
+        { k: "Fuel leaks caught early", v: "₹2,10,000" },
+        { k: "Overbilling flagged before payment", v: "₹1,40,000" },
+        { k: "Disputes won with instant proof", v: "₹70,000" },
+      ],
+      afterTotal: { k: "Back in the business", v: "₹5,30,000" },
+      note: "Ranges from common road-transport patterns, not a single client. Fuel and freight-audit gains alone usually pay for the build inside a quarter.",
+    },
+
+    personasHeadline: "Different fleets. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every transporter leaks somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote: "I spend my whole day calling drivers just to know where the trucks are.",
+        persona: "Mid-size transporter",
+        tag: "Control Room",
+      },
+      {
+        quote: "A payment dispute comes up and the proof of delivery is a paper slip in another city.",
+        persona: "Fleet owner",
+        tag: "ePOD",
+      },
+      {
+        quote: "Fuel is forty percent of my cost and I only see the leak at month end.",
+        persona: "Long-haul operator",
+        tag: "Fuel and Route Watch",
+      },
+      {
+        quote: "Freight and detention bills come in and I pay them because I cannot check each one.",
+        persona: "Logistics contractor",
+        tag: "Freight Audit",
+      },
+      {
+        quote: "Everything runs on WhatsApp groups and a register, and nothing is really tracked.",
+        persona: "Small fleet owner",
+        tag: "Control Room",
+      },
+      {
+        quote: "Customers keep calling to ask where their shipment is, and I have no quick answer.",
+        persona: "Last-mile distributor",
+        tag: "Control Room",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your fleet leaks? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your fleet actually runs a day and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for transporters and fleets. Pick what fits, or let us point you.",
+      chips: [
+        "Control Room",
+        "ePOD",
+        "Fuel and Route Watch",
+        "Freight Audit",
+        "Dispatch and Allocation",
+        "Customer Tracking Links",
+        "Driver App",
+        "E-way Bill Compliance",
+        "Maintenance Scheduler",
+        "Trip Profitability",
+        "Detention Tracking",
+        "WhatsApp Status Updates",
+      ],
+    },
+
+    anishNote:
+      "Fuel is forty percent of the cost and the least watched number in the business. Every transporter knows it leaks. Almost none can see where, until the month is already gone.",
+    pullQuote: {
+      quote:
+        "The fleet was never short on trucks. It was short on knowing where they were, what they burned, and whether the freight bill was even honest.",
+      attribution: "DEEPER DESIGNS · FOR LOGISTICS",
     },
   },
   // =====================================================================
