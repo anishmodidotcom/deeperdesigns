@@ -640,40 +640,520 @@ export const INDUSTRIES: Industry[] = [
       attribution: "DEEPER DESIGNS · FOR REAL ESTATE",
     },
   },
+  // =====================================================================
+  // 05 · COACHING & EDUCATION · fully built (v19.3)
+  // =====================================================================
   {
     slug: "coaching",
     name: "Coaching & Education",
-    live: false,
+    live: true,
     accent: "#F25F4C",
     accentSoft: "#FF8E7E",
-    money: "#F5B544",
-    heroEyebrow: "FOR COACHING & EDUCATION",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR COACHING AND EDUCATION",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "200 students you can run from your head. {serif}1,000 you can't.{/serif}",
     heroSub:
-      "That is where institutes stall. We build the system that never drops an admission enquiry or a late fee.",
+      "Admissions chased on paper, fees in a register, attendance two days stale, parents on a hundred WhatsApp threads. That is the ceiling. We build the system that never drops an enquiry, a fee, or a parent.",
+
     meta: {
-      title: "For Coaching & Education · Deeper Designs",
+      title: "For Coaching and Education · Deeper Designs",
       description:
-        "200 students you can run from your head, 1,000 you can't. We build the system that never drops an admission enquiry or a late fee.",
+        "200 students you can run from your head, 1000 you cannot. We build the system that never drops an admission enquiry, a fee, or a parent.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT AN INSTITUTE LOSES TO DROPPED ENQUIRIES AND LATE FEES, EVERY MONTH",
+      target: 450000,
+      caption:
+        "Admission enquiries that never got a second call, fees collected late or not at all, and parents who left because nobody kept them in the loop.",
+      rows: [
+        { k: "Admission enquiries that go cold", v: "nearly half" },
+        { k: "Fees collected late", v: "around 40%" },
+        { k: "Attendance and marks tracked on paper", v: "still" },
+      ],
+    },
+
+    nowHeadline: "Your teaching is not the problem. {serif}The running of it is.{/serif}",
+    nowIntro:
+      "Past a few hundred students, the registers and WhatsApp groups stop holding. Here is where it cracks.",
+    nowItems: [
+      {
+        label: "THE DROPPED ENQUIRY",
+        title: "Nobody called back",
+        body: "A parent enquired about the new batch. One counsellor is juggling a hundred such leads on a notebook, and half never get a second call. The seat goes to the institute that followed up.",
+        stat: "admissions lost to no follow-up",
+      },
+      {
+        label: "THE LATE FEE",
+        title: "Chased one by one",
+        body: "Fees come in late, by cash and screenshot, reconciled by hand against an Excel sheet. Reminders go out when someone remembers to send them.",
+        stat: "around 40% of fees late",
+      },
+      {
+        label: "THE STALE REGISTER",
+        title: "Attendance nobody sees",
+        body: "Attendance is marked on paper and entered days later. A parent finds out their child skipped a week only at the test.",
+        stat: "attendance two days behind",
+      },
+      {
+        label: "THE PARENT IN THE DARK",
+        title: "A hundred WhatsApp threads",
+        body: "Marks, schedules, notices, all forwarded one by one. Parents feel out of the loop, and the institute feels small.",
+        stat: "communication that does not scale",
+      },
+    ],
+
+    aiHeadline: "Same batches. Same fees. {serif}Nothing slips.{/serif}",
+    aiIntro:
+      "Not a generic school ERP. A system shaped to how a coaching institute actually runs.",
+    aiItems: [
+      {
+        label: "EVERY ENQUIRY HELD",
+        title: "Admissions that follow up themselves",
+        body: "Each enquiry enters a pipeline with automatic WhatsApp follow-up, so no parent is forgotten and every seat gets its fair chase.",
+        stat: "no enquiry left cold",
+      },
+      {
+        label: "FEES ON TIME",
+        title: "Reminders and UPI, automatic",
+        body: "Fee reminders go out on WhatsApp with a UPI link and a GST receipt back instantly. Collection stops depending on memory.",
+        stat: "fees collected on time",
+      },
+      {
+        label: "ATTENDANCE LIVE",
+        title: "Parents told the same day",
+        body: "Attendance marked once syncs instantly, and a parent hears about a missed class the day it happens, not at the test.",
+        stat: "attendance, same-day",
+      },
+      {
+        label: "PARENTS IN THE LOOP",
+        title: "Marks and notices, automatic",
+        body: "Report cards generated, schedules and notices pushed to every parent at once. The institute feels organised, because it is.",
+        stat: "communication that scales",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "ADMISSIONS DESK",
+        demo: "CoachingAdmissionsDemo",
+        frame: "browser",
+        shot: "/builds/coaching/admissions.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.pinnacleclasses.in/admissions",
+        headline: "Every enquiry chased, {serif}every seat filled.{/serif}",
+        body: "Each admission enquiry enters a pipeline with automatic WhatsApp follow-up, so no parent is forgotten and the new batch fills on time.",
+        bullets: [
+          "One desk for <b>every enquiry, every source</b>",
+          "Automatic <b>WhatsApp follow-up</b> sequences",
+          "Counsellor notes and <b>next-action</b> on every lead",
+          "Batch-wise <b>seats filled, at a glance</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "FEE ENGINE",
+        demo: "CoachingFeesDemo",
+        frame: "phone",
+        shot: "/builds/coaching/fees.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "Fees on time, {serif}without the chasing.{/serif}",
+        body: "Reminders go out on WhatsApp with a UPI link, the receipt comes back instantly. Collection stops depending on who remembers to ask.",
+        bullets: [
+          "<b>WhatsApp reminders</b> with a UPI pay link",
+          "<b>GST receipt</b> back the moment they pay",
+          "Instalments and <b>scholarships</b> handled",
+          "A clear view of <b>who has paid and who has not</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "ATTENDANCE AND ALERTS",
+        demo: "CoachingAttendanceDemo",
+        frame: "browser",
+        shot: "/builds/coaching/attendance.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.pinnacleclasses.in/attendance",
+        headline: "Marked once, {serif}the parent knows by lunch.{/serif}",
+        body: "Attendance synced the moment it is taken, with an instant alert to the parent of any child who did not show. No more test-day surprises.",
+        bullets: [
+          "Attendance by <b>batch and student</b>",
+          "<b>Instant parent alert</b> on an absence",
+          "Patterns flagged before they <b>become a problem</b>",
+          "Faculty workload, <b>visible</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "RESULTS AND PARENT HUB",
+        demo: "CoachingResultsDemo",
+        frame: "browser",
+        shot: "/builds/coaching/results.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.pinnacleclasses.in/results",
+        headline: "Report cards and notices, {serif}out the door automatically.{/serif}",
+        body: "Marks become clean report cards, schedules and notices reach every parent at once. The institute runs like one ten times its size.",
+        bullets: [
+          "<b>Auto-generated report cards</b> from marks",
+          "Schedules and notices <b>to every parent</b>",
+          "Test analysis, <b>per student</b>",
+          "One hub instead of <b>a hundred threads</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for an institute around 400 students. Better fee collection alone usually covers the build inside a term. We size it to your numbers in the first call.",
+      before: [
+        { k: "Admission enquiries dropped", v: "₹1,80,000" },
+        { k: "Fees collected late or lost", v: "₹1,50,000" },
+        { k: "Parents leaving over poor communication", v: "₹80,000" },
+        { k: "Admin staff time on manual work", v: "₹40,000" },
+      ],
+      beforeTotal: { k: "Slipping every month", v: "₹4,50,000" },
+      after: [
+        { k: "Enquiries followed up, more admissions", v: "₹1,60,000" },
+        { k: "Fees collected on time", v: "₹1,40,000" },
+        { k: "Parents retained", v: "₹70,000" },
+        { k: "Admin time freed", v: "₹35,000" },
+      ],
+      afterTotal: { k: "Back in the institute", v: "₹4,05,000" },
+      note: "Ranges from common coaching-institute patterns, not a single client. Fee-collection gains alone often pay for the build.",
+    },
+
+    personasHeadline: "Different institutes. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every coaching business cracks somewhere specific past a few hundred students. Here is where, in their words.",
+    personas: [
+      {
+        quote:
+          "My counsellor cannot call back a hundred enquiries a day, so half of them just go.",
+        persona: "Competitive-exam coaching",
+        tag: "Admissions Desk",
+      },
+      {
+        quote:
+          "Forty percent of fees come late, and I am the one chasing them every month.",
+        persona: "Tuition centre owner",
+        tag: "Fee Engine",
+      },
+      {
+        quote: "Parents find out their child skipped class only when the marks drop.",
+        persona: "Science coaching institute",
+        tag: "Attendance and Alerts",
+      },
+      {
+        quote: "I forward marks and notices to parents one by one. It eats my evening.",
+        persona: "Small academy",
+        tag: "Results and Parent Hub",
+      },
+      {
+        quote: "We crossed 600 students and the registers simply stopped holding.",
+        persona: "Multi-batch institute",
+        tag: "Admissions Desk",
+      },
+      {
+        quote: "Parents judge us as small because our communication looks small.",
+        persona: "Neighbourhood coaching class",
+        tag: "Results and Parent Hub",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your institute leaks? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your institute actually runs and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for institutes. Pick what fits, or let us point you.",
+      chips: [
+        "Admissions Desk",
+        "Fee Engine",
+        "Attendance and Alerts",
+        "Results and Parent Hub",
+        "Demo-Class Booking",
+        "Doubt-Solving Assistant",
+        "Batch and Timetable Planner",
+        "Faculty Dashboard",
+        "Enquiry Microsite",
+        "Test and Analysis",
+        "Alumni and Referrals",
+        "WhatsApp Parent Broadcast",
+      ],
+    },
+
+    anishNote:
+      "Every institute owner I meet is a brilliant teacher buried under admin. The ceiling was never the teaching. It was the chasing of fees and follow-ups that no human can do at a thousand students.",
+    pullQuote: {
+      quote:
+        "The institute that wins the admission is rarely the best teacher. It is the one that called the parent back first, and kept calling.",
+      attribution: "DEEPER DESIGNS · FOR COACHING",
     },
   },
+  // =====================================================================
+  // 06 · CLINICS & DIAGNOSTICS · fully built (v19.3)
+  // money is a mint/spring green (#5BC8A0), deliberately clear of teal.
+  // =====================================================================
   {
     slug: "clinics",
     name: "Clinics & Diagnostics",
-    live: false,
+    live: true,
     accent: "#5B8DEF",
     accentSoft: "#93B5F6",
-    money: "#F5B544",
-    heroEyebrow: "FOR CLINICS & DIAGNOSTICS",
+    money: "#5BC8A0",
+
+    heroEyebrow: "FOR CLINICS AND DIAGNOSTICS",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "Every missed call {serif}booked somewhere else.{/serif}",
     heroSub:
-      "A front desk can't answer everything. We build the one that does, and fills every empty slot.",
+      "The front desk cannot answer every call, no-shows leave slots empty, and the patients you treated once never come back. We build the system that answers around the clock, fills the calendar, and brings patients back.",
+
     meta: {
-      title: "For Clinics & Diagnostics · Deeper Designs",
+      title: "For Clinics and Diagnostics · Deeper Designs",
       description:
-        "Every missed call is booked somewhere else. We build the front desk that answers everything and fills every empty slot.",
+        "Every missed call gets booked somewhere else. We build the system that answers around the clock, fills the calendar, and brings patients back.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A CLINIC LOSES TO MISSED CALLS, NO-SHOWS AND PATIENTS WHO NEVER RETURN",
+      target: 350000,
+      caption:
+        "Calls the front desk could not pick up, appointments that went empty, and patients who were never reminded to come back.",
+      rows: [
+        { k: "Callers who hang up on voicemail", v: "around 80%" },
+        { k: "Appointment slots lost to no-shows", v: "more than you think" },
+        { k: "Patients never recalled for a follow-up", v: "most" },
+      ],
+    },
+
+    nowHeadline: "The medicine is sound. {serif}The front desk is drowning.{/serif}",
+    nowIntro:
+      "A clinic lives and dies by the front desk, and the front desk cannot be everywhere. Here is what slips.",
+    nowItems: [
+      {
+        label: "THE MISSED CALL",
+        title: "It rang while you were with a patient",
+        body: "The desk is busy, the call goes unanswered, and the caller does not leave a voicemail. They simply book at the clinic that picked up.",
+        stat: "most missed callers do not call back",
+      },
+      {
+        label: "THE NO-SHOW",
+        title: "An empty slot, found too late",
+        body: "An appointment is booked and forgotten. No reminder went out, the patient did not come, and the slot that could have been filled sits empty.",
+        stat: "slots lost to no-shows",
+      },
+      {
+        label: "THE LOST PATIENT",
+        title: "Treated once, never recalled",
+        body: "A patient came in, got better, and was never reminded about the follow-up or the next check. They drift to whoever messages them first.",
+        stat: "no recall, no return",
+      },
+      {
+        label: "THE PAPER REGISTER",
+        title: "The day lives in a diary",
+        body: "Appointments, payments and reports in a register. The doctor cannot see the day at a glance, and reports get chased on the phone.",
+        stat: "the clinic you cannot see",
+      },
+    ],
+
+    aiHeadline: "Same clinic. Same hours. {serif}Nothing missed.{/serif}",
+    aiIntro:
+      "Not a heavy hospital system. A light layer that answers, reminds, and recalls on its own.",
+    aiItems: [
+      {
+        label: "ALWAYS ANSWERED",
+        title: "A voice that picks up, day or night",
+        body: "A voice agent answers every call in Hindi, English or your local language, books the appointment, and confirms it on WhatsApp. No call lost to a busy desk.",
+        stat: "every call answered",
+      },
+      {
+        label: "NO-SHOWS DOWN",
+        title: "Reminded, confirmed, refilled",
+        body: "Automatic reminders confirm each appointment, and a cancelled slot gets offered to the next patient before it goes empty.",
+        stat: "the calendar, kept full",
+      },
+      {
+        label: "PATIENTS RECALLED",
+        title: "Brought back at the right time",
+        body: "Follow-ups and check-ups are recalled automatically, so the patient you treated once comes back instead of drifting away.",
+        stat: "patients who return",
+      },
+      {
+        label: "THE DAY AT A GLANCE",
+        title: "Appointments, reports, revenue",
+        body: "One screen for the day, with lab reports delivered to patients automatically. The diary becomes a system.",
+        stat: "the clinic, finally visible",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "VOICE RECEPTIONIST",
+        demo: "ClinicsVoiceReceptionistDemo",
+        frame: "phone",
+        shot: "/builds/clinics/voice-receptionist.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "A receptionist that never misses a call, {serif}day or night.{/serif}",
+        body: "A voice agent answers every call in your patient's language, books the appointment, and confirms it on WhatsApp. The busy desk stops costing you patients.",
+        bullets: [
+          "Answers <b>24/7 in Hindi, English, regional</b>",
+          "Books and <b>confirms on WhatsApp</b>",
+          "Handles <b>reschedules and common questions</b>",
+          "Every missed call, <b>turned into a booking</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "SMART CALENDAR",
+        demo: "ClinicsCalendarDemo",
+        frame: "browser",
+        shot: "/builds/clinics/calendar.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sukoonclinic.in/calendar",
+        headline: "A calendar that fills itself {serif}and stays full.{/serif}",
+        body: "Reminders confirm every appointment, and a cancellation gets offered to the next patient before the slot goes empty. No-shows stop hurting.",
+        bullets: [
+          "<b>Reminders and confirmations</b>, automatic",
+          "Cancelled slots <b>refilled from the waitlist</b>",
+          "Doctor-wise <b>day and week view</b>",
+          "No-show patterns <b>flagged</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "RECALL ENGINE",
+        demo: "ClinicsRecallDemo",
+        frame: "browser",
+        shot: "/builds/clinics/recall.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sukoonclinic.in/recall",
+        headline: "The patient you treated once, {serif}back at the right time.{/serif}",
+        body: "Follow-ups, check-ups and renewals are recalled automatically on WhatsApp, so patients return instead of drifting to whoever messages them first.",
+        bullets: [
+          "Automatic <b>follow-up and check-up recalls</b>",
+          "Personalised to the <b>treatment and timeline</b>",
+          "Reactivation of <b>lapsed patients</b>",
+          "Recall performance, <b>measured</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "CLINIC DASHBOARD",
+        demo: "ClinicsDashboardDemo",
+        frame: "browser",
+        shot: "/builds/clinics/dashboard.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.sukoonclinic.in/today",
+        headline: "The whole day on one screen, {serif}reports out automatically.{/serif}",
+        body: "Appointments, payments and revenue at a glance, and lab reports delivered to patients on WhatsApp without a single chasing call.",
+        bullets: [
+          "Appointments, payments, <b>revenue at a glance</b>",
+          "Lab reports <b>delivered automatically</b>",
+          "Patient history, <b>in one place</b>",
+          "The diary, <b>finally a system</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a busy single-doctor clinic. Recovering missed calls and no-shows usually covers the build inside a month. We size it to your footfall in the first call.",
+      before: [
+        { k: "Missed calls booked elsewhere", v: "₹1,40,000" },
+        { k: "Empty slots from no-shows", v: "₹1,00,000" },
+        { k: "Patients never recalled", v: "₹80,000" },
+        { k: "Front-desk time on the phone", v: "₹30,000" },
+      ],
+      beforeTotal: { k: "Walking out the door", v: "₹3,50,000" },
+      after: [
+        { k: "Missed calls turned into bookings", v: "₹1,20,000" },
+        { k: "Slots kept full", v: "₹90,000" },
+        { k: "Patients recalled and returned", v: "₹70,000" },
+        { k: "Desk time freed", v: "₹25,000" },
+      ],
+      afterTotal: { k: "Back in the clinic", v: "₹3,05,000" },
+      note: "Ranges from common clinic patterns, not a single client. This is not medical advice software; it handles the front desk and the calendar, not diagnosis.",
+    },
+
+    personasHeadline: "Different practices. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every clinic loses patients somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote:
+          "When the desk is busy, the phone just rings, and that caller books elsewhere.",
+        persona: "Single-doctor clinic",
+        tag: "Voice Receptionist",
+      },
+      {
+        quote:
+          "Half my evening slots go empty because patients forget and nobody reminded them.",
+        persona: "Dental practice",
+        tag: "Smart Calendar",
+      },
+      {
+        quote:
+          "I treat a patient once and never have a way to bring them back for a check-up.",
+        persona: "Physiotherapy clinic",
+        tag: "Recall Engine",
+      },
+      {
+        quote: "My front desk spends the whole day reading out lab reports on the phone.",
+        persona: "Diagnostic lab",
+        tag: "Clinic Dashboard",
+      },
+      {
+        quote: "Appointments are in a register, so I never know the day until I am in it.",
+        persona: "Skin and hair clinic",
+        tag: "Clinic Dashboard",
+      },
+      {
+        quote: "Patients call after hours and there is simply no one to answer.",
+        persona: "Multi-specialty clinic",
+        tag: "Voice Receptionist",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where your clinic leaks? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us how your clinic actually runs and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for clinics. Pick what fits, or let us point you.",
+      chips: [
+        "Voice Receptionist",
+        "Smart Calendar",
+        "Recall Engine",
+        "Clinic Dashboard",
+        "Patient Intake Bot",
+        "Lab-Report Delivery",
+        "WhatsApp Reminders",
+        "Reviews and Reputation",
+        "Prescription Records",
+        "Package and Membership",
+        "Referral Tracking",
+        "Multi-Branch View",
+      ],
+    },
+
+    anishNote:
+      "A clinic does not lose patients on the medicine. It loses them in the ninety seconds the front desk could not pick up the phone. That gap is the whole business, and it is fixable.",
+    pullQuote: {
+      quote:
+        "The patient who could not get through did not wait. They called the next clinic on the list, and that one answered.",
+      attribution: "DEEPER DESIGNS · FOR CLINICS",
     },
   },
   // =====================================================================
@@ -1213,22 +1693,262 @@ export const INDUSTRIES: Industry[] = [
         "IndiaMART sends 50 leads and 45 are junk. We build the system that finds the 5, quotes in seconds, and follows up on its own.",
     },
   },
+  // =====================================================================
+  // 07 · FASHION & APPAREL · fully built (v19.3)
+  // =====================================================================
   {
     slug: "fashion",
     name: "Fashion & Apparel",
-    live: false,
+    live: true,
     accent: "#E84393",
     accentSoft: "#F576B5",
-    money: "#F5B544",
-    heroEyebrow: "FOR FASHION & APPAREL",
+    money: "#E0B341",
+
+    heroEyebrow: "FOR FASHION AND APPAREL",
     heroEyebrowNote: "One of 13 industries we build for",
     heroHeadline: "Stop paying for model shoots. {serif}Generate them.{/serif}",
     heroSub:
-      "Flat product to full on-model catalogue, any body type, your brand's look. Plus try-on that shows the buyer the fit before they order.",
+      "A new drop means a shoot, a stylist, a model, a week gone, a big bill. And shoppers still hesitate because they cannot tell how it will look on them. We build the engine that shoots your catalogue and lets buyers see the fit before they order.",
+
     meta: {
-      title: "For Fashion & Apparel · Deeper Designs",
+      title: "For Fashion and Apparel · Deeper Designs",
       description:
-        "Stop paying for model shoots, generate them. Flat product to full on-model catalogue in your brand's look, plus try-on that shows the buyer the fit before they order.",
+        "Stop paying for model shoots, generate them. We build the engine that shoots your catalogue and lets buyers see the fit before they order.",
+    },
+
+    statPanel: {
+      label:
+        "WHAT A FASHION BRAND LOSES TO SHOOT COSTS AND FIT-DOUBT RETURNS, EVERY DROP",
+      target: 500000,
+      caption:
+        "Money spent on shoots for every drop, plus the returns and dropped carts from shoppers who could not picture the fit.",
+      rows: [
+        { k: "Cost and time per model shoot", v: "a week, a big bill" },
+        { k: "Returns driven by fit and look doubt", v: "high in fashion" },
+        { k: "Shoppers who leave unsure of the fit", v: "most" },
+      ],
+    },
+
+    nowHeadline: "The clothes are good. {serif}Showing them costs a fortune.{/serif}",
+    nowIntro:
+      "A small fashion brand competes on visuals with brands that outspend it ten to one. Here is where that hurts.",
+    nowItems: [
+      {
+        label: "THE SHOOT BILL",
+        title: "A week and a fortune per drop",
+        body: "Every drop needs a model, a stylist, a location, a photographer. For a small brand that is a week gone and a bill that eats the margin on the collection.",
+        stat: "a shoot per drop, a big bill",
+      },
+      {
+        label: "THE FIT DOUBT",
+        title: "They cannot picture it on them",
+        body: "A flat-lay or a ghost-mannequin shot does not tell a shopper how it falls on a real body. So they hesitate, and the cart cools.",
+        stat: "sales lost to fit doubt",
+      },
+      {
+        label: "THE RETURN",
+        title: "It did not look like that on me",
+        body: "The garment arrives, the fit surprises them, it comes back. Returns in fashion are brutal, and each one eats the shoot, the shipping and the margin.",
+        stat: "fit-driven returns, brutal",
+      },
+      {
+        label: "THE SLOW DROP",
+        title: "Shot next month, not today",
+        body: "The collection is ready but the shoot is booked for next week, so the drop waits. Momentum and the trend window pass.",
+        stat: "drops that miss the moment",
+      },
+    ],
+
+    aiHeadline: "Same collection. {serif}Shot, modelled and live today.{/serif}",
+    aiIntro:
+      "Not stock imagery. Your actual product, shot and modelled by an engine, in your brand's look.",
+    aiItems: [
+      {
+        label: "SHOT IN AN AFTERNOON",
+        title: "On-model, any look, no shoot",
+        body: "A flat product photo becomes a full on-model shoot, any body type, any setting, in your brand's aesthetic. No studio, no week, no bill.",
+        stat: "the shoot, replaced",
+      },
+      {
+        label: "SEEN ON THEM",
+        title: "Try it on from the phone",
+        body: "A shopper uploads a photo and sees the outfit on themselves, as an image and a short motion clip, before they buy. The fit doubt goes.",
+        stat: "the fitting room, on their screen",
+      },
+      {
+        label: "RETURNS DOWN",
+        title: "Sure before they order",
+        body: "When a shopper has seen the fit on a real body and on themselves, they order with confidence and send back far less.",
+        stat: "fewer fit-driven returns",
+      },
+      {
+        label: "DROP THE SAME DAY",
+        title: "Ready becomes live",
+        body: "The collection is shot, modelled and live the day it is ready, so you catch the trend instead of chasing it.",
+        stat: "drops that catch the moment",
+      },
+    ],
+
+    builds: [
+      {
+        index: "01",
+        kicker: "RUNWAY",
+        demo: "FashionRunwayDemo",
+        frame: "video",
+        poster: "/builds/fashion/runway-poster.webp",
+        // v19.3: fal (Kling) runway clip, generated via scripts/gen-fal-video.ts.
+        video: "/videos/fashion/runway.mp4",
+        videoAspect: "9:16",
+        videoDuration: "0:05",
+        headline: "Your product, on a model, {serif}moving, today.{/serif}",
+        body: "A flat garment photo becomes a full on-model shot and a short runway-style motion clip, in your brand's look. No studio, no model, no week-long wait.",
+        bullets: [
+          "Flat product to <b>full on-model shoot</b>",
+          "<b>Any body type</b>, any setting, your aesthetic",
+          "A short <b>runway motion clip</b> for Reels and ads",
+          "A new drop <b>shot and live the same day</b>",
+        ],
+      },
+      {
+        index: "02",
+        kicker: "TRY-ON",
+        demo: "FashionTryOnDemo",
+        frame: "phone",
+        shot: "/builds/fashion/try-on.png",
+        shotW: 390,
+        shotH: 844,
+        headline: "Let them see the fit, {serif}before it ships.{/serif}",
+        body: "A shopper uploads a photo and sees the outfit on themselves, as an image and a short clip, before they order. The fit doubt that kills the cart disappears.",
+        bullets: [
+          "Try-on from a <b>phone photo</b>",
+          "Image <b>and a short motion clip</b>",
+          "Works across <b>your full catalogue</b>",
+          "A hesitant shopper turned into a <b>confident order</b>",
+        ],
+      },
+      {
+        index: "03",
+        kicker: "CATALOGUE STUDIO",
+        demo: "FashionCatalogueStudioDemo",
+        frame: "browser",
+        shot: "/builds/fashion/catalogue-studio.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.indiethread.in/studio",
+        headline: "The whole catalogue, {serif}shot in an afternoon.{/serif}",
+        body: "Every SKU becomes a clean on-model and lifestyle set in one consistent brand look, ready for the site, the listings and the ads.",
+        bullets: [
+          "Every SKU, <b>on-model and lifestyle</b>",
+          "<b>One consistent brand look</b> across the catalogue",
+          "Straight to <b>site, marketplace and ads</b>",
+          "A full collection, <b>live the same day</b>",
+        ],
+      },
+      {
+        index: "04",
+        kicker: "DROP ENGINE",
+        demo: "FashionDropEngineDemo",
+        frame: "browser",
+        shot: "/builds/fashion/drop-engine.png",
+        shotW: 1440,
+        shotH: 900,
+        demoUrl: "app.indiethread.in/drops",
+        headline: "From ready to live, {serif}the same day.{/serif}",
+        body: "Shot, captioned, listed and pushed across your site, WhatsApp and social the day the collection is ready. Catch the trend instead of chasing it.",
+        bullets: [
+          "Listings and captions <b>generated per SKU</b>",
+          "Pushed to <b>site, WhatsApp and social</b>",
+          "Drop teasers and <b>launch sequences</b>",
+          "Sell-through, <b>tracked per drop</b>",
+        ],
+      },
+    ],
+
+    payback: {
+      intro:
+        "Illustrative for a small fashion brand doing regular drops. Replacing one shoot covers the build. We size it to your drop cadence in the first call.",
+      before: [
+        { k: "Model shoots, per drop", v: "₹2,00,000" },
+        { k: "Returns driven by fit doubt", v: "₹1,60,000" },
+        { k: "Carts lost to fit uncertainty", v: "₹1,00,000" },
+        { k: "Drops delayed waiting on shoots", v: "₹40,000" },
+      ],
+      beforeTotal: { k: "Lost every drop cycle", v: "₹5,00,000" },
+      after: [
+        { k: "Shoots replaced by the engine", v: "₹1,80,000" },
+        { k: "Fit-driven returns reduced", v: "₹1,30,000" },
+        { k: "Carts saved by try-on", v: "₹85,000" },
+        { k: "Drops live on time", v: "₹35,000" },
+      ],
+      afterTotal: { k: "Back in the brand", v: "₹4,30,000" },
+      note: "Ranges from common fashion-D2C patterns, not a single client. Replacing a single shoot per drop usually pays for the build.",
+    },
+
+    personasHeadline: "Different labels. {serif}Different leaks.{/serif}",
+    personasIntro:
+      "Every fashion brand bleeds somewhere specific. Here is where, in their words.",
+    personas: [
+      {
+        quote:
+          "Every drop is a shoot, a model and a week gone before I can even list it.",
+        persona: "Independent clothing label",
+        tag: "Runway",
+      },
+      {
+        quote:
+          "People love the photos but cannot tell how it will sit on their body, so they wait.",
+        persona: "Womenswear brand",
+        tag: "Try-On",
+      },
+      {
+        quote: "My returns are mostly it did not look like that on me, and each one hurts.",
+        persona: "Occasion-wear brand",
+        tag: "Try-On",
+      },
+      {
+        quote: "I shoot one SKU at a time on my phone and the catalogue looks inconsistent.",
+        persona: "Small streetwear brand",
+        tag: "Catalogue Studio",
+      },
+      {
+        quote: "By the time the shoot is done, the trend I was chasing has moved on.",
+        persona: "Fast-fashion reseller",
+        tag: "Drop Engine",
+      },
+      {
+        quote: "I cannot afford a model for every collection, so my brand looks smaller than it is.",
+        persona: "Home-grown apparel brand",
+        tag: "Runway",
+      },
+    ],
+
+    cta: {
+      headline: "Not sure where to start? {serif}That is the call.{/serif}",
+      body: "Thirty minutes, no deck. Show us your collection and how you sell it, and we will tell you which of these fits, or whether something else does. You do not have to know what you need.",
+      pillsIntro:
+        "A few of the things we have built for fashion brands. Pick what fits, or let us point you.",
+      chips: [
+        "Runway",
+        "Try-On",
+        "Catalogue Studio",
+        "Drop Engine",
+        "Size and Fit Recommender",
+        "On-Model Generation",
+        "Lookbook Builder",
+        "Abandoned-Cart Recovery",
+        "WhatsApp Catalogue",
+        "Influencer-Asset Generator",
+        "Returns Automation",
+        "Loyalty and Restock Alerts",
+      ],
+    },
+
+    anishNote:
+      "A small label and a giant now compete in the same feed, on the same phone screen. Generated on-model and try-on are the great leveller: your collection can look every bit as considered as theirs, the day it is ready.",
+    pullQuote: {
+      quote:
+        "The shopper never doubted the clothes. They doubted how the clothes would sit on them, and no flat-lay ever answered that question.",
+      attribution: "DEEPER DESIGNS · FOR FASHION",
     },
   },
   {
