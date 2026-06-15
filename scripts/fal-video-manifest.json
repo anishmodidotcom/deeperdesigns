@@ -5,5 +5,19 @@
     "prompt": "A fashion model wearing an olive-green linen co-ord set, a short top and wide-leg trousers, standing in a softly lit minimal studio with a warm neutral backdrop. She does a slow, natural quarter turn toward the camera, the linen fabric moving gently with the motion, soft directional light catching the texture of the fabric. Smooth cinematic camera, shallow depth of field, premium editorial fashion campaign aesthetic, realistic, elegant, vertical, no text, no logos.",
     "aspectRatio": "9:16",
     "duration": 5
+  },
+  {
+    "slug": "automotive",
+    "filename": "walkaround",
+    "prompt": "A clean white compact SUV parked in a premium automotive studio with a glossy dark reflective floor and a soft gradient backdrop. The camera performs a slow, smooth cinematic orbit around the car, revealing the front, side and rear, dramatic studio lighting sliding across the glossy body panels and catching the chrome and headlights, subtle reflections on the floor. Premium car-commercial aesthetic, realistic, elegant, no text, no number plate, no people, vertical.",
+    "aspectRatio": "9:16",
+    "duration": 5
+  },
+  {
+    "slug": "hotels",
+    "filename": "property-film",
+    "prompt": "A slow cinematic interior shot gliding through a warm, beautifully styled boutique hotel suite, soft golden morning light streaming through sheer curtains, a made bed with crisp linen, warm wood furniture, a plant by the window, gentle camera push-in revealing the room and a glimpse of a balcony with greenery beyond. Calm, inviting, premium boutique-hospitality aesthetic, realistic, no text, no people, 16:9.",
+    "aspectRatio": "16:9",
+    "duration": 5
   }
 ]
