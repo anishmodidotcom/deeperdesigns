@@ -75,6 +75,13 @@
     "prompt": "Cinematic locked-off close-up of oud incense smoke curling slowly upward in a dark chamber, a single thin warm gold beam of light cutting horizontally across the smoke from upper left, the smoke billowing and unfurling continuously in soft swirls, deep purple-black background, photoreal, ultra-high detail on smoke texture and the light beam catching individual smoke particles, magazine quality, no humans, the scene at the eight-second mark looks identical to the scene at the zero-second mark, seamless ambient loop, no camera movement, Tom Ford luxury fragrance editorial aesthetic, deep warm color grade",
     "aspectRatio": "16:9",
     "duration": 8
+  },
+  {
+    "slug": "real-estate",
+    "filename": "property-film",
+    "prompt": "Cinematic vertical 9:16 walkthrough of a bright, beautifully furnished modern apartment living room, the camera glides slowly and smoothly forward past a low grey sofa and wooden coffee table toward a large window with warm afternoon daylight pouring in, shallow depth of field, gentle dust particles in the light beam, premium real estate property film, no people, no text, photoreal, smooth steadicam motion, warm cinematic color grade",
+    "aspectRatio": "9:16",
+    "duration": 8
   }
 ]
 
