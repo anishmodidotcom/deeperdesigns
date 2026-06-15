@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#5A6ACF";
+const ACCENT = "#6D5ACF";
 const HEADER = "#1F2C34";
 const CHAT_BG = "#0B141A";
 const IN_BUBBLE = "#1F2C34";
@@ -45,7 +45,7 @@ export default function ClientHubDemo() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 12px 12px", background: HEADER }}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9EDEF" strokeWidth="2.2" aria-hidden><polyline points="15 18 9 12 15 6" /></svg>
-        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #5A6ACF, #38459A)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 14, flexShrink: 0 }}>ST</div>
+        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #6D5ACF, #463A9A)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 14, flexShrink: 0 }}>ST</div>
         <div style={{ flex: 1, minWidth: 0, lineHeight: 1.2 }}>
           <p style={{ margin: 0, color: "#E9EDEF", fontSize: 16, fontWeight: 600 }}>Sundaram Textiles</p>
           <p style={{ margin: 0, color: TIME, fontSize: 12 }}>via Mehta &amp; Associates hub</p>

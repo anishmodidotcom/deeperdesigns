@@ -34,6 +34,9 @@ export type IndustryBuild = {
   video?: string;
   videoAspect?: "16:9" | "9:16";
   videoDuration?: string; // small label, e.g. "0:08"
+  // v19.6: optional raw "before" still shown beside the video result, turning
+  // a video build into a before/after (mirrors the Studio/Listing builds).
+  before?: string;
 };
 
 export type Persona = {
@@ -517,10 +520,11 @@ export const INDUSTRIES: Industry[] = [
         kicker: "PROPERTY FILM",
         demo: "RealEstatePropertyFilmDemo",
         frame: "video",
-        poster: "/builds/real-estate/film-poster.webp",
+        before: "/builds/real-estate/film-before.webp",
+        poster: "/builds/real-estate/film-after.webp",
         video: "/videos/real-estate/property-film.mp4",
         videoAspect: "9:16",
-        videoDuration: "0:08",
+        videoDuration: "0:05",
         headline: "A film of the flat, {serif}before they drive over.{/serif}",
         body: "Stills become a smooth cinematic walkthrough for ads and WhatsApp. Buyers tour the home first, so the site visits you get are serious.",
         bullets: [
@@ -552,22 +556,22 @@ export const INDUSTRIES: Industry[] = [
 
     payback: {
       intro:
-        "Illustrative for a broker doing a handful of closings a quarter. In real estate, one extra deal pays for the whole system. We size it to your pipeline in the first call.",
+        "Illustrative for a broker doing a handful of closings a quarter. In real estate, one extra deal recovered usually covers the build several times over. We size it to your numbers in the first call.",
       before: [
-        { k: "Leads gone cold, no second call", v: "₹6,00,000 pipeline" },
-        { k: "Site visits lost to no follow-up", v: "₹4,00,000 pipeline" },
-        { k: "Listings underperforming, low enquiry", v: "₹3,00,000 pipeline" },
+        { k: "Leads lost to slow follow-up", v: "₹2,20,000" },
+        { k: "Site visits lost to no-shows", v: "₹1,40,000" },
+        { k: "Deals lost to weak listings", v: "₹1,60,000" },
         { k: "Shoot and video production", v: "₹80,000" },
       ],
-      beforeTotal: { k: "Pipeline slipping away", v: "₹13,80,000" },
+      beforeTotal: { k: "Walking out the door", v: "₹6,00,000" },
       after: [
-        { k: "Faster response, more visits booked", v: "₹5,50,000" },
-        { k: "Listings that pull serious enquiry", v: "₹3,20,000" },
-        { k: "One more closing a quarter", v: "₹4,00,000" },
+        { k: "Leads saved by instant response", v: "₹1,90,000" },
+        { k: "Visits kept by reminders", v: "₹1,20,000" },
+        { k: "Deals won on stronger listings", v: "₹1,40,000" },
         { k: "Shoot cost removed", v: "₹70,000" },
       ],
-      afterTotal: { k: "Back in your pipeline", v: "₹13,40,000" },
-      note: "Pipeline ranges, not booked revenue. One extra closing usually covers the build several times over.",
+      afterTotal: { k: "Back in your pocket", v: "₹5,20,000" },
+      note: "Ranges from common brokerage patterns, not a single client. One extra closing usually covers the build several times over.",
     },
 
     personasHeadline: "Different desks. {serif}Different leaks.{/serif}",
@@ -647,8 +651,8 @@ export const INDUSTRIES: Industry[] = [
     slug: "coaching",
     name: "Coaching & Education",
     live: true,
-    accent: "#F25F4C",
-    accentSoft: "#FF8E7E",
+    accent: "#F0A92B",
+    accentSoft: "#F7C66B",
     money: "#E0B341",
 
     heroEyebrow: "FOR COACHING AND EDUCATION",
@@ -1682,8 +1686,8 @@ export const INDUSTRIES: Industry[] = [
     slug: "manufacturing",
     name: "MSME Manufacturing",
     live: true,
-    accent: "#E8602C",
-    accentSoft: "#FF9263",
+    accent: "#C2410C",
+    accentSoft: "#E27A4D",
     money: "#E0B341",
 
     heroEyebrow: "FOR MANUFACTURERS AND DISTRIBUTORS",
@@ -2199,8 +2203,8 @@ export const INDUSTRIES: Industry[] = [
     slug: "ca-firms",
     name: "CA & Professional Services",
     live: true,
-    accent: "#5A6ACF",
-    accentSoft: "#8C97E0",
+    accent: "#6D5ACF",
+    accentSoft: "#9C8DE6",
     money: "#5BC8A0",
 
     heroEyebrow: "FOR CA AND PROFESSIONAL SERVICES",
@@ -2454,8 +2458,8 @@ export const INDUSTRIES: Industry[] = [
     slug: "salons",
     name: "Salons & Wellness",
     live: true,
-    accent: "#D6336C",
-    accentSoft: "#EE6F9C",
+    accent: "#B5179E",
+    accentSoft: "#D65BBE",
     money: "#E0B341",
 
     heroEyebrow: "FOR SALONS, SPAS AND WELLNESS",

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#D6336C";
+const ACCENT = "#B5179E";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 const WARN = "#E5847C";
@@ -53,7 +53,7 @@ export default function StudioDeskDemo() {
         {NAV.map((n, i) => {
           const active = i === 2;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(214,51,108,0.18)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(181,23,158,0.18)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>

@@ -19,5 +19,12 @@
     "prompt": "A slow cinematic interior shot gliding through a warm, beautifully styled boutique hotel suite, soft golden morning light streaming through sheer curtains, a made bed with crisp linen, warm wood furniture, a plant by the window, gentle camera push-in revealing the room and a glimpse of a balcony with greenery beyond. Calm, inviting, premium boutique-hospitality aesthetic, realistic, no text, no people, 16:9.",
     "aspectRatio": "16:9",
     "duration": 5
+  },
+  {
+    "slug": "real-estate",
+    "filename": "property-film",
+    "prompt": "A slow cinematic interior walkthrough of a bright, beautifully furnished modern apartment living room in warm afternoon light. The camera glides smoothly forward past a low sofa and a wooden coffee table toward large windows with sheer curtains and a city view beyond, soft sunlight pooling on the floor, gentle reflections, shallow depth of field. Calm, premium real-estate film aesthetic, photoreal, no text, no people, no logos, 9:16 vertical.",
+    "aspectRatio": "9:16",
+    "duration": 5
   }
 ]

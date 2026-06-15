@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#D6336C";
+const ACCENT = "#B5179E";
 const HEADER = "#1F2C34";
 const CHAT_BG = "#0B141A";
 const IN_BUBBLE = "#1F2C34";
@@ -38,7 +38,7 @@ export default function BookingAssistantDemo() {
     >
       <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "16px 12px 12px", background: HEADER }}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9EDEF" strokeWidth="2.2" aria-hidden><polyline points="15 18 9 12 15 6" /></svg>
-        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #D6336C, #9B214B)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 15, flexShrink: 0 }}>G</div>
+        <div aria-hidden style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(150deg, #B5179E, #7A0E6B)", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontWeight: 600, fontSize: 15, flexShrink: 0 }}>G</div>
         <div style={{ flex: 1, minWidth: 0, lineHeight: 1.2 }}>
           <p style={{ margin: 0, color: "#E9EDEF", fontSize: 16, fontWeight: 600 }}>Glow Studio</p>
           <p style={{ margin: 0, color: TIME, fontSize: 12 }}>business account · online</p>
@@ -55,7 +55,7 @@ export default function BookingAssistantDemo() {
         <div style={{ alignSelf: "flex-end", maxWidth: "84%" }}>
           <div style={{ background: OUT_BUBBLE, borderRadius: "8px 8px 4px 8px", padding: 4, boxShadow: "0 1px 1px rgba(0,0,0,0.18)" }}>
             <div style={{ borderRadius: 6, overflow: "hidden", background: "rgba(0,0,0,0.16)", padding: "12px" }}>
-              <p style={{ margin: 0, color: "#F2AEC6", fontSize: 12, fontWeight: 600, fontFamily: "var(--font-geist-mono), monospace", letterSpacing: "0.04em" }}>SUGGESTED SLOT</p>
+              <p style={{ margin: 0, color: "#E8A9DC", fontSize: 12, fontWeight: 600, fontFamily: "var(--font-geist-mono), monospace", letterSpacing: "0.04em" }}>SUGGESTED SLOT</p>
               <div style={{ marginTop: 8, display: "flex", justifyContent: "space-between" }}>
                 <span style={{ color: "#E9EDEF", fontSize: 14 }}>Sat 4:00 PM · Riya</span>
                 <span style={{ color: "#FFFFFF", fontSize: 14, fontWeight: 600, fontFamily: "var(--font-geist-mono), monospace" }}>Rs 2,800</span>

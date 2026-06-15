@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#F25F4C";
+const ACCENT = "#F0A92B";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 const ABSENT = "#E5847C";
@@ -63,7 +63,7 @@ export default function AttendanceDemo() {
         {NAV.map((n, i) => {
           const active = i === 2;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(242,95,76,0.16)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(240,169,43,0.16)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>

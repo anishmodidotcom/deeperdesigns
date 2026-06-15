@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#F25F4C";
+const ACCENT = "#F0A92B";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 
@@ -56,7 +56,7 @@ export default function ResultsDemo() {
         {NAV.map((n, i) => {
           const active = i === 3;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(242,95,76,0.16)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(240,169,43,0.16)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -79,7 +79,7 @@ export default function ResultsDemo() {
               <span style={{ fontSize: 11, color: GOOD, border: `1px solid ${GOOD}`, borderRadius: 999, padding: "2px 9px" }}>Ready</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <span style={{ width: 42, height: 42, borderRadius: "50%", background: "rgba(242,95,76,0.18)", color: ACCENT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600 }}>DS</span>
+              <span style={{ width: 42, height: 42, borderRadius: "50%", background: "rgba(240,169,43,0.18)", color: ACCENT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600 }}>DS</span>
               <div>
                 <p style={{ margin: 0, fontSize: 15, fontWeight: 600 }}>Diya Sharma</p>
                 <p style={{ margin: "2px 0 0", fontSize: 12, color: "#8A8A8A" }}>NEET Dropper · Roll 14</p>

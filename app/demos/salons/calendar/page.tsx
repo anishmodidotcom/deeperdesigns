@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#D6336C";
+const ACCENT = "#B5179E";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 const WAIT = "#E0B341";
@@ -69,7 +69,7 @@ export default function CalendarDemo() {
         {NAV.map((n, i) => {
           const active = i === 0;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(214,51,108,0.18)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(181,23,158,0.18)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -103,7 +103,7 @@ export default function CalendarDemo() {
           {COLS.map((col) => (
             <div key={col.stylist} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 13, padding: "16px 16px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 14 }}>
-                <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(214,51,108,0.18)", color: "#EE6F9C", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600 }}>{col.stylist[0]}</span>
+                <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(181,23,158,0.18)", color: "#D65BBE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600 }}>{col.stylist[0]}</span>
                 <span style={{ fontSize: 14, fontWeight: 600 }}>{col.stylist}</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>

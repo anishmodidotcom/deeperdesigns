@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#F25F4C";
+const ACCENT = "#F0A92B";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 
@@ -81,7 +81,7 @@ export default function AdmissionsDemo() {
                 borderRadius: 9,
                 fontSize: 14,
                 color: active ? "#FFFFFF" : "#A8A8A8",
-                background: active ? "rgba(242,95,76,0.16)" : "transparent",
+                background: active ? "rgba(240,169,43,0.16)" : "transparent",
               }}
             >
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
@@ -116,7 +116,7 @@ export default function AdmissionsDemo() {
                   gap: 12,
                   padding: "12px 22px",
                   borderTop: "1px solid rgba(255,255,255,0.06)",
-                  background: e.active ? "rgba(242,95,76,0.08)" : "transparent",
+                  background: e.active ? "rgba(240,169,43,0.08)" : "transparent",
                   borderLeft: e.active ? `2px solid ${ACCENT}` : "2px solid transparent",
                 }}
               >
@@ -136,7 +136,7 @@ export default function AdmissionsDemo() {
         {/* Detail */}
         <section style={{ flex: 1, padding: "22px 26px", overflow: "hidden", display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <span style={{ width: 46, height: 46, borderRadius: "50%", background: "rgba(242,95,76,0.18)", color: ACCENT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 600 }}>AG</span>
+            <span style={{ width: 46, height: 46, borderRadius: "50%", background: "rgba(240,169,43,0.18)", color: ACCENT, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 600 }}>AG</span>
             <div>
               <h2 style={{ margin: 0, fontSize: 19, fontWeight: 600 }}>Aarav Gupta</h2>
               <p style={{ margin: "3px 0 0", fontSize: 13, color: "#8A8A8A" }}>JEE 2-Year · parent +91 99XX 20184</p>

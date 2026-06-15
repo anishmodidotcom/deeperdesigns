@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#E8602C";
+const ACCENT = "#C2410C";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 const JUNK = "#6B6B6B";
@@ -64,7 +64,7 @@ export default function LeadFilterDemo() {
         {NAV.map((n, i) => {
           const active = i === 0;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(232,96,44,0.16)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(194,65,12,0.16)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -106,7 +106,7 @@ export default function LeadFilterDemo() {
               {LEADS.map((l) => {
                 const junk = l.status === "Junk";
                 return (
-                  <tr key={l.name + l.need} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", opacity: junk ? 0.5 : 1, background: l.active ? "rgba(232,96,44,0.07)" : "transparent" }}>
+                  <tr key={l.name + l.need} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", opacity: junk ? 0.5 : 1, background: l.active ? "rgba(194,65,12,0.07)" : "transparent" }}>
                     <td style={{ fontSize: 13, padding: "11px 0", color: junk ? "#8A8A8A" : "#F5F5F5" }}>{l.name}</td>
                     <td style={{ fontSize: 12.5, color: "#A8A8A8" }}>{l.need}</td>
                     <td style={{ fontSize: 12, color: "#8A8A8A", fontFamily: "var(--font-geist-mono), monospace" }}>{l.source}</td>

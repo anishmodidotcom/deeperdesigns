@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ACCENT = "#E8602C";
+const ACCENT = "#C2410C";
 const MONEY = "#E0B341";
 const GOOD = "#2FB46A";
 
@@ -54,7 +54,7 @@ export default function OutreachDemo() {
         {NAV.map((n, i) => {
           const active = i === 2;
           return (
-            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(232,96,44,0.16)" : "transparent" }}>
+            <div key={n} style={{ display: "flex", alignItems: "center", gap: 11, padding: "9px 11px", borderRadius: 9, fontSize: 14, color: active ? "#FFFFFF" : "#A8A8A8", background: active ? "rgba(194,65,12,0.16)" : "transparent" }}>
               <span style={{ width: 7, height: 7, borderRadius: 2, background: active ? ACCENT : "rgba(255,255,255,0.22)" }} />
               {n}
             </div>
@@ -112,7 +112,7 @@ export default function OutreachDemo() {
             <p style={{ margin: "0 0 14px", fontSize: 13.5, fontWeight: 600 }}>Replies</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {REPLIES.map((r) => (
-                <div key={r.co} style={{ background: r.hot ? "rgba(232,96,44,0.08)" : "transparent", border: r.hot ? `1px solid ${ACCENT}` : "1px solid rgba(255,255,255,0.08)", borderRadius: 11, padding: "11px 13px" }}>
+                <div key={r.co} style={{ background: r.hot ? "rgba(194,65,12,0.08)" : "transparent", border: r.hot ? `1px solid ${ACCENT}` : "1px solid rgba(255,255,255,0.08)", borderRadius: 11, padding: "11px 13px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontSize: 13, fontWeight: 600 }}>{r.co}</span>
                     {r.hot ? <span style={{ fontSize: 9.5, color: ACCENT, fontFamily: "var(--font-geist-mono), monospace", letterSpacing: "0.06em" }}>HOT</span> : null}
