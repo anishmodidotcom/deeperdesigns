@@ -103,6 +103,26 @@ export default function StartYourStudy() {
       <section id="study-form" style={{ scrollMarginTop: "100px" }}>
         <StudyForm />
       </section>
+
+      <div className="container" style={{ maxWidth: "720px" }}>
+        <p
+          style={{
+            fontSize: "13px",
+            color: "var(--fg-dim)",
+            lineHeight: 1.6,
+            paddingBlock: "28px 8px",
+          }}
+        >
+          What you share is handled per our{" "}
+          <a
+            href="/privacy"
+            style={{ color: "var(--accent)", textDecoration: "underline", textUnderlineOffset: "3px" }}
+          >
+            Privacy Policy
+          </a>
+          .
+        </p>
+      </div>
     </main>
   );
 }

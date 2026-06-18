@@ -66,7 +66,12 @@ export default function Footer() {
         >
           <div className="footer-bottom-row flex flex-col gap-3 items-start md:flex-row md:justify-between md:items-center md:gap-0">
             <p>© 2026 Deeper Designs</p>
-            <p>Delhi · Dubai · India-first</p>
+            <div className="flex items-center gap-5">
+              <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+                Privacy
+              </a>
+              <p>Delhi · Dubai · India-first</p>
+            </div>
           </div>
           <p className="mt-2 text-xs" style={{ color: "var(--fg-dim)" }}>
             Built in Delhi by Anish Modi.

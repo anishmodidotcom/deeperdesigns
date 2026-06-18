@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/process`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/colophon`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     ...SLUGS.map((slug) => ({
       url: `${base}/work/${slug}`,
       lastModified: now,
