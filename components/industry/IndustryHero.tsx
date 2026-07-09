@@ -101,7 +101,7 @@ export default function IndustryHero({ industry }: { industry: Industry }) {
               }}
             >
               <Link
-                href="/start-your-study"
+                href={`/start-your-study?from=${industry.slug}`}
                 className="ind-btn-primary"
                 style={{
                   background: "var(--page-accent)",

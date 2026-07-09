@@ -102,20 +102,20 @@ export async function POST(req: Request) {
   }
 }
 
+// v21: the single-step form sends only name, business, phone, email (plus
+// the ?from industry). The legacy long-form fields stay supported but
+// empty values no longer render as blank rows.
 function renderText(s: Submission): string {
-  const lines = [
-    `Name: ${s.name}`,
-    `Business: ${s.business}`,
-    `Team size: ${s.teamSize}`,
-    `Bottleneck:`,
-    s.bottleneck,
-    ``,
+  const lines = [`Name: ${s.name}`, `Business: ${s.business}`];
+  if (s.teamSize) lines.push(`Team size: ${s.teamSize}`);
+  if (s.bottleneck) lines.push(`Bottleneck:`, s.bottleneck, ``);
+  lines.push(
     `Email (verified): ${s.email}`,
     `Phone: ${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`,
-    `Budget: ${s.budget}`,
-    `Preferred slot: ${s.slot}`,
-  ];
-  if (s.industry) lines.push(`From filter, industry: ${s.industry}`);
+  );
+  if (s.budget) lines.push(`Budget: ${s.budget}`);
+  if (s.slot) lines.push(`Preferred slot: ${s.slot}`);
+  if (s.industry) lines.push(`From industry page: ${s.industry}`);
   if (s.objective) lines.push(`From filter, objective: ${s.objective}`);
   return lines.join("\n");
 }
@@ -129,14 +129,14 @@ function renderHtml(s: Submission): string {
     <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-radius:12px;padding:28px">
       <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">POSSIBILITY REQUEST</p>
       <h1 style="margin:0 0 18px;font:300 24px/1.2 system-ui;letter-spacing:-0.02em;color:#111">${escapeHtml(s.name)} · ${escapeHtml(s.business)}</h1>
-      <p style="margin:0 0 22px;font:15px/1.6 system-ui;color:#333">${escapeHtml(s.bottleneck)}</p>
+      ${s.bottleneck ? `<p style="margin:0 0 22px;font:15px/1.6 system-ui;color:#333">${escapeHtml(s.bottleneck)}</p>` : ""}
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
-        ${row("Team size", s.teamSize)}
+        ${filterRow("Team size", s.teamSize)}
         ${row("Email", s.email)}
         ${row("Phone", `${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`)}
-        ${row("Budget", s.budget)}
-        ${row("Preferred slot", s.slot)}
-        ${filterRow("Filter industry", s.industry)}
+        ${filterRow("Budget", s.budget)}
+        ${filterRow("Preferred slot", s.slot)}
+        ${filterRow("From industry page", s.industry)}
         ${filterRow("Filter objective", s.objective)}
       </table>
     </div>
