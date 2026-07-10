@@ -65,13 +65,12 @@ export default function Footer() {
           style={{ borderColor: "var(--border)", color: "var(--fg-dim)" }}
         >
           <div className="footer-bottom-row flex flex-col gap-3 items-start md:flex-row md:justify-between md:items-center md:gap-0">
-            <p>© 2026 Deeper Designs</p>
-            <div className="flex items-center gap-5">
-              <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
-                Privacy
-              </a>
-              <p>Delhi · Dubai · India-first</p>
-            </div>
+            {/* v22 A7: trust line merged with the legal line. GSTIN slots in
+                after the entity name once registration lands. */}
+            <p>© 2026 Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
+            <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+              Privacy
+            </a>
           </div>
           <p className="mt-2 text-xs" style={{ color: "var(--fg-dim)" }}>
             Built in Delhi by Anish Modi.

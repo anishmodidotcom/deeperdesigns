@@ -61,6 +61,8 @@
   --page-accent-sugar-lane:       #A14A5C;
   --page-accent-brightpath:       #D4A857;
   --page-accent-deeper-content:   #7C6CFF;
+  --page-accent-outpost:          #6366F1;
+  --page-accent-oviya-studio:     #C4485C;
 
   /* Type scale */
   --fs-display: clamp(48px, 7vw, 96px);

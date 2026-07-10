@@ -5,6 +5,8 @@
 export const SLUG_ACCENTS: Record<string, string> = {
   "maplelens":        "#C8956D",
   "deeper-content":   "#7C6CFF",
+  "outpost":          "#6366F1",
+  "oviya-studio":     "#C4485C",
   "veda-glow":        "#D4A574",
   "bharat-steel":     "#3B82F6",
   "meera-wellness":   "#5B7F6E",

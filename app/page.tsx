@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import HomeHero from "./_home/HomeHero";
+import HomeConfusion from "./_home/HomeConfusion";
+import HomeProof from "./_home/HomeProof";
+import HomeHowItWorks from "./_home/HomeHowItWorks";
 import HomeOutcomes from "./_home/HomeOutcomes";
 import HomeFounderQuote from "./_home/HomeFounderQuote";
 import HomeGallery from "./_home/HomeGallery";
@@ -10,26 +13,27 @@ import HomeStack from "./_home/HomeStack";
 import HomeFAQ from "./_home/HomeFAQ";
 import HomeCTA from "./_home/HomeCTA";
 
-// v18: explicit home metadata so it does not silently inherit. The
-// description leads with the "AI-led build studio" positioning and
-// stays inside the 140 to 160 char window.
+// v22: outcome-first metadata (part of the de-tech sweep). The old
+// description led with "AI-led build studio ... AI agents"; the audience
+// is owners, so the promise leads with what the software does, not what
+// it is made of.
 export const metadata: Metadata = {
-  title: "Deeper Designs · AI-led build studio for ambitious Indian businesses",
+  title: "Deeper Designs · Software that quietly runs your business",
   description:
-    "India's AI-led build studio. We design and ship custom digital tools, AI agents, and operational systems for ambitious Indian businesses. From ₹25,000.",
+    "We build working tools for how your business actually runs. Enquiries answered, follow-ups that never slip, payments chased without you. From ₹25,000.",
   alternates: { canonical: "https://www.deeperdesigns.in/" },
   openGraph: {
-    title: "Deeper Designs · AI-led build studio for ambitious Indian businesses",
+    title: "Deeper Designs · Software that quietly runs your business",
     siteName: "Deeper Designs",
-    description: "India's AI-led build studio. We design and ship custom digital tools, AI agents, and operational systems. From ₹25,000.",
+    description: "Working tools for how your business actually runs. Enquiries answered, follow-ups that never slip. From ₹25,000.",
     url: "https://www.deeperdesigns.in/",
     type: "website",
     images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Deeper Designs · Custom tools, built around how your business actually works." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deeper Designs · AI-led build studio for ambitious Indian businesses",
-    description: "India's AI-led build studio. We design and ship custom digital tools, AI agents, and operational systems. From ₹25,000.",
+    title: "Deeper Designs · Software that quietly runs your business",
+    description: "Working tools for how your business actually runs. Enquiries answered, follow-ups that never slip. From ₹25,000.",
     images: ["/brand/og-deeperdesigns.png"],
   },
 };
@@ -38,12 +42,15 @@ export default function Home() {
   return (
     <main>
       <HomeHero />
+      <HomeConfusion />
       <HomeOutcomes />
+      <HomeProof />
       <HomeFounderQuote />
       <HomeGallery />
       <HomeLiveBuilds />
       <HomeStudioMind />
       <HomeBrings />
+      <HomeHowItWorks />
       <HomeStack />
       <HomeFAQ />
       <HomeCTA />

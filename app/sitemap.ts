@@ -4,6 +4,8 @@ import { INDUSTRIES } from "@/lib/industries";
 const SLUGS = [
   "maplelens",
   "deeper-content",
+  "outpost",
+  "oviya-studio",
   "veda-glow",
   "bharat-steel",
   "meera-wellness",

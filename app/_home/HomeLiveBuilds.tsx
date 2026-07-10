@@ -8,7 +8,7 @@ type Build = { body: string; tag: string };
 
 const BUILDS: Build[] = [
   {
-    body: "A pricing engine that takes overnight market data and prices 60+ SKUs by the time the team arrives at 9am.",
+    body: "A pricing engine that takes overnight market data and prices 60+ products by the time the team arrives at 9am.",
     tag: "B2B TRADE · MUMBAI",
   },
   {

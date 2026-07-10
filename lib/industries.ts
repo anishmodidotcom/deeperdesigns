@@ -37,6 +37,9 @@ export type IndustryBuild = {
   // v19.6: optional raw "before" still shown beside the video result, turning
   // a video build into a before/after (mirrors the Studio/Listing builds).
   before?: string;
+  // v22 B3: when the build exists as a real live product, link its /work page.
+  // Renders a small "This exists as a product" chip in the copy column.
+  productHref?: string;
 };
 
 export type Persona = {
@@ -269,6 +272,7 @@ export const INDUSTRIES: Industry[] = [
       {
         index: "04",
         kicker: "STUDIO ENGINE",
+        productHref: "/work/oviya-studio",
         demo: "StudioEngineDemo",
         frame: "browser",
         shot: "/builds/d2c/studio-engine.png",
@@ -1815,6 +1819,7 @@ export const INDUSTRIES: Industry[] = [
       {
         index: "03",
         kicker: "OUTREACH AGENT",
+        productHref: "/work/outpost",
         demo: "ManufacturingOutreachDemo",
         frame: "browser",
         shot: "/builds/manufacturing/outreach.png",
@@ -2037,6 +2042,7 @@ export const INDUSTRIES: Industry[] = [
       {
         index: "01",
         kicker: "RUNWAY",
+        productHref: "/work/oviya-studio",
         demo: "FashionRunwayDemo",
         frame: "video",
         poster: "/builds/fashion/runway-poster.webp",
@@ -2073,6 +2079,7 @@ export const INDUSTRIES: Industry[] = [
       {
         index: "03",
         kicker: "CATALOGUE STUDIO",
+        productHref: "/work/oviya-studio",
         demo: "FashionCatalogueStudioDemo",
         frame: "browser",
         shot: "/builds/fashion/catalogue-studio.png",

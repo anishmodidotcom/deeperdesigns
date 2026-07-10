@@ -1,18 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import { WHATSAPP_HREF } from "@/lib/contact";
 
-const PHRASES = [
-  "What if your operations ran themselves?",
-  "What if your team stopped chasing the same 6 problems?",
-  "What if profitability had a dashboard?",
-  "What if your customer remembered your brand?",
-  "What if your business knew what to do next?",
-  "What if you could see the bottleneck before it cost you?",
-  "What if the tool just fit?",
-];
+// v22: fixed, outcome-first headline. The rotating what-if mechanic is
+// retired (mid-fade ghosting, and the audit wanted one clear promise).
+// The ambient tiles, parallax, and scroll indicator stay as they were.
 
 type AmbientItem = {
   slug: string;
@@ -39,25 +35,11 @@ const AMBIENT: AmbientItem[] = [
 
 export default function HomeHero() {
   const layerRef = useRef<HTMLDivElement>(null);
-  const [phraseIdx, setPhraseIdx] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
-
-  useEffect(() => {
-    if (reducedMotion) return;
-    const cycle = setInterval(() => {
-      setFadeOut(true);
-      setTimeout(() => {
-        setPhraseIdx(i => (i + 1) % PHRASES.length);
-        setFadeOut(false);
-      }, 300);
-    }, 3500);
-    return () => clearInterval(cycle);
-  }, [reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -69,16 +51,9 @@ export default function HomeHero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [reducedMotion]);
 
-  const onExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.getElementById("gallery");
-    if (!el) return;
-    el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
-  };
-
   const onScrollIndicatorClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const el = document.getElementById("outcomes");
+    const el = document.getElementById("confusion");
     if (!el) return;
     el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
   };
@@ -119,7 +94,6 @@ export default function HomeHero() {
 
       <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
         <h1
-          aria-live="polite"
           style={{
             fontSize: "var(--fs-display)",
             fontWeight: 500,
@@ -128,19 +102,46 @@ export default function HomeHero() {
             marginBottom: "32px",
             maxWidth: "1100px",
             marginInline: "auto",
-            opacity: fadeOut ? 0 : 1,
-            transition: "opacity 300ms var(--ease-out)",
           }}
         >
-          {PHRASES[phraseIdx]}
+          Software that quietly runs{" "}
+          <span
+            style={{
+              fontFamily: "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+            }}
+          >
+            the boring parts of your business.
+          </span>
         </h1>
-        <p style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "var(--fg-muted)", maxWidth: "640px", marginInline: "auto", marginBottom: "48px" }}>
-          Custom tools, built around how your business actually works.
+        <p style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "var(--fg-muted)", maxWidth: "680px", marginInline: "auto", marginBottom: "48px" }}>
+          Enquiries answered at 2am. Follow-ups that never slip. Payments
+          chased without you. We build it for how your business actually runs,
+          and you know exactly what you get before you pay.
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="#gallery" onClick={onExploreClick} className="btn-outline">Let&apos;s explore ideas</a>
-          <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
+          <Link href="/start-your-study" className="btn-whatsapp">Book a free strategy call</Link>
+          <TrackedWhatsAppLink
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            Or message us on WhatsApp
+          </TrackedWhatsAppLink>
         </div>
+        <p
+          className="mono"
+          style={{
+            marginTop: "24px",
+            fontSize: "11px",
+            letterSpacing: "0.12em",
+            color: "var(--fg-dim)",
+          }}
+        >
+          Your first tool live in 30 days, or you do not pay.
+        </p>
       </div>
 
       {!reducedMotion && (

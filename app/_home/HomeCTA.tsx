@@ -1,16 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import { WHATSAPP_HREF } from "@/lib/contact";
 
 export default function HomeCTA() {
-  const onExplore = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.getElementById("gallery");
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  };
-
   return (
     <section style={{ padding: "var(--section-py) 0" }}>
       <div className="container" style={{ textAlign: "center", maxWidth: "880px" }}>
@@ -21,8 +15,15 @@ export default function HomeCTA() {
           If something here made you think of your business, that&apos;s the point. Let&apos;s see what we can build.
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="#gallery" onClick={onExplore} className="btn-outline">Let&apos;s explore ideas</a>
-          <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
+          <Link href="/start-your-study" className="btn-whatsapp">Book a free strategy call</Link>
+          <TrackedWhatsAppLink
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            Or message us on WhatsApp
+          </TrackedWhatsAppLink>
         </div>
       </div>
     </section>

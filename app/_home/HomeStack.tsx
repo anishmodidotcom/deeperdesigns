@@ -43,7 +43,7 @@ export default function HomeStack() {
     <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
       <div className="container">
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-          Stacked with the engines that move the world right now.
+          What we build with.
         </h2>
         <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "64px", maxWidth: "640px" }}>
           The tools change every month. The judgment doesn&apos;t.

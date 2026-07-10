@@ -2,19 +2,43 @@
 
 import { useState } from "react";
 
+// v22 A5 (amended): straight answers, the objection FAQ. Replaces the old
+// 12-question list so the homepage does not run two competing FAQ sections.
+// Copy is final per the v22 spec and its amendment. The CTA pair under the
+// FAQ is the HomeCTA section that renders directly below this one.
 const QA = [
-  { q: "Honestly, what is this AI thing actually going to do for my business?", a: "Same thing the internet did 25 years ago. It removes repetitive work and gives you tools that used to need a team. The trick is knowing which repetitive work to remove first. That's what we figure out on the first call." },
-  { q: "I have an existing team and existing software. Are you saying I should replace all that?", a: "Almost never. Most of what we build sits alongside what you already have. We connect to your existing tools, plug the gaps, automate the friction. Replacement is a last resort, not a starting point." },
-  { q: "How much does this actually cost?", a: "Starts at ₹25,000 for a single small tool. Most projects sit between ₹1L and ₹10L. Operational redesigns go higher. We share a number after a 20-minute call. No proposals, no procurement theatre." },
-  { q: "How long until I see it working?", a: "Small tools ship in days. Most projects ship in two to four weeks. Larger systems take longer but we show working pieces every week, not a big reveal at the end." },
-  { q: "What if I tried something like this with a freelancer and it didn't work?", a: "Common story. Freelancers ship code, not systems. They build what you asked for, not what you needed. Our job is figuring out what you actually need, then making it work inside your business, not just on a screen." },
-  { q: "How is this different from hiring a regular agency?", a: "Agencies sell hours. We sell working tools. We work in weeks, not quarters. We don't do retainers. Once it's shipped and your team can run it, our job is done." },
-  { q: "I don't know exactly what I need. Where do I even start?", a: "That's the most common starting point. The first call isn't a sales pitch. It's us asking what's eating your time, what your team complains about, what feels stuck. We come back with one focused idea worth building." },
-  { q: "Will my team need training?", a: "Yes, but less than you'd think. Most tools we build are usable in under an hour. We document everything and stay close for the first 30 days while your team gets comfortable." },
-  { q: "What if my industry is very specific and you've never built for it?", a: "Better. Less assumption, more listening. We've built across furniture, food, fitness, legal, hospitality, retail, agriculture, education, and healthcare. The business shape matters more than the industry label." },
-  { q: "Do I own the code, or am I locked in?", a: "You own everything. Code, brand assets, documentation, accounts. We don't host your stuff on our servers. You can fire us tomorrow and the system keeps running." },
-  { q: "I have a small budget. Can we still talk?", a: "Yes. If a build doesn't fit your budget, we'll say so within a day. We'd rather point you somewhere honest than oversell something that won't work." },
-  { q: "I just want to chat first. No commitment.", a: "WhatsApp us at +91 99687 16498. No form. No calendar invite. Just a conversation." },
+  {
+    q: "What do I actually get?",
+    a: "A working tool, built for your business, live and in use. Not a report, not a strategy deck, not a subscription you have to figure out yourself. You own it outright.",
+  },
+  {
+    q: "Is this complicated to use?",
+    a: "If you can use WhatsApp, you can use what we build. We build for owners and their staff, not for engineers.",
+  },
+  {
+    q: "Is AI-built software safe and reliable?",
+    a: "Nothing we ship runs on raw AI output. Every system has checks, and anything sensitive waits for a human yes before it acts. We trust these systems enough to run our own companies on them.",
+  },
+  {
+    q: "Is AI not just hype right now?",
+    a: "Whether AI stocks are a bubble is not your problem. The only question that matters is whether one specific tool will save you time or money this quarter. We only build things that pay for themselves, and if AI is not the answer for your business, we will tell you that on the call.",
+  },
+  {
+    q: "Why should I trust a small studio?",
+    a: "Because you talk directly to the people who build, not an account manager. And because our proof is public: Outpost, Oviya Studio, and Deeper Content are our own products, live, with real users. We eat what we cook.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Small tools start at ₹25,000. Bigger systems cost more, and you get the exact number in writing before we start. Most builds pay for themselves within a few months, and we walk you through that math on the call.",
+  },
+  {
+    q: "What if it does not work?",
+    a: "Simple. If your first tool is not live and working within thirty days, you do not pay. We can offer that because we scope honestly before we start and we build fast.",
+  },
+  {
+    q: "What happens on the call?",
+    a: "Thirty minutes. You tell us how your business runs. We tell you what is worth building first, what it costs, and what it saves. You keep the plan either way. No pitch, no pressure, no follow-up spam.",
+  },
 ];
 
 export default function HomeFAQ() {
@@ -24,7 +48,16 @@ export default function HomeFAQ() {
     <section style={{ padding: "var(--section-py) 0" }}>
       <div className="container" style={{ maxWidth: "880px" }}>
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "64px" }}>
-          Questions you&apos;d ask if we sat across a table.
+          Straight answers{" "}
+          <span
+            style={{
+              fontFamily: "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+            }}
+          >
+            to the questions everyone actually has.
+          </span>
         </h2>
         <div style={{ borderTop: "1px solid var(--border)" }}>
           {QA.map((item, i) => {
