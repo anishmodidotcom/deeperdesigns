@@ -76,7 +76,7 @@ export const SHOWCASES: Showcase[] = [
     image: "/images/deeper-content/card.jpg",
     industries: ["Creative / Studios", "Retail / D2C"],
     objectives: ["Growth", "Operations"],
-    cardLabel: "An AI engine that reasons before it generates",
+    cardLabel: "It learns your brand, then writes posts that sound like you.",
     cardDescription: "Funnel stage, audience, brand, thought through before any image is made.",
     outcome: "Brand-consistent creative, every single post",
     live: true,

@@ -70,8 +70,10 @@ export default function LeadForm() {
     const next: FieldErrors = {};
     if (!fields.name.trim()) next.name = "We need a name to reach you.";
     if (!fields.business.trim()) next.business = "Tell us the business name.";
-    if (fields.phone.replace(/\D/g, "").length < 7)
-      next.phone = "That number looks too short.";
+    // v22.1: empty and too-short are different mistakes; say the right thing.
+    const phoneDigits = fields.phone.replace(/\D/g, "");
+    if (phoneDigits.length === 0) next.phone = "We need a number to reach you.";
+    else if (phoneDigits.length < 7) next.phone = "That number looks too short.";
     if (!EMAIL_RE.test(fields.email.trim()))
       next.email = "That email does not look right.";
     setErrors(next);
@@ -240,7 +242,9 @@ export default function LeadForm() {
             what AI can actually do for you.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          {/* v22.1: gap tightened because every field now carries a
+              fixed-height error slot below it (no layout shift). */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             <LabeledInput
               id="lead-name"
               label="Your name"
@@ -281,14 +285,17 @@ export default function LeadForm() {
             />
           </div>
 
-          {sendError && <p style={errorStyle}>{sendError}</p>}
+          {/* v22.1: reserved slot so the button never moves. */}
+          <p aria-live="polite" style={{ ...errorStyle, marginTop: 12 }}>
+            {sendError ?? ""}
+          </p>
 
           <button
             type="submit"
             disabled={sending}
             className="lead-submit"
             style={{
-              marginTop: 28,
+              marginTop: 12,
               width: "100%",
               background: "var(--dd-indigo, #7C6CFF)",
               color: "#0A0A0A",
@@ -353,19 +360,28 @@ export default function LeadForm() {
             placeholder="000000"
           />
 
-          {codeError && <p style={errorStyle}>{codeError}</p>}
-          {resent && !codeError && (
-            <p style={{ ...errorStyle, color: "var(--fg-muted)" }}>
-              Sent again. Check spam if it does not arrive in a minute.
-            </p>
-          )}
+          {/* v22.1: one reserved slot for both messages so the button never
+              moves when an error or the resend note appears. */}
+          <p
+            aria-live="polite"
+            style={{
+              ...errorStyle,
+              marginTop: 12,
+              ...(resent && !codeError ? { color: "var(--fg-muted)" } : {}),
+            }}
+          >
+            {codeError ??
+              (resent
+                ? "Sent again. Check spam if it does not arrive in a minute."
+                : "")}
+          </p>
 
           <button
             type="submit"
             disabled={verifying}
             className="lead-submit"
             style={{
-              marginTop: 24,
+              marginTop: 12,
               width: "100%",
               background: "var(--dd-indigo, #7C6CFF)",
               color: "#0A0A0A",
@@ -505,11 +521,11 @@ function LabeledInput({
           borderColor: error ? "#E5847C" : "var(--border-strong)",
         }}
       />
-      {error && (
-        <p id={`${id}-error`} style={errorStyle}>
-          {error}
-        </p>
-      )}
+      {/* v22.1: the error line always occupies its slot (fixed min-height),
+          so showing or clearing it never moves the fields below. */}
+      <p id={`${id}-error`} aria-live="polite" style={errorStyle}>
+        {error ?? ""}
+      </p>
     </div>
   );
 }
@@ -526,8 +542,11 @@ const inputStyle: React.CSSProperties = {
   outline: "none",
 };
 
+// v22.1: minHeight reserves the line whether or not a message is showing.
 const errorStyle: React.CSSProperties = {
-  marginTop: 10,
+  marginTop: 6,
   fontSize: 14,
+  lineHeight: 1.4,
+  minHeight: 20,
   color: "#FFB4A8",
 };
