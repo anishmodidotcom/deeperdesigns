@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const CARDS = [
-  { n: "01", t: "Taste",            sub: "AI gives wireframes. We ship products you'd actually pay for." },
-  { n: "02", t: "Judgment",         sub: "Ten years of running businesses tells us what's worth building." },
-  { n: "03", t: "Systems thinking", sub: "Tools that fit how your business actually works. Not the other way." },
-  { n: "04", t: "Ownership",        sub: "Code you own. Documented. Built to grow." },
+  { n: "01", t: "Taste",     sub: "AI makes rough drafts. We ship work you would actually pay for." },
+  { n: "02", t: "Judgment",  sub: "Ten years of running businesses tells us what's worth building." },
+  { n: "03", t: "Fit",       sub: "Tools that fit how your business actually works. Not the other way." },
+  { n: "04", t: "Ownership", sub: "Everything we build is yours. Handed over, explained, built to grow." },
 ];
 
 export default function HomeBrings() {

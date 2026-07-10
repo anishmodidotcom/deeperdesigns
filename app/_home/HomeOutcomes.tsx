@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 // Picked the strongest line per bucket from the v14 9-card set; the rest are
 // covered by individual showcase pages and the live products.
 const CARDS = [
-  { label: "FOR FOUNDERS", headline: "You see the bottleneck before it costs you.",  sub: "Real signals from the floor, surfaced before they become problems." },
+  { label: "FOR FOUNDERS", headline: "You see the bottleneck before it costs you.",  sub: "The numbers that matter, in front of you every morning." },
   { label: "FOR OPERATORS", headline: "Your inventory updates itself.",              sub: "No more 9 PM stock counts. No more guess-orders." },
-  { label: "FOR TEAMS",    headline: "Your team stops chasing the same 6 things.",   sub: "One dashboard. One view. One source of truth." },
+  { label: "FOR TEAMS",    headline: "Your team stops chasing the same 6 things.",   sub: "One place everyone checks. The same answer for everyone." },
   { label: "FOR STUDIOS",  headline: "A site that actually sells.",                   sub: "Built around how your buyer decides, not a template." },
 ];
 
@@ -39,7 +39,7 @@ export default function HomeOutcomes() {
     <section id="outcomes" ref={sectionRef} style={{ padding: "var(--section-py) 0" }}>
       <div className="container">
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", maxWidth: "880px", marginBottom: "64px" }}>
-          What if a custom tool could quietly run the most exhausting part of your business?
+          Which part of your business would you hand over first?
         </h2>
         <div className="outcomes-grid">
           {CARDS.map((c, i) => (

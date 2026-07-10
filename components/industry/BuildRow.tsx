@@ -62,6 +62,15 @@ export default function BuildRow({
             {build.kicker}
           </p>
 
+          {/* v22 B3: when this build ships as a real live product, say so and
+              link its /work page. Chip only; nothing else on the page moves. */}
+          {build.productHref && (
+            <Link href={build.productHref} className="ind-build__product-chip mono">
+              This exists as a product
+              <span aria-hidden className="ind-build__cta-arrow">→</span>
+            </Link>
+          )}
+
           <h3
             style={{
               fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
@@ -211,6 +220,27 @@ export default function BuildRow({
           text-decoration: none;
           width: fit-content;
         }
+        .ind-build__product-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin: 0 0 18px;
+          padding: 6px 12px;
+          border: 1px solid color-mix(in srgb, var(--page-accent) 45%, transparent);
+          border-radius: 999px;
+          font-size: 11px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--page-accent);
+          text-decoration: none;
+          width: fit-content;
+          transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .ind-build__product-chip:hover {
+          border-color: var(--page-accent);
+          background: color-mix(in srgb, var(--page-accent) 8%, transparent);
+        }
+        .ind-build__product-chip:hover .ind-build__cta-arrow { transform: translateX(4px); }
         .ind-build__cta-arrow {
           display: inline-block;
           transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);

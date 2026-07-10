@@ -399,6 +399,37 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
+    case "outpost":
+      return (
+        <div style={fragWrap}>
+          <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "5px" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#6366F1", boxShadow: "0 0 6px #6366F1", display: "inline-block" }} />
+              <span style={{ fontSize: "9px", color: "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>REPLIES · ONE INBOX</span>
+            </div>
+            {[0.9, 0.7, 0.8].map((w, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "rgba(99,102,241,0.35)", flexShrink: 0 }} />
+                <span style={{ height: "5px", width: `${w * 100}%`, background: "rgba(255,255,255,0.14)", borderRadius: "2px" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "oviya-studio":
+      return (
+        <div style={fragWrap}>
+          <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "6px", alignItems: "center" }}>
+            <div style={{ width: "56px", height: "42px", borderRadius: "4px", border: "1px solid rgba(196,72,92,0.55)", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(150deg, #2A1216 0%, #C4485C 140%)" }} />
+              <span style={{ position: "absolute", bottom: "3px", left: "4px", fontSize: "7px", color: "#E8A9B3", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>CASTING</span>
+            </div>
+            <span style={{ fontSize: "9px", color: "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>1 PHOTO → SHOOT</span>
+          </div>
+        </div>
+      );
+
     default:
       return (
         <div style={fragWrap}>
