@@ -133,8 +133,9 @@ export default function OviyaStudioPage() {
               src="/images/oviya-studio/live-hero.webp"
               alt="Oviya Studio, the live product, a real screenshot of oviyastudio.com"
               url="oviyastudio.com"
-              width={1600}
-              height={1000}
+              width={1920}
+              height={1200}
+              priority
             />
           </div>
         </div>

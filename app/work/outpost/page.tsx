@@ -134,8 +134,9 @@ export default function OutpostPage() {
               src="/images/outpost/live-hero.webp"
               alt="Outpost, the live product, a real screenshot of outpost.deeperdesigns.in"
               url="outpost.deeperdesigns.in"
-              width={1600}
-              height={1000}
+              width={1920}
+              height={1200}
+              priority
             />
           </div>
         </div>
