@@ -142,6 +142,19 @@ export default function HomeHero() {
         >
           Your first tool live in 30 days, or you do not pay.
         </p>
+        {/* v22.1: the starting price, same quiet treatment as the
+            guarantee line above it. */}
+        <p
+          className="mono"
+          style={{
+            marginTop: "8px",
+            fontSize: "11px",
+            letterSpacing: "0.12em",
+            color: "var(--fg-dim)",
+          }}
+        >
+          Small tools start at ₹25,000. You get the exact number in writing before we start.
+        </p>
       </div>
 
       {!reducedMotion && (

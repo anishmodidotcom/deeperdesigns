@@ -8,6 +8,9 @@ import {
 import { useShowcaseContext } from "@/components/ShowcaseContext";
 
 const DISMISS_KEY = "dd-whatsapp-tooltip-dismissed";
+// v22.1: the nudge shows at most once per browser session; the FAB itself
+// is always there.
+const SESSION_SHOWN_KEY = "dd-whatsapp-nudge-shown";
 const AUTO_HIDE_MS = 5000;
 const INITIAL_DELAY_MS = 1200;
 
@@ -53,8 +56,17 @@ export default function WhatsAppButton() {
       // Don't auto-show the tooltip on small viewports; the FAB alone is enough.
       return;
     }
+    // v22.1: once per session, not on every page load.
+    try {
+      if (sessionStorage.getItem(SESSION_SHOWN_KEY) === "true") return;
+    } catch {}
 
-    const showTimer = window.setTimeout(() => setNudgeVisible(true), INITIAL_DELAY_MS);
+    const showTimer = window.setTimeout(() => {
+      setNudgeVisible(true);
+      try {
+        sessionStorage.setItem(SESSION_SHOWN_KEY, "true");
+      } catch {}
+    }, INITIAL_DELAY_MS);
     return () => window.clearTimeout(showTimer);
   }, []);
 

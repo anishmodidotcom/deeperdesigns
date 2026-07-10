@@ -9,12 +9,17 @@ export default function BrowserFrame({
   url,
   width = 1440,
   height = 900,
+  priority = false,
 }: {
   src: string;
   alt: string;
   url: string;
   width?: number;
   height?: number;
+  // v22.1: hero-position frames load eagerly so the image is visible on
+  // load, with no scroll or observer needed. Default stays lazy for
+  // frames further down a page.
+  priority?: boolean;
 }) {
   return (
     <div
@@ -93,7 +98,7 @@ export default function BrowserFrame({
         alt={alt}
         width={width}
         height={height}
-        loading="lazy"
+        {...(priority ? { priority: true } : { loading: "lazy" as const })}
         sizes="(min-width: 1024px) 50vw, 100vw"
         style={{ width: "100%", height: "auto", display: "block" }}
       />

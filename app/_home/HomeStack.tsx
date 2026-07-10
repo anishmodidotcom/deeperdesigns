@@ -45,8 +45,12 @@ export default function HomeStack() {
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px" }}>
           What we build with.
         </h2>
-        <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "64px", maxWidth: "640px" }}>
+        <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "12px", maxWidth: "640px" }}>
           The tools change every month. The judgment doesn&apos;t.
+        </p>
+        {/* v22.1: the plain-language translation, directly above the wall. */}
+        <p style={{ fontSize: "17px", color: "var(--fg-muted)", marginBottom: "64px", maxWidth: "640px" }}>
+          The same tools serious software companies build on. You never have to touch any of it.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
           {GROUPS.map(g => (
