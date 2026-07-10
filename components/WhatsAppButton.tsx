@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import {
-  trackLead,
   trackLiveProductCTAClick,
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
@@ -14,7 +12,6 @@ const AUTO_HIDE_MS = 5000;
 const INITIAL_DELAY_MS = 1200;
 
 export default function WhatsAppButton() {
-  const pathname = usePathname() ?? "";
   const ctx = useShowcaseContext();
   const [nudgeVisible, setNudgeVisible] = useState(false);
   const [dismissedPermanent, setDismissedPermanent] = useState(false);
@@ -23,9 +20,10 @@ export default function WhatsAppButton() {
   const hideTimerRef = useRef<number | null>(null);
 
   const onWhatsAppClick = () => {
+    // v21: Lead no longer fires on WhatsApp opens. Lead is reserved for
+    // the lead form's confirmed completion.
     try {
-      trackLead(pathname);
-      // v17.3: triple-stack on showcase pages, same logic as
+      // v17.3: stack showcase-context events, same logic as
       // TrackedWhatsAppLink.
       if (ctx?.slug) {
         trackWhatsAppOpenedFromShowcase(ctx.slug, ctx.industry);

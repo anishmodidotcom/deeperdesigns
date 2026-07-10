@@ -1,0 +1,533 @@
+"use client";
+
+import { useRef, useState } from "react";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import { WHATSAPP_HREF } from "@/lib/contact";
+import { trackLeadFormStart, trackFormLead } from "@/lib/meta-events";
+
+// v21: the single-step lead form. Four fields, a confirmation code, done.
+// Replaces the 11-step study flow, which produced zero completed
+// submissions. Reuses the existing Resend infrastructure unchanged:
+//   /api/otp-send        sends the 6-digit code
+//   /api/otp-verify      checks it
+//   /api/start-your-study sends the completion email to Anish
+//
+// Events (the whole lead funnel):
+//   LeadFormStart  once, when screen 1 submits and the code is sent
+//   Lead           once, on confirmed completion (code verified + email sent)
+// The ?from={slug} attribution from /for pages is read at completion time
+// and carried into both events and the completion email.
+
+type Screen = "form" | "code" | "done";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type Fields = {
+  name: string;
+  business: string;
+  phone: string;
+  email: string;
+};
+
+type FieldErrors = Partial<Record<keyof Fields, string>>;
+
+function fromIndustry(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    return new URLSearchParams(window.location.search).get("from") ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export default function LeadForm() {
+  const [screen, setScreen] = useState<Screen>("form");
+  const [fields, setFields] = useState<Fields>({
+    name: "",
+    business: "",
+    phone: "",
+    email: "",
+  });
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
+
+  const [code, setCode] = useState("");
+  const [verifying, setVerifying] = useState(false);
+  const [codeError, setCodeError] = useState<string | null>(null);
+  const [resending, setResending] = useState(false);
+  const [resent, setResent] = useState(false);
+
+  const startFired = useRef(false);
+  const codeInputRef = useRef<HTMLInputElement>(null);
+
+  const set = (k: keyof Fields, v: string) => {
+    setFields((f) => ({ ...f, [k]: v }));
+    if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
+  };
+
+  const validate = (): boolean => {
+    const next: FieldErrors = {};
+    if (!fields.name.trim()) next.name = "We need a name to reach you.";
+    if (!fields.business.trim()) next.business = "Tell us the business name.";
+    if (fields.phone.replace(/\D/g, "").length < 7)
+      next.phone = "That number looks too short.";
+    if (!EMAIL_RE.test(fields.email.trim()))
+      next.email = "That email does not look right.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  // Screen 1 submit: validate, send the code, fire LeadFormStart once.
+  const sendCode = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setSendError(null);
+    if (!validate()) return;
+    setSending(true);
+    try {
+      const res = await fetch("/api/otp-send", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: fields.email.trim() }),
+      });
+      const json = await res.json();
+      if (!json.ok) {
+        setSendError(json.error || "Could not send the code. Try again.");
+        return;
+      }
+      if (!startFired.current) {
+        startFired.current = true;
+        try {
+          trackLeadFormStart(fromIndustry());
+        } catch {
+          // analytics must never block the form
+        }
+      }
+      setScreen("code");
+      setTimeout(() => codeInputRef.current?.focus(), 50);
+    } catch {
+      setSendError("Could not send the code. Try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  // Resend from screen 2 (no re-validation, same email, no second
+  // LeadFormStart).
+  const resendCode = async () => {
+    setCodeError(null);
+    setResending(true);
+    setResent(false);
+    try {
+      const res = await fetch("/api/otp-send", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: fields.email.trim() }),
+      });
+      const json = await res.json();
+      if (!json.ok) {
+        setCodeError(json.error || "Could not resend the code.");
+        return;
+      }
+      setResent(true);
+    } catch {
+      setCodeError("Could not resend the code.");
+    } finally {
+      setResending(false);
+    }
+  };
+
+  // Screen 2 submit: verify the code, send the completion email, and only
+  // then fire the standard Lead. This is the single Lead call site.
+  const verify = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setCodeError(null);
+    if (!/^[0-9]{6}$/.test(code)) {
+      setCodeError("Enter the six digits from the email.");
+      return;
+    }
+    setVerifying(true);
+    try {
+      const vRes = await fetch("/api/otp-verify", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: fields.email.trim(), otp: code }),
+      });
+      const vJson = await vRes.json();
+      if (!vJson.ok) {
+        setCodeError(vJson.error || "That code did not match. Try again.");
+        return;
+      }
+
+      const industry = fromIndustry();
+      const sRes = await fetch("/api/start-your-study", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: fields.name.trim(),
+          business: fields.business.trim(),
+          phone: fields.phone.trim(),
+          email: fields.email.trim(),
+          emailVerified: true,
+          country: "",
+          teamSize: "",
+          bottleneck: "",
+          budget: "",
+          slot: "",
+          industry: industry || undefined,
+        }),
+      });
+      const sJson = await sRes.json();
+      if (!sJson.ok) {
+        setCodeError(sJson.error || "Could not finish. Try the button again.");
+        return;
+      }
+
+      // Confirmed completion: the ONLY place the standard Lead fires.
+      try {
+        trackFormLead({
+          industry,
+          email: fields.email.trim(),
+          phone: fields.phone.trim(),
+        });
+      } catch {
+        // analytics must never block the form
+      }
+      setScreen("done");
+    } catch {
+      setCodeError("Could not finish. Try the button again.");
+    } finally {
+      setVerifying(false);
+    }
+  };
+
+  return (
+    <div style={{ width: "100%", maxWidth: 560 }}>
+      {screen === "form" && (
+        <form onSubmit={sendCode} noValidate>
+          <h1
+            style={{
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              fontWeight: 600,
+              fontSize: "clamp(32px, 5vw, 52px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              margin: "0 0 16px",
+            }}
+          >
+            Tell us where to reach you.{" "}
+            <span
+              style={{
+                fontFamily:
+                  "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+              }}
+            >
+              We do the rest.
+            </span>
+          </h1>
+          <p
+            style={{
+              fontSize: 17,
+              lineHeight: 1.6,
+              color: "var(--fg-muted)",
+              margin: "0 0 36px",
+              maxWidth: 480,
+            }}
+          >
+            Thirty seconds. We will study your business and come back with
+            what AI can actually do for you.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+            <LabeledInput
+              id="lead-name"
+              label="Your name"
+              type="text"
+              autoComplete="name"
+              value={fields.name}
+              onChange={(v) => set("name", v)}
+              error={errors.name}
+            />
+            <LabeledInput
+              id="lead-business"
+              label="Company or business name"
+              type="text"
+              autoComplete="organization"
+              value={fields.business}
+              onChange={(v) => set("business", v)}
+              error={errors.business}
+            />
+            <LabeledInput
+              id="lead-phone"
+              label="Phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              value={fields.phone}
+              onChange={(v) => set("phone", v)}
+              error={errors.phone}
+            />
+            <LabeledInput
+              id="lead-email"
+              label="Email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              value={fields.email}
+              onChange={(v) => set("email", v)}
+              error={errors.email}
+            />
+          </div>
+
+          {sendError && <p style={errorStyle}>{sendError}</p>}
+
+          <button
+            type="submit"
+            disabled={sending}
+            className="lead-submit"
+            style={{
+              marginTop: 28,
+              width: "100%",
+              background: "var(--dd-indigo, #7C6CFF)",
+              color: "#0A0A0A",
+              fontSize: 16,
+              fontWeight: 600,
+              padding: "16px 24px",
+              borderRadius: 999,
+              opacity: sending ? 0.7 : 1,
+              transition: "filter var(--dur-fast) var(--ease-out)",
+            }}
+          >
+            {sending ? "Sending the code..." : "Send me the confirmation code"}
+          </button>
+        </form>
+      )}
+
+      {screen === "code" && (
+        <form onSubmit={verify} noValidate>
+          <h1
+            style={{
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              fontWeight: 600,
+              fontSize: "clamp(28px, 4.5vw, 44px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              margin: "0 0 16px",
+            }}
+          >
+            Check your inbox.
+          </h1>
+          <p
+            style={{
+              fontSize: 17,
+              lineHeight: 1.6,
+              color: "var(--fg-muted)",
+              margin: "0 0 32px",
+            }}
+          >
+            We sent a 6-digit code to{" "}
+            <span style={{ color: "var(--fg)" }}>{fields.email.trim()}</span>.
+            Enter it below.
+          </p>
+
+          <input
+            ref={codeInputRef}
+            type="text"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={6}
+            aria-label="Six-digit confirmation code"
+            value={code}
+            onChange={(e) =>
+              setCode(e.target.value.replace(/\D/g, "").slice(0, 6))
+            }
+            style={{
+              ...inputStyle,
+              letterSpacing: "0.4em",
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: 22,
+              textAlign: "center",
+            }}
+            placeholder="000000"
+          />
+
+          {codeError && <p style={errorStyle}>{codeError}</p>}
+          {resent && !codeError && (
+            <p style={{ ...errorStyle, color: "var(--fg-muted)" }}>
+              Sent again. Check spam if it does not arrive in a minute.
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={verifying}
+            className="lead-submit"
+            style={{
+              marginTop: 24,
+              width: "100%",
+              background: "var(--dd-indigo, #7C6CFF)",
+              color: "#0A0A0A",
+              fontSize: 16,
+              fontWeight: 600,
+              padding: "16px 24px",
+              borderRadius: 999,
+              opacity: verifying ? 0.7 : 1,
+              transition: "filter var(--dur-fast) var(--ease-out)",
+            }}
+          >
+            {verifying ? "Checking..." : "Verify and finish"}
+          </button>
+
+          <button
+            type="button"
+            onClick={resendCode}
+            disabled={resending}
+            style={{
+              marginTop: 18,
+              fontSize: 14,
+              color: "var(--accent)",
+              padding: "6px 0",
+            }}
+          >
+            {resending ? "Resending..." : "Resend the code"}
+          </button>
+        </form>
+      )}
+
+      {screen === "done" && (
+        <div>
+          <h1
+            style={{
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              fontWeight: 600,
+              fontSize: "clamp(32px, 5vw, 52px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              margin: "0 0 16px",
+            }}
+          >
+            You are in.
+          </h1>
+          <p
+            style={{
+              fontSize: 17,
+              lineHeight: 1.6,
+              color: "var(--fg-muted)",
+              margin: "0 0 32px",
+              maxWidth: 480,
+            }}
+          >
+            We will reach out on WhatsApp or email within one working day. If
+            you want to skip the wait, message us now.
+          </p>
+          <TrackedWhatsAppLink
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lead-wa"
+            style={{
+              background: "var(--whatsapp, #25D366)",
+              color: "#0A0A0A",
+              fontSize: 16,
+              fontWeight: 600,
+              padding: "16px 28px",
+              borderRadius: 999,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            Message us on WhatsApp
+          </TrackedWhatsAppLink>
+        </div>
+      )}
+
+      <style>{`
+        .lead-submit:hover { filter: brightness(1.08); }
+        .lead-submit:active { transform: translateY(1px); }
+        .lead-submit:focus-visible,
+        .lead-wa:focus-visible {
+          outline: 2px solid var(--dd-indigo-soft, #818CF8);
+          outline-offset: 3px;
+        }
+        .lead-wa:hover { filter: brightness(1.05); }
+        .lead-wa:active { transform: translateY(1px); }
+      `}</style>
+    </div>
+  );
+}
+
+function LabeledInput({
+  id,
+  label,
+  type,
+  inputMode,
+  autoComplete,
+  value,
+  onChange,
+  error,
+}: {
+  id: string;
+  label: string;
+  type: string;
+  inputMode?: "tel" | "email";
+  autoComplete: string;
+  value: string;
+  onChange: (v: string) => void;
+  error?: string;
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        style={{
+          display: "block",
+          fontSize: 14,
+          color: "var(--fg-muted)",
+          marginBottom: 8,
+        }}
+      >
+        {label}
+      </label>
+      <input
+        id={id}
+        type={type}
+        inputMode={inputMode}
+        autoComplete={autoComplete}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        style={{
+          ...inputStyle,
+          borderColor: error ? "#E5847C" : "var(--border-strong)",
+        }}
+      />
+      {error && (
+        <p id={`${id}-error`} style={errorStyle}>
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "15px 18px",
+  background: "var(--bg-card)",
+  border: "1px solid var(--border-strong)",
+  borderRadius: 12,
+  color: "var(--fg)",
+  fontSize: 17,
+  fontFamily: "inherit",
+  outline: "none",
+};
+
+const errorStyle: React.CSSProperties = {
+  marginTop: 10,
+  fontSize: 14,
+  color: "#FFB4A8",
+};

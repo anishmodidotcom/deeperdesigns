@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
-  trackLead,
   trackLiveProductCTAClick,
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
@@ -25,8 +24,9 @@ export default function Nav() {
     : null;
 
   const onTalkToUs = () => {
+    // v21: Lead no longer fires on CTA clicks. Lead is reserved for the
+    // lead form's confirmed completion; clicks are intent signals only.
     try {
-      trackLead(pathname);
       // v17.3: when Nav is rendered on a showcase page, stack the
       // showcase-context events the same way TrackedWhatsAppLink does.
       if (ctx?.slug) {

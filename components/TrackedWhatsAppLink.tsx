@@ -1,9 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
 import {
-  trackLead,
   trackLiveProductCTAClick,
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
@@ -33,7 +31,7 @@ type Props = {
 };
 
 // Sitewide WhatsApp CTA wrapper.
-// Always fires trackLead. When rendered inside a ShowcaseProvider or
+// When rendered inside a ShowcaseProvider or
 // when the explicit override props are present, additionally fires
 // trackWhatsAppOpenedFromShowcase and (for live products only)
 // trackLiveProductCTAClick. Tracking is fire-and-forget, never blocks
@@ -51,7 +49,6 @@ export default function TrackedWhatsAppLink({
   liveProduct,
   extraTrack,
 }: Props) {
-  const pathname = usePathname() ?? "";
   const ctx = useShowcaseContext();
 
   // Explicit props win; otherwise inherit from context. liveProduct on
@@ -66,8 +63,9 @@ export default function TrackedWhatsAppLink({
       : undefined);
 
   const onClick = () => {
+    // v21: Lead no longer fires on clicks. Lead is reserved for the lead
+    // form's confirmed completion; clicks are intent signals only.
     try {
-      trackLead(pathname);
       if (effectiveSlug) {
         trackWhatsAppOpenedFromShowcase(effectiveSlug, effectiveIndustry ?? "");
       }

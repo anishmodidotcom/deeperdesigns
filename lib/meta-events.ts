@@ -23,7 +23,10 @@ type EventName =
   | "ForPageView"
   | "ForScrolled75"
   | "ForBuildCTAClick"
-  | "ForLeadCTAClick";
+  | "ForLeadCTAClick"
+  // v21: fired once when the lead form's first screen submits successfully
+  // (confirmation code sent). The funnel step between click and Lead.
+  | "LeadFormStart";
 
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
@@ -215,9 +218,11 @@ export function trackViewContent(
   });
 }
 
-export function trackLead(source_page: string): void {
-  trackEvent("Lead", { source_page });
-}
+// v21: the standard Lead event fires in exactly ONE place, the lead form's
+// confirmed completion (see trackFormLead below). The old trackLead(source)
+// click wrapper was removed: it fired Lead on every WhatsApp open and nav
+// CTA click, producing phantom leads Meta optimised toward. Intent clicks
+// are tracked by the custom events (ForLeadCTAClick, LeadFormStart, etc).
 
 export function trackContact(source_page: string): void {
   trackEvent("Contact", { source_page });
@@ -282,9 +287,17 @@ export function trackForLeadCTAClick(
   trackEvent("ForLeadCTAClick", { industry, cta });
 }
 
-// v19.7: Lead on /start-your-study submit, attributed to the originating
-// industry page (via ?from) when present, and EMQ-enriched with the
-// verified email/phone the form already collected.
+// v21: fired once when the lead form's first screen submits successfully
+// (the confirmation code was sent). Funnel step between the CTA click and
+// the confirmed Lead; never fires Lead itself.
+export function trackLeadFormStart(industry: string): void {
+  trackEvent("LeadFormStart", { industry });
+}
+
+// v21: the ONLY Lead call site. Fires on confirmed completion of the lead
+// form (code verified, completion email sent), attributed to the
+// originating industry page (via ?from) when present, and EMQ-enriched
+// with the verified email/phone.
 export function trackFormLead(args: {
   industry: string;
   email?: string;
