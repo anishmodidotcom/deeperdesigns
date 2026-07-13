@@ -1,0 +1,1920 @@
+[
+  {
+    "filename": "ui-screenshots/ui_automotive_testdrivedesk_crop.png",
+    "type": "ui",
+    "tag": "automotive",
+    "dimensions": "900x1180",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_cafirms_clienthub.png",
+    "type": "ui",
+    "tag": "ca-firms",
+    "dimensions": "780x1688",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_cafirms_compliancecalendar.png",
+    "type": "ui",
+    "tag": "ca-firms",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_cafirms_documentportal.png",
+    "type": "ui",
+    "tag": "ca-firms",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_clinics_calendar.png",
+    "type": "ui",
+    "tag": "clinics",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_clinics_calendar_crop.png",
+    "type": "ui",
+    "tag": "clinics",
+    "dimensions": "1900x560",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_clinics_recall.png",
+    "type": "ui",
+    "tag": "clinics",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_clinics_voicereceptionist.png",
+    "type": "ui",
+    "tag": "clinics",
+    "dimensions": "780x1688",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_coaching_admissions.png",
+    "type": "ui",
+    "tag": "coaching",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_coaching_attendance.png",
+    "type": "ui",
+    "tag": "coaching",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_coaching_results.png",
+    "type": "ui",
+    "tag": "coaching",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_coaching_results_crop.png",
+    "type": "ui",
+    "tag": "coaching",
+    "dimensions": "1560x520",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_d2c_studioengine.png",
+    "type": "ui",
+    "tag": "d2c",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_d2c_studioengine_crop.png",
+    "type": "ui",
+    "tag": "d2c",
+    "dimensions": "2020x1180",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_fashion_cataloguestudio.png",
+    "type": "ui",
+    "tag": "fashion",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_fashion_cataloguestudio_crop.png",
+    "type": "ui",
+    "tag": "fashion",
+    "dimensions": "2020x1180",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_fashion_dropengine.png",
+    "type": "ui",
+    "tag": "fashion",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_hotels_guestreturn_crop.png",
+    "type": "ui",
+    "tag": "hotels",
+    "dimensions": "2760x1240",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_jewellery_tryon.png",
+    "type": "ui",
+    "tag": "jewellery",
+    "dimensions": "780x1688",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_logistics_controlroom.png",
+    "type": "ui",
+    "tag": "logistics",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_logistics_controlroom_crop.png",
+    "type": "ui",
+    "tag": "logistics",
+    "dimensions": "1700x900",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_logistics_epod.png",
+    "type": "ui",
+    "tag": "logistics",
+    "dimensions": "780x1688",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_manufacturing_leadfilter.png",
+    "type": "ui",
+    "tag": "manufacturing",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_manufacturing_outreach.png",
+    "type": "ui",
+    "tag": "manufacturing",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_realestate_listingstudio.png",
+    "type": "ui",
+    "tag": "real-estate",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_realestate_listingstudio_crop.png",
+    "type": "ui",
+    "tag": "real-estate",
+    "dimensions": "2020x1180",
+    "best_use": "accent crop, single striking UI element"
+  },
+  {
+    "filename": "ui-screenshots/ui_restaurants_dishstudio.png",
+    "type": "ui",
+    "tag": "restaurants",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_restaurants_kitchenline.png",
+    "type": "ui",
+    "tag": "restaurants",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "ui-screenshots/ui_salons_calendar.png",
+    "type": "ui",
+    "tag": "salons",
+    "dimensions": "2880x1800",
+    "best_use": "portfolio UI reference, dark operator dashboard"
+  },
+  {
+    "filename": "generated-images/gen_amber_orb.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "minimal hero, text floats over the dark space"
+  },
+  {
+    "filename": "generated-images/gen_ambient_autobazaar.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_hivedesk.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_malabarspice.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_maplelens.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_pawstay.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_smilefirst.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_stumpvision.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_ambient_zaatarrepublic.webp",
+    "type": "generated",
+    "tag": "universal",
+    "dimensions": "1200x750",
+    "best_use": "ambient background"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_carinterior.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_dealershiplot.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_herosedan.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_keyhandover.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_listingmockup.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_lotgridbackdrop.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_pricetag.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_speedometermacro.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_tariqportrait.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_autobazaar_testdrive.webp",
+    "type": "generated",
+    "tag": "autobazaar",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bg_indigo_bloom.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "universal dark background, text overlay"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_blueprintdetail.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_dashboardbgsteel.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_deliveryslip.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_fathersonportrait.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_herocoil.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_rebardiametergrid.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_rebarstack.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_truckloading.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_warehousewide.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_bharatsteel_whatsappphone.webp",
+    "type": "generated",
+    "tag": "bharat-steel",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_classroomwide.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_dashboardbgedu.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_exampapers.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_heroclassroom.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_notebookdetail.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_omarportrait.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_parentphone.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_studentstudying.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_studygroup.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_brightpath_tutordetail.webp",
+    "type": "generated",
+    "tag": "brightpath",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_dark_topography.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "calm premium section background"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_claydetail.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_herovase.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_kilnglow.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_niaportrait.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_niathrowing.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1280x720",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_patterndetail1.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_potterybuilderbg.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_potterycollection.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1600x900",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_earthandfire_workshopshelves.webp",
+    "type": "generated",
+    "tag": "earth-and-fire",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_founder_desk.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "founder-at-work mood, warm story section"
+  },
+  {
+    "filename": "generated-images/gen_gradient_mesh.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "soft hero background with centre space for type"
+  },
+  {
+    "filename": "generated-images/gen_gradient_mesh_tall.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1920",
+    "best_use": "story and reel background, centre type space, 9:16"
+  },
+  {
+    "filename": "generated-images/gen_grid_dissolve.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "order-becoming-motion hero background"
+  },
+  {
+    "filename": "generated-images/gen_growth_line.png",
+    "type": "texture",
+    "tag": "growth",
+    "dimensions": "1080x1350",
+    "best_use": "growth motif for a results or outcomes section"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_amitportrait.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_dashboardbgtexture.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_focuspod.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_herospace.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_loungedetail.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_meetingroom.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_memberportrait1.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "768x960",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_hivedesk_memberportrait2.webp",
+    "type": "generated",
+    "tag": "hivedesk",
+    "dimensions": "768x960",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_accessoriesflatlay.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_brewingritual.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_devikaportrait.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_herotin.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_kulhadcup.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_mumbaievening.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_quizbg.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_spicesdetail.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_teagrid.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1600x900",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_kadakchai_tinopen.webp",
+    "type": "generated",
+    "tag": "kadak-chai",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_karanlegal_handshake.webp",
+    "type": "generated",
+    "tag": "karan-legal",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_karanlegal_heropen.webp",
+    "type": "generated",
+    "tag": "karan-legal",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_karanlegal_karanportrait.webp",
+    "type": "generated",
+    "tag": "karan-legal",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_karanlegal_officedetail.webp",
+    "type": "generated",
+    "tag": "karan-legal",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_karanlegal_paperstack.webp",
+    "type": "generated",
+    "tag": "karan-legal",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_cardamompods.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_cinnamoncurls.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_handspepper.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_heropepper.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_keralabackwaters.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_ledgerdetail.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_peppergridcard.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_rashidportrait.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_spicegriddetail.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_turmericroots.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_malabarspice_warehousewide.webp",
+    "type": "generated",
+    "tag": "malabar-spice",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_after01.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_after02.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_after03.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_after04.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_before01.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_before02.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_before03.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_before04.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_herocatalog.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_maplelens_heroworkshop.webp",
+    "type": "generated",
+    "tag": "maplelens",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_dumbbellflatlay.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_groupclass.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_heropose.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_incensemacro.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_journaldetail.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_matdetail.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_meeraportrait.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_phoneschedule.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_savasana.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_meerawellness_waterglass.webp",
+    "type": "generated",
+    "tag": "meera-wellness",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_network_nodes.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "intelligence and infrastructure hero background"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_arjunsnehaportrait.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_basecamp.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_campingnight.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_gearflatlay.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_heroridge.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_prayerflags.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_summitview.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_trekkerback.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_valleywide.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_nomadtrails_whatsappbg.webp",
+    "type": "generated",
+    "tag": "nomad-trails",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_atelier.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_herobottle.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "1024x1536",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_ingredientsgrid1.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "768x768",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_ingredientsgrid2.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "768x768",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_ingredientsgrid3.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "768x768",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_ingredientsgrid4.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "768x768",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_oudwood.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_oudandember_personalizedbottle.webp",
+    "type": "generated",
+    "tag": "oud-and-ember",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_daycareinterior.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_dogcamerafeed.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1280x720",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_happydog1.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "768x960",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_happydog2.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "768x960",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_happydog3.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "768x960",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_herodog.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_parentcheckingphone.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_pawdetail.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_poojaportrait.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_pawstay_walkoutdoor.webp",
+    "type": "generated",
+    "tag": "pawstay",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_compostdetail.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_croprows.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_dashboardbgorganic.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_farmdawn.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_farmtruckloading.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1536x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_greenhouseinterior.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_harvestbaskets.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_herofield.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_lataportrait.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_soilhands.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sahajafarms_subscriptionbox.webp",
+    "type": "generated",
+    "tag": "sahaja-farms",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_beforeaftertooth.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_dashboardbgclinic.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_heroclinic.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_kavitaportrait.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_parentchildwaiting.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_patientchair.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_reception.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_toolsmacro.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_toothmodel.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_smilefirst_treatmentinprogress.webp",
+    "type": "generated",
+    "tag": "smilefirst",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_split_field.png",
+    "type": "texture",
+    "tag": "comparison",
+    "dimensions": "1080x1350",
+    "best_use": "manual versus AI comparison background"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_ananyaportrait.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_beforeafter.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_blueprintfloorplan.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_contractoronsite.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_finishedkitchen.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_finishedliving.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_heroroom.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_materialsswatches.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_moodboard.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_studionoor_supervisorwhatsapp.webp",
+    "type": "generated",
+    "tag": "studio-noor",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_ballstitching.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_batdetail.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_coachportrait.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_grounddusk.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_herobatsman.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_kidsnets.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_parentcoachhuddle.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_pitchwide.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_scoreboard.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_stumpvision_trophydetail.webp",
+    "type": "generated",
+    "tag": "stumpvision",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_abudhabievening.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_bakerykitchen.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_cakeslice.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_cakespread.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_farahportrait.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1024x1280",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_herocake.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_orderformbg.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1920x1200",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_pipingdetail.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1080x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_signaturecollection.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_sugarlane_weddingcake.webp",
+    "type": "generated",
+    "tag": "sugar-lane",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_texture_metal.png",
+    "type": "texture",
+    "tag": "universal",
+    "dimensions": "1080x1350",
+    "best_use": "premium surface texture, card or panel fill"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_ayurvedickitchen.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_handsapplying.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_herobottle.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_ingredientneem.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_ingredientrose.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_ingredientsandalwood.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_ingredientturmeric.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_priyaportrait.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_productline.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_vedaglow_quizbg.webp",
+    "type": "generated",
+    "tag": "veda-glow",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_customereating.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_dashboardbgfood.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x600",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_faisalportrait.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_herowrap.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_kitchenaction.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_locationgrid.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_packaging.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_restaurantnight.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_shawarmashaving.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zaatarrepublic_toumsauce.webp",
+    "type": "generated",
+    "tag": "zaatar-republic",
+    "dimensions": "1024x1024",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_appscreenbg.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1920",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_gyminterior.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1920x1080",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_herozara.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_productgloves.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_productsportswear.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1350",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_workouthiit.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_workouthypertrophy.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_workoutmobility.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_workoutrecovery.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/gen_zarafitness_workoutstrength.webp",
+    "type": "generated",
+    "tag": "zara-fitness",
+    "dimensions": "1080x1620",
+    "best_use": "showcase or product imagery"
+  },
+  {
+    "filename": "generated-images/photo_automotive_walkaround_poster.webp",
+    "type": "generated",
+    "tag": "automotive",
+    "dimensions": "720x1280",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_d2c_product_inhand.webp",
+    "type": "generated",
+    "tag": "d2c",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_d2c_product_lifestyle.webp",
+    "type": "generated",
+    "tag": "d2c",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_d2c_product_raw_input.webp",
+    "type": "generated",
+    "tag": "d2c",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_d2c_product_studio.webp",
+    "type": "generated",
+    "tag": "d2c",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_flat_dress.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_onmodel_dress.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_onmodel_lifestyle.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_runway_flat.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_runway_poster.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "720x1280",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_fashion_tryon_result.webp",
+    "type": "generated",
+    "tag": "fashion",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_hotels_property_poster.webp",
+    "type": "generated",
+    "tag": "hotels",
+    "dimensions": "1280x720",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_jewellery_tryon_after.webp",
+    "type": "generated",
+    "tag": "jewellery",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_jewellery_tryon_before.webp",
+    "type": "generated",
+    "tag": "jewellery",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_film_after.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "720x1280",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_film_before.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "720x1280",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_raw_room.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_staged_classic.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_staged_modern.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_realestate_staged_warm.webp",
+    "type": "generated",
+    "tag": "real-estate",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_restaurants_dish_hero.webp",
+    "type": "generated",
+    "tag": "restaurants",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_restaurants_dish_raw.webp",
+    "type": "generated",
+    "tag": "restaurants",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_restaurants_dish_reel.webp",
+    "type": "generated",
+    "tag": "restaurants",
+    "dimensions": "720x1280",
+    "best_use": "build studio render"
+  },
+  {
+    "filename": "generated-images/photo_restaurants_dish_topdown.webp",
+    "type": "generated",
+    "tag": "restaurants",
+    "dimensions": "900x1200",
+    "best_use": "build studio render"
+  }
+]
