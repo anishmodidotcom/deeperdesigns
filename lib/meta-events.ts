@@ -26,7 +26,13 @@ type EventName =
   | "ForLeadCTAClick"
   // v21: fired once when the lead form's first screen submits successfully
   // (confirmation code sent). The funnel step between click and Lead.
-  | "LeadFormStart";
+  | "LeadFormStart"
+  // v23: founders community funnel. Deliberately separate from Lead/
+  // LeadFormStart so community signups never count as strategy-call leads.
+  // CommunityFormStart mirrors LeadFormStart (code sent); CommunityJoin is
+  // the community equivalent of Lead (confirmed signup). Both custom.
+  | "CommunityFormStart"
+  | "CommunityJoin";
 
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
@@ -306,6 +312,35 @@ export function trackFormLead(args: {
   trackEvent(
     "Lead",
     { source_page: "/start-your-study", industry: args.industry },
+    { em: args.email, ph: args.phone },
+  );
+}
+
+// v23: founders community funnel. These are the ONLY events the community
+// form fires. They are custom (route via trackCustom + CAPI), and they are
+// intentionally NOT Lead/LeadFormStart, so a community signup is never
+// counted as a strategy-call lead. Every community event carries
+// source: "community" in custom_data for clean segmentation in Meta.
+
+// Community equivalent of LeadFormStart: fired once when the community
+// form's first screen submits successfully (confirmation code sent).
+export function trackCommunityFormStart(): void {
+  trackEvent("CommunityFormStart", {
+    source_page: "/community",
+    source: "community",
+  });
+}
+
+// Community equivalent of Lead: the ONLY CommunityJoin call site. Fires on
+// confirmed completion (code verified, signup email sent), EMQ-enriched
+// with the verified email/phone. Never fires Lead.
+export function trackCommunityJoin(args: {
+  email?: string;
+  phone?: string;
+}): void {
+  trackEvent(
+    "CommunityJoin",
+    { source_page: "/community", source: "community" },
     { em: args.email, ph: args.phone },
   );
 }

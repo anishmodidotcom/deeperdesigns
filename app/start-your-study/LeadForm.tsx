@@ -3,7 +3,12 @@
 import { useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
-import { trackLeadFormStart, trackFormLead } from "@/lib/meta-events";
+import {
+  trackLeadFormStart,
+  trackFormLead,
+  trackCommunityFormStart,
+  trackCommunityJoin,
+} from "@/lib/meta-events";
 
 // v21: the single-step lead form. Four fields, a confirmation code, done.
 // Replaces the 11-step study flow, which produced zero completed
@@ -12,11 +17,18 @@ import { trackLeadFormStart, trackFormLead } from "@/lib/meta-events";
 //   /api/otp-verify      checks it
 //   /api/start-your-study sends the completion email to Anish
 //
-// Events (the whole lead funnel):
-//   LeadFormStart  once, when screen 1 submits and the code is sent
-//   Lead           once, on confirmed completion (code verified + email sent)
-// The ?from={slug} attribution from /for pages is read at completion time
-// and carried into both events and the completion email.
+// v23: the same component now backs the founders community form via the
+// `variant` prop. "lead" is unchanged; "community" swaps the copy, tags the
+// completion email with source: "community", and fires the separate
+// CommunityFormStart / CommunityJoin events instead of LeadFormStart / Lead.
+// A community signup NEVER fires Lead or LeadFormStart.
+//
+// Events per variant:
+//   lead:       LeadFormStart (code sent) -> Lead (confirmed completion)
+//   community:  CommunityFormStart (code sent) -> CommunityJoin (confirmed)
+// The ?from={slug} industry attribution applies to the lead variant only.
+
+export type LeadFormVariant = "lead" | "community";
 
 type Screen = "form" | "code" | "done";
 
@@ -40,7 +52,12 @@ function fromIndustry(): string {
   }
 }
 
-export default function LeadForm() {
+export default function LeadForm({
+  variant = "lead",
+}: {
+  variant?: LeadFormVariant;
+}) {
+  const isCommunity = variant === "community";
   const [screen, setScreen] = useState<Screen>("form");
   const [fields, setFields] = useState<Fields>({
     name: "",
@@ -100,7 +117,10 @@ export default function LeadForm() {
       if (!startFired.current) {
         startFired.current = true;
         try {
-          trackLeadFormStart(fromIndustry());
+          // v23: the community variant fires its own start event and never
+          // touches LeadFormStart.
+          if (isCommunity) trackCommunityFormStart();
+          else trackLeadFormStart(fromIndustry());
         } catch {
           // analytics must never block the form
         }
@@ -161,7 +181,10 @@ export default function LeadForm() {
         return;
       }
 
-      const industry = fromIndustry();
+      // v23: industry attribution only applies to the lead variant. The
+      // community form never reads ?from and posts source: "community" so
+      // the completion route labels and routes the signup separately.
+      const industry = isCommunity ? "" : fromIndustry();
       const sRes = await fetch("/api/start-your-study", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -177,6 +200,7 @@ export default function LeadForm() {
           budget: "",
           slot: "",
           industry: industry || undefined,
+          source: variant,
         }),
       });
       const sJson = await sRes.json();
@@ -185,13 +209,21 @@ export default function LeadForm() {
         return;
       }
 
-      // Confirmed completion: the ONLY place the standard Lead fires.
+      // Confirmed completion. Lead fires here for the lead variant ONLY;
+      // the community variant fires CommunityJoin and never Lead.
       try {
-        trackFormLead({
-          industry,
-          email: fields.email.trim(),
-          phone: fields.phone.trim(),
-        });
+        if (isCommunity) {
+          trackCommunityJoin({
+            email: fields.email.trim(),
+            phone: fields.phone.trim(),
+          });
+        } else {
+          trackFormLead({
+            industry,
+            email: fields.email.trim(),
+            phone: fields.phone.trim(),
+          });
+        }
       } catch {
         // analytics must never block the form
       }
@@ -207,40 +239,47 @@ export default function LeadForm() {
     <div style={{ width: "100%", maxWidth: 560 }}>
       {screen === "form" && (
         <form onSubmit={sendCode} noValidate>
-          <h1
-            style={{
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              fontWeight: 600,
-              fontSize: "clamp(32px, 5vw, 52px)",
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
-              margin: "0 0 16px",
-            }}
-          >
-            Tell us where to reach you.{" "}
-            <span
-              style={{
-                fontFamily:
-                  "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-              }}
-            >
-              We do the rest.
-            </span>
-          </h1>
-          <p
-            style={{
-              fontSize: 17,
-              lineHeight: 1.6,
-              color: "var(--fg-muted)",
-              margin: "0 0 36px",
-              maxWidth: 480,
-            }}
-          >
-            Thirty seconds. We will study your business and come back with
-            what AI can actually do for you.
-          </p>
+          {/* v23: the lead variant carries its own heading + intro. The
+              community variant omits them because the /community page
+              supplies the heading and body copy directly above the form. */}
+          {!isCommunity && (
+            <>
+              <h1
+                style={{
+                  fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "clamp(32px, 5vw, 52px)",
+                  lineHeight: 1.08,
+                  letterSpacing: "-0.02em",
+                  margin: "0 0 16px",
+                }}
+              >
+                Tell us where to reach you.{" "}
+                <span
+                  style={{
+                    fontFamily:
+                      "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
+                    fontStyle: "italic",
+                    fontWeight: 400,
+                  }}
+                >
+                  We do the rest.
+                </span>
+              </h1>
+              <p
+                style={{
+                  fontSize: 17,
+                  lineHeight: 1.6,
+                  color: "var(--fg-muted)",
+                  margin: "0 0 36px",
+                  maxWidth: 480,
+                }}
+              >
+                Thirty seconds. We will study your business and come back with
+                what AI can actually do for you.
+              </p>
+            </>
+          )}
 
           {/* v22.1: gap tightened because every field now carries a
               fixed-height error slot below it (no layout shift). */}
@@ -307,7 +346,11 @@ export default function LeadForm() {
               transition: "filter var(--dur-fast) var(--ease-out)",
             }}
           >
-            {sending ? "Sending the code..." : "Send me the confirmation code"}
+            {sending
+              ? "Sending the code..."
+              : isCommunity
+                ? "Send me the code"
+                : "Send me the confirmation code"}
           </button>
         </form>
       )}
@@ -424,39 +467,56 @@ export default function LeadForm() {
               margin: "0 0 16px",
             }}
           >
-            You are in.
+            {isCommunity ? "You are on the list." : "You are in."}
           </h1>
-          <p
-            style={{
-              fontSize: 17,
-              lineHeight: 1.6,
-              color: "var(--fg-muted)",
-              margin: "0 0 32px",
-              maxWidth: 480,
-            }}
-          >
-            We will reach out on WhatsApp or email within one working day. If
-            you want to skip the wait, message us now.
-          </p>
-          <TrackedWhatsAppLink
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="lead-wa"
-            style={{
-              background: "var(--whatsapp, #25D366)",
-              color: "#0A0A0A",
-              fontSize: 16,
-              fontWeight: 600,
-              padding: "16px 28px",
-              borderRadius: 999,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            Message us on WhatsApp
-          </TrackedWhatsAppLink>
+          {isCommunity ? (
+            <p
+              style={{
+                fontSize: 17,
+                lineHeight: 1.6,
+                color: "var(--fg-muted)",
+                margin: 0,
+                maxWidth: 480,
+              }}
+            >
+              Anish will look at your request and reach out on WhatsApp or
+              email. Talk soon.
+            </p>
+          ) : (
+            <>
+              <p
+                style={{
+                  fontSize: 17,
+                  lineHeight: 1.6,
+                  color: "var(--fg-muted)",
+                  margin: "0 0 32px",
+                  maxWidth: 480,
+                }}
+              >
+                We will reach out on WhatsApp or email within one working day.
+                If you want to skip the wait, message us now.
+              </p>
+              <TrackedWhatsAppLink
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lead-wa"
+                style={{
+                  background: "var(--whatsapp, #25D366)",
+                  color: "#0A0A0A",
+                  fontSize: 16,
+                  fontWeight: 600,
+                  padding: "16px 28px",
+                  borderRadius: 999,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                Message us on WhatsApp
+              </TrackedWhatsAppLink>
+            </>
+          )}
         </div>
       )}
 

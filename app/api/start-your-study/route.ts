@@ -19,6 +19,10 @@ type Submission = {
   emailVerified: boolean;
   industry?: string;
   objective?: string;
+  // v23: "community" routes and labels the email as a founders community
+  // signup, kept visually and textually distinct from a strategy-call lead.
+  // Absent or "lead" preserves the original behaviour exactly.
+  source?: "lead" | "community";
 };
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "anish.modi@deeperdesigns.in";
@@ -62,9 +66,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const subject = `New possibility request from ${body.name}`;
-    const text = renderText(body);
-    const html = renderHtml(body);
+    // v23: branch the whole email on source so a community signup is
+    // unmistakable in Anish's inbox and never reads like a strategy-call lead.
+    const isCommunity = body.source === "community";
+    const subject = isCommunity
+      ? `COMMUNITY SIGNUP from ${body.name}`
+      : `New possibility request from ${body.name}`;
+    const text = renderText(body, isCommunity);
+    const html = renderHtml(body, isCommunity);
 
     if (process.env.RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {
@@ -105,7 +114,19 @@ export async function POST(req: Request) {
 // v21: the single-step form sends only name, business, phone, email (plus
 // the ?from industry). The legacy long-form fields stay supported but
 // empty values no longer render as blank rows.
-function renderText(s: Submission): string {
+function renderText(s: Submission, isCommunity: boolean): string {
+  // v23: community signups carry only the four fields, under a clear label.
+  if (isCommunity) {
+    return [
+      `COMMUNITY SIGNUP`,
+      `Founders community, free to join. Add to the peer group by hand.`,
+      ``,
+      `Name: ${s.name}`,
+      `Business: ${s.business}`,
+      `Email (verified): ${s.email}`,
+      `Phone: ${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`,
+    ].join("\n");
+  }
   const lines = [`Name: ${s.name}`, `Business: ${s.business}`];
   if (s.teamSize) lines.push(`Team size: ${s.teamSize}`);
   if (s.bottleneck) lines.push(`Bottleneck:`, s.bottleneck, ``);
@@ -120,11 +141,31 @@ function renderText(s: Submission): string {
   return lines.join("\n");
 }
 
-function renderHtml(s: Submission): string {
+function renderHtml(s: Submission, isCommunity: boolean): string {
   const row = (k: string, v: string) =>
     `<tr><td style="padding:6px 14px 6px 0;color:#888;font:13px/1.5 system-ui">${k}</td><td style="padding:6px 0;color:#111;font:13px/1.5 system-ui">${escapeHtml(v)}</td></tr>`;
   const filterRow = (k: string, v: string | undefined) =>
     v ? row(k, v) : "";
+  const phone = `${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`;
+
+  // v23: a visually distinct card for community signups. Green eyebrow and
+  // a "COMMUNITY SIGNUP" label so it is never confused with a lead request.
+  if (isCommunity) {
+    return `<!doctype html><html><body style="background:#f7f8f8;margin:0;padding:24px;font-family:system-ui,sans-serif">
+    <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-left:4px solid #1F9D57;border-radius:12px;padding:28px">
+      <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#1F9D57;text-transform:uppercase">COMMUNITY SIGNUP</p>
+      <h1 style="margin:0 0 10px;font:300 24px/1.2 system-ui;letter-spacing:-0.02em;color:#111">${escapeHtml(s.name)} · ${escapeHtml(s.business)}</h1>
+      <p style="margin:0 0 22px;font:14px/1.6 system-ui;color:#555">Founders community request. Free to join, added to the peer group by hand.</p>
+      <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
+        ${row("Name", s.name)}
+        ${row("Business", s.business)}
+        ${row("Email", s.email)}
+        ${row("Phone", phone)}
+      </table>
+    </div>
+  </body></html>`;
+  }
+
   return `<!doctype html><html><body style="background:#f7f8f8;margin:0;padding:24px;font-family:system-ui,sans-serif">
     <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-radius:12px;padding:28px">
       <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">POSSIBILITY REQUEST</p>
@@ -133,7 +174,7 @@ function renderHtml(s: Submission): string {
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
         ${filterRow("Team size", s.teamSize)}
         ${row("Email", s.email)}
-        ${row("Phone", `${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`)}
+        ${row("Phone", phone)}
         ${filterRow("Budget", s.budget)}
         ${filterRow("Preferred slot", s.slot)}
         ${filterRow("From industry page", s.industry)}

@@ -11,6 +11,7 @@ import HomeStudioMind from "./_home/HomeStudioMind";
 import HomeBrings from "./_home/HomeBrings";
 import HomeStack from "./_home/HomeStack";
 import HomeFAQ from "./_home/HomeFAQ";
+import HomeCommunity from "./_home/HomeCommunity";
 import HomeCTA from "./_home/HomeCTA";
 
 // v22: outcome-first metadata (part of the de-tech sweep). The old
@@ -53,6 +54,7 @@ export default function Home() {
       <HomeHowItWorks />
       <HomeStack />
       <HomeFAQ />
+      <HomeCommunity />
       <HomeCTA />
     </main>
   );
