@@ -70,6 +70,17 @@ export async function POST(req: Request) {
         }),
       });
       if (!res.ok) {
+        // v25 hotfix: the Resend error body used to be discarded. Log it
+        // so a failing key or sending domain is visible in Vercel logs.
+        const resendBody = await res.text().catch(() => "");
+        console.error(
+          JSON.stringify({
+            route: "otp-send",
+            event: "resend_failed",
+            status: res.status,
+            body: resendBody.slice(0, 500),
+          }),
+        );
         return NextResponse.json(
           { ok: false, error: "Could not send the code. Try again." },
           { status: 502 }
@@ -84,12 +95,26 @@ export async function POST(req: Request) {
       console.log(`[otp-send dev] ${email} -> ${code}`);
       return NextResponse.json({ ok: true, devCode: code });
     }
+    console.error(
+      JSON.stringify({ route: "otp-send", event: "email_not_configured" }),
+    );
     return NextResponse.json(
       { ok: false, error: "Email delivery is not configured." },
       { status: 500 }
     );
   } catch (e) {
-    const msg = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
+    // v25 hotfix: log the real error server-side, return a generic
+    // message. Raw e.message used to go to the client.
+    console.error(
+      JSON.stringify({
+        route: "otp-send",
+        event: "unhandled_error",
+        error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "Could not send the code. Try again." },
+      { status: 500 }
+    );
   }
 }

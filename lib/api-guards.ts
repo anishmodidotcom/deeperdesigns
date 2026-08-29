@@ -13,6 +13,31 @@ type Bucket = { count: number; resetAt: number };
 
 const inMemoryBuckets = new Map<string, Bucket>();
 
+// v25 hotfix: a KV outage must degrade to the in-memory limiter, never
+// throw. checkRate is called before the routes' try/catch, so an
+// unhandled KV error here used to 500 all three form endpoints at once.
+// After a failure, skip KV for a cooldown so requests are not stuck
+// waiting out the KV client's retries while the backend is down.
+const KV_RETRY_MS = 60_000;
+let kvBrokenUntil = 0;
+
+function kvUsable(): boolean {
+  return KV_ENABLED && Date.now() >= kvBrokenUntil;
+}
+
+function noteKvFailure(op: "read" | "write", e: unknown): void {
+  kvBrokenUntil = Date.now() + KV_RETRY_MS;
+  console.error(
+    JSON.stringify({
+      scope: "api-guards",
+      event: "kv_unavailable",
+      op,
+      fallback: "in-memory",
+      error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+    }),
+  );
+}
+
 const ALLOWED_ORIGINS = [
   "https://deeperdesigns.in",
   "https://www.deeperdesigns.in",
@@ -34,16 +59,24 @@ export function clientKey(req: Request): string {
 }
 
 async function readBucket(key: string): Promise<Bucket | null> {
-  if (KV_ENABLED) {
-    return (await kv.get<Bucket>(key)) ?? null;
+  if (kvUsable()) {
+    try {
+      return (await kv.get<Bucket>(key)) ?? null;
+    } catch (e) {
+      noteKvFailure("read", e);
+    }
   }
   return inMemoryBuckets.get(key) ?? null;
 }
 
 async function writeBucket(key: string, bucket: Bucket, ttlSec: number): Promise<void> {
-  if (KV_ENABLED) {
-    await kv.set(key, bucket, { ex: ttlSec });
-    return;
+  if (kvUsable()) {
+    try {
+      await kv.set(key, bucket, { ex: ttlSec });
+      return;
+    } catch (e) {
+      noteKvFailure("write", e);
+    }
   }
   inMemoryBuckets.set(key, bucket);
 }

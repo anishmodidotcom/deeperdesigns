@@ -49,7 +49,18 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ ok: true });
   } catch (e) {
-    const msg = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
+    // v25 hotfix: log the real error server-side, return a generic
+    // message. Raw e.message used to go to the client.
+    console.error(
+      JSON.stringify({
+        route: "otp-verify",
+        event: "unhandled_error",
+        error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "Could not check the code. Try again." },
+      { status: 500 }
+    );
   }
 }
