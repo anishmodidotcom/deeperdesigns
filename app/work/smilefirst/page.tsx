@@ -26,7 +26,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "SmileFirst · Clinic Manager · Deeper Designs",
   description:
-    "A three-chair dental clinic turned recommended treatments into booked ones. Follow-up runs itself, and the clinic recovers ₹2.4L a month it used to lose.",
+    "Concept build. A three-chair dental clinic turned recommended treatments into booked ones. Follow-up runs itself, and the clinic recovers ₹2.4L a month it used to lose.",
   openGraph: {
     title: "SmileFirst · Clinic Manager · Deeper Designs",
     siteName: "Deeper Designs",

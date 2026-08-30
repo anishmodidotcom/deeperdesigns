@@ -27,7 +27,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
   description:
-    "A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
+    "Concept build. A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
   openGraph: {
     title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
     siteName: "Deeper Designs",

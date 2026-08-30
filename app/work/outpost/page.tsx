@@ -61,9 +61,11 @@ const WHAT_IT_DOES = [
 
 export default function OutpostPage() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Outpost",
           description:
             "Outpost finds your next customers and starts the conversation. Verified contacts, outreach in your voice, every reply in one inbox.",

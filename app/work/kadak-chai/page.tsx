@@ -38,7 +38,7 @@ const crimsonPro = Crimson_Pro({
 export const metadata: Metadata = {
   title: "Kadak Chai · Tea Brand · Deeper Designs",
   description:
-    "A third-generation Mumbai tea family went direct. We built the brand, the tins, the range, and a quiz-led store, and the middleman is gone.",
+    "Concept build. A third-generation Mumbai tea family went direct. We built the brand, the tins, the range, and a quiz-led store, and the middleman is gone.",
   openGraph: {
     title: "Kadak Chai · Tea Brand · Deeper Designs",
     siteName: "Deeper Designs",

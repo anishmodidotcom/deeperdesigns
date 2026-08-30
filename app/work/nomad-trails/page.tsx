@@ -45,7 +45,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Nomad Trails · Trek Outfit · Deeper Designs",
   description:
-    "A husband-and-wife Himalayan trek outfit got an editorial site, not a booking funnel. Direct bookings tripled, and the trip rate tripled with them.",
+    "Concept build. A husband-and-wife Himalayan trek outfit got an editorial site, not a booking funnel. Direct bookings tripled, and the trip rate tripled with them.",
   openGraph: {
     title: "Nomad Trails · Trek Outfit · Deeper Designs",
     siteName: "Deeper Designs",

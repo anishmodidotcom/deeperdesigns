@@ -31,7 +31,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Meera Wellness · Wellness Hub · Deeper Designs",
   description:
-    "A Dubai yoga instructor got her time back. One platform handles scheduling, client portals, and WhatsApp bookings, so she teaches instead of doing admin.",
+    "Concept build. A Dubai yoga instructor got her time back. One platform handles scheduling, client portals, and WhatsApp bookings, so she teaches instead of doing admin.",
   openGraph: {
     title: "Meera Wellness · Wellness Hub · Deeper Designs",
     siteName: "Deeper Designs",

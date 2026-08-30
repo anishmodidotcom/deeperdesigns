@@ -31,7 +31,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "PawStay · Pet Parent Portal · Deeper Designs",
   description:
-    "A Delhi dog boarding facility gave anxious parents a live window in. The owner got two hours of her day back, and the panicked WhatsApp messages stopped.",
+    "Concept build. A Delhi dog boarding facility gave anxious parents a live window in. The owner got two hours of her day back, and the panicked WhatsApp messages stopped.",
   openGraph: {
     title: "PawStay · Pet Parent Portal · Deeper Designs",
     siteName: "Deeper Designs",

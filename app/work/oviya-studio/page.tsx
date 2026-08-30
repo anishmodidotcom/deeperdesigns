@@ -60,9 +60,11 @@ const WHAT_IT_DOES = [
 
 export default function OviyaStudioPage() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Oviya Studio",
           description:
             "Upload the piece. Oviya shoots it. One photo of your garment or jewellery becomes a magazine-grade shoot.",

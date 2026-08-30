@@ -29,7 +29,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
   description:
-    "A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
+    "Concept build. A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
   openGraph: {
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
     siteName: "Deeper Designs",

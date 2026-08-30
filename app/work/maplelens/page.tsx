@@ -70,6 +70,8 @@ export default function MapleLensPage() {
     <main id="main" className={inter.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Maple Lens",
           description: metadata.description as string,
           slug: "maplelens",

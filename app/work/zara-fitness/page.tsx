@@ -30,7 +30,7 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "Zara Fitness · Training Platform · Deeper Designs",
   description:
-    "A Dubai fitness creator with 280K followers and a PDF guide got a real platform. 12,400 members in 90 days, and a sportswear line to come.",
+    "Concept build. A Dubai fitness creator with 280K followers and a PDF guide got a real platform. 12,400 members in 90 days, and a sportswear line to come.",
   openGraph: {
     title: "Zara Fitness · Training Platform · Deeper Designs",
     siteName: "Deeper Designs",

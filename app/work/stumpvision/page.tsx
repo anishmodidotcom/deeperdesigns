@@ -26,7 +26,7 @@ const rajdhani = Rajdhani({
 export const metadata: Metadata = {
   title: "StumpVision · Academy Platform · Deeper Designs",
   description:
-    "A 250-player cricket academy gave every kid a stats card and every parent a real answer. Selections stopped being arguments, and renewals stopped being guesswork.",
+    "Concept build. A 250-player cricket academy gave every kid a stats card and every parent a real answer. Selections stopped being arguments, and renewals stopped being guesswork.",
   openGraph: {
     title: "StumpVision · Academy Platform · Deeper Designs",
     siteName: "Deeper Designs",

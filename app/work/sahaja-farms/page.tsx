@@ -33,7 +33,7 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
   description:
-    "A 200-acre organic farm got a brain that survives the founder taking a Sunday off. It plans planting from real demand and flags subscribers before they cancel.",
+    "Concept build. A 200-acre organic farm got a brain that survives the founder taking a Sunday off. It plans planting from real demand and flags subscribers before they cancel.",
   openGraph: {
     title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
     siteName: "Deeper Designs",

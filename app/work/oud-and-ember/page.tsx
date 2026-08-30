@@ -28,7 +28,7 @@ const cormorant = Cormorant({
 export const metadata: Metadata = {
   title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
   description:
-    "A bespoke perfume house stopped losing online customers to twenty-message WhatsApp threads. A quiz finds their scent and shows them the bottle with their name on it.",
+    "Concept build. A bespoke perfume house stopped losing online customers to twenty-message WhatsApp threads. A quiz finds their scent and shows them the bottle with their name on it.",
   openGraph: {
     title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
     siteName: "Deeper Designs",

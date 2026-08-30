@@ -20,7 +20,9 @@ export const ORGANIZATION_LD: JsonLd = {
   "@type": "Organization",
   name: "Deeper Designs",
   url: "https://www.deeperdesigns.in",
-  logo: "https://www.deeperdesigns.in/brand/og-deeperdesigns.png",
+  // v25.5: was the 1200x630 social card, which is not a logo. The
+  // monogram is the actual brand mark.
+  logo: "https://www.deeperdesigns.in/brand/monogram-email.png",
   description:
     "India-first AI-led build studio for ambitious businesses. We design and build digital tools, sites, and operational systems.",
   founder: {
@@ -28,11 +30,21 @@ export const ORGANIZATION_LD: JsonLd = {
     name: "Anish Modi",
     url: "https://anishmodi.com",
   },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Delhi · Dubai",
-    addressCountry: ["IN", "AE"],
-  },
+  // v25.5: "Delhi · Dubai" is not a locality. Two cities means two
+  // PostalAddress nodes, each with its own country, which is what
+  // schema.org expects and what a parser can actually read.
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Delhi",
+      addressCountry: "IN",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-99687-16498",
@@ -54,11 +66,11 @@ export const ANISH_PERSON_LD: JsonLd = {
   name: "Anish Modi",
   jobTitle: "Founder, Deeper Designs",
   url: "https://anishmodi.com",
-  image: "https://deeperdesigns.in/images/about/anish-portrait.webp",
+  image: "https://www.deeperdesigns.in/images/about/anish-portrait.webp",
   worksFor: {
     "@type": "Organization",
     name: "Deeper Designs",
-    url: "https://deeperdesigns.in",
+    url: "https://www.deeperdesigns.in",
   },
   sameAs: ["https://anishmodi.com", "https://linkedin.com/in/anishmodi"],
 };
@@ -98,25 +110,41 @@ export function forIndustryLd(args: {
   };
 }
 
+// v25.5: `concept` marks a demonstration build rather than a delivered
+// client engagement. The showcase pages say so on the page and the social
+// card carries a CONCEPT eyebrow, but the structured data did not, so a
+// machine reader ingested a fictional outcome as a real case study.
+// creativeWorkStatus and the disambiguating description carry that
+// disclosure into the schema. Defaults to true because all but the four
+// live products are concepts; the live product pages pass false.
 export function creativeWorkLd(args: {
   name: string;
   description: string;
   slug: string;
   image: string;
   archetype: string;
+  concept?: boolean;
 }): JsonLd {
+  const isConcept = args.concept !== false;
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: args.name,
     description: args.description,
-    url: `https://deeperdesigns.in/work/${args.slug}`,
-    image: `https://deeperdesigns.in${args.image}`,
+    url: `https://www.deeperdesigns.in/work/${args.slug}`,
+    image: `https://www.deeperdesigns.in${args.image}`,
     creator: {
       "@type": "Organization",
       name: "Deeper Designs",
-      url: "https://deeperdesigns.in",
+      url: "https://www.deeperdesigns.in",
     },
+    ...(isConcept
+      ? {
+          creativeWorkStatus: "Concept",
+          disambiguatingDescription:
+            "Concept build. A demonstration of what Deeper Designs builds, not a delivered client engagement. The business shown is illustrative.",
+        }
+      : {}),
     about: args.archetype,
     workExample: {
       "@type": "WebApplication",

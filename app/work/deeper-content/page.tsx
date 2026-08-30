@@ -63,6 +63,8 @@ export default function DeeperContentPage() {
     <main id="main" data-slug="deeper-content" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Deeper Content",
           description: metadata.description as string,
           slug: "deeper-content",

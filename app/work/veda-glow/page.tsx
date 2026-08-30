@@ -28,7 +28,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Veda Glow · Skin Advisor · Deeper Designs",
   description:
-    "An Ayurvedic skincare brand got a skin advisor that answers every customer in two minutes, so the founder stopped losing her week to DMs.",
+    "Concept build. An Ayurvedic skincare brand got a skin advisor that answers every customer in two minutes, so the founder stopped losing her week to DMs.",
   openGraph: {
     title: "Veda Glow · Skin Advisor · Deeper Designs",
     siteName: "Deeper Designs",

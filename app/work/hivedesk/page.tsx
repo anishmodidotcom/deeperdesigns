@@ -28,7 +28,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "HiveDesk · Member Hub · Deeper Designs",
   description:
-    "A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
+    "Concept build. A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
   openGraph: {
     title: "HiveDesk · Member Hub · Deeper Designs",
     siteName: "Deeper Designs",

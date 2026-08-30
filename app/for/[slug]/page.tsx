@@ -119,7 +119,7 @@ export default async function IndustryPage({
   });
 
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <ForAnalytics slug={industry.slug} />
       <StructuredData data={industryLd} />
       <IndustryHero industry={industry} />

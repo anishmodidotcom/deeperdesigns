@@ -28,7 +28,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
   description:
-    "A father-son steel trader went from thirty-minute phone quotes to thirty-second ones, with a live inventory dashboard fed straight from WhatsApp.",
+    "Concept build. A father-son steel trader went from thirty-minute phone quotes to thirty-second ones, with a live inventory dashboard fed straight from WhatsApp.",
   openGraph: {
     title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
     siteName: "Deeper Designs",

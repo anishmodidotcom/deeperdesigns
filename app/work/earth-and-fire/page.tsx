@@ -40,7 +40,7 @@ const dmSerifDisplay = DM_Serif_Display({
 export const metadata: Metadata = {
   title: "Earth and Fire · Pottery Brand · Deeper Designs",
   description:
-    "A Jaipur ceramicist who sold out in 90 minutes got a heritage brand, a custom builder, and a queue. Slower drops, higher prices, a better business.",
+    "Concept build. A Jaipur ceramicist who sold out in 90 minutes got a heritage brand, a custom builder, and a queue. Slower drops, higher prices, a better business.",
   openGraph: {
     title: "Earth and Fire · Pottery Brand · Deeper Designs",
     siteName: "Deeper Designs",

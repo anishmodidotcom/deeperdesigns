@@ -23,12 +23,23 @@ export const metadata: Metadata = {
     url: CANONICAL,
     siteName: "Deeper Designs",
     type: "article",
+    // v25.5: the page declared summary_large_image with no image, so any
+    // share of it rendered a bare card.
+    images: [
+      {
+        url: "/brand/og-deeperdesigns.png",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy · Deeper Designs",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy · Deeper Designs",
     description:
       "How Deeper Designs collects, uses, and protects your information.",
+    images: ["/brand/og-deeperdesigns.png"],
   },
 };
 
