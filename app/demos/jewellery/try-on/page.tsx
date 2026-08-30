@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-// Real full-screen demo: the Try-On Studio for "Vaibhav Jewellers", a phone
+// Real full-screen demo: the Try-On Studio for "Kalasri Jewellers", a phone
 // tool that places a real piece on the buyer (real generated images). Not
 // indexed; kept for reuse as a live demo.
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function TryOnDemo() {
         </svg>
         <div style={{ flex: 1, lineHeight: 1.2 }}>
           <p style={{ margin: 0, fontSize: 15.5, fontWeight: 600 }}>Try it on</p>
-          <p style={{ margin: 0, fontSize: 11.5, color: "#9A937F" }}>Vaibhav Jewellers</p>
+          <p style={{ margin: 0, fontSize: 11.5, color: "#9A937F" }}>Kalasri Jewellers</p>
         </div>
         <span style={{ width: 9, height: 9, borderRadius: 2, background: ACCENT }} />
       </div>

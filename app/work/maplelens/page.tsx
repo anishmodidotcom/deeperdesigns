@@ -23,12 +23,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Maple Lens · Live Product · Deeper Designs",
   description:
-    "A working photo tool for Indian furniture makers. Turns a phone photo into a catalog-ready studio shot, and saves the cost of a studio shoot. Live and yours to try.",
+    "The client build that started it. A photo tool for Indian furniture makers: one phone photo becomes a catalogue-ready shot, no studio needed.",
   openGraph: {
     title: "Maple Lens · Live Product · Deeper Designs",
     siteName: "Deeper Designs",
     description:
-      "Workshop photo in. Studio shot out. A catalog generator for Indian furniture makers.",
+      "The client build that started it. A photo tool for Indian furniture makers: one phone photo becomes a catalogue-ready shot, no studio needed.",
     url: "/work/maplelens",
     images: [
       {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maple Lens · Live Product · Deeper Designs",
     description:
-      "Workshop photo in. Studio shot out. A catalog generator for Indian furniture makers.",
+      "The client build that started it. A photo tool for Indian furniture makers: one phone photo becomes a catalogue-ready shot, no studio needed.",
     images: ["/api/og/maplelens"],
   },
   alternates: { canonical: "/work/maplelens" },

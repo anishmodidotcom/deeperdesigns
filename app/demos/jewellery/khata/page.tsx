@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 // Real full-screen demo: a WhatsApp Business gold-savings/udhaar reminder
-// from "Vaibhav Jewellers" to a customer, dark theme. Same fidelity as the
+// from "Kalasri Jewellers" to a customer, dark theme. Same fidelity as the
 // D2C behaviour-recovery chat. Not indexed; kept for reuse.
 export const metadata: Metadata = {
   title: "Khata and Schemes demo",
@@ -58,10 +58,10 @@ export default function KhataDemo() {
             flexShrink: 0,
           }}
         >
-          V
+          K
         </div>
         <div style={{ flex: 1, minWidth: 0, lineHeight: 1.2 }}>
-          <p style={{ margin: 0, color: "#E9EDEF", fontSize: 16, fontWeight: 600 }}>Vaibhav Jewellers</p>
+          <p style={{ margin: 0, color: "#E9EDEF", fontSize: 16, fontWeight: 600 }}>Kalasri Jewellers</p>
           <p style={{ margin: 0, color: TIME, fontSize: 12 }}>business account · online</p>
         </div>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9EDEF" strokeWidth="2" aria-hidden>
@@ -102,7 +102,7 @@ export default function KhataDemo() {
           </span>
         </SystemPill>
 
-        <OutBubble time="10:02">Namaste Lata ji, a gentle reminder from Vaibhav Jewellers.</OutBubble>
+        <OutBubble time="10:02">Namaste Lata ji, a gentle reminder from Kalasri Jewellers.</OutBubble>
 
         {/* Scheme reminder card */}
         <div style={{ alignSelf: "flex-end", maxWidth: "84%" }}>

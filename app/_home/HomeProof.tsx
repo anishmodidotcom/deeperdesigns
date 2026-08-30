@@ -29,7 +29,12 @@ const PRODUCTS = [
   },
   {
     name: "Maple Lens",
-    line: "Built for a furniture client: their whole catalogue, searchable and shoppable from one link. Live and in use.",
+    // v25.6: the homepage described a searchable shoppable catalogue while
+    // the showcase described a photo-to-studio-shot tool, which also
+    // overlapped Oviya Studio. Both now say the same thing: Maple Lens is
+    // the client build that proved the idea, Oviya Studio is the product
+    // built from it.
+    line: "Maple Lens. The client build that started it: a furniture maker shoots one phone photo and gets back a catalogue shot. Live and in use.",
     href: "/work/maplelens",
     accent: "#C8956D",
   },
