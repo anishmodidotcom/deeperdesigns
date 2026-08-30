@@ -82,10 +82,14 @@ export default function BuildNote() {
             maxWidth: 680,
           }}
         >
-          We designed it, built it, and shipped it. Furniture makers across
-          India pay for it and use it every week. It is tuned for low-light
-          workshop photos, Indian interiors, and the exact ratios a
-          marketplace listing needs.
+          {/* v25.6: dropped "Furniture makers across India pay for it and
+              use it every week", which claimed a reach this build does not
+              have. Replaced with the approved client-build framing; the
+              rest of the sentence is unchanged and still accurate. */}
+          We designed it, built it, and shipped it. Built for one client,
+          live and working since. It is tuned for low-light workshop photos,
+          Indian interiors, and the exact ratios a marketplace listing
+          needs.
         </motion.p>
 
         <dl

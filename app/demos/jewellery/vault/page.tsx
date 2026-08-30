@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-// Real full-screen demo: The Vault inventory dashboard for "Vaibhav
+// Real full-screen demo: The Vault inventory dashboard for "Kalasri
 // Jewellers", with dead-stock flags and a karigar job-work panel. Not
 // indexed; kept for reuse.
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ export default function VaultDemo() {
         <div style={{ display: "flex", alignItems: "center", gap: 9, padding: "0 8px 22px" }}>
           <span style={{ width: 11, height: 11, borderRadius: 3, background: ACCENT }} />
           <span style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 14.5, fontWeight: 600, letterSpacing: "-0.01em" }}>
-            Vaibhav
+            Kalasri
           </span>
         </div>
         {NAV.map((n, i) => {

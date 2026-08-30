@@ -115,9 +115,11 @@ export default function Hero() {
           lineHeight: 1.65,
         }}
       >
-        A furniture maker shoots one phone photo and gets back a catalog
-        shot. No studio, no shoot day, no ₹40,000 invoice. Live and working
-        for makers across India.
+        {/* v25.6: was "Live and working for makers across India", which
+            overstated reach. This is one client build. */}
+        A furniture maker shoots one phone photo and gets back a catalogue
+        shot. No studio, no shoot day, no forty thousand rupee invoice.
+        Built for one client, live and working since.
       </motion.p>
 
       <motion.div

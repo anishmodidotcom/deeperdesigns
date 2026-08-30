@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-// Real full-screen demo: the Live-Rate Billing POS for "Vaibhav Jewellers".
+// Real full-screen demo: the Live-Rate Billing POS for "Kalasri Jewellers".
 // Today's gold rate flows into making-charges, old-gold exchange and the
 // final GST bill. Not indexed; kept for reuse.
 export const metadata: Metadata = {
@@ -54,7 +54,7 @@ export default function BillingDemo() {
         <div style={{ display: "flex", alignItems: "center", gap: 9, padding: "0 8px 22px" }}>
           <span style={{ width: 11, height: 11, borderRadius: 3, background: ACCENT }} />
           <span style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 14.5, fontWeight: 600, letterSpacing: "-0.01em" }}>
-            Vaibhav
+            Kalasri
           </span>
         </div>
         {NAV.map((n, i) => {

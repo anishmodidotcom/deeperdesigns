@@ -14,13 +14,13 @@ import { WHATSAPP_HREF } from "@/lib/contact";
 export const metadata: Metadata = {
   title: "Outpost · Live Product · Deeper Designs",
   description:
-    "Outpost finds your next customers and starts the conversation. Verified contacts, outreach in your voice, every reply in one inbox. A Deeper Designs product, live today.",
+    "Outpost replaces your cold email stack with one tool: find leads, verify them, send and follow up. Pay per credit, 100 free to start.",
   alternates: { canonical: "/work/outpost" },
   openGraph: {
     title: "Outpost · Live Product · Deeper Designs",
     siteName: "Deeper Designs",
     description:
-      "Finds your next customers and starts the conversation. A Deeper Designs product, live today.",
+      "Outpost replaces your cold email stack with one tool: find leads, verify them, send and follow up. Pay per credit, 100 free to start.",
     url: "/work/outpost",
     images: [
       {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Outpost · Live Product · Deeper Designs",
     description:
-      "Finds your next customers and starts the conversation. A Deeper Designs product, live today.",
+      "Outpost replaces your cold email stack with one tool: find leads, verify them, send and follow up. Pay per credit, 100 free to start.",
     images: ["/api/og/outpost"],
   },
 };
@@ -55,13 +55,22 @@ const pageStyle = {
   minHeight: "100vh",
 } as React.CSSProperties;
 
+// v25.6: the page described a personalised outbound agent. The live
+// product is a metered cold email platform, so the copy is replaced to
+// match what outpost.deeperdesigns.in actually does today.
 const WHAT_IT_DOES = [
   "Finds the right businesses from the market, not a stale database",
-  "Verifies every email before a single message goes out",
-  "Writes personal outreach in your voice, not a template blast",
-  "Sends from your own email address, with deliverability handled",
+  "Enriches and verifies every contact before a message goes out",
+  "Sends across multiple warmed inboxes, with deliverability handled",
   "Follows up until they reply, then hands the conversation to you",
-  "Every reply, one inbox",
+  "Every reply in one inbox",
+];
+
+const TIERS = [
+  "Mini, Rs 500",
+  "Starter, Rs 2,500",
+  "Growth, Rs 10,000",
+  "Scale, Rs 25,000",
 ];
 
 export default function OutpostPage() {
@@ -110,7 +119,7 @@ export default function OutpostPage() {
               maxWidth: 720,
             }}
           >
-            Outpost finds your next customers{" "}
+            Outpost replaces your whole cold email stack.{" "}
             <span
               style={{
                 fontFamily:
@@ -119,7 +128,7 @@ export default function OutpostPage() {
                 fontWeight: 400,
               }}
             >
-              and starts the conversation.
+              One instrument.
             </span>
           </h1>
           <p
@@ -131,9 +140,9 @@ export default function OutpostPage() {
               color: "var(--dd-text-mid, #A8A8A8)",
             }}
           >
-            Tell it who you sell to. It finds them, gets verified contact
-            details, writes outreach that sounds like you, sends from your own
-            email, follows up on its own, and lands every reply in one inbox.
+            Finding leads, verifying them, and sending used to mean three
+            tools and three bills. Outpost does all of it in one place, and
+            you pay only for what you use.
           </p>
 
           <div style={{ marginTop: 48, maxWidth: 960 }}>
@@ -160,16 +169,7 @@ export default function OutpostPage() {
           {/* v25.5: was a styled <p>, so the page had an h1 and no section
               headings at all and could not be navigated by heading. Same
               text, same type treatment, correct element. */}
-          <h2
-            className="mono"
-            style={{
-              fontSize: 11,
-              fontWeight: 400,
-              letterSpacing: "0.16em",
-              color: "var(--page-accent)",
-              margin: "0 0 28px",
-            }}
-          >
+          <h2 className="op-section-label" style={{ marginBottom: 28 }}>
             WHAT IT DOES
           </h2>
           <ul
@@ -213,7 +213,7 @@ export default function OutpostPage() {
         </div>
       </section>
 
-      {/* Who it is for + the honest line */}
+      {/* How you pay */}
       <section
         style={{
           paddingBlock: "var(--dd-section-py, 120px)",
@@ -222,22 +222,77 @@ export default function OutpostPage() {
       >
         <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
           <div style={{ maxWidth: 680 }}>
-            <h2
-              className="mono"
+            <h2 className="op-section-label">HOW YOU PAY</h2>
+            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--dd-text-high, #F5F5F5)", margin: 0 }}>
+              Two balances, no subscription trap. One lead credit per lead
+              sourced, with enrichment and verification included. One email
+              credit per send. Credits roll over and never expire. Every
+              account starts with 100 lead credits and 100 email credits free.
+            </p>
+            <ul
               style={{
-                fontSize: 11,
-                fontWeight: 400,
-                letterSpacing: "0.16em",
-                color: "var(--page-accent)",
-                margin: "0 0 18px",
+                listStyle: "none",
+                margin: "28px 0 0",
+                padding: 0,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 10,
               }}
             >
-              WHO IT IS FOR
-            </h2>
+              {TIERS.map((t) => (
+                <li
+                  key={t}
+                  className="mono"
+                  style={{
+                    fontSize: 13,
+                    letterSpacing: "0.04em",
+                    color: "var(--dd-text-high, #F5F5F5)",
+                    border: "1px solid var(--dd-border-strong, rgba(255,255,255,0.16))",
+                    borderRadius: 999,
+                    padding: "9px 16px",
+                  }}
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Bring your own, or not */}
+      <section
+        style={{
+          paddingBlock: "var(--dd-section-py, 120px)",
+          borderTop: "1px solid var(--dd-border, rgba(255,255,255,0.08))",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
+          <div style={{ maxWidth: 680 }}>
+            <h2 className="op-section-label">BRING YOUR OWN, OR NOT</h2>
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--dd-text-high, #F5F5F5)", margin: 0 }}>
-              Built for founders and sales teams who know exactly who they sell
-              to and are tired of doing the finding, writing, and chasing by
-              hand.
+              Connect your own Apollo, FullEnrich, ZeroBounce and Amazon SES
+              accounts and Outpost runs on top of them for a small platform
+              fee. Or use ours and skip the setup entirely.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Your own version + the honest line */}
+      <section
+        style={{
+          paddingBlock: "var(--dd-section-py, 120px)",
+          borderTop: "1px solid var(--dd-border, rgba(255,255,255,0.08))",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
+          <div style={{ maxWidth: 680 }}>
+            <h2 className="op-section-label">YOUR OWN VERSION</h2>
+            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--dd-text-high, #F5F5F5)", margin: 0 }}>
+              We also build Outpost as your own product: your brand, your
+              domain, your workflow, the same engine underneath. Built and run
+              by us.
             </p>
 
             <p
@@ -276,7 +331,7 @@ export default function OutpostPage() {
                 gap: 8,
               }}
             >
-              See Outpost
+              Start free
             </a>
             <Link
               href="/start-your-study"
@@ -301,6 +356,16 @@ export default function OutpostPage() {
       <ShowcaseAnalytics slug="outpost" name="Outpost" industry="Deeper Designs" />
 
       <style>{`
+        /* v25.6: one shared treatment for the mono section labels, which
+           are real h2 headings styled as eyebrows. */
+        .op-section-label {
+          font-family: var(--font-geist-mono), ui-monospace, monospace;
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.16em;
+          color: var(--page-accent);
+          margin: 0 0 18px;
+        }
         .op-cta-primary { transition: filter 150ms var(--dd-ease-out, ease); }
         .op-cta-primary:hover { filter: brightness(1.08); }
         .op-cta-primary:active { transform: translateY(1px); }

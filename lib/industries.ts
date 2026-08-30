@@ -1551,7 +1551,7 @@ export const INDUSTRIES: Industry[] = [
         shot: "/builds/jewellery/billing.webp",
         shotW: 1440,
         shotH: 900,
-        demoUrl: "app.vaibhavjewellers.in/billing",
+        demoUrl: "app.kalasrijewellers.in/billing",
         headline: "Today's rate, in every bill, {serif}to the paisa.{/serif}",
         body: "The morning rate flows into making-charges, old-gold exchange and the final bill automatically. No calculator, no slip, no lost margin.",
         bullets: [
@@ -1569,7 +1569,7 @@ export const INDUSTRIES: Industry[] = [
         shot: "/builds/jewellery/vault.webp",
         shotW: 1440,
         shotH: 900,
-        demoUrl: "app.vaibhavjewellers.in/vault",
+        demoUrl: "app.kalasrijewellers.in/vault",
         headline: "Every gram, by karat and HUID, {serif}finally searchable.{/serif}",
         body: "What is in the vault, what is moving, what has sat a season. By purity, by HUID, in one screen instead of a register.",
         bullets: [
