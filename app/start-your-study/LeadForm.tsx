@@ -3,6 +3,8 @@
 import { useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { attributedIndustry } from "@/lib/attribution";
+import { normalizePhone } from "@/lib/phone";
 import {
   trackLeadFormStart,
   trackFormLead,
@@ -43,13 +45,11 @@ type Fields = {
 
 type FieldErrors = Partial<Record<keyof Fields, string>>;
 
+// v25.5: attribution now falls back to the industry recorded when the
+// visitor was on a /for page, so a lead that reaches the form through the
+// nav or any other link without ?from is still credited.
 function fromIndustry(): string {
-  if (typeof window === "undefined") return "";
-  try {
-    return new URLSearchParams(window.location.search).get("from") ?? "";
-  } catch {
-    return "";
-  }
+  return attributedIndustry();
 }
 
 // v25 hotfix: when the backend is down the person must see a plain error
@@ -227,17 +227,14 @@ export default function LeadForm({
       // community form never reads ?from and posts source: "community" so
       // the completion route labels and routes the signup separately.
       const industry = isCommunity ? "" : fromIndustry();
+      // v25.5: the legacy long-form fields and the client-asserted
+      // emailVerified flag are gone. The server proves verification from
+      // its own verified-session record.
       const sResult = await postJson("/api/start-your-study", {
         name: fields.name.trim(),
         business: fields.business.trim(),
         phone: fields.phone.trim(),
         email: fields.email.trim(),
-        emailVerified: true,
-        country: "",
-        teamSize: "",
-        bottleneck: "",
-        budget: "",
-        slot: "",
         industry: industry || undefined,
         source: variant,
       });
@@ -259,13 +256,13 @@ export default function LeadForm({
         if (isCommunity) {
           trackCommunityJoin({
             email: fields.email.trim(),
-            phone: fields.phone.trim(),
+            phone: normalizePhone(fields.phone),
           });
         } else {
           trackFormLead({
             industry,
             email: fields.email.trim(),
-            phone: fields.phone.trim(),
+            phone: normalizePhone(fields.phone),
           });
         }
       } catch {

@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import {
+  FIELD_MAX,
   LIMITS,
   checkRate,
   clientKey,
   originAllowed,
+  readField,
 } from "@/lib/api-guards";
 import { emailKey, verifyCode } from "@/lib/otp-store";
 
@@ -31,9 +33,11 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = (await req.json()) as { email?: string; otp?: string };
-    const email = (body.email ?? "").trim().toLowerCase();
-    const otp = (body.otp ?? "").trim();
+    const raw = (await req.json()) as Record<string, unknown>;
+    const emailField = readField(raw.email, FIELD_MAX.email);
+    const otpField = readField(raw.otp, 6);
+    const email = emailField.ok ? emailField.value.toLowerCase() : "";
+    const otp = otpField.ok ? otpField.value : "";
     if (!/^[0-9]{6}$/.test(otp)) {
       return NextResponse.json(
         { ok: false, error: "Enter the six-digit code." },

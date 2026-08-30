@@ -3,7 +3,28 @@
 import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
 import { useEffect, useState } from "react";
-import { nextShowcase, type Industry, type Objective } from "@/lib/showcases";
+import {
+  INDUSTRIES,
+  OBJECTIVES,
+  nextShowcase,
+  type Industry,
+  type Objective,
+} from "@/lib/showcases";
+
+// v25.5: these come from the URL, so they are validated against the known
+// sets instead of being cast. An unknown value is dropped, not passed on.
+const INDUSTRY_SET = new Set<string>(INDUSTRIES);
+const OBJECTIVE_SET = new Set<string>(OBJECTIVES);
+
+function parseIndustries(raw: string | null): Industry[] {
+  if (!raw) return [];
+  return raw.split("|").filter((v): v is Industry => INDUSTRY_SET.has(v));
+}
+
+function parseObjectives(raw: string | null): Objective[] {
+  if (!raw) return [];
+  return raw.split("|").filter((v): v is Objective => OBJECTIVE_SET.has(v));
+}
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -13,10 +34,8 @@ export default function NextProject() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
-    const i = params.get("industry");
-    const o = params.get("objective");
-    const industries = (i ? i.split("|") : []) as Industry[];
-    const objectives = (o ? o.split("|") : []) as Objective[];
+    const industries = parseIndustries(params.get("industry"));
+    const objectives = parseObjectives(params.get("objective"));
     setNext(nextShowcase("maplelens", industries, objectives));
   }, []);
 

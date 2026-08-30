@@ -23,8 +23,74 @@
 
 import { NextResponse } from "next/server";
 import { createHash } from "node:crypto";
+import { LIMITS, checkRate, clientKey, sameSiteOnly } from "@/lib/api-guards";
+import { normalizePhone } from "@/lib/phone";
 
 export const runtime = "nodejs";
+
+// v25.5: this route forwards to Meta using the server access token, and
+// used to accept any event name with any custom_data from any caller with
+// no origin check and no rate limit. That is an open relay into the pixel
+// dataset. Only the names lib/meta-events.ts can emit are accepted.
+const ALLOWED_EVENTS = new Set([
+  "PageView",
+  "ViewContent",
+  "Lead",
+  "Contact",
+  "InitiateCheckout",
+  "ShowcaseScrolled75",
+  "LiveProductCTAClick",
+  "WhatsAppOpenedFromShowcase",
+  "ForPageView",
+  "ForScrolled75",
+  "ForBuildCTAClick",
+  "ForLeadCTAClick",
+  "ForWhatsAppClick",
+  "LeadFormStart",
+  "CommunityFormStart",
+  "CommunityJoin",
+]);
+
+// v25.5: custom_data is forwarded key by key, not verbatim, so a caller
+// cannot inject arbitrary fields into the dataset.
+const ALLOWED_CUSTOM_KEYS = new Set([
+  "content_name",
+  "content_category",
+  "content_ids",
+  "content_type",
+  "source_page",
+  "value_band",
+  "showcase_slug",
+  "showcase_industry",
+  "for_slug",
+  "for_industry",
+  "product",
+  "industry",
+  "build",
+  "cta",
+  "path",
+  "source",
+]);
+
+const CUSTOM_VALUE_MAX = 200;
+
+function pickCustomData(input: CustomData): CustomData {
+  const out: CustomData = {};
+  for (const [key, value] of Object.entries(input)) {
+    if (!ALLOWED_CUSTOM_KEYS.has(key)) continue;
+    if (typeof value === "string") {
+      out[key] = value.slice(0, CUSTOM_VALUE_MAX);
+    } else if (typeof value === "number" || typeof value === "boolean") {
+      out[key] = value;
+    } else if (Array.isArray(value)) {
+      out[key] = value
+        .filter((v): v is string => typeof v === "string")
+        .slice(0, 10)
+        .map((v) => v.slice(0, CUSTOM_VALUE_MAX));
+    }
+  }
+  return out;
+}
 
 type UserData = { em?: string; ph?: string; external_id?: string };
 type CustomData = Record<string, unknown>;
@@ -43,7 +109,13 @@ function sha256(value: string): string {
 function hashUserData(u: UserData): Record<string, string | string[]> {
   const out: Record<string, string | string[]> = {};
   if (u.em) out.em = sha256(u.em.trim().toLowerCase());
-  if (u.ph) out.ph = sha256(u.ph.replace(/\D+/g, ""));
+  // v25.5: normalize to country-code digits before hashing. Hashing the
+  // number exactly as typed produced a value Meta's own hash could never
+  // match, silently degrading match quality on every Lead.
+  if (u.ph) {
+    const ph = normalizePhone(u.ph);
+    if (ph) out.ph = sha256(ph);
+  }
   if (u.external_id) out.external_id = sha256(u.external_id);
   return out;
 }
@@ -70,6 +142,28 @@ function readCookie(req: Request, name: string): string | undefined {
 }
 
 export async function POST(req: Request) {
+  // v25.5: same-site callers only, and rate limited like the form routes.
+  if (!sameSiteOnly(req)) {
+    return NextResponse.json(
+      { ok: false, error: "forbidden" },
+      { status: 403 },
+    );
+  }
+  const rate = await checkRate(
+    `capi:${clientKey(req)}`,
+    LIMITS.capi.limit,
+    LIMITS.capi.windowMs,
+  );
+  if (!rate.ok) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rate.retryAfterSeconds) },
+      },
+    );
+  }
+
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
   const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
   const testEventCode = process.env.META_TEST_EVENT_CODE;
@@ -96,6 +190,19 @@ export async function POST(req: Request) {
   if (!event_name || !event_id) {
     return NextResponse.json(
       { ok: false, error: "missing_event_name_or_id" },
+      { status: 400 },
+    );
+  }
+  if (!ALLOWED_EVENTS.has(event_name)) {
+    console.error(
+      JSON.stringify({
+        route: "meta-capi",
+        event: "event_name_rejected",
+        event_name: event_name.slice(0, 64),
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "unknown_event_name" },
       { status: 400 },
     );
   }
@@ -128,7 +235,7 @@ export async function POST(req: Request) {
       client_ip_address: clientIp(req),
       client_user_agent: req.headers.get("user-agent") ?? undefined,
     },
-    custom_data,
+    custom_data: pickCustomData(custom_data),
   };
 
   const payload: Record<string, unknown> = {

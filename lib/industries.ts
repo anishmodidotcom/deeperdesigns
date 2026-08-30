@@ -7,6 +7,8 @@
 // per-page accent declared on the object and wired through the existing
 // --page-accent CSS variable mechanism on the route root.
 
+import type { IndustrySlug } from "@/lib/industry-slugs";
+
 export type DayItem = {
   label: string; // short mono label, e.g. "THE RETURN"
   title: string;
@@ -56,7 +58,9 @@ export type StatPanel = {
 };
 
 export type Industry = {
-  slug: string; // url: /for/{slug}
+  // v25.5: typed against lib/industry-slugs.ts so the light slug list that
+  // client code validates against cannot drift from this dataset.
+  slug: IndustrySlug; // url: /for/{slug}
   name: string; // "D2C Brands"
   live: boolean; // true = fully built, false = scaffold only
   accent: string; // hex, per-vertical accent (never teal-family)
