@@ -45,25 +45,69 @@ function codesMatch(a: string, b: string): boolean {
   return timingSafeEqual(ab, bb);
 }
 
+// v25.5: the OTP store degrades on a KV failure instead of throwing.
+//
+// v25 fixed this for the rate limiter in lib/api-guards.ts but left the
+// code store unguarded, which is why the funnel stayed down after that
+// hotfix shipped: a dead KV made setCode throw, otp-send caught it, and
+// every visitor got a generic 500. A rate-limit or code-store backend
+// being unreachable must never stop a lead from completing.
+//
+// The in-memory fallback is weaker than KV: it does not survive a cold
+// start and is not shared across serverless instances, so a code written
+// on one instance may not verify on another. That is a degraded service,
+// not a dead one, and it is strictly better than refusing every request.
+const KV_RETRY_MS = 60_000;
+let kvBrokenUntil = 0;
+
+function kvUsable(): boolean {
+  return KV_ENABLED && Date.now() >= kvBrokenUntil;
+}
+
+function noteKvFailure(op: "read" | "write" | "delete", e: unknown): void {
+  kvBrokenUntil = Date.now() + KV_RETRY_MS;
+  console.error(
+    JSON.stringify({
+      scope: "otp-store",
+      event: "kv_unavailable",
+      op,
+      fallback: "in-memory",
+      error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+    }),
+  );
+}
+
 async function readEntry(key: string): Promise<Entry | null> {
-  if (KV_ENABLED) {
-    return (await kv.get<Entry>(key)) ?? null;
+  if (kvUsable()) {
+    try {
+      return (await kv.get<Entry>(key)) ?? null;
+    } catch (e) {
+      noteKvFailure("read", e);
+    }
   }
   return inMemoryStore.get(key) ?? null;
 }
 
 async function writeEntry(key: string, entry: Entry): Promise<void> {
-  if (KV_ENABLED) {
-    await kv.set(key, entry, { ex: TTL_SEC });
-    return;
+  if (kvUsable()) {
+    try {
+      await kv.set(key, entry, { ex: TTL_SEC });
+      return;
+    } catch (e) {
+      noteKvFailure("write", e);
+    }
   }
   inMemoryStore.set(key, entry);
 }
 
 async function deleteEntry(key: string): Promise<void> {
-  if (KV_ENABLED) {
-    await kv.del(key);
-    return;
+  if (kvUsable()) {
+    try {
+      await kv.del(key);
+      return;
+    } catch (e) {
+      noteKvFailure("delete", e);
+    }
   }
   inMemoryStore.delete(key);
 }
@@ -109,12 +153,12 @@ function verifiedKey(key: string): string {
 
 async function setVerified(key: string): Promise<void> {
   const expiresAt = Date.now() + VERIFIED_TTL_MS;
-  if (KV_ENABLED) {
+  if (kvUsable()) {
     try {
       await kv.set(verifiedKey(key), expiresAt, { ex: VERIFIED_TTL_SEC });
       return;
-    } catch {
-      // fall through to the in-memory store
+    } catch (e) {
+      noteKvFailure("write", e);
     }
   }
   inMemoryVerified.set(verifiedKey(key), expiresAt);
@@ -122,12 +166,12 @@ async function setVerified(key: string): Promise<void> {
 
 export async function hasVerified(key: string): Promise<boolean> {
   const vk = verifiedKey(key);
-  if (KV_ENABLED) {
+  if (kvUsable()) {
     try {
       const expiresAt = await kv.get<number>(vk);
       if (expiresAt) return expiresAt > Date.now();
-    } catch {
-      // fall through to the in-memory store
+    } catch (e) {
+      noteKvFailure("read", e);
     }
   }
   const local = inMemoryVerified.get(vk);
@@ -141,11 +185,11 @@ export async function hasVerified(key: string): Promise<boolean> {
 
 export async function clearVerified(key: string): Promise<void> {
   const vk = verifiedKey(key);
-  if (KV_ENABLED) {
+  if (kvUsable()) {
     try {
       await kv.del(vk);
-    } catch {
-      // fall through to the in-memory store
+    } catch (e) {
+      noteKvFailure("delete", e);
     }
   }
   inMemoryVerified.delete(vk);
