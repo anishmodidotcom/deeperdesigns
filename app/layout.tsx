@@ -118,13 +118,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               animating through motion/react did not. */}
           <MotionConfig reducedMotion="user">
             <ShowcaseRouteProvider>
-              <SmoothScroll>
-                <Nav />
-                {children}
-                <Footer />
-                <WhatsAppButton />
-                <ShowcaseNavigator />
-              </SmoothScroll>
+              {/* v25.5: SmoothScroll no longer wraps the page. It attaches
+                  scroll behaviour and renders nothing, so it sits beside
+                  the content and loads as a lazy chunk. */}
+              <SmoothScroll />
+              <Nav />
+              {children}
+              <Footer />
+              <WhatsAppButton />
+              <ShowcaseNavigator />
             </ShowcaseRouteProvider>
           </MotionConfig>
           {/* v18: Organization JSON-LD lives in the head for every route. */}

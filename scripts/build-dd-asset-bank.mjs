@@ -25,7 +25,7 @@ const GEN = path.join(BANK, "generated-images");
 mkdirSync(UI, { recursive: true });
 mkdirSync(GEN, { recursive: true });
 
-// ---- Part A: industry build-demo UI renders (public/builds/*.png) ----
+// ---- Part A: industry build-demo UI renders (public/builds/*.webp) ----
 // UI dashboards/apps only. Studio photos + posters are Part B (PHOTO below).
 // Names with a trailing "!" are held for currency review, not auto-copied.
 const BUILD_UI = {
