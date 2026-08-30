@@ -4,7 +4,10 @@ import { Link } from "next-view-transitions";
 import { motion } from "motion/react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
-import { trackForLeadCTAClick } from "@/lib/meta-events";
+import {
+  trackForLeadCTAClick,
+  trackForWhatsAppClick,
+} from "@/lib/meta-events";
 import type { Industry } from "@/lib/industries";
 import { renderSerif } from "./text";
 
@@ -152,9 +155,14 @@ export default function IndustryCTA({
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                showcaseSlug={slug}
-                showcaseIndustry={name}
-                extraTrack={() => trackForLeadCTAClick(slug, "whatsapp")}
+                extraTrack={() => {
+                  // v25.5: /for pages fire their own WhatsApp event. They
+                  // used to pass the industry through showcaseSlug and
+                  // showcaseIndustry, which put verticals into the showcase
+                  // ID space and mixed the two in any audience built on it.
+                  trackForLeadCTAClick(slug, "whatsapp");
+                  trackForWhatsAppClick(slug, name);
+                }}
                 className="ind-cta-wa"
                 style={{
                   background: "var(--whatsapp, #25D366)",

@@ -4,6 +4,7 @@ import { Link } from "next-view-transitions";
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import type { Industry } from "@/lib/industries";
+import { trackForLeadCTAClick } from "@/lib/meta-events";
 import { renderSerif } from "./text";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -103,6 +104,16 @@ export default function IndustryHero({ industry }: { industry: Industry }) {
               <Link
                 href={`/start-your-study?from=${industry.slug}`}
                 className="ind-btn-primary"
+                onClick={() => {
+                  // v25.5: this is the page's primary CTA and it fired no
+                  // event at all, so top-of-page lead intent was invisible
+                  // next to the bottom CTA card. Same params as that card.
+                  try {
+                    trackForLeadCTAClick(industry.slug, "book");
+                  } catch {
+                    // analytics must never block navigation
+                  }
+                }}
                 style={{
                   background: "var(--page-accent)",
                   color: "#0A0A0A",

@@ -277,9 +277,18 @@ export async function POST(req: Request) {
       } catch {
         // Non-JSON response, skip.
       }
-      // eslint-disable-next-line no-console
+      // v25.5: structured so a broken forward is greppable in Vercel logs
+      // rather than buried in prose. The browser never sees this failure
+      // (fireServer is fire and forget), so the log is the only signal.
       console.error(
-        `[meta-capi] ${event_name} failed status=${res.status} fbtrace_id=${fbtrace_id ?? "none"} body=${text.slice(0, 200)}`,
+        JSON.stringify({
+          route: "meta-capi",
+          event: "forward_failed",
+          event_name,
+          status: res.status,
+          fbtrace_id: fbtrace_id ?? null,
+          body: text.slice(0, 300),
+        }),
       );
       return NextResponse.json(
         { ok: false, error: `meta_${res.status}`, fbtrace_id },
@@ -291,8 +300,14 @@ export async function POST(req: Request) {
     clearTimeout(timeoutHandle);
     const err = e as Error;
     const reason = err.name === "AbortError" ? "timeout_5s" : err.message;
-    // eslint-disable-next-line no-console
-    console.error(`[meta-capi] ${event_name} threw ${reason}`);
+    console.error(
+      JSON.stringify({
+        route: "meta-capi",
+        event: "forward_threw",
+        event_name,
+        reason,
+      }),
+    );
     return NextResponse.json(
       { ok: false, error: `fetch_failed_${reason}` },
       { status: 502 },

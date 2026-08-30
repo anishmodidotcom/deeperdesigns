@@ -17,9 +17,9 @@ type EventName =
   | "ShowcaseScrolled75"
   | "LiveProductCTAClick"
   | "WhatsAppOpenedFromShowcase"
-  | "CGEDemoRequest"
   // v19.7: /for/[slug] industry-page custom events. All custom (not in
   // STANDARD_EVENTS), so they route through fbq('trackCustom', ...).
+  | "ForWhatsAppClick"
   | "ForPageView"
   | "ForScrolled75"
   | "ForBuildCTAClick"
@@ -38,8 +38,8 @@ type EventName =
 // event and must be sent via fbq('trackCustom', ...) instead of
 // fbq('track', ...). Using 'track' on a custom name silently drops the
 // browser beacon while server-side CAPI still fires — that's exactly
-// what production saw for ShowcaseScrolled75, LiveProductCTAClick,
-// WhatsAppOpenedFromShowcase, and CGEDemoRequest.
+// what production saw for ShowcaseScrolled75, LiveProductCTAClick, and
+// WhatsAppOpenedFromShowcase.
 const STANDARD_EVENTS = new Set<EventName>([
   "PageView",
   "ViewContent",
@@ -265,9 +265,20 @@ export function trackWhatsAppOpenedFromShowcase(
   trackEvent("WhatsAppOpenedFromShowcase", { showcase_slug, showcase_industry });
 }
 
-// TODO(cge): fire once cge.deeperdesigns.in/request-access form exists.
-export function trackCGEDemoRequest(): void {
-  trackEvent("CGEDemoRequest", {});
+// v25.5: trackCGEDemoRequest and its CGEDemoRequest event are gone. They
+// were defined for a request-access form that was never built, so the name
+// only ever existed as dead weight in this union and in Meta's config.
+
+// v25.5: /for pages get their own WhatsApp event instead of borrowing
+// WhatsAppOpenedFromShowcase. They used to write an industry slug into
+// showcase_slug and an industry display name into showcase_industry, so any
+// audience built on those params silently mixed verticals with showcases.
+// Showcase pages keep the original event and params untouched.
+export function trackForWhatsAppClick(
+  for_slug: string,
+  for_industry: string,
+): void {
+  trackEvent("ForWhatsAppClick", { for_slug, for_industry });
 }
 
 // ---------- v19.7: /for/[slug] industry-page events ----------

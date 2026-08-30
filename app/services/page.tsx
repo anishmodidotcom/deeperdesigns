@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AnishNote from "@/components/AnishNote";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import Link from "next/link";
 import TrackedTierCTA from "./TrackedTierCTA";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -170,7 +170,10 @@ export default function Services() {
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
-            <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
+            {/* v25.5: internal navigation to the form, not a WhatsApp
+                click. It used to be wrapped in TrackedWhatsAppLink, which
+                would emit a WhatsApp event for a page navigation. */}
+            <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>
           </div>
         </div>
       </section>
