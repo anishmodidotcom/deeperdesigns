@@ -94,20 +94,54 @@ export async function POST(req: Request) {
         }),
       });
       if (!res.ok) {
-        console.error("[start-your-study] Resend failed", await res.text());
+        const resendBody = await res.text().catch(() => "");
+        console.error(
+          JSON.stringify({
+            route: "start-your-study",
+            event: "resend_failed",
+            status: res.status,
+            body: resendBody.slice(0, 500),
+          }),
+        );
         return NextResponse.json(
           { ok: false, error: "Could not send notification." },
           { status: 502 }
         );
       }
-    } else if (process.env.NODE_ENV !== "production") {
-      console.log(`[start-your-study dev] ${subject}\n${text}`);
+      return NextResponse.json({ ok: true });
     }
 
-    return NextResponse.json({ ok: true });
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`[start-your-study dev] ${subject}\n${text}`);
+      return NextResponse.json({ ok: true });
+    }
+
+    // v25 hotfix: this used to return { ok: true } with no key configured,
+    // silently dropping the lead. Never fake success.
+    console.error(
+      JSON.stringify({
+        route: "start-your-study",
+        event: "email_not_configured",
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "Could not finish. Try again." },
+      { status: 500 }
+    );
   } catch (e) {
-    const msg = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
+    // v25 hotfix: log the real error server-side, return a generic
+    // message. Raw e.message used to go to the client.
+    console.error(
+      JSON.stringify({
+        route: "start-your-study",
+        event: "unhandled_error",
+        error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "Could not finish. Try again." },
+      { status: 500 }
+    );
   }
 }
 

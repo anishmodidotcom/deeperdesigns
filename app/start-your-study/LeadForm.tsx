@@ -52,6 +52,39 @@ function fromIndustry(): string {
   }
 }
 
+// v25 hotfix: when the backend is down the person must see a plain error
+// and a working path out, never a button that quietly resets.
+const FAIL_MSG =
+  "That did not go through. Try again in a minute, or message us on WhatsApp and we will sort it there.";
+
+type PostResult =
+  | { ok: true }
+  | { ok: false; error?: string; hard: boolean };
+
+// POST JSON and classify the failure. "hard" means the server is broken
+// (5xx, empty or unparseable body, network error): show FAIL_MSG and the
+// WhatsApp link. A 4xx with a message is user-correctable: show it as-is.
+async function postJson(url: string, payload: unknown): Promise<PostResult> {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    let json: { ok?: boolean; error?: string } | null = null;
+    try {
+      json = (await res.json()) as { ok?: boolean; error?: string };
+    } catch {
+      json = null;
+    }
+    if (res.ok && json?.ok) return { ok: true };
+    if (res.status >= 500 || !json) return { ok: false, hard: true };
+    return { ok: false, error: json.error, hard: false };
+  } catch {
+    return { ok: false, hard: true };
+  }
+}
+
 export default function LeadForm({
   variant = "lead",
 }: {
@@ -74,6 +107,9 @@ export default function LeadForm({
   const [codeError, setCodeError] = useState<string | null>(null);
   const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
+  // v25 hotfix: true when the backend failed hard; shows the WhatsApp
+  // escape hatch under the active screen.
+  const [hardFail, setHardFail] = useState(false);
 
   const startFired = useRef(false);
   const codeInputRef = useRef<HTMLInputElement>(null);
@@ -101,17 +137,20 @@ export default function LeadForm({
   const sendCode = async (e?: React.FormEvent) => {
     e?.preventDefault();
     setSendError(null);
+    setHardFail(false);
     if (!validate()) return;
     setSending(true);
     try {
-      const res = await fetch("/api/otp-send", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: fields.email.trim() }),
+      const result = await postJson("/api/otp-send", {
+        email: fields.email.trim(),
       });
-      const json = await res.json();
-      if (!json.ok) {
-        setSendError(json.error || "Could not send the code. Try again.");
+      if (!result.ok) {
+        if (result.hard) {
+          setHardFail(true);
+          setSendError(FAIL_MSG);
+        } else {
+          setSendError(result.error || "Could not send the code. Try again.");
+        }
         return;
       }
       if (!startFired.current) {
@@ -127,8 +166,6 @@ export default function LeadForm({
       }
       setScreen("code");
       setTimeout(() => codeInputRef.current?.focus(), 50);
-    } catch {
-      setSendError("Could not send the code. Try again.");
     } finally {
       setSending(false);
     }
@@ -138,22 +175,23 @@ export default function LeadForm({
   // LeadFormStart).
   const resendCode = async () => {
     setCodeError(null);
+    setHardFail(false);
     setResending(true);
     setResent(false);
     try {
-      const res = await fetch("/api/otp-send", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: fields.email.trim() }),
+      const result = await postJson("/api/otp-send", {
+        email: fields.email.trim(),
       });
-      const json = await res.json();
-      if (!json.ok) {
-        setCodeError(json.error || "Could not resend the code.");
+      if (!result.ok) {
+        if (result.hard) {
+          setHardFail(true);
+          setCodeError(FAIL_MSG);
+        } else {
+          setCodeError(result.error || "Could not resend the code.");
+        }
         return;
       }
       setResent(true);
-    } catch {
-      setCodeError("Could not resend the code.");
     } finally {
       setResending(false);
     }
@@ -164,20 +202,24 @@ export default function LeadForm({
   const verify = async (e?: React.FormEvent) => {
     e?.preventDefault();
     setCodeError(null);
+    setHardFail(false);
     if (!/^[0-9]{6}$/.test(code)) {
       setCodeError("Enter the six digits from the email.");
       return;
     }
     setVerifying(true);
     try {
-      const vRes = await fetch("/api/otp-verify", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: fields.email.trim(), otp: code }),
+      const vResult = await postJson("/api/otp-verify", {
+        email: fields.email.trim(),
+        otp: code,
       });
-      const vJson = await vRes.json();
-      if (!vJson.ok) {
-        setCodeError(vJson.error || "That code did not match. Try again.");
+      if (!vResult.ok) {
+        if (vResult.hard) {
+          setHardFail(true);
+          setCodeError(FAIL_MSG);
+        } else {
+          setCodeError(vResult.error || "That code did not match. Try again.");
+        }
         return;
       }
 
@@ -185,27 +227,29 @@ export default function LeadForm({
       // community form never reads ?from and posts source: "community" so
       // the completion route labels and routes the signup separately.
       const industry = isCommunity ? "" : fromIndustry();
-      const sRes = await fetch("/api/start-your-study", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          name: fields.name.trim(),
-          business: fields.business.trim(),
-          phone: fields.phone.trim(),
-          email: fields.email.trim(),
-          emailVerified: true,
-          country: "",
-          teamSize: "",
-          bottleneck: "",
-          budget: "",
-          slot: "",
-          industry: industry || undefined,
-          source: variant,
-        }),
+      const sResult = await postJson("/api/start-your-study", {
+        name: fields.name.trim(),
+        business: fields.business.trim(),
+        phone: fields.phone.trim(),
+        email: fields.email.trim(),
+        emailVerified: true,
+        country: "",
+        teamSize: "",
+        bottleneck: "",
+        budget: "",
+        slot: "",
+        industry: industry || undefined,
+        source: variant,
       });
-      const sJson = await sRes.json();
-      if (!sJson.ok) {
-        setCodeError(sJson.error || "Could not finish. Try the button again.");
+      if (!sResult.ok) {
+        if (sResult.hard) {
+          setHardFail(true);
+          setCodeError(FAIL_MSG);
+        } else {
+          setCodeError(
+            sResult.error || "Could not finish. Try the button again.",
+          );
+        }
         return;
       }
 
@@ -228,8 +272,6 @@ export default function LeadForm({
         // analytics must never block the form
       }
       setScreen("done");
-    } catch {
-      setCodeError("Could not finish. Try the button again.");
     } finally {
       setVerifying(false);
     }
@@ -352,6 +394,8 @@ export default function LeadForm({
                 ? "Send me the code"
                 : "Send me the confirmation code"}
           </button>
+
+          {hardFail && <FailWhatsAppLink />}
         </form>
       )}
 
@@ -452,6 +496,8 @@ export default function LeadForm({
           >
             {resending ? "Resending..." : "Resend the code"}
           </button>
+
+          {hardFail && <FailWhatsAppLink />}
         </form>
       )}
 
@@ -531,6 +577,34 @@ export default function LeadForm({
         .lead-wa:hover { filter: brightness(1.05); }
         .lead-wa:active { transform: translateY(1px); }
       `}</style>
+    </div>
+  );
+}
+
+// v25 hotfix: the working path out when the backend fails. Same WhatsApp
+// link the done screen uses, rendered under the active screen's button.
+function FailWhatsAppLink() {
+  return (
+    <div style={{ marginTop: 16 }}>
+      <TrackedWhatsAppLink
+        href={WHATSAPP_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="lead-wa"
+        style={{
+          background: "var(--whatsapp, #25D366)",
+          color: "#0A0A0A",
+          fontSize: 15,
+          fontWeight: 600,
+          padding: "13px 24px",
+          borderRadius: 999,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
+        Message us on WhatsApp
+      </TrackedWhatsAppLink>
     </div>
   );
 }
