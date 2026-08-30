@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import {
+  FIELD_MAX,
   LIMITS,
   checkRate,
   clientKey,
   originAllowed,
+  readField,
 } from "@/lib/api-guards";
 import { emailKey, generateCode, setCode } from "@/lib/otp-store";
 
@@ -33,12 +35,30 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = (await req.json()) as { email?: string };
-    const email = (body.email ?? "").trim().toLowerCase();
+    const raw = (await req.json()) as Record<string, unknown>;
+    const field = readField(raw.email, FIELD_MAX.email);
+    const email = field.ok ? field.value.toLowerCase() : "";
     if (!EMAIL_RE.test(email)) {
       return NextResponse.json(
         { ok: false, error: "Enter a valid email." },
         { status: 400 }
+      );
+    }
+
+    // v25.5: per-email cap on top of the per-IP cap above. Without it a
+    // distributed sender could mail-bomb one inbox, 5 sends per IP.
+    const emailRate = await checkRate(
+      `otpSendEmail:${email}`,
+      LIMITS.otpSendPerEmail.limit,
+      LIMITS.otpSendPerEmail.windowMs
+    );
+    if (!emailRate.ok) {
+      return NextResponse.json(
+        { ok: false, error: "Too many code requests. Try again later." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(emailRate.retryAfterSeconds) },
+        }
       );
     }
 

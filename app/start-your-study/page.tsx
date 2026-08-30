@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 // channel below the form, never as a gate in front of it.
 export default function StartYourStudy() {
   return (
-    <main style={{ paddingTop: "120px", minHeight: "100vh" }}>
+    <main id="main" style={{ paddingTop: "120px", minHeight: "100vh" }}>
       <section style={{ paddingBlock: "40px 64px" }}>
         <div
           className="container"

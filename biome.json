@@ -1,0 +1,54 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.13/schema.json",
+  "files": {
+    "includes": ["app/**", "components/**", "lib/**", "scripts/**"],
+    "experimentalScannerIgnores": [
+      "marketing",
+      "public",
+      "build-artifacts",
+      ".next",
+      "node_modules"
+    ]
+  },
+  "formatter": { "enabled": false },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "domains": { "react": "recommended", "next": "recommended" },
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "useIterableCallbackReturn": "off"
+      },
+      "style": {
+        "useTemplate": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "warn",
+        "useSemanticElements": "warn",
+        "noStaticElementInteractions": "warn",
+        "useFocusableInteractive": "warn",
+        "useAriaPropsSupportedByRole": "warn"
+      }
+    }
+  }
+}

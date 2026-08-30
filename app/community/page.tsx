@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function Community() {
   return (
-    <main style={{ paddingTop: "120px", minHeight: "100vh" }}>
+    <main id="main" style={{ paddingTop: "120px", minHeight: "100vh" }}>
       <section style={{ paddingBlock: "40px 64px" }}>
         <div
           className="container"

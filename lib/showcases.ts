@@ -630,3 +630,18 @@ export function nextShowcase(
   }
   return list[(idx + 1) % list.length];
 }
+
+// v25.5: the showcase pages each did `SHOWCASES.find(s => s.slug === "x")!`.
+// The non-null assertion meant a typo'd or renamed slug compiled fine and
+// then crashed at render with "cannot read properties of undefined". This
+// throws a named error instead, which surfaces during the static build
+// rather than in front of a visitor.
+export function showcaseMetadata(slug: string): Showcase {
+  const found = SHOWCASES.find((s) => s.slug === slug);
+  if (!found) {
+    throw new Error(
+      `showcaseMetadata: no showcase registered with slug "${slug}". Add it to SHOWCASES in lib/showcases.ts or fix the slug.`,
+    );
+  }
+  return found;
+}

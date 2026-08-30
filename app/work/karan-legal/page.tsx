@@ -10,7 +10,7 @@ import Outcomes from "./Outcomes";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -30,7 +30,7 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   title: "Karan Legal · Lead Qualifier · Deeper Designs",
   description:
-    "A solo Mumbai lawyer stopped answering forty intake calls a week. A qualifier intakes every prospect first, so he only spends time on the clients worth it.",
+    "Concept build. A solo Mumbai lawyer stopped answering forty intake calls a week. A qualifier intakes every prospect first, so he only spends time on the clients worth it.",
   openGraph: {
     title: "Karan Legal · Lead Qualifier · Deeper Designs",
     siteName: "Deeper Designs",
@@ -74,7 +74,7 @@ const pageStyle = {
 
 export default function KaranLegalPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={spectral.variable}
       style={pageStyle}
@@ -90,7 +90,7 @@ export default function KaranLegalPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "karan-legal")!;
+        const meta = showcaseMetadata("karan-legal");
         return (
           <PainBlock
             number={meta.number}
@@ -122,6 +122,6 @@ export default function KaranLegalPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="karan-legal" name="Karan Legal" industry="Legal Practice" />
-    </div>
+    </main>
   );
 }

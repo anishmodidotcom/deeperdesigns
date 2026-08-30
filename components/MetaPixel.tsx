@@ -6,9 +6,13 @@ import Script from "next/script";
 // next/script (strategy="afterInteractive") so it loads after hydration
 // without blocking initial paint.
 //
-// The base PageView fires automatically once fbevents.js initialises.
-// All other events go through lib/meta-events.ts so they're deduplicated
-// against the server-side CAPI mirror.
+// v25.5: the base snippet initialises the pixel but no longer fires
+// PageView itself. It used to fire one with no event_id and no CAPI
+// mirror, so the ad-click landing view was the one hit with no server
+// signal to fall back on. MetaPageViewOnRouteChange now fires every
+// PageView through lib/meta-events.ts, so all of them, initial load
+// included, are deduplicated against the CAPI mirror like every other
+// event.
 
 export default function MetaPixel() {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -29,14 +33,12 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${pixelId}');
-fbq('track', 'PageView');
         `}
       </Script>
       <noscript>
         {/* Raw <img> intentional: noscript is JS-disabled fallback,
             next/image would have nothing to bind to. eslint exception
             is the correct treatment. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           height={1}
           width={1}

@@ -1,3 +1,6 @@
+// ARCHIVAL (v25.5): one-shot script from a shipped release. Kept for
+// reference and for re-running that exact asset pass; not part of any
+// build, deploy, or routine workflow. Safe to ignore during development.
 // v22.2 hotfix: re-shoot the live product hero screenshots that were
 // deleted from main. Captures the deployed products at 1920x1200 with a
 // 2x deviceScaleFactor (retina) and writes optimized, metadata-free WebP

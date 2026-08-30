@@ -21,7 +21,7 @@ export default function IndustrySwitcher({ currentSlug }: { currentSlug: string 
           style={{
             fontSize: 11,
             letterSpacing: "0.16em",
-            color: "var(--dd-text-low, #6B6B6B)",
+            color: "var(--dd-text-low, #808080)",
             margin: "0 0 24px",
           }}
         >

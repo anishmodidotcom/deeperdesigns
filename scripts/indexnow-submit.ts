@@ -10,15 +10,26 @@
  * and its contents are exactly the key. IndexNow fetches that file to
  * verify ownership before accepting submissions.
  *
- * Run (submits the 13 /for pages + homepage by default):
- *   bun run scripts/indexnow-submit.ts
+ * Run (submits every indexable URL, taken from the sitemap):
+ *   bun run indexnow
  * Submit specific URLs (absolute or root-relative paths):
- *   bun run scripts/indexnow-submit.ts /for/real-estate /for/ca-firms
+ *   bun run indexnow /for/real-estate /for/ca-firms
+ *
+ * v25.5: the default set is derived from app/sitemap.ts rather than a
+ * hardcoded list of the homepage plus the 13 /for pages. That list covered
+ * 14 of 45 indexable URLs, so every showcase and every core page was
+ * invisible to this script, which defeats the point of running it.
+ *
+ * Running it on deploy: there is no CI in this repo, so this is a manual
+ * step after a deploy that changes page content. To automate it later,
+ * call it from a Vercel deploy hook or a GitHub Action on push to main:
+ *   bun install && bun run indexnow
+ * It needs no secrets, so it is safe in any CI environment.
  *
  * No secrets: the IndexNow key is public by design (it is hosted at the
  * site root), so it is committed alongside this script.
  */
-import { INDUSTRIES } from "@/lib/industries";
+import sitemap from "@/app/sitemap";
 
 const HOST = "www.deeperdesigns.in";
 const ORIGIN = `https://${HOST}`;
@@ -26,9 +37,10 @@ const KEY = "41158d46bd700c550f51e145dbf41376";
 const KEY_LOCATION = `${ORIGIN}/${KEY}.txt`;
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
+// Every URL the sitemap advertises, so this stays in step with the route
+// set automatically as pages are added.
 function defaultUrls(): string[] {
-  const live = INDUSTRIES.filter((i) => i.live).map((i) => `${ORIGIN}/for/${i.slug}`);
-  return [`${ORIGIN}/`, ...live];
+  return sitemap().map((entry) => entry.url);
 }
 
 function toAbsolute(arg: string): string {

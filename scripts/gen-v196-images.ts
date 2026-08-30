@@ -1,3 +1,6 @@
+// ARCHIVAL (v25.5): one-shot script from a shipped release. Kept for
+// reference and for re-running that exact asset pass; not part of any
+// build, deploy, or routine workflow. Safe to ignore during development.
 /**
  * One-off (v19.6 cleanup): generate the Real Estate Property Film before/after
  * stills with Gemini 2.5 Flash Image (same Nano Banana path as the other

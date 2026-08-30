@@ -68,7 +68,7 @@ function Panel({
           style={{
             fontSize: 11,
             letterSpacing: "0.16em",
-            color: isAi ? "var(--page-accent)" : "var(--dd-text-low, #6B6B6B)",
+            color: isAi ? "var(--page-accent)" : "var(--dd-text-low, #808080)",
             margin: "0 0 18px",
           }}
         >
@@ -136,7 +136,7 @@ function Panel({
                 letterSpacing: "0.14em",
                 color: isAi
                   ? "var(--page-accent)"
-                  : "var(--dd-text-low, #6B6B6B)",
+                  : "var(--dd-text-low, #808080)",
                 margin: "0 0 10px",
               }}
             >
@@ -174,7 +174,7 @@ function Panel({
                 letterSpacing: "0.04em",
                 color: isAi
                   ? "var(--page-accent)"
-                  : "var(--dd-text-low, #6B6B6B)",
+                  : "var(--dd-text-low, #808080)",
               }}
             >
               {it.stat}

@@ -11,7 +11,7 @@ import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -28,7 +28,7 @@ const cormorant = Cormorant({
 export const metadata: Metadata = {
   title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
   description:
-    "A bespoke perfume house stopped losing online customers to twenty-message WhatsApp threads. A quiz finds their scent and shows them the bottle with their name on it.",
+    "Concept build. A bespoke perfume house stopped losing online customers to twenty-message WhatsApp threads. A quiz finds their scent and shows them the bottle with their name on it.",
   openGraph: {
     title: "Oud & Ember · Find Your Fragrance · Deeper Designs",
     siteName: "Deeper Designs",
@@ -71,7 +71,7 @@ const pageStyle = {
 
 export default function OudAndEmberPage() {
   return (
-    <div className={cormorant.variable} style={pageStyle}>
+    <main id="main" className={cormorant.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Oud And Ember",
@@ -83,7 +83,7 @@ export default function OudAndEmberPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "oud-and-ember")!;
+        const meta = showcaseMetadata("oud-and-ember");
         return (
           <PainBlock
             number={meta.number}
@@ -116,6 +116,6 @@ export default function OudAndEmberPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="oud-and-ember" name="Oud and Ember" industry="Perfume Atelier" />
-    </div>
+    </main>
   );
 }

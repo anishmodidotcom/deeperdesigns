@@ -147,7 +147,6 @@ export async function GET(
             zIndex: 1,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={monogram}
             width={64}

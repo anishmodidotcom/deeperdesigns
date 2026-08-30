@@ -74,7 +74,7 @@ function Card({
         style={{
           fontSize: 10.5,
           letterSpacing: "0.16em",
-          color: accent ? "var(--page-accent)" : "var(--dd-text-low, #6B6B6B)",
+          color: accent ? "var(--page-accent)" : "var(--dd-text-low, #808080)",
           margin: "0 0 22px",
         }}
       >
@@ -100,7 +100,7 @@ function Card({
           marginTop: 22,
           fontSize: 13,
           lineHeight: 1.5,
-          color: "var(--dd-text-low, #6B6B6B)",
+          color: "var(--dd-text-low, #808080)",
         }}
       >
         {who}

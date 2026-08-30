@@ -43,6 +43,10 @@ export default function VideoFrame({
   const videoRef = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
+  // v25.5: when the visitor pauses by hand, the in-view observer must stop
+  // restarting playback. WCAG 2.2.2 wants a real pause mechanism for
+  // motion that starts on its own and runs longer than five seconds.
+  const [userPaused, setUserPaused] = useState(false);
 
   const ratio = aspect === "9:16" ? "9 / 16" : "16 / 9";
   const maxW = aspect === "9:16" ? 320 : 640;
@@ -50,7 +54,7 @@ export default function VideoFrame({
   // Play muted-loop while in view; pause otherwise. Skipped entirely when the
   // user prefers reduced motion or no video source is present.
   useEffect(() => {
-    if (reduce || !src) return;
+    if (reduce || !src || userPaused) return;
     const el = wrapRef.current;
     const vid = videoRef.current;
     if (!el || !vid) return;
@@ -68,7 +72,20 @@ export default function VideoFrame({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [reduce, src]);
+  }, [reduce, src, userPaused]);
+
+  const togglePlayback = () => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (vid.paused) {
+      setUserPaused(false);
+      vid.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      setUserPaused(true);
+      vid.pause();
+      setPlaying(false);
+    }
+  };
 
   const showVideo = !!src && !reduce;
 
@@ -103,7 +120,6 @@ export default function VideoFrame({
         ) : (
           // Still poster (no source, or reduced-motion). Plain img keeps this
           // frame self-contained and avoids next/image layout in the player.
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={poster}
             alt={alt}
@@ -113,6 +129,43 @@ export default function VideoFrame({
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
         )}
+
+        {/* v25.5: real pause control. The clip starts on its own and loops,
+            so WCAG 2.2.2 requires a way to stop it. Sits in the corner of
+            the frame, keyboard reachable, and does not cover the artwork. */}
+        {showVideo ? (
+          <button
+            type="button"
+            onClick={togglePlayback}
+            aria-label={playing ? "Pause background video" : "Play background video"}
+            style={{
+              position: "absolute",
+              right: 10,
+              bottom: 10,
+              zIndex: 2,
+              width: 32,
+              height: 32,
+              borderRadius: 999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(10,10,10,0.66)",
+              border: "1px solid rgba(255,255,255,0.22)",
+              color: "#F5F5F5",
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden>
+              {playing ? (
+                <>
+                  <rect x="2" y="1.5" width="3" height="9" rx="1" />
+                  <rect x="7" y="1.5" width="3" height="9" rx="1" />
+                </>
+              ) : (
+                <path d="M3 1.5l7 4.5-7 4.5z" />
+              )}
+            </svg>
+          </button>
+        ) : null}
 
         {/* Play affordance, hidden once the clip is actually playing. */}
         {!playing ? (
@@ -199,7 +252,7 @@ export default function VideoFrame({
   return (
     <div ref={wrapRef} className="vf-ba">
       <figure className="vf-ba__col" style={{ margin: 0 }}>
-        <p className="vf-ba__label" style={{ color: "var(--dd-text-low, #6B6B6B)" }}>
+        <p className="vf-ba__label" style={{ color: "var(--dd-text-low, #808080)" }}>
           {beforeLabel}
         </p>
         <div
@@ -211,7 +264,6 @@ export default function VideoFrame({
           }}
         >
           <div style={{ aspectRatio: ratio, background: "#000" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={before}
               alt={`${alt}, the raw starting point`}
@@ -270,7 +322,7 @@ export default function VideoFrame({
         }
         .vf-ba__arrow {
           flex-shrink: 0;
-          color: var(--dd-text-low, #6B6B6B);
+          color: var(--dd-text-low, #808080);
           font-size: 20px;
           margin-top: 18px;
         }

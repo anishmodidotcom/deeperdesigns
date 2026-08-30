@@ -108,7 +108,7 @@ export default function WhatsAppButton() {
       {nudgeVisible && !dismissedPermanent && !isMobile && (
         <div style={{ position: "fixed", bottom: "96px", right: "24px", zIndex: 40, background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "12px", padding: "12px 14px", display: "flex", alignItems: "center", gap: "10px", maxWidth: "260px", fontSize: "13px", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
           <span>Just want to chat? Message us on WhatsApp.</span>
-          <button aria-label="Dismiss" onClick={dismissPermanently} style={{ width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--fg-dim)" }}>
+          <button type="button" aria-label="Dismiss" onClick={dismissPermanently} style={{ width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--fg-dim)" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>

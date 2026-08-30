@@ -61,7 +61,7 @@ export default function TryOnDemo() {
           ))}
         </div>
         {/* see it move */}
-        <button style={{ position: "absolute", bottom: 14, left: 14, display: "inline-flex", alignItems: "center", gap: 8, fontSize: 12.5, fontWeight: 600, color: "#0A0A0A", background: "#F6EEF2", borderRadius: 999, padding: "8px 14px", border: "none", cursor: "pointer" }}>
+        <button type="button" style={{ position: "absolute", bottom: 14, left: 14, display: "inline-flex", alignItems: "center", gap: 8, fontSize: 12.5, fontWeight: 600, color: "#0A0A0A", background: "#F6EEF2", borderRadius: 999, padding: "8px 14px", border: "none", cursor: "pointer" }}>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A0A0A" aria-hidden><path d="M8 5v14l11-7z" /></svg>
           See it move
         </button>
@@ -80,10 +80,10 @@ export default function TryOnDemo() {
 
       {/* Actions */}
       <div style={{ padding: "14px 14px 22px", display: "flex", gap: 10 }}>
-        <button style={{ flex: 1, background: ACCENT, color: "#0A0A0A", fontSize: 15, fontWeight: 600, padding: "14px", borderRadius: 14, border: "none", cursor: "pointer" }}>
+        <button type="button" style={{ flex: 1, background: ACCENT, color: "#0A0A0A", fontSize: 15, fontWeight: 600, padding: "14px", borderRadius: 14, border: "none", cursor: "pointer" }}>
           Add to cart
         </button>
-        <button style={{ width: 56, background: "transparent", color: "#25D366", border: "1px solid rgba(37,211,102,0.5)", borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+        <button type="button" style={{ width: 56, background: "transparent", color: "#25D366", border: "1px solid rgba(37,211,102,0.5)", borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366" aria-hidden><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Z" /></svg>
         </button>
       </div>

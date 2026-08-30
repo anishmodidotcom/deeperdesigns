@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AnishNote from "@/components/AnishNote";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import Link from "next/link";
 import TrackedTierCTA from "./TrackedTierCTA";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -24,10 +24,21 @@ export const metadata: Metadata = {
   },
 };
 
-const TIERS: { name: string; price: string; body: string; examples: string[] }[] = [
+// v25.5: priceFrom carries the machine-readable number for the JSON-LD
+// Offer. schema.org price must be a number, and the human label ("From
+// ₹25,000", "₹1L to ₹3L") is not one, so the old markup was invalid. The
+// display copy in `price` is unchanged.
+const TIERS: {
+  name: string;
+  price: string;
+  priceFrom: number;
+  body: string;
+  examples: string[];
+}[] = [
   {
     name: "Single tool",
     price: "From ₹25,000",
+    priceFrom: 25000,
     body: "A quiz. A calculator. A small dashboard. One focused tool that quietly removes a daily headache.",
     examples: [
       "A WhatsApp agent that books appointments",
@@ -38,6 +49,7 @@ const TIERS: { name: string; price: string; body: string; examples: string[] }[]
   {
     name: "Custom build",
     price: "₹1L to ₹3L",
+    priceFrom: 100000,
     body: "Configurators, AI tools, brand sites built to convert. The kind of work that turns visitors into buyers.",
     examples: [
       "A made-to-order product builder with custom pricing logic",
@@ -48,6 +60,7 @@ const TIERS: { name: string; price: string; body: string; examples: string[] }[]
   {
     name: "Multi-tool system",
     price: "₹3L to ₹10L",
+    priceFrom: 300000,
     body: "A portal and a dashboard. A site, a booking flow, and an inventory brain. Multiple parts, designed to work together.",
     examples: [
       "A client portal plus an internal ops dashboard plus a booking flow",
@@ -58,6 +71,7 @@ const TIERS: { name: string; price: string; body: string; examples: string[] }[]
   {
     name: "Operational redesign",
     price: "₹10L+",
+    priceFrom: 1000000,
     body: "The operating system for a business. Brand, site, internal tools, customer tools, the works.",
     examples: [
       "The full operating system for a regional QSR chain",
@@ -86,11 +100,16 @@ const SERVICES_LD = {
         url: "https://www.deeperdesigns.in",
       },
       areaServed: ["IN", "AE"],
+      // v25.5: a numeric lowPrice in a PriceSpecification, since these are
+      // "from" figures and open-ended bands, not a single fixed price.
       offers: {
         "@type": "Offer",
-        priceCurrency: "INR",
-        price: t.price,
-        availability: "https://schema.org/InStock",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "INR",
+          minPrice: t.priceFrom,
+          valueAddedTaxIncluded: false,
+        },
       },
     },
   })),
@@ -98,7 +117,7 @@ const SERVICES_LD = {
 
 export default function Services() {
   return (
-    <main style={{ paddingTop: "120px" }}>
+    <main id="main" style={{ paddingTop: "120px" }}>
       <StructuredData data={SERVICES_LD} />
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
@@ -170,7 +189,10 @@ export default function Services() {
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
-            <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
+            {/* v25.5: internal navigation to the form, not a WhatsApp
+                click. It used to be wrapped in TrackedWhatsAppLink, which
+                would emit a WhatsApp event for a page navigation. */}
+            <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>
           </div>
         </div>
       </section>

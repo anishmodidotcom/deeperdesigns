@@ -40,7 +40,12 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#6366F1";
+// v25.5: was #6366F1, which is 4.43:1 on the near-black page background and
+// fails AA at the 11px to 12px sizes it is used at for the eyebrow and the
+// section headings. Lifted 3 percent toward white, which reads as the same
+// colour and clears AA at 4.68:1. Hue is unchanged, so the Outpost accent
+// stays distinct from the DD indigo.
+const ACCENT = "#686BF1";
 
 const pageStyle = {
   "--page-accent": ACCENT,
@@ -61,9 +66,11 @@ const WHAT_IT_DOES = [
 
 export default function OutpostPage() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Outpost",
           description:
             "Outpost finds your next customers and starts the conversation. Verified contacts, outreach in your voice, every reply in one inbox.",
@@ -150,17 +157,21 @@ export default function OutpostPage() {
         }}
       >
         <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
-          <p
+          {/* v25.5: was a styled <p>, so the page had an h1 and no section
+              headings at all and could not be navigated by heading. Same
+              text, same type treatment, correct element. */}
+          <h2
             className="mono"
             style={{
               fontSize: 11,
+              fontWeight: 400,
               letterSpacing: "0.16em",
               color: "var(--page-accent)",
               margin: "0 0 28px",
             }}
           >
             WHAT IT DOES
-          </p>
+          </h2>
           <ul
             style={{
               listStyle: "none",
@@ -211,17 +222,18 @@ export default function OutpostPage() {
       >
         <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
           <div style={{ maxWidth: 680 }}>
-            <p
+            <h2
               className="mono"
               style={{
                 fontSize: 11,
+                fontWeight: 400,
                 letterSpacing: "0.16em",
                 color: "var(--page-accent)",
                 margin: "0 0 18px",
               }}
             >
               WHO IT IS FOR
-            </p>
+            </h2>
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--dd-text-high, #F5F5F5)", margin: 0 }}>
               Built for founders and sales teams who know exactly who they sell
               to and are tired of doing the finding, writing, and chasing by

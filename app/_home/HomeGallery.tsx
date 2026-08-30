@@ -61,7 +61,8 @@ export default function HomeGallery() {
               const active = objectives.includes(o);
               return (
                 <button
-                  key={o}
+type="button"                   key={o}
+                  aria-pressed={active}
                   onClick={() => toggle(objectives, setObjectives, o)}
                   style={{
                     padding: "8px 16px",
@@ -71,7 +72,13 @@ export default function HomeGallery() {
                     border: "1px solid",
                     borderColor: active ? "var(--accent)" : "var(--border-strong)",
                     background: active ? "var(--accent)" : "transparent",
-                    color: active ? "#fff" : "var(--fg-muted)",
+                    // v25.5: white on the indigo accent is 3.86:1 at 13px, an AA
+
+                    // fail. The near-black label used on every other accent-filled
+
+                    // control is 5.13:1 and matches the rest of the system.
+
+                    color: active ? "#0A0A0A" : "var(--fg-muted)",
                     transition: "all 200ms",
                   }}
                 >
@@ -89,7 +96,8 @@ export default function HomeGallery() {
               const active = industries.includes(i);
               return (
                 <button
-                  key={i}
+type="button"                   key={i}
+                  aria-pressed={active}
                   onClick={() => toggle(industries, setIndustries, i)}
                   style={{
                     padding: "8px 16px",
@@ -99,7 +107,13 @@ export default function HomeGallery() {
                     border: "1px solid",
                     borderColor: active ? "var(--accent)" : "var(--border-strong)",
                     background: active ? "var(--accent)" : "transparent",
-                    color: active ? "#fff" : "var(--fg-muted)",
+                    // v25.5: white on the indigo accent is 3.86:1 at 13px, an AA
+
+                    // fail. The near-black label used on every other accent-filled
+
+                    // control is 5.13:1 and matches the rest of the system.
+
+                    color: active ? "#0A0A0A" : "var(--fg-muted)",
                     transition: "all 200ms",
                   }}
                 >
@@ -116,7 +130,7 @@ export default function HomeGallery() {
               {filtered.length} {filtered.length === 1 ? "tool" : "tools"}
             </p>
             <button
-              onClick={() => { setObjectives([]); setIndustries([]); }}
+type="button"               onClick={() => { setObjectives([]); setIndustries([]); }}
               style={{ fontSize: "13px", color: "var(--accent)" }}
             >
               Clear filters

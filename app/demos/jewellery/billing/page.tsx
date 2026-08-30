@@ -163,7 +163,7 @@ export default function BillingDemo() {
                 <span style={{ fontSize: 24, fontWeight: 600, color: MONEY, fontFamily: "var(--font-geist-mono), monospace", letterSpacing: "-0.01em" }}>Rs 2,25,385</span>
               </div>
             </div>
-            <button style={{ marginTop: 16, width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14.5, fontWeight: 600, padding: "13px", borderRadius: 12, border: "none", cursor: "pointer" }}>
+            <button type="button" style={{ marginTop: 16, width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14.5, fontWeight: 600, padding: "13px", borderRadius: 12, border: "none", cursor: "pointer" }}>
               Generate GST bill
             </button>
           </div>

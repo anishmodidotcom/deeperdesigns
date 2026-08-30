@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <HomeHero />
       <HomeConfusion />
       <HomeOutcomes />

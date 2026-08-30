@@ -12,7 +12,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -40,7 +40,7 @@ const dmSerifDisplay = DM_Serif_Display({
 export const metadata: Metadata = {
   title: "Earth and Fire · Pottery Brand · Deeper Designs",
   description:
-    "A Jaipur ceramicist who sold out in 90 minutes got a heritage brand, a custom builder, and a queue. Slower drops, higher prices, a better business.",
+    "Concept build. A Jaipur ceramicist who sold out in 90 minutes got a heritage brand, a custom builder, and a queue. Slower drops, higher prices, a better business.",
   openGraph: {
     title: "Earth and Fire · Pottery Brand · Deeper Designs",
     siteName: "Deeper Designs",
@@ -85,7 +85,7 @@ const pageStyle = {
 
 export default function EarthAndFirePage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${fraunces.variable} ${dmSerifDisplay.variable}`}
       style={pageStyle}
@@ -101,7 +101,7 @@ export default function EarthAndFirePage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "earth-and-fire")!;
+        const meta = showcaseMetadata("earth-and-fire");
         return (
           <PainBlock
             number={meta.number}
@@ -135,6 +135,6 @@ export default function EarthAndFirePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="earth-and-fire" name="Earth and Fire" industry="Ceramics Studio" />
-    </div>
+    </main>
   );
 }

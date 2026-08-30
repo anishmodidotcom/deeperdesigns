@@ -11,7 +11,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -30,7 +30,7 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "Zara Fitness · Training Platform · Deeper Designs",
   description:
-    "A Dubai fitness creator with 280K followers and a PDF guide got a real platform. 12,400 members in 90 days, and a sportswear line to come.",
+    "Concept build. A Dubai fitness creator with 280K followers and a PDF guide got a real platform. 12,400 members in 90 days, and a sportswear line to come.",
   openGraph: {
     title: "Zara Fitness · Training Platform · Deeper Designs",
     siteName: "Deeper Designs",
@@ -73,7 +73,7 @@ const pageStyle = {
 
 export default function ZaraFitnessPage() {
   return (
-    <div className={anton.variable} style={pageStyle}>
+    <main id="main" className={anton.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Zara Fitness",
@@ -85,7 +85,7 @@ export default function ZaraFitnessPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "zara-fitness")!;
+        const meta = showcaseMetadata("zara-fitness");
         return (
           <PainBlock
             number={meta.number}
@@ -118,6 +118,6 @@ export default function ZaraFitnessPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="zara-fitness" name="Zara Fitness" industry="Fitness Creator" />
-    </div>
+    </main>
   );
 }

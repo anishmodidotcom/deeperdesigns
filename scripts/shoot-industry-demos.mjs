@@ -1,3 +1,6 @@
+// ARCHIVAL (v25.5): one-shot script from a shipped release. Kept for
+// reference and for re-running that exact asset pass; not part of any
+// build, deploy, or routine workflow. Safe to ignore during development.
 // One-off: screenshot the four D2C build demos and the full pages from the
 // running /for/d2c-brands route, for reuse in marketing. Run against a local
 // `bun run start` server. Not part of the build.

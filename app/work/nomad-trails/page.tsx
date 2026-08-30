@@ -11,7 +11,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -45,7 +45,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Nomad Trails · Trek Outfit · Deeper Designs",
   description:
-    "A husband-and-wife Himalayan trek outfit got an editorial site, not a booking funnel. Direct bookings tripled, and the trip rate tripled with them.",
+    "Concept build. A husband-and-wife Himalayan trek outfit got an editorial site, not a booking funnel. Direct bookings tripled, and the trip rate tripled with them.",
   openGraph: {
     title: "Nomad Trails · Trek Outfit · Deeper Designs",
     siteName: "Deeper Designs",
@@ -89,7 +89,7 @@ const pageStyle = {
 
 export default function NomadTrailsPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${bodoni.variable} ${inter.variable} ${plexMono.variable}`}
       style={pageStyle}
@@ -105,7 +105,7 @@ export default function NomadTrailsPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "nomad-trails")!;
+        const meta = showcaseMetadata("nomad-trails");
         return (
           <PainBlock
             number={meta.number}
@@ -138,6 +138,6 @@ export default function NomadTrailsPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="nomad-trails" name="Nomad Trails" industry="Trek Outfit" />
-    </div>
+    </main>
   );
 }

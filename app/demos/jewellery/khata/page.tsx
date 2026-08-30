@@ -126,7 +126,7 @@ export default function KhataDemo() {
         {/* UPI pay button */}
         <div style={{ alignSelf: "flex-end", width: "84%", marginTop: 2 }}>
           <button
-            style={{
+type="button"             style={{
               width: "100%",
               background: IN_BUBBLE,
               color: LINK,

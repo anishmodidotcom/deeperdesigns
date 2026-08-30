@@ -11,7 +11,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -27,7 +27,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
   description:
-    "A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
+    "Concept build. A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
   openGraph: {
     title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
     siteName: "Deeper Designs",
@@ -67,7 +67,7 @@ const pageStyle = {
 
 export default function AutoBazaarPage() {
   return (
-    <div className={outfit.variable} style={pageStyle}>
+    <main id="main" className={outfit.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Autobazaar",
@@ -79,7 +79,7 @@ export default function AutoBazaarPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "autobazaar")!;
+        const meta = showcaseMetadata("autobazaar");
         return (
           <PainBlock
             number={meta.number}
@@ -112,6 +112,6 @@ export default function AutoBazaarPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Used-Car Lot" />
-    </div>
+    </main>
   );
 }

@@ -1,3 +1,6 @@
+// ARCHIVAL (v25.5): one-shot script from a shipped release. Kept for
+// reference and for re-running that exact asset pass; not part of any
+// build, deploy, or routine workflow. Safe to ignore during development.
 // One-off: screenshot the ten real v19.4 demo routes (Manufacturing,
 // Automotive, Hotels) at 2x and save to public/builds/<slug>/ (embedded in
 // device frames on the /for pages) and build-artifacts/for-<slug>/ (review +

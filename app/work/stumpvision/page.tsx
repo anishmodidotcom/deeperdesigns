@@ -10,7 +10,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -26,7 +26,7 @@ const rajdhani = Rajdhani({
 export const metadata: Metadata = {
   title: "StumpVision · Academy Platform · Deeper Designs",
   description:
-    "A 250-player cricket academy gave every kid a stats card and every parent a real answer. Selections stopped being arguments, and renewals stopped being guesswork.",
+    "Concept build. A 250-player cricket academy gave every kid a stats card and every parent a real answer. Selections stopped being arguments, and renewals stopped being guesswork.",
   openGraph: {
     title: "StumpVision · Academy Platform · Deeper Designs",
     siteName: "Deeper Designs",
@@ -66,7 +66,7 @@ const pageStyle = {
 
 export default function StumpVisionPage() {
   return (
-    <div className={rajdhani.variable} style={pageStyle}>
+    <main id="main" className={rajdhani.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Stumpvision",
@@ -78,7 +78,7 @@ export default function StumpVisionPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "stumpvision")!;
+        const meta = showcaseMetadata("stumpvision");
         return (
           <PainBlock
             number={meta.number}
@@ -110,6 +110,6 @@ export default function StumpVisionPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="stumpvision" name="StumpVision" industry="Coaching Academy" />
-    </div>
+    </main>
   );
 }

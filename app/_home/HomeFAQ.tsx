@@ -65,8 +65,9 @@ export default function HomeFAQ() {
             return (
               <div key={i} style={{ borderBottom: "1px solid var(--border)" }}>
                 <button
-                  onClick={() => setOpen(isOpen ? null : i)}
+type="button"                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
                   style={{ width: "100%", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "24px", textAlign: "left" }}
                 >
                   <span style={{ display: "flex", gap: "16px", alignItems: "baseline" }}>
@@ -76,7 +77,7 @@ export default function HomeFAQ() {
                   <span style={{ fontSize: "20px", color: "var(--fg-muted)", transition: "transform 200ms", transform: isOpen ? "rotate(45deg)" : "rotate(0)" }}>+</span>
                 </button>
                 {isOpen && (
-                  <p style={{ paddingLeft: "44px", paddingBottom: "24px", fontSize: "16px", color: "var(--fg-muted)", lineHeight: 1.6, maxWidth: "700px" }}>{item.a}</p>
+                  <p id={`faq-answer-${i}`} style={{ paddingLeft: "44px", paddingBottom: "24px", fontSize: "16px", color: "var(--fg-muted)", lineHeight: 1.6, maxWidth: "700px" }}>{item.a}</p>
                 )}
               </div>
             );

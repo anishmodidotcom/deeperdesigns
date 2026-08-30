@@ -10,7 +10,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -27,7 +27,7 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Studio Noor · Client Portal · Deeper Designs",
   description:
-    "An interior design studio replaced six WhatsApp groups per project with one portal. Clients see progress without asking, and projects close faster.",
+    "Concept build. An interior design studio replaced six WhatsApp groups per project with one portal. Clients see progress without asking, and projects close faster.",
   openGraph: {
     title: "Studio Noor · Client Portal · Deeper Designs",
     siteName: "Deeper Designs",
@@ -69,7 +69,7 @@ const pageStyle = {
 
 export default function StudioNoorPage() {
   return (
-    <div className={instrument.variable} style={pageStyle}>
+    <main id="main" className={instrument.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Studio Noor",
@@ -81,7 +81,7 @@ export default function StudioNoorPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "studio-noor")!;
+        const meta = showcaseMetadata("studio-noor");
         return (
           <PainBlock
             number={meta.number}
@@ -113,6 +113,6 @@ export default function StudioNoorPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="studio-noor" name="Studio Noor" industry="Interior Design" />
-    </div>
+    </main>
   );
 }

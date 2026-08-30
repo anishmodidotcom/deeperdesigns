@@ -132,7 +132,7 @@ export default function DirectOrderDemo() {
         <div style={{ alignSelf: "flex-end", width: "84%", display: "flex", flexDirection: "column", gap: 3, marginTop: 2 }}>
           {["Reorder now", "See full menu", "Change something"].map((c, i) => (
             <button
-              key={c}
+type="button"               key={c}
               style={{
                 width: "100%",
                 background: IN_BUBBLE,

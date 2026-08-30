@@ -11,7 +11,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -27,7 +27,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
   description:
-    "A four-location shawarma chain stopped guessing. One dashboard reads every POS feed, cuts food waste from 15% to 3%, and shows the real margin on every dish.",
+    "Concept build. A four-location shawarma chain stopped guessing. One dashboard reads every POS feed, cuts food waste from 15% to 3%, and shows the real margin on every dish.",
   openGraph: {
     title: "Zaatar Republic · Operations Intelligence · Deeper Designs",
     siteName: "Deeper Designs",
@@ -69,7 +69,7 @@ const pageStyle = {
 
 export default function ZaatarRepublicPage() {
   return (
-    <div className={dmSans.variable} style={pageStyle}>
+    <main id="main" className={dmSans.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Zaatar Republic",
@@ -81,7 +81,7 @@ export default function ZaatarRepublicPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "zaatar-republic")!;
+        const meta = showcaseMetadata("zaatar-republic");
         return (
           <PainBlock
             number={meta.number}
@@ -114,6 +114,6 @@ export default function ZaatarRepublicPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="zaatar-republic" name="Zaatar Republic" industry="QSR Chain" />
-    </div>
+    </main>
   );
 }

@@ -67,9 +67,11 @@ const pageStyle = {
 
 export default function MapleLensPage() {
   return (
-    <div className={inter.variable} style={pageStyle}>
+    <main id="main" className={inter.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Maple Lens",
           description: metadata.description as string,
           slug: "maplelens",
@@ -95,6 +97,6 @@ export default function MapleLensPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="maplelens" name="Maple Lens" industry="Furniture Maker" />
-    </div>
+    </main>
   );
 }

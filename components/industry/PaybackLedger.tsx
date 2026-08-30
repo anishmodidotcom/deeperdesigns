@@ -61,7 +61,7 @@ export default function PaybackLedger({
             fontSize: 11.5,
             letterSpacing: "0.04em",
             lineHeight: 1.6,
-            color: "var(--dd-text-low, #6B6B6B)",
+            color: "var(--dd-text-low, #808080)",
             maxWidth: 720,
           }}
         >
@@ -116,7 +116,7 @@ function Column({
         style={{
           fontSize: 10.5,
           letterSpacing: "0.14em",
-          color: "var(--dd-text-low, #6B6B6B)",
+          color: "var(--dd-text-low, #808080)",
           margin: "0 0 22px",
         }}
       >

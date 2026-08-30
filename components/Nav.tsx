@@ -19,6 +19,10 @@ export default function Nav() {
   // "Browse by industry" dropdown (desktop) + mobile section toggle.
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const industriesRef = useRef<HTMLDivElement>(null);
+  // v25.5: refs for the mobile dialog and the trigger that opens it, so
+  // focus can move in on open and return to the trigger on close.
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const currentIndustry = pathname.startsWith("/for/")
     ? pathname.replace("/for/", "")
     : null;
@@ -52,7 +56,13 @@ export default function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    // v25.5: hide the page behind the open dialog from the tab order and
+    // the accessibility tree. Without this, tabbing past the last menu
+    // item walked into content covered by the overlay.
+    const main = document.getElementById("main");
+    if (main) main.inert = open;
     return () => {
+      if (main) main.inert = false;
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -61,6 +71,49 @@ export default function Nav() {
   useEffect(() => {
     setIndustriesOpen(false);
   }, [pathname]);
+
+  // v25.5: the mobile overlay is a modal dialog. It previously had no
+  // Escape handler, no focus management and left the page behind fully
+  // tab-reachable, so a keyboard user could tab straight out of the open
+  // menu into content hidden underneath it.
+  useEffect(() => {
+    if (!open) return;
+
+    const overlay = overlayRef.current;
+    const focusable = () =>
+      Array.from(
+        overlay?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter((el) => el.offsetParent !== null);
+
+    // Move focus into the dialog so the next Tab lands inside it.
+    focusable()[0]?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && (active === first || !overlay?.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   // Close the industries dropdown on Escape or a click outside it.
   useEffect(() => {
@@ -185,6 +238,7 @@ export default function Nav() {
                 className="text-sm"
                 aria-haspopup="true"
                 aria-expanded={industriesOpen}
+                aria-controls="nav-industries-panel"
                 onClick={() => setIndustriesOpen((v) => !v)}
                 style={{
                   color: linkColor,
@@ -214,8 +268,15 @@ export default function Nav() {
               </button>
 
               {industriesOpen && (
+                // v25.5: this is a disclosure holding a list of links, not
+                // an ARIA menu widget. It carried role="menu" and
+                // role="menuitem" without any of the arrow-key behaviour
+                // those roles promise, so assistive tech announced a
+                // keyboard pattern that did not exist. The roles are gone;
+                // the button's aria-expanded and aria-controls describe it
+                // correctly.
                 <div
-                  role="menu"
+                  id="nav-industries-panel"
                   aria-label="Industries"
                   style={{
                     position: "absolute",
@@ -256,7 +317,6 @@ export default function Nav() {
                         <Link
                           key={ind.slug}
                           href={`/for/${ind.slug}`}
-                          role="menuitem"
                           aria-current={active ? "page" : undefined}
                           onClick={() => setIndustriesOpen(false)}
                           className="nav-industry-item"
@@ -307,6 +367,7 @@ export default function Nav() {
           </div>
 
           <button
+type="button"             ref={triggerRef}
             className="nav-mobile-trigger w-10 h-10 items-center justify-center"
             aria-label="Open menu"
             aria-expanded={open}
@@ -331,6 +392,10 @@ export default function Nav() {
 
       {open && (
         <div
+          ref={overlayRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
           className="fixed inset-0 z-[100] flex flex-col"
           style={{
             background: "rgba(10,10,10,0.98)",
@@ -346,7 +411,7 @@ export default function Nav() {
               DEEPER DESIGNS
             </span>
             <button
-              aria-label="Close menu"
+type="button"               aria-label="Close menu"
               onClick={() => setOpen(false)}
               className="w-10 h-10 flex items-center justify-center"
             >

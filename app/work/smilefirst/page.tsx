@@ -10,7 +10,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -26,7 +26,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "SmileFirst · Clinic Manager · Deeper Designs",
   description:
-    "A three-chair dental clinic turned recommended treatments into booked ones. Follow-up runs itself, and the clinic recovers ₹2.4L a month it used to lose.",
+    "Concept build. A three-chair dental clinic turned recommended treatments into booked ones. Follow-up runs itself, and the clinic recovers ₹2.4L a month it used to lose.",
   openGraph: {
     title: "SmileFirst · Clinic Manager · Deeper Designs",
     siteName: "Deeper Designs",
@@ -66,7 +66,7 @@ const pageStyle = {
 
 export default function SmileFirstPage() {
   return (
-    <div className={jakarta.variable} style={pageStyle}>
+    <main id="main" className={jakarta.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Smilefirst",
@@ -78,7 +78,7 @@ export default function SmileFirstPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "smilefirst")!;
+        const meta = showcaseMetadata("smilefirst");
         return (
           <PainBlock
             number={meta.number}
@@ -110,6 +110,6 @@ export default function SmileFirstPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="smilefirst" name="SmileFirst" industry="Dental Clinic" />
-    </div>
+    </main>
   );
 }

@@ -81,7 +81,7 @@ export default function TryOnDemo() {
       {/* Actions */}
       <div style={{ padding: "14px 14px 22px", display: "flex", flexDirection: "column", gap: 10 }}>
         <button
-          style={{
+type="button"           style={{
             width: "100%",
             background: "#25D366",
             color: "#06270F",
@@ -103,7 +103,7 @@ export default function TryOnDemo() {
           Share on WhatsApp
         </button>
         <button
-          style={{
+type="button"           style={{
             width: "100%",
             background: "transparent",
             color: ACCENT,

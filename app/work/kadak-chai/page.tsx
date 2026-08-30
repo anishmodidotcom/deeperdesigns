@@ -11,7 +11,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -38,7 +38,7 @@ const crimsonPro = Crimson_Pro({
 export const metadata: Metadata = {
   title: "Kadak Chai · Tea Brand · Deeper Designs",
   description:
-    "A third-generation Mumbai tea family went direct. We built the brand, the tins, the range, and a quiz-led store, and the middleman is gone.",
+    "Concept build. A third-generation Mumbai tea family went direct. We built the brand, the tins, the range, and a quiz-led store, and the middleman is gone.",
   openGraph: {
     title: "Kadak Chai · Tea Brand · Deeper Designs",
     siteName: "Deeper Designs",
@@ -83,7 +83,7 @@ const pageStyle = {
 
 export default function KadakChaiPage() {
   return (
-    <div className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
+    <main id="main" className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Kadak Chai",
@@ -95,7 +95,7 @@ export default function KadakChaiPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "kadak-chai")!;
+        const meta = showcaseMetadata("kadak-chai");
         return (
           <PainBlock
             number={meta.number}
@@ -128,6 +128,6 @@ export default function KadakChaiPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="kadak-chai" name="Kadak Chai" industry="Craft Tea Brand" />
-    </div>
+    </main>
   );
 }

@@ -92,7 +92,7 @@ export default function EpodDemo() {
 
       {/* Confirm */}
       <div style={{ padding: "14px 16px 22px" }}>
-        <button style={{ width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 15, fontWeight: 600, padding: "15px", borderRadius: 14, border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9 }}>
+        <button type="button" style={{ width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 15, fontWeight: 600, padding: "15px", borderRadius: 14, border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 9 }}>
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2.6" aria-hidden><path d="M20 6 9 17l-5-5" /></svg>
           Confirm delivery
         </button>

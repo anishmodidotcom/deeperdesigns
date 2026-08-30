@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { MotionConfig } from "motion/react";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
@@ -34,14 +35,24 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+// v25.5: two fixes here.
+//
+// 1. alternates.canonical is gone. A canonical in the root layout is
+//    inherited by every route that does not set its own, which meant the
+//    48 /demos pages and the 404 all declared the homepage as their
+//    canonical while also being noindexed, a contradictory pair of
+//    signals. The homepage sets its own canonical in app/page.tsx.
+// 2. The title and description here were the v21 homepage copy, kept
+//    alive only as a fallback and already superseded by app/page.tsx. They
+//    now describe the site generically, so any route that somehow lacks
+//    metadata gets something accurate rather than stale homepage copy.
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.deeperdesigns.in"),
-  title: "Deeper Designs · Custom tools for Indian businesses",
-  description: "Deeper Designs is an India-first studio building custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
-  alternates: { canonical: "https://www.deeperdesigns.in/" },
+  title: "Deeper Designs",
+  description: "An India-first studio building custom digital tools and operational systems for ambitious businesses.",
   openGraph: {
-    title: "Deeper Designs · Custom tools for Indian businesses",
-    description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
+    title: "Deeper Designs",
+    description: "An India-first studio building custom digital tools and operational systems for ambitious businesses.",
     url: "https://www.deeperdesigns.in/",
     siteName: "Deeper Designs",
     images: [{ url: "/brand/og-deeperdesigns.png", width: 1200, height: 630, alt: "Deeper Designs · Custom tools, built around how your business actually works." }],
@@ -95,15 +106,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               } catch (e) { /* cookies disabled, silent */ }
             })();`}
           </Script>
-          <ShowcaseRouteProvider>
-            <SmoothScroll>
+          {/* v25.5: skip link. The site opens with a fixed nav carrying a
+              13-item industries menu, so a keyboard or screen reader user
+              had to pass all of it on every page to reach the content. */}
+          <a href="#main" className="skip-link">
+            Skip to content
+          </a>
+          {/* v25.5: one MotionConfig retrofits reduced-motion onto every
+              motion/react component in the tree. GSAP, Lenis and the
+              ambient videos already honoured the preference; the 144 files
+              animating through motion/react did not. */}
+          <MotionConfig reducedMotion="user">
+            <ShowcaseRouteProvider>
+              {/* v25.5: SmoothScroll no longer wraps the page. It attaches
+                  scroll behaviour and renders nothing, so it sits beside
+                  the content and loads as a lazy chunk. */}
+              <SmoothScroll />
               <Nav />
               {children}
               <Footer />
               <WhatsAppButton />
               <ShowcaseNavigator />
-            </SmoothScroll>
-          </ShowcaseRouteProvider>
+            </ShowcaseRouteProvider>
+          </MotionConfig>
           {/* v18: Organization JSON-LD lives in the head for every route. */}
           <StructuredData data={ORGANIZATION_LD} />
           <Analytics />

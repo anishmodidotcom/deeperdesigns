@@ -68,7 +68,7 @@ export default function BookingAssistantDemo() {
 
         <div style={{ alignSelf: "flex-end", width: "84%", display: "flex", flexDirection: "column", gap: 3, marginTop: 2 }}>
           {["Book 4:00 PM", "See other times"].map((c, i) => (
-            <button key={c} style={{ width: "100%", background: IN_BUBBLE, color: i === 0 ? "#7BE0A0" : LINK, fontSize: 14.5, fontWeight: 500, padding: "11px 12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
+            <button type="button" key={c} style={{ width: "100%", background: IN_BUBBLE, color: i === 0 ? "#7BE0A0" : LINK, fontSize: 14.5, fontWeight: 500, padding: "11px 12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
               {c}
             </button>
           ))}

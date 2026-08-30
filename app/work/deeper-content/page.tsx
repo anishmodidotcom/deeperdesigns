@@ -60,9 +60,11 @@ const pageStyle = {
 
 export default function DeeperContentPage() {
   return (
-    <div data-slug="deeper-content" style={pageStyle}>
+    <main id="main" data-slug="deeper-content" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Deeper Content",
           description: metadata.description as string,
           slug: "deeper-content",
@@ -90,6 +92,6 @@ export default function DeeperContentPage() {
       <AboutBuild />
       <NextProject />
       <ShowcaseAnalytics slug="deeper-content" name="Deeper Content" industry="Deeper Designs" />
-    </div>
+    </main>
   );
 }

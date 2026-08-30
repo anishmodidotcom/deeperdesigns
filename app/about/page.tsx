@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import AnishNote from "@/components/AnishNote";
 import HowWeThink from "./HowWeThink";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About · Deeper Designs",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main style={{ paddingTop: "120px" }}>
+    <main id="main" style={{ paddingTop: "120px" }}>
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>ABOUT</p>
@@ -102,7 +102,10 @@ export default function About() {
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
-            <TrackedWhatsAppLink href="/start-your-study" className="btn-whatsapp">Talk to us</TrackedWhatsAppLink>
+            {/* v25.5: internal navigation to the form, not a WhatsApp
+                click. It used to be wrapped in TrackedWhatsAppLink, which
+                would emit a WhatsApp event for a page navigation. */}
+            <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>
           </div>
         </div>
       </section>

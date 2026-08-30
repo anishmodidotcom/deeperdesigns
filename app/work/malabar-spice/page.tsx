@@ -11,7 +11,7 @@ import Tray from "./Tray";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -29,7 +29,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
   description:
-    "A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
+    "Concept build. A third-generation Kochi spice exporter got a website with the same dignity as the warehouse. Sixty-four years of work, finally online.",
   openGraph: {
     title: "Malabar Spice House · Heritage Brand Site · Deeper Designs",
     siteName: "Deeper Designs",
@@ -73,7 +73,7 @@ const pageStyle = {
 
 export default function MalabarSpicePage() {
   return (
-    <div className={fraunces.variable} style={pageStyle}>
+    <main id="main" className={fraunces.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Malabar Spice",
@@ -85,7 +85,7 @@ export default function MalabarSpicePage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "malabar-spice")!;
+        const meta = showcaseMetadata("malabar-spice");
         return (
           <PainBlock
             number={meta.number}
@@ -118,6 +118,6 @@ export default function MalabarSpicePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="malabar-spice" name="Malabar Spice House" industry="Heritage Exporter" />
-    </div>
+    </main>
   );
 }

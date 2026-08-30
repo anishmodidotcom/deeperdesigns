@@ -41,7 +41,10 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#C4485C";
+// v25.5: was #C4485C at 4.18:1 on the near-black background, an AA fail at
+// the small sizes it labels. Lifted 6 percent toward white for 4.61:1,
+// same hue.
+const ACCENT = "#C85366";
 
 const pageStyle = {
   "--page-accent": ACCENT,
@@ -60,9 +63,11 @@ const WHAT_IT_DOES = [
 
 export default function OviyaStudioPage() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
+          // v25.5: a real, live product, not a concept build.
+          concept: false,
           name: "Oviya Studio",
           description:
             "Upload the piece. Oviya shoots it. One photo of your garment or jewellery becomes a magazine-grade shoot.",

@@ -13,7 +13,7 @@ import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -33,7 +33,7 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
   description:
-    "A 200-acre organic farm got a brain that survives the founder taking a Sunday off. It plans planting from real demand and flags subscribers before they cancel.",
+    "Concept build. A 200-acre organic farm got a brain that survives the founder taking a Sunday off. It plans planting from real demand and flags subscribers before they cancel.",
   openGraph: {
     title: "Sahaja Farms · Farm Management Dashboard · Deeper Designs",
     siteName: "Deeper Designs",
@@ -78,7 +78,7 @@ const pageStyle = {
 
 export default function SahajaFarmsPage() {
   return (
-    <div className={bricolage.variable} style={pageStyle}>
+    <main id="main" className={bricolage.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Sahaja Farms",
@@ -90,7 +90,7 @@ export default function SahajaFarmsPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "sahaja-farms")!;
+        const meta = showcaseMetadata("sahaja-farms");
         return (
           <PainBlock
             number={meta.number}
@@ -125,6 +125,6 @@ export default function SahajaFarmsPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="sahaja-farms" name="Sahaja Farms" industry="Organic Farm" />
-    </div>
+    </main>
   );
 }

@@ -14,7 +14,7 @@ import Impact from "./Impact";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -31,7 +31,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Meera Wellness · Wellness Hub · Deeper Designs",
   description:
-    "A Dubai yoga instructor got her time back. One platform handles scheduling, client portals, and WhatsApp bookings, so she teaches instead of doing admin.",
+    "Concept build. A Dubai yoga instructor got her time back. One platform handles scheduling, client portals, and WhatsApp bookings, so she teaches instead of doing admin.",
   openGraph: {
     title: "Meera Wellness · Wellness Hub · Deeper Designs",
     siteName: "Deeper Designs",
@@ -72,7 +72,7 @@ const pageStyle = {
 
 export default function MeeraWellnessPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={cormorant.variable}
       style={pageStyle}
@@ -88,7 +88,7 @@ export default function MeeraWellnessPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "meera-wellness")!;
+        const meta = showcaseMetadata("meera-wellness");
         return (
           <PainBlock
             number={meta.number}
@@ -124,6 +124,6 @@ export default function MeeraWellnessPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="meera-wellness" name="Meera Wellness" industry="Wellness Studio" />
-    </div>
+    </main>
   );
 }

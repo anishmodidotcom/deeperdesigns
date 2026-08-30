@@ -64,7 +64,7 @@ const pageStyle = {
 
 export default function Colophon() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <section
         style={{
           maxWidth: 840,

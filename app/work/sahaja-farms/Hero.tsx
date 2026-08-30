@@ -82,6 +82,7 @@ export default function Hero() {
             ref={videoRef}
             key="field-loop"
             aria-hidden="true"
+            tabIndex={-1}
             autoPlay
             muted
             playsInline

@@ -3,6 +3,8 @@
 import { useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { attributedIndustry } from "@/lib/attribution";
+import { normalizePhone } from "@/lib/phone";
 import {
   trackLeadFormStart,
   trackFormLead,
@@ -43,13 +45,11 @@ type Fields = {
 
 type FieldErrors = Partial<Record<keyof Fields, string>>;
 
+// v25.5: attribution now falls back to the industry recorded when the
+// visitor was on a /for page, so a lead that reaches the form through the
+// nav or any other link without ?from is still credited.
 function fromIndustry(): string {
-  if (typeof window === "undefined") return "";
-  try {
-    return new URLSearchParams(window.location.search).get("from") ?? "";
-  } catch {
-    return "";
-  }
+  return attributedIndustry();
 }
 
 // v25 hotfix: when the backend is down the person must see a plain error
@@ -227,17 +227,14 @@ export default function LeadForm({
       // community form never reads ?from and posts source: "community" so
       // the completion route labels and routes the signup separately.
       const industry = isCommunity ? "" : fromIndustry();
+      // v25.5: the legacy long-form fields and the client-asserted
+      // emailVerified flag are gone. The server proves verification from
+      // its own verified-session record.
       const sResult = await postJson("/api/start-your-study", {
         name: fields.name.trim(),
         business: fields.business.trim(),
         phone: fields.phone.trim(),
         email: fields.email.trim(),
-        emailVerified: true,
-        country: "",
-        teamSize: "",
-        bottleneck: "",
-        budget: "",
-        slot: "",
         industry: industry || undefined,
         source: variant,
       });
@@ -259,13 +256,13 @@ export default function LeadForm({
         if (isCommunity) {
           trackCommunityJoin({
             email: fields.email.trim(),
-            phone: fields.phone.trim(),
+            phone: normalizePhone(fields.phone),
           });
         } else {
           trackFormLead({
             industry,
             email: fields.email.trim(),
-            phone: fields.phone.trim(),
+            phone: normalizePhone(fields.phone),
           });
         }
       } catch {
@@ -401,18 +398,9 @@ export default function LeadForm({
 
       {screen === "code" && (
         <form onSubmit={verify} noValidate>
-          <h1
-            style={{
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              fontWeight: 600,
-              fontSize: "clamp(28px, 4.5vw, 44px)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              margin: "0 0 16px",
-            }}
-          >
+          <ScreenHeading isCommunity={isCommunity} size="clamp(28px, 4.5vw, 44px)">
             Check your inbox.
-          </h1>
+          </ScreenHeading>
           <p
             style={{
               fontSize: 17,
@@ -432,6 +420,7 @@ export default function LeadForm({
             inputMode="numeric"
             autoComplete="one-time-code"
             maxLength={6}
+            className="lead-field"
             aria-label="Six-digit confirmation code"
             value={code}
             onChange={(e) =>
@@ -503,18 +492,9 @@ export default function LeadForm({
 
       {screen === "done" && (
         <div>
-          <h1
-            style={{
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-              fontWeight: 600,
-              fontSize: "clamp(32px, 5vw, 52px)",
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
-              margin: "0 0 16px",
-            }}
-          >
+          <ScreenHeading isCommunity={isCommunity} size="clamp(32px, 5vw, 52px)">
             {isCommunity ? "You are on the list." : "You are in."}
-          </h1>
+          </ScreenHeading>
           {isCommunity ? (
             <p
               style={{
@@ -567,6 +547,14 @@ export default function LeadForm({
       )}
 
       <style>{`
+        /* v25.5: on-brand, clearly visible focus ring for the form fields.
+           Uses the indigo accent at 2px with an offset so it reads on the
+           near-black background at every field size. */
+        .lead-field:focus-visible {
+          outline: 2px solid var(--dd-indigo-soft, #818CF8);
+          outline-offset: 2px;
+          border-color: var(--dd-indigo, #7C6CFF);
+        }
         .lead-submit:hover { filter: brightness(1.08); }
         .lead-submit:active { transform: translateY(1px); }
         .lead-submit:focus-visible,
@@ -583,6 +571,35 @@ export default function LeadForm({
 
 // v25 hotfix: the working path out when the backend fails. Same WhatsApp
 // link the done screen uses, rendered under the active screen's button.
+// v25.5: the later form screens used to render an unconditional h1. On
+// /community the page supplies its own h1 above the form, so reaching the
+// code or done screen there put two h1 elements on the page. The lead
+// variant owns its page heading and keeps the h1; the community variant
+// steps down to h2. Identical type treatment either way.
+function ScreenHeading({
+  isCommunity,
+  size,
+  children,
+}: {
+  isCommunity: boolean;
+  size: string;
+  children: React.ReactNode;
+}) {
+  const style: React.CSSProperties = {
+    fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+    fontWeight: 600,
+    fontSize: size,
+    lineHeight: 1.08,
+    letterSpacing: "-0.02em",
+    margin: "0 0 16px",
+  };
+  return isCommunity ? (
+    <h2 style={style}>{children}</h2>
+  ) : (
+    <h1 style={style}>{children}</h1>
+  );
+}
+
 function FailWhatsAppLink() {
   return (
     <div style={{ marginTop: 16 }}>
@@ -644,6 +661,7 @@ function LabeledInput({
       <input
         id={id}
         type={type}
+        className="lead-field"
         inputMode={inputMode}
         autoComplete={autoComplete}
         value={value}
@@ -664,6 +682,10 @@ function LabeledInput({
   );
 }
 
+// v25.5: outline is no longer suppressed here. Every field of the
+// conversion form used to set outline:none with no replacement, so a
+// keyboard user had no idea which field they were in. The visible focus
+// treatment lives in the .lead-field rule below.
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "15px 18px",
@@ -673,7 +695,6 @@ const inputStyle: React.CSSProperties = {
   color: "var(--fg)",
   fontSize: 17,
   fontFamily: "inherit",
-  outline: "none",
 };
 
 // v22.1: minHeight reserves the line whether or not a message is showing.

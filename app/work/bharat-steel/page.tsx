@@ -12,7 +12,7 @@ import Metrics from "./Metrics";
 import About from "./About";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -28,7 +28,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
   description:
-    "A father-son steel trader went from thirty-minute phone quotes to thirty-second ones, with a live inventory dashboard fed straight from WhatsApp.",
+    "Concept build. A father-son steel trader went from thirty-minute phone quotes to thirty-second ones, with a live inventory dashboard fed straight from WhatsApp.",
   openGraph: {
     title: "Bharat Steel Corp · Inventory Dashboard · Deeper Designs",
     siteName: "Deeper Designs",
@@ -70,7 +70,7 @@ const pageStyle = {
 
 export default function BharatSteelPage() {
   return (
-    <div className={spaceGrotesk.variable} style={pageStyle}>
+    <main id="main" className={spaceGrotesk.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Bharat Steel",
@@ -82,7 +82,7 @@ export default function BharatSteelPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "bharat-steel")!;
+        const meta = showcaseMetadata("bharat-steel");
         return (
           <PainBlock
             number={meta.number}
@@ -116,6 +116,6 @@ export default function BharatSteelPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="bharat-steel" name="Bharat Steel Corp" industry="B2B Industrial" />
-    </div>
+    </main>
   );
 }

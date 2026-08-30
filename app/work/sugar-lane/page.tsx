@@ -10,7 +10,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -41,7 +41,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Sugar Lane · Home Bakery · Deeper Designs",
   description:
-    "An Abu Dhabi home baker could make forty cakes a week but only made four. An order studio captures the brief in three minutes, and now she makes fourteen.",
+    "Concept build. An Abu Dhabi home baker could make forty cakes a week but only made four. An order studio captures the brief in three minutes, and now she makes fourteen.",
   openGraph: {
     title: "Sugar Lane · Home Bakery · Deeper Designs",
     siteName: "Deeper Designs",
@@ -88,7 +88,7 @@ const pageStyle = {
 
 export default function SugarLanePage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${playfairSc.variable} ${playfair.variable} ${dmSans.variable}`}
       style={pageStyle}
@@ -104,7 +104,7 @@ export default function SugarLanePage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "sugar-lane")!;
+        const meta = showcaseMetadata("sugar-lane");
         return (
           <PainBlock
             number={meta.number}
@@ -136,6 +136,6 @@ export default function SugarLanePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="sugar-lane" name="Sugar Lane" industry="Home Bakery" />
-    </div>
+    </main>
   );
 }

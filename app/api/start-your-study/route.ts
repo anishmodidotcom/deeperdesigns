@@ -1,28 +1,29 @@
 import { NextResponse } from "next/server";
 import {
+  FIELD_MAX,
   LIMITS,
   checkRate,
   clientKey,
   originAllowed,
+  readField,
 } from "@/lib/api-guards";
+import { clearVerified, emailKey, hasVerified } from "@/lib/otp-store";
+import { isIndustrySlug } from "@/lib/industry-slugs";
+import { normalizePhone } from "@/lib/phone";
 
+// v25.5: the legacy 11-step fields (teamSize, bottleneck, budget, slot,
+// objective, country) are gone. The single-screen form sends four fields
+// plus the industry attribution and the variant.
 type Submission = {
   name: string;
   business: string;
-  teamSize: string;
-  bottleneck: string;
-  country: string;
   phone: string;
   email: string;
-  budget: string;
-  slot: string;
-  emailVerified: boolean;
   industry?: string;
-  objective?: string;
   // v23: "community" routes and labels the email as a founders community
   // signup, kept visually and textually distinct from a strategy-call lead.
   // Absent or "lead" preserves the original behaviour exactly.
-  source?: "lead" | "community";
+  source: "lead" | "community";
 };
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "anish.modi@deeperdesigns.in";
@@ -52,23 +53,65 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = (await req.json()) as Submission;
-    if (!body.emailVerified) {
+    const raw = (await req.json()) as Record<string, unknown>;
+
+    // v25.5: every field is validated and length capped. The route used to
+    // cast the body straight to a type and trust it.
+    const name = readField(raw.name, FIELD_MAX.name);
+    const business = readField(raw.business, FIELD_MAX.business);
+    const phone = readField(raw.phone, FIELD_MAX.phone);
+    const email = readField(raw.email, FIELD_MAX.email);
+    if (!name.ok || !business.ok || !phone.ok || !email.ok) {
       return NextResponse.json(
-        { ok: false, error: "Email not verified." },
+        { ok: false, error: "Missing required fields." },
         { status: 400 }
       );
     }
-    if (!body.name || !body.business || !EMAIL_RE.test(body.email)) {
+    if (!name.value || !business.value || !EMAIL_RE.test(email.value)) {
       return NextResponse.json(
         { ok: false, error: "Missing required fields." },
         { status: 400 }
       );
     }
 
+    // v25.5: the industry attribution is validated against the known slugs
+    // so an arbitrary ?from value cannot reach the notification email.
+    const industryField = readField(raw.industry, FIELD_MAX.industry);
+    const industry =
+      industryField.ok && isIndustrySlug(industryField.value)
+        ? industryField.value
+        : undefined;
+
+    // v25.5: server-side proof of verification. The route used to trust a
+    // client-sent emailVerified boolean, so a direct POST could inject a
+    // "verified" lead for any address. The verified session is written by
+    // /api/otp-verify and cleared below, only once this submission is
+    // accepted.
+    const otpKey = emailKey(email.value);
+    if (!(await hasVerified(otpKey))) {
+      console.error(
+        JSON.stringify({
+          route: "start-your-study",
+          event: "unverified_submission_rejected",
+        }),
+      );
+      return NextResponse.json(
+        { ok: false, error: "Email not verified." },
+        { status: 400 }
+      );
+    }
+
     // v23: branch the whole email on source so a community signup is
     // unmistakable in Anish's inbox and never reads like a strategy-call lead.
-    const isCommunity = body.source === "community";
+    const isCommunity = raw.source === "community";
+    const body: Submission = {
+      name: name.value,
+      business: business.value,
+      phone: normalizePhone(phone.value),
+      email: email.value,
+      industry,
+      source: isCommunity ? "community" : "lead",
+    };
     const subject = isCommunity
       ? `COMMUNITY SIGNUP from ${body.name}`
       : `New possibility request from ${body.name}`;
@@ -108,11 +151,15 @@ export async function POST(req: Request) {
           { status: 502 }
         );
       }
+      // v25.5: the submission is accepted, so the verified session is spent.
+      // Clearing only here is what lets a failed send be retried.
+      await clearVerified(otpKey);
       return NextResponse.json({ ok: true });
     }
 
     if (process.env.NODE_ENV !== "production") {
       console.log(`[start-your-study dev] ${subject}\n${text}`);
+      await clearVerified(otpKey);
       return NextResponse.json({ ok: true });
     }
 
@@ -146,8 +193,9 @@ export async function POST(req: Request) {
 }
 
 // v21: the single-step form sends only name, business, phone, email (plus
-// the ?from industry). The legacy long-form fields stay supported but
-// empty values no longer render as blank rows.
+// the ?from industry).
+// v25.5: the legacy long-form fields are gone, so the renderers carry only
+// the fields the form actually sends. Phone arrives already normalized.
 function renderText(s: Submission, isCommunity: boolean): string {
   // v23: community signups carry only the four fields, under a clear label.
   if (isCommunity) {
@@ -158,21 +206,21 @@ function renderText(s: Submission, isCommunity: boolean): string {
       `Name: ${s.name}`,
       `Business: ${s.business}`,
       `Email (verified): ${s.email}`,
-      `Phone: ${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`,
+      `Phone: ${formatPhone(s.phone)}`,
     ].join("\n");
   }
-  const lines = [`Name: ${s.name}`, `Business: ${s.business}`];
-  if (s.teamSize) lines.push(`Team size: ${s.teamSize}`);
-  if (s.bottleneck) lines.push(`Bottleneck:`, s.bottleneck, ``);
-  lines.push(
+  const lines = [
+    `Name: ${s.name}`,
+    `Business: ${s.business}`,
     `Email (verified): ${s.email}`,
-    `Phone: ${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`,
-  );
-  if (s.budget) lines.push(`Budget: ${s.budget}`);
-  if (s.slot) lines.push(`Preferred slot: ${s.slot}`);
+    `Phone: ${formatPhone(s.phone)}`,
+  ];
   if (s.industry) lines.push(`From industry page: ${s.industry}`);
-  if (s.objective) lines.push(`From filter, objective: ${s.objective}`);
   return lines.join("\n");
+}
+
+function formatPhone(phone: string): string {
+  return phone ? `+${phone}` : "";
 }
 
 function renderHtml(s: Submission, isCommunity: boolean): string {
@@ -180,7 +228,7 @@ function renderHtml(s: Submission, isCommunity: boolean): string {
     `<tr><td style="padding:6px 14px 6px 0;color:#888;font:13px/1.5 system-ui">${k}</td><td style="padding:6px 0;color:#111;font:13px/1.5 system-ui">${escapeHtml(v)}</td></tr>`;
   const filterRow = (k: string, v: string | undefined) =>
     v ? row(k, v) : "";
-  const phone = `${s.country ? `+${s.country === "IN" ? "91" : "971"} ` : ""}${s.phone}`;
+  const phone = formatPhone(s.phone);
 
   // v23: a visually distinct card for community signups. Green eyebrow and
   // a "COMMUNITY SIGNUP" label so it is never confused with a lead request.
@@ -204,15 +252,10 @@ function renderHtml(s: Submission, isCommunity: boolean): string {
     <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-radius:12px;padding:28px">
       <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">POSSIBILITY REQUEST</p>
       <h1 style="margin:0 0 18px;font:300 24px/1.2 system-ui;letter-spacing:-0.02em;color:#111">${escapeHtml(s.name)} · ${escapeHtml(s.business)}</h1>
-      ${s.bottleneck ? `<p style="margin:0 0 22px;font:15px/1.6 system-ui;color:#333">${escapeHtml(s.bottleneck)}</p>` : ""}
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
-        ${filterRow("Team size", s.teamSize)}
         ${row("Email", s.email)}
         ${row("Phone", phone)}
-        ${filterRow("Budget", s.budget)}
-        ${filterRow("Preferred slot", s.slot)}
         ${filterRow("From industry page", s.industry)}
-        ${filterRow("Filter objective", s.objective)}
       </table>
     </div>
   </body></html>`;

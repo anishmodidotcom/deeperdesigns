@@ -75,6 +75,7 @@ export default function VideoCTA() {
           ref={videoRef}
           key="training-loop"
           aria-hidden="true"
+            tabIndex={-1}
           autoPlay
           muted
           playsInline

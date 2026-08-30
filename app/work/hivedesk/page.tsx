@@ -12,7 +12,7 @@ import Metrics from "./Metrics";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -28,7 +28,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "HiveDesk · Member Hub · Deeper Designs",
   description:
-    "A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
+    "Concept build. A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
   openGraph: {
     title: "HiveDesk · Member Hub · Deeper Designs",
     siteName: "Deeper Designs",
@@ -72,7 +72,7 @@ const pageStyle = {
 
 export default function HiveDeskPage() {
   return (
-    <div className={inter.variable} style={pageStyle}>
+    <main id="main" className={inter.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Hivedesk",
@@ -84,7 +84,7 @@ export default function HiveDeskPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "hivedesk")!;
+        const meta = showcaseMetadata("hivedesk");
         return (
           <PainBlock
             number={meta.number}
@@ -118,6 +118,6 @@ export default function HiveDeskPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="hivedesk" name="HiveDesk" industry="Coworking Space" />
-    </div>
+    </main>
   );
 }

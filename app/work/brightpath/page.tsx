@@ -10,7 +10,7 @@ import Numbers from "./Numbers";
 import AboutBuild from "./AboutBuild";
 import NextProject from "./NextProject";
 import PainBlock from "@/components/PainBlock";
-import { SHOWCASES } from "@/lib/showcases";
+import { showcaseMetadata } from "@/lib/showcases";
 import { StructuredData, creativeWorkLd } from "@/components/StructuredData";
 import AnishNote from "@/components/AnishNote";
 import EditorialPullQuote from "@/components/EditorialPullQuote";
@@ -38,7 +38,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "BrightPath · Tutoring Practice · Deeper Designs",
   description:
-    "A one-man tutoring practice in Al Ain got a parent portal that does the talking. Every parent renews, and there is a waitlist by design.",
+    "Concept build. A one-man tutoring practice in Al Ain got a parent portal that does the talking. Every parent renews, and there is a waitlist by design.",
   openGraph: {
     title: "BrightPath · Tutoring Practice · Deeper Designs",
     siteName: "Deeper Designs",
@@ -81,7 +81,7 @@ const pageStyle = {
 
 export default function BrightPathPage() {
   return (
-    <div
+    <main id="main"
       className={`${sourceSerif.variable} ${sourceSans.variable}`}
       style={pageStyle}
     >
@@ -96,7 +96,7 @@ export default function BrightPathPage() {
       />
       <Hero />
       {(() => {
-        const meta = SHOWCASES.find((s) => s.slug === "brightpath")!;
+        const meta = showcaseMetadata("brightpath");
         return (
           <PainBlock
             number={meta.number}
@@ -128,6 +128,6 @@ export default function BrightPathPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="brightpath" name="BrightPath" industry="Tutoring Practice" />
-    </div>
+    </main>
   );
 }
