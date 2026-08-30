@@ -45,7 +45,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
             </div>
             <div style={{ display: "flex", gap: "4px" }}>
               {["VATA", "PITTA", "KAPHA"].map((d, i) => (
-                <span key={d} style={{ fontSize: "7px", padding: "2px 5px", borderRadius: "8px", border: "1px solid", borderColor: i === 0 ? "var(--accent)" : "var(--border)", color: i === 0 ? "var(--accent)" : "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.06em", background: i === 0 ? "rgba(124,108,255,0.1)" : "transparent" }}>{d}</span>
+                <span key={d} style={{ fontSize: "7px", padding: "2px 5px", borderRadius: "8px", border: "1px solid", borderColor: i === 0 ? "var(--accent)" : "var(--border)", /* v25.5: the accent at 7px over its own 10% tint lands just under AA; the softer indigo clears it at the same hue. */ color: i === 0 ? "var(--dd-indigo-soft, #818CF8)" : "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.06em", background: i === 0 ? "rgba(124,108,255,0.1)" : "transparent" }}>{d}</span>
               ))}
             </div>
           </div>

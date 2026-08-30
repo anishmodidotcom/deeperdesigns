@@ -41,7 +41,10 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#C4485C";
+// v25.5: was #C4485C at 4.18:1 on the near-black background, an AA fail at
+// the small sizes it labels. Lifted 6 percent toward white for 4.61:1,
+// same hue.
+const ACCENT = "#C85366";
 
 const pageStyle = {
   "--page-accent": ACCENT,

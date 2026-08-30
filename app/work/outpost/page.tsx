@@ -40,7 +40,12 @@ export const metadata: Metadata = {
   },
 };
 
-const ACCENT = "#6366F1";
+// v25.5: was #6366F1, which is 4.43:1 on the near-black page background and
+// fails AA at the 11px to 12px sizes it is used at for the eyebrow and the
+// section headings. Lifted 3 percent toward white, which reads as the same
+// colour and clears AA at 4.68:1. Hue is unchanged, so the Outpost accent
+// stays distinct from the DD indigo.
+const ACCENT = "#686BF1";
 
 const pageStyle = {
   "--page-accent": ACCENT,

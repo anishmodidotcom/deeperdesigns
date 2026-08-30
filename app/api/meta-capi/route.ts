@@ -169,13 +169,10 @@ export async function POST(req: Request) {
   const testEventCode = process.env.META_TEST_EVENT_CODE;
   const isProd = process.env.NODE_ENV === "production";
 
-  if (!pixelId || !accessToken) {
-    // Credentials not provisioned (local dev or pre-config deploy).
-    // Return ok so the browser doesn't bubble a network failure to the
-    // user; the event still fires browser-side via fbq.
-    return NextResponse.json({ ok: true, skipped: "credentials_missing" });
-  }
-
+  // v25.5: the request is validated before the credentials check, which
+  // used to short-circuit first. Validation should not depend on whether
+  // the deployment happens to be configured, and a caller sending a bad
+  // payload should hear about it either way.
   let body: Body;
   try {
     body = (await req.json()) as Body;
@@ -205,6 +202,13 @@ export async function POST(req: Request) {
       { ok: false, error: "unknown_event_name" },
       { status: 400 },
     );
+  }
+
+  if (!pixelId || !accessToken) {
+    // Credentials not provisioned (local dev or pre-config deploy).
+    // Return ok so the browser doesn't bubble a network failure to the
+    // user; the event still fires browser-side via fbq.
+    return NextResponse.json({ ok: true, skipped: "credentials_missing" });
   }
 
   // v18.1: pull the Pixel-side identifiers Meta uses for matching.
