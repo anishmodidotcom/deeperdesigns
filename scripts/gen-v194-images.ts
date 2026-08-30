@@ -1,3 +1,6 @@
+// ARCHIVAL (v25.5): one-shot script from a shipped release. Kept for
+// reference and for re-running that exact asset pass; not part of any
+// build, deploy, or routine workflow. Safe to ignore during development.
 /**
  * One-off: generate the v19.4 Gemini posters for the two video builds
  * (Automotive Walkaround, Hotels Property Film) using Gemini 2.5 Flash Image

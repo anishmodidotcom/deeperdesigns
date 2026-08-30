@@ -65,7 +65,7 @@ export default function HomeFAQ() {
             return (
               <div key={i} style={{ borderBottom: "1px solid var(--border)" }}>
                 <button
-                  onClick={() => setOpen(isOpen ? null : i)}
+type="button"                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
                   style={{ width: "100%", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "24px", textAlign: "left" }}

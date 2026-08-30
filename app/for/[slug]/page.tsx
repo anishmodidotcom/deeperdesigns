@@ -12,7 +12,6 @@ import IndustryVoices from "@/components/industry/IndustryVoices";
 import IndustryPersonas from "@/components/industry/IndustryPersonas";
 import IndustryCTA from "@/components/industry/IndustryCTA";
 import IndustrySwitcher from "@/components/industry/IndustrySwitcher";
-import IndustryScaffold from "@/components/industry/IndustryScaffold";
 import ForAnalytics from "@/components/industry/ForAnalytics";
 import { StructuredData, forIndustryLd } from "@/components/StructuredData";
 
@@ -96,13 +95,10 @@ export default async function IndustryPage({
     color: "var(--dd-text-high, #F5F5F5)",
   } as React.CSSProperties;
 
-  if (!industry.live) {
-    return (
-      <main id="main" style={pageStyle}>
-        <IndustryScaffold industry={industry} />
-      </main>
-    );
-  }
+  // v25.5: the scaffold branch and its component are gone. All 13
+  // industries have been live since v19.5, so this rendered a bench page
+  // that no route could reach, and the scaffold's own CTA linked to the
+  // form without the ?from attribution every live page carries.
 
   // v19.7: per-industry Service schema with the builds as an offer catalog,
   // India everywhere plus UAE on real-estate (the page already notes Dubai/GCC).

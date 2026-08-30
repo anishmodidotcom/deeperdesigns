@@ -60,21 +60,6 @@ export const ORGANIZATION_LD: JsonLd = {
   ],
 };
 
-export const ANISH_PERSON_LD: JsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Anish Modi",
-  jobTitle: "Founder, Deeper Designs",
-  url: "https://anishmodi.com",
-  image: "https://www.deeperdesigns.in/images/about/anish-portrait.webp",
-  worksFor: {
-    "@type": "Organization",
-    name: "Deeper Designs",
-    url: "https://www.deeperdesigns.in",
-  },
-  sameAs: ["https://anishmodi.com", "https://linkedin.com/in/anishmodi"],
-};
-
 // v19.7: per /for/[slug] industry page. A Service node provided by Deeper
 // Designs, with an OfferCatalog of the page's builds as the services offered.
 // References the existing Organization brand identity; no fabricated reviews.

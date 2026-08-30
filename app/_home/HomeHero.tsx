@@ -159,7 +159,7 @@ export default function HomeHero() {
 
       {!reducedMotion && (
         <button
-          aria-label="Scroll to next section"
+type="button"           aria-label="Scroll to next section"
           onClick={onScrollIndicatorClick}
           style={{
             position: "absolute",

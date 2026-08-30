@@ -175,7 +175,7 @@ export default function BehaviourRecoveryDemo() {
         <div style={{ alignSelf: "flex-end", width: "82%", display: "flex", flexDirection: "column", gap: 3, marginTop: 2 }}>
           {["Hold it for me", "See it on a model", "Any discount?"].map((c) => (
             <button
-              key={c}
+type="button"               key={c}
               style={{
                 width: "100%",
                 background: IN_BUBBLE,

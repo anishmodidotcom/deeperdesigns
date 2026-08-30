@@ -122,7 +122,7 @@ export default function ExtractionDemo() {
             </table>
             <div style={{ marginTop: "auto", paddingTop: 14, display: "flex", alignItems: "center", gap: 10 }}>
               <span style={{ fontSize: 11.5, color: "#6B6B6B" }}>Maker: auto-extract · Checker: pending review</span>
-              <button style={{ marginLeft: "auto", fontSize: 12.5, color: "#0A0A0A", background: ACCENT, borderRadius: 999, padding: "8px 16px", border: "none", fontWeight: 600, cursor: "pointer" }}>Approve matched</button>
+              <button type="button" style={{ marginLeft: "auto", fontSize: 12.5, color: "#0A0A0A", background: ACCENT, borderRadius: 999, padding: "8px 16px", border: "none", fontWeight: 600, cursor: "pointer" }}>Approve matched</button>
             </div>
           </div>
         </div>

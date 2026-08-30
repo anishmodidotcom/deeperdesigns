@@ -120,7 +120,6 @@ export default function VideoFrame({
         ) : (
           // Still poster (no source, or reduced-motion). Plain img keeps this
           // frame self-contained and avoids next/image layout in the player.
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={poster}
             alt={alt}
@@ -265,7 +264,6 @@ export default function VideoFrame({
           }}
         >
           <div style={{ aspectRatio: ratio, background: "#000" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={before}
               alt={`${alt}, the raw starting point`}

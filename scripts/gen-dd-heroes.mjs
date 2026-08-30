@@ -8,7 +8,8 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import path from "node:path";
+import path, { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 const API_BASE =
@@ -16,7 +17,13 @@ const API_BASE =
 const MODEL = process.env.NANO_BANANA_MODEL ?? "gemini-2.5-flash-image";
 const API_KEY = process.env.GEMINI_API_KEY ?? process.env.NANO_BANANA_API_KEY ?? "";
 
-const OUT = "/home/user/deeperdesigns/marketing/design-assets/dd/generated-images";
+// v25.5: was an absolute path from the sandbox this was first run in, so
+// the script only worked on that one machine. Resolved from the repo root
+// instead, with an override for anyone who wants the output elsewhere.
+const REPO_ROOT = fileURLToPath(new URL("..", import.meta.url));
+const OUT =
+  process.env.DD_ASSET_OUT ??
+  join(REPO_ROOT, "marketing/design-assets/dd/generated-images");
 mkdirSync(OUT, { recursive: true });
 
 const PALETTE =
@@ -56,7 +63,10 @@ function aspectFor(w, h) {
 // the CA bundle (bun's fetch does not route through the proxy here). Body and
 // response are passed via temp files to avoid huge argv/stdout buffers.
 function curlPost(url, bodyObj) {
-  const stamp = `${process.pid}-${curlPost._n = (curlPost._n ?? 0) + 1}`;
+  // v25.5: the counter used to be incremented inside the template literal,
+  // which hid a side effect in what reads as a plain string.
+  curlPost._n = (curlPost._n ?? 0) + 1;
+  const stamp = `${process.pid}-${curlPost._n}`;
   const bodyFile = path.join(tmpdir(), `ddgen-body-${stamp}.json`);
   const respFile = path.join(tmpdir(), `ddgen-resp-${stamp}.json`);
   writeFileSync(bodyFile, JSON.stringify(bodyObj));

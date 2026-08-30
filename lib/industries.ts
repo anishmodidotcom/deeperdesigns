@@ -3492,6 +3492,3 @@ export function getIndustry(slug: string): Industry | undefined {
 }
 
 // The other industries, for the footer-level switcher strip.
-export function otherIndustries(slug: string): Industry[] {
-  return INDUSTRIES.filter((i) => i.slug !== slug);
-}

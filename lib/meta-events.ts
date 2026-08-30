@@ -84,7 +84,6 @@ const DEBUG = process.env.NEXT_PUBLIC_META_PIXEL_DEBUG === "true";
 function log(name: EventName, event_id: string, custom_data: CustomData) {
   if (!DEBUG) return;
   // Intentionally console.log; this is a build-time flag.
-  // eslint-disable-next-line no-console
   console.log("[meta-pixel]", name, event_id, custom_data);
 }
 
@@ -205,9 +204,11 @@ export function trackEvent(
 // ---------- typed event wrappers ----------
 
 export function trackPageView(): void {
-  // Browser PageView also fires once via fbq base code, but we mirror
-  // server-side here so iOS 14+ users with degraded browser signal are
-  // matched. Browser dedup happens via event_id.
+  // v25.5: this is now the only source of PageView. The base pixel snippet
+  // used to fire its own on initial load with no event_id and no server
+  // mirror; every PageView now goes browser plus CAPI under one event_id,
+  // so iOS 14+ users with a degraded browser signal are still matched on
+  // the landing view, which is the one an ad click produces.
   trackEvent("PageView", { path: typeof window !== "undefined" ? window.location.pathname : "" });
 }
 

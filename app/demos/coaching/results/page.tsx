@@ -105,7 +105,7 @@ export default function ResultsDemo() {
                 );
               })}
             </div>
-            <button style={{ marginTop: "auto", width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14, fontWeight: 600, padding: "12px", borderRadius: 11, border: "none", cursor: "pointer", marginBlockStart: 18 }}>
+            <button type="button" style={{ marginTop: "auto", width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14, fontWeight: 600, padding: "12px", borderRadius: 11, border: "none", cursor: "pointer", marginBlockStart: 18 }}>
               Send all 38 to parents
             </button>
           </div>

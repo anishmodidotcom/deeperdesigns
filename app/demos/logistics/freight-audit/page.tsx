@@ -116,7 +116,7 @@ export default function FreightAuditDemo() {
             <div style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 13, padding: "18px 20px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
               <span style={{ fontSize: 12.5, color: GOOD, display: "inline-flex", alignItems: "center", gap: 8 }}><span style={{ width: 7, height: 7, borderRadius: "50%", background: GOOD }} /> E-way bill in order</span>
               <span style={{ fontSize: 12.5, color: GOOD, display: "inline-flex", alignItems: "center", gap: 8 }}><span style={{ width: 7, height: 7, borderRadius: "50%", background: GOOD }} /> POD attached</span>
-              <button style={{ marginTop: 6, fontSize: 12.5, color: "#0A0A0A", background: ACCENT, borderRadius: 999, padding: "9px 16px", border: "none", fontWeight: 600, cursor: "pointer" }}>Raise dispute</button>
+              <button type="button" style={{ marginTop: 6, fontSize: 12.5, color: "#0A0A0A", background: ACCENT, borderRadius: 999, padding: "9px 16px", border: "none", fontWeight: 600, cursor: "pointer" }}>Raise dispute</button>
             </div>
           </div>
         </section>

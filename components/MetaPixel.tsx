@@ -39,7 +39,6 @@ fbq('init', '${pixelId}');
         {/* Raw <img> intentional: noscript is JS-disabled fallback,
             next/image would have nothing to bind to. eslint exception
             is the correct treatment. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           height={1}
           width={1}

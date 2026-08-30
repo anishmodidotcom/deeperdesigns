@@ -212,6 +212,7 @@ export default function LiveCamera() {
                 ref={videoRef}
                 key="live-feed"
                 aria-hidden="true"
+            tabIndex={-1}
                 autoPlay
                 muted
                 playsInline

@@ -61,7 +61,7 @@ export default function HomeGallery() {
               const active = objectives.includes(o);
               return (
                 <button
-                  key={o}
+type="button"                   key={o}
                   aria-pressed={active}
                   onClick={() => toggle(objectives, setObjectives, o)}
                   style={{
@@ -96,7 +96,7 @@ export default function HomeGallery() {
               const active = industries.includes(i);
               return (
                 <button
-                  key={i}
+type="button"                   key={i}
                   aria-pressed={active}
                   onClick={() => toggle(industries, setIndustries, i)}
                   style={{
@@ -130,7 +130,7 @@ export default function HomeGallery() {
               {filtered.length} {filtered.length === 1 ? "tool" : "tools"}
             </p>
             <button
-              onClick={() => { setObjectives([]); setIndustries([]); }}
+type="button"               onClick={() => { setObjectives([]); setIndustries([]); }}
               style={{ fontSize: "13px", color: "var(--accent)" }}
             >
               Clear filters

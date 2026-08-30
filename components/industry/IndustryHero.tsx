@@ -207,7 +207,7 @@ function StatPanel({
           const tick = (now: number) => {
             const t = Math.min(1, (now - start) / duration);
             // ease-out cubic
-            const eased = 1 - Math.pow(1 - t, 3);
+            const eased = 1 - (1 - t) ** 3;
             setValue(Math.round(eased * panel.target));
             if (t < 1) requestAnimationFrame(tick);
           };

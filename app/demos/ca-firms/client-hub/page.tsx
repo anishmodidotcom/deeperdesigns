@@ -71,7 +71,7 @@ export default function ClientHubDemo() {
         </div>
 
         <div style={{ alignSelf: "flex-end", width: "84%", marginTop: 2 }}>
-          <button style={{ width: "100%", background: IN_BUBBLE, color: LINK, fontSize: 14.5, fontWeight: 600, padding: "12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
+          <button type="button" style={{ width: "100%", background: IN_BUBBLE, color: LINK, fontSize: 14.5, fontWeight: 600, padding: "12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={LINK} strokeWidth="2.2" aria-hidden><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
             Upload bank statement
           </button>

@@ -367,7 +367,7 @@ export default function Nav() {
           </div>
 
           <button
-            ref={triggerRef}
+type="button"             ref={triggerRef}
             className="nav-mobile-trigger w-10 h-10 items-center justify-center"
             aria-label="Open menu"
             aria-expanded={open}
@@ -411,7 +411,7 @@ export default function Nav() {
               DEEPER DESIGNS
             </span>
             <button
-              aria-label="Close menu"
+type="button"               aria-label="Close menu"
               onClick={() => setOpen(false)}
               className="w-10 h-10 flex items-center justify-center"
             >

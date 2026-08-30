@@ -59,3 +59,11 @@ CLAUDE.md
 # Internal cost + manifest artifacts — workshop-only, never public.
 scripts/cost-log.json
 scripts/cost-log.*.json
+
+# v25.5: neither of these is deployed (.vercelignore excludes both) and
+# together they are ~130 MB of tracked binaries that only grow. The
+# existing history is left alone deliberately, no rewrite; these entries
+# stop further growth. Anything already committed stays tracked until it
+# is removed in a dedicated pass.
+/marketing/
+/build-artifacts/

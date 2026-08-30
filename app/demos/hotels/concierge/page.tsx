@@ -71,7 +71,7 @@ export default function ConciergeDemo() {
         <InBubble time="23:50">Great, let us book it.</InBubble>
 
         <div style={{ alignSelf: "flex-end", width: "84%", marginTop: 2 }}>
-          <button style={{ width: "100%", background: IN_BUBBLE, color: LINK, fontSize: 14.5, fontWeight: 600, padding: "12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
+          <button type="button" style={{ width: "100%", background: IN_BUBBLE, color: LINK, fontSize: 14.5, fontWeight: 600, padding: "12px", borderRadius: 8, border: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer" }}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={LINK} strokeWidth="2.2" aria-hidden><rect x="2" y="5" width="20" height="14" rx="2" /><line x1="2" y1="10" x2="22" y2="10" /></svg>
             Pay Rs 8,200 and confirm
           </button>

@@ -71,7 +71,7 @@ export default function QuoteEngineDemo() {
               <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 9, padding: "10px 12px", fontSize: 13, color: "#E8E8E8" }}>{v}</div>
             </div>
           ))}
-          <button style={{ marginTop: "auto", width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14, fontWeight: 600, padding: "12px", borderRadius: 11, border: "none", cursor: "pointer" }}>
+          <button type="button" style={{ marginTop: "auto", width: "100%", background: ACCENT, color: "#0A0A0A", fontSize: 14, fontWeight: 600, padding: "12px", borderRadius: 11, border: "none", cursor: "pointer" }}>
             Generate quote
           </button>
         </div>
