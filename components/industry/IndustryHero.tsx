@@ -50,7 +50,7 @@ export default function IndustryHero({ industry }: { industry: Industry }) {
                 style={{
                   margin: "8px 0 0",
                   fontSize: 13,
-                  color: "var(--dd-text-low, #6B6B6B)",
+                  color: "var(--dd-text-low, #808080)",
                 }}
               >
                 {heroEyebrowNote}
@@ -238,7 +238,7 @@ function StatPanel({
         style={{
           fontSize: 10.5,
           letterSpacing: "0.12em",
-          color: "var(--dd-text-low, #6B6B6B)",
+          color: "var(--dd-text-low, #808080)",
           margin: 0,
           lineHeight: 1.5,
         }}

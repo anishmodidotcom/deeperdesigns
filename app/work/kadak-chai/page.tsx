@@ -83,7 +83,7 @@ const pageStyle = {
 
 export default function KadakChaiPage() {
   return (
-    <div className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
+    <main id="main" className={`${archivoBlack.variable} ${crimsonPro.variable}`} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Kadak Chai",
@@ -128,6 +128,6 @@ export default function KadakChaiPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="kadak-chai" name="Kadak Chai" industry="Craft Tea Brand" />
-    </div>
+    </main>
   );
 }

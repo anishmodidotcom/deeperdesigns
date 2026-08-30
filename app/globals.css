@@ -7,7 +7,14 @@
   --bg-card: #161616;
   --fg: #F5F5F5;
   --fg-muted: #A8A8A8;
-  --fg-dim: #6B6B6B;
+  /* v25.5: was #6B6B6B, which is 3.72:1 on the near-black background and
+     failed AA everywhere it carried real information (the hero price and
+     guarantee lines, footer legal, form helper text), all of it at 9px to
+     14px so the large-text exemption never applied. #808080 is 5.01:1 on
+     --bg and 4.58:1 on --bg-card, so it passes AA in both places this
+     token is used. Raising the token fixes every site at once, with no
+     per-component restyling. */
+  --fg-dim: #808080;
   --accent: #7C6CFF;
   --accent-dim: #4F46E5;
   --whatsapp: #25D366;
@@ -22,7 +29,8 @@
   --dd-surface-2: #161616;
   --dd-text-high: #F5F5F5;
   --dd-text-mid: #A8A8A8;
-  --dd-text-low: #6B6B6B;
+  /* v25.5: raised alongside --fg-dim, same reason and same value. */
+  --dd-text-low: #808080;
   --dd-text-faint: #3A3A3A;
   --dd-accent-primary: #7C6CFF;
   --dd-accent-signal: #25D366;
@@ -179,6 +187,35 @@ button {
 .btn-outline:hover {
   border-color: var(--fg);
   background: rgba(255,255,255,0.04);
+}
+
+/* v25.5: skip link. Off screen until focused, then pinned top-left above
+   the fixed nav. Scroll behaviour is set to auto on the target so Lenis
+   smooth scrolling does not slow the jump for the people who need it. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--accent);
+  color: #0A0A0A;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 0 0 10px 0;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 0;
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* v25.5: a global visible focus ring. The site relied entirely on the
+   browser default, which is inconsistent on a dark background. */
+:focus-visible {
+  outline: 2px solid var(--dd-indigo-soft, #818CF8);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

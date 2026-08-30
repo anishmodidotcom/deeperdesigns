@@ -205,7 +205,7 @@ export default function CODConfirmDemo() {
                     fontSize: 9,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "var(--dd-text-low, #6B6B6B)",
+                    color: "var(--dd-text-low, #808080)",
                   }}
                 >
                   {s.tagNote}

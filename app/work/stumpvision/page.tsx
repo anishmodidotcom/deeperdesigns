@@ -66,7 +66,7 @@ const pageStyle = {
 
 export default function StumpVisionPage() {
   return (
-    <div className={rajdhani.variable} style={pageStyle}>
+    <main id="main" className={rajdhani.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Stumpvision",
@@ -110,6 +110,6 @@ export default function StumpVisionPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="stumpvision" name="StumpVision" industry="Coaching Academy" />
-    </div>
+    </main>
   );
 }

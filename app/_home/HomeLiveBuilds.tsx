@@ -54,7 +54,10 @@ export default function HomeLiveBuilds() {
             UPDATED MONTHLY
           </p>
         </div>
-        <h3
+        {/* v25.5: this heads a top-level homepage section, so it is an h2.
+            As an h3 it read as a subsection of the gallery above it. Type
+            treatment is unchanged. */}
+        <h2
           style={{
             fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
             fontSize: "22px",
@@ -65,7 +68,7 @@ export default function HomeLiveBuilds() {
           }}
         >
           What&apos;s on the workbench this month.
-        </h3>
+        </h2>
 
         <div className="hlb-grid">
           {BUILDS.map((b, i) => (

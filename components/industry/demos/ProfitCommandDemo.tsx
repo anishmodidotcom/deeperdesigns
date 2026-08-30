@@ -101,7 +101,7 @@ export default function ProfitCommandDemo() {
                 fontFamily: "var(--font-geist-mono), monospace",
                 fontSize: 9.5,
                 letterSpacing: "0.1em",
-                color: "var(--dd-text-low, #6B6B6B)",
+                color: "var(--dd-text-low, #808080)",
               }}
             >
               {k.label}
@@ -138,7 +138,7 @@ export default function ProfitCommandDemo() {
           fontFamily: "var(--font-geist-mono), monospace",
           fontSize: 10,
           letterSpacing: "0.1em",
-          color: "var(--dd-text-low, #6B6B6B)",
+          color: "var(--dd-text-low, #808080)",
         }}
       >
         DAILY CONTRIBUTION MARGIN
@@ -177,7 +177,7 @@ export default function ProfitCommandDemo() {
           fontFamily: "var(--font-geist-mono), monospace",
           fontSize: 10,
           letterSpacing: "0.1em",
-          color: "var(--dd-text-low, #6B6B6B)",
+          color: "var(--dd-text-low, #808080)",
         }}
       >
         RTO BY PINCODE

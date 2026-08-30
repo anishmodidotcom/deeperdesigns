@@ -55,7 +55,7 @@ export default function BuildRow({
               gap: 12,
             }}
           >
-            <span style={{ color: "var(--dd-text-low, #6B6B6B)" }}>
+            <span style={{ color: "var(--dd-text-low, #808080)" }}>
               {build.index}
             </span>
             <span aria-hidden style={{ width: 24, height: 1, background: "var(--page-accent)" }} />

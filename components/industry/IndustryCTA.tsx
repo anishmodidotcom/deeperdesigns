@@ -86,7 +86,7 @@ export default function IndustryCTA({
                   marginTop: 32,
                   marginBottom: 0,
                   fontSize: 13.5,
-                  color: "var(--dd-text-low, #6B6B6B)",
+                  color: "var(--dd-text-low, #808080)",
                 }}
               >
                 {cta.pillsIntro}

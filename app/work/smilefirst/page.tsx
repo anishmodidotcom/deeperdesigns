@@ -66,7 +66,7 @@ const pageStyle = {
 
 export default function SmileFirstPage() {
   return (
-    <div className={jakarta.variable} style={pageStyle}>
+    <main id="main" className={jakarta.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Smilefirst",
@@ -110,6 +110,6 @@ export default function SmileFirstPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="smilefirst" name="SmileFirst" industry="Dental Clinic" />
-    </div>
+    </main>
   );
 }

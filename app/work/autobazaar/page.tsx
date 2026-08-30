@@ -67,7 +67,7 @@ const pageStyle = {
 
 export default function AutoBazaarPage() {
   return (
-    <div className={outfit.variable} style={pageStyle}>
+    <main id="main" className={outfit.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Autobazaar",
@@ -112,6 +112,6 @@ export default function AutoBazaarPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Used-Car Lot" />
-    </div>
+    </main>
   );
 }

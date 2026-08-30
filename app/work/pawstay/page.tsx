@@ -75,7 +75,7 @@ const pageStyle = {
 
 export default function PawStayPage() {
   return (
-    <div className={jakarta.variable} style={pageStyle}>
+    <main id="main" className={jakarta.variable} style={pageStyle}>
       <ActivityFeed />
       <StructuredData
         data={creativeWorkLd({
@@ -123,6 +123,6 @@ export default function PawStayPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="pawstay" name="PawStay" industry="Pet Boarding" />
-    </div>
+    </main>
   );
 }

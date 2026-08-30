@@ -70,7 +70,7 @@ const pageStyle = {
 
 export default function VedaGlowPage() {
   return (
-    <div className={playfair.variable} style={pageStyle}>
+    <main id="main" className={playfair.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Veda Glow",
@@ -115,6 +115,6 @@ export default function VedaGlowPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="veda-glow" name="Veda Glow" industry="Ayurvedic D2C" />
-    </div>
+    </main>
   );
 }

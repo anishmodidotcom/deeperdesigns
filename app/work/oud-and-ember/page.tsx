@@ -71,7 +71,7 @@ const pageStyle = {
 
 export default function OudAndEmberPage() {
   return (
-    <div className={cormorant.variable} style={pageStyle}>
+    <main id="main" className={cormorant.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Oud And Ember",
@@ -116,6 +116,6 @@ export default function OudAndEmberPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="oud-and-ember" name="Oud and Ember" industry="Perfume Atelier" />
-    </div>
+    </main>
   );
 }

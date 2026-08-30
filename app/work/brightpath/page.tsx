@@ -81,7 +81,7 @@ const pageStyle = {
 
 export default function BrightPathPage() {
   return (
-    <div
+    <main id="main"
       className={`${sourceSerif.variable} ${sourceSans.variable}`}
       style={pageStyle}
     >
@@ -128,6 +128,6 @@ export default function BrightPathPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="brightpath" name="BrightPath" industry="Tutoring Practice" />
-    </div>
+    </main>
   );
 }

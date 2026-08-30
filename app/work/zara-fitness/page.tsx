@@ -73,7 +73,7 @@ const pageStyle = {
 
 export default function ZaraFitnessPage() {
   return (
-    <div className={anton.variable} style={pageStyle}>
+    <main id="main" className={anton.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Zara Fitness",
@@ -118,6 +118,6 @@ export default function ZaraFitnessPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="zara-fitness" name="Zara Fitness" industry="Fitness Creator" />
-    </div>
+    </main>
   );
 }

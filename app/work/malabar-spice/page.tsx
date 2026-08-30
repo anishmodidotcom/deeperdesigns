@@ -73,7 +73,7 @@ const pageStyle = {
 
 export default function MalabarSpicePage() {
   return (
-    <div className={fraunces.variable} style={pageStyle}>
+    <main id="main" className={fraunces.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Malabar Spice",
@@ -118,6 +118,6 @@ export default function MalabarSpicePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="malabar-spice" name="Malabar Spice House" industry="Heritage Exporter" />
-    </div>
+    </main>
   );
 }

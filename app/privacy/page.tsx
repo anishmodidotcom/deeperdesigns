@@ -143,7 +143,7 @@ const bodyStyle: React.CSSProperties = {
 
 export default function PrivacyPolicy() {
   return (
-    <main style={pageStyle}>
+    <main id="main" style={pageStyle}>
       <section
         style={{
           maxWidth: 840,

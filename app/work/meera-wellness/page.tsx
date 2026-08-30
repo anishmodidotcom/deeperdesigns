@@ -72,7 +72,7 @@ const pageStyle = {
 
 export default function MeeraWellnessPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={cormorant.variable}
       style={pageStyle}
@@ -124,6 +124,6 @@ export default function MeeraWellnessPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="meera-wellness" name="Meera Wellness" industry="Wellness Studio" />
-    </div>
+    </main>
   );
 }

@@ -98,7 +98,7 @@ export default async function IndustryPage({
 
   if (!industry.live) {
     return (
-      <main style={pageStyle}>
+      <main id="main" style={pageStyle}>
         <IndustryScaffold industry={industry} />
       </main>
     );

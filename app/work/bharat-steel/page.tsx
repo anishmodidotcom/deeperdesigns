@@ -70,7 +70,7 @@ const pageStyle = {
 
 export default function BharatSteelPage() {
   return (
-    <div className={spaceGrotesk.variable} style={pageStyle}>
+    <main id="main" className={spaceGrotesk.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Bharat Steel",
@@ -116,6 +116,6 @@ export default function BharatSteelPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="bharat-steel" name="Bharat Steel Corp" industry="B2B Industrial" />
-    </div>
+    </main>
   );
 }

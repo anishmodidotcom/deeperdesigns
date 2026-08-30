@@ -69,7 +69,7 @@ const pageStyle = {
 
 export default function StudioNoorPage() {
   return (
-    <div className={instrument.variable} style={pageStyle}>
+    <main id="main" className={instrument.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Studio Noor",
@@ -113,6 +113,6 @@ export default function StudioNoorPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="studio-noor" name="Studio Noor" industry="Interior Design" />
-    </div>
+    </main>
   );
 }

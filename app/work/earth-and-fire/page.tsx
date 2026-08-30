@@ -85,7 +85,7 @@ const pageStyle = {
 
 export default function EarthAndFirePage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${fraunces.variable} ${dmSerifDisplay.variable}`}
       style={pageStyle}
@@ -135,6 +135,6 @@ export default function EarthAndFirePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="earth-and-fire" name="Earth and Fire" industry="Ceramics Studio" />
-    </div>
+    </main>
   );
 }

@@ -150,17 +150,21 @@ export default function OutpostPage() {
         }}
       >
         <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
-          <p
+          {/* v25.5: was a styled <p>, so the page had an h1 and no section
+              headings at all and could not be navigated by heading. Same
+              text, same type treatment, correct element. */}
+          <h2
             className="mono"
             style={{
               fontSize: 11,
+              fontWeight: 400,
               letterSpacing: "0.16em",
               color: "var(--page-accent)",
               margin: "0 0 28px",
             }}
           >
             WHAT IT DOES
-          </p>
+          </h2>
           <ul
             style={{
               listStyle: "none",
@@ -211,17 +215,18 @@ export default function OutpostPage() {
       >
         <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
           <div style={{ maxWidth: 680 }}>
-            <p
+            <h2
               className="mono"
               style={{
                 fontSize: 11,
+                fontWeight: 400,
                 letterSpacing: "0.16em",
                 color: "var(--page-accent)",
                 margin: "0 0 18px",
               }}
             >
               WHO IT IS FOR
-            </p>
+            </h2>
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--dd-text-high, #F5F5F5)", margin: 0 }}>
               Built for founders and sales teams who know exactly who they sell
               to and are tired of doing the finding, writing, and chasing by

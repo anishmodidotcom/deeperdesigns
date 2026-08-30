@@ -78,7 +78,7 @@ const pageStyle = {
 
 export default function SahajaFarmsPage() {
   return (
-    <div className={bricolage.variable} style={pageStyle}>
+    <main id="main" className={bricolage.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Sahaja Farms",
@@ -125,6 +125,6 @@ export default function SahajaFarmsPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="sahaja-farms" name="Sahaja Farms" industry="Organic Farm" />
-    </div>
+    </main>
   );
 }

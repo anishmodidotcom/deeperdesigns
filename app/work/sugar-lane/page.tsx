@@ -88,7 +88,7 @@ const pageStyle = {
 
 export default function SugarLanePage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${playfairSc.variable} ${playfair.variable} ${dmSans.variable}`}
       style={pageStyle}
@@ -136,6 +136,6 @@ export default function SugarLanePage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="sugar-lane" name="Sugar Lane" industry="Home Bakery" />
-    </div>
+    </main>
   );
 }

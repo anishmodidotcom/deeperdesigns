@@ -55,7 +55,7 @@ export default function StudioEngineDemo() {
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 10,
             letterSpacing: "0.12em",
-            color: "var(--dd-text-low, #6B6B6B)",
+            color: "var(--dd-text-low, #808080)",
           }}
         >
           ONE PHONE PHOTO

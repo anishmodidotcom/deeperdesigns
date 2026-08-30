@@ -46,7 +46,7 @@ export default function IndustryScaffold({ industry }: { industry: Industry }) {
               style={{
                 margin: "8px 0 0",
                 fontSize: 13,
-                color: "var(--dd-text-low, #6B6B6B)",
+                color: "var(--dd-text-low, #808080)",
               }}
             >
               {industry.heroEyebrowNote}
@@ -103,7 +103,7 @@ export default function IndustryScaffold({ industry }: { industry: Industry }) {
               style={{
                 fontSize: 11,
                 letterSpacing: "0.16em",
-                color: "var(--dd-text-low, #6B6B6B)",
+                color: "var(--dd-text-low, #808080)",
                 margin: "0 0 14px",
               }}
             >

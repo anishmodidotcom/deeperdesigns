@@ -69,7 +69,7 @@ const pageStyle = {
 
 export default function ZaatarRepublicPage() {
   return (
-    <div className={dmSans.variable} style={pageStyle}>
+    <main id="main" className={dmSans.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Zaatar Republic",
@@ -114,6 +114,6 @@ export default function ZaatarRepublicPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="zaatar-republic" name="Zaatar Republic" industry="QSR Chain" />
-    </div>
+    </main>
   );
 }

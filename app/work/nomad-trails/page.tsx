@@ -89,7 +89,7 @@ const pageStyle = {
 
 export default function NomadTrailsPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={`${bodoni.variable} ${inter.variable} ${plexMono.variable}`}
       style={pageStyle}
@@ -138,6 +138,6 @@ export default function NomadTrailsPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="nomad-trails" name="Nomad Trails" industry="Trek Outfit" />
-    </div>
+    </main>
   );
 }

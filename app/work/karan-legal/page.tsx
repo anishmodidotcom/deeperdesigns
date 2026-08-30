@@ -74,7 +74,7 @@ const pageStyle = {
 
 export default function KaranLegalPage() {
   return (
-    <div
+    <main id="main"
       data-theme="light"
       className={spectral.variable}
       style={pageStyle}
@@ -122,6 +122,6 @@ export default function KaranLegalPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="karan-legal" name="Karan Legal" industry="Legal Practice" />
-    </div>
+    </main>
   );
 }

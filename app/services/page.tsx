@@ -98,7 +98,7 @@ const SERVICES_LD = {
 
 export default function Services() {
   return (
-    <main style={{ paddingTop: "120px" }}>
+    <main id="main" style={{ paddingTop: "120px" }}>
       <StructuredData data={SERVICES_LD} />
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>

@@ -31,7 +31,7 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <main style={{ paddingTop: "120px" }}>
+    <main id="main" style={{ paddingTop: "120px" }}>
       <section style={{ padding: "80px 0 var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>PROCESS</p>

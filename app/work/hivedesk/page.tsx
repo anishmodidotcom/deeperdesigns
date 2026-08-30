@@ -72,7 +72,7 @@ const pageStyle = {
 
 export default function HiveDeskPage() {
   return (
-    <div className={inter.variable} style={pageStyle}>
+    <main id="main" className={inter.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
           name: "Hivedesk",
@@ -118,6 +118,6 @@ export default function HiveDeskPage() {
       />
       <NextProject />
       <ShowcaseAnalytics slug="hivedesk" name="HiveDesk" industry="Coworking Space" />
-    </div>
+    </main>
   );
 }
