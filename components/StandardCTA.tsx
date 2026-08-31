@@ -24,7 +24,7 @@ export default function StandardCTA({ note }: { note?: string }) {
         ) : null}
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
           <Link href="/start-your-study" className="btn-whatsapp">
-            Book a free strategy call
+            Talk to us
           </Link>
           <TrackedWhatsAppLink
             href={WHATSAPP_HREF}

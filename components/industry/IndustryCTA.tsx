@@ -149,7 +149,7 @@ export default function IndustryCTA({
                   gap: 8,
                 }}
               >
-                Book a 30-min call
+                Talk to us
               </Link>
               <TrackedWhatsAppLink
                 href={WHATSAPP_HREF}

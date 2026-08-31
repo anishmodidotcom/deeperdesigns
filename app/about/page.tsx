@@ -83,6 +83,30 @@ export default function About() {
         </div>
       </section>
 
+      {/* v27: the condensed product architecture answer, placed after how we
+          work because it explains how that timeline is possible. Heading and
+          body only; the homepage carries the full version. */}
+      <section style={{ padding: "var(--section-py) 0" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
+          <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "32px" }}>
+            We are fast because{" "}
+            <span
+              style={{
+                fontFamily:
+                  "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+              }}
+            >
+              we never start from zero.
+            </span>
+          </h2>
+          <p style={{ fontSize: "18px", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+            Every business needs the same foundations: customers, suppliers, products, stock, transactions, documents, payments, and who is allowed to see what. We built that core once, properly, and we keep it. When you come to us, we are not writing your software from scratch. We are shaping a core that already works around how your business actually runs, then adding only the parts you need.
+          </p>
+        </div>
+      </section>
+
       <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>A BIT OF HISTORY</p>

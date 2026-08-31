@@ -121,7 +121,7 @@ export default function HomeHero() {
           and you know exactly what you get before you pay.
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/start-your-study" className="btn-whatsapp">Book a free strategy call</Link>
+          <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>
           <TrackedWhatsAppLink
             href={WHATSAPP_HREF}
             target="_blank"

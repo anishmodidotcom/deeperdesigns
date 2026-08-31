@@ -274,7 +274,7 @@ export default function OviyaStudioPage() {
               className="btn-whatsapp"
               style={{ padding: "15px 28px" }}
             >
-              Book a free strategy call
+              Talk to us
             </Link>
             <TrackedWhatsAppLink
               href={WHATSAPP_HREF}

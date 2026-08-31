@@ -180,6 +180,18 @@ export default async function BusinessSegmentPage({
                 {r.name}
               </Link>
             ))}
+            {/* v27: every segment page reaches the full index and the cost
+                arithmetic, so the two families stay one connected graph. */}
+            <Link href="/software" className="mono bseg-chip" style={{ fontSize: "13px" }}>
+              All software
+            </Link>
+            <Link
+              href="/what-software-costs"
+              className="mono bseg-chip"
+              style={{ fontSize: "13px" }}
+            >
+              What it costs
+            </Link>
           </div>
         </div>
       </section>

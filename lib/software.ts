@@ -87,6 +87,7 @@ export const SOFTWARE: SoftwareCategory[] = [
       "This runs through government-authorised providers and we do not rebuild it. We connect your systems to it so nothing is typed twice.",
     integrateOnly: true,
     related: ["e-way-bill", "gst-returns", "billing-invoicing"],
+    segments: ["traders", "manufacturers"],
   },
   {
     slug: "e-way-bill",
@@ -512,6 +513,7 @@ export const SOFTWARE: SoftwareCategory[] = [
       "If you genuinely need this, we will tell you and we will not pitch against it. Most businesses your size do not, and are being sold it anyway.",
     integrateOnly: true,
     related: ["mid-market-erp", "dashboards", "production-planning"],
+    segments: ["manufacturers", "distributors"],
   },
 ];
 

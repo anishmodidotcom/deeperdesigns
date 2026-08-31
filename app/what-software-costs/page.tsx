@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   COST_ROWS,
   formatInr,
@@ -82,6 +83,19 @@ export default function WhatSoftwareCosts() {
               "What business software actually costs you, {serif}over five years.{/serif}",
             )}
           </h1>
+          {/* v27 voice line, standfirst directly under the heading. */}
+          <p
+            style={{
+              fontSize: "19px",
+              color: "var(--fg)",
+              lineHeight: 1.6,
+              maxWidth: "760px",
+              margin: "0 0 24px",
+            }}
+          >
+            Software for your company used to cost a lot more. Now it costs
+            less.
+          </p>
           <p
             style={{
               fontSize: "21px",
@@ -250,6 +264,26 @@ export default function WhatSoftwareCosts() {
             Work it out for your team
           </h2>
           <CostCalculator />
+        </div>
+      </section>
+
+      {/* v27: back into the index, so the pair is a loop not a dead end. */}
+      <section style={{ paddingBottom: "var(--section-py)" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
+          <Link
+            href="/software"
+            className="mono"
+            style={{
+              fontSize: "13px",
+              letterSpacing: "0.04em",
+              color: "var(--fg)",
+              border: "1px solid var(--border-strong)",
+              borderRadius: "999px",
+              padding: "9px 16px",
+            }}
+          >
+            Every kind of business software
+          </Link>
         </div>
       </section>
 
