@@ -94,6 +94,19 @@ const GROUP_CLOSER: Record<SoftwareGroupId, string> = {
     "Built for a workflow the big software vendors never bothered to learn.",
 };
 
+// v28.1: the closing prompt varies by group, matching the group assignment
+// already used for the "Built..." line. Read three category pages in a row
+// and one shared sentence showed the template. The five integrateOnly
+// entries keep the neutral default.
+const GROUP_PROMPT: Record<SoftwareGroupId, string> = {
+  money: "If this is where your month disappears, talk to us.",
+  operations: "If this sounds like your floor, talk to us.",
+  selling: "If this is where your deals slip, talk to us.",
+  people: "If you are guessing at these numbers, talk to us.",
+  visibility: "If you are guessing at these numbers, talk to us.",
+  specialist: "If nobody has built this for you properly, talk to us.",
+};
+
 function joinNames(names: string[]): string {
   if (names.length === 1) return names[0];
   return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
@@ -233,8 +246,9 @@ export default async function SoftwarePage({
                 marginTop: "20px",
               }}
             >
-              This category does not publish public pricing. Vendors quote per
-              business, which is part of why comparing is hard.
+              {item.partialPublicPricing
+                ? "Public pricing here is partial. Some vendors publish add-on rates while base plans are quoted per business, which is part of why comparing is hard."
+                : "This category does not publish public pricing. Vendors quote per business, which is part of why comparing is hard."}
             </p>
           )}
 
@@ -280,7 +294,7 @@ export default async function SoftwarePage({
         </div>
       </section>
 
-      <MidPageCTA />
+      <MidPageCTA note={item.integrateOnly ? undefined : GROUP_PROMPT[item.group]} />
 
       {related.length > 0 || segments.length > 0 || industries.length > 0 ? (
         <section style={{ paddingBottom: "var(--section-py)" }}>

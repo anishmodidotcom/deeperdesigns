@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import LeadForm from "./LeadForm";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
-import { WHATSAPP_HREF, WHATSAPP_NUMBER } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Start Your Study · Deeper Designs",
@@ -46,29 +44,11 @@ export default function StartYourStudy() {
 
           <LeadForm />
 
-          <p
-            style={{
-              marginTop: "40px",
-              fontSize: "14px",
-              color: "var(--fg-dim)",
-              lineHeight: 1.6,
-            }}
-          >
-            Rather just message?{" "}
-            <TrackedWhatsAppLink
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "var(--accent)",
-                textDecoration: "underline",
-                textUnderlineOffset: "4px",
-              }}
-            >
-              WhatsApp us at {WHATSAPP_NUMBER}
-            </TrackedWhatsAppLink>
-            .
-          </p>
+          {/* v28.1: the inline "Rather just message" WhatsApp link is
+              removed. On a form error the page showed three WhatsApp
+              affordances at once: the green button in the error state, this
+              inline link, and the floating button. Two is enough, and the
+              floating button is always present anyway. */}
 
           <p
             style={{

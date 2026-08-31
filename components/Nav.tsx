@@ -633,7 +633,7 @@ type="button"               aria-label="Close menu"
               className="btn-outline"
               onClick={() => setOpen(false)}
             >
-              Let&apos;s explore ideas
+              Let us explore ideas
             </Link>
           </div>
         </div>
@@ -644,7 +644,15 @@ type="button"               aria-label="Close menu"
       <style>{`
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
-          .nav-mobile-trigger { display: flex !important; }
+          /* v28.1: the hamburger was 38px, under the 44px minimum tap
+             target, and it is the primary navigation control on a phone.
+             The icon stays 22px; the tappable area grows around it. */
+          .nav-mobile-trigger {
+            display: flex !important;
+            min-width: 44px;
+            min-height: 44px;
+            margin-right: -4px;
+          }
         }
         .nav-industry-item:hover {
           background: rgba(255,255,255,0.06) !important;

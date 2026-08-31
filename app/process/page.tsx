@@ -71,7 +71,7 @@ export default function Process() {
             What could you build next?
           </h2>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/#gallery" className="btn-outline">Let&apos;s explore ideas</a>
+            <a href="/#gallery" className="btn-outline">Let us explore ideas</a>
             <a href="/start-your-study" className="btn-whatsapp">Talk to us</a>
           </div>
         </div>

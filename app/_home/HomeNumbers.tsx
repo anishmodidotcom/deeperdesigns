@@ -4,10 +4,10 @@
 //    4  entries carrying a liveUrl (Outpost, Oviya Studio, Deeper Content,
 //       Maple Lens)
 //   13  industries with live: true in lib/industries.ts
-//    7  the one figure that is a capability claim rather than a repo fact.
-//       Flagged in the PR. Part 7's rule stands everywhere else: seven days
-//       is always "as little as", never a promise, and the guarantee
-//       sentence is the only commitment.
+// v28.1: the fourth slot ("7 days to a small build") is removed. A bare 7
+// beside a hero that guarantees 30 days invites a question, and it read
+// closer to a promise than the three counted figures beside it. Speed stays
+// where it is framed properly, in the how-it-works step, unchanged.
 //
 // No percentages, no client counts, no savings claims, no growth figures.
 
@@ -15,7 +15,6 @@ const NUMBERS = [
   { value: "24", label: "builds shipped" },
   { value: "4", label: "live products running" },
   { value: "13", label: "industries covered" },
-  { value: "7", label: "days to a small build" },
 ];
 
 export default function HomeNumbers() {
@@ -55,7 +54,7 @@ export default function HomeNumbers() {
       <style>{`
         .nums-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 1px;
           background: var(--border);
           border-block: 1px solid var(--border);
@@ -66,7 +65,7 @@ export default function HomeNumbers() {
           padding: 32px 24px;
         }
         @media (max-width: 767px) {
-          .nums-grid { grid-template-columns: repeat(2, 1fr); }
+          .nums-grid { grid-template-columns: repeat(3, 1fr); }
           .nums-cell { padding: 26px 18px; }
         }
       `}</style>
