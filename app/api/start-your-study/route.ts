@@ -14,6 +14,28 @@ import { normalizePhone } from "@/lib/phone";
 // v25.5: the legacy 11-step fields (teamSize, bottleneck, budget, slot,
 // objective, country) are gone. The single-screen form sends four fields
 // plus the industry attribution and the variant.
+type SubmissionSource = "lead" | "community" | "teardown" | "partner";
+
+// v26: the label block each non-lead offer gets in Anish's inbox. The
+// note lines are internal routing hints for him, not site copy.
+const LABELS: Record<Exclude<SubmissionSource, "lead">, { label: string; note: string; accent: string }> = {
+  community: {
+    label: "COMMUNITY SIGNUP",
+    note: "Founders community, free to join. Add to the peer group by hand.",
+    accent: "#1F9D57",
+  },
+  teardown: {
+    label: "TEARDOWN REQUEST",
+    note: "Free teardown requested. Study the business and send the document back.",
+    accent: "#F5B544",
+  },
+  partner: {
+    label: "PARTNER ENQUIRY",
+    note: "Referral partner enquiry. Reply with the referral terms in writing.",
+    accent: "#7C6CFF",
+  },
+};
+
 type Submission = {
   name: string;
   business: string;
@@ -23,7 +45,7 @@ type Submission = {
   // v23: "community" routes and labels the email as a founders community
   // signup, kept visually and textually distinct from a strategy-call lead.
   // Absent or "lead" preserves the original behaviour exactly.
-  source: "lead" | "community";
+  source: SubmissionSource;
 };
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "anish.modi@deeperdesigns.in";
@@ -103,20 +125,30 @@ export async function POST(req: Request) {
 
     // v23: branch the whole email on source so a community signup is
     // unmistakable in Anish's inbox and never reads like a strategy-call lead.
-    const isCommunity = raw.source === "community";
+    // v26: the same branch now covers four sources. An unknown source
+    // falls back to "lead", so a malformed payload can never produce an
+    // unlabelled email.
+    const rawSource = raw.source;
+    const source: SubmissionSource =
+      rawSource === "community" ||
+      rawSource === "teardown" ||
+      rawSource === "partner"
+        ? rawSource
+        : "lead";
     const body: Submission = {
       name: name.value,
       business: business.value,
       phone: normalizePhone(phone.value),
       email: email.value,
       industry,
-      source: isCommunity ? "community" : "lead",
+      source,
     };
-    const subject = isCommunity
-      ? `COMMUNITY SIGNUP from ${body.name}`
+    const label = source === "lead" ? null : LABELS[source];
+    const subject = label
+      ? `${label.label} from ${body.name}`
       : `New possibility request from ${body.name}`;
-    const text = renderText(body, isCommunity);
-    const html = renderHtml(body, isCommunity);
+    const text = renderText(body, label);
+    const html = renderHtml(body, label);
 
     if (process.env.RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {
@@ -196,12 +228,15 @@ export async function POST(req: Request) {
 // the ?from industry).
 // v25.5: the legacy long-form fields are gone, so the renderers carry only
 // the fields the form actually sends. Phone arrives already normalized.
-function renderText(s: Submission, isCommunity: boolean): string {
+type SourceLabel = (typeof LABELS)[keyof typeof LABELS] | null;
+
+function renderText(s: Submission, label: SourceLabel): string {
   // v23: community signups carry only the four fields, under a clear label.
-  if (isCommunity) {
+  // v26: the same shape now serves teardown and partner submissions.
+  if (label) {
     return [
-      `COMMUNITY SIGNUP`,
-      `Founders community, free to join. Add to the peer group by hand.`,
+      label.label,
+      label.note,
       ``,
       `Name: ${s.name}`,
       `Business: ${s.business}`,
@@ -223,21 +258,23 @@ function formatPhone(phone: string): string {
   return phone ? `+${phone}` : "";
 }
 
-function renderHtml(s: Submission, isCommunity: boolean): string {
+function renderHtml(s: Submission, label: SourceLabel): string {
   const row = (k: string, v: string) =>
     `<tr><td style="padding:6px 14px 6px 0;color:#888;font:13px/1.5 system-ui">${k}</td><td style="padding:6px 0;color:#111;font:13px/1.5 system-ui">${escapeHtml(v)}</td></tr>`;
   const filterRow = (k: string, v: string | undefined) =>
     v ? row(k, v) : "";
   const phone = formatPhone(s.phone);
 
-  // v23: a visually distinct card for community signups. Green eyebrow and
-  // a "COMMUNITY SIGNUP" label so it is never confused with a lead request.
-  if (isCommunity) {
+  // v23: a visually distinct card for community signups. Coloured eyebrow
+  // and a clear label so it is never confused with a lead request.
+  // v26: the same card, with its accent and label from the source config,
+  // now serves teardown and partner submissions too.
+  if (label) {
     return `<!doctype html><html><body style="background:#f7f8f8;margin:0;padding:24px;font-family:system-ui,sans-serif">
-    <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-left:4px solid #1F9D57;border-radius:12px;padding:28px">
-      <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#1F9D57;text-transform:uppercase">COMMUNITY SIGNUP</p>
+    <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-left:4px solid ${label.accent};border-radius:12px;padding:28px">
+      <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:${label.accent};text-transform:uppercase">${label.label}</p>
       <h1 style="margin:0 0 10px;font:300 24px/1.2 system-ui;letter-spacing:-0.02em;color:#111">${escapeHtml(s.name)} · ${escapeHtml(s.business)}</h1>
-      <p style="margin:0 0 22px;font:14px/1.6 system-ui;color:#555">Founders community request. Free to join, added to the peer group by hand.</p>
+      <p style="margin:0 0 22px;font:14px/1.6 system-ui;color:#555">${escapeHtml(label.note)}</p>
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
         ${row("Name", s.name)}
         ${row("Business", s.business)}

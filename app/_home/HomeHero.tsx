@@ -131,6 +131,20 @@ export default function HomeHero() {
             Or message us on WhatsApp
           </TrackedWhatsAppLink>
         </div>
+        {/* v26 Part 4: the teardown offered as a secondary path beside the
+            strategy call. Deliberately quieter than both existing CTAs and
+            placed above the untouched guarantee and price lines. */}
+        <p
+          style={{
+            marginTop: "20px",
+            fontSize: "15px",
+            lineHeight: 1.5,
+          }}
+        >
+          <Link href="/teardown" style={{ color: "var(--accent)" }}>
+            Or get a free teardown of your business
+          </Link>
+        </p>
         <p
           className="mono"
           style={{
