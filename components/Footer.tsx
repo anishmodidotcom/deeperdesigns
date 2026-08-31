@@ -35,6 +35,14 @@ export default function Footer() {
             >
               +91 99687 16498
             </TrackedWhatsAppLink>
+            {/* v26 Part 3: the same sitewide number, reachable as a call
+                for people who would rather dial than message. */}
+            <p className="mono mb-3 mt-6" style={{ color: "var(--fg-dim)" }}>
+              Call us
+            </p>
+            <a href="tel:+919968716498" className="text-base">
+              +91 99687 16498
+            </a>
           </div>
           <div>
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
@@ -65,12 +73,18 @@ export default function Footer() {
           style={{ borderColor: "var(--border)", color: "var(--fg-dim)" }}
         >
           <div className="footer-bottom-row flex flex-col gap-3 items-start md:flex-row md:justify-between md:items-center md:gap-0">
-            {/* v22 A7: trust line merged with the legal line. GSTIN slots in
-                after the entity name once registration lands. */}
-            <p>© 2026 Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
-            <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
-              Privacy
-            </a>
+            {/* v26 Part 3: trust line set to the exact approved wording.
+                No GSTIN or other registration identifier. */}
+            <p>Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
+            <div className="flex gap-4">
+              {/* v26 Part 5: /partners is footer-only, never in the nav. */}
+              <a href="/partners" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+                Partners
+              </a>
+              <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+                Privacy
+              </a>
+            </div>
           </div>
           <p className="mt-2 text-xs" style={{ color: "var(--fg-dim)" }}>
             Built in Delhi by Anish Modi.

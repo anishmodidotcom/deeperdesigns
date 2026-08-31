@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import HomeHero from "./_home/HomeHero";
+import HomeOwnership from "./_home/HomeOwnership";
+import HomeBuildIntegrate from "./_home/HomeBuildIntegrate";
 import HomeConfusion from "./_home/HomeConfusion";
 import HomeProof from "./_home/HomeProof";
 import HomeHowItWorks from "./_home/HomeHowItWorks";
@@ -43,9 +45,13 @@ export default function Home() {
   return (
     <main id="main">
       <HomeHero />
+      {/* v26: the ownership layer, directly beneath the untouched hero. */}
+      <HomeOwnership />
       <HomeConfusion />
       <HomeOutcomes />
       <HomeProof />
+      {/* v26: what we build and what we integrate, after the proof strip. */}
+      <HomeBuildIntegrate />
       <HomeFounderQuote />
       <HomeGallery />
       <HomeLiveBuilds />

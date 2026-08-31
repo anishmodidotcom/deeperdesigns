@@ -49,6 +49,10 @@ const ALLOWED_EVENTS = new Set([
   "LeadFormStart",
   "CommunityFormStart",
   "CommunityJoin",
+  // v26: teardown and partner offers, plus the software index.
+  "TeardownRequest",
+  "PartnerEnquiry",
+  "SoftwareIndexView",
 ]);
 
 // v25.5: custom_data is forwarded key by key, not verbatim, so a caller
@@ -70,6 +74,7 @@ const ALLOWED_CUSTOM_KEYS = new Set([
   "cta",
   "path",
   "source",
+  "category",
 ]);
 
 const CUSTOM_VALUE_MAX = 200;

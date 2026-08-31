@@ -10,6 +10,8 @@ import {
   trackFormLead,
   trackCommunityFormStart,
   trackCommunityJoin,
+  trackTeardownRequest,
+  trackPartnerEnquiry,
 } from "@/lib/meta-events";
 
 // v21: the single-step lead form. Four fields, a confirmation code, done.
@@ -30,7 +32,38 @@ import {
 //   community:  CommunityFormStart (code sent) -> CommunityJoin (confirmed)
 // The ?from={slug} industry attribution applies to the lead variant only.
 
-export type LeadFormVariant = "lead" | "community";
+// v26: two more front-end offers ride the same machinery. Each tags its
+// own source, fires its own confirmed-submission event, and never fires
+// Lead. Lead stays a single call site on the strategy-call variant.
+export type LeadFormVariant = "lead" | "community" | "teardown" | "partner";
+
+// Per-variant done screen. The lead variant is the only one that owns its
+// page heading, so it is the only one whose screens render an h1.
+const DONE: Record<
+  LeadFormVariant,
+  { heading: string; body: string; whatsapp: boolean }
+> = {
+  lead: {
+    heading: "You are in.",
+    body: "We will reach out on WhatsApp or email within one working day. If you want to skip the wait, message us now.",
+    whatsapp: true,
+  },
+  community: {
+    heading: "You are on the list.",
+    body: "Anish will look at your request and reach out on WhatsApp or email. Talk soon.",
+    whatsapp: false,
+  },
+  teardown: {
+    heading: "We are on it.",
+    body: "We will study your business and send the teardown to your email. If you want to talk it through when it lands, message us on WhatsApp.",
+    whatsapp: true,
+  },
+  partner: {
+    heading: "Thanks. We will be in touch.",
+    body: "We will reply with the referral terms in writing so you know exactly where you stand before anything moves.",
+    whatsapp: false,
+  },
+};
 
 type Screen = "form" | "code" | "done";
 
@@ -91,6 +124,10 @@ export default function LeadForm({
   variant?: LeadFormVariant;
 }) {
   const isCommunity = variant === "community";
+  // v26: only the lead variant supplies its own page heading; the other
+  // three sit under a heading the page already renders.
+  const ownsPageHeading = variant === "lead";
+  const done = DONE[variant];
   const [screen, setScreen] = useState<Screen>("form");
   const [fields, setFields] = useState<Fields>({
     name: "",
@@ -158,8 +195,11 @@ export default function LeadForm({
         try {
           // v23: the community variant fires its own start event and never
           // touches LeadFormStart.
+          // v26: LeadFormStart belongs to the strategy-call funnel only, so
+          // the teardown and partner variants fire no start event at all
+          // rather than borrowing one that would inflate that funnel.
           if (isCommunity) trackCommunityFormStart();
-          else trackLeadFormStart(fromIndustry());
+          else if (variant === "lead") trackLeadFormStart(fromIndustry());
         } catch {
           // analytics must never block the form
         }
@@ -253,11 +293,16 @@ export default function LeadForm({
       // Confirmed completion. Lead fires here for the lead variant ONLY;
       // the community variant fires CommunityJoin and never Lead.
       try {
-        if (isCommunity) {
-          trackCommunityJoin({
-            email: fields.email.trim(),
-            phone: normalizePhone(fields.phone),
-          });
+        const contact = {
+          email: fields.email.trim(),
+          phone: normalizePhone(fields.phone),
+        };
+        if (variant === "community") {
+          trackCommunityJoin(contact);
+        } else if (variant === "teardown") {
+          trackTeardownRequest(contact);
+        } else if (variant === "partner") {
+          trackPartnerEnquiry(contact);
         } else {
           trackFormLead({
             industry,
@@ -281,7 +326,7 @@ export default function LeadForm({
           {/* v23: the lead variant carries its own heading + intro. The
               community variant omits them because the /community page
               supplies the heading and body copy directly above the form. */}
-          {!isCommunity && (
+          {ownsPageHeading && (
             <>
               <h1
                 style={{
@@ -398,7 +443,7 @@ export default function LeadForm({
 
       {screen === "code" && (
         <form onSubmit={verify} noValidate>
-          <ScreenHeading isCommunity={isCommunity} size="clamp(28px, 4.5vw, 44px)">
+          <ScreenHeading isCommunity={!ownsPageHeading} size="clamp(28px, 4.5vw, 44px)">
             Check your inbox.
           </ScreenHeading>
           <p
@@ -492,10 +537,13 @@ export default function LeadForm({
 
       {screen === "done" && (
         <div>
-          <ScreenHeading isCommunity={isCommunity} size="clamp(32px, 5vw, 52px)">
-            {isCommunity ? "You are on the list." : "You are in."}
+          {/* v26: the done screen is driven by the per-variant DONE map, so
+              adding an offer does not mean another nested ternary here. The
+              lead and community wording is unchanged. */}
+          <ScreenHeading isCommunity={!ownsPageHeading} size="clamp(32px, 5vw, 52px)">
+            {done.heading}
           </ScreenHeading>
-          {isCommunity ? (
+          {!done.whatsapp ? (
             <p
               style={{
                 fontSize: 17,
@@ -505,8 +553,7 @@ export default function LeadForm({
                 maxWidth: 480,
               }}
             >
-              Anish will look at your request and reach out on WhatsApp or
-              email. Talk soon.
+              {done.body}
             </p>
           ) : (
             <>
@@ -519,8 +566,7 @@ export default function LeadForm({
                   maxWidth: 480,
                 }}
               >
-                We will reach out on WhatsApp or email within one working day.
-                If you want to skip the wait, message us now.
+                {done.body}
               </p>
               <TrackedWhatsAppLink
                 href={WHATSAPP_HREF}

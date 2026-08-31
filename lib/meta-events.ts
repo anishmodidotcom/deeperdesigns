@@ -32,7 +32,12 @@ type EventName =
   // CommunityFormStart mirrors LeadFormStart (code sent); CommunityJoin is
   // the community equivalent of Lead (confirmed signup). Both custom.
   | "CommunityFormStart"
-  | "CommunityJoin";
+  | "CommunityJoin"
+  // v26: the teardown and partner front-end offers, and the software
+  // index. All custom. None of them may ever fire Lead.
+  | "TeardownRequest"
+  | "PartnerEnquiry"
+  | "SoftwareIndexView";
 
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
@@ -355,4 +360,36 @@ export function trackCommunityJoin(args: {
     { source_page: "/community", source: "community" },
     { em: args.email, ph: args.phone },
   );
+}
+
+// v26: the teardown offer. Confirmed submission only, mirroring the
+// community pattern exactly. Never fires Lead or CommunityJoin.
+export function trackTeardownRequest(args: {
+  email?: string;
+  phone?: string;
+}): void {
+  trackEvent(
+    "TeardownRequest",
+    { source_page: "/teardown", source: "teardown" },
+    { em: args.email, ph: args.phone },
+  );
+}
+
+// v26: the partner and consultant referral offer. Confirmed submission
+// only. Never fires Lead.
+export function trackPartnerEnquiry(args: {
+  email?: string;
+  phone?: string;
+}): void {
+  trackEvent(
+    "PartnerEnquiry",
+    { source_page: "/partners", source: "partner" },
+    { em: args.email, ph: args.phone },
+  );
+}
+
+// v26: fired on a /software/[slug] category page view, carrying the slug,
+// so we learn which categories actually pull interest.
+export function trackSoftwareIndexView(category: string): void {
+  trackEvent("SoftwareIndexView", { category });
 }
