@@ -230,6 +230,23 @@ export default function Nav() {
             >
               Process
             </Link>
+            {/* v26: the software index and the cost page sit beside the
+                industries dropdown, which is where someone browsing by need
+                rather than by vertical will look. */}
+            <Link
+              href="/software"
+              className="text-sm transition-colors duration-200"
+              style={{ color: linkColor, transition: "color 300ms" }}
+            >
+              Software
+            </Link>
+            <Link
+              href="/what-software-costs"
+              className="text-sm transition-colors duration-200"
+              style={{ color: linkColor, transition: "color 300ms" }}
+            >
+              What it costs
+            </Link>
 
             {/* Browse by industry: opens a panel listing all verticals. */}
             <div ref={industriesRef} style={{ position: "relative" }}>
@@ -437,6 +454,12 @@ type="button"               aria-label="Close menu"
             </Link>
             <Link href="/process" onClick={() => setOpen(false)}>
               Process
+            </Link>
+            <Link href="/software" onClick={() => setOpen(false)}>
+              Software
+            </Link>
+            <Link href="/what-software-costs" onClick={() => setOpen(false)}>
+              What it costs
             </Link>
             <button
               type="button"
