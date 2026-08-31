@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SOFTWARE, getSoftware } from "@/lib/software";
+import { SOFTWARE, getSoftware, type SoftwareGroupId } from "@/lib/software";
 import { getSegment } from "@/lib/segments";
 import { getIndustry } from "@/lib/industries";
 import { StructuredData } from "@/components/StructuredData";
@@ -76,6 +76,22 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     </h2>
   );
 }
+
+// v28 Part 3: one closing line per group. Assigned by group rather than by
+// entry so it stays honest without becoming thirty variations of the same
+// sentence. People and visibility share one line.
+const GROUP_CLOSER: Record<SoftwareGroupId, string> = {
+  money: "Built to sit alongside your accounts, not on top of them.",
+  operations:
+    "Built around how your business actually counts, moves and makes things.",
+  selling: "Built for every person on your team, with no per-seat bill.",
+  people:
+    "Built so the numbers you check every morning are already there.",
+  visibility:
+    "Built so the numbers you check every morning are already there.",
+  specialist:
+    "Built for a workflow the big software vendors never bothered to learn.",
+};
 
 function joinNames(names: string[]): string {
   if (names.length === 1) return names[0];
@@ -163,10 +179,77 @@ export default async function SoftwarePage({
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "820px" }}>
-          <SectionLabel>What it usually costs</SectionLabel>
-          <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
-            Well-known options include {joinNames(item.incumbents)}.{" "}
-            {item.costAnchor}
+          {/* v28 Part 1: a category with real named products gets the
+              product-list label. A category where no standalone product
+              exists gets its own label, so a commentary sentence is never
+              rendered where a list of product names belongs. */}
+          <SectionLabel>
+            {item.incumbents ? "What it usually costs" : "The state of this category"}
+          </SectionLabel>
+          {item.incumbents ? (
+            <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
+              Well-known options include {joinNames(item.incumbents)}.{" "}
+              {item.costAnchor}
+            </p>
+          ) : (
+            <>
+              <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
+                {item.categoryState}
+              </p>
+              <p
+                style={{
+                  fontSize: "19px",
+                  lineHeight: 1.6,
+                  color: "var(--fg)",
+                  marginTop: "16px",
+                }}
+              >
+                {item.costAnchor}
+              </p>
+            </>
+          )}
+
+          {/* v28 Part 2: a verified public list price, or the honest line.
+              Nothing here is estimated. */}
+          {item.price ? (
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: 1.6,
+                color: "var(--fg-muted)",
+                marginTop: "20px",
+              }}
+            >
+              {item.price.vendor}, {item.price.plan}: {item.price.rate}. Checked
+              on {item.price.source}, {item.price.verifiedOn}.
+            </p>
+          ) : (
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: 1.6,
+                color: "var(--fg-muted)",
+                marginTop: "20px",
+              }}
+            >
+              This category does not publish public pricing. Vendors quote per
+              business, which is part of why comparing is hard.
+            </p>
+          )}
+
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: 1.6,
+              color: "var(--fg-muted)",
+              marginTop: "12px",
+            }}
+          >
+            See the five-year arithmetic on{" "}
+            <Link href="/what-software-costs" style={{ color: "var(--accent)" }}>
+              what software actually costs
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -177,9 +260,11 @@ export default async function SoftwarePage({
           <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
             {item.build}
           </p>
-          {/* The standard pitch sentence is suppressed on the entries that
-              say plainly we do not rebuild the thing. See lib/software.ts. */}
-          {!item.integrateOnly && item.pitchCategory && item.pitchName ? (
+          {/* v28 Part 3: the repeated pitch sentence is gone. A short line
+              per group closes the section instead, so it varies rather than
+              reading as the same template thirty times. The integrateOnly
+              entries get nothing: their own text is the honest ending. */}
+          {!item.integrateOnly && GROUP_CLOSER[item.group] ? (
             <p
               style={{
                 fontSize: "19px",
@@ -188,9 +273,7 @@ export default async function SoftwarePage({
                 marginTop: "20px",
               }}
             >
-              You know {item.pitchCategory} software like {item.pitchName}? We
-              build your own simple version, shaped to your exact workflow, for
-              a fraction of the cost. And you own it.
+              {GROUP_CLOSER[item.group]}
             </p>
           ) : null}
         </div>

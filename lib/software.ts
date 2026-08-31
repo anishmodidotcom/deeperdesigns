@@ -2,17 +2,19 @@
 // 30 /software/[slug] pages, exactly the way lib/industries.ts drives the
 // 13 /for pages. Nothing here is hand-written per page.
 //
-// Copy note: `does`, `costAnchor` and `build` are the approved lines and are
-// used verbatim. `heading` is the category name with a serif accent on its
-// second half. `pitchCategory` and `pitchName` fill the two slots in the
-// standard pitch sentence rendered by the page template.
+// Copy note: `does`, `categoryState`, `costAnchor` and `build` are the
+// approved lines and are used verbatim. `heading` is the category name with
+// a serif accent on its second half.
 //
-// `integrateOnly` suppresses the pitch sentence. Five entries say plainly
-// that we do not rebuild the thing (Tally, e-invoicing, e-way bills, GST
-// filing, and enterprise ERP). Appending "we build your own simple version"
-// to those would contradict both the entry's own build line and the
-// standing rule that we never pitch replacing Tally, statutory filing or
-// the payment rails. Flagged in the PR rather than reworded.
+// v28: the repeated pitch sentence ("You know X software like Y? We build
+// your own simple version...") is gone from the template. It appeared on
+// most of the 30 pages, and read three in a row it was obviously a template.
+// Each entry's own `build` line is specific and does the job alone. A short
+// closing line per group, in the page template, replaces it.
+//
+// `integrateOnly` marks the five entries that say plainly we do not rebuild
+// the thing (Tally, e-invoicing, e-way bills, GST filing, enterprise ERP).
+// Those get no closing line at all; their existing text stands alone.
 
 export const SOFTWARE_GROUPS = [
   { id: "money", title: "Money and compliance" },
@@ -25,17 +27,34 @@ export const SOFTWARE_GROUPS = [
 
 export type SoftwareGroupId = (typeof SOFTWARE_GROUPS)[number]["id"];
 
+// v28: two distinct cases, kept apart so the template never renders a
+// commentary sentence in a product-list slot. `incumbents` is a list of real
+// named products. `categoryState` is for categories where no real standalone
+// product exists, and renders under its own label instead.
+//
+// `price` carries a verified public list price. Every figure here was read
+// off the vendor's own pricing page on the date recorded; nothing is
+// estimated or carried over from a blog. Categories with no `price` render
+// the honest no-public-pricing line instead.
+export type VerifiedPrice = {
+  vendor: string;
+  plan: string;
+  rate: string;
+  source: string;
+  verifiedOn: string;
+};
+
 export type SoftwareCategory = {
   slug: string;
   name: string;
   heading: string;
   group: SoftwareGroupId;
   does: string;
-  incumbents: string[];
+  incumbents?: string[];
+  categoryState?: string;
+  price?: VerifiedPrice;
   costAnchor: string;
   build: string;
-  pitchCategory?: string;
-  pitchName?: string;
   integrateOnly?: boolean;
   related: string[];
   segments?: string[];
@@ -51,6 +70,14 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "money",
     does: "Keeps your ledgers, raises GST invoices, files returns.",
     incumbents: ["Tally", "Busy", "Marg", "Zoho Books"],
+    price: {
+      vendor: "Tally",
+      plan: "TallyPrime Gold, lifetime licence",
+      rate:
+        "Rs 67,500 one time, plus 18 percent GST",
+      source: "tallysolutions.com",
+      verifiedOn: "2026-08-31",
+    },
     costAnchor:
       "TallyPrime is a one-time licence plus an annual renewal for updates.",
     build:
@@ -70,8 +97,6 @@ export const SOFTWARE: SoftwareCategory[] = [
       "Annual subscriptions, low cost, priced per device or user.",
     build:
       "Billing shaped to your items, your rates and your customers, connected to whatever you already use for accounts.",
-    pitchCategory: "billing",
-    pitchName: "Vyapar",
     related: ["pos", "accounting-gst", "receivables"],
     segments: ["traders", "retailers"],
   },
@@ -95,7 +120,8 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "E-way bill {serif}automation.{/serif}",
     group: "money",
     does: "Generates e-way bills in bulk instead of one at a time.",
-    incumbents: ["The same authorised providers"],
+    categoryState:
+      "The same authorised providers handle this; it is not sold as a standalone product.",
     costAnchor: "Usually bundled with e-invoicing subscriptions.",
     build:
       "We wire your dispatch process into it so the bill is generated from the data you already entered.",
@@ -127,8 +153,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Subscription, or free tools that stop at a ledger.",
     build:
       "Ageing by customer, automatic WhatsApp reminders, promise-to-pay tracking and a payment link in the message. This is the single most common thing we are asked to build.",
-    pitchCategory: "receivables",
-    pitchName: "Recordent",
     related: ["credit-control", "billing-invoicing", "whatsapp"],
     segments: ["traders", "retailers", "exporters"],
   },
@@ -138,12 +162,11 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Credit control {serif}and limits.{/serif}",
     group: "money",
     does: "Sets a credit limit per customer and blocks orders that cross it.",
-    incumbents: ["Usually a module inside expensive ERP"],
+    categoryState:
+      "Usually a module inside expensive ERP, rather than something you can buy on its own.",
     costAnchor: "Rarely sold alone, comes bundled with mid-market ERP.",
     build:
       "Limits, scoring and automatic blocks, built into your own order flow instead of living in someone's head.",
-    pitchCategory: "credit control",
-    pitchName: "SAP Business One",
     related: ["receivables", "b2b-ordering", "mid-market-erp"],
     segments: ["traders", "distributors"],
   },
@@ -159,8 +182,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Subscription per user per month, or bundled in ERP.",
     build:
       "Stock the way your business actually counts it, by weight, by batch, by size, by whatever your trade uses.",
-    pitchCategory: "inventory",
-    pitchName: "Zoho Inventory",
     related: ["warehouse", "barcode-qr", "pos"],
     segments: ["traders", "retailers", "importers"],
   },
@@ -174,8 +195,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Add-on modules or subscription tiers.",
     build:
       "Label printing and scanning wired into your own stock system, on hardware you already have.",
-    pitchCategory: "barcode",
-    pitchName: "Unicommerce",
     related: ["inventory", "warehouse", "quality-control"],
     segments: ["retailers", "manufacturers"],
   },
@@ -189,8 +208,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Subscription, priced by order volume.",
     build:
       "Pick lists, dispatch and proof of handover, built for your warehouse layout rather than a generic one.",
-    pitchCategory: "warehouse",
-    pitchName: "Unicommerce",
     related: ["inventory", "transport-fleet", "barcode-qr"],
     segments: ["distributors", "importers"],
     industries: ["logistics"],
@@ -205,8 +222,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Annual licence per counter.",
     build:
       "A counter screen your staff can learn in a day, that keeps working when the internet does not.",
-    pitchCategory: "point of sale",
-    pitchName: "GoFrugal",
     related: ["billing-invoicing", "inventory", "receivables"],
     segments: ["retailers"],
     industries: ["jewellery", "restaurants"],
@@ -217,12 +232,11 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Production {serif}planning.{/serif}",
     group: "operations",
     does: "Schedules what gets made, on which machine, in what order.",
-    incumbents: ["Modules inside mid-market ERP"],
+    categoryState:
+      "Modules inside mid-market ERP, rather than something you can buy on its own.",
     costAnchor: "Comes as part of ERP implementations.",
     build:
       "Job cards, machine allocation and work-in-progress visible on one screen, instead of a whiteboard and a WhatsApp group.",
-    pitchCategory: "production planning",
-    pitchName: "SAP Business One",
     related: ["job-work", "quality-control", "quotation-cpq"],
     segments: ["manufacturers", "packaging"],
     industries: ["manufacturing"],
@@ -233,12 +247,10 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Job-work and {serif}subcontracting.{/serif}",
     group: "operations",
     does: "Tracks material sent out for processing and what comes back, with GST challans.",
-    incumbents: ["Badly served, mostly ERP modules or Excel"],
+    categoryState: "Badly served, mostly ERP modules or Excel.",
     costAnchor: "Rarely available standalone.",
     build:
       "Challans, material sent and returned, conversion charges and reconciliation. This is one of the most Indian problems in manufacturing and one of the worst served.",
-    pitchCategory: "job-work",
-    pitchName: "ERPNext",
     related: ["production-planning", "inventory", "quality-control"],
     segments: ["manufacturers", "packaging"],
     industries: ["manufacturing"],
@@ -249,12 +261,11 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Quality {serif}control.{/serif}",
     group: "operations",
     does: "Records incoming, in-process and final inspection, and rejections.",
-    incumbents: ["ERP modules"],
+    categoryState:
+      "Handled as a module inside ERP, rather than something you can buy on its own.",
     costAnchor: "Bundled, not sold alone.",
     build:
       "Inspection checklists on a phone at the point of work, with rejection tracking that tells you which supplier or machine is costing you.",
-    pitchCategory: "quality control",
-    pitchName: "SAP Business One",
     related: ["production-planning", "job-work", "dashboards"],
     segments: ["manufacturers"],
     industries: ["manufacturing"],
@@ -269,8 +280,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Subscription per vehicle or per user.",
     build:
       "Trip status, digital proof of delivery from the driver's phone, and one screen that shows where everything is.",
-    pitchCategory: "transport",
-    pitchName: "Fretron",
     related: ["warehouse", "e-way-bill", "dashboards"],
     industries: ["logistics"],
   },
@@ -283,12 +292,18 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "selling",
     does: "Keeps leads, follow-ups and pipeline in one place.",
     incumbents: ["Zoho CRM", "Salesforce", "Freshsales"],
+    price: {
+      vendor: "Zoho CRM",
+      plan: "Professional",
+      rate:
+        "Rs 1,400 per user per month, billed annually",
+      source: "zoho.com",
+      verifiedOn: "2026-08-30",
+    },
     costAnchor:
       "Priced per user per month, so the bill grows every time you hire.",
     build:
       "Your pipeline, your stages, your follow-up rules, for every person in your team at no extra cost per head. The per-seat meter is the thing we remove.",
-    pitchCategory: "CRM",
-    pitchName: "Salesforce",
     related: ["sales-force-automation", "quotation-cpq", "dashboards"],
     segments: ["manufacturers", "traders"],
   },
@@ -303,8 +318,6 @@ export const SOFTWARE: SoftwareCategory[] = [
       "Priced per user per month, which adds up quickly across a field team.",
     build:
       "Beat plans, order booking that works offline in a rural market, and one dashboard showing what the field actually did today.",
-    pitchCategory: "field sales",
-    pitchName: "FieldAssist",
     related: ["distributor-management", "b2b-ordering", "crm"],
     segments: ["distributors"],
   },
@@ -318,8 +331,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Quote-based, typically lakhs a year.",
     build:
       "The secondary-sales blind spot is the reason this category exists. We build the visibility, the scheme maths and the claim reconciliation, without the annual licence.",
-    pitchCategory: "distributor management",
-    pitchName: "Bizom",
     related: ["sales-force-automation", "loyalty-schemes", "b2b-ordering"],
     segments: ["distributors"],
   },
@@ -329,12 +340,10 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "B2B {serif}ordering portals.{/serif}",
     group: "selling",
     does: "Lets your retailers or dealers place their own orders instead of calling.",
-    incumbents: ["Mostly custom, few standard products"],
+    categoryState: "Mostly custom, few standard products.",
     costAnchor: "Almost always a custom build even from big vendors.",
     build:
       "Your buyers order from their phone, see their own rates and credit limit, and the order lands in your system already correct.",
-    pitchCategory: "ordering portal",
-    pitchName: "Unicommerce",
     related: ["dealer-portals", "distributor-management", "credit-control"],
     segments: ["distributors", "exporters", "manufacturers"],
   },
@@ -344,12 +353,11 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Dealer and {serif}vendor portals.{/serif}",
     group: "selling",
     does: "Gives partners self-service access to orders, ledgers and documents.",
-    incumbents: ["Usually bespoke"],
+    categoryState:
+      "Usually bespoke.",
     costAnchor: "Quoted per project.",
     build:
       "One login where a dealer sees their ledger, their claims and their dispatches, so nobody calls your office to ask.",
-    pitchCategory: "dealer portal",
-    pitchName: "Salesforce Experience Cloud",
     related: ["b2b-ordering", "loyalty-schemes", "receivables"],
     segments: ["distributors", "manufacturers"],
   },
@@ -359,12 +367,10 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Quotation and {serif}estimation.{/serif}",
     group: "selling",
     does: "Turns a specification into a priced quotation with approvals.",
-    incumbents: ["Thin standard options, mostly custom"],
+    categoryState: "Thin standard options, mostly custom.",
     costAnchor: "Bundled into ERP or built bespoke.",
     build:
       "Enter the specification, get a branded quotation in seconds with your rates, terms and GST. For manufacturers this is often the highest-value single tool we build.",
-    pitchCategory: "quotation",
-    pitchName: "Salesforce CPQ",
     related: ["crm", "production-planning", "packaging-costing"],
     segments: ["manufacturers", "packaging"],
     industries: ["manufacturing"],
@@ -379,8 +385,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Quote-based.",
     build:
       "Scheme maths that used to be a monthly Excel argument, calculated automatically and visible to the partner.",
-    pitchCategory: "loyalty",
-    pitchName: "LoyaltyXpert",
     related: ["distributor-management", "dealer-portals", "receivables"],
     segments: ["distributors", "traders"],
   },
@@ -395,8 +399,6 @@ export const SOFTWARE: SoftwareCategory[] = [
       "Monthly subscription plus Meta's own per-message fees.",
     build:
       "We build on the official WhatsApp API through an authorised provider. The assistant is yours and it speaks the way your business speaks.",
-    pitchCategory: "WhatsApp",
-    pitchName: "Wati",
     related: ["receivables", "b2b-ordering", "crm"],
     segments: ["retailers", "traders"],
     industries: ["clinics", "salons", "restaurants"],
@@ -410,12 +412,18 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "people",
     does: "Attendance, leave, payroll and statutory filing.",
     incumbents: ["greytHR", "Keka", "Zoho People"],
+    price: {
+      vendor: "greytHR",
+      plan: "Growth",
+      rate:
+        "Rs 4,495 per month covering the first 50 employees, then Rs 85 per employee",
+      source: "greythr.com",
+      verifiedOn: "2026-08-30",
+    },
     costAnchor:
       "Priced per employee per month, so it scales with headcount.",
     build:
       "We build attendance, leave and approvals around how your shifts actually run, and integrate the statutory filing rather than rebuilding it.",
-    pitchCategory: "HR",
-    pitchName: "greytHR",
     related: ["dashboards", "quality-control", "production-planning"],
     segments: ["manufacturers", "retailers"],
   },
@@ -428,11 +436,17 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "visibility",
     does: "Shows the owner the daily numbers, sales, stock, receivables and cash.",
     incumbents: ["Zoho Analytics", "Power BI"],
+    price: {
+      vendor: "Power BI",
+      plan: "Pro",
+      rate:
+        "Rs 1,165 per user per month, paid yearly",
+      source: "microsoft.com",
+      verifiedOn: "2026-08-30",
+    },
     costAnchor: "Priced per viewer, so showing more people costs more.",
     build:
       "The numbers you check every morning, on one screen, pulled from Tally and everything else you use. This is our most-requested first build.",
-    pitchCategory: "dashboard",
-    pitchName: "Power BI",
     related: ["accounting-gst", "receivables", "inventory"],
     segments: ["manufacturers", "traders", "exporters"],
   },
@@ -448,8 +462,6 @@ export const SOFTWARE: SoftwareCategory[] = [
     costAnchor: "Licence or per-shipment fees.",
     build:
       "The document layer, generated from data you entered once. Filing continues through your CHA and the government systems, which we do not touch.",
-    pitchCategory: "export documentation",
-    pitchName: "Expand smERP",
     related: ["landed-cost", "b2b-ordering", "receivables"],
     segments: ["exporters"],
   },
@@ -459,12 +471,10 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Import {serif}landed cost.{/serif}",
     group: "specialist",
     does: "Works out the true per-consignment cost after duty, freight and clearing.",
-    incumbents: ["Mostly free calculators, no serious SME product"],
+    categoryState: "Mostly free calculators, no serious SME product.",
     costAnchor: "No integrated product exists at SME prices.",
     build:
       "The full duty stack calculated per consignment, so you know your real cost before you price anything. This category is close to empty and it should not be.",
-    pitchCategory: "landed cost",
-    pitchName: "SAP Business One",
     related: ["inventory", "accounting-gst", "gst-returns"],
     segments: ["importers"],
   },
@@ -474,13 +484,11 @@ export const SOFTWARE: SoftwareCategory[] = [
     heading: "Packaging {serif}job costing.{/serif}",
     group: "specialist",
     does: "Costs every job by material, size, wastage and process.",
-    incumbents: ["Samadhan", "Finsys, priced for mid-market"],
+    incumbents: ["Samadhan", "Finsys"],
     costAnchor:
       "Mid-market implementations, out of reach for smaller units.",
     build:
       "Per-job estimation with your board, your GSM, your wastage and your die library, so quoting stops being a guess.",
-    pitchCategory: "job costing",
-    pitchName: "Finsys",
     related: ["quotation-cpq", "production-planning", "job-work"],
     segments: ["packaging"],
   },
@@ -491,12 +499,18 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "specialist",
     does: "Joins finance and operations in one system.",
     incumbents: ["SAP Business One", "ERPNext", "Odoo"],
+    price: {
+      vendor: "ERPNext",
+      plan: "Frappe Cloud hosting",
+      rate:
+        "from Rs 410 per month for hosting; the software itself is free and open source",
+      source: "frappe.io",
+      verifiedOn: "2026-08-31",
+    },
     costAnchor:
       "Implementation projects running into lakhs, plus annual costs.",
     build:
       "Most businesses quoted for ERP need four of its forty modules. We build those four, properly, for a fraction, and connect them to your accounts.",
-    pitchCategory: "ERP",
-    pitchName: "SAP Business One",
     related: ["inventory", "production-planning", "dashboards"],
     segments: ["manufacturers", "distributors"],
   },
