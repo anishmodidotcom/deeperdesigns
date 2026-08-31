@@ -59,7 +59,7 @@ export default function HomeHero() {
   };
 
   return (
-    <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", paddingTop: "80px" }}>
+    <section className="hero-section" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", paddingTop: "80px" }}>
       <div ref={layerRef} aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
         {AMBIENT.map((img, i) => (
           <div
@@ -194,6 +194,16 @@ type="button"           aria-label="Scroll to next section"
       )}
 
       <style>{`
+        /* v28.1: the floating WhatsApp button is fixed 24px from the bottom
+           and is 56px tall, so it sits over the last 80px of the viewport.
+           The hero centres its content, so reserving that strip at the
+           bottom lifts the guarantee and price lines clear of it. Those are
+           two of the three above-fold trust signals and were partly covered
+           on a 390px phone. */
+        @media (max-width: 767px) {
+          .hero-section { padding-bottom: 110px; }
+        }
+
         @keyframes heroFloat {
           0%, 100% { translate: 0 0; }
           50% { translate: 0 -8px; }

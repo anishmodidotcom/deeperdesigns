@@ -30,7 +30,7 @@ const SECTIONS = [
   },
   {
     label: "If you ever want to leave",
-    body: "You own the code and the data, and we hand over both, documented, whenever you ask. You are never locked to us. That is the point of owning your software instead of renting it.",
+    body: "You own the code and the data, and we hand over both, documented, whenever you ask. You are never locked to us. That is the point of owning your software instead of renting it. We build on standard, widely used technology, not anything exotic, so any competent development team can pick it up and carry on.",
   },
   {
     label: "We run our own on it",

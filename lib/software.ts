@@ -55,6 +55,10 @@ export type SoftwareCategory = {
   price?: VerifiedPrice;
   costAnchor: string;
   build: string;
+  // v28.1: on whatsapp and inventory some vendors publish add-on or
+  // non-INR rates while base plans are quoted, so the flat "does not
+  // publish public pricing" line was too absolute. These two say so.
+  partialPublicPricing?: boolean;
   integrateOnly?: boolean;
   related: string[];
   segments?: string[];
@@ -179,6 +183,7 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "operations",
     does: "Tracks stock across godowns, batches and expiry.",
     incumbents: ["Tally", "Zoho Inventory", "ERPNext"],
+    partialPublicPricing: true,
     costAnchor: "Subscription per user per month, or bundled in ERP.",
     build:
       "Stock the way your business actually counts it, by weight, by batch, by size, by whatever your trade uses.",
@@ -395,6 +400,7 @@ export const SOFTWARE: SoftwareCategory[] = [
     group: "selling",
     does: "Catalogues, orders, reminders and support over WhatsApp.",
     incumbents: ["AiSensy", "Interakt", "Wati"],
+    partialPublicPricing: true,
     costAnchor:
       "Monthly subscription plus Meta's own per-message fees.",
     build:
