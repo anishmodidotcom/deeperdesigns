@@ -75,7 +75,7 @@ export default function Footer() {
           <div className="footer-bottom-row flex flex-col gap-3 items-start md:flex-row md:justify-between md:items-center md:gap-0">
             {/* v26 Part 3: trust line set to the exact approved wording.
                 No GSTIN or other registration identifier. */}
-            <p>Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
+            <p>© 2026 Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
             <div className="flex gap-4">
               {/* v26 Part 5: /partners is footer-only, never in the nav. */}
               <a href="/partners" className="text-sm" style={{ color: "var(--fg-dim)" }}>

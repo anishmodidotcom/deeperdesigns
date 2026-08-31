@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HomeHero from "./_home/HomeHero";
 import HomeOwnership from "./_home/HomeOwnership";
 import HomeBuildIntegrate from "./_home/HomeBuildIntegrate";
+import HomeArchitecture from "./_home/HomeArchitecture";
 import HomeConfusion from "./_home/HomeConfusion";
 import HomeProof from "./_home/HomeProof";
 import HomeHowItWorks from "./_home/HomeHowItWorks";
@@ -47,6 +48,9 @@ export default function Home() {
       <HomeHero />
       {/* v26: the ownership layer, directly beneath the untouched hero. */}
       <HomeOwnership />
+      {/* v27: why a build can cost a fraction, placed before the confusion
+          block so the claim above it is answered immediately. */}
+      <HomeArchitecture />
       <HomeConfusion />
       <HomeOutcomes />
       <HomeProof />

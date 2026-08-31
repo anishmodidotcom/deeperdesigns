@@ -1,16 +1,17 @@
 import { renderSerif } from "@/components/industry/text";
 
-// v26 Part 1: the ownership layer. Sits directly beneath the hero, above
-// the confusion block. Deliberately quiet: no cards, no icons, no grid.
-// The hero is untouched; this is the story that follows it.
+// v27 Part 1: the product architecture answer. Sits after the ownership
+// layer and before the confusion block. This is the section that makes the
+// pricing claim believable: nobody accepts "a fraction of the cost" without
+// being told why it is possible. Quiet and in-shell, no icons, no cards.
 
 const LINES = [
-  "Built for your workflow, not a template you bend yourself around.",
-  "One price, agreed in writing before we start. No per-seat meter.",
-  "You own the software and the data. We hand over everything.",
+  "The core is built and tested. Your build starts on top of it.",
+  "Modules get added only where your business needs them.",
+  "Industry packs for manufacturing, trading, distribution, packaging, import, export and retail mean we already know your workflow.",
 ];
 
-export default function HomeOwnership() {
+export default function HomeArchitecture() {
   return (
     <section style={{ padding: "calc(var(--section-py) * 0.6) 0" }}>
       <div className="container">
@@ -24,9 +25,7 @@ export default function HomeOwnership() {
             maxWidth: "880px",
           }}
         >
-          {renderSerif(
-            "The software big companies pay crores for {serif}can now be built for you.{/serif}",
-          )}
+          {renderSerif("We are fast because {serif}we never start from zero.{/serif}")}
         </h2>
         <p
           style={{
@@ -37,22 +36,22 @@ export default function HomeOwnership() {
             margin: "0 0 40px",
           }}
         >
-          Salesforce, SAP, and the rest were built for companies with hundreds
-          of people and budgets to match. You have been quoted lakhs for
-          software that almost fits, then charged again for every new person
-          who logs in. That maths has changed. The same tools can now be built
-          around exactly how your business runs, for a fraction of that, in
-          weeks. And they belong to you.
+          Every business needs the same foundations: customers, suppliers,
+          products, stock, transactions, documents, payments, and who is
+          allowed to see what. We built that core once, properly, and we keep
+          it. When you come to us, we are not writing your software from
+          scratch. We are shaping a core that already works around how your
+          business actually runs, then adding only the parts you need.
         </p>
         <ul
           style={{
             listStyle: "none",
-            margin: 0,
+            margin: "0 0 40px",
             padding: 0,
             display: "flex",
             flexDirection: "column",
             gap: "14px",
-            maxWidth: "680px",
+            maxWidth: "760px",
           }}
         >
           {LINES.map((line) => (
@@ -82,18 +81,17 @@ export default function HomeOwnership() {
             </li>
           ))}
         </ul>
-        {/* v27 voice line, closing the ownership section. */}
         <p
           style={{
-            marginTop: "32px",
             fontSize: "17px",
             lineHeight: 1.6,
             color: "var(--fg)",
-            maxWidth: "680px",
+            maxWidth: "760px",
+            margin: 0,
           }}
         >
-          Custom built systems that are safe, secure, owned by you, and
-          maintained by us.
+          That is the honest answer to how a build costs a fraction of what
+          you were quoted, and takes weeks instead of a year.
         </p>
       </div>
     </section>

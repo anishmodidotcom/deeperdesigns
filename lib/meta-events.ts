@@ -178,6 +178,13 @@ function ensurePoller(): void {
   if (typeof window === "undefined") return;
   if (pollerHandle !== null) return;
   pollerHandle = window.setInterval(drainIfReady, 100);
+  // v27: the poller wakes every 100ms, which is fine while the page lives.
+  // An event fired immediately before the visitor leaves could still be
+  // sitting in the queue when the page goes away, and the queue dies with
+  // it. pagehide is the last reliable moment to hand anything pending to
+  // fbq. Belt and braces behind the v27 stub change, which should mean the
+  // queue is rarely used at all now.
+  window.addEventListener("pagehide", drainIfReady, { once: true });
 }
 
 function fireBrowser(

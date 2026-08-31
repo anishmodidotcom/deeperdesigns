@@ -85,6 +85,19 @@ export default function SoftwareIndex() {
             it, and what it costs to have your own version built instead. Your
             own version is shaped around how you already work, and you own it.
           </p>
+          {/* v27 voice line, under the intro paragraph. */}
+          <p
+            style={{
+              fontSize: "18px",
+              color: "var(--fg)",
+              lineHeight: 1.6,
+              maxWidth: "760px",
+              marginTop: "20px",
+            }}
+          >
+            You do not need to understand any of this to use it. That is our
+            job.
+          </p>
         </div>
       </section>
 
@@ -173,6 +186,26 @@ export default function SoftwareIndex() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* v27: the index and the cost page link to each other. */}
+      <section style={{ paddingBottom: "var(--section-py)" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
+          <Link
+            href="/what-software-costs"
+            className="mono"
+            style={{
+              fontSize: "13px",
+              letterSpacing: "0.04em",
+              color: "var(--fg)",
+              border: "1px solid var(--border-strong)",
+              borderRadius: "999px",
+              padding: "9px 16px",
+            }}
+          >
+            What business software actually costs
+          </Link>
         </div>
       </section>
 
