@@ -1,7 +1,7 @@
 // OTP store keyed by email address (or any string identifier).
 //
 // Storage strategy: Vercel KV (Redis) when KV_REST_API_URL is set,
-// in-memory Map otherwise. The in-memory fallback is intentional —
+// in-memory Map otherwise. The in-memory fallback is intentional:
 // pre-flight 2 of v15 requires this path to keep working before the
 // KV instance is provisioned in the Vercel dashboard.
 //

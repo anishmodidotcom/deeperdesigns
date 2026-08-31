@@ -495,7 +495,19 @@ export default function Solution() {
                   fontWeight: 700,
                 }}
               >
-                ✦
+                {/* v28: the decorative glyph is gone. Zero emojis or
+                    decorative characters sitewide; the marker is now drawn,
+                    using the same dot idiom as the rest of the site. */}
+                <span
+                  aria-hidden
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: "#fff",
+                    display: "block",
+                  }}
+                />
               </span>
               <div>
                 <p

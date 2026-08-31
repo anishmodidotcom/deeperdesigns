@@ -34,7 +34,7 @@ const PRODUCTS = [
     // overlapped Oviya Studio. Both now say the same thing: Maple Lens is
     // the client build that proved the idea, Oviya Studio is the product
     // built from it.
-    line: "Maple Lens. The client build that started it: a furniture maker shoots one phone photo and gets back a catalogue shot. Live and in use.",
+    line: "The client build that started it: a furniture maker shoots one phone photo and gets back a catalogue shot. Live and in use.",
     href: "/work/maplelens",
     accent: "#C8956D",
   },

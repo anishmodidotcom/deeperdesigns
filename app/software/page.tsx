@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SOFTWARE_GROUPS, softwareByGroup } from "@/lib/software";
 import { SEGMENTS } from "@/lib/segments";
+import { INDUSTRIES } from "@/lib/industries";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
+import MidPageCTA from "@/components/MidPageCTA";
 import { renderSerif } from "@/components/industry/text";
 
 // v26 Part 6: the master software index. Every category page is generated
@@ -152,7 +154,10 @@ export default function SoftwareIndex() {
         );
       })}
 
-      <section style={{ paddingBottom: "var(--section-py)" }}>
+      <MidPageCTA />
+
+      {/* v28 Part 4: anchored so the footer can link straight to it. */}
+      <section id="by-kind-of-business" style={{ paddingBottom: "var(--section-py)", scrollMarginTop: "120px" }}>
         <div className="container" style={{ maxWidth: "880px" }}>
           <h2
             className="mono"
@@ -183,6 +188,46 @@ export default function SoftwareIndex() {
                 }}
               >
                 {s.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* v28 Part 4: the 13 industry pages had no index anywhere on the
+          site, only the nav dropdown. They are listed here so they are
+          reachable and linkable. */}
+      <section id="by-industry" style={{ paddingBottom: "var(--section-py)", scrollMarginTop: "120px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
+          <h2
+            className="mono"
+            style={{
+              fontSize: "11px",
+              fontWeight: 500,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "var(--dd-eyebrow-on-dark)",
+              margin: "0 0 20px",
+            }}
+          >
+            By industry
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+            {INDUSTRIES.filter((i) => i.live).map((i) => (
+              <Link
+                key={i.slug}
+                href={`/for/${i.slug}`}
+                className="mono"
+                style={{
+                  fontSize: "13px",
+                  letterSpacing: "0.04em",
+                  color: "var(--fg)",
+                  border: "1px solid var(--border-strong)",
+                  borderRadius: "999px",
+                  padding: "9px 16px",
+                }}
+              >
+                {i.name}
               </Link>
             ))}
           </div>

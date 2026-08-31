@@ -9,6 +9,7 @@ import {
 } from "@/lib/meta-events";
 import { useShowcaseContext } from "@/components/ShowcaseContext";
 import { INDUSTRIES } from "@/lib/industries";
+import { SEGMENTS } from "@/lib/segments";
 
 export default function Nav() {
   const pathname = usePathname() ?? "";
@@ -247,6 +248,14 @@ export default function Nav() {
             >
               What it costs
             </Link>
+            {/* v28 Part 5: the trust page sits beside the cost page. */}
+            <Link
+              href="/trust"
+              className="text-sm transition-colors duration-200"
+              style={{ color: linkColor, transition: "color 300ms" }}
+            >
+              Trust
+            </Link>
 
             {/* Browse by industry: opens a panel listing all verticals. */}
             <div ref={industriesRef} style={{ position: "relative" }}>
@@ -369,10 +378,52 @@ export default function Nav() {
                       );
                     })}
                   </div>
+                  {/* v28 Part 4: a second group in the same panel, so the
+                      seven segment pages are reachable from the nav. */}
+                  <p
+                    className="mono"
+                    style={{
+                      margin: "16px 12px 8px",
+                      fontSize: 10,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "var(--fg-dim)",
+                    }}
+                  >
+                    By kind of business
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    {SEGMENTS.map((seg) => (
+                      <Link
+                        key={seg.slug}
+                        href={`/business/${seg.slug}`}
+                        onClick={() => setIndustriesOpen(false)}
+                        className="nav-industry-item"
+                        style={{
+                          padding: "10px 12px",
+                          borderRadius: 9,
+                          fontSize: 14,
+                          color: "var(--fg-muted)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {seg.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
 
+            {/* v28 Part 8: the same sitewide number, callable from the
+                header for people who would rather dial than type. */}
+            <a
+              href="tel:+919968716498"
+              className="text-sm transition-colors duration-200"
+              style={{ color: linkColor, transition: "color 300ms" }}
+            >
+              Call us
+            </a>
             <Link
               href="/start-your-study"
               className="btn-whatsapp text-sm"
@@ -461,6 +512,9 @@ type="button"               aria-label="Close menu"
             <Link href="/what-software-costs" onClick={() => setOpen(false)}>
               What it costs
             </Link>
+            <Link href="/trust" onClick={() => setOpen(false)}>
+              Trust
+            </Link>
             <button
               type="button"
               aria-expanded={industriesOpen}
@@ -539,9 +593,34 @@ type="button"               aria-label="Close menu"
                   </Link>
                 );
               })}
+              <p
+                className="mono"
+                style={{
+                  margin: "18px 0 6px",
+                  fontSize: 10,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--fg-dim)",
+                }}
+              >
+                By kind of business
+              </p>
+              {SEGMENTS.map((seg) => (
+                <Link
+                  key={seg.slug}
+                  href={`/business/${seg.slug}`}
+                  onClick={() => { setIndustriesOpen(false); setOpen(false); }}
+                  style={{ padding: "10px 0", fontSize: 15, color: "var(--fg-muted)" }}
+                >
+                  {seg.name}
+                </Link>
+              ))}
             </div>
           )}
           <div className="mt-auto pb-10 flex flex-col gap-3">
+            <a href="tel:+919968716498" className="text-base" style={{ color: "var(--fg-muted)" }}>
+              Call us on +91 99687 16498
+            </a>
             <Link
               href="/start-your-study"
               className="btn-whatsapp"

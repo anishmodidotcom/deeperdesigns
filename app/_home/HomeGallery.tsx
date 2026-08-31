@@ -50,7 +50,7 @@ export default function HomeGallery() {
           What kind of tool would change everything for you?
         </h2>
         <p style={{ fontSize: "17px", color: "var(--fg-muted)", maxWidth: "640px", marginBottom: "40px" }}>
-          Pick a lane, or scroll. We&apos;ve imagined tools for every kind of business.
+          Pick a lane, or scroll. We have built tools for every kind of business.
         </p>
 
         {/* Filter rows */}

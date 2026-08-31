@@ -5,6 +5,7 @@ import { SEGMENTS, getSegment } from "@/lib/segments";
 import { getSoftware } from "@/lib/software";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
+import MidPageCTA from "@/components/MidPageCTA";
 import { renderSerif } from "@/components/industry/text";
 
 // v26 Part 7: the B2B segments layer. All seven pages come from
@@ -165,6 +166,8 @@ export default async function BusinessSegmentPage({
           </div>
         </div>
       </section>
+
+      <MidPageCTA />
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>

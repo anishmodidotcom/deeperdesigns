@@ -1,7 +1,7 @@
 // Rate limiter and Origin guard for API routes.
 //
 // Storage strategy: Vercel KV (Redis) when KV_REST_API_URL is set,
-// in-memory Map otherwise. The in-memory fallback is intentional —
+// in-memory Map otherwise. The in-memory fallback is intentional:
 // pre-flight 2 of v15 requires this path to keep working before the
 // KV instance is provisioned in the Vercel dashboard.
 
@@ -164,9 +164,21 @@ export async function checkRate(
 const HOUR_MS = 60 * 60 * 1000;
 
 export const LIMITS = {
-  otpSend: { limit: 5, windowMs: HOUR_MS },
-  otpVerify: { limit: 10, windowMs: HOUR_MS },
-  submit: { limit: 3, windowMs: HOUR_MS },
+  // v28: the per-IP caps were sized for a single person and locked out real
+  // customers. A shared office, a co-working space or an Indian mobile
+  // carrier behind NAT can front dozens of people on one address, so two
+  // colleagues filling the form in the same hour hit the old limit of 5.
+  // The per-IP caps are raised substantially; the per-email cap below stays
+  // strict, because that is the cap that actually stops abuse (it is what
+  // prevents mail-bombing one inbox, and it is per address, not per office).
+  //
+  //            was   now
+  // otpSend      5    40
+  // otpVerify   10    60
+  // submit       3    20
+  otpSend: { limit: 40, windowMs: HOUR_MS },
+  otpVerify: { limit: 60, windowMs: HOUR_MS },
+  submit: { limit: 20, windowMs: HOUR_MS },
   // v25.5: per-email cap on code sends, on top of the per-IP cap. Without
   // it, a distributed sender could mail-bomb one inbox at 5 per IP.
   otpSendPerEmail: { limit: 5, windowMs: HOUR_MS },

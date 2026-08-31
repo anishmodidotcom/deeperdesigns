@@ -13,6 +13,7 @@ import { SEGMENTS } from "@/lib/segments";
 // search engines nothing. Each route now carries the date its content last
 // meaningfully changed, updated by hand when the content changes. Routes
 // added in a release share that release's date.
+const V28 = "2026-08-31";
 const V26 = "2026-08-30";
 const V25_6 = "2026-08-30";
 const V23 = "2026-07-13";
@@ -36,6 +37,7 @@ const CORE: Entry[] = [
   { path: "/what-software-costs", lastModified: V26, changeFrequency: "monthly", priority: 0.9 },
   { path: "/start-your-study", lastModified: V23, changeFrequency: "monthly", priority: 0.9 },
   { path: "/teardown", lastModified: V26, changeFrequency: "monthly", priority: 0.9 },
+  { path: "/trust", lastModified: V28, changeFrequency: "monthly", priority: 0.8 },
   { path: "/community", lastModified: V23, changeFrequency: "monthly", priority: 0.8 },
   { path: "/partners", lastModified: V26, changeFrequency: "monthly", priority: 0.6 },
   { path: "/about", lastModified: V16, changeFrequency: "monthly", priority: 0.8 },

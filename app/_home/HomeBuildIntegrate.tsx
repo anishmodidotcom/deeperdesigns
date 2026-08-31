@@ -1,4 +1,20 @@
+import Link from "next/link";
 import { renderSerif } from "@/components/industry/text";
+
+// v28 Part 4: the homepage had no section linking the industry pages at
+// all, so there was no existing "links to industries" block to extend. The
+// segment line lands here, directly under what we build and never touch,
+// which is the closest thing on the page to "what kind of business are
+// you". Flagged in the PR.
+const SEGMENT_WORDS: { word: string; slug: string }[] = [
+  { word: "manufacturer", slug: "manufacturers" },
+  { word: "trader", slug: "traders" },
+  { word: "distributor", slug: "distributors" },
+  { word: "retailer", slug: "retailers" },
+  { word: "importer", slug: "importers" },
+  { word: "exporter", slug: "exporters" },
+  { word: "packaging", slug: "packaging" },
+];
 
 // v26 Part 2: the honest split. Sits after the products-as-proof strip.
 // Plain and unglamorous on purpose: this is a trust section, not a feature
@@ -101,6 +117,25 @@ export default function HomeBuildIntegrate() {
         >
           Anyone who offers to replace your Tally is selling you a problem you
           do not have.
+        </p>
+        <p
+          style={{
+            marginTop: "28px",
+            fontSize: "17px",
+            lineHeight: 1.6,
+            color: "var(--fg-muted)",
+            maxWidth: "760px",
+          }}
+        >
+          Or find your kind of business:{" "}
+          {SEGMENT_WORDS.map((s, i) => (
+            <span key={s.slug}>
+              <Link href={`/business/${s.slug}`} style={{ color: "var(--accent)" }}>
+                {s.word}
+              </Link>
+              {i < SEGMENT_WORDS.length - 1 ? ", " : "."}
+            </span>
+          ))}
         </p>
       </div>
       <style>{`
