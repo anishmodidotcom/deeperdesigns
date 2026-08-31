@@ -61,7 +61,7 @@ export const SHOWCASES: Showcase[] = [
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A photo studio for furniture makers",
     cardDescription: "Turns workshop photos into catalog-ready studio shots.",
-    outcome: "Saves ₹2L per catalog shoot",
+    outcome: "Built to replace the studio shoot entirely.",
     live: true,
     liveUrl: "https://maplelens.vercel.app/app",
   },
