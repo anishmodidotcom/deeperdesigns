@@ -7,6 +7,7 @@ import {
 } from "@/lib/software-costs";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
+import MidPageCTA from "@/components/MidPageCTA";
 import CostCalculator from "./CostCalculator";
 import { renderSerif } from "@/components/industry/text";
 
@@ -247,6 +248,8 @@ export default function WhatSoftwareCosts() {
           </p>
         </div>
       </section>
+
+      <MidPageCTA />
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
         <div className="container" style={{ maxWidth: "880px" }}>

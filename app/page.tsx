@@ -3,6 +3,8 @@ import HomeHero from "./_home/HomeHero";
 import HomeOwnership from "./_home/HomeOwnership";
 import HomeBuildIntegrate from "./_home/HomeBuildIntegrate";
 import HomeArchitecture from "./_home/HomeArchitecture";
+import HomeTrust from "./_home/HomeTrust";
+import HomeNumbers from "./_home/HomeNumbers";
 import HomeConfusion from "./_home/HomeConfusion";
 import HomeProof from "./_home/HomeProof";
 import HomeHowItWorks from "./_home/HomeHowItWorks";
@@ -51,9 +53,13 @@ export default function Home() {
       {/* v27: why a build can cost a fraction, placed before the confusion
           block so the claim above it is answered immediately. */}
       <HomeArchitecture />
+      {/* v28: the trust summary, linking to the full /trust page. */}
+      <HomeTrust />
       <HomeConfusion />
       <HomeOutcomes />
       <HomeProof />
+      {/* v28: countable figures only, each verified against the repo. */}
+      <HomeNumbers />
       {/* v26: what we build and what we integrate, after the proof strip. */}
       <HomeBuildIntegrate />
       <HomeFounderQuote />

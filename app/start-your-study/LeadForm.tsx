@@ -90,6 +90,17 @@ function fromIndustry(): string {
 const FAIL_MSG =
   "That did not go through. Try again in a minute, or message us on WhatsApp and we will sort it there.";
 
+// v28: a soft 4xx can still leave someone stuck: rate limited, code
+// expired, or the code email failed to send. Those get the WhatsApp way out
+// too, not just hard 5xx failures. A correctable mistake (wrong code, bad
+// email) does not, because retrying is the right action there.
+function blocksTheUser(message?: string): boolean {
+  if (!message) return false;
+  return /too many|expired|could not send|could not finish|not configured/i.test(
+    message,
+  );
+}
+
 type PostResult =
   | { ok: true }
   | { ok: false; error?: string; hard: boolean };
@@ -186,7 +197,9 @@ export default function LeadForm({
           setHardFail(true);
           setSendError(FAIL_MSG);
         } else {
-          setSendError(result.error || "Could not send the code. Try again.");
+          const msg = result.error || "Could not send the code. Try again.";
+          if (blocksTheUser(msg)) setHardFail(true);
+          setSendError(msg);
         }
         return;
       }
@@ -227,7 +240,9 @@ export default function LeadForm({
           setHardFail(true);
           setCodeError(FAIL_MSG);
         } else {
-          setCodeError(result.error || "Could not resend the code.");
+          const msg = result.error || "Could not resend the code.";
+          if (blocksTheUser(msg)) setHardFail(true);
+          setCodeError(msg);
         }
         return;
       }
@@ -258,7 +273,9 @@ export default function LeadForm({
           setHardFail(true);
           setCodeError(FAIL_MSG);
         } else {
-          setCodeError(vResult.error || "That code did not match. Try again.");
+          const msg = vResult.error || "That code did not match. Try again.";
+          if (blocksTheUser(msg)) setHardFail(true);
+          setCodeError(msg);
         }
         return;
       }
@@ -283,9 +300,9 @@ export default function LeadForm({
           setHardFail(true);
           setCodeError(FAIL_MSG);
         } else {
-          setCodeError(
-            sResult.error || "Could not finish. Try the button again.",
-          );
+          const msg = sResult.error || "Could not finish. Try the button again.";
+          if (blocksTheUser(msg)) setHardFail(true);
+          setCodeError(msg);
         }
         return;
       }
@@ -409,7 +426,7 @@ export default function LeadForm({
           </div>
 
           {/* v22.1: reserved slot so the button never moves. */}
-          <p aria-live="polite" style={{ ...errorStyle, marginTop: 12 }}>
+          <p aria-live="polite" style={{ ...formErrorStyle, marginTop: 12 }}>
             {sendError ?? ""}
           </p>
 
@@ -486,7 +503,7 @@ export default function LeadForm({
           <p
             aria-live="polite"
             style={{
-              ...errorStyle,
+              ...formErrorStyle,
               marginTop: 12,
               ...(resent && !codeError ? { color: "var(--fg-muted)" } : {}),
             }}
@@ -744,10 +761,20 @@ const inputStyle: React.CSSProperties = {
 };
 
 // v22.1: minHeight reserves the line whether or not a message is showing.
+// v28: the per-field slot keeps one line, which is all a field error needs.
 const errorStyle: React.CSSProperties = {
   marginTop: 6,
   fontSize: 14,
   lineHeight: 1.4,
   minHeight: 20,
   color: "#FFB4A8",
+};
+
+// v28: the form-level slot carries the long failure message, which wraps to
+// two or three lines on a phone and used to shove the submit button down
+// about 40px as it appeared. Reserving the taller box keeps the button
+// still, which matters most on the tap target people are aiming at.
+const formErrorStyle: React.CSSProperties = {
+  ...errorStyle,
+  minHeight: 56,
 };

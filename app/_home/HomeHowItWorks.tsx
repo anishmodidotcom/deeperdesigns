@@ -20,7 +20,10 @@ const STEPS = [
   {
     n: "03",
     title: "We build. It goes live.",
-    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. And if your first tool is not live and working within thirty days, you do not pay.",
+    // v28 Part 7: speed is flavour, the guarantee is the promise. "As little
+    // as" never becomes a commitment, and the thirty-day guarantee sentence
+    // that follows it is untouched.
+    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. And if your first tool is not live and working within thirty days, you do not pay. Small tools can be live in as little as seven days.",
   },
 ];
 

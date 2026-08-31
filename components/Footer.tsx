@@ -1,6 +1,17 @@
 import TrackedEmailLink from "@/components/TrackedEmailLink";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
+const EXPLORE = [
+  { href: "/software", label: "Software index" },
+  { href: "/what-software-costs", label: "What software costs" },
+  { href: "/software#by-kind-of-business", label: "By kind of business" },
+  { href: "/software#by-industry", label: "Browse by industry" },
+  { href: "/trust", label: "Trust and support" },
+  { href: "/teardown", label: "Free teardown" },
+  { href: "/community", label: "Community" },
+  { href: "/partners", label: "For partners" },
+];
+
 export default function Footer() {
   return (
     <footer
@@ -13,7 +24,22 @@ export default function Footer() {
       }}
     >
       <div className="container">
-        <div className="footer-grid grid grid-cols-1 gap-12 mb-20 md:grid-cols-3">
+        {/* v28 Part 4: an Explore column. 41 pages shipped in v26 and v27
+            and the footer linked none of them, which left the seven segment
+            pages all but unreachable. */}
+        <div className="footer-grid grid grid-cols-1 gap-12 mb-20 md:grid-cols-4">
+          <div>
+            <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
+              Explore
+            </p>
+            <div className="flex flex-col gap-2">
+              {EXPLORE.map((l) => (
+                <a key={l.href} href={l.href} className="text-base">
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
           <div>
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
               Email

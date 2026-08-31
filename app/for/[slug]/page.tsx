@@ -13,7 +13,22 @@ import IndustryPersonas from "@/components/industry/IndustryPersonas";
 import IndustryCTA from "@/components/industry/IndustryCTA";
 import IndustrySwitcher from "@/components/industry/IndustrySwitcher";
 import ForAnalytics from "@/components/industry/ForAnalytics";
+import Link from "next/link";
 import { StructuredData, forIndustryLd } from "@/components/StructuredData";
+import { getSegment } from "@/lib/segments";
+
+// v28 Part 4: each industry page points at the closest kind-of-business
+// page. Only mapped where the fit is genuine; the rest fall back to the
+// software index rather than being forced into a segment they are not.
+const SEGMENT_FOR_INDUSTRY: Record<string, string> = {
+  manufacturing: "manufacturers",
+  logistics: "distributors",
+  jewellery: "retailers",
+  restaurants: "retailers",
+  fashion: "retailers",
+  automotive: "retailers",
+  "d2c-brands": "retailers",
+};
 
 export function generateStaticParams() {
   return INDUSTRIES.map((i) => ({ slug: i.slug }));
@@ -210,6 +225,35 @@ export default async function IndustryPage({
       {industry.cta ? (
         <IndustryCTA cta={industry.cta} slug={industry.slug} name={industry.name} />
       ) : null}
+
+      {/* v28 Part 4: one quiet line into the kind-of-business layer. */}
+      <div
+        className="container"
+        style={{ maxWidth: "var(--dd-container-max, 1280px)", paddingBottom: 64 }}
+      >
+        <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--dd-text-mid, #A8A8A8)", margin: 0 }}>
+          {SEGMENT_FOR_INDUSTRY[industry.slug] ? (
+            <>
+              Or look at this by kind of business:{" "}
+              <Link
+                href={`/business/${SEGMENT_FOR_INDUSTRY[industry.slug]}`}
+                style={{ color: "var(--page-accent)" }}
+              >
+                {getSegment(SEGMENT_FOR_INDUSTRY[industry.slug])?.name ?? "all kinds"}
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              Or browse every kind of business software on the{" "}
+              <Link href="/software" style={{ color: "var(--page-accent)" }}>
+                software index
+              </Link>
+              .
+            </>
+          )}
+        </p>
+      </div>
 
       <IndustrySwitcher currentSlug={industry.slug} />
     </main>

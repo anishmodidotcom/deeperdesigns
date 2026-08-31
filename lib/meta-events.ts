@@ -6,7 +6,7 @@
 //              user_data, and custom_data.
 //
 // trackEvent() is the kernel. Typed wrappers below are the public API.
-// Failures are swallowed — analytics must never block the UI.
+// Failures are swallowed; analytics must never block the UI.
 
 type EventName =
   | "PageView"
@@ -42,7 +42,7 @@ type EventName =
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
 // fbq('track', ...). Using 'track' on a custom name silently drops the
-// browser beacon while server-side CAPI still fires — that's exactly
+// browser beacon while server-side CAPI still fires, which is exactly
 // what production saw for ShowcaseScrolled75, LiveProductCTAClick, and
 // WhatsAppOpenedFromShowcase.
 const STANDARD_EVENTS = new Set<EventName>([
@@ -158,7 +158,7 @@ function callFbq(ev: PendingEvent): void {
   try {
     window.fbq(action, ev.event_name, ev.custom_data, { eventID: ev.event_id });
   } catch {
-    // fbq throwing — silently drop, never block UX.
+    // fbq throwing: silently drop, never block UX.
   }
 }
 

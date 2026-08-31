@@ -6,6 +6,7 @@ import { getSegment } from "@/lib/segments";
 import { getIndustry } from "@/lib/industries";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
+import MidPageCTA from "@/components/MidPageCTA";
 import SoftwareAnalytics from "@/components/SoftwareAnalytics";
 import { renderSerif } from "@/components/industry/text";
 
@@ -278,6 +279,8 @@ export default async function SoftwarePage({
           ) : null}
         </div>
       </section>
+
+      <MidPageCTA />
 
       {related.length > 0 || segments.length > 0 || industries.length > 0 ? (
         <section style={{ paddingBottom: "var(--section-py)" }}>
