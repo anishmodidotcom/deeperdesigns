@@ -1916,5 +1916,299 @@
     "tag": "restaurants",
     "dimensions": "900x1200",
     "best_use": "build studio render"
+  },
+  {
+    "filename": "site-screenshots/about-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "about",
+    "dimensions": "3840x12850",
+    "best_use": "full-page desktop screenshot of /about at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/about-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "about",
+    "dimensions": "780x14128",
+    "best_use": "full-page mobile screenshot of /about at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-manufacturers-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "business-manufacturers",
+    "dimensions": "3840x5428",
+    "best_use": "full-page desktop screenshot of /business/manufacturers at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-manufacturers-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "business-manufacturers",
+    "dimensions": "780x6440",
+    "best_use": "full-page mobile screenshot of /business/manufacturers at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-packaging-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "business-packaging",
+    "dimensions": "3840x5226",
+    "best_use": "full-page desktop screenshot of /business/packaging at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-packaging-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "business-packaging",
+    "dimensions": "780x6340",
+    "best_use": "full-page mobile screenshot of /business/packaging at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-traders-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "business-traders",
+    "dimensions": "3840x5070",
+    "best_use": "full-page desktop screenshot of /business/traders at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/business-traders-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "business-traders",
+    "dimensions": "780x6288",
+    "best_use": "full-page mobile screenshot of /business/traders at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/community-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "community",
+    "dimensions": "3840x3998",
+    "best_use": "full-page desktop screenshot of /community at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/community-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "community",
+    "dimensions": "780x4726",
+    "best_use": "full-page mobile screenshot of /community at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/home-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "home",
+    "dimensions": "2122x16383",
+    "best_use": "full-page desktop screenshot of / at 1920px, layout and section rhythm reference. Downscaled to 1.11x to fit the 16383px WebP limit."
+  },
+  {
+    "filename": "site-screenshots/home-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "home",
+    "dimensions": "378x16383",
+    "best_use": "full-page mobile screenshot of / at 390px, stacking and mobile layout reference. Downscaled to 0.97x to fit the 16383px WebP limit."
+  },
+  {
+    "filename": "site-screenshots/partners-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "partners",
+    "dimensions": "3840x3846",
+    "best_use": "full-page desktop screenshot of /partners at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/partners-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "partners",
+    "dimensions": "780x4716",
+    "best_use": "full-page mobile screenshot of /partners at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/process-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "process",
+    "dimensions": "3840x6478",
+    "best_use": "full-page desktop screenshot of /process at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/process-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "process",
+    "dimensions": "780x6966",
+    "best_use": "full-page mobile screenshot of /process at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/services-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "services",
+    "dimensions": "3840x5518",
+    "best_use": "full-page desktop screenshot of /services at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/services-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "services",
+    "dimensions": "780x8774",
+    "best_use": "full-page mobile screenshot of /services at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-crm-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "software-crm",
+    "dimensions": "3840x5206",
+    "best_use": "full-page desktop screenshot of /software/crm at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-crm-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "software-crm",
+    "dimensions": "780x6060",
+    "best_use": "full-page mobile screenshot of /software/crm at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "software",
+    "dimensions": "3840x11544",
+    "best_use": "full-page desktop screenshot of /software at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-job-work-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "software-job-work",
+    "dimensions": "3840x5440",
+    "best_use": "full-page desktop screenshot of /software/job-work at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-job-work-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "software-job-work",
+    "dimensions": "780x6352",
+    "best_use": "full-page mobile screenshot of /software/job-work at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "software",
+    "dimensions": "780x15636",
+    "best_use": "full-page mobile screenshot of /software at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-receivables-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "software-receivables",
+    "dimensions": "3840x5568",
+    "best_use": "full-page desktop screenshot of /software/receivables at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/software-receivables-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "software-receivables",
+    "dimensions": "780x6576",
+    "best_use": "full-page mobile screenshot of /software/receivables at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/start-your-study-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "start-your-study",
+    "dimensions": "3840x3472",
+    "best_use": "full-page desktop screenshot of /start-your-study at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/start-your-study-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "start-your-study",
+    "dimensions": "780x4062",
+    "best_use": "full-page mobile screenshot of /start-your-study at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/teardown-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "teardown",
+    "dimensions": "3840x3832",
+    "best_use": "full-page desktop screenshot of /teardown at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/teardown-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "teardown",
+    "dimensions": "780x4442",
+    "best_use": "full-page mobile screenshot of /teardown at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/trust-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "trust",
+    "dimensions": "3840x5926",
+    "best_use": "full-page desktop screenshot of /trust at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/trust-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "trust",
+    "dimensions": "780x7184",
+    "best_use": "full-page mobile screenshot of /trust at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/what-software-costs-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "what-software-costs",
+    "dimensions": "3840x7540",
+    "best_use": "full-page desktop screenshot of /what-software-costs at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/what-software-costs-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "what-software-costs",
+    "dimensions": "780x9642",
+    "best_use": "full-page mobile screenshot of /what-software-costs at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-deeper-content-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "work-deeper-content",
+    "dimensions": "2726x16383",
+    "best_use": "full-page desktop screenshot of /work/deeper-content at 1920px, layout and section rhythm reference. Downscaled to 1.42x to fit the 16383px WebP limit."
+  },
+  {
+    "filename": "site-screenshots/work-deeper-content-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "work-deeper-content",
+    "dimensions": "402x16383",
+    "best_use": "full-page mobile screenshot of /work/deeper-content at 390px, stacking and mobile layout reference. Downscaled to 1.03x to fit the 16383px WebP limit."
+  },
+  {
+    "filename": "site-screenshots/work-maplelens-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "work-maplelens",
+    "dimensions": "3840x13750",
+    "best_use": "full-page desktop screenshot of /work/maplelens at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-maplelens-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "work-maplelens",
+    "dimensions": "780x14994",
+    "best_use": "full-page mobile screenshot of /work/maplelens at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-outpost-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "work-outpost",
+    "dimensions": "3840x7774",
+    "best_use": "full-page desktop screenshot of /work/outpost at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-outpost-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "work-outpost",
+    "dimensions": "780x8508",
+    "best_use": "full-page mobile screenshot of /work/outpost at 390px, stacking and mobile layout reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-oviya-studio-desktop.webp",
+    "type": "site-screenshot",
+    "tag": "work-oviya-studio",
+    "dimensions": "3840x5790",
+    "best_use": "full-page desktop screenshot of /work/oviya-studio at 1920px, layout and section rhythm reference. Captured at 2x."
+  },
+  {
+    "filename": "site-screenshots/work-oviya-studio-mobile.webp",
+    "type": "site-screenshot",
+    "tag": "work-oviya-studio",
+    "dimensions": "780x6144",
+    "best_use": "full-page mobile screenshot of /work/oviya-studio at 390px, stacking and mobile layout reference. Captured at 2x."
   }
 ]
