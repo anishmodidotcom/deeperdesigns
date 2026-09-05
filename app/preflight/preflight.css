@@ -1,0 +1,144 @@
+/* Preflight landing page (v29).
+ *
+ * The page is its own composition: it inherits the site's font variables
+ * and nothing else, so every colour here is the literal hex from the
+ * Claude Design export rather than a site token that might drift.
+ *
+ * Layout and type live inline on the elements, matching the export one to
+ * one. This file carries only what an inline style cannot express: hover,
+ * focus, the accordion, and the reduced-motion opt-out.
+ */
+
+.pf-root {
+  --pf-bg: #0a0a0b;
+  --pf-surface: #111111;
+  --pf-card: #161616;
+  --pf-text: #f5f5f5;
+  --pf-text-mid: #a8a8a8;
+  --pf-text-low: #6b6b6b;
+  --pf-text-faint: #3a3a3a;
+  --pf-bone: #f5f3ef;
+  --pf-accent: #7c6cff;
+  --pf-amber: #f5b544;
+  --pf-positive: #5bc48a;
+  --pf-warning: #e5847c;
+  --pf-eyebrow: #c8c8c8;
+  --pf-border: rgba(255, 255, 255, 0.08);
+  --pf-border-strong: rgba(255, 255, 255, 0.16);
+  --pf-border-faint: rgba(255, 255, 255, 0.06);
+
+  background: var(--pf-bg);
+  color: var(--pf-text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.pf-root a {
+  color: inherit;
+}
+
+.pf-btn-primary {
+  transition: filter 160ms ease, transform 160ms ease;
+}
+.pf-btn-primary:hover {
+  filter: brightness(1.08);
+}
+.pf-btn-primary:active {
+  transform: translateY(1px);
+}
+.pf-btn-primary:disabled {
+  cursor: not-allowed;
+  filter: none;
+  opacity: 0.45;
+  transform: none;
+}
+
+.pf-link-underline {
+  border-bottom: 1px solid var(--pf-border-strong);
+  padding-bottom: 2px;
+  transition: border-color 160ms ease;
+}
+.pf-link-underline:hover {
+  border-bottom-color: var(--pf-accent);
+}
+
+.pf-card-hover {
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.pf-card-hover:hover {
+  border-color: rgba(124, 108, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.pf-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--pf-border-strong);
+  background: var(--pf-bg);
+  color: var(--pf-text);
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: border-color 160ms ease;
+}
+.pf-input::placeholder {
+  color: var(--pf-text-low);
+}
+.pf-input:focus {
+  border-color: var(--pf-accent);
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+.pf-input[aria-invalid="true"] {
+  border-color: var(--pf-warning);
+}
+
+.pf-faq-item {
+  border-bottom: 1px solid var(--pf-border);
+}
+.pf-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  background: none;
+  border: 0;
+  color: var(--pf-text);
+  font-family: inherit;
+  font-size: clamp(17px, 1.2vw + 8px, 20px);
+  line-height: 1.4;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+.pf-faq-trigger:hover {
+  color: var(--pf-bone);
+}
+.pf-faq-sign {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--pf-accent);
+  transition: transform 200ms ease;
+}
+.pf-faq-trigger[aria-expanded="true"] .pf-faq-sign {
+  transform: rotate(45deg);
+}
+.pf-faq-answer {
+  margin: 0;
+  padding: 0 0 24px;
+  max-width: 70ch;
+  font-size: clamp(16px, 1.2vw + 8px, 18px);
+  line-height: 1.6;
+  color: var(--pf-text-mid);
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-root * {
+    transition-duration: 0.01ms !important;
+  }
+}

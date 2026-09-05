@@ -22,9 +22,12 @@
 // being silent.
 
 import { NextResponse } from "next/server";
-import { createHash } from "node:crypto";
 import { LIMITS, checkRate, clientKey, sameSiteOnly } from "@/lib/api-guards";
-import { normalizePhone } from "@/lib/phone";
+import {
+  type CapiUserData,
+  isCapiConfigured,
+  sendCapiEvent,
+} from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 
@@ -53,6 +56,11 @@ const ALLOWED_EVENTS = new Set([
   "TeardownRequest",
   "PartnerEnquiry",
   "SoftwareIndexView",
+  // v29: Preflight. Purchase is a standard event and is fired server-side
+  // first by the fulfilment routine, then echoed by the browser on the
+  // thank-you page under the same event_id so Meta deduplicates.
+  "Purchase",
+  "PreflightView",
 ]);
 
 // v25.5: custom_data is forwarded key by key, not verbatim, so a caller
@@ -75,6 +83,11 @@ const ALLOWED_CUSTOM_KEYS = new Set([
   "path",
   "source",
   "category",
+  // v29: Purchase carries a real money value, which Meta reads off
+  // custom_data rather than the event root.
+  "value",
+  "currency",
+  "num_items",
 ]);
 
 const CUSTOM_VALUE_MAX = 200;
@@ -97,7 +110,7 @@ function pickCustomData(input: CustomData): CustomData {
   return out;
 }
 
-type UserData = { em?: string; ph?: string; external_id?: string };
+type UserData = CapiUserData;
 type CustomData = Record<string, unknown>;
 
 type Body = {
@@ -107,23 +120,6 @@ type Body = {
   custom_data?: CustomData;
 };
 
-function sha256(value: string): string {
-  return createHash("sha256").update(value).digest("hex");
-}
-
-function hashUserData(u: UserData): Record<string, string | string[]> {
-  const out: Record<string, string | string[]> = {};
-  if (u.em) out.em = sha256(u.em.trim().toLowerCase());
-  // v25.5: normalize to country-code digits before hashing. Hashing the
-  // number exactly as typed produced a value Meta's own hash could never
-  // match, silently degrading match quality on every Lead.
-  if (u.ph) {
-    const ph = normalizePhone(u.ph);
-    if (ph) out.ph = sha256(ph);
-  }
-  if (u.external_id) out.external_id = sha256(u.external_id);
-  return out;
-}
 
 function clientIp(req: Request): string | undefined {
   const fwd = req.headers.get("x-forwarded-for");
@@ -169,11 +165,6 @@ export async function POST(req: Request) {
     );
   }
 
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-  const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
-  const testEventCode = process.env.META_TEST_EVENT_CODE;
-  const isProd = process.env.NODE_ENV === "production";
-
   // v25.5: the request is validated before the credentials check, which
   // used to short-circuit first. Validation should not depend on whether
   // the deployment happens to be configured, and a caller sending a bad
@@ -209,7 +200,7 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!pixelId || !accessToken) {
+  if (!isCapiConfigured()) {
     // Credentials not provisioned (local dev or pre-config deploy).
     // Return ok so the browser doesn't bubble a network failure to the
     // user; the event still fires browser-side via fbq.
@@ -230,96 +221,23 @@ export async function POST(req: Request) {
     external_id: user_data.external_id ?? visitorId,
   };
 
-  const event = {
+  const result = await sendCapiEvent({
     event_name,
-    event_time: Math.floor(Date.now() / 1000),
     event_id,
-    action_source: "website",
-    event_source_url: req.headers.get("referer") ?? undefined,
-    user_data: {
-      ...hashUserData(mergedUserData),
-      // Pixel cookies are sent raw, not hashed (Meta's spec).
-      ...(fbp ? { fbp } : {}),
-      ...(fbc ? { fbc } : {}),
-      client_ip_address: clientIp(req),
-      client_user_agent: req.headers.get("user-agent") ?? undefined,
-    },
+    user_data: mergedUserData,
     custom_data: pickCustomData(custom_data),
-  };
+    event_source_url: req.headers.get("referer") ?? undefined,
+    client_ip_address: clientIp(req),
+    client_user_agent: req.headers.get("user-agent") ?? undefined,
+    fbp,
+    fbc,
+  });
 
-  const payload: Record<string, unknown> = {
-    data: [event],
-    access_token: accessToken,
-  };
-  // Attach test_event_code only in non-production so Test Events tab
-  // catches preview + dev traffic without polluting prod conversions.
-  if (!isProd && testEventCode) {
-    payload.test_event_code = testEventCode;
-  }
-
-  // 5 s outbound timeout so a slow Meta response doesn't hang the
-  // serverless function until Vercel kills it (which previously
-  // looked like "CAPI event silently lost").
-  const controller = new AbortController();
-  const timeoutHandle = setTimeout(() => controller.abort(), 5000);
-
-  try {
-    const res = await fetch(
-      `https://graph.facebook.com/v21.0/${pixelId}/events`,
-      {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      },
-    );
-    clearTimeout(timeoutHandle);
-
-    if (!res.ok) {
-      // Pull fbtrace_id out of the response so the next debugging
-      // session has something to grep for in Meta's logs.
-      const text = await res.text();
-      let fbtrace_id: string | undefined;
-      try {
-        const parsed = JSON.parse(text);
-        fbtrace_id = parsed?.error?.fbtrace_id;
-      } catch {
-        // Non-JSON response, skip.
-      }
-      // v25.5: structured so a broken forward is greppable in Vercel logs
-      // rather than buried in prose. The browser never sees this failure
-      // (fireServer is fire and forget), so the log is the only signal.
-      console.error(
-        JSON.stringify({
-          route: "meta-capi",
-          event: "forward_failed",
-          event_name,
-          status: res.status,
-          fbtrace_id: fbtrace_id ?? null,
-          body: text.slice(0, 300),
-        }),
-      );
-      return NextResponse.json(
-        { ok: false, error: `meta_${res.status}`, fbtrace_id },
-        { status: 502 },
-      );
-    }
-    return NextResponse.json({ ok: true });
-  } catch (e) {
-    clearTimeout(timeoutHandle);
-    const err = e as Error;
-    const reason = err.name === "AbortError" ? "timeout_5s" : err.message;
-    console.error(
-      JSON.stringify({
-        route: "meta-capi",
-        event: "forward_threw",
-        event_name,
-        reason,
-      }),
-    );
+  if (!result.ok) {
     return NextResponse.json(
-      { ok: false, error: `fetch_failed_${reason}` },
+      { ok: false, error: result.error, fbtrace_id: result.fbtrace_id },
       { status: 502 },
     );
   }
+  return NextResponse.json({ ok: true });
 }
