@@ -23,7 +23,7 @@ export const PREFLIGHT_NOTIFY_EMAIL =
   process.env.PREFLIGHT_NOTIFY_EMAIL ?? "hey@deeperdesigns.in";
 
 export const PREFLIGHT_SUPPORT_EMAIL =
-  process.env.PREFLIGHT_SUPPORT_EMAIL ?? "hello@deeperdesigns.in";
+  process.env.PREFLIGHT_SUPPORT_EMAIL ?? "hey@deeperdesigns.in";
 
 export const PREFLIGHT_CURRENCY = "INR";
 
@@ -84,6 +84,32 @@ export const PREFLIGHT_FIELD_MAX = {
 // Razorpay rejects a notes value over 512 characters outright, which would
 // fail the order creation rather than degrade. Truncate before sending.
 export const RAZORPAY_NOTE_MAX = 500;
+
+// v29.1: the variables the order route refuses to start a payment
+// without. Razorpay, because there is nothing to charge with; Sheets,
+// because a payment that cannot be written to the fulfilment queue is a
+// sale nobody will see. Checked before the order is created rather than
+// discovered halfway through the flow, when the buyer has already been
+// charged.
+//
+// NEXT_PUBLIC_RAZORPAY_KEY_ID is in the list because Standard Checkout
+// cannot open without it, and a missing one would fail after the order
+// exists. It is read here on the server, never inlined into the bundle.
+export const PREFLIGHT_REQUIRED_ENV = [
+  "RAZORPAY_KEY_ID",
+  "RAZORPAY_KEY_SECRET",
+  "NEXT_PUBLIC_RAZORPAY_KEY_ID",
+  "GOOGLE_SHEETS_ID",
+  "GOOGLE_SERVICE_ACCOUNT_JSON",
+] as const;
+
+// Returns the names of every required variable that is absent or blank.
+// Empty array means the flow is safe to start.
+export function missingPreflightConfig(): string[] {
+  return PREFLIGHT_REQUIRED_ENV.filter(
+    (name) => !(process.env[name] ?? "").trim(),
+  );
+}
 
 export function isPaymentConfigured(): boolean {
   return Boolean(

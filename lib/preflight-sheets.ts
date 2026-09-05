@@ -49,23 +49,36 @@ type ServiceAccount = {
 
 const SCOPE = "https://www.googleapis.com/auth/spreadsheets";
 
-function readServiceAccount(): ServiceAccount | null {
-  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-  if (!raw) return null;
+// v29.1: the env var takes the service account key in either form. A
+// value whose first non-whitespace character is "{" is parsed as JSON
+// straight off; anything else is base64-decoded first. Base64 is still
+// the safer paste, because a raw key file has newlines inside the
+// private key that some dashboard fields mangle, but requiring it was an
+// extra step for no gain when the field does preserve them.
+export function decodeServiceAccount(raw: string): ServiceAccount | null {
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
   try {
-    // The env var holds base64 of the service account key file, because a
-    // raw JSON blob with newlines inside a private key does not survive a
-    // dashboard text field intact.
-    const json = Buffer.from(raw, "base64").toString("utf8");
+    const json = trimmed.startsWith("{")
+      ? trimmed
+      : Buffer.from(trimmed, "base64").toString("utf8");
     const parsed = JSON.parse(json) as Partial<ServiceAccount>;
     if (!parsed.client_email || !parsed.private_key) return null;
     return {
       client_email: parsed.client_email,
+      // A key pasted as a JSON string carries literal backslash-n rather
+      // than real newlines. node:crypto needs the real thing.
       private_key: parsed.private_key.replace(/\\n/g, "\n"),
     };
   } catch {
     return null;
   }
+}
+
+function readServiceAccount(): ServiceAccount | null {
+  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+  if (!raw) return null;
+  return decodeServiceAccount(raw);
 }
 
 export function isSheetsConfigured(): boolean {

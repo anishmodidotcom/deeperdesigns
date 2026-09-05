@@ -12,14 +12,20 @@
 // /api/preflight/order, once, alongside the order it belongs to.
 
 import { NextResponse } from "next/server";
-import { isPaymentConfigured } from "@/lib/preflight";
+import { missingPreflightConfig } from "@/lib/preflight";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+// v29.1: this asks the same question the order route asks, so the button
+// is disabled whenever that route would refuse. Checking only the
+// Razorpay keys here let the button enable while the order route would
+// 503 on a missing Sheets credential, which meant filling the form and
+// then hitting a wall. The names of the absent variables stay in the
+// server log; this returns a boolean and nothing else.
 export async function GET() {
   return NextResponse.json(
-    { configured: isPaymentConfigured() },
+    { configured: missingPreflightConfig().length === 0 },
     { headers: { "cache-control": "no-store" } },
   );
 }

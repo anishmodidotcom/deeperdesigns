@@ -14,7 +14,7 @@ import {
   PREFLIGHT_CURRENCY,
   PREFLIGHT_FIELD_MAX,
   RAZORPAY_NOTE_MAX,
-  isPaymentConfigured,
+  missingPreflightConfig,
 } from "@/lib/preflight";
 
 export const runtime = "nodejs";
@@ -106,11 +106,18 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!isPaymentConfigured()) {
+  // v29.1: fail here, before an order exists, if anything the rest of the
+  // flow depends on is missing. The alternative is discovering it after
+  // the buyer has been charged, when the sale cannot be written to the
+  // fulfilment queue. The log names the absent variables; the response
+  // deliberately does not, because it is public.
+  const missing = missingPreflightConfig();
+  if (missing.length > 0) {
     console.error(
       JSON.stringify({
         route: "preflight-order",
-        event: "razorpay_not_configured",
+        event: "config_missing",
+        missing,
       }),
     );
     return NextResponse.json(

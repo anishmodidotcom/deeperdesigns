@@ -176,17 +176,19 @@ function notificationBodies(fields: {
   return { text, html };
 }
 
-async function notifyAnish(fields: {
+const NOTIFY_RETRY_DELAY_MS = 1500;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function sendNotification(fields: {
   name: string;
   email: string;
   note: string;
   paymentId: string;
   orderId: string;
 }): Promise<void> {
-  if (!process.env.RESEND_API_KEY) {
-    log("error", "email_not_configured", { payment_id: fields.paymentId });
-    return;
-  }
   const { text, html } = notificationBodies(fields);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -207,6 +209,62 @@ async function notifyAnish(fields: {
     throw new Error(
       `resend_${res.status}: ${(await res.text()).slice(0, 200)}`,
     );
+  }
+}
+
+// v29.1: one retry after a short delay, then give up and log. The sale is
+// already written to the sheet by the time this runs, so a permanently
+// failing mailer costs a notification, never the order. Never throws: the
+// caller must not be able to fail a recorded sale on a mail problem.
+async function notifyAnish(fields: {
+  name: string;
+  email: string;
+  note: string;
+  paymentId: string;
+  orderId: string;
+}): Promise<void> {
+  if (!process.env.RESEND_API_KEY) {
+    log("error", "email_not_configured", { payment_id: fields.paymentId });
+    return;
+  }
+
+  const attempts = 2;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      await sendNotification(fields);
+      if (attempt > 1) {
+        log("info", "notification_sent_on_retry", {
+          payment_id: fields.paymentId,
+          attempt,
+        });
+      }
+      return;
+    } catch (e) {
+      const reason =
+        e instanceof Error ? `${e.name}: ${e.message}` : String(e);
+      if (attempt < attempts) {
+        log("error", "notification_attempt_failed", {
+          payment_id: fields.paymentId,
+          attempt,
+          retrying_in_ms: NOTIFY_RETRY_DELAY_MS,
+          error: reason,
+        });
+        await sleep(NOTIFY_RETRY_DELAY_MS);
+        continue;
+      }
+      log("error", "notification_failed", {
+        payment_id: fields.paymentId,
+        order_id: fields.orderId,
+        to: PREFLIGHT_NOTIFY_EMAIL,
+        attempts,
+        error: reason,
+        // The row is already on the sheet, so the sale is recoverable by
+        // hand from there. This line is the only signal that nobody was
+        // told about it.
+        impact: "sale_recorded_but_not_notified",
+      });
+      return;
+    }
   }
 }
 
@@ -295,21 +353,15 @@ export async function fulfilPayment(
   // 4. Everything past this point is best effort: the row is written, so
   //    the order will be fulfilled by hand even if these fail. Each logs
   //    an error naming the payment id.
-  try {
-    await notifyAnish({
-      name,
-      email,
-      note,
-      paymentId: payment.id,
-      orderId: payment.order_id,
-    });
-  } catch (e) {
-    log("error", "notification_failed", {
-      payment_id: paymentId,
-      source,
-      error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
-    });
-  }
+  // notifyAnish handles its own retry and never throws, so a mail
+  // failure cannot stop the Purchase event below or fail the request.
+  await notifyAnish({
+    name,
+    email,
+    note,
+    paymentId: payment.id,
+    orderId: payment.order_id,
+  });
 
   try {
     const result = await sendCapiEvent({

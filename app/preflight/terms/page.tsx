@@ -18,7 +18,7 @@ const CLAUSES = [
   "The price is ₹10,000 including GST at the applicable rate, SAC 998314. A GST breakdown is shown on your confirmation page.",
   "No refunds. The product is delivered in full on payment.",
   "Preflight is provided as-is for use against your own systems. It does not guarantee security or any outcome. Deeper Designs accepts no liability for results.",
-  "Refreshes are provided for 12 months from purchase. Questions: hello@deeperdesigns.in or WhatsApp +91 99687 16498.",
+  "Refreshes are provided for 12 months from purchase. Questions: hey@deeperdesigns.in or WhatsApp +91 99687 16498.",
 ];
 
 export default function PreflightTermsPage() {
