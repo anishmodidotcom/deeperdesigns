@@ -10,6 +10,7 @@ import { NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { checkRate, clientKey, originAllowed } from "@/lib/api-guards";
 import { fulfilPayment } from "@/lib/preflight-fulfil";
+import { getProduct } from "@/lib/products";
 
 export const runtime = "nodejs";
 
@@ -72,6 +73,24 @@ export async function POST(req: Request) {
     );
   }
 
+  // v29.2: the product the browser says this was. fulfilPayment
+  // cross-checks it against the slug stored on the order's own notes, so
+  // a wrong one cannot reach another product's record.
+  const product = getProduct(raw.product);
+  if (!product) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-verify",
+        event: "unknown_product",
+        got: typeof raw.product === "string" ? raw.product.slice(0, 40) : null,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "unknown_product" },
+      { status: 400 },
+    );
+  }
+
   const orderId = readId(raw.razorpay_order_id);
   const paymentId = readId(raw.razorpay_payment_id);
   const signature = readId(raw.razorpay_signature);
@@ -107,7 +126,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const result = await fulfilPayment(paymentId, "verify");
+  const result = await fulfilPayment(product, paymentId, "verify");
   if (!result.ok) {
     return NextResponse.json(
       { ok: false, error: result.error },

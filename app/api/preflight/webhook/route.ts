@@ -14,6 +14,7 @@
 import { NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { fulfilPayment } from "@/lib/preflight-fulfil";
+import { getProduct } from "@/lib/products";
 
 export const runtime = "nodejs";
 // The signature covers the exact bytes Razorpay sent. Never let a caching
@@ -24,7 +25,10 @@ type WebhookBody = {
   event?: string;
   payload?: {
     payment?: {
-      entity?: { id?: string };
+      // notes.product is the slug the order route stamped on the order,
+      // so the webhook learns which product this was from Razorpay's own
+      // record rather than from anything a caller supplies.
+      entity?: { id?: string; notes?: Record<string, string> };
     };
   };
 };
@@ -73,7 +77,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, ignored: body.event ?? "unknown" });
   }
 
-  const paymentId = body.payload?.payment?.entity?.id;
+  const entity = body.payload?.payment?.entity;
+  const paymentId = entity?.id;
   if (typeof paymentId !== "string" || !paymentId) {
     console.error(
       JSON.stringify({
@@ -87,7 +92,29 @@ export async function POST(req: Request) {
     );
   }
 
-  const result = await fulfilPayment(paymentId, "webhook");
+  // v29.2: which product this sale was. A captured payment with no
+  // recognisable slug is not ours to fulfil, and returning 400 stops
+  // Razorpay retrying something this route can never complete.
+  const product = getProduct(entity?.notes?.product);
+  if (!product) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-webhook",
+        event: "unknown_product",
+        payment_id: paymentId,
+        got:
+          typeof entity?.notes?.product === "string"
+            ? entity.notes.product.slice(0, 40)
+            : null,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "unknown_product" },
+      { status: 400 },
+    );
+  }
+
+  const result = await fulfilPayment(product, paymentId, "webhook");
   if (!result.ok) {
     // A non-2xx tells Razorpay to retry, which is what we want when the
     // sheet write failed: the next delivery gets another go.
@@ -96,6 +123,7 @@ export async function POST(req: Request) {
         route: "preflight-webhook",
         event: "fulfilment_failed",
         payment_id: paymentId,
+        product: product.slug,
         error: result.error,
       }),
     );

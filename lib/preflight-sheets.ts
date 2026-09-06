@@ -81,8 +81,10 @@ function readServiceAccount(): ServiceAccount | null {
   return decodeServiceAccount(raw);
 }
 
-export function isSheetsConfigured(): boolean {
-  return Boolean(process.env.GOOGLE_SHEETS_ID && readServiceAccount());
+// v29.2: the sheet is a property of the product, so callers pass its id
+// rather than this module reaching for one global variable.
+export function isSheetsConfigured(sheetId: string | undefined): boolean {
+  return Boolean(sheetId?.trim() && readServiceAccount());
 }
 
 function base64url(input: string | Buffer): string {
@@ -140,9 +142,11 @@ async function accessToken(account: ServiceAccount): Promise<string> {
 // targets the first visible sheet, which is what the spec asks for.
 const RANGE = "A1";
 
-export async function appendSheetRow(row: SheetRow): Promise<void> {
+export async function appendSheetRow(
+  sheetId: string | undefined,
+  row: SheetRow,
+): Promise<void> {
   const account = readServiceAccount();
-  const sheetId = process.env.GOOGLE_SHEETS_ID;
   if (!account || !sheetId) {
     throw new Error("sheets_not_configured");
   }
@@ -185,9 +189,11 @@ export async function appendSheetRow(row: SheetRow): Promise<void> {
 // KV-unavailable fallback path. Reads the payment id column and reports
 // whether this payment has already been written, so a double fulfilment
 // is still prevented when the idempotency key cannot be set.
-export async function sheetHasPayment(paymentId: string): Promise<boolean> {
+export async function sheetHasPayment(
+  sheetId: string | undefined,
+  paymentId: string,
+): Promise<boolean> {
   const account = readServiceAccount();
-  const sheetId = process.env.GOOGLE_SHEETS_ID;
   if (!account || !sheetId) return false;
 
   const token = await accessToken(account);

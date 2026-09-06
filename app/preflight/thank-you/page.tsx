@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../preflight.css";
 import PurchaseEcho from "./PurchaseEcho";
-import { WHATSAPP_HREF } from "@/lib/contact";
-import {
-  PREFLIGHT_PRICE_INR,
-  PREFLIGHT_SUPPORT_EMAIL,
-  formatInr,
-  gstBreakdown,
-} from "@/lib/preflight";
+import { SUPPORT_EMAIL, WHATSAPP_HREF } from "@/lib/contact";
+import { formatInr } from "@/lib/preflight";
+import { PRODUCTS, gstBreakdown } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Payment received · Preflight",
@@ -37,7 +33,8 @@ export default async function ThankYouPage({
 }) {
   const params = await searchParams;
   const paymentId = receiptId(params.pid);
-  const gst = gstBreakdown();
+  const product = PRODUCTS.preflight;
+  const gst = gstBreakdown(product);
 
   const receiptLines: [string, string][] = [
     ["Base", `₹${formatInr(gst.base)}`],
@@ -47,7 +44,7 @@ export default async function ThankYouPage({
 
   return (
     <main id="main" className="pf-root">
-      <PurchaseEcho paymentId={paymentId} value={PREFLIGHT_PRICE_INR} />
+      <PurchaseEcho paymentId={paymentId} value={product.priceInr} />
 
       <section
         style={{
@@ -146,7 +143,7 @@ export default async function ThankYouPage({
                 color: "#F5F3EF",
               }}
             >
-              {`Preflight · ₹${formatInr(PREFLIGHT_PRICE_INR)} including GST · SAC ${gst.sac}`}
+              {`${product.name} · ₹${formatInr(product.priceInr)} including GST · SAC ${gst.sac}`}
             </p>
             <dl style={{ margin: 0, display: "grid", gap: 10 }}>
               {receiptLines.map(([label, value]) => (
@@ -186,10 +183,10 @@ export default async function ThankYouPage({
             }}
           >
             <a
-              href={`mailto:${PREFLIGHT_SUPPORT_EMAIL}`}
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="pf-link-underline"
             >
-              {PREFLIGHT_SUPPORT_EMAIL}
+              {SUPPORT_EMAIL}
             </a>
           </p>
 
@@ -205,7 +202,7 @@ export default async function ThankYouPage({
             <Link href="/preflight" className="pf-link-underline">
               Back to Preflight
             </Link>
-            <Link href="/preflight/terms" className="pf-link-underline">
+            <Link href={product.termsPath} className="pf-link-underline">
               Terms
             </Link>
           </p>

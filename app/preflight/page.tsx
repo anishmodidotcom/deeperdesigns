@@ -36,10 +36,9 @@ import {
   IconTick,
   IconVerdict,
 } from "./_components/Icons";
-import {
-  PREFLIGHT_PRICE_LABEL,
-  PREFLIGHT_SUPPORT_EMAIL,
-} from "@/lib/preflight";
+import { SUPPORT_EMAIL } from "@/lib/contact";
+import { priceLabel } from "@/lib/preflight";
+import { PRODUCTS } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Preflight · Launch audit suite for AI-built products",
@@ -415,6 +414,8 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function PreflightPage() {
+  const product = PRODUCTS.preflight;
+
   return (
     <main id="main" className="pf-root">
       <PreflightAnalytics />
@@ -1323,7 +1324,7 @@ export default function PreflightPage() {
                   color: "#F5F3EF",
                 }}
               >
-                {PREFLIGHT_PRICE_LABEL}
+                {priceLabel(product.priceInr)}
               </div>
               <p
                 style={{
@@ -1367,7 +1368,15 @@ export default function PreflightPage() {
               </div>
             </div>
 
-            <OrderForm />
+            <OrderForm
+              product={{
+                slug: product.slug,
+                name: product.name,
+                description: product.description,
+                priceInr: product.priceInr,
+                thankYouPath: product.thankYouPath,
+              }}
+            />
           </div>
         </div>
       </section>
@@ -1420,10 +1429,10 @@ export default function PreflightPage() {
             }}
           >
             <a
-              href={`mailto:${PREFLIGHT_SUPPORT_EMAIL}`}
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="pf-link-underline"
             >
-              {PREFLIGHT_SUPPORT_EMAIL}
+              {SUPPORT_EMAIL}
             </a>
             <a
               href="https://deeperdesigns.in"
@@ -1433,7 +1442,7 @@ export default function PreflightPage() {
             >
               deeperdesigns.in
             </a>
-            <Link href="/preflight/terms" className="pf-link-underline">
+            <Link href={product.termsPath} className="pf-link-underline">
               Terms
             </Link>
             <Link href="/privacy" className="pf-link-underline">

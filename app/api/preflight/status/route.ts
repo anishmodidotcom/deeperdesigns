@@ -12,7 +12,7 @@
 // /api/preflight/order, once, alongside the order it belongs to.
 
 import { NextResponse } from "next/server";
-import { missingPreflightConfig } from "@/lib/preflight";
+import { PRODUCTS, missingCheckoutConfig } from "@/lib/products";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,7 +25,7 @@ export const dynamic = "force-dynamic";
 // server log; this returns a boolean and nothing else.
 export async function GET() {
   return NextResponse.json(
-    { configured: missingPreflightConfig().length === 0 },
+    { configured: missingCheckoutConfig(PRODUCTS.preflight).length === 0 },
     { headers: { "cache-control": "no-store" } },
   );
 }

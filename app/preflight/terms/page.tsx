@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "../preflight.css";
-import { PREFLIGHT_SUPPORT_EMAIL } from "@/lib/preflight";
+import { SUPPORT_EMAIL, WHATSAPP_NUMBER } from "@/lib/contact";
+import { formatInr } from "@/lib/preflight";
+import { PRODUCTS } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Preflight terms · Deeper Designs",
@@ -13,12 +15,17 @@ export const metadata: Metadata = {
 
 const MONO = "var(--font-geist-mono), monospace";
 
+// v29.2: the price, SAC, product name and contact details come from the
+// product record and the shared contact constants. The rendered text is
+// character for character what it was when it was approved.
+const product = PRODUCTS.preflight;
+
 const CLAUSES = [
-  "Preflight is a digital download sold by Deeper Designs Private Limited, Delhi. On payment you receive a link to the package by email within 24 hours.",
-  "The price is ₹10,000 including GST at the applicable rate, SAC 998314. A GST breakdown is shown on your confirmation page.",
+  `${product.name} is a digital download sold by Deeper Designs Private Limited, Delhi. On payment you receive a link to the package by email within 24 hours.`,
+  `The price is ₹${formatInr(product.priceInr)} including GST at the applicable rate, SAC ${product.sac}. A GST breakdown is shown on your confirmation page.`,
   "No refunds. The product is delivered in full on payment.",
-  "Preflight is provided as-is for use against your own systems. It does not guarantee security or any outcome. Deeper Designs accepts no liability for results.",
-  "Refreshes are provided for 12 months from purchase. Questions: hey@deeperdesigns.in or WhatsApp +91 99687 16498.",
+  `${product.name} is provided as-is for use against your own systems. It does not guarantee security or any outcome. Deeper Designs accepts no liability for results.`,
+  `Refreshes are provided for 12 months from purchase. Questions: ${SUPPORT_EMAIL} or WhatsApp ${WHATSAPP_NUMBER}.`,
 ];
 
 export default function PreflightTermsPage() {
@@ -125,10 +132,10 @@ export default function PreflightTermsPage() {
             Back to Preflight
           </Link>
           <a
-            href={`mailto:${PREFLIGHT_SUPPORT_EMAIL}`}
+            href={`mailto:${SUPPORT_EMAIL}`}
             className="pf-link-underline"
           >
-            {PREFLIGHT_SUPPORT_EMAIL}
+            {SUPPORT_EMAIL}
           </a>
           <Link href="/privacy" className="pf-link-underline">
             Privacy

@@ -5,11 +5,9 @@ import { useRouter } from "next/navigation";
 import { WHATSAPP_HREF } from "@/lib/contact";
 import {
   PREFLIGHT_FIELD_MAX,
-  PREFLIGHT_PRICE_INR,
-  RAZORPAY_CHECKOUT_DESCRIPTION,
-  RAZORPAY_CHECKOUT_NAME,
   RAZORPAY_NOTE_MAX,
   RAZORPAY_THEME_COLOR,
+  checkoutName,
 } from "@/lib/preflight";
 import { withUtm } from "@/lib/preflight-utm";
 import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
@@ -118,7 +116,19 @@ const labelStyle: React.CSSProperties = {
   color: "#A8A8A8",
 };
 
-export default function OrderForm() {
+// v29.2: the product's identity and price arrive as props from the
+// server page rather than being read from process.env here. A client
+// bundle cannot see a non-public variable, so reading the price here
+// would silently use the default if the env value ever changed.
+export type OrderFormProduct = {
+  slug: string;
+  name: string;
+  description: string;
+  priceInr: number;
+  thankYouPath: string;
+};
+
+export default function OrderForm({ product }: { product: OrderFormProduct }) {
   // Checkout availability is asked for at request time rather than read
   // from a build-time env value, because /preflight is statically
   // prerendered: baking it in would turn the test-key to live-key swap
@@ -188,7 +198,7 @@ export default function OrderForm() {
 
     setBusy(true);
     try {
-      trackPreflightInitiateCheckout(PREFLIGHT_PRICE_INR);
+      trackPreflightInitiateCheckout(product.priceInr);
     } catch {
       // Analytics never blocks a sale.
     }
@@ -205,6 +215,7 @@ export default function OrderForm() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
+          product: product.slug,
           name: name.trim(),
           email: email.trim(),
           note: withUtm(note.trim(), RAZORPAY_NOTE_MAX),
@@ -234,10 +245,10 @@ export default function OrderForm() {
 
       const checkout = new RazorpayCtor({
         key: order.key_id,
-        amount: order.amount ?? PREFLIGHT_PRICE_INR * 100,
+        amount: order.amount ?? product.priceInr * 100,
         currency: order.currency ?? "INR",
-        name: RAZORPAY_CHECKOUT_NAME,
-        description: RAZORPAY_CHECKOUT_DESCRIPTION,
+        name: checkoutName(product.name),
+        description: product.description,
         order_id: order.order_id,
         prefill: { name: name.trim(), email: email.trim() },
         theme: { color: RAZORPAY_THEME_COLOR },
@@ -247,12 +258,12 @@ export default function OrderForm() {
               const verifyRes = await fetch("/api/preflight/verify", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
-                body: JSON.stringify(response),
+                body: JSON.stringify({ ...response, product: product.slug }),
               });
               const verified = (await verifyRes.json()) as { ok?: boolean };
               if (verifyRes.ok && verified.ok) {
                 router.push(
-                  `/preflight/thank-you?pid=${encodeURIComponent(response.razorpay_payment_id)}`,
+                  `${product.thankYouPath}?pid=${encodeURIComponent(response.razorpay_payment_id)}`,
                 );
                 return;
               }

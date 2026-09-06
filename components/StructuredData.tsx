@@ -1,3 +1,5 @@
+import { SUPPORT_EMAIL } from "@/lib/contact";
+
 type JsonLd = Record<string, unknown>;
 
 export function StructuredData({ data }: { data: JsonLd | JsonLd[] }) {
@@ -49,7 +51,7 @@ export const ORGANIZATION_LD: JsonLd = {
     "@type": "ContactPoint",
     telephone: "+91-99687-16498",
     contactType: "Customer Service",
-    email: "anish.modi@deeperdesigns.in",
+    email: SUPPORT_EMAIL,
     areaServed: ["IN", "AE"],
     availableLanguage: ["en"],
   },

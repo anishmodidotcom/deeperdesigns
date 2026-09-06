@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 import {
-  STUDIO_EMAIL,
-  STUDIO_EMAIL_HREF,
+  SUPPORT_EMAIL,
+  SUPPORT_EMAIL_HREF,
   WHATSAPP_NUMBER,
   WHATSAPP_HREF,
 } from "@/lib/contact";
@@ -48,7 +48,7 @@ type Section = { heading: string; body?: string; bullets?: string[]; after?: str
 const SECTIONS: Section[] = [
   {
     heading: "Who we are",
-    body: `Deeper Designs is an AI-led studio that builds custom digital tools and systems for businesses. You can reach us at ${STUDIO_EMAIL} or on WhatsApp at ${WHATSAPP_NUMBER}.`,
+    body: `Deeper Designs is an AI-led studio that builds custom digital tools and systems for businesses. You can reach us at ${SUPPORT_EMAIL} or on WhatsApp at ${WHATSAPP_NUMBER}.`,
   },
   {
     heading: "Information we collect",
@@ -96,7 +96,7 @@ const SECTIONS: Section[] = [
   },
   {
     heading: "Your choices and rights",
-    body: `You can ask us to access, correct, or delete the personal information we hold about you, and you can withdraw consent to marketing communications at any time. To make a request, contact us at ${STUDIO_EMAIL}. Depending on your location, you may have additional rights under applicable data protection law.`,
+    body: `You can ask us to access, correct, or delete the personal information we hold about you, and you can withdraw consent to marketing communications at any time. To make a request, contact us at ${SUPPORT_EMAIL}. Depending on your location, you may have additional rights under applicable data protection law.`,
   },
   {
     heading: "International users",
@@ -112,17 +112,17 @@ const SECTIONS: Section[] = [
   },
   {
     heading: "Contact us",
-    body: `If you have questions about this policy or your information, contact us at ${STUDIO_EMAIL} or on WhatsApp at ${WHATSAPP_NUMBER}.`,
+    body: `If you have questions about this policy or your information, contact us at ${SUPPORT_EMAIL} or on WhatsApp at ${WHATSAPP_NUMBER}.`,
   },
 ];
 
 // Linkify the email and WhatsApp number wherever they appear in the prose.
 function renderWithLinks(text: string): React.ReactNode {
-  const parts = text.split(new RegExp(`(${STUDIO_EMAIL}|${WHATSAPP_NUMBER.replace(/[+]/g, "\\+")})`, "g"));
+  const parts = text.split(new RegExp(`(${SUPPORT_EMAIL}|${WHATSAPP_NUMBER.replace(/[+]/g, "\\+")})`, "g"));
   return parts.map((part, i) => {
-    if (part === STUDIO_EMAIL) {
+    if (part === SUPPORT_EMAIL) {
       return (
-        <a key={i} href={STUDIO_EMAIL_HREF} style={{ color: "var(--dd-indigo-soft, #818CF8)" }}>
+        <a key={i} href={SUPPORT_EMAIL_HREF} style={{ color: "var(--dd-indigo-soft, #818CF8)" }}>
           {part}
         </a>
       );

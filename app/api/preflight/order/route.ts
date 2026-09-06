@@ -1,21 +1,23 @@
 // POST /api/preflight/order — create a Razorpay Order (v29).
 //
-// The browser never chooses the amount. It sends the three form fields;
-// this route validates them, creates an order for the configured price,
-// and returns the order id plus the public key so Standard Checkout can
-// open. Rate limited per IP and per email with the site's existing
-// guards.
+// The browser never chooses the amount. It sends the three form fields
+// plus a product slug; this route looks the product up in lib/products.ts
+// and creates an order for that product's price. An unknown slug is a
+// 400. Rate limited per IP and per email with the site's existing guards.
+//
+// Nothing here is Preflight-specific any more. A second product posts its
+// own slug to this same route.
 
 import { NextResponse } from "next/server";
 import { randomBytes } from "node:crypto";
 import { checkRate, clientKey, originAllowed } from "@/lib/api-guards";
+import { PREFLIGHT_FIELD_MAX, RAZORPAY_NOTE_MAX } from "@/lib/preflight";
 import {
-  PREFLIGHT_AMOUNT_PAISE,
-  PREFLIGHT_CURRENCY,
-  PREFLIGHT_FIELD_MAX,
-  RAZORPAY_NOTE_MAX,
-  missingPreflightConfig,
-} from "@/lib/preflight";
+  PRODUCT_CURRENCY,
+  amountPaise,
+  getProduct,
+  missingCheckoutConfig,
+} from "@/lib/products";
 
 export const runtime = "nodejs";
 
@@ -72,6 +74,25 @@ export async function POST(req: Request) {
     );
   }
 
+  // The slug decides the price, the sheet and the receipt, so it is
+  // resolved before anything else is validated.
+  const product = getProduct(raw.product);
+  if (!product) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-order",
+        event: "unknown_product",
+        // The raw value is logged truncated so a probe is visible without
+        // letting an arbitrary string into the log line.
+        got: typeof raw.product === "string" ? raw.product.slice(0, 40) : null,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "That product is not available." },
+      { status: 400 },
+    );
+  }
+
   const name = readString(raw.name, PREFLIGHT_FIELD_MAX.name);
   const email = readString(raw.email, PREFLIGHT_FIELD_MAX.email);
   // The note carries the UTM suffix the client appends, so it is capped
@@ -111,12 +132,13 @@ export async function POST(req: Request) {
   // the buyer has been charged, when the sale cannot be written to the
   // fulfilment queue. The log names the absent variables; the response
   // deliberately does not, because it is public.
-  const missing = missingPreflightConfig();
+  const missing = missingCheckoutConfig(product);
   if (missing.length > 0) {
     console.error(
       JSON.stringify({
         route: "preflight-order",
         event: "config_missing",
+        product: product.slug,
         missing,
       }),
     );
@@ -138,8 +160,8 @@ export async function POST(req: Request) {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        amount: PREFLIGHT_AMOUNT_PAISE,
-        currency: PREFLIGHT_CURRENCY,
+        amount: amountPaise(product),
+        currency: PRODUCT_CURRENCY,
         receipt: receiptId(),
         // The notes travel with the payment and are what the fulfilment
         // routine reads back, so the form fields never have to be
@@ -148,7 +170,9 @@ export async function POST(req: Request) {
           name: name.slice(0, RAZORPAY_NOTE_MAX),
           email: email.slice(0, RAZORPAY_NOTE_MAX),
           note: note.slice(0, RAZORPAY_NOTE_MAX),
-          product: "Preflight",
+          // The webhook and the callback both read the slug back off the
+          // payment, so neither has to be told which product it was.
+          product: product.slug,
         },
       }),
     });
@@ -159,6 +183,7 @@ export async function POST(req: Request) {
         JSON.stringify({
           route: "preflight-order",
           event: "order_create_failed",
+          product: product.slug,
           status: res.status,
           body: text.slice(0, 300),
         }),

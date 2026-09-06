@@ -1,4 +1,5 @@
-// Preflight fulfilment (v29). Runs exactly once per captured payment.
+// Product fulfilment (v29, product-driven since v29.2). Runs exactly
+// once per captured payment.
 //
 // Two callers race for every sale: the browser's success handler POSTing
 // to /api/preflight/verify, and Razorpay's payment.captured webhook.
@@ -17,14 +18,14 @@
 // second delivery.
 
 import { kv } from "@vercel/kv";
+import { NOTIFY_EMAIL } from "@/lib/contact";
+import { formatInr } from "@/lib/preflight";
 import {
-  PREFLIGHT_AMOUNT_PAISE,
-  PREFLIGHT_CURRENCY,
-  PREFLIGHT_NOTIFY_EMAIL,
-  PREFLIGHT_PRICE_INR,
-  formatInr,
+  PRODUCT_CURRENCY,
+  type Product,
+  amountPaise,
   gstBreakdown,
-} from "@/lib/preflight";
+} from "@/lib/products";
 import {
   appendSheetRow,
   isSheetsConfigured,
@@ -93,7 +94,7 @@ export async function fetchRazorpayPayment(
 // sheet's payment-id column, which is slower and racier but still stops a
 // second row being written for a payment already fulfilled. The fallback
 // logs loudly, because a KV outage during a sale is worth knowing about.
-async function claim(paymentId: string): Promise<boolean> {
+async function claim(product: Product, paymentId: string): Promise<boolean> {
   const key = `preflight:paid:${paymentId}`;
   if (KV_ENABLED) {
     try {
@@ -116,13 +117,13 @@ async function claim(paymentId: string): Promise<boolean> {
     });
   }
 
-  if (!isSheetsConfigured()) {
+  if (!isSheetsConfigured(product.sheetId)) {
     // Nothing to check against. Proceed rather than drop a paid order on
     // the floor; a duplicate row is recoverable, a lost sale is not.
     return true;
   }
   try {
-    const seen = await sheetHasPayment(paymentId);
+    const seen = await sheetHasPayment(product.sheetId, paymentId);
     return !seen;
   } catch (e) {
     log("error", "sheet_scan_failed", {
@@ -143,20 +144,24 @@ async function releaseClaim(paymentId: string): Promise<void> {
   }
 }
 
-function notificationBodies(fields: {
-  name: string;
-  email: string;
-  note: string;
-  paymentId: string;
-  orderId: string;
-}): { text: string; html: string } {
-  const g = gstBreakdown();
+function notificationBodies(
+  product: Product,
+  fields: {
+    name: string;
+    email: string;
+    note: string;
+    paymentId: string;
+    orderId: string;
+  },
+): { text: string; html: string } {
+  const g = gstBreakdown(product);
   const lines = [
     `Name: ${fields.name}`,
     `Email: ${fields.email}`,
     `What are you building: ${fields.note || "(not given)"}`,
     "",
-    `Amount: ₹${formatInr(g.price)} ${PREFLIGHT_CURRENCY} (GST inclusive)`,
+    `Product: ${product.name}`,
+    `Amount: ₹${formatInr(g.price)} ${PRODUCT_CURRENCY} (GST inclusive)`,
     `Base: ₹${formatInr(g.base)}`,
     `GST at ${g.rate}%: ₹${formatInr(g.gst)}`,
     `SAC: ${g.sac}`,
@@ -164,8 +169,8 @@ function notificationBodies(fields: {
     `Razorpay payment id: ${fields.paymentId}`,
     `Razorpay order id: ${fields.orderId}`,
     "",
-    "Send the Preflight package to this address within 24 hours, then fill",
-    "sent_at and sent_by on the sheet row.",
+    `Send the ${product.name} package to this address within 24 hours, then`,
+    "fill sent_at and sent_by on the sheet row.",
   ];
   const text = lines.join("\n");
   const html = `<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.6;color:#111"><pre style="margin:0;font:inherit;white-space:pre-wrap">${lines
@@ -182,14 +187,17 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function sendNotification(fields: {
-  name: string;
-  email: string;
-  note: string;
-  paymentId: string;
-  orderId: string;
-}): Promise<void> {
-  const { text, html } = notificationBodies(fields);
+async function sendNotification(
+  product: Product,
+  fields: {
+    name: string;
+    email: string;
+    note: string;
+    paymentId: string;
+    orderId: string;
+  },
+): Promise<void> {
+  const { text, html } = notificationBodies(product, fields);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -198,9 +206,9 @@ async function sendNotification(fields: {
     },
     body: JSON.stringify({
       from: process.env.RESEND_FROM ?? "Deeper Designs <no-reply@deeperdesigns.in>",
-      to: [PREFLIGHT_NOTIFY_EMAIL],
+      to: [NOTIFY_EMAIL],
       reply_to: fields.email,
-      subject: `PREFLIGHT SALE · ₹${formatInr(PREFLIGHT_PRICE_INR)} · ${fields.name}`,
+      subject: `${product.name.toUpperCase()} SALE · ₹${formatInr(product.priceInr)} · ${fields.name}`,
       text,
       html,
     }),
@@ -216,13 +224,16 @@ async function sendNotification(fields: {
 // already written to the sheet by the time this runs, so a permanently
 // failing mailer costs a notification, never the order. Never throws: the
 // caller must not be able to fail a recorded sale on a mail problem.
-async function notifyAnish(fields: {
-  name: string;
-  email: string;
-  note: string;
-  paymentId: string;
-  orderId: string;
-}): Promise<void> {
+async function notifyAnish(
+  product: Product,
+  fields: {
+    name: string;
+    email: string;
+    note: string;
+    paymentId: string;
+    orderId: string;
+  },
+): Promise<void> {
   if (!process.env.RESEND_API_KEY) {
     log("error", "email_not_configured", { payment_id: fields.paymentId });
     return;
@@ -231,7 +242,7 @@ async function notifyAnish(fields: {
   const attempts = 2;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      await sendNotification(fields);
+      await sendNotification(product, fields);
       if (attempt > 1) {
         log("info", "notification_sent_on_retry", {
           payment_id: fields.paymentId,
@@ -255,7 +266,7 @@ async function notifyAnish(fields: {
       log("error", "notification_failed", {
         payment_id: fields.paymentId,
         order_id: fields.orderId,
-        to: PREFLIGHT_NOTIFY_EMAIL,
+        to: NOTIFY_EMAIL,
         attempts,
         error: reason,
         // The row is already on the sheet, so the sale is recoverable by
@@ -269,6 +280,7 @@ async function notifyAnish(fields: {
 }
 
 export async function fulfilPayment(
+  product: Product,
   paymentId: string,
   source: FulfilSource,
 ): Promise<FulfilResult> {
@@ -282,6 +294,7 @@ export async function fulfilPayment(
   } catch (e) {
     log("error", "payment_fetch_failed", {
       payment_id: paymentId,
+      product: product.slug,
       source,
       error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
     });
@@ -291,28 +304,46 @@ export async function fulfilPayment(
   if (payment.status !== "captured") {
     log("error", "payment_not_captured", {
       payment_id: paymentId,
+      product: product.slug,
       source,
       status: payment.status,
     });
     return { ok: false, error: "payment_not_captured" };
   }
+  // v29.2: the order's own notes say which product it was. When they do,
+  // they must agree with the product the caller named, so a slug supplied
+  // by the browser can never point a payment at a different product's
+  // record. The amount check below is the backstop; this is the direct
+  // one.
+  const notedSlug = payment.notes?.product;
+  if (notedSlug && notedSlug !== product.slug) {
+    log("error", "product_mismatch", {
+      payment_id: paymentId,
+      product: product.slug,
+      noted_product: notedSlug,
+      source,
+    });
+    return { ok: false, error: "product_mismatch" };
+  }
+
   if (
-    payment.amount !== PREFLIGHT_AMOUNT_PAISE ||
-    payment.currency !== PREFLIGHT_CURRENCY
+    payment.amount !== amountPaise(product) ||
+    payment.currency !== PRODUCT_CURRENCY
   ) {
     log("error", "payment_amount_mismatch", {
       payment_id: paymentId,
+      product: product.slug,
       source,
       got_amount: payment.amount,
       got_currency: payment.currency,
-      want_amount: PREFLIGHT_AMOUNT_PAISE,
-      want_currency: PREFLIGHT_CURRENCY,
+      want_amount: amountPaise(product),
+      want_currency: PRODUCT_CURRENCY,
     });
     return { ok: false, error: "payment_amount_mismatch" };
   }
 
   // 2. Claim. Losing the race is a success: the other caller did the work.
-  if (!(await claim(paymentId))) {
+  if (!(await claim(product, paymentId))) {
     log("info", "already_fulfilled", { payment_id: paymentId, source });
     return { ok: true, fulfilled: false, reason: "already_fulfilled" };
   }
@@ -327,13 +358,13 @@ export async function fulfilPayment(
   //    the claim is released and the caller gets an error: a webhook
   //    retry can then try again.
   try {
-    await appendSheetRow({
+    await appendSheetRow(product.sheetId, {
       timestamp: new Date().toISOString(),
       name,
       email,
       note,
-      amount: PREFLIGHT_PRICE_INR,
-      currency: PREFLIGHT_CURRENCY,
+      amount: product.priceInr,
+      currency: PRODUCT_CURRENCY,
       razorpay_payment_id: payment.id,
       razorpay_order_id: payment.order_id,
       status: "paid",
@@ -343,6 +374,7 @@ export async function fulfilPayment(
   } catch (e) {
     log("error", "sheet_append_failed", {
       payment_id: paymentId,
+      product: product.slug,
       source,
       error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
     });
@@ -355,7 +387,7 @@ export async function fulfilPayment(
   //    an error naming the payment id.
   // notifyAnish handles its own retry and never throws, so a mail
   // failure cannot stop the Purchase event below or fail the request.
-  await notifyAnish({
+  await notifyAnish(product, {
     name,
     email,
     note,
@@ -371,12 +403,12 @@ export async function fulfilPayment(
       event_id: payment.id,
       user_data: email ? { em: email } : {},
       custom_data: {
-        content_name: "Preflight",
+        content_name: product.name,
         content_category: "digital_product",
-        value: PREFLIGHT_PRICE_INR,
-        currency: PREFLIGHT_CURRENCY,
+        value: product.priceInr,
+        currency: PRODUCT_CURRENCY,
       },
-      event_source_url: "https://www.deeperdesigns.in/preflight",
+      event_source_url: `https://www.deeperdesigns.in/${product.slug}`,
     });
     if (!result.ok) {
       log("error", "capi_purchase_failed", {
@@ -396,9 +428,10 @@ export async function fulfilPayment(
   log("info", "fulfilled", {
     payment_id: payment.id,
     order_id: payment.order_id,
+    product: product.slug,
     source,
-    amount: PREFLIGHT_PRICE_INR,
-    currency: PREFLIGHT_CURRENCY,
+    amount: product.priceInr,
+    currency: PRODUCT_CURRENCY,
     has_email: Boolean(email),
   });
   return { ok: true, fulfilled: true };
