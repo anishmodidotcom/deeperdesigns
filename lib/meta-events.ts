@@ -37,7 +37,13 @@ type EventName =
   // index. All custom. None of them may ever fire Lead.
   | "TeardownRequest"
   | "PartnerEnquiry"
-  | "SoftwareIndexView";
+  | "SoftwareIndexView"
+  // v29: Preflight. PreflightView is custom and fires once on page load.
+  // Purchase is standard: the fulfilment routine fires it server-side
+  // first, and the thank-you page echoes it with the same event_id (the
+  // Razorpay payment id) so Meta deduplicates the pair.
+  | "PreflightView"
+  | "Purchase";
 
 // Meta's standard event allowlist. Anything not in here is a custom
 // event and must be sent via fbq('trackCustom', ...) instead of
@@ -51,6 +57,7 @@ const STANDARD_EVENTS = new Set<EventName>([
   "Lead",
   "Contact",
   "InitiateCheckout",
+  "Purchase",
 ]);
 
 type UserData = {
@@ -205,8 +212,13 @@ export function trackEvent(
   event_name: EventName,
   custom_data: CustomData = {},
   user_data: UserData = {},
+  // v29: an explicit event_id, for the one case where the id is not ours
+  // to invent. The Preflight Purchase is keyed on the Razorpay payment id
+  // so the server event and the browser echo carry the same id and Meta
+  // collapses them into one conversion.
+  explicit_event_id?: string,
 ): void {
-  const event_id = uuidv4();
+  const event_id = explicit_event_id ?? uuidv4();
   log(event_name, event_id, custom_data);
   fireBrowser(event_name, event_id, custom_data);
   // Fire-and-forget the server mirror.
@@ -399,4 +411,42 @@ export function trackPartnerEnquiry(args: {
 // so we learn which categories actually pull interest.
 export function trackSoftwareIndexView(category: string): void {
   trackEvent("SoftwareIndexView", { category });
+}
+
+// ---------- v29: Preflight ----------
+
+// Fires once when the Preflight landing page mounts. Custom, so it never
+// counts as a ViewContent on the services funnel.
+export function trackPreflightView(): void {
+  trackEvent("PreflightView", { content_name: "Preflight", path: "/preflight" });
+}
+
+// Fires on the "Pay with Razorpay" click, before the order is created.
+export function trackPreflightInitiateCheckout(value: number): void {
+  trackEvent("InitiateCheckout", {
+    content_name: "Preflight",
+    content_category: "digital_product",
+    value,
+    currency: "INR",
+  });
+}
+
+// The browser half of the Purchase pair. The server half is fired by the
+// fulfilment routine with the same event_id, which is the Razorpay
+// payment id, so Meta deduplicates. Never call this without the id.
+export function trackPreflightPurchase(
+  paymentId: string,
+  value: number,
+): void {
+  trackEvent(
+    "Purchase",
+    {
+      content_name: "Preflight",
+      content_category: "digital_product",
+      value,
+      currency: "INR",
+    },
+    {},
+    paymentId,
+  );
 }

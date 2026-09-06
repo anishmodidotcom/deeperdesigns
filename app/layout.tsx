@@ -13,6 +13,7 @@ import ShowcaseNavigator from "@/components/ShowcaseNavigator";
 import MetaPixel from "@/components/MetaPixel";
 import MetaPageViewOnRouteChange from "@/components/MetaPageViewOnRouteChange";
 import ShowcaseRouteProvider from "@/components/ShowcaseRouteProvider";
+import SiteChrome from "@/components/SiteChrome";
 import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
 
 const geistSans = Geist({
@@ -122,11 +123,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   scroll behaviour and renders nothing, so it sits beside
                   the content and loads as a lazy chunk. */}
               <SmoothScroll />
-              <Nav />
+              {/* v29: the Preflight routes are their own composition, so
+                  the sitewide nav, footer and floating WhatsApp button
+                  are withheld there. Every other route is unchanged. */}
+              <SiteChrome>
+                <Nav />
+              </SiteChrome>
               {children}
-              <Footer />
-              <WhatsAppButton />
-              <ShowcaseNavigator />
+              <SiteChrome>
+                <Footer />
+                <WhatsAppButton />
+                <ShowcaseNavigator />
+              </SiteChrome>
             </ShowcaseRouteProvider>
           </MotionConfig>
           {/* v18: Organization JSON-LD lives in the head for every route. */}

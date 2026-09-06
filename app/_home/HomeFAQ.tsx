@@ -33,7 +33,7 @@ const QA = [
   },
   {
     q: "What if it does not work?",
-    a: "Simple. If your first tool is not live and working within thirty days, you do not pay. We can offer that because we scope honestly before we start and we build fast.",
+    a: "Simple. We scope honestly before we start and we build fast. Your first prototype is live in as little as 30 days.",
   },
   {
     q: "What happens on the call?",

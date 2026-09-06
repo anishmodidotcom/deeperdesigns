@@ -29,18 +29,34 @@ import type { NextConfig } from "next";
 // allowlisted on script-src (loads fbevents.js), img-src (the noscript
 // tracking pixel + tr beacons), connect-src (fbq POSTs back to FB), and
 // frame-src (Pixel uses an iframe for some matching surfaces).
+// v29: Razorpay Standard Checkout on /preflight. checkout.js is fetched
+// from checkout.razorpay.com and renders the payment modal in an iframe
+// served from api.razorpay.com, which then talks back to *.razorpay.com
+// and loads bank and wallet artwork from cdn.razorpay.com. Card and
+// netbanking flows submit forms into that iframe, so form-action needs
+// the same origins.
+//
+// These are added to the single site-wide CSP rather than a second
+// header scoped to /preflight: two Content-Security-Policy headers are
+// enforced as their intersection, so a narrower second one would still
+// block the script. The origins are inert on every other route because
+// nothing else references them.
+const RAZORPAY_SCRIPT = "https://checkout.razorpay.com";
+const RAZORPAY_API = "https://api.razorpay.com";
+const RAZORPAY_ANY = "https://*.razorpay.com";
+
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://connect.facebook.net https://*.facebook.net",
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://connect.facebook.net https://*.facebook.net ${RAZORPAY_SCRIPT} ${RAZORPAY_ANY}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' data: https://fonts.gstatic.com",
-  "img-src 'self' data: blob: https://*.deeperdesigns.in https://*.vercel.app https://www.facebook.com https://*.facebook.com https://connect.facebook.net",
+  `img-src 'self' data: blob: https://*.deeperdesigns.in https://*.vercel.app https://www.facebook.com https://*.facebook.com https://connect.facebook.net ${RAZORPAY_ANY}`,
   "media-src 'self' https://*.deeperdesigns.in",
-  "connect-src 'self' https://*.deeperdesigns.in https://vitals.vercel-insights.com https://vercel.live https://va.vercel-scripts.com https://www.facebook.com https://*.facebook.com https://connect.facebook.net https://graph.facebook.com",
-  "frame-src 'self' https://vercel.live https://www.facebook.com",
+  `connect-src 'self' https://*.deeperdesigns.in https://vitals.vercel-insights.com https://vercel.live https://va.vercel-scripts.com https://www.facebook.com https://*.facebook.com https://connect.facebook.net https://graph.facebook.com ${RAZORPAY_API} ${RAZORPAY_ANY}`,
+  `frame-src 'self' https://vercel.live https://www.facebook.com ${RAZORPAY_API} ${RAZORPAY_SCRIPT} ${RAZORPAY_ANY}`,
   "object-src 'none'",
   "base-uri 'self'",
-  "form-action 'self'",
+  `form-action 'self' ${RAZORPAY_API} ${RAZORPAY_ANY}`,
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ");
@@ -72,10 +88,36 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   async headers() {
+    // v29: /preflight relaxes Cross-Origin-Opener-Policy by exactly one
+    // step, from same-origin to same-origin-allow-popups. Razorpay's
+    // netbanking and some UPI flows open the bank in a popup and post
+    // the result back through window.opener, which same-origin severs.
+    // allow-popups keeps this document isolated from anything that opens
+    // IT, which is the property that matters here, and only loosens the
+    // link to windows this page opens itself.
+    //
+    // It is a replacement, not an addition: two COOP headers on one
+    // response is undefined behaviour, so the Preflight list is built by
+    // swapping the value rather than appending a second entry.
+    const preflightHeaders = SECURITY_HEADERS.map((h) =>
+      h.key === "Cross-Origin-Opener-Policy"
+        ? { key: h.key, value: "same-origin-allow-popups" }
+        : { key: h.key, value: h.value },
+    );
+    // Order matters: Next merges matching entries by header key and the
+    // last match wins, so the Preflight entries sit after the catch-all.
     return [
       {
         source: "/(.*)",
         headers: SECURITY_HEADERS.map((h) => ({ key: h.key, value: h.value })),
+      },
+      {
+        source: "/preflight",
+        headers: preflightHeaders,
+      },
+      {
+        source: "/preflight/:path*",
+        headers: preflightHeaders,
       },
     ];
   },

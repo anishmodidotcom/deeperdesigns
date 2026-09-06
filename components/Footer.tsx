@@ -1,4 +1,5 @@
 import TrackedEmailLink from "@/components/TrackedEmailLink";
+import { SUPPORT_EMAIL, SUPPORT_EMAIL_HREF } from "@/lib/contact";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 const EXPLORE = [
@@ -45,10 +46,10 @@ export default function Footer() {
               Email
             </p>
             <TrackedEmailLink
-              href="mailto:anish.modi@deeperdesigns.in"
+              href={SUPPORT_EMAIL_HREF}
               className="text-base"
             >
-              anish.modi@deeperdesigns.in
+              {SUPPORT_EMAIL}
             </TrackedEmailLink>
           </div>
           <div>

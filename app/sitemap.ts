@@ -13,6 +13,7 @@ import { SEGMENTS } from "@/lib/segments";
 // search engines nothing. Each route now carries the date its content last
 // meaningfully changed, updated by hand when the content changes. Routes
 // added in a release share that release's date.
+const V29 = "2026-09-05";
 const V28 = "2026-08-31";
 const V26 = "2026-08-30";
 const V25_6 = "2026-08-30";
@@ -44,6 +45,10 @@ const CORE: Entry[] = [
   { path: "/services", lastModified: V18, changeFrequency: "monthly", priority: 0.8 },
   { path: "/process", lastModified: V15, changeFrequency: "monthly", priority: 0.8 },
   { path: "/colophon", lastModified: V18, changeFrequency: "monthly", priority: 0.5 },
+  // v29: the Preflight product page and its terms. /preflight/thank-you
+  // is deliberately absent; it is noindex.
+  { path: "/preflight", lastModified: V29, changeFrequency: "monthly", priority: 0.9 },
+  { path: "/preflight/terms", lastModified: V29, changeFrequency: "yearly", priority: 0.3 },
   { path: "/privacy", lastModified: V20, changeFrequency: "yearly", priority: 0.3 },
 ];
 

@@ -20,10 +20,11 @@ const STEPS = [
   {
     n: "03",
     title: "We build. It goes live.",
-    // v28 Part 7: speed is flavour, the guarantee is the promise. "As little
-    // as" never becomes a commitment, and the thirty-day guarantee sentence
-    // that follows it is untouched.
-    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. And if your first tool is not live and working within thirty days, you do not pay. Small tools can be live in as little as seven days.",
+    // v29: the thirty-day not-paying guarantee is gone sitewide. The hero
+    // line and the FAQ answer changed with it; this step carried the same
+    // promise in different words, so it moves to the same wording rather
+    // than contradicting them one section apart.
+    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. Your first prototype is live in as little as 30 days.",
   },
 ];
 

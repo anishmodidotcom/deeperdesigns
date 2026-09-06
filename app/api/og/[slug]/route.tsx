@@ -35,6 +35,18 @@ function colophonCard(): CardInput {
   };
 }
 
+// v29: the Preflight product page. Its own card rather than a static
+// image, so it follows the same template as every other route.
+function preflightCard(): CardInput {
+  return {
+    eyebrow: "PREFLIGHT",
+    headline: "Audit your AI-built product before your users do.",
+    tagline: "Launch audit suite for AI-built products.",
+    url: "deeperdesigns.in/preflight",
+    accent: INDIGO,
+  };
+}
+
 function showcaseCard(slug: string): CardInput | null {
   const s = SHOWCASES.find((x) => x.slug === slug);
   if (!s) return null;
@@ -87,7 +99,9 @@ export async function GET(
   const card =
     slug === "colophon"
       ? colophonCard()
-      : showcaseCard(slug) ?? forCard(slug);
+      : slug === "preflight"
+        ? preflightCard()
+        : showcaseCard(slug) ?? forCard(slug);
   if (!card) {
     return new Response("Not found", { status: 404 });
   }
@@ -249,5 +263,6 @@ export function generateStaticParams() {
     ...SHOWCASES.map((s) => ({ slug: s.slug })),
     ...INDUSTRIES.filter((i) => i.live).map((i) => ({ slug: i.slug })),
     { slug: "colophon" },
+    { slug: "preflight" },
   ];
 }

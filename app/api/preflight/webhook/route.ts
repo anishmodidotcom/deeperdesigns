@@ -1,0 +1,137 @@
+// POST /api/preflight/webhook — Razorpay webhook (v29).
+//
+// The signature is computed over the RAW body, so the body is read as
+// text and only parsed after the comparison passes. Anything that fails
+// the check gets a 400 and writes nothing.
+//
+// Only payment.captured does work. Every other event is acknowledged with
+// a 200 and ignored, because Razorpay retries anything it does not see a
+// 2xx for and a retry loop on an event we do not handle is noise.
+//
+// Fulfilment is idempotent on the payment id, so a replay of the same
+// event is a no-op: no second sheet row, no second email.
+
+import { NextResponse } from "next/server";
+import { createHmac, timingSafeEqual } from "node:crypto";
+import { fulfilPayment } from "@/lib/preflight-fulfil";
+import { getProduct } from "@/lib/products";
+
+export const runtime = "nodejs";
+// The signature covers the exact bytes Razorpay sent. Never let a caching
+// or body-parsing layer near this route.
+export const dynamic = "force-dynamic";
+
+type WebhookBody = {
+  event?: string;
+  payload?: {
+    payment?: {
+      // notes.product is the slug the order route stamped on the order,
+      // so the webhook learns which product this was from Razorpay's own
+      // record rather than from anything a caller supplies.
+      entity?: { id?: string; notes?: Record<string, string> };
+    };
+  };
+};
+
+function signatureMatches(rawBody: string, provided: string): boolean {
+  const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+  if (!secret) return false;
+  const expected = createHmac("sha256", secret).update(rawBody).digest("hex");
+  const a = Buffer.from(expected, "utf8");
+  const b = Buffer.from(provided, "utf8");
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(a, b);
+}
+
+export async function POST(req: Request) {
+  const provided = req.headers.get("x-razorpay-signature");
+  const rawBody = await req.text();
+
+  if (!provided || !signatureMatches(rawBody, provided)) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-webhook",
+        event: "signature_rejected",
+        has_header: Boolean(provided),
+        configured: Boolean(process.env.RAZORPAY_WEBHOOK_SECRET),
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "bad_signature" },
+      { status: 400 },
+    );
+  }
+
+  let body: WebhookBody;
+  try {
+    body = JSON.parse(rawBody) as WebhookBody;
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "invalid_json" },
+      { status: 400 },
+    );
+  }
+
+  if (body.event !== "payment.captured") {
+    // Acknowledged and ignored, so Razorpay stops retrying it.
+    return NextResponse.json({ ok: true, ignored: body.event ?? "unknown" });
+  }
+
+  const entity = body.payload?.payment?.entity;
+  const paymentId = entity?.id;
+  if (typeof paymentId !== "string" || !paymentId) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-webhook",
+        event: "missing_payment_id",
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "missing_payment_id" },
+      { status: 400 },
+    );
+  }
+
+  // v29.2: which product this sale was. A captured payment with no
+  // recognisable slug is not ours to fulfil, and returning 400 stops
+  // Razorpay retrying something this route can never complete.
+  const product = getProduct(entity?.notes?.product);
+  if (!product) {
+    console.error(
+      JSON.stringify({
+        route: "preflight-webhook",
+        event: "unknown_product",
+        payment_id: paymentId,
+        got:
+          typeof entity?.notes?.product === "string"
+            ? entity.notes.product.slice(0, 40)
+            : null,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "unknown_product" },
+      { status: 400 },
+    );
+  }
+
+  const result = await fulfilPayment(product, paymentId, "webhook");
+  if (!result.ok) {
+    // A non-2xx tells Razorpay to retry, which is what we want when the
+    // sheet write failed: the next delivery gets another go.
+    console.error(
+      JSON.stringify({
+        route: "preflight-webhook",
+        event: "fulfilment_failed",
+        payment_id: paymentId,
+        product: product.slug,
+        error: result.error,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: result.error },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ ok: true, fulfilled: result.fulfilled });
+}

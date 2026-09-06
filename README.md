@@ -23,6 +23,6 @@ See [/colophon](https://www.deeperdesigns.in/colophon) for the full build story.
 
 ## Talk to us
 
-WhatsApp [+91 99687 16498](https://wa.me/919968716498) · [anish.modi@deeperdesigns.in](mailto:anish.modi@deeperdesigns.in) · [deeperdesigns.in](https://www.deeperdesigns.in)
+WhatsApp [+91 99687 16498](https://wa.me/919968716498) · [hey@deeperdesigns.in](mailto:hey@deeperdesigns.in) · [deeperdesigns.in](https://www.deeperdesigns.in)
 
 Built in Delhi by Anish Modi.

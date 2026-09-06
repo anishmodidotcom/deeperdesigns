@@ -154,7 +154,7 @@ export default function HomeHero() {
             color: "var(--fg-dim)",
           }}
         >
-          Your first tool live in 30 days, or you do not pay.
+          Your first prototype live in as little as 30 days.
         </p>
         {/* v22.1: the starting price, same quiet treatment as the
             guarantee line above it. */}
