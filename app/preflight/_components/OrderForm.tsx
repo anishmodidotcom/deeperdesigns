@@ -300,6 +300,16 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
   return (
     <form
       onSubmit={onSubmit}
+      // v29.3: noValidate stays, and it is what makes the plain-language
+      // messages below the only ones a visitor ever sees: without it the
+      // browser would raise its own bubble first and the field-level
+      // errors would never render.
+      //
+      // The two required fields now also carry the native attribute. It
+      // is not redundant: it marks them required in the accessibility
+      // tree, so a screen reader announces them as such rather than
+      // leaving the requirement to the visual layout, and it is the
+      // constraint that takes over if noValidate is ever lifted.
       noValidate
       style={{
         padding: "clamp(24px,2.6vw,36px)",
@@ -319,6 +329,7 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           className="pf-input"
           type="text"
           name="name"
+          required
           autoComplete="name"
           placeholder="Your name"
           value={name}
@@ -346,6 +357,7 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           className="pf-input"
           type="email"
           name="email"
+          required
           autoComplete="email"
           inputMode="email"
           placeholder="you@company.com"

@@ -30,6 +30,13 @@ export type Product = {
   sac: string;
   /** Spreadsheet holding this product's fulfilment queue. */
   sheetId: string | undefined;
+  /**
+   * v29.3: where the buyer's download lives. A view-only link, emailed to
+   * them on a verified payment. When it is absent the buyer email is
+   * skipped, sent_at stays blank on the sheet row, and the sale falls
+   * back to being delivered by hand from that row.
+   */
+  deliveryUrl: string | undefined;
   thankYouPath: string;
   termsPath: string;
 };
@@ -46,6 +53,7 @@ export const PRODUCTS = {
     gstRatePercent: Number(process.env.PREFLIGHT_GST_RATE ?? "18"),
     sac: process.env.PREFLIGHT_SAC ?? "998314",
     sheetId: process.env.GOOGLE_SHEETS_ID,
+    deliveryUrl: process.env.PREFLIGHT_DELIVERY_URL,
     thankYouPath: "/preflight/thank-you",
     termsPath: "/preflight/terms",
   },

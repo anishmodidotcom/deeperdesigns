@@ -10,8 +10,9 @@
 //   1. Fetch the payment from Razorpay and confirm captured + amount.
 //   2. Append one row to the fulfilment-queue sheet.
 //   3. Email Anish with the GST breakdown.
-//   4. Fire the server-side Purchase through the CAPI forwarder.
-//   5. Log a structured success line.
+//   4. Email the buyer their download and stamp sent_at on the row.
+//   5. Fire the server-side Purchase through the CAPI forwarder.
+//   6. Log a structured success line.
 //
 // Anything that fails after the key is set logs an error naming the
 // payment id, because at that point the work cannot be retried by a
@@ -32,6 +33,7 @@ import {
   sheetHasPayment,
 } from "@/lib/preflight-sheets";
 import { sendCapiEvent } from "@/lib/meta-capi";
+import { deliverToBuyer } from "@/lib/preflight-delivery";
 
 const KV_ENABLED = !!process.env.KV_REST_API_URL;
 
@@ -395,6 +397,15 @@ export async function fulfilPayment(
     orderId: payment.order_id,
   });
 
+  // The buyer's download. Guarded on sent_at, so it cannot go twice, and
+  // it never throws: a delivery failure leaves sent_at blank and the row
+  // reads as undelivered to whoever works the queue.
+  const delivery = await deliverToBuyer(product, {
+    name,
+    email,
+    paymentId: payment.id,
+  });
+
   try {
     const result = await sendCapiEvent({
       event_name: "Purchase",
@@ -430,6 +441,7 @@ export async function fulfilPayment(
     order_id: payment.order_id,
     product: product.slug,
     source,
+    delivered: delivery.ok && delivery.sent,
     amount: product.priceInr,
     currency: PRODUCT_CURRENCY,
     has_email: Boolean(email),
