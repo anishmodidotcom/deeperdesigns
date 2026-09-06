@@ -24,7 +24,7 @@ const CLAUSES = [
   `${product.name} is a digital download sold by Deeper Designs Private Limited, Delhi. On payment you receive a link to the package by email within 24 hours.`,
   `The price is ₹${formatInr(product.priceInr)} including GST at the applicable rate, SAC ${product.sac}. A GST breakdown is shown on your confirmation page.`,
   "No refunds. The product is delivered in full on payment.",
-  `${product.name} is provided as-is for use against your own systems. It does not guarantee security or any outcome. Deeper Designs accepts no liability for results.`,
+  `${product.name} is provided as-is for use against your own systems. It does not guarantee security or any outcome. Deeper Designs accepts no liability for results. Our privacy policy at deeperdesigns.in/privacy explains what is measured when you buy.`,
   `Refreshes are provided for 12 months from purchase. Questions: ${SUPPORT_EMAIL} or WhatsApp ${WHATSAPP_NUMBER}.`,
 ];
 

@@ -210,3 +210,90 @@ export async function sheetHasPayment(
   const body = (await res.json()) as { values?: string[][] };
   return (body.values ?? []).some((r) => r[0] === paymentId);
 }
+
+// v29.3: delivery bookkeeping. The buyer's download email writes back to
+// the row it was sent for, so sent_at doubles as the guard that stops a
+// second send for the same payment.
+//
+// Column letters follow the fixed schema at the top of this file:
+//   G razorpay_payment_id · I status · J sent_at · K sent_by
+const PAYMENT_ID_COL = "G";
+const SENT_AT_COL = "J";
+const SENT_BY_COL = "K";
+
+export type SheetRowRef = {
+  /** 1-based row number, as Sheets addresses it. */
+  rowNumber: number;
+  /** Empty string when the row has not been delivered yet. */
+  sentAt: string;
+  sentBy: string;
+};
+
+// Finds a payment's row and reports whether it has already been
+// delivered. Returns null when the payment is not on the sheet at all.
+export async function findSheetRow(
+  sheetId: string | undefined,
+  paymentId: string,
+): Promise<SheetRowRef | null> {
+  const account = readServiceAccount();
+  if (!account || !sheetId) return null;
+
+  const token = await accessToken(account);
+  // G through K in one read: the payment id to match on, and the two
+  // delivery columns to report back.
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}` +
+    `/values/${encodeURIComponent(`${PAYMENT_ID_COL}:${SENT_BY_COL}`)}`;
+  const res = await fetch(url, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    throw new Error(`sheets_read_${res.status}`);
+  }
+  const body = (await res.json()) as { values?: string[][] };
+  const rows = body.values ?? [];
+  // Sheets omits trailing empty cells, so sent_at and sent_by can be
+  // absent from the array entirely rather than present and empty.
+  const index = rows.findIndex((r) => r[0] === paymentId);
+  if (index === -1) return null;
+  const row = rows[index];
+  return {
+    rowNumber: index + 1,
+    sentAt: (row[3] ?? "").trim(),
+    sentBy: (row[4] ?? "").trim(),
+  };
+}
+
+// Stamps sent_at and sent_by on one row. Writes only those two cells, so
+// it can never disturb the sale data beside them.
+export async function markSheetRowSent(
+  sheetId: string | undefined,
+  rowNumber: number,
+  sentAt: string,
+  sentBy: string,
+): Promise<void> {
+  const account = readServiceAccount();
+  if (!account || !sheetId) {
+    throw new Error("sheets_not_configured");
+  }
+
+  const token = await accessToken(account);
+  const range = `${SENT_AT_COL}${rowNumber}:${SENT_BY_COL}${rowNumber}`;
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}` +
+    `/values/${encodeURIComponent(range)}?valueInputOption=RAW`;
+
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ values: [[sentAt, sentBy]] }),
+  });
+  if (!res.ok) {
+    throw new Error(
+      `sheets_update_${res.status}: ${(await res.text()).slice(0, 300)}`,
+    );
+  }
+}

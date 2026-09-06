@@ -41,6 +41,14 @@ import type { NextConfig } from "next";
 // enforced as their intersection, so a narrower second one would still
 // block the script. The origins are inert on every other route because
 // nothing else references them.
+// v29.3: the Meta Pixel falls back to a form POST to
+// https://www.facebook.com/tr/ when it cannot use an image or fetch
+// beacon, and form-action listed only 'self' and Razorpay, so the
+// browser refused it. Browser-side events, Purchase among them, could
+// fail silently. script-src, img-src and connect-src already permitted
+// the Facebook origins; form-action did not.
+const FACEBOOK = "https://www.facebook.com";
+
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com";
 const RAZORPAY_API = "https://api.razorpay.com";
 const RAZORPAY_ANY = "https://*.razorpay.com";
@@ -56,7 +64,7 @@ const CSP = [
   `frame-src 'self' https://vercel.live https://www.facebook.com ${RAZORPAY_API} ${RAZORPAY_SCRIPT} ${RAZORPAY_ANY}`,
   "object-src 'none'",
   "base-uri 'self'",
-  `form-action 'self' ${RAZORPAY_API} ${RAZORPAY_ANY}`,
+  `form-action 'self' ${FACEBOOK} ${RAZORPAY_API} ${RAZORPAY_ANY}`,
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ");
