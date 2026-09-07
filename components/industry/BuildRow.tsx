@@ -213,7 +213,11 @@ export default function BuildRow({
           display: inline-flex;
           align-items: center;
           gap: 9px;
-          margin-top: 30px;
+          /* v30.2: 45px of hit area from padding, pulled back by an equal
+             negative margin so the CTA sits exactly where it did. */
+          padding-block: 11px;
+          margin-top: 19px;
+          margin-bottom: -11px;
           font-size: 15px;
           font-weight: 500;
           color: var(--page-accent);

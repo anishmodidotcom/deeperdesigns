@@ -167,7 +167,7 @@ export default function About() {
               ))}
               <p style={{ margin: 0 }}>
                 <a
-                  className="mono"
+                  className="mono dd-tap-inline"
                   href="https://anishmodi.com"
                   target="_blank"
                   rel="noopener"

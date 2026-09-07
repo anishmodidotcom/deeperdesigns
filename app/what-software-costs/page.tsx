@@ -215,6 +215,7 @@ export default function WhatSoftwareCosts() {
                         href={row.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="dd-tap-inline"
                         style={{ color: "var(--accent)" }}
                       >
                         {row.source}
@@ -275,7 +276,7 @@ export default function WhatSoftwareCosts() {
         <div className="container" style={{ maxWidth: "880px" }}>
           <Link
             href="/software"
-            className="mono"
+            className="mono dd-chip-tap"
             style={{
               fontSize: "13px",
               letterSpacing: "0.04em",

@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 const LINKS = [
   {
     href: "/work/maplelens",
-    label: "Our two live products",
+    label: "Our four live products",
   },
   {
     href: "/work/veda-glow",
-    label: "The 20 we're proud of",
+    label: "The builds we are proud of",
   },
   {
     href: "/about",

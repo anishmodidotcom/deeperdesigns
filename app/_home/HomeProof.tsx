@@ -1,9 +1,7 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import { motion } from "motion/react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import Reveal from "@/components/Reveal";
 
 // v22 A3 (amended): products as proof, four live products. This section is
 // the homepage live-products row (the B4 choice: one row, not two). Copy is
@@ -83,13 +81,7 @@ export default function HomeProof() {
 
         <div className="hproof-grid">
           {PRODUCTS.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3, margin: "0px 0px -8% 0px" }}
-              transition={{ duration: 0.55, delay: (i % 5) * 0.06, ease: EASE }}
-            >
+            <Reveal key={p.name} delay={(i % 5) * 60}>
               <Link href={p.href} className="hproof-card" style={{ ["--card-accent" as string]: p.accent }}>
                 <p className="hproof-live">
                   <span aria-hidden style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--dd-accent-signal)", boxShadow: "0 0 6px var(--dd-accent-signal)", display: "inline-block" }} />
@@ -102,7 +94,7 @@ export default function HomeProof() {
                   <span aria-hidden className="hproof-arrow">→</span>
                 </p>
               </Link>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
 

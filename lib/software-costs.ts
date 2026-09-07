@@ -34,7 +34,7 @@ export const COST_ROWS: CostRow[] = [
     vendor: "Zoho CRM",
     plan: "Professional",
     rentedPerMonth: (people) => people * 1400,
-    assumption: "Rs 1,400 per user per month, billed annually",
+    assumption: "₹1,400 per user per month, billed annually",
     source: "zoho.com",
     sourceUrl: "https://www.zoho.com/crm/zohocrm-pricing.html",
     verifiedOn: "2026-08-30",
@@ -48,7 +48,7 @@ export const COST_ROWS: CostRow[] = [
     vendor: "Power BI",
     plan: "Pro",
     rentedPerMonth: (people) => people * 1165,
-    assumption: "Rs 1,165 per user per month, paid yearly",
+    assumption: "₹1,165 per user per month, paid yearly",
     source: "microsoft.com",
     sourceUrl:
       "https://www.microsoft.com/en-in/power-platform/products/power-bi/pricing",
@@ -65,7 +65,7 @@ export const COST_ROWS: CostRow[] = [
     // Base covers the first 50 employees, then per employee above that.
     rentedPerMonth: (people) => 4495 + Math.max(0, people - 50) * 85,
     assumption:
-      "Rs 4,495 per month covering the first 50 employees, then Rs 85 per employee above 50",
+      "₹4,495 per month covering the first 50 employees, then ₹85 per employee above 50",
     source: "greythr.com",
     sourceUrl: "https://www.greythr.com/pricing/",
     verifiedOn: "2026-08-30",
@@ -80,7 +80,7 @@ export function rentedTotal(row: CostRow, people: number, years: number): number
 }
 
 export function formatInr(value: number): string {
-  return `Rs ${new Intl.NumberFormat("en-IN", {
+  return `₹${new Intl.NumberFormat("en-IN", {
     maximumFractionDigits: 0,
   }).format(Math.round(value))}`;
 }

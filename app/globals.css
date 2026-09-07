@@ -253,3 +253,64 @@ button {
     display: none;
   }
 }
+
+/* v30.2: tap targets.
+   Every interactive element reaches at least 44 by 44. The size comes
+   from padding and a minimum box, never from larger type, so nothing
+   about the design reads differently.
+   Two shapes:
+     dd-tap-row  a link that owns its line. It becomes a 44px flex box, so
+                 the hit area is the whole row and nothing overlaps.
+     dd-tap-inline  a link sitting in a row beside others, or inside a
+                 sentence. Vertical padding grows the hit box; on an
+                 inline box that does not touch the line height, and on a
+                 flex item an equal negative margin cancels it, so the
+                 layout is untouched either way. */
+.dd-tap-row {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.dd-tap-inline {
+  padding-block: 14px;
+  padding-inline: 3px;
+  margin-block: -14px;
+  margin-inline: -3px;
+}
+
+/* The chip rows: pills that were between 37 and 41 tall. A minimum box
+   takes each to 44 without changing the padding that sets their shape. */
+.ind-switcher-chip,
+.bseg-chip,
+.filter-row button,
+.dd-chip-tap {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon-only controls, which need the width as well as the height. */
+.dd-tap-icon {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The nav and the Preflight header are fixed-height bars, so their links
+   take the inline treatment: the hit box grows into the bar's own
+   padding rather than making the bar taller. */
+nav a,
+nav button,
+header a,
+a.pf-link-underline {
+  /* a.pf-link-underline rather than the bare class: preflight.css sets
+     its own padding-bottom, and a two-part selector wins that regardless
+     of which stylesheet loads last. */
+  padding-block: 16px;
+  padding-inline: 3px;
+  margin-block: -16px;
+  margin-inline: -3px;
+}

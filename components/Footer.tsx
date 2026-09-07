@@ -34,9 +34,9 @@ export default function Footer() {
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
               Explore
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               {EXPLORE.map((l) => (
-                <a key={l.href} href={l.href} className="text-base">
+                <a key={l.href} href={l.href} className="text-base dd-tap-row">
                   {l.label}
                 </a>
               ))}
@@ -48,7 +48,7 @@ export default function Footer() {
             </p>
             <TrackedEmailLink
               href={SUPPORT_EMAIL_HREF}
-              className="text-base"
+              className="text-base dd-tap-row"
             >
               {SUPPORT_EMAIL}
             </TrackedEmailLink>
@@ -59,7 +59,7 @@ export default function Footer() {
             </p>
             <TrackedWhatsAppLink
               href="https://wa.me/919968716498?text=Hi%2C%20I%27d%20like%20to%20explore%20possibilities%20for%20my%20business."
-              className="text-base"
+              className="text-base dd-tap-row"
             >
               +91 99687 16498
             </TrackedWhatsAppLink>
@@ -68,7 +68,7 @@ export default function Footer() {
             <p className="mono mb-3 mt-6" style={{ color: "var(--fg-dim)" }}>
               Call us
             </p>
-            <a href="tel:+919968716498" className="text-base">
+            <a href="tel:+919968716498" className="text-base dd-tap-row">
               +91 99687 16498
             </a>
           </div>
@@ -76,12 +76,12 @@ export default function Footer() {
             <p className="mono mb-3" style={{ color: "var(--fg-dim)" }}>
               Social
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               <a
                 href="https://instagram.com/deeperdesignsco"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base"
+                className="text-base dd-tap-row"
               >
                 Instagram
               </a>
@@ -89,7 +89,7 @@ export default function Footer() {
                 href="https://linkedin.com/company/deeperdesigns"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base"
+                className="text-base dd-tap-row"
               >
                 LinkedIn
               </a>
@@ -106,10 +106,10 @@ export default function Footer() {
             <p>© 2026 Deeper Designs Private Limited · Delhi and Dubai · You own everything we build.</p>
             <div className="flex gap-4">
               {/* v26 Part 5: /partners is footer-only, never in the nav. */}
-              <a href="/partners" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+              <a href="/partners" className="text-sm dd-tap-inline" style={{ color: "var(--fg-dim)" }}>
                 Partners
               </a>
-              <a href="/privacy" className="text-sm" style={{ color: "var(--fg-dim)" }}>
+              <a href="/privacy" className="text-sm dd-tap-inline" style={{ color: "var(--fg-dim)" }}>
                 Privacy
               </a>
             </div>

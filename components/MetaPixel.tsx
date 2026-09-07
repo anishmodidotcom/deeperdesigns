@@ -30,6 +30,16 @@ import Script from "next/script";
 // every event lands in fbq's own queue in the right order behind init, and
 // fbevents flushes it whenever it arrives. The external script is still
 // fetched afterInteractive, so nothing here costs paint time.
+//
+// v30.2: autoConfig is turned off in the stub, immediately after init.
+// With it on, fbevents scans the page for price-like markup and attaches
+// what it finds to every event as automatic parameters. On this site that
+// produced ap[contents]=[{"item_price":0}] and ap[currency]=INR on every
+// page, including pages that sell nothing, so the dataset carried a zero
+// priced item against a currency for ordinary content views. Turning it
+// off here means no event can carry those parameters before the page has
+// decided whether it should. MetaAutoParams turns it back on for the
+// Preflight routes, which are the only ones with a price on them.
 
 export default function MetaPixel() {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -48,6 +58,7 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[]}(window,document,'script');
 fbq('init', '${pixelId}');
+fbq('set', 'autoConfig', false, '${pixelId}');
         `}
       </Script>
       {/* The library itself, fetched after hydration so it never blocks

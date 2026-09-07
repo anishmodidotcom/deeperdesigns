@@ -56,7 +56,8 @@ export default function HomeGallery() {
         {/* Filter rows */}
         <div style={{ marginBottom: "16px" }}>
           <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "10px" }}>BY OBJECTIVE</p>
-          <div style={{ display: "flex", gap: "8px", overflowX: "auto", paddingBottom: "6px", scrollbarWidth: "none" }} className="filter-row">
+          <div className="filter-row-wrap">
+          <div style={{ display: "flex", gap: "8px", paddingBottom: "6px", scrollbarWidth: "none" }} className="filter-row">
             {OBJECTIVES.map(o => {
               const active = objectives.includes(o);
               return (
@@ -87,11 +88,13 @@ type="button"                   key={o}
               );
             })}
           </div>
+          </div>
         </div>
 
         <div style={{ marginBottom: "32px" }}>
           <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "10px" }}>BY INDUSTRY</p>
-          <div style={{ display: "flex", gap: "8px", overflowX: "auto", paddingBottom: "6px", scrollbarWidth: "none" }} className="filter-row">
+          <div className="filter-row-wrap">
+          <div style={{ display: "flex", gap: "8px", paddingBottom: "6px", scrollbarWidth: "none" }} className="filter-row">
             {INDUSTRIES.map(i => {
               const active = industries.includes(i);
               return (
@@ -121,6 +124,7 @@ type="button"                   key={i}
                 </button>
               );
             })}
+          </div>
           </div>
         </div>
 
@@ -216,6 +220,27 @@ type="button"               onClick={() => { setObjectives([]); setIndustries([]
       </div>
 
       <style>{`
+        /* v30.2: the chip rows used to be a single nowrap line with
+           overflow-x auto and no affordance, so at 1440 the industry row
+           cut "Creative / Studios" mid-word and nothing said it scrolled.
+           They wrap at desktop widths. Under 768 they stay a scrolling
+           line, where that is the right behaviour on a narrow screen, and
+           a fade at the right edge shows there is more. */
+        .filter-row-wrap { position: relative; }
+        .filter-row { flex-wrap: wrap; }
+        @media (max-width: 767px) {
+          .filter-row { flex-wrap: nowrap; overflow-x: auto; }
+          .filter-row-wrap::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 6px;
+            right: 0;
+            width: 48px;
+            pointer-events: none;
+            background: linear-gradient(to right, transparent, var(--bg));
+          }
+        }
         .gallery-pool {
           border: 1px solid var(--border);
           border-radius: 16px;

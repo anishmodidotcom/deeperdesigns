@@ -12,6 +12,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ShowcaseNavigator from "@/components/ShowcaseNavigator";
 import MetaPixel from "@/components/MetaPixel";
 import MetaPageViewOnRouteChange from "@/components/MetaPageViewOnRouteChange";
+import MetaAutoParams from "@/components/MetaAutoParams";
 import ShowcaseRouteProvider from "@/components/ShowcaseRouteProvider";
 import SiteChrome from "@/components/SiteChrome";
 import { StructuredData, ORGANIZATION_LD } from "@/components/StructuredData";
@@ -151,6 +152,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <StructuredData data={ORGANIZATION_LD} />
           <Analytics />
           <MetaPixel />
+          {/* v30.2: before the first PageView, so no event carries the
+              automatic parameters on a route that should not send them. */}
+          <MetaAutoParams />
           <MetaPageViewOnRouteChange />
         </body>
       </html>

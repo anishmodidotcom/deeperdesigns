@@ -31,9 +31,13 @@ export default function TrackedTierCTA({ tierName, tierPriceBand }: Props) {
         letterSpacing: "0.14em",
         textTransform: "uppercase",
         color: "var(--accent)",
-        textDecoration: "none",
-        borderBottom: "1px solid currentColor",
-        paddingBottom: "2px",
+        // v30.2: an underline drawn by text-decoration rather than a
+        // bottom border, so the vertical padding that takes this to a
+        // 44px hit area does not push the rule away from the words.
+        textDecoration: "underline",
+        textUnderlineOffset: "4px",
+        paddingBlock: "14px",
+        marginBlock: "-14px",
       }}
     >
       Start with this tier <span aria-hidden>→</span>

@@ -17,7 +17,7 @@ export default function MidPageCTA({ note }: { note?: string }) {
       style={{ maxWidth: "880px", paddingBottom: "var(--section-py)" }}
     >
       <p style={{ fontSize: "17px", lineHeight: 1.6, margin: 0 }}>
-        <Link href="/start-your-study" style={{ color: "var(--accent)" }}>
+        <Link href="/start-your-study" className="dd-tap-inline" style={{ color: "var(--accent)" }}>
           {note ?? DEFAULT_NOTE}
         </Link>
       </p>

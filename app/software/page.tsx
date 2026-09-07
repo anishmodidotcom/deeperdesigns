@@ -177,7 +177,7 @@ export default function SoftwareIndex() {
               <Link
                 key={s.slug}
                 href={`/business/${s.slug}`}
-                className="mono"
+                className="mono dd-chip-tap"
                 style={{
                   fontSize: "13px",
                   letterSpacing: "0.04em",
@@ -217,7 +217,7 @@ export default function SoftwareIndex() {
               <Link
                 key={i.slug}
                 href={`/for/${i.slug}`}
-                className="mono"
+                className="mono dd-chip-tap"
                 style={{
                   fontSize: "13px",
                   letterSpacing: "0.04em",
@@ -239,7 +239,7 @@ export default function SoftwareIndex() {
         <div className="container" style={{ maxWidth: "880px" }}>
           <Link
             href="/what-software-costs"
-            className="mono"
+            className="mono dd-chip-tap"
             style={{
               fontSize: "13px",
               letterSpacing: "0.04em",
