@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { renderSerif } from "@/components/industry/text";
 
 // v27 Part 1: the product architecture answer. Sits after the ownership
@@ -81,6 +82,23 @@ export default function HomeArchitecture() {
             </li>
           ))}
         </ul>
+        {/* v31: the packs claim now has somewhere to be checked. */}
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.6,
+            maxWidth: "760px",
+            margin: "0 0 40px",
+          }}
+        >
+          <Link
+            href="/business/manufacturers"
+            className="dd-tap-inline"
+            style={{ color: "var(--accent)" }}
+          >
+            See what a pack contains on each business page.
+          </Link>
+        </p>
         <p
           style={{
             fontSize: "17px",
