@@ -1326,18 +1326,24 @@ export default function PreflightPage() {
               >
                 {priceLabel(product.priceInr)}
               </div>
-              <p
-                style={{
-                  margin: "14px 0 0",
-                  fontFamily: MONO,
-                  fontSize: 11,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "#6B6B6B",
-                }}
-              >
-                International cards accepted.
-              </p>
+              {/* v29.4: the Razorpay account does not accept
+                  international cards yet, so the claim is withheld until
+                  it does. Flipping PREFLIGHT_INTERNATIONAL_CARDS to true
+                  is the whole change on the day it is approved. */}
+              {product.internationalCards ? (
+                <p
+                  style={{
+                    margin: "14px 0 0",
+                    fontFamily: MONO,
+                    fontSize: 11,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "#6B6B6B",
+                  }}
+                >
+                  International cards accepted.
+                </p>
+              ) : null}
               <div
                 style={{
                   marginTop: "clamp(32px,3.5vw,44px)",
@@ -1444,6 +1450,9 @@ export default function PreflightPage() {
             </a>
             <Link href={product.termsPath} className="pf-link-underline">
               Terms
+            </Link>
+            <Link href="/preflight/delivery-policy" className="pf-link-underline">
+              Delivery policy
             </Link>
             <Link href="/privacy" className="pf-link-underline">
               Privacy

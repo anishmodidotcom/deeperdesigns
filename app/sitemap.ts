@@ -13,6 +13,7 @@ import { SEGMENTS } from "@/lib/segments";
 // search engines nothing. Each route now carries the date its content last
 // meaningfully changed, updated by hand when the content changes. Routes
 // added in a release share that release's date.
+const V29_4 = "2026-09-06";
 const V29 = "2026-09-05";
 const V28 = "2026-08-31";
 const V26 = "2026-08-30";
@@ -49,6 +50,9 @@ const CORE: Entry[] = [
   // is deliberately absent; it is noindex.
   { path: "/preflight", lastModified: V29, changeFrequency: "monthly", priority: 0.9 },
   { path: "/preflight/terms", lastModified: V29, changeFrequency: "yearly", priority: 0.3 },
+  // v29.4: Razorpay reviews this page before enabling international
+  // payments, so it is indexable and listed rather than noindex.
+  { path: "/preflight/delivery-policy", lastModified: V29_4, changeFrequency: "yearly", priority: 0.3 },
   { path: "/privacy", lastModified: V20, changeFrequency: "yearly", priority: 0.3 },
 ];
 

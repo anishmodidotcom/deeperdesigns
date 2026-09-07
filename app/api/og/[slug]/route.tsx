@@ -85,8 +85,13 @@ async function loadMonogram(): Promise<string> {
   return `data:image/svg+xml;base64,${Buffer.from(baked).toString("base64")}`;
 }
 
-async function loadFontBuffer(rel: string): Promise<ArrayBuffer> {
-  const buf = await readFile(join(process.cwd(), rel));
+// v29.4: the path is joined against a static "og-fonts" segment rather
+// than taking a whole relative path. Turbopack could not statically
+// scope the old form and warned that it traced the entire project into
+// the serverless bundle, public folder included, which bloats the
+// deploy. Only the filename varies now.
+async function loadFontBuffer(file: string): Promise<ArrayBuffer> {
+  const buf = await readFile(join(process.cwd(), "og-fonts", file));
   return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
 }
 
@@ -111,9 +116,9 @@ export async function GET(
   let fonts: Array<{ name: string; data: ArrayBuffer; weight: 400 | 600; style: "normal" | "italic" }> = [];
   try {
     const [sans, sansBold, serif] = await Promise.all([
-      loadFontBuffer("og-fonts/Geist-Regular.ttf"),
-      loadFontBuffer("og-fonts/Geist-SemiBold.ttf"),
-      loadFontBuffer("og-fonts/InstrumentSerif-Italic.ttf"),
+      loadFontBuffer("Geist-Regular.ttf"),
+      loadFontBuffer("Geist-SemiBold.ttf"),
+      loadFontBuffer("InstrumentSerif-Italic.ttf"),
     ]);
     fonts = [
       { name: "Geist", data: sans, weight: 400, style: "normal" },
@@ -149,6 +154,9 @@ export async function GET(
             inset: 0,
             background: accentWash(card.accent, 0.08),
             display: "flex",
+            // No z-index: satori does not support it and warned once per
+            // element per card. The wash is painted first and the
+            // content after it, so source order already layers them.
           }}
         />
 
@@ -158,7 +166,6 @@ export async function GET(
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            zIndex: 1,
           }}
         >
           <img
@@ -192,7 +199,6 @@ export async function GET(
             paddingTop: 40,
             paddingBottom: 40,
             gap: 28,
-            zIndex: 1,
           }}
         >
           <div
@@ -232,7 +238,6 @@ export async function GET(
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            zIndex: 1,
           }}
         >
           <span
