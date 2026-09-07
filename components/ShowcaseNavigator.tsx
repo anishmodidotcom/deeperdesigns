@@ -132,7 +132,7 @@ export default function ShowcaseNavigator() {
         type="button"
         onClick={() => setMobileOpen(true)}
         aria-label="Open studies navigator"
-        className="dd-nav-mobile-toggle"
+        className="dd-nav-mobile-toggle dd-chip-tap"
         style={{
           display: "none",
           position: "fixed",

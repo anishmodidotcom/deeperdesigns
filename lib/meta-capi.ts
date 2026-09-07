@@ -67,7 +67,14 @@ export async function sendCapiEvent(ev: CapiEvent): Promise<CapiResult> {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
   const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
   const testEventCode = process.env.META_TEST_EVENT_CODE;
-  const isProd = process.env.NODE_ENV === "production";
+  // v30.2: keyed on VERCEL_ENV, not NODE_ENV. Vercel builds and runs
+  // preview deployments with NODE_ENV=production, so the old check meant
+  // the test code was never attached anywhere it was wanted, and it would
+  // have been attached in production had NODE_ENV ever read differently
+  // there. VERCEL_ENV is the only variable that distinguishes production
+  // from preview at request time. Off Vercel the variable is unset, which
+  // reads as non-production and keeps local runs in the Test Events tab.
+  const isProd = process.env.VERCEL_ENV === "production";
 
   if (!pixelId || !accessToken) {
     // Credentials not provisioned (local dev or pre-config deploy).
@@ -94,8 +101,9 @@ export async function sendCapiEvent(ev: CapiEvent): Promise<CapiResult> {
     data: [event],
     access_token: accessToken,
   };
-  // Attach test_event_code only in non-production so the Test Events tab
-  // catches preview and dev traffic without polluting prod conversions.
+  // Attach test_event_code only outside the production deployment so the
+  // Test Events tab catches preview and dev traffic without polluting
+  // production conversions.
   if (!isProd && testEventCode) {
     payload.test_event_code = testEventCode;
   }

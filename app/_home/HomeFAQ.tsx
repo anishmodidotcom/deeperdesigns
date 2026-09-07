@@ -46,7 +46,13 @@ export default function HomeFAQ() {
 
   return (
     <section style={{ padding: "var(--section-py) 0" }}>
-      <div className="container" style={{ maxWidth: "880px" }}>
+      <div className="container">
+        {/* v30.2: the column used to be centred by narrowing the
+            container itself, which pushed the heading in from the
+            house measure. The container stays full width and the
+            column is set on the block inside it, so the left edge
+            sits at 128 at 1440 like every other section. */}
+        <div style={{ maxWidth: "880px" }}>
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "64px" }}>
           Straight answers{" "}
           <span
@@ -82,6 +88,7 @@ type="button"                   onClick={() => setOpen(isOpen ? null : i)}
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

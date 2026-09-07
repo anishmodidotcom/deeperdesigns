@@ -38,7 +38,10 @@ export default function PreflightDeliveryPolicyPage() {
           borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
       >
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1184, margin: "0 auto" }}>
+          {/* v30.2: on the site grid (x=128 at 1440), with the reading
+              measure carried by the column inside it. */}
+          <div style={{ maxWidth: 760 }}>
           <p
             style={{
               margin: "0 0 24px",
@@ -81,6 +84,7 @@ export default function PreflightDeliveryPolicyPage() {
               </p>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
@@ -92,7 +96,7 @@ export default function PreflightDeliveryPolicyPage() {
       >
         <div
           style={{
-            maxWidth: 760,
+            maxWidth: 1184,
             margin: "0 auto",
             display: "flex",
             flexWrap: "wrap",
@@ -101,6 +105,11 @@ export default function PreflightDeliveryPolicyPage() {
             fontSize: 16,
           }}
         >
+          {/* v30.2: the way back to the rest of the site, first in the
+              footer's link row. */}
+          <Link href="/" className="pf-link-underline">
+            Back to Deeper Designs
+          </Link>
           <Link href="/preflight" className="pf-link-underline">
             Back to Preflight
           </Link>

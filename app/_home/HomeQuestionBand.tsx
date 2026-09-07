@@ -126,6 +126,7 @@ export default function HomeQuestionBand() {
               {i > 0 ? <span style={{ color: "var(--fg-dim)" }}> · </span> : null}
               <Link
                 href={`/business/${s.slug}`}
+                className="dd-tap-inline"
                 style={{ color: "var(--fg)", textUnderlineOffset: "3px" }}
               >
                 {s.label}

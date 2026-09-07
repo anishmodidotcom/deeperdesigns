@@ -21,10 +21,11 @@ export default function ProductFragment({ slug }: FragmentProps) {
       return (
         <div style={fragWrap}>
           <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "6px" }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--whatsapp)", boxShadow: "0 0 6px var(--whatsapp)", display: "inline-block" }} />
-              <span style={{ fontSize: "11px", color: "var(--fg-dim)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>LIVE</span>
-            </div>
+            {/* v30.2: this card used to draw its own LIVE marker inside the
+                dashboard artwork, the one inline variant of a badge that is
+                the green pill top-right everywhere else. It is gone, so the
+                pill is the single treatment. It also read as a live claim
+                on a build that is a concept, not a live product. */}
             <div style={{ fontSize: "28px", fontWeight: 500, lineHeight: 1, color: "var(--fg)" }}>47</div>
             <div style={{ fontSize: "9px", color: "var(--fg-muted)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}>ORDERS · ₹38.4K</div>
             <div style={{ display: "flex", gap: "3px", alignItems: "flex-end", height: "16px", marginTop: "2px" }}>

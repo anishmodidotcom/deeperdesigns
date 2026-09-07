@@ -61,6 +61,7 @@ export default function StartYourStudy() {
             What you share is handled per our{" "}
             <a
               href="/privacy"
+              className="dd-tap-inline"
               style={{
                 color: "var(--accent)",
                 textDecoration: "underline",

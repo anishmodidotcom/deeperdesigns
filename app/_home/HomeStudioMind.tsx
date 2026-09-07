@@ -3,7 +3,13 @@ import AnishNote from "@/components/AnishNote";
 export default function HomeStudioMind() {
   return (
     <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
-      <div className="container" style={{ maxWidth: "880px" }}>
+      <div className="container">
+        {/* v30.2: the column used to be centred by narrowing the
+            container itself, which pushed the heading in from the
+            house measure. The container stays full width and the
+            column is set on the block inside it, so the left edge
+            sits at 128 at 1440 like every other section. */}
+        <div style={{ maxWidth: "880px" }}>
         <AnishNote
           text="I've sat across a lot of founders. The good ones aren't waiting for permission. They're waiting for someone to look at their business with them and build the thing."
           align="right"
@@ -18,6 +24,7 @@ export default function HomeStudioMind() {
         <p style={{ fontSize: "19px", color: "var(--fg-muted)", lineHeight: 1.6, clear: "both" }}>
           Sometimes the answer is a dashboard. Sometimes a customer-facing tool. Sometimes a workflow nobody&apos;s mapped yet. We figure out which, then we ship it.
         </p>
+        </div>
       </div>
     </section>
   );

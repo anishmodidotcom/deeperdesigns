@@ -66,7 +66,7 @@ export default function BuildNote() {
             maxWidth: 780,
           }}
         >
-          Built end to end by Deeper Designs. Live, paid, and running.
+          Built from photo to catalogue by Deeper Designs. Live, paid, and running.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 12 }}

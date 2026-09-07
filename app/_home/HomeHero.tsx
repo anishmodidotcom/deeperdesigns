@@ -141,7 +141,7 @@ export default function HomeHero() {
             lineHeight: 1.5,
           }}
         >
-          <Link href="/audit" style={{ color: "var(--accent)" }}>
+          <Link href="/audit" className="dd-tap-inline" style={{ color: "var(--accent)" }}>
             Or start with a free business audit
           </Link>
         </p>
@@ -173,7 +173,9 @@ export default function HomeHero() {
 
       {!reducedMotion && (
         <button
-type="button"           aria-label="Scroll to next section"
+type="button"
+          className="dd-tap-icon"
+          aria-label="Scroll to next section"
           onClick={onScrollIndicatorClick}
           style={{
             position: "absolute",

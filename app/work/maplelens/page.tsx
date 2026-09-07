@@ -81,7 +81,7 @@ export default function MapleLensPage() {
       />
       <Hero />
       <AnishNote
-        text="We built this end to end. It's earning. Furniture makers in three cities use it every week."
+        text="We built this from photo to catalogue. It's earning. Furniture makers in three cities use it every week."
         align="right"
         variant="inline"
       />

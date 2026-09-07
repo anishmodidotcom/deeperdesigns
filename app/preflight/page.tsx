@@ -83,7 +83,9 @@ const section = (band: boolean): React.CSSProperties => ({
   borderBottom: "1px solid rgba(255,255,255,0.08)",
 });
 
-const inner: React.CSSProperties = { maxWidth: 1240, margin: "0 auto" };
+// v30.2: 1184 rather than 1240, which puts the Preflight content on the
+// same grid as the rest of the site: x=128 and 1184 wide at 1440.
+const inner: React.CSSProperties = { maxWidth: 1184, margin: "0 auto" };
 
 const eyebrow: React.CSSProperties = {
   margin: "0 0 20px",
@@ -1525,6 +1527,11 @@ export default function PreflightPage() {
               fontSize: 16,
             }}
           >
+            {/* v30.2: the way back to the rest of the site, first in the
+                footer's link row. */}
+            <Link href="/" className="pf-link-underline">
+              Back to Deeper Designs
+            </Link>
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
               className="pf-link-underline"

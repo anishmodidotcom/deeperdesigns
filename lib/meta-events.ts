@@ -77,11 +77,16 @@ type CustomData = Record<string, string | number | boolean | string[]>;
 
 declare global {
   interface Window {
+    // v30.2: 'set' joins the union for fbq('set', 'autoConfig', on, id),
+    // which is how automatic parameter collection is scoped to the routes
+    // that have a price on them. Its third argument is the flag and its
+    // fourth the pixel id, so the signature widens rather than gaining an
+    // overload.
     fbq?: (
-      action: "init" | "track" | "trackCustom",
+      action: "init" | "track" | "trackCustom" | "set",
       name: string,
-      props?: CustomData,
-      options?: { eventID?: string },
+      props?: CustomData | boolean,
+      options?: { eventID?: string } | string,
     ) => void;
   }
 }

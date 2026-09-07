@@ -37,7 +37,7 @@ export default function HomeTrust() {
           whenever you ask.
         </p>
         <p style={{ margin: 0 }}>
-          <Link href="/trust" style={{ color: "var(--accent)", fontSize: "17px" }}>
+          <Link href="/trust" className="dd-tap-inline" style={{ color: "var(--accent)", fontSize: "17px" }}>
             How we build and support it →
           </Link>
         </p>

@@ -138,6 +138,7 @@ export default function VideoFrame({
             type="button"
             onClick={togglePlayback}
             aria-label={playing ? "Pause background video" : "Play background video"}
+            className="dd-tap-icon"
             style={{
               position: "absolute",
               right: 10,

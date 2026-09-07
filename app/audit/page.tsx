@@ -118,7 +118,7 @@ export default function AuditPage() {
 
       {/* Hero */}
       <section style={{ paddingBlock: "40px 72px" }}>
-        <div className="container" style={{ maxWidth: "860px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <p className="mono" style={eyebrow}>
             The free audit
           </p>
@@ -241,7 +241,7 @@ export default function AuditPage() {
 
       {/* The anti-promise */}
       <section style={{ paddingBlock: "72px", borderTop: "1px solid var(--border)" }}>
-        <div className="container" style={{ maxWidth: "900px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <p
             style={{
               fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -260,7 +260,7 @@ export default function AuditPage() {
 
       {/* The form */}
       <section style={{ paddingBlock: "56px 96px", borderTop: "1px solid var(--border)" }}>
-        <div className="container" style={{ maxWidth: "720px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           {/* The note field prefills from ?q=, which LeadForm reads on the
               client. Suspense keeps the page prerenderable. */}
           <Suspense fallback={null}>

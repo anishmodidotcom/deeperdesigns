@@ -246,7 +246,7 @@ export default async function IndustryPage({
           ) : (
             <>
               Or browse every kind of business software on the{" "}
-              <Link href="/software" style={{ color: "var(--page-accent)" }}>
+              <Link href="/software" className="dd-tap-inline" style={{ color: "var(--page-accent)" }}>
                 software index
               </Link>
               .
