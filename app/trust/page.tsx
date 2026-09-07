@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import OngoingRelationship from "@/components/OngoingRelationship";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
 import { renderSerif } from "@/components/industry/text";
@@ -143,6 +144,11 @@ export default function Trust() {
           </div>
         </section>
       ))}
+
+      {/* v30 part 7: what happens after a system is live. The same
+          section renders on /about; it answers the same question on both
+          pages. */}
+      <OngoingRelationship />
 
       <StandardCTA />
     </main>

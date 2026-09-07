@@ -328,6 +328,48 @@ export default function Nav() {
                       margin: "4px 8px 12px",
                     }}
                   >
+                    BY KIND OF BUSINESS
+                  </p>
+                  {/* v30: the seven segments come first. An owner knows
+                      what kind of business they run before they know
+                      which industry label we filed them under. */}
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 2,
+                      marginBottom: 14,
+                    }}
+                  >
+                    {SEGMENTS.map((seg) => (
+                      <Link
+                        key={seg.slug}
+                        href={`/business/${seg.slug}`}
+                        onClick={() => setIndustriesOpen(false)}
+                        className="nav-industry-item"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                          padding: "10px 12px",
+                          borderRadius: 9,
+                          fontSize: 14,
+                          color: "var(--fg-muted)",
+                        }}
+                      >
+                        {seg.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <p
+                    className="mono"
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.16em",
+                      color: "var(--fg-dim)",
+                      margin: "4px 8px 12px",
+                    }}
+                  >
                     {String(INDUSTRIES.length).padStart(2, "0")} INDUSTRIES WE BUILD FOR
                   </p>
                   <div
@@ -378,39 +420,6 @@ export default function Nav() {
                       );
                     })}
                   </div>
-                  {/* v28 Part 4: a second group in the same panel, so the
-                      seven segment pages are reachable from the nav. */}
-                  <p
-                    className="mono"
-                    style={{
-                      margin: "16px 12px 8px",
-                      fontSize: 10,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "var(--fg-dim)",
-                    }}
-                  >
-                    By kind of business
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                    {SEGMENTS.map((seg) => (
-                      <Link
-                        key={seg.slug}
-                        href={`/business/${seg.slug}`}
-                        onClick={() => setIndustriesOpen(false)}
-                        className="nav-industry-item"
-                        style={{
-                          padding: "10px 12px",
-                          borderRadius: 9,
-                          fontSize: 14,
-                          color: "var(--fg-muted)",
-                          textDecoration: "none",
-                        }}
-                      >
-                        {seg.name}
-                      </Link>
-                    ))}
-                  </div>
                 </div>
               )}
             </div>
@@ -424,6 +433,15 @@ export default function Nav() {
             >
               Call us
             </a>
+            {/* v30: the audit is the front door, so it sits beside the
+                strategy call rather than being buried in the footer. */}
+            <Link
+              href="/audit"
+              className="text-sm transition-colors duration-200"
+              style={{ color: linkColor, transition: "color 300ms" }}
+            >
+              Free audit
+            </Link>
             <Link
               href="/start-your-study"
               className="btn-whatsapp text-sm"
@@ -514,6 +532,9 @@ type="button"               aria-label="Close menu"
             </Link>
             <Link href="/trust" onClick={() => setOpen(false)}>
               Trust
+            </Link>
+            <Link href="/audit" onClick={() => setOpen(false)}>
+              Free audit
             </Link>
             <button
               type="button"
