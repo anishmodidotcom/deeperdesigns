@@ -182,6 +182,11 @@ export default async function ThankYouPage({
               color: "#A8A8A8",
             }}
           >
+            {/* v30.2: the way back to the rest of the site, first in the
+                footer's link row. */}
+            <Link href="/" className="pf-link-underline">
+              Back to Deeper Designs
+            </Link>
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
               className="pf-link-underline"
