@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import OngoingRelationship from "@/components/OngoingRelationship";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
 import { renderSerif } from "@/components/industry/text";
 
 // v28 Part 5: the trust, security and reliability page. Answers the three
-// real objections to custom software from a small studio: is it secure,
+// real objections to custom software from a founder-led team: is it secure,
 // does it hold up, and what happens if you disappear.
 //
 // Deliberately contains NO response time, resolution time or uptime
@@ -143,6 +144,11 @@ export default function Trust() {
           </div>
         </section>
       ))}
+
+      {/* v30 part 7: what happens after a system is live. The same
+          section renders on /about; it answers the same question on both
+          pages. */}
+      <OngoingRelationship />
 
       <StandardCTA />
     </main>

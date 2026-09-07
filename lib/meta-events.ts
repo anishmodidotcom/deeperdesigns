@@ -35,7 +35,14 @@ type EventName =
   | "CommunityJoin"
   // v26: the teardown and partner front-end offers, and the software
   // index. All custom. None of them may ever fire Lead.
+  // v30: the teardown and the audit are the same offer described two
+  // ways, so the teardown events are retired in favour of the audit
+  // ones. TeardownRequest is kept in the union for thirty days only so
+  // anything already in flight still type-checks; nothing fires it.
   | "TeardownRequest"
+  | "AuditFormStart"
+  | "AuditRequest"
+  | "AuditQuestionClick"
   | "PartnerEnquiry"
   | "SoftwareIndexView"
   // v29: Preflight. PreflightView is custom and fires once on page load.
@@ -381,17 +388,30 @@ export function trackCommunityJoin(args: {
   );
 }
 
-// v26: the teardown offer. Confirmed submission only, mirroring the
-// community pattern exactly. Never fires Lead or CommunityJoin.
-export function trackTeardownRequest(args: {
+// v30: the free audit, which replaces the teardown. Confirmed submission
+// only, mirroring the community pattern exactly. Never fires Lead.
+export function trackAuditRequest(args: {
   email?: string;
   phone?: string;
 }): void {
   trackEvent(
-    "TeardownRequest",
-    { source_page: "/teardown", source: "teardown" },
+    "AuditRequest",
+    { source_page: "/audit", source: "audit" },
     { em: args.email, ph: args.phone },
   );
+}
+
+// v30: fired once when the audit form's first screen submits, the step
+// between arriving and confirming. Mirrors LeadFormStart, and like it is
+// custom so it never counts as a Lead.
+export function trackAuditFormStart(): void {
+  trackEvent("AuditFormStart", { source_page: "/audit", source: "audit" });
+}
+
+// v30: which of the seven questions on the homepage band pulls. The slug
+// only, never the visitor's own words.
+export function trackAuditQuestionClick(question: string): void {
+  trackEvent("AuditQuestionClick", { source_page: "/", question });
 }
 
 // v26: the partner and consultant referral offer. Confirmed submission

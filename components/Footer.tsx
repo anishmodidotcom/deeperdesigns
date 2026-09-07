@@ -5,10 +5,11 @@ import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 const EXPLORE = [
   { href: "/software", label: "Software index" },
   { href: "/what-software-costs", label: "What software costs" },
+  // v30: segments before industries, and the audit replaces the teardown.
   { href: "/software#by-kind-of-business", label: "By kind of business" },
   { href: "/software#by-industry", label: "Browse by industry" },
   { href: "/trust", label: "Trust and support" },
-  { href: "/teardown", label: "Free teardown" },
+  { href: "/audit", label: "Free audit" },
   { href: "/community", label: "Community" },
   { href: "/partners", label: "For partners" },
 ];

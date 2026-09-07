@@ -224,3 +224,32 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* v30: the homepage question band's chips. Hairline border, ink text,
+   indigo on hover and on keyboard focus. No icons: the question is the
+   whole affordance. */
+.dd-question-chip {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid #2a2a31;
+  border-radius: 999px;
+  color: var(--fg);
+  font-size: clamp(14px, 0.6vw + 12px, 16px);
+  line-height: 1.4;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.dd-question-chip:hover {
+  border-color: var(--accent);
+}
+.dd-question-chip:focus-visible {
+  border-color: var(--accent);
+}
+
+/* v30: the method flow connector. Hidden when the four nodes stack, so a
+   horizontal rule between stacked cards never reads as a divider. */
+@media (max-width: 700px) {
+  .dd-flow-line {
+    display: none;
+  }
+}

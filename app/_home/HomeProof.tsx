@@ -38,6 +38,14 @@ const PRODUCTS = [
     href: "/work/maplelens",
     accent: "#C8956D",
   },
+  // v30 part 9: Preflight, the fifth product. It is sold rather than run
+  // for a client, which is why it links to its own page and not /work.
+  {
+    name: "Preflight",
+    line: "A launch audit suite for AI-built products. Five protocols you run yourself. Built because we needed it.",
+    href: "/preflight",
+    accent: "#7C6CFF",
+  },
 ];
 
 export default function HomeProof() {
@@ -76,7 +84,7 @@ export default function HomeProof() {
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3, margin: "0px 0px -8% 0px" }}
-              transition={{ duration: 0.55, delay: (i % 4) * 0.06, ease: EASE }}
+              transition={{ duration: 0.55, delay: (i % 5) * 0.06, ease: EASE }}
             >
               <Link href={p.href} className="hproof-card" style={{ ["--card-accent" as string]: p.accent }}>
                 <p className="hproof-live">
@@ -110,7 +118,7 @@ export default function HomeProof() {
       <style>{`
         .hproof-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(5, 1fr);
           gap: 14px;
         }
         .hproof-card {
@@ -169,6 +177,11 @@ export default function HomeProof() {
 
         @media (max-width: 1023px) {
           .hproof-grid { grid-template-columns: 1fr 1fr; }
+        }
+        /* v30: five cards need one more step down, or each is too narrow
+           to hold its line on a laptop. */
+        @media (max-width: 1180px) and (min-width: 1024px) {
+          .hproof-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 639px) {
           .hproof-grid { grid-template-columns: 1fr; }

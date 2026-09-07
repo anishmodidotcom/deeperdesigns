@@ -23,7 +23,7 @@ export default function IndustryCTA({
   name: string;
 }) {
   return (
-    <section style={{ paddingBlock: "var(--dd-section-py, 120px)" }} aria-label="Book a teardown">
+    <section style={{ paddingBlock: "var(--dd-section-py, 120px)" }} aria-label="Book a free audit">
       <div className="container" style={{ maxWidth: "var(--dd-container-max, 1280px)" }}>
         <motion.div
           initial={{ opacity: 0, y: 18 }}

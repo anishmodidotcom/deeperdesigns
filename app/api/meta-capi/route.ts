@@ -53,7 +53,13 @@ const ALLOWED_EVENTS = new Set([
   "CommunityFormStart",
   "CommunityJoin",
   // v26: teardown and partner offers, plus the software index.
+  // v30: TeardownRequest is retained for thirty days so any beacon
+  // already in flight from a cached page is accepted rather than
+  // rejected. Nothing fires it any more; remove it after that.
   "TeardownRequest",
+  "AuditFormStart",
+  "AuditRequest",
+  "AuditQuestionClick",
   "PartnerEnquiry",
   "SoftwareIndexView",
   // v29: Preflight. Purchase is a standard event and is fired server-side
@@ -83,6 +89,8 @@ const ALLOWED_CUSTOM_KEYS = new Set([
   "path",
   "source",
   "category",
+  // v30: the audit question slug from the homepage band.
+  "question",
   // v29: Purchase carries a real money value, which Meta reads off
   // custom_data rather than the event root.
   "value",
