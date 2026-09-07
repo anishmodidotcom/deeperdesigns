@@ -45,6 +45,10 @@ const PRODUCTS = [
     line: "A launch audit suite for AI-built products. Five protocols you run yourself. Built because we needed it.",
     href: "/preflight",
     accent: "#7C6CFF",
+    // v30.2: five cards badged LIVE against a four-live-products figure
+    // read as a miscount. Preflight is the one that is bought rather than
+    // run, so it carries DOWNLOAD and the count is right again.
+    badge: "DOWNLOAD",
   },
 ];
 
@@ -89,7 +93,7 @@ export default function HomeProof() {
               <Link href={p.href} className="hproof-card" style={{ ["--card-accent" as string]: p.accent }}>
                 <p className="hproof-live">
                   <span aria-hidden style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--dd-accent-signal)", boxShadow: "0 0 6px var(--dd-accent-signal)", display: "inline-block" }} />
-                  LIVE
+                  {p.badge ?? "LIVE"}
                 </p>
                 <p className="hproof-name">{p.name}</p>
                 <p className="hproof-line">{p.line}</p>
