@@ -28,3 +28,24 @@ const SLUG_SET: ReadonlySet<string> = new Set(INDUSTRY_SLUGS);
 export function isIndustrySlug(value: string): value is IndustrySlug {
   return SLUG_SET.has(value);
 }
+
+// v30.1: non-industry ?from values. The Preflight service tier sends a
+// visitor to the strategy-call form with from=preflight, which is a
+// source rather than an industry, so it is kept out of INDUSTRY_SLUGS:
+// that list types the /for/[slug] routes and must stay exactly the
+// thirteen industries.
+export const EXTRA_FROM_SOURCES = ["preflight"] as const;
+
+export type ExtraFromSource = (typeof EXTRA_FROM_SOURCES)[number];
+
+const EXTRA_SET: ReadonlySet<string> = new Set(EXTRA_FROM_SOURCES);
+
+export function isExtraFromSource(value: string): value is ExtraFromSource {
+  return EXTRA_SET.has(value);
+}
+
+// Every value the ?from param accepts: the thirteen industries plus the
+// extra sources above.
+export function isKnownFrom(value: string): boolean {
+  return SLUG_SET.has(value) || EXTRA_SET.has(value);
+}

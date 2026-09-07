@@ -8,7 +8,7 @@ import {
   readField,
 } from "@/lib/api-guards";
 import { clearVerified, emailKey, hasVerified } from "@/lib/otp-store";
-import { isIndustrySlug } from "@/lib/industry-slugs";
+import { isKnownFrom } from "@/lib/industry-slugs";
 import { normalizePhone } from "@/lib/phone";
 
 // v25.5: the legacy 11-step fields (teamSize, bottleneck, budget, slot,
@@ -109,7 +109,7 @@ export async function POST(req: Request) {
     // so an arbitrary ?from value cannot reach the notification email.
     const industryField = readField(raw.industry, FIELD_MAX.industry);
     const industry =
-      industryField.ok && isIndustrySlug(industryField.value)
+      industryField.ok && isKnownFrom(industryField.value)
         ? industryField.value
         : undefined;
 
@@ -153,10 +153,17 @@ export async function POST(req: Request) {
       industry,
       source,
     };
+    // v30.1: a strategy-call lead that arrived from the Preflight
+    // service tier is still a lead, so it keeps source "lead" and still
+    // fires Lead. Only the label changes, so the enquiry is recognisable
+    // in the inbox without a separate source.
+    const fromPreflight = source === "lead" && industry === "preflight";
     const label = source === "lead" ? null : LABELS[source];
     const subject = label
       ? `${label.label} from ${body.name}`
-      : `New possibility request from ${body.name}`;
+      : fromPreflight
+        ? `PREFLIGHT SERVICE ENQUIRY from ${body.name}`
+        : `New possibility request from ${body.name}`;
     const text = renderText(body, label);
     const html = renderHtml(body, label);
 
@@ -258,12 +265,21 @@ function renderText(s: Submission, label: SourceLabel): string {
     ].join("\n");
   }
   const lines = [
+    // v30.1: the Preflight service tier is labelled in the body as well
+    // as the subject, so it reads correctly in a plain-text client.
+    ...(s.industry === "preflight" ? ["PREFLIGHT SERVICE ENQUIRY", ""] : []),
     `Name: ${s.name}`,
     `Business: ${s.business}`,
     `Email (verified): ${s.email}`,
     `Phone: ${formatPhone(s.phone)}`,
   ];
-  if (s.industry) lines.push(`From industry page: ${s.industry}`);
+  if (s.industry) {
+    lines.push(
+      s.industry === "preflight"
+        ? "Came from: the Preflight service tier"
+        : `From industry page: ${s.industry}`,
+    );
+  }
   return lines.join("\n");
 }
 
@@ -301,12 +317,12 @@ function renderHtml(s: Submission, label: SourceLabel): string {
 
   return `<!doctype html><html><body style="background:#f7f8f8;margin:0;padding:24px;font-family:system-ui,sans-serif">
     <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e6e6ea;border-radius:12px;padding:28px">
-      <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">POSSIBILITY REQUEST</p>
+      <p style="margin:0 0 14px;font:11px/1 monospace;letter-spacing:0.18em;color:#5E6AD2;text-transform:uppercase">${s.industry === "preflight" ? "PREFLIGHT SERVICE ENQUIRY" : "POSSIBILITY REQUEST"}</p>
       <h1 style="margin:0 0 18px;font:300 24px/1.2 system-ui;letter-spacing:-0.02em;color:#111">${escapeHtml(s.name)} · ${escapeHtml(s.business)}</h1>
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
         ${row("Email", s.email)}
         ${row("Phone", phone)}
-        ${filterRow("From industry page", s.industry)}
+        ${s.industry === "preflight" ? row("Came from", "the Preflight service tier") : filterRow("From industry page", s.industry)}
       </table>
     </div>
   </body></html>`;

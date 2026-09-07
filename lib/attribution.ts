@@ -11,7 +11,7 @@
 // in sessionStorage: it is per-tab, expires with the session, and holds no
 // personal data. Every read and write is validated against the known slugs.
 
-import { isIndustrySlug } from "@/lib/industry-slugs";
+import { isIndustrySlug, isKnownFrom } from "@/lib/industry-slugs";
 
 const KEY = "dd_from_industry";
 
@@ -31,13 +31,15 @@ export function attributedIndustry(): string {
   if (typeof window === "undefined") return "";
   try {
     const param = new URLSearchParams(window.location.search).get("from");
-    if (param && isIndustrySlug(param)) return param;
+    // v30.1: also accepts the non-industry sources, so from=preflight
+    // survives to the form and the completion email.
+    if (param && isKnownFrom(param)) return param;
   } catch {
     // malformed query string, fall through to storage
   }
   try {
     const stored = window.sessionStorage.getItem(KEY);
-    if (stored && isIndustrySlug(stored)) return stored;
+    if (stored && isKnownFrom(stored)) return stored;
   } catch {
     // storage disabled
   }

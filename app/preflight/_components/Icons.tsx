@@ -314,3 +314,13 @@ export function IconCross({ size = 16, strokeWidth = 2.2 }: IconProps) {
     </Svg>
   );
 }
+
+/* ---- v30.1: the service tier ---- */
+
+export function IconWrench(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M15.8 2.8a5.5 5.5 0 00-6.4 7.1L2.9 16.4a2 2 0 102.8 2.8l6.5-6.5a5.5 5.5 0 007.1-6.4l-3.1 3.1-2.9-.6-.6-2.9z" />
+    </Svg>
+  );
+}
