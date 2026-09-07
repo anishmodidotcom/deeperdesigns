@@ -112,6 +112,11 @@ export default function Footer() {
               <a href="/privacy" className="text-sm dd-tap-inline" style={{ color: "var(--fg-dim)" }}>
                 Privacy
               </a>
+              {/* v32: /colophon was in the sitemap and had an OG card but no
+                  inbound link from the site. It sits with the legal links. */}
+              <a href="/colophon" className="text-sm dd-tap-inline" style={{ color: "var(--fg-dim)" }}>
+                Colophon
+              </a>
             </div>
           </div>
           <p className="mt-2 text-xs" style={{ color: "var(--fg-dim)" }}>
