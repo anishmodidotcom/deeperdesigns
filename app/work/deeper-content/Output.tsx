@@ -103,7 +103,7 @@ export default function Output() {
           ALL BRANDS · 60 POSTS
         </motion.p>
 
-        <div className="dc-out-grid">
+        <div className="dc-out-grid" role="img" aria-label="A grid of generated posts, all in one consistent style, showing what the engine produces once it knows a brand.">
           {GALLERY.map((code, i) => (
             <motion.div
               key={code}
