@@ -95,6 +95,13 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  // v30: the teardown and the audit are the same offer described two
+  // ways, so /teardown is retired into /audit. Permanent, so the link
+  // equity and any bookmark follow rather than 404.
+  async redirects() {
+    return [{ source: "/teardown", destination: "/audit", permanent: true }];
+  },
+
   async headers() {
     // v29: /preflight relaxes Cross-Origin-Opener-Policy by exactly one
     // step, from same-origin to same-origin-allow-popups. Razorpay's

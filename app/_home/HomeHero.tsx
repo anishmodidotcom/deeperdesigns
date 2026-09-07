@@ -131,9 +131,9 @@ export default function HomeHero() {
             Or message us on WhatsApp
           </TrackedWhatsAppLink>
         </div>
-        {/* v26 Part 4: the teardown offered as a secondary path beside the
-            strategy call. Deliberately quieter than both existing CTAs and
-            placed above the untouched guarantee and price lines. */}
+        {/* v30: the audit offered as a secondary path beside the strategy
+            call, replacing the teardown line. Deliberately quieter than
+            both existing CTAs and placed above the timeline and price. */}
         <p
           style={{
             marginTop: "20px",
@@ -141,8 +141,8 @@ export default function HomeHero() {
             lineHeight: 1.5,
           }}
         >
-          <Link href="/teardown" style={{ color: "var(--accent)" }}>
-            Or get a free teardown of your business
+          <Link href="/audit" style={{ color: "var(--accent)" }}>
+            Or start with a free business audit
           </Link>
         </p>
         <p

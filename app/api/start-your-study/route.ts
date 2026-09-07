@@ -14,7 +14,7 @@ import { normalizePhone } from "@/lib/phone";
 // v25.5: the legacy 11-step fields (teamSize, bottleneck, budget, slot,
 // objective, country) are gone. The single-screen form sends four fields
 // plus the industry attribution and the variant.
-type SubmissionSource = "lead" | "community" | "teardown" | "partner";
+type SubmissionSource = "lead" | "community" | "audit" | "partner";
 
 // v26: the label block each non-lead offer gets in Anish's inbox. The
 // note lines are internal routing hints for him, not site copy.
@@ -24,9 +24,9 @@ const LABELS: Record<Exclude<SubmissionSource, "lead">, { label: string; note: s
     note: "Founders community, free to join. Add to the peer group by hand.",
     accent: "#1F9D57",
   },
-  teardown: {
-    label: "TEARDOWN REQUEST",
-    note: "Free teardown requested. Study the business and send the document back.",
+  audit: {
+    label: "AUDIT REQUEST",
+    note: "Free business audit requested. Set up the conversation within a working day.",
     accent: "#F5B544",
   },
   partner: {
@@ -39,6 +39,9 @@ const LABELS: Record<Exclude<SubmissionSource, "lead">, { label: string; note: s
 type Submission = {
   name: string;
   business: string;
+  // v30: the audit variant's free-text answer to "What do you want to
+  // improve?". Absent on every other source.
+  note?: string;
   phone: string;
   email: string;
   industry?: string;
@@ -96,6 +99,12 @@ export async function POST(req: Request) {
       );
     }
 
+    // v30: the audit variant's free-text note. Optional, capped, and
+    // never trusted: it is rendered into the notification email escaped
+    // like every other field.
+    const noteField = readField(raw.note, 500);
+    const note = noteField.ok && noteField.value ? noteField.value : undefined;
+
     // v25.5: the industry attribution is validated against the known slugs
     // so an arbitrary ?from value cannot reach the notification email.
     const industryField = readField(raw.industry, FIELD_MAX.industry);
@@ -131,13 +140,14 @@ export async function POST(req: Request) {
     const rawSource = raw.source;
     const source: SubmissionSource =
       rawSource === "community" ||
-      rawSource === "teardown" ||
+      rawSource === "audit" ||
       rawSource === "partner"
         ? rawSource
         : "lead";
     const body: Submission = {
       name: name.value,
       business: business.value,
+      note,
       phone: normalizePhone(phone.value),
       email: email.value,
       industry,
@@ -242,6 +252,9 @@ function renderText(s: Submission, label: SourceLabel): string {
       `Business: ${s.business}`,
       `Email (verified): ${s.email}`,
       `Phone: ${formatPhone(s.phone)}`,
+      // v30: the audit's answer to "What do you want to improve?", when
+      // the source carries one.
+      ...(s.note ? [``, `What they want to improve:`, s.note] : []),
     ].join("\n");
   }
   const lines = [
@@ -278,6 +291,7 @@ function renderHtml(s: Submission, label: SourceLabel): string {
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #eee">
         ${row("Name", s.name)}
         ${row("Business", s.business)}
+        ${s.note ? row("Wants to improve", s.note) : ""}
         ${row("Email", s.email)}
         ${row("Phone", phone)}
       </table>

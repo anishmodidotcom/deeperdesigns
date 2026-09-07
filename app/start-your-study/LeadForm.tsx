@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 import { WHATSAPP_HREF } from "@/lib/contact";
 import { attributedIndustry } from "@/lib/attribution";
@@ -10,7 +10,8 @@ import {
   trackFormLead,
   trackCommunityFormStart,
   trackCommunityJoin,
-  trackTeardownRequest,
+  trackAuditFormStart,
+  trackAuditRequest,
   trackPartnerEnquiry,
 } from "@/lib/meta-events";
 
@@ -35,7 +36,9 @@ import {
 // v26: two more front-end offers ride the same machinery. Each tags its
 // own source, fires its own confirmed-submission event, and never fires
 // Lead. Lead stays a single call site on the strategy-call variant.
-export type LeadFormVariant = "lead" | "community" | "teardown" | "partner";
+// v30: the teardown variant is renamed "audit". Same machinery, new
+// name, new events; the offer did not change, only what it is called.
+export type LeadFormVariant = "lead" | "community" | "audit" | "partner";
 
 // Per-variant done screen. The lead variant is the only one that owns its
 // page heading, so it is the only one whose screens render an h1.
@@ -53,9 +56,9 @@ const DONE: Record<
     body: "Anish will look at your request and reach out on WhatsApp or email. Talk soon.",
     whatsapp: false,
   },
-  teardown: {
+  audit: {
     heading: "We are on it.",
-    body: "We will study your business and send the teardown to your email. If you want to talk it through when it lands, message us on WhatsApp.",
+    body: "We will read this and come back to you within a working day to set up the conversation. If you want to talk sooner, message us on WhatsApp.",
     whatsapp: true,
   },
   partner: {
@@ -74,9 +77,36 @@ type Fields = {
   business: string;
   phone: string;
   email: string;
+  // v30: the audit variant only. Free text, optional, prefilled from the
+  // ?q= question the visitor clicked on the homepage band.
+  note: string;
 };
 
 type FieldErrors = Partial<Record<keyof Fields, string>>;
+
+// v30: the seven questions from the homepage band. The chip links to
+// /audit?q=<slug> and the matching question prefills the note field,
+// which the visitor can then edit or clear. An unknown slug prefills
+// nothing rather than guessing.
+export const AUDIT_QUESTIONS: Record<string, string> = {
+  revenue: "How do I increase revenue?",
+  profit: "How do I improve profitability?",
+  cashflow: "How do I fix cash flow?",
+  time: "How do I get my time back?",
+  customers: "How do I reach and keep more customers?",
+  visibility: "What is actually happening in my business?",
+  new: "What could we do that we could not before?",
+};
+
+function questionFromQuery(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    const q = new URLSearchParams(window.location.search).get("q");
+    return (q && AUDIT_QUESTIONS[q]) || "";
+  } catch {
+    return "";
+  }
+}
 
 // v25.5: attribution now falls back to the industry recorded when the
 // visitor was on a /for page, so a lead that reaches the form through the
@@ -139,10 +169,22 @@ export default function LeadForm({
   // three sit under a heading the page already renders.
   const ownsPageHeading = variant === "lead";
   const done = DONE[variant];
+
+  // v30: prefill the note from ?q= once, on mount. Read in an effect
+  // rather than during render because /audit is prerendered and the
+  // query string is not known at build time.
+  const prefilled = useRef(false);
+  useEffect(() => {
+    if (variant !== "audit" || prefilled.current) return;
+    prefilled.current = true;
+    const q = questionFromQuery();
+    if (q) setFields((f) => ({ ...f, note: q }));
+  }, [variant]);
   const [screen, setScreen] = useState<Screen>("form");
   const [fields, setFields] = useState<Fields>({
     name: "",
     business: "",
+    note: "",
     phone: "",
     email: "",
   });
@@ -212,6 +254,7 @@ export default function LeadForm({
           // the teardown and partner variants fire no start event at all
           // rather than borrowing one that would inflate that funnel.
           if (isCommunity) trackCommunityFormStart();
+          else if (variant === "audit") trackAuditFormStart();
           else if (variant === "lead") trackLeadFormStart(fromIndustry());
         } catch {
           // analytics must never block the form
@@ -293,6 +336,7 @@ export default function LeadForm({
         phone: fields.phone.trim(),
         email: fields.email.trim(),
         industry: industry || undefined,
+        note: fields.note.trim() || undefined,
         source: variant,
       });
       if (!sResult.ok) {
@@ -316,8 +360,8 @@ export default function LeadForm({
         };
         if (variant === "community") {
           trackCommunityJoin(contact);
-        } else if (variant === "teardown") {
-          trackTeardownRequest(contact);
+        } else if (variant === "audit") {
+          trackAuditRequest(contact);
         } else if (variant === "partner") {
           trackPartnerEnquiry(contact);
         } else {
@@ -423,6 +467,14 @@ export default function LeadForm({
               onChange={(v) => set("email", v)}
               error={errors.email}
             />
+            {variant === "audit" ? (
+              <LabeledTextarea
+                id="lead-note"
+                label="What do you want to improve?"
+                value={fields.note}
+                onChange={(v) => set("note", v)}
+              />
+            ) : null}
           </div>
 
           {/* v22.1: reserved slot so the button never moves. */}
@@ -685,6 +737,53 @@ function FailWhatsAppLink() {
       >
         Message us on WhatsApp
       </TrackedWhatsAppLink>
+    </div>
+  );
+}
+
+// v30: the audit variant's one free-text field. Same label, field class
+// and error slot as LabeledInput, so focus and spacing match the rest of
+// the form. Optional, so it takes no error prop.
+function LabeledTextarea({
+  id,
+  label,
+  value,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        style={{
+          display: "block",
+          fontSize: 14,
+          color: "var(--fg-muted)",
+          marginBottom: 8,
+        }}
+      >
+        {label}
+      </label>
+      <textarea
+        id={id}
+        className="lead-field"
+        rows={3}
+        maxLength={500}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={{
+          ...inputStyle,
+          borderColor: "var(--border-strong)",
+          resize: "vertical",
+          minHeight: 92,
+          fontFamily: "inherit",
+        }}
+      />
+      <p style={errorStyle} />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import { SEGMENTS } from "@/lib/segments";
 // search engines nothing. Each route now carries the date its content last
 // meaningfully changed, updated by hand when the content changes. Routes
 // added in a release share that release's date.
+const V30 = "2026-09-07";
 const V29_4 = "2026-09-06";
 const V29 = "2026-09-05";
 const V28 = "2026-08-31";
@@ -38,8 +39,10 @@ const CORE: Entry[] = [
   { path: "/software", lastModified: V26, changeFrequency: "monthly", priority: 0.9 },
   { path: "/what-software-costs", lastModified: V26, changeFrequency: "monthly", priority: 0.9 },
   { path: "/start-your-study", lastModified: V23, changeFrequency: "monthly", priority: 0.9 },
-  { path: "/teardown", lastModified: V26, changeFrequency: "monthly", priority: 0.9 },
   { path: "/trust", lastModified: V28, changeFrequency: "monthly", priority: 0.8 },
+  // v30: the audit replaces the teardown. /teardown permanently
+  // redirects here and is deliberately absent from the sitemap.
+  { path: "/audit", lastModified: V30, changeFrequency: "monthly", priority: 0.9 },
   { path: "/community", lastModified: V23, changeFrequency: "monthly", priority: 0.8 },
   { path: "/partners", lastModified: V26, changeFrequency: "monthly", priority: 0.6 },
   { path: "/about", lastModified: V16, changeFrequency: "monthly", priority: 0.8 },
