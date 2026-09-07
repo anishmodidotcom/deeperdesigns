@@ -14,7 +14,6 @@ import { SEGMENTS } from "@/lib/segments";
 export default function Nav() {
   const pathname = usePathname() ?? "";
   const ctx = useShowcaseContext();
-  const [scrolled, setScrolled] = useState(false);
   const [onLight, setOnLight] = useState(false);
   const [open, setOpen] = useState(false);
   // "Browse by industry" dropdown (desktop) + mobile section toggle.
@@ -47,13 +46,6 @@ export default function Nav() {
       // Never block navigation.
     }
   };
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -162,19 +154,20 @@ export default function Nav() {
     return () => io.disconnect();
   }, []);
 
-  // Light state colour values are inline since they're a function of
-  // two booleans (scrolled, onLight) interacting; a Tailwind class
-  // matrix would be noisier than the inline ternary.
-  const navBg = scrolled
-    ? onLight
-      ? "rgba(244,242,238,0.88)"
-      : "rgba(10,10,10,0.85)"
-    : "transparent";
-  const navBorder = scrolled
-    ? onLight
-      ? "1px solid rgba(26,26,26,0.12)"
-      : "1px solid var(--border)"
-    : "1px solid transparent";
+  // v30.2: the bar used to be transparent with no blur until 80px of
+  // scroll, so at the top of every page the hero ran straight through the
+  // nav links. On /audit the hero heading and the nav text overlapped
+  // outright. The bar now carries the base colour at 88 percent, a 16px
+  // backdrop blur and a hairline at every scroll position; only the
+  // light-section variant is still conditional, and that is a colour
+  // choice rather than a visibility one.
+  //
+  // Light state colour values are inline since they are a function of
+  // onLight; a Tailwind class matrix would be noisier than the ternary.
+  const navBg = onLight ? "rgba(244,242,238,0.88)" : "rgba(10,10,10,0.88)";
+  const navBorder = onLight
+    ? "1px solid rgba(26,26,26,0.12)"
+    : "1px solid var(--border)";
   const wordmarkColor = onLight ? "#0A0A0A" : undefined;
   const linkColor = onLight ? "#2A2A2A" : "var(--fg-muted)";
 
@@ -186,10 +179,10 @@ export default function Nav() {
         style={{
           padding: "20px var(--container-px)",
           background: navBg,
-          backdropFilter: scrolled ? "blur(12px)" : "none",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: navBorder,
-          transition:
-            "background 300ms, border-color 300ms, backdrop-filter 300ms, color 300ms",
+          transition: "background 300ms, border-color 300ms, color 300ms",
         }}
       >
         <div
