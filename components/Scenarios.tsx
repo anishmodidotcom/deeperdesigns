@@ -44,7 +44,29 @@ const SCENARIOS = [
   },
 ];
 
-export default function Scenarios() {
+// v31: /about showed the same six cards as the homepage, verbatim. It now
+// takes three of them under its own heading; the other three stay on the
+// homepage only. Card copy is unchanged in both places.
+const ABOUT_KEYS = [
+  "Five thousand dormant customers",
+  "Catalogue photography without the shoot",
+  "Bookings without the phone tag",
+];
+
+export default function Scenarios({
+  variant = "full",
+}: {
+  variant?: "full" | "about";
+}) {
+  const isAbout = variant === "about";
+  const cards = isAbout
+    ? ABOUT_KEYS.map((k) => {
+        const found = SCENARIOS.find((s) => s.lead === k);
+        if (!found) throw new Error(`Scenarios: no card named ${k}`);
+        return found;
+      })
+    : SCENARIOS;
+
   return (
     <section
       style={{ padding: "var(--section-py) 0" }}
@@ -73,7 +95,11 @@ export default function Scenarios() {
             margin: "0 0 clamp(36px, 4vw, 56px)",
           }}
         >
-          {renderSerif("What this looks like {serif}in a real business.{/serif}")}
+          {isAbout
+            ? "Three that started as conversations"
+            : renderSerif(
+                "What this looks like {serif}in a real business.{/serif}",
+              )}
         </h2>
 
         <div
@@ -83,7 +109,7 @@ export default function Scenarios() {
             gap: "20px",
           }}
         >
-          {SCENARIOS.map((s) => (
+          {cards.map((s) => (
             <div
               key={s.lead}
               style={{
@@ -127,6 +153,7 @@ export default function Scenarios() {
           ))}
         </div>
 
+        {isAbout ? null : (
         <p
           style={{
             margin: "clamp(28px,3vw,40px) 0 0",
@@ -140,6 +167,7 @@ export default function Scenarios() {
           Businesses we understand: manufacturers, traders, distributors,
           importers, exporters, and owner-led B2B companies across India.
         </p>
+        )}
       </div>
     </section>
   );
