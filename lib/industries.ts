@@ -1280,7 +1280,7 @@ export const INDUSTRIES: Industry[] = [
           "Swiggy and Zomato payouts <b>matched to orders</b>",
           "Shortfalls and wrong charges <b>flagged</b>",
           "Direct, dine-in and aggregator revenue <b>in one view</b>",
-          "The nightly reconciliation, <b>done for you</b>",
+          "The nightly reconciliation, <b>handled for you</b>",
         ],
       },
       {
@@ -3319,7 +3319,7 @@ export const INDUSTRIES: Industry[] = [
       {
         label: "GUESTS WHO RETURN",
         title: "Brought back directly",
-        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays you do not pay a platform for.",
+        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays that cost you no platform commission.",
         stat: "the guest, back direct",
       },
     ],
@@ -3388,7 +3388,7 @@ export const INDUSTRIES: Industry[] = [
         shotH: 900,
         demoUrl: "app.banyanhouse.in/guests",
         headline: "The guest who loved it, {serif}back without the platform.{/serif}",
-        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays and referrals you do not pay a commission on.",
+        body: "Past guests get a warm, well-timed reason to return, straight from you. Repeat stays and referrals that cost you no commission.",
         bullets: [
           "Past guests <b>recalled at the right time</b>",
           "<b>Personalised offers</b> and seasonal nudges",

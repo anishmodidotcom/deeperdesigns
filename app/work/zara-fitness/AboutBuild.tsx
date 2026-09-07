@@ -113,7 +113,7 @@ export default function AboutBuild() {
               Zara content, a chat with Zara through an AI agent trained
               on her tone and method, checkout for sportswear, push
               notifications, and HealthKit and Apple Watch sync. Built
-              end to end, no outside agency.
+              entirely, no outside agency.
             </p>
 
             <dl
