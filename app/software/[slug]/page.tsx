@@ -153,7 +153,7 @@ export default async function SoftwarePage({
       <StructuredData data={ld} />
 
       <section style={{ padding: "60px 0 var(--section-py)" }}>
-        <div className="container" style={{ maxWidth: "820px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <Link
             href="/software"
             className="mono"
@@ -183,7 +183,7 @@ export default async function SoftwarePage({
       </section>
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
-        <div className="container" style={{ maxWidth: "820px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <SectionLabel>What it does</SectionLabel>
           <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
             {item.does}
@@ -192,7 +192,7 @@ export default async function SoftwarePage({
       </section>
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
-        <div className="container" style={{ maxWidth: "820px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           {/* v28 Part 1: a category with real named products gets the
               product-list label. A category where no standalone product
               exists gets its own label, so a commentary sentence is never
@@ -270,7 +270,7 @@ export default async function SoftwarePage({
       </section>
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
-        <div className="container" style={{ maxWidth: "820px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <SectionLabel>What we build instead</SectionLabel>
           <p style={{ fontSize: "19px", lineHeight: 1.6, color: "var(--fg)", margin: 0 }}>
             {item.build}
@@ -298,7 +298,7 @@ export default async function SoftwarePage({
 
       {related.length > 0 || segments.length > 0 || industries.length > 0 ? (
         <section style={{ paddingBottom: "var(--section-py)" }}>
-          <div className="container" style={{ maxWidth: "820px" }}>
+          <div className="container" style={{ maxWidth: "880px" }}>
             <SectionLabel>Related</SectionLabel>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
               {related.map((r) => (

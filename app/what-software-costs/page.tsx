@@ -114,7 +114,7 @@ export default function WhatSoftwareCosts() {
       </section>
 
       <section style={{ paddingBottom: "var(--section-py)" }}>
-        <div className="container" style={{ maxWidth: "760px" }}>
+        <div className="container" style={{ maxWidth: "880px" }}>
           <h2
             className="mono"
             style={{

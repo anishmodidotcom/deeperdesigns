@@ -9,8 +9,14 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function HomeConfusion() {
   return (
     <section id="confusion" style={{ padding: "var(--section-py) 0", scrollMarginTop: "80px" }}>
-      <div className="container" style={{ maxWidth: "820px" }}>
+      <div className="container">
+        {/* v30.2: the column used to be centred by narrowing the
+            container itself, which pushed the heading in from the
+            house measure. The container stays full width and the
+            column is set on the block inside it, so the left edge
+            sits at 128 at 1440 like every other section. */}
         <motion.div
+          style={{ maxWidth: "880px" }}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4, margin: "0px 0px -10% 0px" }}

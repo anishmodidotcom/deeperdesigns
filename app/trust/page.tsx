@@ -117,7 +117,7 @@ export default function Trust() {
 
       {SECTIONS.map((s) => (
         <section key={s.label} style={{ paddingBottom: "var(--section-py)" }}>
-          <div className="container" style={{ maxWidth: "820px" }}>
+          <div className="container" style={{ maxWidth: "880px" }}>
             <h2
               className="mono"
               style={{
