@@ -10,16 +10,20 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     background_color: "#0B0B0E",
     theme_color: "#0B0B0E",
+    // v30.2: the monogram, near-black on off-white. Raster copies live in
+    // public/ rather than being the app/ file-convention icons, because a
+    // manifest is fetched as a plain URL and the file-convention routes
+    // carry a build hash.
     icons: [
       {
-        src: "/icon.svg",
-        type: "image/svg+xml",
-        sizes: "any",
+        src: "/icon-192.png",
+        type: "image/png",
+        sizes: "192x192",
       },
       {
-        src: "/apple-touch-icon.png",
+        src: "/icon-512.png",
         type: "image/png",
-        sizes: "180x180",
+        sizes: "512x512",
       },
     ],
   };

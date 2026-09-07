@@ -65,13 +65,23 @@ export const metadata: Metadata = {
     description: "Custom digital tools and operational systems for ambitious Indian businesses. From ₹25,000.",
     images: ["/brand/og-deeperdesigns.png"],
   },
+  // v30.2: the DD monogram from brand/v1 replaces the set that had been
+  // left on the Next.js default (app/favicon.ico was still the Vercel
+  // triangle). The tab icon is served as two media-scoped SVGs so a dark
+  // tab strip gets the off-white mark and a light one the near-black
+  // mark. app/favicon.ico (32 and 16), app/icon.png (512) and
+  // app/apple-icon.png (180) are picked up by file convention.
+  // Every icon is listed rather than left to the file convention: a
+  // metadata.icons block replaces the convention's own links, so an
+  // unlisted app/icon.png or app/apple-icon.png would ship as a route
+  // nothing points at.
   icons: {
     icon: [
-      { url: "/icon.svg", media: "(prefers-color-scheme: dark)" },
+      { url: "/icon-dark.svg", media: "(prefers-color-scheme: dark)" },
       { url: "/icon-light.svg", media: "(prefers-color-scheme: light)" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon.ico",
+    apple: { url: "/apple-icon.png", sizes: "180x180" },
   },
   // Meta domain verification (v17). Required for Business Manager to
   // attribute deeperdesigns.in to the DD ad account.
