@@ -26,6 +26,35 @@ export const INDUSTRIES = [
 
 export type Industry = (typeof INDUSTRIES)[number];
 
+// v31: the kind-of-business axis, the same seven segments as
+// /business/[slug]. A showcase carries a segment only where its own
+// archetype says so, which is why four of the twenty-four carry one:
+// Bharat Steel is "a B2B steel trading company", Maple Lens "an Indian
+// furniture maker", Malabar Spice "a heritage spice exporter" and
+// AutoBazaar "a used-car dealership". Nothing here is inferred from a
+// build's features; a study with no stated kind of business gets none.
+export const SEGMENT_KINDS = [
+  "manufacturers",
+  "traders",
+  "distributors",
+  "retailers",
+  "importers",
+  "exporters",
+  "packaging",
+] as const;
+
+export type SegmentKind = (typeof SEGMENT_KINDS)[number];
+
+export const SEGMENT_LABELS: Record<SegmentKind, string> = {
+  manufacturers: "Manufacturers",
+  traders: "Traders and wholesalers",
+  distributors: "Distributors",
+  retailers: "Retailers and kirana",
+  importers: "Importers",
+  exporters: "Exporters",
+  packaging: "Packaging and printing",
+};
+
 export type Showcase = {
   number: string;
   name: string;
@@ -37,6 +66,9 @@ export type Showcase = {
   image: string;
   industries: Industry[];
   objectives: Objective[];
+  // v31: present only where the study's archetype names a kind of
+  // business. Absent on the consumer and services studies.
+  segments?: SegmentKind[];
   live?: boolean;
   liveUrl?: string;
   timeline?: string;
@@ -48,6 +80,38 @@ export type Showcase = {
 };
 
 export const SHOWCASES: Showcase[] = [
+  // v31: the grid opens with the four studies whose own archetype names a
+  // B2B kind of business, in the order the brief sets: the steel trader,
+  // the furniture maker, the used-car dealership and the spice exporter.
+  // Everything else follows in its previous order. The /for demos for
+  // manufacturing, logistics, ca-firms and jewellery are demo routes, not
+  // studies in this list, so there was nothing to place between the two
+  // groups.
+  {
+    number: "02",
+    name: "Bharat Steel Corp",
+    archetype: "a B2B steel trading company",
+    toolKind: "Inventory Dashboard",
+    industryLabel: "B2B Industrial",
+    bg: "#1A1F2E",
+    slug: "bharat-steel",
+    image: "/images/bharat-steel/hero-coil.webp",
+    industries: ["Manufacturing / Industrial"],
+    segments: ["traders"],
+    objectives: ["Operations", "Founder Overload"],
+    cardLabel: "An inventory brain for a steel trader",
+    cardDescription: "Knows what you have, what's moving, and what's about to run out.",
+    outcome: "Cuts inventory checks to zero",
+    timeline: "7 days",
+    pains: [
+      "Quotes go out on WhatsApp. Half are forgotten.",
+      "Stock is a guess until someone walks the yard.",
+      "The price list lives in three different Excels.",
+      "A delivery slip is a photo on a phone.",
+    ],
+    pattern:
+      "Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp.",
+  },
   {
     number: "00",
     name: "Maple Lens",
@@ -58,12 +122,63 @@ export const SHOWCASES: Showcase[] = [
     slug: "maplelens",
     image: "/images/maplelens/hero-catalog.webp",
     industries: ["Retail / D2C", "Creative / Studios"],
+    segments: ["manufacturers"],
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A photo studio for furniture makers",
     cardDescription: "Turns workshop photos into catalog-ready studio shots.",
     outcome: "Built to replace the studio shoot entirely.",
     live: true,
     liveUrl: "https://maplelens.vercel.app/app",
+  },
+  {
+    number: "07",
+    name: "AutoBazaar",
+    archetype: "a used-car dealership",
+    toolKind: "Dynamic Pricing",
+    industryLabel: "Used-Car Lot",
+    bg: "#1F1209",
+    slug: "autobazaar",
+    image: "/images/autobazaar/hero-sedan.webp",
+    industries: ["Retail / D2C"],
+    segments: ["retailers"],
+    objectives: ["Operations", "Growth"],
+    cardLabel: "A pricing engine for a used-car lot",
+    cardDescription: "Prices each car daily on market data, days on lot, and competitors.",
+    outcome: "Prices every car overnight",
+    timeline: "8 days",
+    pains: [
+      "Sixty cars on the lot. Sixty pricing decisions made by feel.",
+      "The competitor across the road just dropped prices. We do not know.",
+      "Days on lot is a number nobody tracks.",
+      "Test drives get booked over phone calls and forgotten texts.",
+    ],
+    pattern:
+      "Used-car lots. Dealerships. Any inventory business pricing by feel.",
+  },
+  {
+    number: "11",
+    name: "Malabar Spice House",
+    archetype: "a heritage spice exporter",
+    toolKind: "Brand Site",
+    industryLabel: "Heritage Exporter",
+    bg: "#2A1A08",
+    slug: "malabar-spice",
+    image: "/images/malabar-spice/hero-pepper.webp",
+    industries: ["F&B / Restaurants", "Retail / D2C"],
+    segments: ["exporters"],
+    objectives: ["Growth", "Customer Experience"],
+    cardLabel: "A brand site for a heritage spice exporter",
+    cardDescription: "Sixty-four years of work, finally on a site that looks like Kerala.",
+    outcome: "Sixty-four years, finally online",
+    timeline: "8 days",
+    pains: [
+      "Sixty-four years of work. A website that does not show it.",
+      "Buyers Google us and leave.",
+      "The archive lives in a wooden cabinet in Kochi.",
+      "New buyers ask for a brochure we do not have.",
+    ],
+    pattern:
+      "Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work.",
   },
   {
     number: "22",
@@ -139,30 +254,6 @@ export const SHOWCASES: Showcase[] = [
     ],
     pattern:
       "Skincare brands. Wellness brands. Any D2C with high-volume customer questions.",
-  },
-  {
-    number: "02",
-    name: "Bharat Steel Corp",
-    archetype: "a B2B steel trading company",
-    toolKind: "Inventory Dashboard",
-    industryLabel: "B2B Industrial",
-    bg: "#1A1F2E",
-    slug: "bharat-steel",
-    image: "/images/bharat-steel/hero-coil.webp",
-    industries: ["Manufacturing / Industrial"],
-    objectives: ["Operations", "Founder Overload"],
-    cardLabel: "An inventory brain for a steel trader",
-    cardDescription: "Knows what you have, what's moving, and what's about to run out.",
-    outcome: "Cuts inventory checks to zero",
-    timeline: "7 days",
-    pains: [
-      "Quotes go out on WhatsApp. Half are forgotten.",
-      "Stock is a guess until someone walks the yard.",
-      "The price list lives in three different Excels.",
-      "A delivery slip is a photo on a phone.",
-    ],
-    pattern:
-      "Industrial wholesalers. Building material suppliers. Any B2B running quotes on WhatsApp.",
   },
   {
     number: "03",
@@ -261,30 +352,6 @@ export const SHOWCASES: Showcase[] = [
       "Dental clinics. Med spas. Hair clinics. Any private practice losing leads to slow follow-up.",
   },
   {
-    number: "07",
-    name: "AutoBazaar",
-    archetype: "a used-car dealership",
-    toolKind: "Dynamic Pricing",
-    industryLabel: "Used-Car Lot",
-    bg: "#1F1209",
-    slug: "autobazaar",
-    image: "/images/autobazaar/hero-sedan.webp",
-    industries: ["Retail / D2C"],
-    objectives: ["Operations", "Growth"],
-    cardLabel: "A pricing engine for a used-car lot",
-    cardDescription: "Prices each car daily on market data, days on lot, and competitors.",
-    outcome: "Prices every car overnight",
-    timeline: "8 days",
-    pains: [
-      "Sixty cars on the lot. Sixty pricing decisions made by feel.",
-      "The competitor across the road just dropped prices. We do not know.",
-      "Days on lot is a number nobody tracks.",
-      "Test drives get booked over phone calls and forgotten texts.",
-    ],
-    pattern:
-      "Used-car lots. Dealerships. Any inventory business pricing by feel.",
-  },
-  {
     number: "08",
     name: "StumpVision",
     archetype: "a cricket coaching academy",
@@ -355,30 +422,6 @@ export const SHOWCASES: Showcase[] = [
     ],
     pattern:
       "Coworking spaces. Studios with memberships. Any space-based business losing track of who is in and who is leaving.",
-  },
-  {
-    number: "11",
-    name: "Malabar Spice House",
-    archetype: "a heritage spice exporter",
-    toolKind: "Brand Site",
-    industryLabel: "Heritage Exporter",
-    bg: "#2A1A08",
-    slug: "malabar-spice",
-    image: "/images/malabar-spice/hero-pepper.webp",
-    industries: ["F&B / Restaurants", "Retail / D2C"],
-    objectives: ["Growth", "Customer Experience"],
-    cardLabel: "A brand site for a heritage spice exporter",
-    cardDescription: "Sixty-four years of work, finally on a site that looks like Kerala.",
-    outcome: "Sixty-four years, finally online",
-    timeline: "8 days",
-    pains: [
-      "Sixty-four years of work. A website that does not show it.",
-      "Buyers Google us and leave.",
-      "The archive lives in a wooden cabinet in Kochi.",
-      "New buyers ask for a brochure we do not have.",
-    ],
-    pattern:
-      "Heritage exporters. Family-run trading houses. Any decades-old business whose website does not match the work.",
   },
   {
     number: "12",

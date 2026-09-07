@@ -215,8 +215,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Real scenarios, the same six as the homepage */}
-      <Scenarios />
+      {/* v31: three of the six, under this page's own heading. */}
+      <Scenarios variant="about" />
 
       {/* The ongoing relationship, also on /trust */}
       <OngoingRelationship />

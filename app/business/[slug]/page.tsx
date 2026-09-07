@@ -6,6 +6,7 @@ import { getSoftware } from "@/lib/software";
 import { StructuredData } from "@/components/StructuredData";
 import StandardCTA from "@/components/StandardCTA";
 import MidPageCTA from "@/components/MidPageCTA";
+import SegmentPack from "@/components/SegmentPack";
 import { renderSerif } from "@/components/industry/text";
 
 // v26 Part 7: the B2B segments layer. All seven pages come from
@@ -166,6 +167,9 @@ export default async function BusinessSegmentPage({
           </div>
         </div>
       </section>
+
+      {/* v31: the pack, immediately after the pains. */}
+      <SegmentPack slug={segment.slug} name={segment.name} />
 
       <MidPageCTA />
 
