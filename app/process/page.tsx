@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AnishNote from "@/components/AnishNote";
+import { renderSerif } from "@/components/industry/text";
 
 export const metadata: Metadata = {
   title: "Process · Deeper Designs",
@@ -21,12 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
+// v30 part 5: five steps become six stages, with a timeline label on
+// each. Copy is final and verbatim.
 const STEPS = [
-  { n: "01", title: "We talk",                 body: "A real conversation. No brief. No deck. You describe what's stuck, we ask the right questions." },
-  { n: "02", title: "We send back a shape",    body: "Within a day, a rough idea of what to build. Three minutes to read. Yes or no, no theatre." },
-  { n: "03", title: "We sharpen it",           body: "A short loop. We adjust, lock scope, agree on number and timeline." },
-  { n: "04", title: "We build",                body: "Working pieces every week. No big reveal. No surprises." },
-  { n: "05", title: "Live, and yours",         body: "Deployed, documented, owned by you. We stay close for 30 days, then hand off." },
+  { n: "01", title: "UNDERSTAND", lead: "Your business, your goals", when: "DAY 0", body: "A free conversation about what you want to improve and how the business runs." },
+  { n: "02", title: "DIAGNOSE", lead: "Where the opportunity is", when: "WEEK 1", body: "A walkthrough of your processes, your team and your data. Findings in writing." },
+  { n: "03", title: "DESIGN", lead: "What should change", when: "WEEK 2", body: "The strategy, the systems that carry it, the number we will measure, the scope you choose." },
+  { n: "04", title: "BUILD", lead: "A prototype first", when: "WEEKS 2 TO 3", body: "A working version in as little as seven days. You use it before we go further." },
+  { n: "05", title: "DEPLOY", lead: "Into the business", when: "MONTHS 1 TO 3", body: "Integrations, training, hardware where needed. Around three months for a larger system." },
+  { n: "06", title: "IMPROVE", lead: "Keep moving the number", when: "ONGOING", body: "Measurement, refinement, new experiments. Your business changes. The system changes with it." },
 ];
 
 export default function Process() {
@@ -36,10 +40,10 @@ export default function Process() {
         <div className="container" style={{ maxWidth: "880px" }}>
           <p className="eyebrow" style={{ marginBottom: "24px" }}>PROCESS</p>
           <h1 style={{ fontSize: "var(--fs-display)", fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "32px" }}>
-            From conversation to live, in two to four weeks.
+            {renderSerif("Understand, diagnose, design, {serif}build, deploy, improve.{/serif}")}
           </h1>
           <p style={{ fontSize: "21px", color: "var(--fg-muted)", lineHeight: 1.6 }}>
-            Five steps. The first one is free. No brief to write, no form to fill, no discovery deck.
+            From your goals to a live system, and then onward.
           </p>
         </div>
       </section>
@@ -53,10 +57,16 @@ export default function Process() {
           />
           <div style={{ clear: "both", display: "flex", flexDirection: "column", gap: "0" }}>
             {STEPS.map((s, i) => (
-              <div key={s.n} style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: "32px", padding: "48px 0", borderBottom: i === STEPS.length - 1 ? "none" : "1px solid var(--border)" }}>
-                <p className="mono" style={{ color: "var(--accent)", fontSize: "14px", paddingTop: "6px" }}>{s.n}</p>
+              <div key={s.n} style={{ display: "grid", gridTemplateColumns: "clamp(90px,12vw,130px) 1fr", gap: "32px", padding: "48px 0", borderBottom: i === STEPS.length - 1 ? "none" : "1px solid var(--border)" }}>
+                <div style={{ paddingTop: "6px" }}>
+                  <p className="mono" style={{ color: "var(--accent)", fontSize: "14px", margin: 0 }}>{s.n}</p>
+                  {/* v30: the timeline label, so the six stages read as a
+                      schedule rather than a list. */}
+                  <p className="mono" style={{ color: "var(--fg-dim)", fontSize: "11px", letterSpacing: "0.12em", margin: "8px 0 0" }}>{s.when}</p>
+                </div>
                 <div>
-                  <h3 style={{ fontSize: "var(--fs-h2)", fontWeight: 500, marginBottom: "12px", lineHeight: 1.2 }}>{s.title}</h3>
+                  <h3 style={{ fontSize: "var(--fs-h2)", fontWeight: 500, marginBottom: "8px", lineHeight: 1.2 }}>{s.title}</h3>
+                  <p style={{ fontSize: "17px", color: "var(--fg)", lineHeight: 1.5, marginBottom: "12px" }}>{s.lead}</p>
                   <p style={{ fontSize: "17px", color: "var(--fg-muted)", lineHeight: 1.6 }}>{s.body}</p>
                 </div>
               </div>

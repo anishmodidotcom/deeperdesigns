@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomeHero from "./_home/HomeHero";
 import HomeQuestionBand from "./_home/HomeQuestionBand";
+import Scenarios from "@/components/Scenarios";
 import HomeOwnership from "./_home/HomeOwnership";
 import HomeBuildIntegrate from "./_home/HomeBuildIntegrate";
 import HomeArchitecture from "./_home/HomeArchitecture";
@@ -62,6 +63,9 @@ export default function Home() {
       <HomeConfusion />
       <HomeOutcomes />
       <HomeProof />
+      {/* v30 part 6: six real scenarios, between the proof strip and the
+          numbers. Also rendered on /about. */}
+      <Scenarios />
       {/* v28: countable figures only, each verified against the repo. */}
       <HomeNumbers />
       {/* v26: what we build and what we integrate, after the proof strip. */}
