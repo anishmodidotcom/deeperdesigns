@@ -88,7 +88,7 @@ const SECTIONS: Section[] = [
   },
   {
     heading: "Advertising",
-    body: "We advertise on platforms such as Meta. With the Meta Pixel and Conversions API we measure the results of our ads and may show ads to people based on their visit to our site. When you fill in a form on our site, the pixel may also send Meta a hashed version of details such as your name and email so that our advertising can be measured. These are hashed before they leave your browser and cannot be read by us or by Meta as plain text. You can opt out of personalised advertising through the ad settings of the relevant platform and through your browser and device controls.",
+    body: "We advertise on platforms such as Meta. With the Meta Pixel and Conversions API we measure the results of our ads and may show ads to people based on their visit to our site. When you fill in a form on our site, the pixel may also send Meta a hashed version of details such as your name and email so that our advertising can be measured. These details are hashed in your browser before they are sent. We never receive them. Meta uses the hashed values to match the visit to an account for measurement, in line with its own data policy. You can opt out of personalised advertising through the ad settings of the relevant platform and through your browser and device controls.",
   },
   {
     heading: "Data retention",

@@ -37,9 +37,30 @@ export type Product = {
    * back to being delivered by hand from that row.
    */
   deliveryUrl: string | undefined;
+  /**
+   * v29.4: the object key in the private Supabase bucket. Delivery signs
+   * a per-buyer, expiring URL for this key. deliveryUrl above is now the
+   * fallback, used only when storage is not configured or signing fails,
+   * so delivery never stops on a storage problem.
+   */
+  deliveryObject: string | undefined;
+  /**
+   * v29.4: whether the Razorpay account actually accepts international
+   * cards. False until Razorpay approves it, and while false the claim
+   * is not rendered anywhere. Flipping this env var is the whole change
+   * on the day it is approved.
+   */
+  internationalCards: boolean;
   thankYouPath: string;
   termsPath: string;
 };
+
+// The claim is off unless the variable explicitly says "true", so a
+// typo or a blank value reads as false rather than as a claim we cannot
+// currently honour.
+function envFlag(value: string | undefined): boolean {
+  return value?.trim().toLowerCase() === "true";
+}
 
 // Defaults come from the existing PREFLIGHT_* variables so nothing set in
 // Vercel today has to change. A second product would introduce its own
@@ -54,6 +75,10 @@ export const PRODUCTS = {
     sac: process.env.PREFLIGHT_SAC ?? "998314",
     sheetId: process.env.GOOGLE_SHEETS_ID,
     deliveryUrl: process.env.PREFLIGHT_DELIVERY_URL,
+    deliveryObject:
+      process.env.PREFLIGHT_DELIVERY_OBJECT ??
+      "preflight-audit-suite/current.zip",
+    internationalCards: envFlag(process.env.PREFLIGHT_INTERNATIONAL_CARDS),
     thankYouPath: "/preflight/thank-you",
     termsPath: "/preflight/terms",
   },

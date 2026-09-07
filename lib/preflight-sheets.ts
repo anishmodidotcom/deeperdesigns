@@ -215,22 +215,33 @@ export async function sheetHasPayment(
 // the row it was sent for, so sent_at doubles as the guard that stops a
 // second send for the same payment.
 //
+// v29.4: the read widened from G:K to A:K, because delivery now also
+// needs the buyer's name and email (for a re-send) and the note column
+// (to record the link expiry). The Sheet schema is fixed, so the expiry
+// and any re-send are appended to note rather than given columns.
+//
 // Column letters follow the fixed schema at the top of this file:
-//   G razorpay_payment_id · I status · J sent_at · K sent_by
-const PAYMENT_ID_COL = "G";
+//   D note · G razorpay_payment_id · I status · J sent_at · K sent_by
+const NOTE_COL = "D";
 const SENT_AT_COL = "J";
 const SENT_BY_COL = "K";
+
+// Zero-based offsets into a row read from column A.
+const IDX = { name: 1, email: 2, note: 3, paymentId: 6, sentAt: 9, sentBy: 10 };
 
 export type SheetRowRef = {
   /** 1-based row number, as Sheets addresses it. */
   rowNumber: number;
+  name: string;
+  email: string;
+  note: string;
   /** Empty string when the row has not been delivered yet. */
   sentAt: string;
   sentBy: string;
 };
 
-// Finds a payment's row and reports whether it has already been
-// delivered. Returns null when the payment is not on the sheet at all.
+// Finds a payment's row and reports what delivery needs to know about
+// it. Returns null when the payment is not on the sheet at all.
 export async function findSheetRow(
   sheetId: string | undefined,
   paymentId: string,
@@ -239,11 +250,9 @@ export async function findSheetRow(
   if (!account || !sheetId) return null;
 
   const token = await accessToken(account);
-  // G through K in one read: the payment id to match on, and the two
-  // delivery columns to report back.
   const url =
     `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}` +
-    `/values/${encodeURIComponent(`${PAYMENT_ID_COL}:${SENT_BY_COL}`)}`;
+    `/values/${encodeURIComponent(`A:${SENT_BY_COL}`)}`;
   const res = await fetch(url, {
     headers: { authorization: `Bearer ${token}` },
   });
@@ -254,23 +263,54 @@ export async function findSheetRow(
   const rows = body.values ?? [];
   // Sheets omits trailing empty cells, so sent_at and sent_by can be
   // absent from the array entirely rather than present and empty.
-  const index = rows.findIndex((r) => r[0] === paymentId);
+  const index = rows.findIndex((r) => r[IDX.paymentId] === paymentId);
   if (index === -1) return null;
   const row = rows[index];
+  const cell = (i: number) => (row[i] ?? "").trim();
   return {
     rowNumber: index + 1,
-    sentAt: (row[3] ?? "").trim(),
-    sentBy: (row[4] ?? "").trim(),
+    name: cell(IDX.name),
+    email: cell(IDX.email),
+    note: row[IDX.note] ?? "",
+    sentAt: cell(IDX.sentAt),
+    sentBy: cell(IDX.sentBy),
   };
 }
 
-// Stamps sent_at and sent_by on one row. Writes only those two cells, so
-// it can never disturb the sale data beside them.
+// Writes a set of individual cell ranges in one request. batchUpdate is
+// used rather than several PUTs so nothing between the note column and
+// the delivery columns can be touched by accident.
+async function writeCells(
+  sheetId: string,
+  token: string,
+  data: { range: string; values: string[][] }[],
+): Promise<void> {
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}` +
+    `/values:batchUpdate`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ valueInputOption: "RAW", data }),
+  });
+  if (!res.ok) {
+    throw new Error(
+      `sheets_update_${res.status}: ${(await res.text()).slice(0, 300)}`,
+    );
+  }
+}
+
+// Stamps sent_at and sent_by, and optionally rewrites the note. Writes
+// only those cells, so it can never disturb the sale data beside them.
 export async function markSheetRowSent(
   sheetId: string | undefined,
   rowNumber: number,
   sentAt: string,
   sentBy: string,
+  note?: string,
 ): Promise<void> {
   const account = readServiceAccount();
   if (!account || !sheetId) {
@@ -278,22 +318,31 @@ export async function markSheetRowSent(
   }
 
   const token = await accessToken(account);
-  const range = `${SENT_AT_COL}${rowNumber}:${SENT_BY_COL}${rowNumber}`;
-  const url =
-    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}` +
-    `/values/${encodeURIComponent(range)}?valueInputOption=RAW`;
-
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      authorization: `Bearer ${token}`,
-      "content-type": "application/json",
+  const data: { range: string; values: string[][] }[] = [
+    {
+      range: `${SENT_AT_COL}${rowNumber}:${SENT_BY_COL}${rowNumber}`,
+      values: [[sentAt, sentBy]],
     },
-    body: JSON.stringify({ values: [[sentAt, sentBy]] }),
-  });
-  if (!res.ok) {
-    throw new Error(
-      `sheets_update_${res.status}: ${(await res.text()).slice(0, 300)}`,
-    );
+  ];
+  if (note !== undefined) {
+    data.push({ range: `${NOTE_COL}${rowNumber}`, values: [[note]] });
   }
+  await writeCells(sheetId, token, data);
+}
+
+// v29.4: used by the re-send route, which changes the note without
+// touching sent_at (the original delivery still stands).
+export async function updateSheetNote(
+  sheetId: string | undefined,
+  rowNumber: number,
+  note: string,
+): Promise<void> {
+  const account = readServiceAccount();
+  if (!account || !sheetId) {
+    throw new Error("sheets_not_configured");
+  }
+  const token = await accessToken(account);
+  await writeCells(sheetId, token, [
+    { range: `${NOTE_COL}${rowNumber}`, values: [[note]] },
+  ]);
 }
