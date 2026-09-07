@@ -98,8 +98,17 @@ const nextConfig: NextConfig = {
   // v30: the teardown and the audit are the same offer described two
   // ways, so /teardown is retired into /audit. Permanent, so the link
   // equity and any bookmark follow rather than 404.
+  // v32.1: the four showcase slugs that carried a brand name colliding with
+  // a real company are renamed, and every old path redirects permanently so
+  // no external link or index entry breaks.
   async redirects() {
-    return [{ source: "/teardown", destination: "/audit", permanent: true }];
+    return [
+      { source: "/teardown", destination: "/audit", permanent: true },
+      { source: "/work/veda-glow", destination: "/work/anvaya", permanent: true },
+      { source: "/work/brightpath", destination: "/work/slateway", permanent: true },
+      { source: "/work/autobazaar", destination: "/work/autharo", permanent: true },
+      { source: "/work/hivedesk", destination: "/work/nestworks", permanent: true },
+    ];
   },
 
   async headers() {

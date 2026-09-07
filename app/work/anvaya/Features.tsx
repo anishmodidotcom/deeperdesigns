@@ -9,7 +9,7 @@ const FEATURES: Feature[] = [
     number: "01",
     title: "Personalized Routines",
     description:
-      "Morning and evening routines built around skin type, concern, age, and lifestyle. Every step mapped to a real Veda Glow product.",
+      "Morning and evening routines built around skin type, concern, age, and lifestyle. Every step mapped to a real Anvaya Skincare product.",
   },
   {
     number: "02",

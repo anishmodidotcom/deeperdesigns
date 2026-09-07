@@ -31,7 +31,7 @@ export type Industry = (typeof INDUSTRIES)[number];
 // archetype says so, which is why four of the twenty-four carry one:
 // Bharat Steel is "a B2B steel trading company", Maple Lens "an Indian
 // furniture maker", Malabar Spice "a heritage spice exporter" and
-// AutoBazaar "a used-car dealership". Nothing here is inferred from a
+// Autharo Motors "a used-car dealership". Nothing here is inferred from a
 // build's features; a study with no stated kind of business gets none.
 export const SEGMENT_KINDS = [
   "manufacturers",
@@ -132,13 +132,13 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     number: "07",
-    name: "AutoBazaar",
+    name: "Autharo Motors",
     archetype: "a used-car dealership",
     toolKind: "Dynamic Pricing",
     industryLabel: "Used-Car Lot",
     bg: "#1F1209",
-    slug: "autobazaar",
-    image: "/images/autobazaar/hero-sedan.webp",
+    slug: "autharo",
+    image: "/images/autharo/hero-sedan.webp",
     industries: ["Retail / D2C"],
     segments: ["retailers"],
     objectives: ["Operations", "Growth"],
@@ -233,13 +233,13 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     number: "01",
-    name: "Veda Glow",
+    name: "Anvaya Skincare",
     archetype: "an Ayurvedic skincare D2C brand",
     toolKind: "Skin Advisor",
     industryLabel: "Ayurvedic D2C",
     bg: "#2D1810",
-    slug: "veda-glow",
-    image: "/images/veda-glow/hero-bottle.webp",
+    slug: "anvaya",
+    image: "/images/anvaya/hero-bottle.webp",
     industries: ["Wellness / Beauty / Skincare", "Retail / D2C"],
     objectives: ["Customer Experience", "Growth"],
     cardLabel: "A skin advisor for an Ayurvedic brand",
@@ -401,13 +401,13 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     number: "10",
-    name: "HiveDesk",
+    name: "Nestworks",
     archetype: "a neighborhood coworking space",
     toolKind: "Member Hub",
     industryLabel: "Coworking Space",
     bg: "#18181F",
-    slug: "hivedesk",
-    image: "/images/hivedesk/hero-space.webp",
+    slug: "nestworks",
+    image: "/images/nestworks/hero-space.webp",
     industries: ["Hospitality / Travel", "Professional Services"],
     objectives: ["Operations", "Founder Overload"],
     cardLabel: "A member hub for a coworking space",
@@ -617,13 +617,13 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     number: "20",
-    name: "BrightPath",
+    name: "Slateway Tutoring",
     archetype: "a neighborhood tutoring practice",
     toolKind: "Parent Portal",
     industryLabel: "Tutoring Practice",
     bg: "#101828",
-    slug: "brightpath",
-    image: "/images/brightpath/hero-classroom.webp",
+    slug: "slateway",
+    image: "/images/slateway/hero-classroom.webp",
     industries: ["Professional Services"],
     objectives: ["Customer Experience", "Operations", "Founder Overload"],
     cardLabel: "A parent portal for a tutoring practice",

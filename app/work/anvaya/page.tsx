@@ -26,30 +26,30 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Veda Glow · Skin Advisor · Deeper Designs",
+  title: "Anvaya Skincare · Skin Advisor · Deeper Designs",
   description:
     "Concept build. An Ayurvedic skincare brand got a skin advisor that answers every customer in two minutes, so the founder stopped losing her week to DMs.",
   openGraph: {
-    title: "Veda Glow · Skin Advisor · Deeper Designs",
+    title: "Anvaya Skincare · Skin Advisor · Deeper Designs",
     siteName: "Deeper Designs",
     description: "A skin advisor for an Ayurvedic skincare brand that recommends like the founder would, every time, in under two minutes.",
-    url: "/work/veda-glow",
+    url: "/work/anvaya",
     images: [
       {
-        url: "/api/og/veda-glow",
+        url: "/api/og/anvaya",
         width: 1200,
         height: 630,
-        alt: "Deeper Designs · /work/veda-glow",
+        alt: "Deeper Designs · /work/anvaya",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Veda Glow · Skin Advisor · Deeper Designs",
+    title: "Anvaya Skincare · Skin Advisor · Deeper Designs",
     description: "A skin advisor for an Ayurvedic skincare brand that recommends like the founder would, every time, in under two minutes.",
-    images: ["/api/og/veda-glow"],
+    images: ["/api/og/anvaya"],
   },
-  alternates: { canonical: "/work/veda-glow" },
+  alternates: { canonical: "/work/anvaya" },
 
 };
 
@@ -68,21 +68,21 @@ const pageStyle = {
   color: "var(--page-text)",
 } as React.CSSProperties;
 
-export default function VedaGlowPage() {
+export default function AnvayaPage() {
   return (
     <main id="main" className={playfair.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
-          name: "Veda Glow",
+          name: "Anvaya Skincare",
           description: metadata.description as string,
-          slug: "veda-glow",
-          image: "/images/veda-glow/hero-bottle.webp",
+          slug: "anvaya",
+          image: "/images/anvaya/hero-bottle.webp",
           archetype: "an Ayurvedic skincare D2C brand",
         })}
       />
       <Hero />
       {(() => {
-        const meta = showcaseMetadata("veda-glow");
+        const meta = showcaseMetadata("anvaya");
         return (
           <PainBlock
             number={meta.number}
@@ -110,11 +110,11 @@ export default function VedaGlowPage() {
       <About />
       <EditorialPullQuote
         quote="The product was never the problem. The consultation was."
-        attribution="VEDA GLOW · CONCEPT"
-        accent="var(--page-accent-veda-glow)"
+        attribution="ANVAYA SKINCARE · CONCEPT"
+        accent="var(--page-accent-anvaya)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="veda-glow" name="Veda Glow" industry="Ayurvedic D2C" />
+      <ShowcaseAnalytics slug="anvaya" name="Anvaya Skincare" industry="Ayurvedic D2C" />
     </main>
   );
 }

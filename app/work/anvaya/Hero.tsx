@@ -21,8 +21,8 @@ export default function Hero() {
         style={{ position: "absolute", inset: 0, opacity: 0.35 }}
       >
         <Image
-          src="/images/veda-glow/ayurvedic-kitchen.webp"
-          alt="Veda Glow · Ayurvedic preparation kitchen with copper pots and bottled tinctures"
+          src="/images/anvaya/ayurvedic-kitchen.webp"
+          alt="Anvaya Skincare · Ayurvedic preparation kitchen with copper pots and bottled tinctures"
           fill
           sizes="100vw"
           priority
@@ -63,7 +63,7 @@ export default function Hero() {
                 marginBottom: 40,
               }}
             >
-              VEDA GLOW · AYURVEDIC SKINCARE
+              ANVAYA SKINCARE · AYURVEDIC SKINCARE
             </motion.p>
 
             <motion.h1
@@ -80,7 +80,7 @@ export default function Hero() {
               }}
             >
               <span style={{ display: "block", color: "var(--page-accent)" }}>
-                Veda Glow
+                Anvaya Skincare
               </span>
               <span
                 style={{
@@ -141,8 +141,8 @@ export default function Hero() {
             }}
           >
             <Image
-              src="/images/veda-glow/hero-bottle.webp"
-              alt="A tall amber glass dropper bottle of Veda Glow Ayurvedic facial oil with marigold and tulsi beside it"
+              src="/images/anvaya/hero-bottle.webp"
+              alt="A tall amber glass dropper bottle of Anvaya Skincare Ayurvedic facial oil with marigold and tulsi beside it"
               fill
               sizes="(min-width: 1024px) 480px, 80vw"
               priority

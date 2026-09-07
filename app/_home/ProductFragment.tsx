@@ -37,7 +37,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
-    case "veda-glow":
+    case "anvaya":
       return (
         <div style={fragWrap}>
           <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "6px", alignItems: "center" }}>
@@ -70,7 +70,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
-    case "hivedesk":
+    case "nestworks":
       return (
         <div style={fragWrap}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -102,7 +102,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
-    case "autobazaar":
+    case "autharo":
       return (
         <div style={fragWrap}>
           <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -318,7 +318,7 @@ export default function ProductFragment({ slug }: FragmentProps) {
         </div>
       );
 
-    case "brightpath":
+    case "slateway":
       return (
         <div style={fragWrap}>
           <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "4px" }}>

@@ -16,7 +16,7 @@ export default function NextProject() {
       }}
     >
       <Link
-        href="/work/autobazaar"
+        href="/work/autharo"
         data-cursor="view"
         style={{ display: "block", textAlign: "center" }}
         onMouseEnter={() => setHover(true)}
@@ -48,7 +48,7 @@ export default function NextProject() {
             lineHeight: 1.05,
           }}
         >
-          AutoBazaar
+          Autharo Motors
         </h3>
 
         <p

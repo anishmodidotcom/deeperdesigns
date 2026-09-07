@@ -16,7 +16,7 @@ export default function NextProject() {
       }}
     >
       <Link
-        href="/work/hivedesk"
+        href="/work/nestworks"
         data-cursor="view"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -56,7 +56,7 @@ export default function NextProject() {
             lineHeight: 1.0,
           }}
         >
-          HiveDesk
+          Nestworks
         </h3>
 
         <p

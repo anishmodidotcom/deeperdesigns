@@ -13,7 +13,7 @@ const LINKS = [
     label: "Our four live products",
   },
   {
-    href: "/work/veda-glow",
+    href: "/work/anvaya",
     label: "The builds we are proud of",
   },
   {

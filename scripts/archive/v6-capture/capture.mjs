@@ -10,11 +10,11 @@ const BASE = "http://localhost:3399";
 const TARGETS = [
   { slug: "zaatar-republic", yPct: 0.74, w: 1280, h: 800 },
   { slug: "smilefirst",      yPct: 0.65, w: 1280, h: 800 },
-  { slug: "autobazaar",      yPct: 0.50, w: 1280, h: 800 },
+  { slug: "autharo",      yPct: 0.50, w: 1280, h: 800 },
   { slug: "stumpvision",     yPct: 0.34, w: 1280, h: 800 },
   { slug: "pawstay",         yPct: 0.42, w: 1280, h: 800 },
   { slug: "malabar-spice",   yPct: 0.36, w: 1280, h: 800 },
-  { slug: "hivedesk",        yPct: 0.55, w: 1280, h: 800 },
+  { slug: "nestworks",        yPct: 0.55, w: 1280, h: 800 },
   { slug: "maplelens",       yPct: 0.72, w: 1280, h: 800 },
 ];
 

@@ -37,8 +37,8 @@ or after deleting a single output to regenerate it.
 Progress is logged per entry, e.g.:
 
 ```
-[3/40] Generating veda-glow/hero.webp...
-[3/40] Saved public/images/veda-glow/hero.webp
+[3/40] Generating anvaya/hero.webp...
+[3/40] Saved public/images/anvaya/hero.webp
 ```
 
 A final summary reports how many images were generated, skipped, and failed,
@@ -51,7 +51,7 @@ and lists each failure with its error.
 ```json
 [
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "hero",
     "prompt": "Warm Ayurvedic skincare hero, dark amber lit studio, copper bottle, soft incense smoke, editorial",
     "aspectRatio": "16:9",
@@ -64,7 +64,7 @@ and lists each failure with its error.
 Field reference:
 
 - `slug` (required): subfolder under `public/images/`. Usually matches the
-  case study route slug (`veda-glow`, `bharat-steel`, `meera-wellness`,
+  case study route slug (`anvaya`, `bharat-steel`, `meera-wellness`,
   etc.).
 - `filename` (required): filename without extension. Final path is always
   `public/images/<slug>/<filename>.webp`.
@@ -88,7 +88,7 @@ Field reference:
 Delete the output file, then rerun `bun run gen-images`:
 
 ```
-rm public/images/veda-glow/hero.webp
+rm public/images/anvaya/hero.webp
 bun run gen-images
 ```
 

@@ -16,7 +16,7 @@ export default function NextProject() {
       }}
     >
       <Link
-        href="/work/brightpath"
+        href="/work/slateway"
         data-cursor="view"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -53,7 +53,7 @@ export default function NextProject() {
               margin: 0,
             }}
           >
-            BrightPath
+            Slateway Tutoring
           </h3>
           <p
             style={{

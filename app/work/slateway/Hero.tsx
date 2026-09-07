@@ -26,7 +26,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/images/brightpath/hero-classroom.webp"
+          src="/images/slateway/hero-classroom.webp"
           alt="A serious one-on-one tutoring scene: a tutor explaining a maths problem to a student at a desk, evening light"
           fill
           sizes="100vw"

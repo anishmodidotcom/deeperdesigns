@@ -282,7 +282,7 @@ export default function Dashboard() {
             }}
           >
             <span style={{ color: "var(--page-text)" }}>
-              AutoBazaar Inventory Manager
+              Autharo Motors Inventory Manager
             </span>
             <span>60 Cars · AED 3.2M Total Value</span>
           </div>
@@ -366,7 +366,7 @@ export default function Dashboard() {
                     fontFamily: "var(--font-geist-mono), monospace",
                   }}
                 >
-                  autobazaar.ae
+                  autharo.ae
                 </span>
               </div>
 

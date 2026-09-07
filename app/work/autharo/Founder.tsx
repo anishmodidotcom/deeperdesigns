@@ -31,8 +31,8 @@ export default function Founder() {
             }}
           >
             <Image
-              src="/images/autobazaar/tariq-portrait.webp"
-              alt="Tariq, the owner of AutoBazaar, in his Deira Dubai dealership at night"
+              src="/images/autharo/tariq-portrait.webp"
+              alt="Tariq, the owner of Autharo Motors, in his Deira Dubai dealership at night"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
               style={{ objectFit: "cover" }}
@@ -90,7 +90,7 @@ export default function Founder() {
               }}
             >
               <p style={{ margin: 0 }}>
-                Tariq runs AutoBazaar from a Deira side street that locals
+                Tariq runs Autharo Motors from a Deira side street that locals
                 know and nobody else does. Sixty cars on the lot. Every one
                 priced last night by Tariq walking the lot with a
                 clipboard, checking each competitor listing on his phone.

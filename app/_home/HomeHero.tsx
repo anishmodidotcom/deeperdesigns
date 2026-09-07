@@ -23,10 +23,10 @@ type AmbientItem = {
 };
 
 const AMBIENT: AmbientItem[] = [
-  { slug: "hivedesk",        top: "8%",    left: "4%",   width: 320, rotate: -3, opacity: 0.18, delay: 0 },
+  { slug: "nestworks",        top: "8%",    left: "4%",   width: 320, rotate: -3, opacity: 0.18, delay: 0 },
   { slug: "zaatar-republic", top: "12%",   right: "6%",  width: 340, rotate: 4,  opacity: 0.18, delay: 1.2 },
   { slug: "smilefirst",      top: "45%",   left: "1%",   width: 280, rotate: -2, opacity: 0.18, delay: 2.6 },
-  { slug: "autobazaar",      top: "50%",   right: "2%",  width: 300, rotate: 3,  opacity: 0.18, delay: 0.7 },
+  { slug: "autharo",      top: "50%",   right: "2%",  width: 300, rotate: 3,  opacity: 0.18, delay: 0.7 },
   { slug: "stumpvision",     bottom: "8%", left: "12%",  width: 260, rotate: -4, opacity: 0.18, delay: 3.4 },
   { slug: "pawstay",         bottom: "14%",right: "14%", width: 280, rotate: 2,  opacity: 0.18, delay: 1.8 },
   { slug: "malabar-spice",   top: "30%",   left: "38%",  width: 240, rotate: 1,  opacity: 0.10, delay: 4.0 },

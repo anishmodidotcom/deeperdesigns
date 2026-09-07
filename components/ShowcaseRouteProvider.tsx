@@ -11,16 +11,16 @@ import { ShowcaseProvider } from "@/components/ShowcaseContext";
 const INDUSTRY_BY_SLUG: Record<string, string> = {
   "maplelens":        "Furniture Maker",
   "deeper-content":   "Deeper Designs",
-  "veda-glow":        "Ayurvedic D2C",
+  "anvaya":        "Ayurvedic D2C",
   "bharat-steel":     "B2B Industrial",
   "meera-wellness":   "Wellness Studio",
   "zaatar-republic":  "QSR Chain",
   "studio-noor":      "Interior Design",
   "smilefirst":       "Dental Clinic",
-  "autobazaar":       "Used-Car Lot",
+  "autharo":       "Used-Car Lot",
   "stumpvision":      "Coaching Academy",
   "oud-and-ember":    "Perfume Atelier",
-  "hivedesk":         "Coworking Space",
+  "nestworks":         "Coworking Space",
   "malabar-spice":    "Heritage Exporter",
   "pawstay":          "Pet Boarding",
   "sahaja-farms":     "Organic Farm",
@@ -30,7 +30,7 @@ const INDUSTRY_BY_SLUG: Record<string, string> = {
   "kadak-chai":       "Craft Tea Brand",
   "nomad-trails":     "Trek Outfit",
   "sugar-lane":       "Home Bakery",
-  "brightpath":       "Tutoring Practice",
+  "slateway":       "Tutoring Practice",
 };
 
 const LIVE_PRODUCTS = new Set<string>(["maplelens", "deeper-content"]);

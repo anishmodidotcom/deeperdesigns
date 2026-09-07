@@ -25,30 +25,30 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
+  title: "Autharo Motors · Dynamic Pricing · Deeper Designs",
   description:
     "Concept build. A 60-car Dubai dealership stopped pricing by feel. Every car now prices itself overnight on market data, and the average car sells 18 days faster.",
   openGraph: {
-    title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
+    title: "Autharo Motors · Dynamic Pricing · Deeper Designs",
     siteName: "Deeper Designs",
     description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
-    url: "/work/autobazaar",
+    url: "/work/autharo",
     images: [
       {
-        url: "/api/og/autobazaar",
+        url: "/api/og/autharo",
         width: 1200,
         height: 630,
-        alt: "Deeper Designs · /work/autobazaar",
+        alt: "Deeper Designs · /work/autharo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutoBazaar · Dynamic Pricing · Deeper Designs",
+    title: "Autharo Motors · Dynamic Pricing · Deeper Designs",
     description: "A dynamic pricing engine and live inventory system for a 60-car Dubai dealership. Cars priced daily on market data, days on lot, and competitor analysis.",
-    images: ["/api/og/autobazaar"],
+    images: ["/api/og/autharo"],
   },
-  alternates: { canonical: "/work/autobazaar" },
+  alternates: { canonical: "/work/autharo" },
 
 };
 
@@ -65,21 +65,21 @@ const pageStyle = {
   color: "var(--page-text)",
 } as React.CSSProperties;
 
-export default function AutoBazaarPage() {
+export default function AutharoPage() {
   return (
     <main id="main" className={outfit.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
-          name: "Autobazaar",
+          name: "Autharo Motors",
           description: metadata.description as string,
-          slug: "autobazaar",
-          image: "/images/autobazaar/hero-sedan.webp",
+          slug: "autharo",
+          image: "/images/autharo/hero-sedan.webp",
           archetype: "a used-car dealership",
         })}
       />
       <Hero />
       {(() => {
-        const meta = showcaseMetadata("autobazaar");
+        const meta = showcaseMetadata("autharo");
         return (
           <PainBlock
             number={meta.number}
@@ -107,11 +107,11 @@ export default function AutoBazaarPage() {
       <About />
       <EditorialPullQuote
         quote="Sixty cars priced last night by Tariq walking the lot with a clipboard."
-        attribution="AUTOBAZAAR · CONCEPT"
-        accent="var(--page-accent-autobazaar)"
+        attribution="AUTHARO MOTORS · CONCEPT"
+        accent="var(--page-accent-autharo)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="autobazaar" name="AutoBazaar" industry="Used-Car Lot" />
+      <ShowcaseAnalytics slug="autharo" name="Autharo Motors" industry="Used-Car Lot" />
     </main>
   );
 }
