@@ -154,7 +154,7 @@ export default function HomeHero() {
             color: "var(--fg-dim)",
           }}
         >
-          Your first prototype live in as little as 30 days.
+          A working prototype in as little as seven days.
         </p>
         {/* v22.1: the starting price, same quiet treatment as the
             guarantee line above it. */}

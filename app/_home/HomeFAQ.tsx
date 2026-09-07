@@ -33,7 +33,7 @@ const QA = [
   },
   {
     q: "What if it does not work?",
-    a: "Simple. We scope honestly before we start and we build fast. Your first prototype is live in as little as 30 days.",
+    a: "Simple. We scope honestly before we start and we build fast. A working prototype in as little as seven days, and a production system in around three months for something larger.",
   },
   {
     q: "What happens on the call?",

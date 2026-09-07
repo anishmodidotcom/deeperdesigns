@@ -24,7 +24,7 @@ const STEPS = [
     // line and the FAQ answer changed with it; this step carried the same
     // promise in different words, so it moves to the same wording rather
     // than contradicting them one section apart.
-    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. Your first prototype is live in as little as 30 days.",
+    body: "A fixed price agreed before we start. A working tool your team actually uses, not a report. You own everything we build. A working prototype in as little as seven days.",
   },
 ];
 
