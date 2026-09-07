@@ -24,7 +24,7 @@ const QA = [
     a: "Whether AI stocks are a bubble is not your problem. The only question that matters is whether one specific tool will save you time or money this quarter. We only build things that pay for themselves, and if AI is not the answer for your business, we will tell you that on the call.",
   },
   {
-    q: "Why should I trust a small studio?",
+    q: "Why should I trust you over a bigger vendor?",
     a: "Because you talk directly to the people who build, not an account manager. And because our proof is public: Outpost, Oviya Studio, and Deeper Content are our own products, live, with real users. We eat what we cook.",
   },
   {

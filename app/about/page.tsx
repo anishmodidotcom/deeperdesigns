@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import OngoingRelationship from "@/components/OngoingRelationship";
 import Scenarios from "@/components/Scenarios";
@@ -8,10 +9,9 @@ import { renderSerif } from "@/components/industry/text";
 // building, with the founder in the middle of it rather than a studio
 // origin story. Copy is final and verbatim.
 //
-// FLAGGED: no portrait of Anish exists in the repo. Every portrait under
-// marketing/design-assets/dd/generated-images is a generated image of a
-// fictional client for a demo showcase, so using one here would put a
-// stranger's face on the founder. A marked slot is rendered instead.
+// v30.1: the founder portrait supplied by Anish now fills the slot the
+// v30 pass left marked. Converted to webp at quality 88 with the EXIF
+// orientation applied and all metadata stripped.
 
 const DESCRIPTION =
   "Deeper Designs finds what is holding a business back and builds the system that fixes it. One team for the thinking and the building.";
@@ -142,38 +142,24 @@ export default function About() {
           </p>
 
           <div className="about-founder-grid">
-            {/* PORTRAIT SLOT. Flagged: no photograph of Anish exists in
-                the repo. Drop the file into public/brand/ and swap this
-                block for an Image. Nothing generated is used here on
-                purpose: the only portraits in the repo are invented
-                people for demo showcases. */}
-            <div
+            {/* v30.1: the real portrait replaces the v30 placeholder.
+                The source is 1200x1500, already inside the 1600 cap, so
+                it is stored at native size rather than upscaled. */}
+            <Image
+              src="/images/about/anish-modi.webp"
+              alt="Anish Modi, founder of Deeper Designs"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 768px) 100vw, 320px"
+              priority
               style={{
-                aspectRatio: "4 / 5",
+                width: "100%",
+                height: "auto",
+                display: "block",
                 borderRadius: "16px",
-                border: "1px dashed var(--border-strong)",
-                background: "var(--bg-card, #161616)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "24px",
+                border: "1px solid var(--border)",
               }}
-            >
-              <p
-                className="mono"
-                style={{
-                  margin: 0,
-                  fontSize: "11px",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "var(--fg-dim)",
-                  textAlign: "center",
-                  lineHeight: 1.7,
-                }}
-              >
-                Portrait to come
-              </p>
-            </div>
+            />
 
             <div style={{ display: "grid", gap: "28px", alignContent: "start" }}>
               {FOUNDER_POINTS.map((p) => (

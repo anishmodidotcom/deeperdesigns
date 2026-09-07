@@ -35,6 +35,7 @@ import {
   IconTerminal,
   IconTick,
   IconVerdict,
+  IconWrench,
 } from "./_components/Icons";
 import { SUPPORT_EMAIL } from "@/lib/contact";
 import { priceLabel } from "@/lib/preflight";
@@ -327,16 +328,40 @@ const STEPS = [
   },
 ];
 
+// v30.1: the fit columns are sharpened. The old good-fit list described
+// anyone who had used an AI coding tool; this one describes the buyer
+// who actually needs a floor, and the not-a-fit column now names the two
+// people who do not.
 const GOOD_FIT = [
-  "You built, or are building, a product with AI coding tools.",
-  "You can run a coding agent against your own repo.",
-  "You have access to your database and hosting consoles.",
-  "You would rather find it yourself than read about it later.",
+  "A solo builder or a small team shipping an AI-built product.",
+  "You can run a coding agent against your own repository.",
+  "You have access to your own database and hosting consoles.",
+  "You have no security function. Preflight is the floor.",
 ];
 
 const NOT_FIT = [
   "You only have a chat window and no repo access. The protocols need to run probes.",
   "You want someone to run the audit for you. That is a service, and we offer it separately.",
+  "You have a security team or you sell security. Preflight is a floor for people who have neither.",
+  "You want someone to run the audit for you. Talk to us instead.",
+];
+
+// v30.1: the service tier. Some teams have exactly the surface Preflight
+// audits and would rather we ran it. No new form and no checkout: the
+// button is the existing strategy-call form, attributed from=preflight.
+const SERVICE_POINTS = [
+  {
+    icon: <IconTerminal />,
+    text: "We run all five protocols against your live product.",
+  },
+  {
+    icon: <IconReport />,
+    text: "You get the certification report, the launch-blocker table, and the gap list with fixes.",
+  },
+  {
+    icon: <IconWrench />,
+    text: "We can do the fixes too, as a build.",
+  },
 ];
 
 const PASS_POINTS = [
@@ -406,6 +431,10 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "What is the refund policy?",
     a: "There is no refund. Preflight is a digital download and you receive the full package once payment is confirmed. Read what is inside and who it is for before you buy.",
+  },
+  {
+    q: "Can Deeper Designs run it for me?",
+    a: "Yes. It is a service, quoted per engagement in writing before work starts. Use the Talk to us button.",
   },
   {
     q: "Can I get a refund?",
@@ -1244,6 +1273,68 @@ export default function PreflightPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* v30.1: THE SERVICE TIER, between what a pass means and who
+          built it. Deliberately short and deliberately priceless: it is
+          quoted per engagement, so no number appears here. */}
+      <section style={section(true)}>
+        <div style={inner}>
+          <h2 style={{ ...h2, margin: "0 0 20px", maxWidth: 900 }}>
+            Want us to run it for you?
+          </h2>
+          <p
+            style={{
+              margin: "0 0 clamp(36px,4vw,52px)",
+              maxWidth: 760,
+              fontSize: "clamp(16px,1.2vw + 8px,20px)",
+              lineHeight: 1.6,
+              color: "#A8A8A8",
+              textWrap: "pretty",
+            }}
+          >
+            Some products have exactly the surface Preflight audits, and the
+            team would rather we did it. We run it as a service, quoted per
+            engagement in writing before work starts.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,280px),1fr))",
+              gap: "clamp(24px,3vw,36px)",
+              marginBottom: "clamp(36px,4vw,48px)",
+            }}
+          >
+            {SERVICE_POINTS.map((point) => (
+              <div
+                key={point.text}
+                style={{ display: "flex", gap: 16, alignItems: "flex-start" }}
+              >
+                <IconSlot>{point.icon}</IconSlot>
+                <p style={body}>{point.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/start-your-study?from=preflight"
+            className="pf-btn-primary"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              padding: "16px 30px",
+              borderRadius: 999,
+              background: "#7C6CFF",
+              color: "#0A0A0A",
+              fontSize: 16,
+              fontWeight: 500,
+            }}
+          >
+            Talk to us <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 

@@ -352,9 +352,16 @@ export function trackFormLead(args: {
   email?: string;
   phone?: string;
 }): void {
+  // v30.1: a lead from the Preflight service tier reports source_page
+  // "preflight" so the two funnels are separable in Meta. It is still the
+  // same single Lead call site.
   trackEvent(
     "Lead",
-    { source_page: "/start-your-study", industry: args.industry },
+    {
+      source_page:
+        args.industry === "preflight" ? "preflight" : "/start-your-study",
+      industry: args.industry,
+    },
     { em: args.email, ph: args.phone },
   );
 }
