@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomeHero from "./_home/HomeHero";
+import HomeQuestionBand from "./_home/HomeQuestionBand";
 import HomeOwnership from "./_home/HomeOwnership";
 import HomeBuildIntegrate from "./_home/HomeBuildIntegrate";
 import HomeArchitecture from "./_home/HomeArchitecture";
@@ -48,6 +49,9 @@ export default function Home() {
   return (
     <main id="main">
       <HomeHero />
+      {/* v30 part 2: the question band sits directly under the hero, with
+          the seven segments promoted beneath it. */}
+      <HomeQuestionBand />
       {/* v26: the ownership layer, directly beneath the untouched hero. */}
       <HomeOwnership />
       {/* v27: why a build can cost a fraction, placed before the confusion
