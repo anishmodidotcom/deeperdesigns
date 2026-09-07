@@ -41,9 +41,7 @@ const TIERS: {
     priceFrom: 25000,
     body: "A quiz. A calculator. A small dashboard. One focused tool that quietly removes a daily headache.",
     examples: [
-      "A WhatsApp agent that books appointments",
-      "A skin or product quiz that ends in a purchase",
-      "A small dashboard that replaces a daily spreadsheet check",
+      "A collections reminder system that chases every unpaid invoice on WhatsApp with the payment link included.",
     ],
   },
   {
@@ -52,9 +50,7 @@ const TIERS: {
     priceFrom: 100000,
     body: "Configurators, AI tools, brand sites built to convert. The kind of work that turns visitors into buyers.",
     examples: [
-      "A made-to-order product builder with custom pricing logic",
-      "A lead qualifier that filters and routes inquiries",
-      "A brand site with a smart configurator that converts",
+      "A quotation engine for a manufacturer: specification in, branded GST quote out in minutes, with approvals.",
     ],
   },
   {
@@ -63,9 +59,7 @@ const TIERS: {
     priceFrom: 300000,
     body: "A portal and a dashboard. A site, a booking flow, and an inventory brain. Multiple parts, designed to work together.",
     examples: [
-      "A client portal plus an internal ops dashboard plus a booking flow",
-      "A pricing engine plus a buyer-facing site plus inventory sync",
-      "A member CRM plus a retention engine plus an analytics view",
+      "A distributor's order-to-cash: retailer ordering portal, dispatch tracking, scheme reconciliation and an owner dashboard, connected to Tally.",
     ],
   },
   {
@@ -74,9 +68,7 @@ const TIERS: {
     priceFrom: 1000000,
     body: "The operating system for a business. Brand, site, internal tools, customer tools, the works.",
     examples: [
-      "The full operating system for a regional QSR chain",
-      "A heritage brand's entire digital presence and trade tooling",
-      "A creator's training platform, sportswear store, and AI chat combined",
+      "A manufacturer's enquiry-to-invoice: lead filter, quotation, production job cards, job-work challans, dispatch and collections, with the owner's numbers on one screen.",
     ],
   },
 ];

@@ -116,9 +116,9 @@ export default function HomeHero() {
           </span>
         </h1>
         <p style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "var(--fg-muted)", maxWidth: "680px", marginInline: "auto", marginBottom: "48px" }}>
-          Enquiries answered at 2am. Follow-ups that never slip. Payments
-          chased without you. We build it for how your business actually runs,
-          and you know exactly what you get before you pay.
+          Quotes out in minutes. Collections chased without you. The day&apos;s
+          numbers before your first meeting. We build it for how your business
+          actually runs, and you know exactly what you get before you pay.
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>

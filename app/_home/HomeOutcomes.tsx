@@ -1,15 +1,31 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // v15 audience axis, max 4 categories: FOUNDERS, OPERATORS, TEAMS, STUDIOS.
 // Picked the strongest line per bucket from the v14 9-card set; the rest are
 // covered by individual showcase pages and the live products.
-const CARDS = [
+//
+// v31: the fourth lane was FOR STUDIOS, the one card on this row speaking to
+// a consumer brand rather than the businesses the rest of the site is written
+// for. It is now FOR DISTRIBUTORS, and it is the only lane that links out,
+// because it is the only one with a segment page behind it.
+const CARDS: {
+  label: string;
+  headline: string;
+  sub: string;
+  href?: string;
+}[] = [
   { label: "FOR FOUNDERS", headline: "You see the bottleneck before it costs you.",  sub: "The numbers that matter, in front of you every morning." },
   { label: "FOR OPERATORS", headline: "Your inventory updates itself.",              sub: "No more 9 PM stock counts. No more guess-orders." },
   { label: "FOR TEAMS",    headline: "Your team stops chasing the same 6 things.",   sub: "One place everyone checks. The same answer for everyone." },
-  { label: "FOR STUDIOS",  headline: "A site that actually sells.",                   sub: "Built around how your buyer decides, not a template." },
+  {
+    label: "FOR DISTRIBUTORS",
+    headline: "Secondary sales you can finally see",
+    sub: "Retailer orders from the market, offline if needed, scheme claims reconciled with the principal, and one dashboard showing what the field actually did today.",
+    href: "/business/distributors",
+  },
 ];
 
 export default function HomeOutcomes() {
@@ -42,21 +58,34 @@ export default function HomeOutcomes() {
           Which part of your business would you hand over first?
         </h2>
         <div className="outcomes-grid">
-          {CARDS.map((c, i) => (
-            <article
-              key={c.label}
-              className="outcome-card"
-              style={{
-                transitionDelay: visible ? `${i * 80}ms` : "0ms",
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(20px)",
-              }}
-            >
-              <p className="outcome-label">{c.label}</p>
-              <h3 className="outcome-headline">{c.headline}</h3>
-              <p className="outcome-sub">{c.sub}</p>
-            </article>
-          ))}
+          {CARDS.map((c, i) => {
+            const body = (
+              <>
+                <p className="outcome-label">{c.label}</p>
+                <h3 className="outcome-headline">{c.headline}</h3>
+                <p className="outcome-sub">{c.sub}</p>
+              </>
+            );
+            const style = {
+              transitionDelay: visible ? `${i * 80}ms` : "0ms",
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(20px)",
+            };
+            return c.href ? (
+              <Link
+                key={c.label}
+                href={c.href}
+                className="outcome-card outcome-card--link"
+                style={style}
+              >
+                {body}
+              </Link>
+            ) : (
+              <article key={c.label} className="outcome-card" style={style}>
+                {body}
+              </article>
+            );
+          })}
         </div>
       </div>
       <style>{`
@@ -72,6 +101,11 @@ export default function HomeOutcomes() {
           padding: 32px 24px;
           border: 1px solid transparent;
           transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out), background-color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+        }
+        .outcome-card--link {
+          display: block;
+          color: inherit;
+          text-decoration: none;
         }
         .outcome-card:hover {
           background: var(--bg-elev);
