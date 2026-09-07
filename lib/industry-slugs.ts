@@ -36,13 +36,7 @@ export function isIndustrySlug(value: string): value is IndustrySlug {
 // thirteen industries.
 export const EXTRA_FROM_SOURCES = ["preflight"] as const;
 
-export type ExtraFromSource = (typeof EXTRA_FROM_SOURCES)[number];
-
 const EXTRA_SET: ReadonlySet<string> = new Set(EXTRA_FROM_SOURCES);
-
-export function isExtraFromSource(value: string): value is ExtraFromSource {
-  return EXTRA_SET.has(value);
-}
 
 // Every value the ?from param accepts: the thirteen industries plus the
 // extra sources above.

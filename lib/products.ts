@@ -84,8 +84,6 @@ export const PRODUCTS = {
   },
 } as const satisfies Record<string, Product>;
 
-export type ProductSlug = keyof typeof PRODUCTS;
-
 export const PRODUCT_CURRENCY = "INR";
 
 // Narrows an untrusted value from a request body to a known product.

@@ -14,20 +14,9 @@
 
 import { createSign } from "node:crypto";
 
-export const SHEET_COLUMNS = [
-  "timestamp",
-  "name",
-  "email",
-  "note",
-  "amount",
-  "currency",
-  "razorpay_payment_id",
-  "razorpay_order_id",
-  "status",
-  "sent_at",
-  "sent_by",
-] as const;
-
+// The column order is the one the append below writes, and SheetRow is
+// the schema. A parallel SHEET_COLUMNS array used to sit here restating
+// it; nothing ever read it, so it is gone rather than left to drift.
 export type SheetRow = {
   timestamp: string;
   name: string;
