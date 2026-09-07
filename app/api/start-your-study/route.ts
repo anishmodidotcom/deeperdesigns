@@ -8,6 +8,8 @@ import {
   readField,
 } from "@/lib/api-guards";
 import { clearVerified, emailKey, hasVerified } from "@/lib/otp-store";
+import { AUDIT_SUBJECT, auditHtml, auditText } from "@/lib/audit-email";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { isKnownFrom } from "@/lib/industry-slugs";
 import { normalizePhone } from "@/lib/phone";
 
@@ -203,6 +205,14 @@ export async function POST(req: Request) {
       // v25.5: the submission is accepted, so the verified session is spent.
       // Clearing only here is what lets a failed send be retried.
       await clearVerified(otpKey);
+      // v30.2: the audit requester gets a confirmation of their own. It
+      // is awaited so the serverless function is not frozen mid-request,
+      // but its outcome never reaches the response: the lead is already
+      // recorded and a failed confirmation must not read to the visitor
+      // as a failed request. A failure is logged and nothing else.
+      if (source === "audit") {
+        await sendAuditConfirmation(body.name, body.email);
+      }
       return NextResponse.json({ ok: true });
     }
 
@@ -237,6 +247,53 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { ok: false, error: "Could not finish. Try again." },
       { status: 500 }
+    );
+  }
+}
+
+// v30.2: the confirmation the audit requester receives. Sent once, after
+// the notification to Anish has been accepted, so a confirmation never
+// goes out for a request that was not recorded. Never throws.
+async function sendAuditConfirmation(
+  name: string,
+  email: string,
+): Promise<void> {
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from:
+          process.env.RESEND_FROM ??
+          "Deeper Designs <no-reply@deeperdesigns.in>",
+        to: [email],
+        reply_to: SUPPORT_EMAIL,
+        subject: AUDIT_SUBJECT,
+        text: auditText(name),
+        html: auditHtml(name),
+      }),
+    });
+    if (!res.ok) {
+      const resendBody = await res.text().catch(() => "");
+      console.error(
+        JSON.stringify({
+          route: "start-your-study",
+          event: "audit_confirmation_failed",
+          status: res.status,
+          body: resendBody.slice(0, 500),
+        }),
+      );
+    }
+  } catch (e) {
+    console.error(
+      JSON.stringify({
+        route: "start-your-study",
+        event: "audit_confirmation_error",
+        error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+      }),
     );
   }
 }
