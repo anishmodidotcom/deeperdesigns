@@ -79,7 +79,7 @@ export default function Quiz() {
     >
       <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.3 }}>
         <Image
-          src="/images/veda-glow/quiz-bg.webp"
+          src="/images/anvaya/quiz-bg.webp"
           alt=""
           role="presentation"
           fill

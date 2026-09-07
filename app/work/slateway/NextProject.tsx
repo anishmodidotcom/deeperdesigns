@@ -15,7 +15,7 @@ export default function NextProject() {
       }}
     >
       <Link
-        href="/work/veda-glow"
+        href="/work/anvaya"
         data-cursor="view"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -54,7 +54,7 @@ export default function NextProject() {
             }}
           >
             <em style={{ fontStyle: "italic", fontWeight: 400 }}>
-              Veda Glow
+              Anvaya Skincare
             </em>
           </h3>
           <p

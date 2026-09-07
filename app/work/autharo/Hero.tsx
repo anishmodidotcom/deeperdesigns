@@ -82,8 +82,8 @@ export default function Hero() {
     >
       <div aria-hidden style={{ position: "absolute", inset: 0 }}>
         <Image
-          src="/images/autobazaar/hero-sedan.webp"
-          alt="AutoBazaar · used sedan on a dealership lot, dawn light raking across the body"
+          src="/images/autharo/hero-sedan.webp"
+          alt="Autharo Motors · used sedan on a dealership lot, dawn light raking across the body"
           fill
           sizes="100vw"
           priority
@@ -93,7 +93,7 @@ export default function Hero() {
           <>
             <video
               ref={videoARef}
-              src="/videos/autobazaar/lot-loop.mp4"
+              src="/videos/autharo/lot-loop.mp4"
               muted
               playsInline
               preload="auto"
@@ -108,7 +108,7 @@ export default function Hero() {
             />
             <video
               ref={videoBRef}
-              src="/videos/autobazaar/lot-loop.mp4"
+              src="/videos/autharo/lot-loop.mp4"
               muted
               playsInline
               preload="auto"
@@ -156,7 +156,7 @@ export default function Hero() {
             marginBottom: 40,
           }}
         >
-          AUTOBAZAAR · DEIRA DUBAI
+          AUTHARO MOTORS · DEIRA DUBAI
         </motion.p>
 
         <motion.h1

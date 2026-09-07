@@ -203,7 +203,7 @@ export default function Dashboard() {
             }}
           >
             <Image
-              src="/images/hivedesk/dashboard-bg-texture.webp"
+              src="/images/nestworks/dashboard-bg-texture.webp"
               alt=""
               role="presentation"
               fill
@@ -250,7 +250,7 @@ export default function Dashboard() {
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  hivedesk
+                  nestworks
                 </span>
                 <span
                   aria-hidden

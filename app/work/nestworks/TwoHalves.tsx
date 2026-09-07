@@ -35,7 +35,7 @@ const HALVES: Half[] = [
   {
     kicker: "TOFU MACHINE",
     heading: "Top of funnel",
-    imageSrc: "/images/hivedesk/member-portrait-1.webp",
+    imageSrc: "/images/nestworks/member-portrait-1.webp",
     imageAlt: "Member working on a laptop in soft window light",
     items: TOFU,
     callout: "Tracks every lead from impression to invoice.",
@@ -44,7 +44,7 @@ const HALVES: Half[] = [
   {
     kicker: "RETENTION ENGINE",
     heading: "Retention",
-    imageSrc: "/images/hivedesk/member-portrait-2.webp",
+    imageSrc: "/images/nestworks/member-portrait-2.webp",
     imageAlt: "Member on a video call inside a glass phone booth",
     items: RETENTION,
     callout: "Knows who is about to leave 30 days before they say so.",

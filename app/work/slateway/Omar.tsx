@@ -150,7 +150,7 @@ export default function Omar() {
             }}
           >
             <Image
-              src="/images/brightpath/omar-portrait.webp"
+              src="/images/slateway/omar-portrait.webp"
               alt="Omar, a 38-year-old former teacher turned tutor in Al Ain, smiling at his desk with neatly stacked notes"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"

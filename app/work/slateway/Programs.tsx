@@ -24,7 +24,7 @@ const PROGRAMS: Program[] = [
     duration: "32 weeks",
     outcome: "Target grade A or A*",
     fee: "AED 280 / hour",
-    image: "/images/brightpath/notebook-detail.webp",
+    image: "/images/slateway/notebook-detail.webp",
     alt: "A close-up of a maths working in a neat student notebook",
   },
   {
@@ -34,7 +34,7 @@ const PROGRAMS: Program[] = [
     duration: "60 weeks",
     outcome: "Target grade A",
     fee: "AED 320 / hour",
-    image: "/images/brightpath/student-studying.webp",
+    image: "/images/slateway/student-studying.webp",
     alt: "A student writing physics notes at a quiet desk in evening light",
   },
   {
@@ -44,7 +44,7 @@ const PROGRAMS: Program[] = [
     duration: "16 weeks",
     outcome: "Target 750+ math",
     fee: "AED 340 / hour",
-    image: "/images/brightpath/exam-papers.webp",
+    image: "/images/slateway/exam-papers.webp",
     alt: "SAT practice papers stacked on a wooden desk with a fountain pen",
   },
 ];

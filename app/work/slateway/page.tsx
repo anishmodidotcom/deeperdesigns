@@ -36,30 +36,30 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "BrightPath · Tutoring Practice · Deeper Designs",
+  title: "Slateway Tutoring · Tutoring Practice · Deeper Designs",
   description:
     "Concept build. A one-man tutoring practice in Al Ain got a parent portal that does the talking. Every parent renews, and there is a waitlist by design.",
   openGraph: {
-    title: "BrightPath · Tutoring Practice · Deeper Designs",
+    title: "Slateway Tutoring · Tutoring Practice · Deeper Designs",
     siteName: "Deeper Designs",
     description: "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
-    url: "/work/brightpath",
+    url: "/work/slateway",
     images: [
       {
-        url: "/api/og/brightpath",
+        url: "/api/og/slateway",
         width: 1200,
         height: 630,
-        alt: "Deeper Designs · /work/brightpath",
+        alt: "Deeper Designs · /work/slateway",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BrightPath · Tutoring Practice · Deeper Designs",
+    title: "Slateway Tutoring · Tutoring Practice · Deeper Designs",
     description: "A one-man IGCSE and SAT tutoring practice in Al Ain. We built Omar a parent portal that does the talking. 100 percent renewals. A waitlist, by design.",
-    images: ["/api/og/brightpath"],
+    images: ["/api/og/slateway"],
   },
-  alternates: { canonical: "/work/brightpath" },
+  alternates: { canonical: "/work/slateway" },
 
 };
 
@@ -79,7 +79,7 @@ const pageStyle = {
   color: "var(--page-text)",
 } as React.CSSProperties;
 
-export default function BrightPathPage() {
+export default function SlatewayPage() {
   return (
     <main id="main"
       className={`${sourceSerif.variable} ${sourceSans.variable}`}
@@ -87,16 +87,16 @@ export default function BrightPathPage() {
     >
       <StructuredData
         data={creativeWorkLd({
-          name: "Brightpath",
+          name: "Slateway Tutoring",
           description: metadata.description as string,
-          slug: "brightpath",
-          image: "/images/brightpath/hero-classroom.webp",
+          slug: "slateway",
+          image: "/images/slateway/hero-classroom.webp",
           archetype: "a neighborhood tutoring practice",
         })}
       />
       <Hero />
       {(() => {
-        const meta = showcaseMetadata("brightpath");
+        const meta = showcaseMetadata("slateway");
         return (
           <PainBlock
             number={meta.number}
@@ -123,11 +123,11 @@ export default function BrightPathPage() {
       <AboutBuild />
       <EditorialPullQuote
         quote="Parents pay for results they cannot see in real time."
-        attribution="BRIGHTPATH · CONCEPT"
-        accent="var(--page-accent-brightpath)"
+        attribution="SLATEWAY TUTORING · CONCEPT"
+        accent="var(--page-accent-slateway)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="brightpath" name="BrightPath" industry="Tutoring Practice" />
+      <ShowcaseAnalytics slug="slateway" name="Slateway Tutoring" industry="Tutoring Practice" />
     </main>
   );
 }

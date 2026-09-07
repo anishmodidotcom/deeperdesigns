@@ -18,6 +18,16 @@ export type PackItem = {
   href: string;
 };
 
+// v32.1: the four segments whose pack is built from work made for a
+// neighbouring trade. They carry their own intro, which says so, and are
+// held to four items so the section claims less and claims it plainly.
+export const ADAPTED_SEGMENTS = new Set([
+  "traders",
+  "importers",
+  "exporters",
+  "packaging",
+]);
+
 export const SEGMENT_PACKS: Record<string, PackItem[]> = {
   manufacturers: [
     {
@@ -83,20 +93,6 @@ export const SEGMENT_PACKS: Record<string, PackItem[]> = {
       line: "Every invoice checked, before you pay it.",
       shot: "/builds/logistics/freight-audit.webp",
       alt: "The Freight Audit screen, built for a fleet and transport operator.",
-      href: "/for/logistics",
-    },
-    {
-      name: "Control Room",
-      line: "Every trip on one screen, no more chasing.",
-      shot: "/builds/logistics/control-room.webp",
-      alt: "The Control Room screen, built for a fleet and transport operator.",
-      href: "/for/logistics",
-    },
-    {
-      name: "EPOD",
-      line: "Proof of delivery, the moment it lands.",
-      shot: "/builds/logistics/epod.webp",
-      alt: "The EPOD screen, built for a fleet and transport operator.",
       href: "/for/logistics",
     },
     {
@@ -225,13 +221,6 @@ export const SEGMENT_PACKS: Record<string, PackItem[]> = {
       href: "/for/logistics",
     },
     {
-      name: "Fuel and Route Watch",
-      line: "The biggest cost line, finally watched.",
-      shot: "/builds/logistics/fuel-watch.webp",
-      alt: "The Fuel and Route Watch screen, built for a fleet and transport operator.",
-      href: "/for/logistics",
-    },
-    {
       name: "Khata and Schemes",
       line: "Udhaar and schemes, chased without you.",
       shot: "/builds/jewellery/khata.webp",
@@ -245,13 +234,6 @@ export const SEGMENT_PACKS: Record<string, PackItem[]> = {
       line: "Every invoice checked, before you pay it.",
       shot: "/builds/logistics/freight-audit.webp",
       alt: "The Freight Audit screen, built for a fleet and transport operator.",
-      href: "/for/logistics",
-    },
-    {
-      name: "EPOD",
-      line: "Proof of delivery, the moment it lands.",
-      shot: "/builds/logistics/epod.webp",
-      alt: "The EPOD screen, built for a fleet and transport operator.",
       href: "/for/logistics",
     },
     {
@@ -304,13 +286,6 @@ export const SEGMENT_PACKS: Record<string, PackItem[]> = {
       shot: "/builds/manufacturing/distributor-portal.webp",
       alt: "The Distributor Portal screen, built for a manufacturer.",
       href: "/for/manufacturing",
-    },
-    {
-      name: "Control Room",
-      line: "Every trip on one screen, no more chasing.",
-      shot: "/builds/logistics/control-room.webp",
-      alt: "The Control Room screen, built for a fleet and transport operator.",
-      href: "/for/logistics",
     },
   ],
 };

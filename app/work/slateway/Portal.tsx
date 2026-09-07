@@ -51,7 +51,7 @@ export default function Portal() {
         }}
       >
         <Image
-          src="/images/brightpath/dashboard-bg-edu.webp"
+          src="/images/slateway/dashboard-bg-edu.webp"
           alt=""
           role="presentation"
           fill

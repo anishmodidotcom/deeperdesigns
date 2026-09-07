@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const INFO: [string, string][] = [
-  ["Client", "HiveDesk · Indiranagar HQ"],
+  ["Client", "Nestworks · Indiranagar HQ"],
   ["Industry", "Coworking"],
   ["Location", "Bangalore"],
   ["Timeline", "22 days"],
@@ -41,8 +41,8 @@ export default function AboutBuild() {
             }}
           >
             <Image
-              src="/images/hivedesk/amit-portrait.webp"
-              alt="Amit, the owner of HiveDesk, standing in his coworking space"
+              src="/images/nestworks/amit-portrait.webp"
+              alt="Amit, the owner of Nestworks, standing in his coworking space"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
               style={{ objectFit: "cover" }}

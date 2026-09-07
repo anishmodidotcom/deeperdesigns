@@ -48,16 +48,16 @@
    * (gallery hover, etc.) can reference a slug's color without
    * re-reading each work page. Matches brand/v1/tokens.css --dd-acc-*. */
   --page-accent-maplelens:        #C8956D;
-  --page-accent-veda-glow:        #D4A574;
+  --page-accent-anvaya:        #D4A574;
   --page-accent-bharat-steel:     #3B82F6;
   --page-accent-meera-wellness:   #5B7F6E;
   --page-accent-zaatar-republic:  #E85D2A;
   --page-accent-studio-noor:      #9B7EC8;
   --page-accent-smilefirst:       #0FA89A;
-  --page-accent-autobazaar:       #22D3EE;
+  --page-accent-autharo:       #22D3EE;
   --page-accent-stumpvision:      #4ADE80;
   --page-accent-oud-and-ember:    #C9A84C;
-  --page-accent-hivedesk:         #8B5CF6;
+  --page-accent-nestworks:         #8B5CF6;
   --page-accent-malabar-spice:    #E89B2D;
   --page-accent-pawstay:          #E8A557;
   --page-accent-sahaja-farms:     #D4A537;
@@ -67,7 +67,7 @@
   --page-accent-kadak-chai:       #C9803A;
   --page-accent-nomad-trails:     #C44536;
   --page-accent-sugar-lane:       #A14A5C;
-  --page-accent-brightpath:       #D4A857;
+  --page-accent-slateway:       #D4A857;
   --page-accent-deeper-content:   #7C6CFF;
   --page-accent-outpost:          #6366F1;
   --page-accent-oviya-studio:     #C4485C;

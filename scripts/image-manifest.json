@@ -64,7 +64,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "hero-space",
     "prompt": "Wide architectural photograph of a modern minimalist coworking space at dawn, soft natural light flooding in through floor-to-ceiling windows, exposed concrete floors, black metal frames, plants, empty Eames chairs and Herman Miller desks arranged neatly, no people, ultra-clean composition, shot on Hasselblad, magazine-quality interior photography, neutral color grade with subtle warm highlights, deep shadows, ultra-sharp, Dwell magazine aesthetic",
     "width": 1920,
@@ -72,7 +72,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "member-portrait-1",
     "prompt": "Editorial portrait photograph of a young Indian woman in her late twenties working at a laptop in a modern coworking space, soft window light from the left, wearing a simple linen shirt, focused expression looking at screen, shallow depth of field, photoreal, Apple keynote aesthetic, neutral cool tones, ultra-sharp on her hands and laptop, slight blur on background showing a hint of the workspace",
     "width": 768,
@@ -80,7 +80,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "member-portrait-2",
     "prompt": "Editorial portrait photograph of a young Indian man in his early thirties on a video call with wireless earbuds in a phone booth, glass walls, soft cool lighting, focused expression, wearing a casual sweater, photoreal, ultra-sharp, modern professional aesthetic, Notion brand photography vibe",
     "width": 768,
@@ -88,7 +88,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "meeting-room",
     "prompt": "Architectural photograph of a small empty meeting room in a modern coworking space, oval wooden table, six tan leather chairs, large screen mounted on wall, soft ambient light from above, exposed concrete, single plant in corner, photoreal, magazine quality, no people, shot from corner showing depth, Dwell magazine aesthetic, neutral cool tones",
     "width": 1536,
@@ -96,7 +96,7 @@
     "aspectRatio": "3:2"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "dashboard-bg-texture",
     "prompt": "Abstract minimalist texture, near-black surface #09090B with extremely subtle violet noise grain, faint geometric grid pattern barely visible, slight gradient from darker top to slightly lighter center, ultra subtle, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
     "width": 1920,
@@ -104,7 +104,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "lounge-detail",
     "prompt": "Detail photograph of a corner of a coworking space lounge, single tan leather Eames lounge chair, small black side table with a ceramic coffee cup and an open MacBook, plant in background, soft afternoon light, photoreal, Kinfolk magazine aesthetic, ultra-sharp, neutral warm tones, no people",
     "width": 1080,
@@ -112,7 +112,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "focus-pod",
     "prompt": "Architectural photograph of a single focus pod or phone booth in a coworking space, glass walls, single chair and small desk inside, soft purple-tinted accent lighting subtly visible inside the pod, surrounded by darker open workspace, photoreal, magazine quality, no people, ultra-clean composition",
     "width": 1024,
@@ -120,7 +120,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "hivedesk",
+    "slug": "nestworks",
     "filename": "amit-portrait",
     "prompt": "Editorial portrait photograph of Amit, an Indian man in his late thirties, owner of a coworking space, standing in his space wearing a simple dark t-shirt, arms slightly crossed, friendly confident expression, soft natural light from window behind him creating slight rim light, slightly out of focus background showing the workspace, photoreal, ultra-sharp on his face, Founders Fund portrait aesthetic, neutral color grade",
     "width": 1024,
@@ -816,7 +816,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "hero-classroom",
     "prompt": "Editorial photograph of a one-on-one tutoring scene: a 14-year-old female student of Middle Eastern descent sitting at a wooden desk with an open math textbook and notebook, an adult male tutor of Middle Eastern descent leaning over from beside her pointing at an equation on a small whiteboard mounted on the desk, both visible in frame, soft warm late-afternoon window light from the left, premium tutoring center interior with shelves blurred in background, photoreal, ultra-detailed, magazine quality, neutral warm color grade, no logos visible, both faces partially visible but focus is on the moment of explanation",
     "width": 1920,
@@ -824,7 +824,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "omar-portrait",
     "prompt": "Editorial portrait of Omar, a 40-year-old Middle Eastern man in the UAE, owner of a premium tutoring center, wearing a smart-casual collared shirt, standing in his center with shelves of books behind him, warm confident smile, soft natural light from a window beside him, photoreal, ultra-sharp on his face, magazine quality, premium founder portrait, neutral warm color grade",
     "width": 1024,
@@ -832,7 +832,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "student-studying",
     "prompt": "Editorial photograph of a young Middle Eastern teenage student studying at a desk in profile, focused expression looking at a laptop screen with notebook open beside her, soft warm window light from the side, premium clean study space, photoreal, ultra-sharp, magazine quality, no other people, neutral warm color grade",
     "width": 1080,
@@ -840,7 +840,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "tutor-detail",
     "prompt": "Editorial photograph of a tutor's hands writing equations on a tablet or whiteboard, only hands and forearms visible, soft directional warm light, photoreal, ultra-detailed, magazine quality, no faces, education editorial aesthetic",
     "width": 1536,
@@ -848,7 +848,7 @@
     "aspectRatio": "3:2"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "notebook-detail",
     "prompt": "Editorial top-down photograph of an open spiral notebook with handwritten math equations and notes, a single fountain pen resting beside it, single soft window light, photoreal, ultra-detailed paper and ink texture, magazine quality, no humans, neutral warm color grade",
     "width": 1080,
@@ -856,7 +856,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "parent-phone",
     "prompt": "Editorial photograph of a Middle Eastern parent (woman in her late thirties) sitting at home looking thoughtfully at a phone, soft natural window light, casual home interior softly out of focus behind her, photoreal, ultra-sharp on her face and the phone, no app UI visible on screen, magazine quality, neutral warm color grade",
     "width": 1024,
@@ -864,7 +864,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "study-group",
     "prompt": "Editorial photograph of three Middle Eastern teenage students seated at a study table together with notebooks and laptops, focused expressions, soft natural light, premium clean classroom setting, photoreal, ultra-sharp, magazine quality, no clear faces (low-angle or over-the-shoulder framing)",
     "width": 1920,
@@ -872,7 +872,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "exam-papers",
     "prompt": "Editorial top-down photograph of stacked exam papers and test booklets on a wooden desk, a red pen and a green highlighter beside them, soft warm overhead light, photoreal, ultra-detailed paper texture, magazine quality, no humans, neutral warm color grade",
     "width": 1080,
@@ -880,7 +880,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "classroom-wide",
     "prompt": "Architectural photograph of a premium minimalist tutoring center interior, several wooden desks with single laptops, large windows with natural light, plants, no humans, photoreal, ultra-detailed, magazine quality, premium education editorial aesthetic",
     "width": 1920,
@@ -888,7 +888,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "brightpath",
+    "slug": "slateway",
     "filename": "dashboard-bg-edu",
     "prompt": "Abstract minimalist texture, deep education navy background with extremely subtle pattern of mathematical equations and graphs barely visible as line work, designed to sit behind UI elements as a backdrop, no recognizable subjects, just texture",
     "width": 1920,
@@ -896,7 +896,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "hero-bottle",
     "prompt": "Editorial luxury Ayurvedic skincare product photograph, a single tall amber glass dropper bottle with a black cap and minimalist label, sitting on a dark warm brown surface, soft single light from upper left creating dramatic shadow, fresh marigold flowers and a sprig of tulsi leaves arranged beside it, photoreal, ultra-detailed glass and oil texture, magazine quality, no humans, deep warm color grade, premium beauty editorial aesthetic",
     "width": 1080,
@@ -904,7 +904,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "priya-portrait",
     "prompt": "Editorial portrait of Priya, a 32-year-old Indian female founder of an Ayurvedic skincare brand, sitting in her Jaipur studio, wearing a soft cream linen kurta, holding a small amber dropper bottle, soft warm window light from the side, looking thoughtfully off-camera with a slight smile, traditional Indian wooden interior blurred in background with brass bowls and dried herbs, photoreal, ultra-sharp on her face, magazine quality, warm color grade, founder portrait aesthetic",
     "width": 1080,
@@ -912,7 +912,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "ingredient-turmeric",
     "prompt": "Macro photograph of fresh turmeric roots arranged on a dark slate surface, vivid orange-yellow color, water droplets visible on the skin, single dramatic side light, photoreal, ultra-detailed root texture, magazine quality, no humans, deep warm color grade",
     "width": 1024,
@@ -920,7 +920,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "ingredient-sandalwood",
     "prompt": "Macro photograph of sandalwood shavings and a small sandalwood log on a dark warm brown surface, soft cream-colored wood with deep grain, single dramatic side light, photoreal, ultra-detailed wood texture and aromatic dust, magazine quality, no humans, deep warm color grade",
     "width": 1024,
@@ -928,7 +928,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "ingredient-rose",
     "prompt": "Macro photograph of fresh damask rose petals piled on a dark warm brown surface, deep pink-red with dew, single dramatic side light, photoreal, ultra-detailed petal texture, magazine quality, no humans, deep warm color grade",
     "width": 1024,
@@ -936,7 +936,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "ingredient-neem",
     "prompt": "Macro photograph of fresh neem leaves on a dark warm brown surface, deep green with serrated edges, single dramatic side light, photoreal, ultra-detailed leaf texture and veins, magazine quality, no humans, deep warm color grade",
     "width": 1024,
@@ -944,7 +944,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "product-line",
     "prompt": "Editorial luxury skincare product line photograph, six amber glass dropper bottles and jars of different sizes arranged in a curated row on a dark warm brown surface, soft single light from upper left, minimalist labels, photoreal, ultra-detailed glass and label texture, magazine quality, no humans, deep warm color grade, premium beauty editorial aesthetic",
     "width": 1920,
@@ -952,7 +952,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "hands-applying",
     "prompt": "Close-up editorial photograph of a woman's hands applying golden oil to her cheek, soft warm window light, hands in soft focus, single dropper bottle visible in foreground, photoreal, ultra-detailed skin and oil texture, magazine quality, no face visible (cropped at chin), deep warm color grade, premium beauty aesthetic",
     "width": 1080,
@@ -960,7 +960,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "ayurvedic-kitchen",
     "prompt": "Editorial photograph of a traditional Ayurvedic preparation kitchen, brass bowls of herbs and oils on a dark wooden table, copper pots in soft focus background, dried botanicals hanging, soft warm afternoon light, photoreal, ultra-detailed brass and wood texture, magazine quality, no humans, deep warm color grade",
     "width": 1920,
@@ -968,7 +968,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "veda-glow",
+    "slug": "anvaya",
     "filename": "quiz-bg",
     "prompt": "Editorial atmospheric photograph of a single amber dropper bottle on a dark warm brown wood surface with rich negative space around it, soft directional warm light, photoreal, ultra-detailed glass and wood grain, magazine quality, no humans, designed to sit behind a quiz UI overlay with lots of empty space, deep warm color grade",
     "width": 1920,
@@ -1376,7 +1376,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "hero-sedan",
     "prompt": "Editorial automotive photograph of a luxury black sedan parked at night in a Dubai dealership lot in Deira, electric cyan neon reflections on the wet polished hood, single dramatic side light, photoreal, ultra-detailed paint and metal texture, magazine quality, no humans, midnight cinematic color grade, Carwow editorial aesthetic",
     "width": 1920,
@@ -1384,7 +1384,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "dealership-lot",
     "prompt": "Editorial wide-angle photograph of a Deira Dubai used car dealership lot at dusk, rows of polished sedans and SUVs parked in formation, warm Dubai skyline visible in distance, electric cyan accent lights along the lot edge, single dramatic dusk light, photoreal, ultra-detailed automotive paint and city texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1920,
@@ -1392,7 +1392,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "tariq-portrait",
     "prompt": "Editorial portrait of Tariq, a 35-year-old Pakistani-Emirati used car dealership owner in Dubai, wearing a crisp dark grey blazer over a black tshirt, standing in his dealership lot at night with cars parked behind him, electric cyan neon reflection on his blazer, single dramatic light, confident expression with a slight smile, photoreal, ultra-sharp on his face, magazine quality, midnight cinematic color grade, Dubai dealership owner portrait aesthetic",
     "width": 1080,
@@ -1400,15 +1400,15 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "car-interior",
-    "prompt": "Editorial macro photograph of a luxury sedan interior, brown leather steering wheel and dashboard with the AutoBazaar logo on the digital display, single dramatic side light, photoreal, ultra-detailed leather and stitching texture, magazine quality, no humans, midnight cinematic color grade",
+    "prompt": "Editorial macro photograph of a luxury sedan interior, brown leather steering wheel and dashboard with the Autharo Motors logo on the digital display, single dramatic side light, photoreal, ultra-detailed leather and stitching texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1080,
     "height": 1350,
     "aspectRatio": "4:5"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "listing-mockup",
     "prompt": "Editorial photograph of a smartphone resting on a car key fob and a printed Dubizzle-style car listing page on a dark surface, the phone screen showing a clean used-car listing mockup with photos and price, single warm cyan-tinted light, photoreal, ultra-detailed screen and paper texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1080,
@@ -1416,7 +1416,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "test-drive",
     "prompt": "Editorial photograph of a customer in the drivers seat of a luxury sedan during a test drive at dusk, viewed from outside through the open window at an angle so no face is visible, only hands on the steering wheel and shoulders, electric cyan reflection on the windshield, photoreal, ultra-detailed leather and skin texture, magazine quality, no face visible, midnight cinematic color grade",
     "width": 1080,
@@ -1424,7 +1424,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "price-tag",
     "prompt": "Macro photograph of a thick paper price tag tied to a car key fob with a piece of twine, the tag handwritten with a price in AED, on a polished black metal car surface, single dramatic side light with electric cyan tint, photoreal, ultra-detailed paper and metal texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1024,
@@ -1432,7 +1432,7 @@
     "aspectRatio": "1:1"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "key-handover",
     "prompt": "Editorial photograph of a car key fob being handed from one hand to another, both partial hands only with the key suspended in mid-handover, blurred dealership lot at night behind, electric cyan light reflection, photoreal, ultra-detailed key and skin texture, magazine quality, no faces visible, midnight cinematic color grade",
     "width": 1080,
@@ -1440,7 +1440,7 @@
     "aspectRatio": "4:5"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "lot-grid-backdrop",
     "prompt": "Editorial wide-angle aerial photograph of an organized used car dealership lot at night with 18 polished cars parked in a neat grid pattern, electric cyan light strips marking each parking row, photoreal, ultra-detailed automotive paint texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1920,
@@ -1448,7 +1448,7 @@
     "aspectRatio": "16:9"
   },
   {
-    "slug": "autobazaar",
+    "slug": "autharo",
     "filename": "speedometer-macro",
     "prompt": "Macro photograph of a luxury sedan dashboard speedometer at night, illuminated needle and digital readout glowing softly with electric cyan tint, soft focus on numerical markings, photoreal, ultra-detailed glass and chrome texture, magazine quality, no humans, midnight cinematic color grade",
     "width": 1080,

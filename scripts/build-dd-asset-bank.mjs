@@ -77,10 +77,10 @@ const BUILD_PHOTO = [
 // Excluded per v24 scope: deeper-content, outpost, oviya-studio (sub-brands,
 // separate banks later), about (site photos), sidonstage (off-limits).
 const SHOWCASE_SLUGS = [
-  "autobazaar", "bharat-steel", "brightpath", "earth-and-fire", "hivedesk",
+  "autharo", "bharat-steel", "slateway", "earth-and-fire", "nestworks",
   "kadak-chai", "karan-legal", "malabar-spice", "maplelens", "meera-wellness",
   "nomad-trails", "oud-and-ember", "pawstay", "sahaja-farms", "smilefirst",
-  "studio-noor", "stumpvision", "sugar-lane", "veda-glow", "zaatar-republic",
+  "studio-noor", "stumpvision", "sugar-lane", "anvaya", "zaatar-republic",
   "zara-fitness",
 ];
 

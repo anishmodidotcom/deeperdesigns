@@ -9,25 +9,25 @@ const INGREDIENTS = [
   {
     name: "Turmeric",
     note: "Anti-inflammatory · brightening",
-    src: "/images/veda-glow/ingredient-turmeric.webp",
+    src: "/images/anvaya/ingredient-turmeric.webp",
     alt: "Macro photograph of fresh turmeric roots",
   },
   {
     name: "Sandalwood",
     note: "Calming · scent grounding",
-    src: "/images/veda-glow/ingredient-sandalwood.webp",
+    src: "/images/anvaya/ingredient-sandalwood.webp",
     alt: "Macro photograph of sandalwood shavings",
   },
   {
     name: "Damask Rose",
     note: "Hydrating · skin softening",
-    src: "/images/veda-glow/ingredient-rose.webp",
+    src: "/images/anvaya/ingredient-rose.webp",
     alt: "Macro photograph of fresh damask rose petals",
   },
   {
     name: "Neem",
     note: "Antibacterial · clarifying",
-    src: "/images/veda-glow/ingredient-neem.webp",
+    src: "/images/anvaya/ingredient-neem.webp",
     alt: "Macro photograph of fresh neem leaves",
   },
 ];
@@ -54,8 +54,8 @@ export default function Founder() {
             }}
           >
             <Image
-              src="/images/veda-glow/priya-portrait.webp"
-              alt="Priya, the founder of Veda Glow, in her Jaipur studio holding a dropper bottle"
+              src="/images/anvaya/priya-portrait.webp"
+              alt="Priya, the founder of Anvaya Skincare, in her Jaipur studio holding a dropper bottle"
               fill
               sizes="(min-width: 1024px) 40vw, 90vw"
               style={{ objectFit: "cover" }}

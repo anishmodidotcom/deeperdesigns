@@ -26,30 +26,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HiveDesk · Member Hub · Deeper Designs",
+  title: "Nestworks · Member Hub · Deeper Designs",
   description:
     "Concept build. A coworking space stopped losing members it never saw leaving. One dashboard runs the floor and flags churn thirty days early.",
   openGraph: {
-    title: "HiveDesk · Member Hub · Deeper Designs",
+    title: "Nestworks · Member Hub · Deeper Designs",
     siteName: "Deeper Designs",
     description: "A coworking operating system that runs the floor, profiles every member, and tells the owner where the revenue actually leaks.",
-    url: "/work/hivedesk",
+    url: "/work/nestworks",
     images: [
       {
-        url: "/api/og/hivedesk",
+        url: "/api/og/nestworks",
         width: 1200,
         height: 630,
-        alt: "Deeper Designs · /work/hivedesk",
+        alt: "Deeper Designs · /work/nestworks",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HiveDesk · Member Hub · Deeper Designs",
+    title: "Nestworks · Member Hub · Deeper Designs",
     description: "A coworking operating system that runs the floor, profiles every member, and tells the owner where the revenue actually leaks.",
-    images: ["/api/og/hivedesk"],
+    images: ["/api/og/nestworks"],
   },
-  alternates: { canonical: "/work/hivedesk" },
+  alternates: { canonical: "/work/nestworks" },
 
 };
 
@@ -70,21 +70,21 @@ const pageStyle = {
   color: "var(--page-text)",
 } as React.CSSProperties;
 
-export default function HiveDeskPage() {
+export default function NestworksPage() {
   return (
     <main id="main" className={inter.variable} style={pageStyle}>
       <StructuredData
         data={creativeWorkLd({
-          name: "Hivedesk",
+          name: "Nestworks",
           description: metadata.description as string,
-          slug: "hivedesk",
-          image: "/images/hivedesk/hero-space.webp",
+          slug: "nestworks",
+          image: "/images/nestworks/hero-space.webp",
           archetype: "a neighborhood coworking space",
         })}
       />
       <Hero />
       {(() => {
-        const meta = showcaseMetadata("hivedesk");
+        const meta = showcaseMetadata("nestworks");
         return (
           <PainBlock
             number={meta.number}
@@ -113,11 +113,11 @@ export default function HiveDeskPage() {
       <AboutBuild />
       <EditorialPullQuote
         quote="He was running it on Excel and goodwill, chasing renewals on WhatsApp the day they lapsed."
-        attribution="HIVEDESK · CONCEPT"
-        accent="var(--page-accent-hivedesk)"
+        attribution="NESTWORKS · CONCEPT"
+        accent="var(--page-accent-nestworks)"
       />
       <NextProject />
-      <ShowcaseAnalytics slug="hivedesk" name="HiveDesk" industry="Coworking Space" />
+      <ShowcaseAnalytics slug="nestworks" name="Nestworks" industry="Coworking Space" />
     </main>
   );
 }

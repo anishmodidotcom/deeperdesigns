@@ -56,7 +56,7 @@ export default function Hero() {
               marginBottom: 28,
             }}
           >
-            HIVEDESK
+            NESTWORKS
           </motion.p>
 
           <motion.h1
@@ -203,7 +203,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/images/hivedesk/hero-space.webp"
+            src="/images/nestworks/hero-space.webp"
             alt="Minimalist coworking floor at dawn with empty desks and natural light"
             fill
             priority

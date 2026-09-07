@@ -191,7 +191,7 @@ export default function AboutBuild() {
               }}
             >
               <Image
-                src="/images/brightpath/tutor-detail.webp"
+                src="/images/slateway/tutor-detail.webp"
                 alt="A close-up of Omar&rsquo;s hand showing a worked example to a student in a notebook"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
@@ -208,8 +208,8 @@ export default function AboutBuild() {
               }}
             >
               <Image
-                src="/images/brightpath/parent-phone.webp"
-                alt="A parent looking at the BrightPath portal on their phone while sitting at a kitchen table"
+                src="/images/slateway/parent-phone.webp"
+                alt="A parent looking at the Slateway Tutoring portal on their phone while sitting at a kitchen table"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 style={{ objectFit: "cover" }}

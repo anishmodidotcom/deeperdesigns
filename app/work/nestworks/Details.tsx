@@ -14,19 +14,19 @@ type Card = {
 
 const CARDS: Card[] = [
   {
-    src: "/images/hivedesk/meeting-room.webp",
+    src: "/images/nestworks/meeting-room.webp",
     alt: "Empty modern meeting room with oval wooden table and tan leather chairs",
     caption: "Room booking that takes 3 taps, not a Slack message.",
     ratio: "3 / 2",
   },
   {
-    src: "/images/hivedesk/focus-pod.webp",
+    src: "/images/nestworks/focus-pod.webp",
     alt: "Glass focus pod with soft violet accent lighting inside",
     caption: "Focus pods that show booked or free in the floor map.",
     ratio: "4 / 5",
   },
   {
-    src: "/images/hivedesk/lounge-detail.webp",
+    src: "/images/nestworks/lounge-detail.webp",
     alt: "Eames lounge chair, side table, MacBook and coffee cup in soft afternoon light",
     caption: "Coffee bar inventory tracked so you never run out at 4pm.",
     ratio: "1 / 1",

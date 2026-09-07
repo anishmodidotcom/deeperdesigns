@@ -7,16 +7,16 @@ export const SLUG_ACCENTS: Record<string, string> = {
   "deeper-content":   "#7C6CFF",
   "outpost":          "#6366F1",
   "oviya-studio":     "#C4485C",
-  "veda-glow":        "#D4A574",
+  "anvaya":        "#D4A574",
   "bharat-steel":     "#3B82F6",
   "meera-wellness":   "#5B7F6E",
   "zaatar-republic":  "#E85D2A",
   "studio-noor":      "#9B7EC8",
   "smilefirst":       "#0FA89A",
-  "autobazaar":       "#22D3EE",
+  "autharo":       "#22D3EE",
   "stumpvision":      "#4ADE80",
   "oud-and-ember":    "#C9A84C",
-  "hivedesk":         "#8B5CF6",
+  "nestworks":         "#8B5CF6",
   "malabar-spice":    "#E89B2D",
   "pawstay":          "#E8A557",
   "sahaja-farms":     "#D4A537",
@@ -26,7 +26,7 @@ export const SLUG_ACCENTS: Record<string, string> = {
   "kadak-chai":       "#C9803A",
   "nomad-trails":     "#C44536",
   "sugar-lane":       "#A14A5C",
-  "brightpath":       "#D4A857",
+  "slateway":       "#D4A857",
 };
 
 // Translucent overlay derived from the accent. Used as the 8%
