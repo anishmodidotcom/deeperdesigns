@@ -88,7 +88,7 @@ export default function Numbers() {
     {
       ref: agencyRef,
       init: "AED 0",
-      label: "Paid to a dev agency. Built end-to-end by DD.",
+      label: "Paid to a dev agency. Built entirely by DD.",
     },
     { ref: revenueRef, init: "+0X", label: "Revenue vs the PDF era" },
   ];

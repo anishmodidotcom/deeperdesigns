@@ -2,7 +2,7 @@
 
 We build custom tools that think, decide, and answer like the founder would, for ambitious Indian businesses.
 
-We are a deliberately small studio working out of Delhi. We sit with founders, find the one bottleneck eating their week, and ship a tool that fixes it. Sometimes that tool is a quote-time engine. Sometimes it is a catalog generator. Sometimes it is the entire brand from scratch. We do not pitch templates and we do not bill by the hour.
+We are a deliberately small team working out of Delhi. We sit with founders, find the one bottleneck eating their week, and ship a tool that fixes it. Sometimes that tool is a quote-time engine. Sometimes it is a catalog generator. Sometimes it is the entire brand from scratch. We do not pitch templates and we do not bill by the hour.
 
 Brand-tight social creative, ops dashboards that read like an inbox, lead qualifiers that sound like the founder, and the occasional whole product. From ₹25,000.
 
