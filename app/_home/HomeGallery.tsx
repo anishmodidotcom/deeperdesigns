@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { SHOWCASES } from "@/lib/showcases";
+import {
+  SEGMENT_KINDS,
+  SEGMENT_LABELS,
+  SHOWCASES,
+  type SegmentKind,
+} from "@/lib/showcases";
 import ProductFragment from "./ProductFragment";
 
 const OBJECTIVES = ["Customer Experience", "Operations", "Growth", "Founder Overload"];
@@ -18,9 +23,20 @@ const INDUSTRIES = [
   "Agriculture / Farms",
 ];
 
+// v31: the kinds of business that actually have a study behind them. A
+// chip for a segment with nothing to show would filter to an empty grid.
+const KINDS_WITH_WORK: SegmentKind[] = SEGMENT_KINDS.filter((k) =>
+  SHOWCASES.some((s) => (s.segments ?? []).includes(k)),
+);
+
 export default function HomeGallery() {
   const [objectives, setObjectives] = useState<string[]>([]);
   const [industries, setIndustries] = useState<string[]>([]);
+  // v31: the grid opens on the kind-of-business axis with every B2B kind
+  // selected, so the first thing a manufacturer or a trader sees is work
+  // for a business like theirs. The consumer studies are one click away:
+  // clearing a chip, or picking an industry, brings them back.
+  const [kinds, setKinds] = useState<string[]>(KINDS_WITH_WORK);
 
   const toggle = (list: string[], set: (v: string[]) => void, val: string) => {
     set(list.includes(val) ? list.filter(x => x !== val) : [...list, val]);
@@ -34,11 +50,14 @@ export default function HomeGallery() {
       const indMatch =
         industries.length === 0 ||
         (s.industries || []).some((i) => industries.includes(i));
-      return objMatch && indMatch;
+      const kindMatch =
+        kinds.length === 0 || (s.segments || []).some((k) => kinds.includes(k));
+      return objMatch && indMatch && kindMatch;
     });
-  }, [objectives, industries]);
+  }, [objectives, industries, kinds]);
 
-  const hasFilters = objectives.length > 0 || industries.length > 0;
+  const hasFilters =
+    objectives.length > 0 || industries.length > 0 || kinds.length > 0;
 
   return (
     <section id="gallery" style={{ padding: "var(--section-py) 0" }}>
@@ -53,7 +72,51 @@ export default function HomeGallery() {
           Pick a lane, or scroll. We have built tools for every kind of business.
         </p>
 
+        {/* v31: the count and the affordance, directly above the grid. */}
+        <p
+          className="mono"
+          style={{
+            color: "var(--dd-eyebrow-on-dark)",
+            marginBottom: "24px",
+            letterSpacing: "0.08em",
+          }}
+        >
+          Twenty-four systems built. Filter by the kind of business you run.
+        </p>
+
         {/* Filter rows */}
+        <div style={{ marginBottom: "16px" }}>
+          <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "10px" }}>BY KIND OF BUSINESS</p>
+          <div className="filter-row-wrap">
+          <div style={{ display: "flex", gap: "8px", paddingBottom: "6px", scrollbarWidth: "none" }} className="filter-row">
+            {KINDS_WITH_WORK.map(k => {
+              const active = kinds.includes(k);
+              return (
+                <button
+                  type="button"
+                  key={k}
+                  aria-pressed={active}
+                  onClick={() => toggle(kinds, setKinds, k)}
+                  style={{
+                    padding: "8px 16px",
+                    borderRadius: "999px",
+                    fontSize: "13px",
+                    whiteSpace: "nowrap",
+                    border: "1px solid",
+                    borderColor: active ? "var(--accent)" : "var(--border-strong)",
+                    background: active ? "var(--accent)" : "transparent",
+                    color: active ? "#0A0A0A" : "var(--fg-muted)",
+                    transition: "all 200ms",
+                  }}
+                >
+                  {SEGMENT_LABELS[k]}
+                </button>
+              );
+            })}
+          </div>
+          </div>
+        </div>
+
         <div style={{ marginBottom: "16px" }}>
           <p className="mono" style={{ color: "var(--fg-dim)", marginBottom: "10px" }}>BY OBJECTIVE</p>
           <div className="filter-row-wrap">
