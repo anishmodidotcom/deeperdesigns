@@ -42,6 +42,8 @@ const TIERS: {
     body: "A quiz. A calculator. A small dashboard. One focused tool that quietly removes a daily headache.",
     examples: [
       "A collections reminder system that chases every unpaid invoice on WhatsApp with the payment link included.",
+      "A WhatsApp assistant that answers enquiries and books appointments while you sleep.",
+      "An owner dashboard that pulls the day's revenue, orders and outstanding into one screen.",
     ],
   },
   {
@@ -51,6 +53,8 @@ const TIERS: {
     body: "Configurators, AI tools, brand sites built to convert. The kind of work that turns visitors into buyers.",
     examples: [
       "A quotation engine for a manufacturer: specification in, branded GST quote out in minutes, with approvals.",
+      "A dealer ordering portal where your buyers see their own rates and credit limit and place orders themselves.",
+      "A job-work tracker for material sent out and returned, with challans and conversion charges reconciled.",
     ],
   },
   {
@@ -60,6 +64,8 @@ const TIERS: {
     body: "A portal and a dashboard. A site, a booking flow, and an inventory brain. Multiple parts, designed to work together.",
     examples: [
       "A distributor's order-to-cash: retailer ordering portal, dispatch tracking, scheme reconciliation and an owner dashboard, connected to Tally.",
+      "An exporter's document engine: shipping documents generated from data entered once, with obligation dates tracked.",
+      "A field sales system with offline order booking, beat plans and a live view of what the team did today.",
     ],
   },
   {
@@ -69,6 +75,8 @@ const TIERS: {
     body: "The operating system for a business. Brand, site, internal tools, customer tools, the works.",
     examples: [
       "A manufacturer's enquiry-to-invoice: lead filter, quotation, production job cards, job-work challans, dispatch and collections, with the owner's numbers on one screen.",
+      "A distributor's full stack: retailer ordering, secondary sales visibility, scheme reconciliation, collections and dispatch, connected to Tally.",
+      "A packaging unit's estimation-to-dispatch: per-job costing by material and wastage, a die library, scheduling and invoicing.",
     ],
   },
 ];
