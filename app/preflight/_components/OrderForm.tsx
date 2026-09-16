@@ -10,6 +10,10 @@ import {
   checkoutName,
 } from "@/lib/preflight";
 import { withUtm } from "@/lib/preflight-utm";
+import {
+  type RazorpaySuccess,
+  loadCheckoutScript,
+} from "@/lib/checkout/razorpay-client";
 import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
 import BillingFields, {
   type BillingErrors,
@@ -32,88 +36,11 @@ import {
 // network error all land in the same inline message above the button with
 // every field still filled in.
 
-const CHECKOUT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
 
 const FAILURE_MESSAGE =
   "The payment did not go through and nothing was charged. Try again, or message us on WhatsApp and we will sort it there.";
 
-type RazorpaySuccess = {
-  razorpay_order_id: string;
-  razorpay_payment_id: string;
-  razorpay_signature: string;
-};
-
-type RazorpayOptions = {
-  key: string;
-  amount: number;
-  currency: string;
-  name: string;
-  description: string;
-  order_id: string;
-  prefill: { name: string; email: string };
-  theme: { color: string };
-  handler: (response: RazorpaySuccess) => void;
-  modal: { ondismiss: () => void };
-};
-
-type RazorpayInstance = {
-  open: () => void;
-  on: (event: string, handler: (payload: unknown) => void) => void;
-};
-
-declare global {
-  interface Window {
-    Razorpay?: new (options: RazorpayOptions) => RazorpayInstance;
-  }
-}
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// One shared attempt, cached, so the warm-up on mount and the load on
-// submit are the same promise rather than two racing script tags. Two
-// things this protects against, both seen in testing: a second call
-// attaching listeners to a tag that already failed (they never fire, and
-// the button stays disabled forever), and a request that neither loads
-// nor errors, which a network in the middle can produce. The timeout
-// resolves false so the failure path runs instead of hanging.
-const SCRIPT_TIMEOUT_MS = 12_000;
-let checkoutLoad: Promise<boolean> | null = null;
-
-function loadCheckoutScript(): Promise<boolean> {
-  if (typeof window === "undefined") return Promise.resolve(false);
-  if (window.Razorpay) return Promise.resolve(true);
-  if (checkoutLoad) return checkoutLoad;
-
-  checkoutLoad = new Promise<boolean>((resolve) => {
-    let settled = false;
-    const finish = (ok: boolean) => {
-      if (settled) return;
-      settled = true;
-      // A failed attempt is not cached: the visitor may be on a flaky
-      // connection and the retry should get a fresh script tag.
-      if (!ok) checkoutLoad = null;
-      resolve(ok);
-    };
-
-    const timer = window.setTimeout(() => finish(false), SCRIPT_TIMEOUT_MS);
-    const done = (ok: boolean) => {
-      window.clearTimeout(timer);
-      finish(ok);
-    };
-
-    const script = document.createElement("script");
-    script.src = CHECKOUT_SRC;
-    script.async = true;
-    script.onload = () => done(Boolean(window.Razorpay));
-    script.onerror = () => {
-      script.remove();
-      done(false);
-    };
-    document.head.appendChild(script);
-  });
-
-  return checkoutLoad;
-}
 
 const MONO = "var(--font-geist-mono), monospace";
 

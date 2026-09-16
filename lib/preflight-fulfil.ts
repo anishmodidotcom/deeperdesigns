@@ -184,8 +184,18 @@ function notificationBodies(
           "",
         ]
       : []),
-    `Send the ${product.name} package to this address within 24 hours, then`,
-    "fill sent_at and sent_by on the sheet row.",
+    // v33: what to do next depends on what was sold. A scheduling
+    // product has no package, so the file instruction would be wrong.
+    // This is the seller's own ops line, not customer-facing copy.
+    ...(product.deliveryTemplate === "scheduling"
+      ? [
+          "The buyer has been emailed their confirmation and the booking",
+          "link. Schedule the session with them if they do not book first.",
+        ]
+      : [
+          `Send the ${product.name} package to this address within 24 hours, then`,
+          "fill sent_at and sent_by on the sheet row.",
+        ]),
   ];
   const text = lines.join("\n");
   const html = `<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.6;color:#111"><pre style="margin:0;font:inherit;white-space:pre-wrap">${lines
