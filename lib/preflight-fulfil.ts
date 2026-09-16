@@ -19,7 +19,6 @@
 // second delivery.
 
 import { kv } from "@vercel/kv";
-import { NOTIFY_EMAIL } from "@/lib/contact";
 import { formatInr } from "@/lib/preflight";
 import {
   PRODUCT_CURRENCY,
@@ -208,7 +207,7 @@ async function sendNotification(
     },
     body: JSON.stringify({
       from: process.env.RESEND_FROM ?? "Deeper Designs <no-reply@deeperdesigns.in>",
-      to: [NOTIFY_EMAIL],
+      to: [product.notifyEmail],
       reply_to: fields.email,
       subject: `${product.name.toUpperCase()} SALE · ₹${formatInr(product.priceInr)} · ${fields.name}`,
       text,
@@ -268,7 +267,7 @@ async function notifyAnish(
       log("error", "notification_failed", {
         payment_id: fields.paymentId,
         order_id: fields.orderId,
-        to: NOTIFY_EMAIL,
+        to: product.notifyEmail,
         attempts,
         error: reason,
         // The row is already on the sheet, so the sale is recoverable by
