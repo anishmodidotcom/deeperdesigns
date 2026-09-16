@@ -9,8 +9,11 @@
 // message rather than an empty body.
 
 import { WHATSAPP_NUMBER } from "@/lib/contact";
+import type { BillingDetails } from "@/lib/gstin";
 import {
   accentRow,
+  billingRows,
+  billingText,
   buttonRow,
   eyebrowRow,
   footerRows,
@@ -48,7 +51,11 @@ const BODY_REFRESH =
   "Refreshes ship for 12 months as CVEs, standards and framework versions move. You will get an email each time.";
 const ACCENT = "Audit your product before your users do.";
 
-export function deliveryHtml(name: string, link: string): string {
+export function deliveryHtml(
+  name: string,
+  link: string,
+  billing: BillingDetails = { companyName: "", companyAddress: "", gstin: "" },
+): string {
   return shell({
     title: DELIVERY_SUBJECT,
     preheader: "Your download link is inside, valid for seven days.",
@@ -67,6 +74,7 @@ export function deliveryHtml(name: string, link: string): string {
       rule(),
       paragraph(BODY_REFRESH, 14),
       accentRow(ACCENT),
+      billingRows(billing),
       footerRows(FOOTER_LINES),
     ].join("\n"),
   });
@@ -74,7 +82,11 @@ export function deliveryHtml(name: string, link: string): string {
 
 // The same message as text. Sent as the alternative part, so a text-only
 // client shows the real content and the link stays clickable.
-export function deliveryText(name: string, link: string): string {
+export function deliveryText(
+  name: string,
+  link: string,
+  billing: BillingDetails = { companyName: "", companyAddress: "", gstin: "" },
+): string {
   return `YOUR PREFLIGHT DOWNLOAD
 
 Thank you, ${name}. Preflight is ready.
@@ -93,7 +105,7 @@ ${BODY_START}
 ${BODY_REFRESH}
 
 ${ACCENT}
-
+${billingText(billing)}
 ${FOOTER_LINES.join("\n")}
 `;
 }

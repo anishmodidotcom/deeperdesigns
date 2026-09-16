@@ -11,6 +11,15 @@ import {
 } from "@/lib/preflight";
 import { withUtm } from "@/lib/preflight-utm";
 import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
+import BillingFields, {
+  type BillingErrors,
+} from "@/components/checkout/BillingFields";
+import {
+  EMPTY_BILLING,
+  GSTIN_ERROR,
+  type BillingDetails,
+  isValidGstin,
+} from "@/lib/gstin";
 
 // Section 09's form and Razorpay Standard Checkout (v29).
 //
@@ -126,6 +135,8 @@ export type OrderFormProduct = {
   description: string;
   priceInr: number;
   thankYouPath: string;
+  /** v33: whether to offer the optional GST invoice control. */
+  collectGstDetails: boolean;
 };
 
 export default function OrderForm({ product }: { product: OrderFormProduct }) {
@@ -162,6 +173,11 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
   const [errors, setErrors] = useState<{ name?: string; email?: string; note?: string }>({});
+  // v33: the optional GST invoice details. Closed by default, so a buyer
+  // who ignores it posts exactly what they posted before.
+  const [gstOpen, setGstOpen] = useState(false);
+  const [billing, setBilling] = useState<BillingDetails>(EMPTY_BILLING);
+  const [billingErrors, setBillingErrors] = useState<BillingErrors>({});
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -187,7 +203,21 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
     if (note.length > PREFLIGHT_FIELD_MAX.note)
       next.note = `Keep this under ${PREFLIGHT_FIELD_MAX.note} characters.`;
     setErrors(next);
-    return Object.keys(next).length === 0;
+
+    // The billing block is validated separately, so nothing about the
+    // three fields above changes. When the control is closed there is
+    // nothing to check; when it is open all three are required.
+    const bErr: BillingErrors = {};
+    if (gstOpen) {
+      if (!billing.companyName.trim())
+        bErr.companyName = "Enter the company name for the invoice.";
+      if (!billing.companyAddress.trim())
+        bErr.companyAddress = "Enter the company address for the invoice.";
+      if (!isValidGstin(billing.gstin)) bErr.gstin = GSTIN_ERROR;
+    }
+    setBillingErrors(bErr);
+
+    return Object.keys(next).length === 0 && Object.keys(bErr).length === 0;
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -219,6 +249,9 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           name: name.trim(),
           email: email.trim(),
           note: withUtm(note.trim(), RAZORPAY_NOTE_MAX),
+          company_name: gstOpen ? billing.companyName.trim() : "",
+          company_address: gstOpen ? billing.companyAddress.trim() : "",
+          gstin: gstOpen ? billing.gstin.trim() : "",
         }),
       });
       const order = (await orderRes.json()) as {
@@ -403,6 +436,32 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           </p>
         ) : null}
       </div>
+
+      {product.collectGstDetails ? (
+        <BillingFields
+          open={gstOpen}
+          onOpenChange={setGstOpen}
+          value={billing}
+          onChange={setBilling}
+          errors={billingErrors}
+          inputClassName="pf-input"
+          labelStyle={labelStyle}
+          errorStyle={{
+            margin: 0,
+            fontSize: 15,
+            lineHeight: 1.4,
+            color: "#E5847C",
+          }}
+          toggleStyle={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            fontSize: 14,
+            color: "#A8A8A8",
+            cursor: "pointer",
+          }}
+        />
+      ) : null}
 
       <output
         id={statusId}

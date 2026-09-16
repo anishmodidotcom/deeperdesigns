@@ -5,6 +5,8 @@ import PurchaseEcho from "./PurchaseEcho";
 import { SUPPORT_EMAIL, WHATSAPP_HREF } from "@/lib/contact";
 import { formatInr } from "@/lib/preflight";
 import { PRODUCTS, gstBreakdown } from "@/lib/products";
+import { hasBilling } from "@/lib/gstin";
+import { lookupBilling } from "@/lib/checkout/receipt";
 
 export const metadata: Metadata = {
   title: "Payment received · Preflight",
@@ -35,6 +37,9 @@ export default async function ThankYouPage({
   const paymentId = receiptId(params.pid);
   const product = PRODUCTS.preflight;
   const gst = gstBreakdown(product);
+  // v33: present only when this buyer asked for a GST invoice. Fails
+  // closed, so the page is unchanged for everyone who did not.
+  const billing = await lookupBilling(paymentId);
 
   const receiptLines: [string, string][] = [
     ["Base", `₹${formatInr(gst.base)}`],
@@ -145,6 +150,19 @@ export default async function ThankYouPage({
             >
               {`${product.name} · ₹${formatInr(product.priceInr)} including GST · SAC ${gst.sac}`}
             </p>
+            {hasBilling(billing) ? (
+              <div style={{ margin: "0 0 18px" }}>
+                <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: "#A8A8A8" }}>
+                  {billing.companyName}
+                </p>
+                <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: "#A8A8A8" }}>
+                  {`GSTIN ${billing.gstin}`}
+                </p>
+                <p style={{ margin: "8px 0 0", fontSize: 15, lineHeight: 1.6, color: "#F5F3EF" }}>
+                  A GST invoice will be emailed to you.
+                </p>
+              </div>
+            ) : null}
             <dl style={{ margin: 0, display: "grid", gap: 10 }}>
               {receiptLines.map(([label, value]) => (
                 <div

@@ -22,6 +22,13 @@
 // row can be delivered by hand.
 
 import { SUPPORT_EMAIL } from "@/lib/contact";
+import { EMPTY_BILLING, type BillingDetails } from "@/lib/gstin";
+import {
+  SCHEDULING_SUBJECT,
+  schedulingHtml,
+  schedulingText,
+} from "@/lib/scheduling-email";
+import { formatInr } from "@/lib/preflight";
 import {
   DELIVERY_SUBJECT,
   deliveryHtml,
@@ -53,7 +60,14 @@ function log(
 }
 
 export type DeliveryResult =
-  | { ok: true; sent: true; sentAt: string; link: "signed" | "fallback" }
+  | {
+      ok: true;
+      sent: true;
+      sentAt: string;
+      // v33: "scheduling" is a confirmation with a booking link rather
+      // than a download, so there is no signed URL and nothing expires.
+      link: "signed" | "fallback" | "scheduling";
+    }
   | {
       ok: true;
       sent: false;
@@ -110,11 +124,63 @@ export async function resolveDownloadLink(
   return null;
 }
 
+// v33: what the buyer receives is chosen by the product's
+// deliveryTemplate, not by this module. "file" is the Preflight download
+// email; "scheduling" confirms a paid session and offers a booking link.
+// Both are the same shell, and both carry the GST block when the buyer
+// asked for an invoice.
+export type DeliveryMessage = {
+  subject: string;
+  text: string;
+  html: string;
+  replyTo: string;
+};
+
+export function receiptLine(product: Product): string {
+  return `${product.name} · ₹${formatInr(product.priceInr)} including GST · SAC ${product.tax.sac}`;
+}
+
+function buildMessage(
+  product: Product,
+  name: string,
+  link: string,
+  paymentId: string,
+  billing: BillingDetails,
+): DeliveryMessage {
+  if (product.deliveryTemplate === "scheduling") {
+    const args = {
+      name,
+      schedulingUrl: product.schedulingUrl ?? "",
+      receiptLine: receiptLine(product),
+      paymentId,
+      billing,
+    };
+    return {
+      subject: SCHEDULING_SUBJECT,
+      text: schedulingText(args),
+      html: schedulingHtml(args),
+      // A reply goes to whoever sells this product.
+      replyTo: product.notifyEmail,
+    };
+  }
+  return {
+    subject: DELIVERY_SUBJECT,
+    text: deliveryText(name, link, billing),
+    html: deliveryHtml(name, link, billing),
+    // A reply goes to the company inbox, not to the no-reply sender.
+    replyTo: SUPPORT_EMAIL,
+  };
+}
+
 async function sendOnce(
+  product: Product,
   to: string,
   name: string,
   link: string,
+  paymentId: string,
+  billing: BillingDetails,
 ): Promise<void> {
+  const message = buildMessage(product, name, link, paymentId, billing);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -125,11 +191,10 @@ async function sendOnce(
       from:
         process.env.RESEND_FROM ?? "Deeper Designs <no-reply@deeperdesigns.in>",
       to: [to],
-      // A reply goes to the company inbox, not to the no-reply sender.
-      reply_to: SUPPORT_EMAIL,
-      subject: DELIVERY_SUBJECT,
-      text: deliveryText(name, link),
-      html: deliveryHtml(name, link),
+      reply_to: message.replyTo,
+      subject: message.subject,
+      text: message.text,
+      html: message.html,
     }),
   });
   if (!res.ok) {
@@ -139,15 +204,18 @@ async function sendOnce(
 
 // One send with a single retry. Returns true when the buyer has it.
 async function sendWithRetry(
+  product: Product,
   to: string,
   name: string,
   link: string,
+  paymentId: string,
+  billing: BillingDetails,
   logFields: Record<string, unknown>,
 ): Promise<boolean> {
   const attempts = 2;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      await sendOnce(to, name, link);
+      await sendOnce(product, to, name, link, paymentId, billing);
       return true;
     } catch (e) {
       const reason = e instanceof Error ? `${e.name}: ${e.message}` : String(e);
@@ -197,7 +265,12 @@ export function withResentNote(note: string): string {
 
 export async function deliverToBuyer(
   product: Product,
-  fields: { name: string; email: string; paymentId: string },
+  fields: {
+    name: string;
+    email: string;
+    paymentId: string;
+    billing?: BillingDetails;
+  },
 ): Promise<DeliveryResult> {
   const { paymentId } = fields;
   const base = { payment_id: paymentId, product: product.slug };
@@ -252,7 +325,14 @@ export async function deliverToBuyer(
     return { ok: true, sent: false, reason: "already_sent" };
   }
 
-  const link = await resolveDownloadLink(product, paymentId);
+  // v33: a scheduling product has no file, so there is no link to
+  // resolve and nothing that can fail on storage. Everything else about
+  // the path is the same, including the sent_at stamp that stops a
+  // second send.
+  const scheduling = product.deliveryTemplate === "scheduling";
+  const link = scheduling
+    ? { url: product.schedulingUrl ?? "", source: "scheduling" as const, expiresAt: null }
+    : await resolveDownloadLink(product, paymentId);
   if (!link) {
     // Neither a signed link nor a Drive fallback. The sale stands,
     // sent_at stays blank, and this is what tells the manual fallback
@@ -266,10 +346,16 @@ export async function deliverToBuyer(
   }
 
   const name = fields.name.trim() || "there";
-  const sent = await sendWithRetry(fields.email.trim(), name, link.url, {
-    ...base,
-    link_source: link.source,
-  });
+  const billing = fields.billing ?? EMPTY_BILLING;
+  const sent = await sendWithRetry(
+    product,
+    fields.email.trim(),
+    name,
+    link.url,
+    paymentId,
+    billing,
+    { ...base, link_source: link.source },
+  );
   if (!sent) return { ok: false, reason: "send_failed" };
 
   // Sent. Stamp the row so nothing sends it again, and record when the
@@ -351,10 +437,15 @@ export async function resendToBuyer(
     return { ok: false, reason: "no_link" };
   }
 
-  const sent = await sendWithRetry(row.email, row.name || "there", link.url, {
-    ...base,
-    link_source: link.source,
-  });
+  const sent = await sendWithRetry(
+    product,
+    row.email,
+    row.name || "there",
+    link.url,
+    paymentId,
+    EMPTY_BILLING,
+    { ...base, link_source: link.source },
+  );
   if (!sent) return { ok: false, reason: "send_failed" };
 
   // Record the re-send and the new expiry. sent_at is left as it was.

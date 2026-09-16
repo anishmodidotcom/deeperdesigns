@@ -1474,6 +1474,7 @@ export default function PreflightPage() {
                 description: product.description,
                 priceInr: product.priceInr,
                 thankYouPath: product.thankYouPath,
+                collectGstDetails: product.collectGstDetails,
               }}
             />
           </div>

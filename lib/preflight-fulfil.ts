@@ -19,6 +19,7 @@
 // second delivery.
 
 import { kv } from "@vercel/kv";
+import { type BillingDetails, hasBilling } from "@/lib/gstin";
 import { formatInr } from "@/lib/preflight";
 import {
   PRODUCT_CURRENCY,
@@ -153,6 +154,7 @@ function notificationBodies(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): { text: string; html: string } {
   const g = gstBreakdown(product);
@@ -170,6 +172,18 @@ function notificationBodies(
     `Razorpay payment id: ${fields.paymentId}`,
     `Razorpay order id: ${fields.orderId}`,
     "",
+    // v33: everything needed to raise the tax invoice, so nobody has to
+    // go back to the buyer for it. Absent entirely when not supplied.
+    ...(hasBilling(fields.billing)
+      ? [
+          "GST INVOICE DETAILS",
+          `Company: ${fields.billing.companyName}`,
+          `Address: ${fields.billing.companyAddress}`,
+          `GSTIN: ${fields.billing.gstin}`,
+          `SAC: ${g.sac}`,
+          "",
+        ]
+      : []),
     `Send the ${product.name} package to this address within 24 hours, then`,
     "fill sent_at and sent_by on the sheet row.",
   ];
@@ -196,6 +210,7 @@ async function sendNotification(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): Promise<void> {
   const { text, html } = notificationBodies(product, fields);
@@ -233,6 +248,7 @@ async function notifyAnish(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): Promise<void> {
   if (!process.env.RESEND_API_KEY) {
@@ -353,6 +369,13 @@ export async function fulfilPayment(
   const name = notes.name ?? "";
   const email = notes.email ?? payment.email ?? "";
   const note = notes.note ?? "";
+  // v33: the optional GST invoice details, read back off the payment's
+  // own notes like every other field.
+  const billing: BillingDetails = {
+    companyName: notes.company_name ?? "",
+    companyAddress: notes.company_address ?? "",
+    gstin: notes.gstin ?? "",
+  };
 
   // 3. The sheet row is the fulfilment queue. If it cannot be written the
   //    sale is invisible to the person who has to send the package, so
@@ -371,6 +394,9 @@ export async function fulfilPayment(
       status: "paid",
       sent_at: "",
       sent_by: "",
+      company_name: billing.companyName,
+      company_address: billing.companyAddress,
+      gstin: billing.gstin,
     });
   } catch (e) {
     log("error", "sheet_append_failed", {
@@ -394,6 +420,7 @@ export async function fulfilPayment(
     note,
     paymentId: payment.id,
     orderId: payment.order_id,
+    billing,
   });
 
   // The buyer's download. Guarded on sent_at, so it cannot go twice, and
@@ -403,6 +430,7 @@ export async function fulfilPayment(
     name,
     email,
     paymentId: payment.id,
+    billing,
   });
 
   try {

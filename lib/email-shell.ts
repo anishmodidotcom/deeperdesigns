@@ -130,3 +130,29 @@ ${args.rows}
 </body>
 </html>`;
 }
+
+// v33: the optional GST block shown to the buyer. Rendered only when the
+// buyer asked for an invoice, directly beneath the amount, so the
+// confirmation doubles as their record of what was billed to whom.
+export function billingRows(billing: {
+  companyName: string;
+  gstin: string;
+}): string {
+  if (!billing.companyName.trim() && !billing.gstin.trim()) return "";
+  const line = (text: string) =>
+    `<tr><td style="font-family:${SANS};font-size:14px;line-height:1.6;color:${MUTED};padding:0 0 4px 0;">${esc(text)}</td></tr>`;
+  return (
+    line(billing.companyName) +
+    line(`GSTIN ${billing.gstin}`) +
+    `<tr><td style="font-family:${SANS};font-size:14px;line-height:1.6;color:${INK};padding:8px 0 0 0;">A GST invoice will be emailed to you.</td></tr>`
+  );
+}
+
+// The same block as text.
+export function billingText(billing: {
+  companyName: string;
+  gstin: string;
+}): string {
+  if (!billing.companyName.trim() && !billing.gstin.trim()) return "";
+  return `\n${billing.companyName}\nGSTIN ${billing.gstin}\nA GST invoice will be emailed to you.\n`;
+}

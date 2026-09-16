@@ -20,6 +20,14 @@ import { PREFLIGHT_FIELD_MAX, RAZORPAY_NOTE_MAX } from "@/lib/preflight";
 import { resendToBuyer } from "@/lib/preflight-delivery";
 import { fulfilPayment } from "@/lib/preflight-fulfil";
 import { PRODUCTS, PRODUCT_CURRENCY, amountPaise, getProduct, missingCheckoutConfig } from "@/lib/products";
+import {
+  EMPTY_BILLING,
+  GSTIN_ERROR,
+  type BillingDetails,
+  hasBilling,
+  isValidGstin,
+  normalizeGstin,
+} from "@/lib/gstin";
 import { NextResponse } from "next/server";
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
@@ -36,6 +44,10 @@ import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
 
 const EMAIL_RE_order = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// v33: caps for the optional invoice fields. Razorpay truncates a note
+// value at 256 characters, so nothing longer would survive the trip.
+const BILLING_MAX = { name: 200, address: 250, gstin: 15 } as const;
 const HOUR_MS_order = 60 * 60 * 1000;
 
 // Sized like the site's other form endpoints. A real buyer needs one or
@@ -105,6 +117,38 @@ export async function handleOrder(req: Request) {
       { ok: false, error: "That product is not available." },
       { status: 400 },
     );
+  }
+
+  // v33: the optional GST invoice details. All three are blank unless the
+  // buyer opened the control; if they supplied any of them, all three are
+  // required, because an invoice with two of the three cannot be raised.
+  const billing: BillingDetails = product.collectGstDetails
+    ? {
+        companyName: readString_order(raw.company_name, BILLING_MAX.name) ?? "",
+        companyAddress:
+          readString_order(raw.company_address, BILLING_MAX.address) ?? "",
+        gstin: normalizeGstin(
+          readString_order(raw.gstin, BILLING_MAX.gstin) ?? "",
+        ),
+      }
+    : EMPTY_BILLING;
+
+  if (hasBilling(billing)) {
+    if (!billing.companyName) {
+      return NextResponse.json(
+        { ok: false, error: "Enter the company name for the invoice." },
+        { status: 400 },
+      );
+    }
+    if (!billing.companyAddress) {
+      return NextResponse.json(
+        { ok: false, error: "Enter the company address for the invoice." },
+        { status: 400 },
+      );
+    }
+    if (!isValidGstin(billing.gstin)) {
+      return NextResponse.json({ ok: false, error: GSTIN_ERROR }, { status: 400 });
+    }
   }
 
   const name = readString_order(raw.name, PREFLIGHT_FIELD_MAX.name);
@@ -187,6 +231,12 @@ export async function handleOrder(req: Request) {
           // The webhook and the callback both read the slug back off the
           // payment, so neither has to be told which product it was.
           product: product.slug,
+          // v33: carried on the payment itself, so fulfilment reads them
+          // back from Razorpay's record rather than trusting a second
+          // client call. Razorpay caps a note value at 256 characters.
+          company_name: billing.companyName.slice(0, RAZORPAY_NOTE_MAX),
+          company_address: billing.companyAddress.slice(0, RAZORPAY_NOTE_MAX),
+          gstin: billing.gstin.slice(0, RAZORPAY_NOTE_MAX),
         },
       }),
     });
