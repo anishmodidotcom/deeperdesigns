@@ -10,7 +10,20 @@ import {
   checkoutName,
 } from "@/lib/preflight";
 import { withUtm } from "@/lib/preflight-utm";
+import {
+  type RazorpaySuccess,
+  loadCheckoutScript,
+} from "@/lib/checkout/razorpay-client";
 import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
+import BillingFields, {
+  type BillingErrors,
+} from "@/components/checkout/BillingFields";
+import {
+  EMPTY_BILLING,
+  GSTIN_ERROR,
+  type BillingDetails,
+  isValidGstin,
+} from "@/lib/gstin";
 
 // Section 09's form and Razorpay Standard Checkout (v29).
 //
@@ -23,88 +36,11 @@ import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
 // network error all land in the same inline message above the button with
 // every field still filled in.
 
-const CHECKOUT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
 
 const FAILURE_MESSAGE =
   "The payment did not go through and nothing was charged. Try again, or message us on WhatsApp and we will sort it there.";
 
-type RazorpaySuccess = {
-  razorpay_order_id: string;
-  razorpay_payment_id: string;
-  razorpay_signature: string;
-};
-
-type RazorpayOptions = {
-  key: string;
-  amount: number;
-  currency: string;
-  name: string;
-  description: string;
-  order_id: string;
-  prefill: { name: string; email: string };
-  theme: { color: string };
-  handler: (response: RazorpaySuccess) => void;
-  modal: { ondismiss: () => void };
-};
-
-type RazorpayInstance = {
-  open: () => void;
-  on: (event: string, handler: (payload: unknown) => void) => void;
-};
-
-declare global {
-  interface Window {
-    Razorpay?: new (options: RazorpayOptions) => RazorpayInstance;
-  }
-}
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// One shared attempt, cached, so the warm-up on mount and the load on
-// submit are the same promise rather than two racing script tags. Two
-// things this protects against, both seen in testing: a second call
-// attaching listeners to a tag that already failed (they never fire, and
-// the button stays disabled forever), and a request that neither loads
-// nor errors, which a network in the middle can produce. The timeout
-// resolves false so the failure path runs instead of hanging.
-const SCRIPT_TIMEOUT_MS = 12_000;
-let checkoutLoad: Promise<boolean> | null = null;
-
-function loadCheckoutScript(): Promise<boolean> {
-  if (typeof window === "undefined") return Promise.resolve(false);
-  if (window.Razorpay) return Promise.resolve(true);
-  if (checkoutLoad) return checkoutLoad;
-
-  checkoutLoad = new Promise<boolean>((resolve) => {
-    let settled = false;
-    const finish = (ok: boolean) => {
-      if (settled) return;
-      settled = true;
-      // A failed attempt is not cached: the visitor may be on a flaky
-      // connection and the retry should get a fresh script tag.
-      if (!ok) checkoutLoad = null;
-      resolve(ok);
-    };
-
-    const timer = window.setTimeout(() => finish(false), SCRIPT_TIMEOUT_MS);
-    const done = (ok: boolean) => {
-      window.clearTimeout(timer);
-      finish(ok);
-    };
-
-    const script = document.createElement("script");
-    script.src = CHECKOUT_SRC;
-    script.async = true;
-    script.onload = () => done(Boolean(window.Razorpay));
-    script.onerror = () => {
-      script.remove();
-      done(false);
-    };
-    document.head.appendChild(script);
-  });
-
-  return checkoutLoad;
-}
 
 const MONO = "var(--font-geist-mono), monospace";
 
@@ -126,6 +62,8 @@ export type OrderFormProduct = {
   description: string;
   priceInr: number;
   thankYouPath: string;
+  /** v33: whether to offer the optional GST invoice control. */
+  collectGstDetails: boolean;
 };
 
 export default function OrderForm({ product }: { product: OrderFormProduct }) {
@@ -162,6 +100,11 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
   const [errors, setErrors] = useState<{ name?: string; email?: string; note?: string }>({});
+  // v33: the optional GST invoice details. Closed by default, so a buyer
+  // who ignores it posts exactly what they posted before.
+  const [gstOpen, setGstOpen] = useState(false);
+  const [billing, setBilling] = useState<BillingDetails>(EMPTY_BILLING);
+  const [billingErrors, setBillingErrors] = useState<BillingErrors>({});
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -187,7 +130,21 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
     if (note.length > PREFLIGHT_FIELD_MAX.note)
       next.note = `Keep this under ${PREFLIGHT_FIELD_MAX.note} characters.`;
     setErrors(next);
-    return Object.keys(next).length === 0;
+
+    // The billing block is validated separately, so nothing about the
+    // three fields above changes. When the control is closed there is
+    // nothing to check; when it is open all three are required.
+    const bErr: BillingErrors = {};
+    if (gstOpen) {
+      if (!billing.companyName.trim())
+        bErr.companyName = "Enter the company name for the invoice.";
+      if (!billing.companyAddress.trim())
+        bErr.companyAddress = "Enter the company address for the invoice.";
+      if (!isValidGstin(billing.gstin)) bErr.gstin = GSTIN_ERROR;
+    }
+    setBillingErrors(bErr);
+
+    return Object.keys(next).length === 0 && Object.keys(bErr).length === 0;
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -219,6 +176,9 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           name: name.trim(),
           email: email.trim(),
           note: withUtm(note.trim(), RAZORPAY_NOTE_MAX),
+          company_name: gstOpen ? billing.companyName.trim() : "",
+          company_address: gstOpen ? billing.companyAddress.trim() : "",
+          gstin: gstOpen ? billing.gstin.trim() : "",
         }),
       });
       const order = (await orderRes.json()) as {
@@ -403,6 +363,32 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
           </p>
         ) : null}
       </div>
+
+      {product.collectGstDetails ? (
+        <BillingFields
+          open={gstOpen}
+          onOpenChange={setGstOpen}
+          value={billing}
+          onChange={setBilling}
+          errors={billingErrors}
+          inputClassName="pf-input"
+          labelStyle={labelStyle}
+          errorStyle={{
+            margin: 0,
+            fontSize: 15,
+            lineHeight: 1.4,
+            color: "#E5847C",
+          }}
+          toggleStyle={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            fontSize: 14,
+            color: "#A8A8A8",
+            cursor: "pointer",
+          }}
+        />
+      ) : null}
 
       <output
         id={statusId}

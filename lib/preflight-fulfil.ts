@@ -19,7 +19,7 @@
 // second delivery.
 
 import { kv } from "@vercel/kv";
-import { NOTIFY_EMAIL } from "@/lib/contact";
+import { type BillingDetails, hasBilling } from "@/lib/gstin";
 import { formatInr } from "@/lib/preflight";
 import {
   PRODUCT_CURRENCY,
@@ -154,6 +154,7 @@ function notificationBodies(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): { text: string; html: string } {
   const g = gstBreakdown(product);
@@ -171,8 +172,30 @@ function notificationBodies(
     `Razorpay payment id: ${fields.paymentId}`,
     `Razorpay order id: ${fields.orderId}`,
     "",
-    `Send the ${product.name} package to this address within 24 hours, then`,
-    "fill sent_at and sent_by on the sheet row.",
+    // v33: everything needed to raise the tax invoice, so nobody has to
+    // go back to the buyer for it. Absent entirely when not supplied.
+    ...(hasBilling(fields.billing)
+      ? [
+          "GST INVOICE DETAILS",
+          `Company: ${fields.billing.companyName}`,
+          `Address: ${fields.billing.companyAddress}`,
+          `GSTIN: ${fields.billing.gstin}`,
+          `SAC: ${g.sac}`,
+          "",
+        ]
+      : []),
+    // v33: what to do next depends on what was sold. A scheduling
+    // product has no package, so the file instruction would be wrong.
+    // This is the seller's own ops line, not customer-facing copy.
+    ...(product.deliveryTemplate === "scheduling"
+      ? [
+          "The buyer has been emailed their confirmation and the booking",
+          "link. Schedule the session with them if they do not book first.",
+        ]
+      : [
+          `Send the ${product.name} package to this address within 24 hours, then`,
+          "fill sent_at and sent_by on the sheet row.",
+        ]),
   ];
   const text = lines.join("\n");
   const html = `<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.6;color:#111"><pre style="margin:0;font:inherit;white-space:pre-wrap">${lines
@@ -197,6 +220,7 @@ async function sendNotification(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): Promise<void> {
   const { text, html } = notificationBodies(product, fields);
@@ -208,7 +232,7 @@ async function sendNotification(
     },
     body: JSON.stringify({
       from: process.env.RESEND_FROM ?? "Deeper Designs <no-reply@deeperdesigns.in>",
-      to: [NOTIFY_EMAIL],
+      to: [product.notifyEmail],
       reply_to: fields.email,
       subject: `${product.name.toUpperCase()} SALE · ₹${formatInr(product.priceInr)} · ${fields.name}`,
       text,
@@ -234,6 +258,7 @@ async function notifyAnish(
     note: string;
     paymentId: string;
     orderId: string;
+    billing: BillingDetails;
   },
 ): Promise<void> {
   if (!process.env.RESEND_API_KEY) {
@@ -268,7 +293,7 @@ async function notifyAnish(
       log("error", "notification_failed", {
         payment_id: fields.paymentId,
         order_id: fields.orderId,
-        to: NOTIFY_EMAIL,
+        to: product.notifyEmail,
         attempts,
         error: reason,
         // The row is already on the sheet, so the sale is recoverable by
@@ -354,6 +379,13 @@ export async function fulfilPayment(
   const name = notes.name ?? "";
   const email = notes.email ?? payment.email ?? "";
   const note = notes.note ?? "";
+  // v33: the optional GST invoice details, read back off the payment's
+  // own notes like every other field.
+  const billing: BillingDetails = {
+    companyName: notes.company_name ?? "",
+    companyAddress: notes.company_address ?? "",
+    gstin: notes.gstin ?? "",
+  };
 
   // 3. The sheet row is the fulfilment queue. If it cannot be written the
   //    sale is invisible to the person who has to send the package, so
@@ -372,6 +404,9 @@ export async function fulfilPayment(
       status: "paid",
       sent_at: "",
       sent_by: "",
+      company_name: billing.companyName,
+      company_address: billing.companyAddress,
+      gstin: billing.gstin,
     });
   } catch (e) {
     log("error", "sheet_append_failed", {
@@ -395,6 +430,7 @@ export async function fulfilPayment(
     note,
     paymentId: payment.id,
     orderId: payment.order_id,
+    billing,
   });
 
   // The buyer's download. Guarded on sent_at, so it cannot go twice, and
@@ -404,6 +440,7 @@ export async function fulfilPayment(
     name,
     email,
     paymentId: payment.id,
+    billing,
   });
 
   try {

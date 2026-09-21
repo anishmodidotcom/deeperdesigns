@@ -29,6 +29,13 @@ export type SheetRow = {
   status: string;
   sent_at: string;
   sent_by: string;
+  // v33: the optional GST invoice details, appended after the original
+  // eleven. Blank when the buyer did not ask for an invoice. The eleven
+  // above keep their positions and meanings, so the fulfilment task and
+  // any existing reader of the sheet is unaffected.
+  company_name: string;
+  company_address: string;
+  gstin: string;
 };
 
 type ServiceAccount = {
@@ -154,6 +161,9 @@ export async function appendSheetRow(
       row.status,
       row.sent_at,
       row.sent_by,
+      row.company_name,
+      row.company_address,
+      row.gstin,
     ],
   ];
 

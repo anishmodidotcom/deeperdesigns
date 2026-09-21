@@ -10,7 +10,12 @@ import { usePathname } from "next/navigation";
 // The root layout is a server component and cannot read the pathname, so
 // this thin client wrapper does it and renders nothing on those routes.
 
-const BARE_PREFIXES = ["/preflight"];
+// v33: /checkout carries products sold on someone else's behalf. They
+// get no Deeper Designs identity at all, so the sitewide chrome is
+// withheld there for a different reason than on /preflight: not because
+// the page has its own composition, but because the page is not ours to
+// brand.
+const BARE_PREFIXES = ["/preflight", "/checkout"];
 
 export default function SiteChrome({
   children,
