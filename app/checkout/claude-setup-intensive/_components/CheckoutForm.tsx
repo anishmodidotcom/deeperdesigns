@@ -16,6 +16,7 @@ import {
   type RazorpaySuccess,
   loadCheckoutScript,
 } from "@/lib/checkout/razorpay-client";
+import { trackCheckoutInitiate } from "@/lib/checkout/track";
 
 // The Claude Setup Intensive checkout form (v33).
 //
@@ -136,6 +137,15 @@ export default function CheckoutForm({
     setMessage(null);
     if (!validate()) return;
     setBusy(true);
+
+    // v33.1: this was missing. The order was created and Razorpay
+    // opened, but nothing was reported, because the event used to live
+    // in the Preflight page rather than in the checkout.
+    try {
+      trackCheckoutInitiate(product);
+    } catch {
+      // Analytics never blocks a sale.
+    }
 
     try {
       const scriptReady = await loadCheckoutScript();

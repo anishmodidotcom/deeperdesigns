@@ -1,4 +1,4 @@
-import { SUPPORT_EMAIL } from "@/lib/contact";
+import { SUPPORT_EMAIL, UAE_PHONE_TEL } from "@/lib/contact";
 
 type JsonLd = Record<string, unknown>;
 
@@ -47,14 +47,26 @@ export const ORGANIZATION_LD: JsonLd = {
       addressCountry: "AE",
     },
   ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+91-99687-16498",
-    contactType: "Customer Service",
-    email: SUPPORT_EMAIL,
-    areaServed: ["IN", "AE"],
-    availableLanguage: ["en"],
-  },
+  // v33.1: two contact points rather than one with two areas served, so
+  // a search surface can offer the right number to the right country.
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-99687-16498",
+      contactType: "Customer Service",
+      email: SUPPORT_EMAIL,
+      areaServed: "IN",
+      availableLanguage: ["en"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: UAE_PHONE_TEL,
+      contactType: "customer service",
+      email: SUPPORT_EMAIL,
+      areaServed: "AE",
+      availableLanguage: ["en"],
+    },
+  ],
   sameAs: [
     "https://instagram.com/deeperdesignsco",
     "https://linkedin.com/company/deeperdesigns",

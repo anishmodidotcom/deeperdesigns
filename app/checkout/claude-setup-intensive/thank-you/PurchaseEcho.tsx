@@ -6,16 +6,10 @@ import {
   trackCheckoutPurchase,
 } from "@/lib/checkout/track";
 
-// The browser half of the Purchase pair. The fulfilment routine already
-// fired the server half under the same event_id, which is the Razorpay
-// payment id, so Meta collapses the two into one conversion.
-//
-// No payment id in the query string means no event: an id we invented
-// would deduplicate against nothing and double-count the sale.
-//
-// v33.1: takes the product rather than a bare value, so the event's
-// value and currency come from the same record the buyer was charged
-// from, and so the server leg knows which dataset it belongs to.
+// The browser half of the Purchase pair for the Anish Modi product.
+// Identical machinery to the Preflight echo, and identical for the same
+// reason: the id is the Razorpay payment id, so this collapses into the
+// server event fulfilment already fired.
 export default function PurchaseEcho({
   paymentId,
   product,

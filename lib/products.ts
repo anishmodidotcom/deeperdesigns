@@ -57,6 +57,14 @@ export type Product = {
   sheetId: string | undefined;
   /** Where the sale notification goes. */
   notifyEmail: string;
+  /**
+   * v33.1: the Meta dataset this product reports to. An Anish Modi
+   * product reports to the Anish Modi pixel, not to Deeper Designs'.
+   * Both undefined means the product falls back to the DD dataset and
+   * the fallback is logged, so tracking never goes dark.
+   */
+  metaPixelId: string | undefined;
+  metaCapiToken: string | undefined;
   deliveryTemplate: DeliveryTemplate | null;
   /**
    * v29.3: where the buyer's download lives. A view-only link, emailed to
@@ -113,6 +121,10 @@ export const PRODUCTS = {
     collectGstDetails: true,
     sheetId: process.env.GOOGLE_SHEETS_ID,
     notifyEmail: process.env.DD_NOTIFY_EMAIL ?? DEFAULT_NOTIFY,
+    // The sitewide Deeper Designs dataset, which is what Preflight has
+    // always reported to.
+    metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID,
+    metaCapiToken: process.env.META_CAPI_ACCESS_TOKEN,
     deliveryTemplate: "file",
     deliveryUrl: process.env.PREFLIGHT_DELIVERY_URL,
     deliveryObject:
@@ -143,6 +155,8 @@ export const PRODUCTS = {
     collectGstDetails: true,
     sheetId: process.env.AM_SHEETS_ID,
     notifyEmail: process.env.AM_NOTIFY_EMAIL ?? DEFAULT_NOTIFY,
+    metaPixelId: process.env.AM_META_PIXEL_ID,
+    metaCapiToken: process.env.AM_META_CAPI_TOKEN,
     deliveryTemplate: "scheduling",
     schedulingUrl: "https://calendly.com/modianish",
     internationalCards: true,

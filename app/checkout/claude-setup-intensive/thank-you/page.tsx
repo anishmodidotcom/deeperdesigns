@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../checkout.css";
+import PurchaseEcho from "./PurchaseEcho";
 import { lookupBilling } from "@/lib/checkout/receipt";
 import { hasBilling } from "@/lib/gstin";
 import { receiptLine } from "@/lib/preflight-delivery";
@@ -54,6 +55,14 @@ export default async function ThankYouPage({
 
   return (
     <main id="main" className="am-root">
+      <PurchaseEcho
+        paymentId={paymentId}
+        product={{
+          slug: product.slug,
+          name: product.name,
+          priceInr: product.priceInr,
+        }}
+      />
       <div
         style={{
           maxWidth: 520,

@@ -151,7 +151,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* v18: Organization JSON-LD lives in the head for every route. */}
           <StructuredData data={ORGANIZATION_LD} />
           <Analytics />
-          <MetaPixel />
+          {/* v33.1: AM_META_PIXEL_ID is server-only, so it is read here
+              and handed down. MetaPixel decides by pathname which
+              dataset the route belongs to. */}
+          <MetaPixel amPixelId={process.env.AM_META_PIXEL_ID ?? null} />
           {/* v30.2: before the first PageView, so no event carries the
               automatic parameters on a route that should not send them. */}
           <MetaAutoParams />

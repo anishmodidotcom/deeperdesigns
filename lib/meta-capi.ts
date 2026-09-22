@@ -63,9 +63,18 @@ export function isCapiConfigured(): boolean {
   );
 }
 
-export async function sendCapiEvent(ev: CapiEvent): Promise<CapiResult> {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-  const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
+// v33.1: the dataset is a parameter rather than a constant, because a
+// product sold on someone else's behalf reports to their pixel. Omitted
+// means the sitewide Deeper Designs dataset, which is every event that
+// is not a product's.
+export async function sendCapiEvent(
+  ev: CapiEvent,
+  dataset?: { pixelId: string | undefined; accessToken: string | undefined },
+): Promise<CapiResult> {
+  const pixelId = dataset ? dataset.pixelId : process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const accessToken = dataset
+    ? dataset.accessToken
+    : process.env.META_CAPI_ACCESS_TOKEN;
   const testEventCode = process.env.META_TEST_EVENT_CODE;
   // v30.2: keyed on VERCEL_ENV, not NODE_ENV. Vercel builds and runs
   // preview deployments with NODE_ENV=production, so the old check meant

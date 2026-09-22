@@ -1,5 +1,8 @@
 "use client";
 
+"use client";
+
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 // Standard Meta Pixel base code, split across two strategies.
@@ -41,8 +44,36 @@ import Script from "next/script";
 // decided whether it should. MetaAutoParams turns it back on for the
 // Preflight routes, which are the only ones with a price on them.
 
-export default function MetaPixel() {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+// v33.1: which pixel a route belongs to. A product sold on someone
+// else's behalf reports to their dataset, so its routes initialise
+// their pixel and only theirs: two pixels on one page would record the
+// sale twice, once in each dataset.
+//
+// The ids arrive as props because only the Deeper Designs one is
+// NEXT_PUBLIC. AM_META_PIXEL_ID is server-only, so the root layout reads
+// it and passes it down, which is the pattern lib/products.ts already
+// requires of anything the browser needs.
+const PRODUCT_PIXEL_PREFIXES: { prefix: string; key: "am" }[] = [
+  { prefix: "/checkout/claude-setup-intensive", key: "am" },
+];
+
+export default function MetaPixel({
+  amPixelId = null,
+}: {
+  amPixelId?: string | null;
+}) {
+  const pathname = usePathname() ?? "";
+  const productRoute = PRODUCT_PIXEL_PREFIXES.find(
+    (p) => pathname === p.prefix || pathname.startsWith(`${p.prefix}/`),
+  );
+
+  // A product route uses its own pixel. When that product has no pixel
+  // configured it falls back to the sitewide one rather than going dark;
+  // the server logs the same fallback when its half of the pair runs.
+  const pixelId = productRoute
+    ? (amPixelId?.trim() || process.env.NEXT_PUBLIC_META_PIXEL_ID)
+    : process.env.NEXT_PUBLIC_META_PIXEL_ID;
+
   // No-op when the env var is unset (local dev without credentials,
   // or pre-Vercel-config deploys). Keeps the build clean.
   if (!pixelId) return null;

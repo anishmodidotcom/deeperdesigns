@@ -1,5 +1,5 @@
 import TrackedEmailLink from "@/components/TrackedEmailLink";
-import { SUPPORT_EMAIL, SUPPORT_EMAIL_HREF } from "@/lib/contact";
+import { INDIA_PHONE, INDIA_PHONE_TEL, SUPPORT_EMAIL, SUPPORT_EMAIL_HREF, UAE_PHONE, UAE_PHONE_TEL } from "@/lib/contact";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 const EXPLORE = [
@@ -64,12 +64,20 @@ export default function Footer() {
               +91 99687 16498
             </TrackedWhatsAppLink>
             {/* v26 Part 3: the same sitewide number, reachable as a call
-                for people who would rather dial than message. */}
+                for people who would rather dial than message.
+                v33.1: and the UAE number beside it. Both are labelled,
+                India first; neither replaces the other. */}
             <p className="mono mb-3 mt-6" style={{ color: "var(--fg-dim)" }}>
               Call us
             </p>
-            <a href="tel:+919968716498" className="text-base dd-tap-row">
-              +91 99687 16498
+            <a
+              href={`tel:${INDIA_PHONE_TEL}`}
+              className="text-base dd-tap-row"
+            >
+              {`India · ${INDIA_PHONE}`}
+            </a>
+            <a href={`tel:${UAE_PHONE_TEL}`} className="text-base dd-tap-row">
+              {`UAE · ${UAE_PHONE}`}
             </a>
           </div>
           <div>
