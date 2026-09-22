@@ -27,5 +27,14 @@ export const SUPPORT_EMAIL_HREF = `mailto:${SUPPORT_EMAIL}`;
 export const NOTIFY_EMAIL =
   process.env.DD_NOTIFY_EMAIL ?? "hey@deeperdesigns.in";
 
+// v33.1: the two numbers, as data. India is the same number WhatsApp
+// uses and is always shown first; the UAE line is additive and never
+// replaces it. WhatsApp stays on the India number only, deliberately:
+// there is no UAE WhatsApp account to route a message to.
+export const INDIA_PHONE = WHATSAPP_NUMBER;
+export const INDIA_PHONE_TEL = "+919968716498";
+export const UAE_PHONE = "+971 58 626 8178";
+export const UAE_PHONE_TEL = "+971586268178";
+
 export const FORM_HREF = "/start-your-study";
 export const FORM_CTA = "Let's explore possibilities";

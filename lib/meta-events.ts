@@ -116,12 +116,16 @@ async function fireServer(
   event_id: string,
   user_data: UserData,
   custom_data: CustomData,
+  // v33.1: which product's dataset this belongs to. Absent for every
+  // sitewide event, which is the Deeper Designs dataset.
+  product?: string,
 ): Promise<void> {
   const body = JSON.stringify({
     event_name,
     event_id,
     user_data,
     custom_data,
+    ...(product ? { product } : {}),
   });
   // Use sendBeacon when available so the request survives same-tab
   // unloads (e.g. an internal Link nav after a Lead click). Fall back
@@ -229,12 +233,17 @@ export function trackEvent(
   // so the server event and the browser echo carry the same id and Meta
   // collapses them into one conversion.
   explicit_event_id?: string,
+  // v33.1: the product slug, for an event that belongs to a product's
+  // own Meta dataset rather than the sitewide one. The server resolves
+  // the slug to a pixel and a token; nothing about the browser leg
+  // changes, because a product page initialises only its own pixel.
+  product?: string,
 ): void {
   const event_id = explicit_event_id ?? uuidv4();
   log(event_name, event_id, custom_data);
   fireBrowser(event_name, event_id, custom_data);
   // Fire-and-forget the server mirror.
-  void fireServer(event_name, event_id, user_data, custom_data);
+  void fireServer(event_name, event_id, user_data, custom_data, product);
 }
 
 // ---------- typed event wrappers ----------
@@ -453,32 +462,9 @@ export function trackPreflightView(): void {
   trackEvent("PreflightView", { content_name: "Preflight", path: "/preflight" });
 }
 
-// Fires on the "Pay with Razorpay" click, before the order is created.
-export function trackPreflightInitiateCheckout(value: number): void {
-  trackEvent("InitiateCheckout", {
-    content_name: "Preflight",
-    content_category: "digital_product",
-    value,
-    currency: "INR",
-  });
-}
+// v33.1: trackPreflightInitiateCheckout and trackPreflightPurchase are
+// gone. They were Preflight-shaped wrappers that a second product's form
+// had no reason to know about, which is exactly how the Anish Modi
+// checkout shipped without an InitiateCheckout. Both events now come
+// from lib/checkout/track.ts, which every product's form calls.
 
-// The browser half of the Purchase pair. The server half is fired by the
-// fulfilment routine with the same event_id, which is the Razorpay
-// payment id, so Meta deduplicates. Never call this without the id.
-export function trackPreflightPurchase(
-  paymentId: string,
-  value: number,
-): void {
-  trackEvent(
-    "Purchase",
-    {
-      content_name: "Preflight",
-      content_category: "digital_product",
-      value,
-      currency: "INR",
-    },
-    {},
-    paymentId,
-  );
-}

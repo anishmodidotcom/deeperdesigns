@@ -49,7 +49,14 @@ export default async function ThankYouPage({
 
   return (
     <main id="main" className="pf-root">
-      <PurchaseEcho paymentId={paymentId} value={product.priceInr} />
+      <PurchaseEcho
+        paymentId={paymentId}
+        product={{
+          slug: product.slug,
+          name: product.name,
+          priceInr: product.priceInr,
+        }}
+      />
 
       <section
         style={{

@@ -14,7 +14,7 @@ import {
   type RazorpaySuccess,
   loadCheckoutScript,
 } from "@/lib/checkout/razorpay-client";
-import { trackPreflightInitiateCheckout } from "@/lib/meta-events";
+import { trackCheckoutInitiate } from "@/lib/checkout/track";
 import BillingFields, {
   type BillingErrors,
 } from "@/components/checkout/BillingFields";
@@ -155,7 +155,7 @@ export default function OrderForm({ product }: { product: OrderFormProduct }) {
 
     setBusy(true);
     try {
-      trackPreflightInitiateCheckout(product.priceInr);
+      trackCheckoutInitiate(product);
     } catch {
       // Analytics never blocks a sale.
     }

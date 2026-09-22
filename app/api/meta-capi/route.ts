@@ -23,11 +23,8 @@
 
 import { NextResponse } from "next/server";
 import { LIMITS, checkRate, clientKey, sameSiteOnly } from "@/lib/api-guards";
-import {
-  type CapiUserData,
-  isCapiConfigured,
-  sendCapiEvent,
-} from "@/lib/meta-capi";
+import { type CapiUserData, sendCapiEvent } from "@/lib/meta-capi";
+import { datasetForProduct, siteDataset } from "@/lib/meta-dataset";
 
 export const runtime = "nodejs";
 
@@ -126,6 +123,8 @@ type Body = {
   event_id?: string;
   user_data?: UserData;
   custom_data?: CustomData;
+  /** v33.1: which product's dataset, when the event belongs to one. */
+  product?: string;
 };
 
 
@@ -208,7 +207,17 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!isCapiConfigured()) {
+  // v33.1: an event that names a product goes to that product's own
+  // dataset; everything else goes to the sitewide one, which is what
+  // every event did before this. The configured check is against the
+  // dataset actually resolved, not against the sitewide credentials, so
+  // a product with its own pixel is not gated on Deeper Designs having
+  // one.
+  const dataset = body.product
+    ? datasetForProduct(body.product)
+    : siteDataset();
+
+  if (!dataset.pixelId || !dataset.accessToken) {
     // Credentials not provisioned (local dev or pre-config deploy).
     // Return ok so the browser doesn't bubble a network failure to the
     // user; the event still fires browser-side via fbq.

@@ -33,6 +33,7 @@ import {
   sheetHasPayment,
 } from "@/lib/preflight-sheets";
 import { sendCapiEvent } from "@/lib/meta-capi";
+import { datasetForProduct } from "@/lib/meta-dataset";
 import { deliverToBuyer } from "@/lib/preflight-delivery";
 
 const KV_ENABLED = !!process.env.KV_REST_API_URL;
@@ -457,7 +458,11 @@ export async function fulfilPayment(
         currency: PRODUCT_CURRENCY,
       },
       event_source_url: `https://www.deeperdesigns.in/${product.slug}`,
-    });
+    },
+    // v33.1: the sale is reported to the product's own dataset, so the
+    // server Purchase lands beside the browser echo the product page
+    // fired from the same pixel.
+    datasetForProduct(product.slug));
     if (!result.ok) {
       log("error", "capi_purchase_failed", {
         payment_id: paymentId,
