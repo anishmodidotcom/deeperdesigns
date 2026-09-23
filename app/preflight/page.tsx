@@ -8,7 +8,9 @@ import Faq, { type FaqItem } from "./_components/Faq";
 import OrderForm from "./_components/OrderForm";
 import PreflightAnalytics from "./_components/PreflightAnalytics";
 import {
+  IconBranch,
   IconBuilding,
+  IconChangelog,
   IconCheckCircle,
   IconChecklist,
   IconCreditMint,
@@ -22,14 +24,19 @@ import {
   IconFloor,
   IconGuide,
   IconKey,
+  IconLabel,
   IconLayers,
+  IconMobile,
   IconNoProof,
   IconNoRecovery,
   IconPasteProtocol,
+  IconPatch,
   IconRefresh,
   IconReport,
+  IconRollback,
   IconShield,
   IconShieldBolt,
+  IconSilentAlarm,
   IconStack,
   IconTarget,
   IconTerminal,
@@ -167,6 +174,105 @@ const WHY_POINTS = [
   },
 ];
 
+// v34: the September edition changelog, rendered between the hero and
+// section 01. Unnumbered, like the service tier, so the approved eyebrow
+// numbering on every section below it stays where it is.
+const WHATS_NEW = [
+  {
+    icon: <IconPatch />,
+    text: "Two critical Next.js RCEs patched on 25 August. Preflight now gates on the patched line: 15.5.24 and 16.3.3.",
+  },
+  {
+    icon: <IconBranch />,
+    text: "Firebase, Convex, PocketBase, Neon and builder defaults. A new conditional layer for products not built on Supabase.",
+  },
+  {
+    icon: <IconMobile />,
+    text: "Mobile apps. React Native, Expo and Flutter: secrets in the bundle, token storage, deep links, OTA integrity, store declarations.",
+  },
+  {
+    icon: <IconRollback />,
+    text: "Deployment safety. A seventh Resilience layer with a new launch blocker: no way back means no launch.",
+  },
+  {
+    icon: <IconLabel />,
+    text: "EU AI Act Article 50 is in force. Labelling and provenance duties are now a launch item for any product EU users can reach.",
+  },
+  {
+    icon: <IconSilentAlarm />,
+    text: "Ten more silent-failure patterns. Controls that look configured and do nothing, including auth that fails open and budgets that only alert.",
+  },
+];
+
+// v34: the full layer map, one column per protocol. Conditional layers
+// are marked as such in the copy itself, which is why they carry no
+// separate styling.
+const LAYER_MAP: { name: string; layers: string[] }[] = [
+  {
+    name: "Security hardening",
+    layers: [
+      "Identity and access",
+      "API and application surface",
+      "Database and data layer",
+      "Platform rules beyond Supabase (conditional)",
+      "Dependency and supply chain",
+      "AI, LLM and agents",
+      "Payments and commerce",
+      "Secrets, logging and operations",
+      "Infrastructure and cloud",
+      "Privacy and compliance",
+      "Mobile apps (conditional)",
+    ],
+  },
+  {
+    name: "Resilience and operations",
+    layers: [
+      "Load, scale and capacity",
+      "Reliability and disaster recovery",
+      "Cost control and denial-of-wallet",
+      "Observability and incident response",
+      "Data lifecycle and migration safety",
+      "Content safety and AI transparency",
+      "Deployment safety and rollback",
+    ],
+  },
+  {
+    name: "Journey",
+    layers: [
+      "Performance",
+      "Accessibility",
+      "First run and onboarding",
+      "Conversion path",
+      "Discoverability and AI search",
+      "Trust and policy",
+      "Measurement",
+      "Developer performance",
+      "Internationalisation and RTL (conditional)",
+      "App store readiness (conditional)",
+    ],
+  },
+  {
+    name: "Signature",
+    layers: [
+      "Robustness",
+      "Motion",
+      "Typography and spacing",
+      "States and micro-detail",
+      "Copy craft",
+    ],
+  },
+  {
+    name: "Hallmark",
+    layers: [
+      "Distinctiveness",
+      "Surface coherence",
+      "Voice and copy",
+      "Visual system",
+      "Sub-brand architecture",
+    ],
+  },
+];
+
 const PROOF_CARDS = [
   {
     icon: <IconCrossTenant size={26} />,
@@ -200,13 +306,15 @@ const PROOF_CARDS = [
 const PROTOCOLS: {
   name: string;
   stat: string;
+  coverage: string;
   lines: string[];
   close?: string;
   bars: [number, boolean][];
 }[] = [
   {
     name: "Security hardening",
-    stat: "9 layers · 159 checks · 6 launch blockers",
+    stat: "9 layers plus 2 conditional · 201 checks · 6 launch blockers",
+    coverage: "Now covers Firebase, Convex, PocketBase, Neon and mobile.",
     lines: [
       "Tenant isolation, secrets in the client, authorization at the data layer, payment webhooks, supply chain, AI endpoints and agents, infrastructure, privacy.",
     ],
@@ -221,7 +329,8 @@ const PROTOCOLS: {
   },
   {
     name: "Resilience and operations",
-    stat: "6 layers · 105 checks · 5 launch blockers",
+    stat: "7 layers · 119 checks · 6 launch blockers",
+    coverage: "Now includes deployment safety and rollback.",
     lines: [
       "Load and capacity, backups and disaster recovery, spend caps and denial-of-wallet, observability and incident response, data lifecycle and migration safety, content safety.",
     ],
@@ -235,7 +344,9 @@ const PROTOCOLS: {
   },
   {
     name: "Journey",
-    stat: "4 layers plus sub-domains · 113 checks · 5 hard gates",
+    stat: "4 layers plus 6 sub-domains · 133 checks · 5 hard gates",
+    coverage:
+      "Now audits the performance causes behind the vitals: N+1 queries, pooling, code splitting.",
     lines: [
       "Core Web Vitals, WCAG 2.2, onboarding, conversion path, discoverability, trust surfaces.",
     ],
@@ -250,7 +361,8 @@ const PROTOCOLS: {
   },
   {
     name: "Signature",
-    stat: "5 layers · 115 checks",
+    stat: "5 layers · 117 checks",
+    coverage: "Now scores the five public tells of a generated app.",
     lines: [
       "Robustness under stress, motion, typography, states and edge cases, interface copy.",
     ],
@@ -266,6 +378,7 @@ const PROTOCOLS: {
   {
     name: "Hallmark",
     stat: "5 layers · 100 checks",
+    coverage: "Now checks image licensing and manufactured proof.",
     lines: ["Brand distinctiveness and coherence across every surface."],
     close: "Measured against evidence, not feeling.",
     bars: [
@@ -286,7 +399,7 @@ const KIT_POINTS = [
   },
   {
     icon: <IconChecklist />,
-    lead: "Four checklists, 61 items.",
+    lead: "Four checklists, 104 items.",
     rest: " Pre-run inputs, the master launch-blocker list, silent-failure controls, re-cert triggers, and a fifteen-minute monthly check.",
   },
   {
@@ -297,12 +410,17 @@ const KIT_POINTS = [
   {
     icon: <IconFieldNotes />,
     lead: "Field notes.",
-    rest: " 16 findings from real audits, including the four-layer SECURITY DEFINER fix, the shared-tenant question, and the uncapped-provider check.",
+    rest: " 26 findings from real audits, including the four-layer SECURITY DEFINER fix, the shared-tenant question, and the uncapped-provider check.",
   },
   {
     icon: <IconRefresh />,
     lead: "12 months of refreshes",
     rest: " as CVEs, standards, and framework versions move.",
+  },
+  {
+    icon: <IconChangelog />,
+    lead: "The changelog.",
+    rest: " Every refresh, dated, so you know exactly what moved.",
   },
 ];
 
@@ -403,10 +521,11 @@ const STUDIO_POINTS = [
 const INCLUDED = [
   "Five audit protocols",
   "Operator guide",
-  "Four checklists, 61 items",
+  "Four checklists, 104 items",
   "Report template",
-  "Field notes, 16 findings",
+  "Field notes, 26 findings",
   "12 months of refreshes",
+  "September 2026 edition, refreshed every quarter for twelve months",
 ];
 
 const FAQ_ITEMS: FaqItem[] = [
@@ -428,7 +547,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "What are refreshes?",
-    a: "The protocols name specific CVEs, standards, and framework versions. When those move, the protocols are updated. You receive updated files for twelve months.",
+    a: "The protocols name specific CVEs, standards and framework versions. When those move, the protocols are refreshed and the new edition lands in your folder. The September 2026 edition was the first; the next is due by mid-December.",
   },
   {
     q: "What is the refund policy?",
@@ -479,7 +598,8 @@ export default function PreflightPage() {
                 color: "#7C6CFF",
               }}
             >
-              Preflight · Launch audit suite for AI-built products
+              Preflight · September 2026 edition · Launch audit suite for
+              AI-built products
             </p>
             <h1
               style={{
@@ -560,8 +680,8 @@ export default function PreflightPage() {
             >
               {[
                 ["5", "Protocols"],
-                ["29", "Layers"],
-                ["592", "Checks"],
+                ["38", "Layers"],
+                ["670", "Checks"],
                 ["12", "Months of refreshes"],
               ].map(([value, label]) => (
                 <div key={label}>
@@ -593,6 +713,62 @@ export default function PreflightPage() {
           </div>
 
           <AuditReport />
+        </div>
+      </section>
+
+      {/* v34 · 1.2: WHAT'S NEW IN THE SEPTEMBER EDITION */}
+      <section style={section(false)}>
+        <div style={inner}>
+          <h2 style={{ ...h2, margin: "0 0 20px", maxWidth: 900 }}>
+            What&rsquo;s new in the September edition.
+          </h2>
+          <p
+            style={{
+              margin: "0 0 clamp(36px,4vw,56px)",
+              maxWidth: 760,
+              fontSize: "clamp(16px,1.2vw + 8px,20px)",
+              lineHeight: 1.6,
+              color: "#A8A8A8",
+              textWrap: "pretty",
+            }}
+          >
+            The first refresh we promised. Here is what moved in three months.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,340px),1fr))",
+              gap: "clamp(24px,3vw,36px)",
+            }}
+          >
+            {WHATS_NEW.map((point) => (
+              <div
+                key={point.text}
+                style={{ display: "flex", gap: 16, alignItems: "flex-start" }}
+              >
+                <IconSlot>{point.icon}</IconSlot>
+                <p style={body}>{point.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p
+            style={{
+              margin: "clamp(28px,3vw,40px) 0 0",
+              paddingTop: 24,
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              fontFamily: MONO,
+              fontSize: 12,
+              letterSpacing: "0.04em",
+              lineHeight: 1.6,
+              color: "#6B6B6B",
+              textWrap: "pretty",
+            }}
+          >
+            670 checks, up from 592. Every named CVE, standard and legal date
+            re-validated on 17 September 2026.
+          </p>
         </div>
       </section>
 
@@ -856,7 +1032,7 @@ export default function PreflightPage() {
         <div style={inner}>
           <p style={eyebrow}>03 · What&rsquo;s inside</p>
           <h2 style={{ ...h2, margin: "0 0 20px" }}>
-            Five protocols. 592 checks. Every layer scored.
+            Five protocols. 670 checks. Every layer scored.
           </h2>
           <p
             style={{
@@ -965,9 +1141,120 @@ export default function PreflightPage() {
                     {protocol.close}
                   </p>
                 ) : null}
+                {/* v34: what the September edition added to this
+                    protocol, pinned to the foot of the card so the new
+                    lines sit on one baseline across all five. */}
+                <p
+                  style={{
+                    margin: 0,
+                    marginTop: "auto",
+                    paddingTop: 18,
+                    borderTop: "1px solid rgba(255,255,255,0.08)",
+                    fontSize: 15,
+                    lineHeight: 1.5,
+                    color: "#A8A8A8",
+                    textWrap: "pretty",
+                  }}
+                >
+                  {protocol.coverage}
+                </p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* v34 · 1.4: THE FULL LAYER MAP. Unnumbered for the same reason
+          as 1.2. Five columns on desktop, hairline separated by a 1px
+          grid gap over a light background; they stack at 390px. */}
+      <section style={section(false)}>
+        <div style={inner}>
+          <h2 style={{ ...h2, margin: "0 0 20px", maxWidth: 900 }}>
+            What we cover, layer by layer.
+          </h2>
+          <p
+            style={{
+              margin: "0 0 clamp(36px,4vw,56px)",
+              maxWidth: 760,
+              fontSize: "clamp(16px,1.2vw + 8px,20px)",
+              lineHeight: 1.6,
+              color: "#A8A8A8",
+              textWrap: "pretty",
+            }}
+          >
+            The full map. Every layer is scored 0 to 10, and the grade is the
+            lowest one.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,210px),1fr))",
+              gap: 1,
+              borderRadius: 14,
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.08)",
+              overflow: "hidden",
+            }}
+          >
+            {LAYER_MAP.map((column) => (
+              <div
+                key={column.name}
+                style={{ background: "#0A0A0B", padding: "22px 18px" }}
+              >
+                <h3
+                  style={{
+                    margin: "0 0 4px",
+                    fontFamily: MONO,
+                    fontSize: 11,
+                    lineHeight: 1.4,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "#7C6CFF",
+                    // Two lines' worth, so the one heading that wraps on
+                    // desktop does not push its column's first layer out
+                    // of line with the other four.
+                    minHeight: "2.8em",
+                  }}
+                >
+                  {column.name}
+                </h3>
+                <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                  {column.layers.map((layer) => (
+                    <li
+                      key={layer}
+                      style={{
+                        padding: "11px 0",
+                        borderTop: "1px solid rgba(255,255,255,0.08)",
+                        fontFamily: MONO,
+                        fontSize: 12,
+                        lineHeight: 1.45,
+                        color: "#A8A8A8",
+                        textWrap: "pretty",
+                      }}
+                    >
+                      {layer}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p
+            style={{
+              margin: "clamp(28px,3vw,40px) 0 0",
+              paddingTop: 24,
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              fontSize: "clamp(16px,1.2vw + 8px,18px)",
+              lineHeight: 1.6,
+              color: "#A8A8A8",
+              textWrap: "pretty",
+            }}
+          >
+            38 layers and sub-domains. 17 launch blockers and hard gates. Any one
+            open and the product does not ship.
+          </p>
         </div>
       </section>
 

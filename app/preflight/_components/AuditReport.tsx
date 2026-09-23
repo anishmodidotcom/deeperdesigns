@@ -19,12 +19,17 @@ const LAYERS: Layer[] = [
   { label: "Identity", score: "8", width: 80, colour: "#7C6CFF" },
   { label: "API", score: "8", width: 80, colour: "#7C6CFF" },
   { label: "Database", score: "9", width: 90, colour: "#7C6CFF" },
+  // v34: the two conditional layers the September edition added. They
+  // are N/A here for the same reason Payments is: the mock product does
+  // not have that surface.
+  { label: "Platform rules", score: "N/A", width: null, colour: "#7C6CFF" },
   { label: "Dependencies", score: "8", width: 80, colour: "#7C6CFF" },
   { label: "AI", score: "8", width: 80, colour: "#7C6CFF" },
   { label: "Payments", score: "N/A", width: null, colour: "#7C6CFF" },
   { label: "Secrets", score: "7", width: 70, colour: "#F5B544" },
   { label: "Infrastructure", score: "7", width: 70, colour: "#F5B544" },
   { label: "Privacy", score: "7", width: 70, colour: "#F5B544" },
+  { label: "Mobile", score: "N/A", width: null, colour: "#7C6CFF" },
 ];
 
 const BLOCKERS = [
@@ -67,7 +72,7 @@ export default function AuditReport() {
               color: "#6B6B6B",
             }}
           >
-            9 layers · 159 checks
+            9 layers plus 2 conditional · 201 checks
           </span>
         </div>
 
@@ -167,7 +172,7 @@ export default function AuditReport() {
                 key={layer.label}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "88px 1fr 30px",
+                  gridTemplateColumns: "98px 1fr 30px",
                   alignItems: "center",
                   gap: 12,
                 }}
