@@ -8,6 +8,12 @@ import {
   trackWhatsAppOpenedFromShowcase,
 } from "@/lib/meta-events";
 import { useShowcaseContext } from "@/components/ShowcaseContext";
+import {
+  INDIA_PHONE,
+  INDIA_PHONE_TEL,
+  UAE_PHONE,
+  UAE_PHONE_TEL,
+} from "@/lib/contact";
 import { INDUSTRIES } from "@/lib/industries";
 import { SEGMENTS } from "@/lib/segments";
 
@@ -632,9 +638,39 @@ type="button"               aria-label="Close menu"
             </div>
           )}
           <div className="mt-auto pb-10 flex flex-col gap-3">
-            <a href="tel:+919968716498" className="text-base" style={{ color: "var(--fg-muted)" }}>
-              Call us on +91 99687 16498
-            </a>
+            {/* v34 part 5.1: the mobile sheet carried the India number
+                alone while the footer and the JSON-LD already carried
+                both. Same treatment as the footer: a Call us label, then
+                India and the UAE, each its own tel: link. The desktop
+                header stays India only. */}
+            <div className="flex flex-col">
+              <p
+                className="mono"
+                style={{
+                  margin: "0 0 2px",
+                  fontSize: 10,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--fg-dim)",
+                }}
+              >
+                Call us
+              </p>
+              <a
+                href={`tel:${INDIA_PHONE_TEL}`}
+                className="text-base dd-tap-row"
+                style={{ color: "var(--fg-muted)" }}
+              >
+                {`India · ${INDIA_PHONE}`}
+              </a>
+              <a
+                href={`tel:${UAE_PHONE_TEL}`}
+                className="text-base dd-tap-row"
+                style={{ color: "var(--fg-muted)" }}
+              >
+                {`UAE · ${UAE_PHONE}`}
+              </a>
+            </div>
             <Link
               href="/start-your-study"
               className="btn-whatsapp"
