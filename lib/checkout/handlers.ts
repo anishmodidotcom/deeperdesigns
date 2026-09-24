@@ -29,7 +29,8 @@ import {
   normalizeGstin,
 } from "@/lib/gstin";
 import { NextResponse } from "next/server";
-import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { kv } from "@vercel/kv";
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
 // POST /api/preflight/order — create a Razorpay Order (v29).
 //
@@ -68,6 +69,80 @@ function readString_order(value: unknown, max: number): string | null {
 // A short unique receipt. Razorpay caps this at 40 characters.
 function receiptId_order(): string {
   return `pf_${Date.now().toString(36)}${randomBytes(4).toString("hex")}`;
+}
+
+// v34 part 6.2: the server half of the double-submit guard.
+//
+// Razorpay showed two orders created four seconds apart from one Pay
+// click. The browser guard below stops the common case, but it cannot
+// stop a second tab, a refresh-and-retry, or a click that beats a slow
+// first response. So a created order is cached for a short window and a
+// repeat for the same buyer gets the same order back rather than a new
+// one. Two orders is not a double charge, but it is two records to
+// reconcile and one of them will never be paid.
+//
+// KV is best effort. When it is unavailable the route behaves exactly as
+// it did before: a new order every time.
+const ORDER_CACHE_TTL_SECONDS = 120;
+const KV_ENABLED_order = !!process.env.KV_REST_API_URL;
+
+type CachedOrder = {
+  id: string;
+  amount: number;
+  currency: string;
+  /** Fingerprint of the notes this order was created with. */
+  notes: string;
+};
+
+// The key is a hash of product, email and amount, so a different
+// product, a different buyer or a changed price is a different order.
+function orderCacheKey(slug: string, email: string, amount: number): string {
+  const digest = createHash("sha256")
+    .update(`${slug}|${email.trim().toLowerCase()}|${amount}`)
+    .digest("hex")
+    .slice(0, 32);
+  return `checkout:order:${digest}`;
+}
+
+// The notes are not in the key, because the brief fixes the key on
+// product, email and amount. They are stored beside the order instead:
+// a buyer who dismisses the modal, adds their GSTIN and pays again
+// inside the window must not be handed back the order created without
+// it, because the invoice details ride on the order's notes.
+function notesFingerprint(notes: Record<string, string>): string {
+  return createHash("sha256")
+    .update(JSON.stringify(notes))
+    .digest("hex")
+    .slice(0, 16);
+}
+
+function logOrderCache(event: string, fields: Record<string, unknown>): void {
+  console.error(
+    JSON.stringify({ route: "preflight-order", event, ...fields }),
+  );
+}
+
+async function readCachedOrder(key: string): Promise<CachedOrder | null> {
+  if (!KV_ENABLED_order) return null;
+  try {
+    return (await kv.get<CachedOrder>(key)) ?? null;
+  } catch (e) {
+    logOrderCache("order_cache_read_failed", {
+      error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+    });
+    return null;
+  }
+}
+
+async function writeCachedOrder(key: string, value: CachedOrder): Promise<void> {
+  if (!KV_ENABLED_order) return;
+  try {
+    await kv.set(key, value, { ex: ORDER_CACHE_TTL_SECONDS });
+  } catch (e) {
+    logOrderCache("order_cache_write_failed", {
+      error: e instanceof Error ? `${e.name}: ${e.message}` : String(e),
+    });
+  }
 }
 
 export async function handleOrder(req: Request) {
@@ -210,6 +285,48 @@ export async function handleOrder(req: Request) {
     `${process.env.RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}`,
   ).toString("base64");
 
+  // The notes travel with the payment and are what the fulfilment
+  // routine reads back, so the form fields never have to be trusted from
+  // a second client call.
+  const notes = {
+    name: name.slice(0, RAZORPAY_NOTE_MAX),
+    email: email.slice(0, RAZORPAY_NOTE_MAX),
+    note: note.slice(0, RAZORPAY_NOTE_MAX),
+    // The webhook and the callback both read the slug back off the
+    // payment, so neither has to be told which product it was.
+    product: product.slug,
+    // v33: carried on the payment itself, so fulfilment reads them
+    // back from Razorpay's record rather than trusting a second
+    // client call. Razorpay caps a note value at 256 characters.
+    company_name: billing.companyName.slice(0, RAZORPAY_NOTE_MAX),
+    company_address: billing.companyAddress.slice(0, RAZORPAY_NOTE_MAX),
+    gstin: billing.gstin.slice(0, RAZORPAY_NOTE_MAX),
+  };
+
+  // v34 part 6.2: a repeat submit inside the window gets the order the
+  // first one created, so one Pay click cannot leave two orders behind.
+  const amount = amountPaise(product);
+  const cacheKey = orderCacheKey(product.slug, email, amount);
+  const fingerprint = notesFingerprint(notes);
+  const cached = await readCachedOrder(cacheKey);
+  if (cached && cached.notes === fingerprint) {
+    console.log(
+      JSON.stringify({
+        route: "preflight-order",
+        event: "order_reused",
+        product: product.slug,
+        order_id: cached.id,
+      }),
+    );
+    return NextResponse.json({
+      ok: true,
+      order_id: cached.id,
+      amount: cached.amount,
+      currency: cached.currency,
+      key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+    });
+  }
+
   try {
     const res = await fetch("https://api.razorpay.com/v1/orders", {
       method: "POST",
@@ -218,26 +335,10 @@ export async function handleOrder(req: Request) {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        amount: amountPaise(product),
+        amount,
         currency: PRODUCT_CURRENCY,
         receipt: receiptId_order(),
-        // The notes travel with the payment and are what the fulfilment
-        // routine reads back, so the form fields never have to be
-        // trusted from a second client call.
-        notes: {
-          name: name.slice(0, RAZORPAY_NOTE_MAX),
-          email: email.slice(0, RAZORPAY_NOTE_MAX),
-          note: note.slice(0, RAZORPAY_NOTE_MAX),
-          // The webhook and the callback both read the slug back off the
-          // payment, so neither has to be told which product it was.
-          product: product.slug,
-          // v33: carried on the payment itself, so fulfilment reads them
-          // back from Razorpay's record rather than trusting a second
-          // client call. Razorpay caps a note value at 256 characters.
-          company_name: billing.companyName.slice(0, RAZORPAY_NOTE_MAX),
-          company_address: billing.companyAddress.slice(0, RAZORPAY_NOTE_MAX),
-          gstin: billing.gstin.slice(0, RAZORPAY_NOTE_MAX),
-        },
+        notes,
       }),
     });
 
@@ -263,6 +364,13 @@ export async function handleOrder(req: Request) {
       amount: number;
       currency: string;
     };
+
+    await writeCachedOrder(cacheKey, {
+      id: order.id,
+      amount: order.amount,
+      currency: order.currency,
+      notes: fingerprint,
+    });
 
     return NextResponse.json({
       ok: true,
