@@ -324,3 +324,87 @@ export function IconWrench(p: IconProps) {
     </Svg>
   );
 }
+
+/* ---- v34: what's new in the September edition ---- */
+
+export function IconPatch(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <rect
+        x="2.6"
+        y="8.6"
+        width="18.8"
+        height="6.8"
+        rx="3.4"
+        transform="rotate(-45 12 12)"
+      />
+      <path d="M8.5 8.5l7 7" />
+      <path d="M10.6 13.4h.01M13.4 10.6h.01" />
+    </Svg>
+  );
+}
+
+export function IconBranch(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <circle cx="4.5" cy="12" r="2.2" />
+      <circle cx="19.5" cy="5" r="2.2" />
+      <circle cx="19.5" cy="12" r="2.2" />
+      <circle cx="19.5" cy="19" r="2.2" />
+      <path d="M6.7 12h4.3" />
+      <path d="M11 5v14" />
+      <path d="M11 5h6.3M11 12h6.3M11 19h6.3" />
+    </Svg>
+  );
+}
+
+export function IconMobile(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+      <path d="M10.5 18.5h3" />
+      <path d="M6.5 6h11" />
+    </Svg>
+  );
+}
+
+export function IconRollback(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <rect x="3" y="13.5" width="18" height="7.5" rx="2" />
+      <path d="M6.5 17.2h2.5M16.5 17.2h1" />
+      <path d="M12 2.5v8M8.5 7L12 10.5 15.5 7" />
+    </Svg>
+  );
+}
+
+export function IconLabel(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M20.5 3.5h-8.1a1.5 1.5 0 00-1.06.44l-8 8a1.5 1.5 0 000 2.12l6.6 6.6a1.5 1.5 0 002.12 0l8-8a1.5 1.5 0 00.44-1.06z" />
+      <circle cx="16.6" cy="7.4" r="1.3" />
+    </Svg>
+  );
+}
+
+export function IconSilentAlarm(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M18 9.5a6 6 0 00-12 0c0 4.8-2 6.3-2 6.3h16s-2-1.5-2-6.3z" />
+      <path d="M13.7 19.2a2 2 0 01-3.4 0" />
+      <path d="M3.5 3.5l17 17" />
+    </Svg>
+  );
+}
+
+export function IconChangelog(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M8 4.5h9.5A1.5 1.5 0 0119 6v13.5a1.5 1.5 0 01-1.5 1.5H8" />
+      <path d="M5 4.5v16.5" />
+      <circle cx="5" cy="9" r="1.3" />
+      <circle cx="5" cy="15" r="1.3" />
+      <path d="M9.5 9h6M9.5 12h6M9.5 15h6M9.5 18h3.5" />
+    </Svg>
+  );
+}

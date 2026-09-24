@@ -32,9 +32,10 @@ export const DELIVERY_SUBJECT = "Your Preflight download";
 const INSIDE = [
   "Five audit protocols",
   "The operator guide",
-  "Four checklists, 61 items",
+  "Four checklists, 104 items",
   "The report template",
-  "Field notes, 16 findings",
+  "Field notes, 26 findings",
+  "The changelog, dated",
 ];
 
 const FOOTER_LINES = [
@@ -49,6 +50,11 @@ const BODY_START =
   "Open the operator guide first. It covers the access you need, the run order, and how to read a verdict. Then run Security hardening. It is the protocol most likely to change what you ship next.";
 const BODY_REFRESH =
   "Refreshes ship for 12 months as CVEs, standards and framework versions move. You will get an email each time.";
+// v34: the edition line, immediately after the refresh paragraph, so a
+// buyer knows which edition they hold and that the next one lands in the
+// same place.
+const BODY_EDITION =
+  "You are on the September 2026 edition. Refreshes land in this same folder for twelve months.";
 const ACCENT = "Audit your product before your users do.";
 
 export function deliveryHtml(
@@ -73,6 +79,7 @@ export function deliveryHtml(
       paragraph(BODY_START, 15),
       rule(),
       paragraph(BODY_REFRESH, 14),
+      paragraph(BODY_EDITION, 14),
       accentRow(ACCENT),
       billingRows(billing),
       footerRows(FOOTER_LINES),
@@ -103,6 +110,8 @@ WHERE TO START
 ${BODY_START}
 
 ${BODY_REFRESH}
+
+${BODY_EDITION}
 
 ${ACCENT}
 ${billingText(billing)}
