@@ -524,7 +524,9 @@ const INCLUDED = [
   "Four checklists, 104 items",
   "Report template",
   "Field notes, 26 findings",
-  "12 months of refreshes",
+  // v34 part 6.1: the older "12 months of refreshes" line is gone from
+  // this list, because the edition line below already says twelve
+  // months. The hero numbers strip still carries the 12.
   "September 2026 edition, refreshed every quarter for twelve months",
 ];
 
