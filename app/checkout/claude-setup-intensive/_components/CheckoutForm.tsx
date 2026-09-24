@@ -102,6 +102,20 @@ export default function CheckoutForm({
   const [billingErrors, setBillingErrors] = useState<BillingErrors>({});
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // v34 part 6.2: the real double-submit guard. `busy` drives the
+  // button's disabled state, but a React state update is not applied
+  // until the next render, so two clicks inside one tick both read
+  // busy === false and both create a Razorpay order. This ref is set
+  // synchronously on the first click and cleared only when the modal is
+  // up or the attempt has failed.
+  const inFlight = useRef(false);
+
+  // Clears both halves of the lock: the button becomes clickable again
+  // and a fresh order may be created.
+  function release(): void {
+    inFlight.current = false;
+    setBusy(false);
+  }
 
   const warmed = useRef(false);
   useEffect(() => {
@@ -133,9 +147,10 @@ export default function CheckoutForm({
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (busy) return;
+    if (inFlight.current || busy) return;
     setMessage(null);
     if (!validate()) return;
+    inFlight.current = true;
     setBusy(true);
 
     // v33.1: this was missing. The order was created and Razorpay
@@ -151,7 +166,7 @@ export default function CheckoutForm({
       const scriptReady = await loadCheckoutScript();
       if (!scriptReady) {
         setMessage(FAILURE_MESSAGE);
-        setBusy(false);
+        release();
         return;
       }
 
@@ -180,14 +195,14 @@ export default function CheckoutForm({
       };
       if (!orderRes.ok || !order.ok || !order.order_id || !order.key_id) {
         setMessage(order.error ?? FAILURE_MESSAGE);
-        setBusy(false);
+        release();
         return;
       }
 
       const RazorpayCtor = window.Razorpay;
       if (!RazorpayCtor) {
         setMessage(FAILURE_MESSAGE);
-        setBusy(false);
+        release();
         return;
       }
 
@@ -219,24 +234,25 @@ export default function CheckoutForm({
               // Fall through to the failure message.
             }
             setMessage(FAILURE_MESSAGE);
-            setBusy(false);
+            release();
           })();
         },
         modal: {
           ondismiss: () => {
             setMessage(FAILURE_MESSAGE);
-            setBusy(false);
+            release();
           },
         },
       });
       checkout.on("payment.failed", () => {
         setMessage(FAILURE_MESSAGE);
-        setBusy(false);
+        release();
       });
       checkout.open();
+      inFlight.current = false;
     } catch {
       setMessage(FAILURE_MESSAGE);
-      setBusy(false);
+      release();
     }
   }
 
