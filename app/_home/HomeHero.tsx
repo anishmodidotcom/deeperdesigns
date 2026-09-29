@@ -167,7 +167,7 @@ export default function HomeHero() {
             color: "var(--fg-dim)",
           }}
         >
-          Small tools start at ₹25,000. You get the exact number in writing before we start.
+          Small tools start at ₹25,000. You get the exact number before we start.
         </p>
       </div>
 
