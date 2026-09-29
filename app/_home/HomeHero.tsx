@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import { renderSerif } from "@/components/industry/text";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { HERO_SUBLINE, hookLine } from "@/lib/hero-hooks";
 
 // v22: fixed, outcome-first headline. The rotating what-if mechanic is
 // retired (mid-fade ghosting, and the audit wanted one clear promise).
 // The ambient tiles, parallax, and scroll indicator stay as they were.
+//
+// v35 part 1: rotation returns, but nothing rotates in the browser. The
+// line is picked in proxy.ts and passed down as a number, so the H1 is
+// already in the HTML on first paint. Still exactly one <h1>; only its
+// words change. Everything below the sub-line is unchanged.
 
 type AmbientItem = {
   slug: string;
@@ -33,7 +40,7 @@ const AMBIENT: AmbientItem[] = [
   { slug: "maplelens",       bottom: "32%",right: "36%", width: 240, rotate: -1, opacity: 0.10, delay: 2.2 },
 ];
 
-export default function HomeHero() {
+export default function HomeHero({ hook }: { hook: number }) {
   const layerRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -104,21 +111,10 @@ export default function HomeHero() {
             marginInline: "auto",
           }}
         >
-          Software that quietly runs{" "}
-          <span
-            style={{
-              fontFamily: "var(--font-instrument-serif), 'Instrument Serif', Georgia, serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-            }}
-          >
-            the boring parts of your business.
-          </span>
+          {renderSerif(hookLine(hook))}
         </h1>
         <p style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "var(--fg-muted)", maxWidth: "680px", marginInline: "auto", marginBottom: "48px" }}>
-          Quotes out in minutes. Collections chased without you. The day&apos;s
-          numbers before your first meeting. We build it for how your business
-          actually runs, and you know exactly what you get before you pay.
+          {HERO_SUBLINE}
         </p>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/start-your-study" className="btn-whatsapp">Talk to us</Link>

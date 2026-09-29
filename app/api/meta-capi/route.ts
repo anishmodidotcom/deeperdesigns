@@ -88,6 +88,10 @@ const ALLOWED_CUSTOM_KEYS = new Set([
   "category",
   // v30: the audit question slug from the homepage band.
   "question",
+  // v35: which hero hook the session was served, 1 to 5. Without it on
+  // this list the browser leg would carry the parameter and the CAPI
+  // mirror would not, and hook performance would read wrong.
+  "hero_hook",
   // v29: Purchase carries a real money value, which Meta reads off
   // custom_data rather than the event root.
   "value",
