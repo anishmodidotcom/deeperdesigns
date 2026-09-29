@@ -133,6 +133,38 @@ export default function Services() {
 
       <section style={{ padding: "var(--section-py) 0", background: "var(--bg-elev)" }}>
         <div className="container">
+          {/* v35 part 3.1: what the price ladder is an alternative to,
+              stated before the ladder itself. This is also the one place
+              on the site where the pricing mechanic is named. */}
+          <div style={{ maxWidth: "880px", marginBottom: "40px" }}>
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: 1.65,
+                color: "var(--fg-muted)",
+                margin: "0 0 20px",
+                textWrap: "pretty",
+              }}
+            >
+              Most businesses run on five to ten subscriptions that each almost
+              fit. CRM, ERP, HRMS, inventory, invoicing, project management,
+              support. We take the ones that matter and build one system shaped
+              to how the business actually runs, connected to anything that
+              genuinely works, replacing what does not. One-time cost instead of
+              monthly rent. Data that stays with the owner. A system that changes
+              when the business changes.
+            </p>
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: 1.65,
+                color: "var(--fg)",
+                margin: "0 0 40px",
+              }}
+            >
+              One price, agreed in writing before we start.
+            </p>
+          </div>
           <div style={{ maxWidth: "880px", marginBottom: "40px" }}>
             <AnishNote
               text="The price ranges below are where most builds land. We custom-quote after a 15-minute call. No proposals, no decks. Just a conversation and a number."

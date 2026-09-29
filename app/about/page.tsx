@@ -113,8 +113,10 @@ export default function About() {
               textWrap: "pretty",
             }}
           >
-            Deeper Designs finds what is holding a business back and builds the
-            system that fixes it. One team for the thinking and the building.
+            Deeper Designs decides what to build, why, and how, then builds it
+            and writes the protocol that governs it once it is live. One team
+            carries the responsibility from the first question to the running
+            system.
           </p>
         </div>
       </section>

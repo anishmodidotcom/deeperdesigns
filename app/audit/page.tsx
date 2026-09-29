@@ -87,7 +87,7 @@ const GOOD_FIT = [
   "Owner-led B2B businesses in India, roughly ten to thirty people.",
   "Manufacturers, traders, distributors, importers, exporters, and businesses like them.",
   "Running on Tally, Excel, WhatsApp and phone calls.",
-  "Curious about what technology could do, not sure where to start.",
+  "Ready to hand the AI question to someone who will carry it.",
 ];
 
 const NOT_FIT = [

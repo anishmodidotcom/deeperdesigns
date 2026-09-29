@@ -21,9 +21,12 @@ export default function SegmentPack({
   // v32.1: four of the seven segments are served by work built for a
   // neighbouring trade. Their intro says so rather than letting the
   // section imply the systems were made for them.
+  //
+  // v35 part 3.5: the mechanics sentence is gone from both variants. The
+  // list itself is unchanged.
   const intro = ADAPTED_SEGMENTS.has(slug)
-    ? "Systems from previous work that shape to your business fast. Some were built for a neighbouring trade and adapt directly. Every one is customised; none starts from a blank page."
-    : "Systems from previous work that shape to your business fast. Every one is customised; none starts from a blank page.";
+    ? "Systems from previous work that shape to your business fast. Some were built for a neighbouring trade and adapt directly."
+    : "Systems from previous work that shape to your business fast.";
 
   return (
     <section style={{ paddingBottom: "var(--section-py)" }}>
