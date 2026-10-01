@@ -6,7 +6,9 @@ import { renderSerif } from "@/components/industry/text";
 
 const LINES = [
   "Built for your workflow, not a template you bend yourself around.",
-  "One price, agreed in writing before we start. No per-seat meter.",
+  // v35 part 2.5: the mechanics line moves to /services, where it is
+  // stated once. What remains true without it stays.
+  "One price, agreed before we start. No per-seat meter.",
   "You own the software and the data. We hand over everything.",
 ];
 
@@ -37,12 +39,16 @@ export default function HomeOwnership() {
             margin: "0 0 40px",
           }}
         >
-          Salesforce, SAP, and the rest were built for companies with hundreds
-          of people and budgets to match. You have been quoted lakhs for
-          software that almost fits, then charged again for every new person
-          who logs in. That maths has changed. The same tools can now be built
-          around exactly how your business runs, for a fraction of that, in
-          weeks. And they belong to you.
+          Every business runs on systems. Some were built on purpose. Some grew
+          by accident. Some were never built, and the business has been paying
+          for their absence without noticing. Owners build the systems they
+          understand: a sales founder builds sales, an operator builds
+          operations, and the rest waits. That is where the next level is.
+          Around one crore, the systems are the owner&rsquo;s habits. Around ten
+          crore, they are a few tools and a few key people. Around a hundred
+          crore, they are departments with software and controls. A business
+          that wants to move up a level builds the next level&rsquo;s systems
+          before the revenue arrives, not after.
         </p>
         <ul
           style={{

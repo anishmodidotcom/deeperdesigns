@@ -17,12 +17,12 @@ const CARDS: {
   sub: string;
   href?: string;
 }[] = [
-  { label: "FOR FOUNDERS", headline: "You see the bottleneck before it costs you.",  sub: "The numbers that matter, in front of you every morning." },
-  { label: "FOR OPERATORS", headline: "Your inventory updates itself.",              sub: "No more 9 PM stock counts. No more guess-orders." },
-  { label: "FOR TEAMS",    headline: "Your team stops chasing the same 6 things.",   sub: "One place everyone checks. The same answer for everyone." },
+  { label: "FOR FOUNDERS", headline: "The customer system",  sub: "The numbers that matter, in front of you every morning." },
+  { label: "FOR OPERATORS", headline: "The operations system",              sub: "No more 9 PM stock counts. No more guess-orders." },
+  { label: "FOR TEAMS",    headline: "The knowledge and coordination system",   sub: "One place everyone checks. The same answer for everyone." },
   {
     label: "FOR DISTRIBUTORS",
-    headline: "Secondary sales you can finally see",
+    headline: "The order-to-cash system",
     sub: "Retailer orders from the market, offline if needed, scheme claims reconciled with the principal, and one dashboard showing what the field actually did today.",
     href: "/business/distributors",
   },
@@ -55,7 +55,7 @@ export default function HomeOutcomes() {
     <section id="outcomes" ref={sectionRef} style={{ padding: "var(--section-py) 0" }}>
       <div className="container">
         <h2 style={{ fontSize: "var(--fs-h1)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.02em", maxWidth: "880px", marginBottom: "64px" }}>
-          Which part of your business would you hand over first?
+          Which system would you build first?
         </h2>
         <div className="outcomes-grid">
           {CARDS.map((c, i) => {

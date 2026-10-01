@@ -23,7 +23,7 @@ const SECTIONS = [
   },
   {
     label: "What it runs on",
-    body: "Your software runs on the same cloud infrastructure large companies use, so it scales when your traffic does. We monitor it, and we know when something is wrong before you call us.",
+    body: "Your software runs on the same cloud infrastructure large companies use, so it scales when your traffic does. We monitor it, and we know when something is wrong before you call us. Model-agnostic by design, so a provider change is a configuration, not a rebuild.",
   },
   {
     label: "When something breaks",
@@ -32,6 +32,13 @@ const SECTIONS = [
   {
     label: "If you ever want to leave",
     body: "You own the code and the data, and we hand over both, documented, whenever you ask. You are never locked to us. That is the point of owning your software instead of renting it. We build on standard, widely used technology, not anything exotic, so any competent development team can pick it up and carry on.",
+  },
+  // v35 part 3.2: the protocol block. It sits after the block about
+  // leaving with what you own, because it is the other half of that
+  // answer: what your team inherits, in writing.
+  {
+    label: "A written protocol for every block",
+    body: "Every system ships with its protocol: how it runs, what it must never do, what it does when a provider fails, and who decides. It is how we stand behind what we build, and it is what your team inherits if you ever move on.",
   },
   {
     label: "We run our own on it",

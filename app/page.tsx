@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import HomeHero from "./_home/HomeHero";
+import { HOOK_HEADER, normaliseHook } from "@/lib/hero-hooks";
 import HomeQuestionBand from "./_home/HomeQuestionBand";
 import Scenarios from "@/components/Scenarios";
 import HomeOwnership from "./_home/HomeOwnership";
@@ -46,10 +48,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+// v35 part 1: reading the hook header makes the homepage render per
+// request rather than at build time. That is the price of having the
+// chosen H1 already in the HTML, which is what keeps the rotation free
+// of layout shift. Noted in the PR.
+export default async function Home() {
+  const hook = normaliseHook((await headers()).get(HOOK_HEADER)) ?? 1;
   return (
     <main id="main">
-      <HomeHero />
+      <HomeHero hook={hook} />
       {/* v30 part 2: the question band sits directly under the hero, with
           the seven segments promoted beneath it. */}
       <HomeQuestionBand />

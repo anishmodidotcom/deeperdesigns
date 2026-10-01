@@ -119,8 +119,7 @@ export default function CostCalculator() {
         }}
       >
         Rented figures use current public list prices. Build figures are
-        typical ranges, and your exact number comes in writing before we
-        start.
+        typical ranges, and your exact number comes before we start.
       </p>
 
       <style>{`

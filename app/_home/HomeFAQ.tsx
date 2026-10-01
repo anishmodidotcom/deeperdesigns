@@ -29,7 +29,7 @@ const QA = [
   },
   {
     q: "What does it cost?",
-    a: "Small tools start at ₹25,000. Bigger systems cost more, and you get the exact number in writing before we start. Most builds pay for themselves within a few months, and we walk you through that math on the call.",
+    a: "Small tools start at ₹25,000. Bigger systems cost more, and you get the exact number before we start. Most builds pay for themselves within a few months, and we walk you through that math on the call.",
   },
   {
     q: "What if it does not work?",

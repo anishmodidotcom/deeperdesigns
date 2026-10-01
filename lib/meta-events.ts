@@ -248,13 +248,29 @@ export function trackEvent(
 
 // ---------- typed event wrappers ----------
 
+// v35 part 1: which hero hook this session was served. The proxy writes
+// the number to a readable session cookie, so the browser reports the
+// line that was actually rendered rather than recomputing it, and
+// because it rides on custom_data it reaches the CAPI mirror too.
+function heroHook(): number | undefined {
+  if (typeof document === "undefined") return undefined;
+  const m = document.cookie.match(/(?:^|;\s*)dd_hook_n=([0-9]+)/);
+  if (!m) return undefined;
+  const n = Number(m[1]);
+  return Number.isInteger(n) && n >= 1 && n <= 5 ? n : undefined;
+}
+
 export function trackPageView(): void {
   // v25.5: this is now the only source of PageView. The base pixel snippet
   // used to fire its own on initial load with no event_id and no server
   // mirror; every PageView now goes browser plus CAPI under one event_id,
   // so iOS 14+ users with a degraded browser signal are still matched on
   // the landing view, which is the one an ad click produces.
-  trackEvent("PageView", { path: typeof window !== "undefined" ? window.location.pathname : "" });
+  const hero_hook = heroHook();
+  trackEvent("PageView", {
+    path: typeof window !== "undefined" ? window.location.pathname : "",
+    ...(hero_hook === undefined ? {} : { hero_hook }),
+  });
 }
 
 export function trackViewContent(
