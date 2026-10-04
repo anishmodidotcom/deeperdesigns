@@ -189,7 +189,7 @@ export default function Solution() {
             marginBottom: 64,
           }}
         >
-          The trading system: live stock, instant quotes, one view of the day.
+          The trading system: live stock, instant quotes, one view.
         </h2>
 
         <motion.div
