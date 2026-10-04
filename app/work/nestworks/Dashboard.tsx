@@ -173,7 +173,7 @@ export default function Dashboard() {
             maxWidth: 820,
           }}
         >
-          One dashboard. The whole floor. In real time.
+          The operations system for a shared floor, running in real time.
         </motion.h2>
 
         <motion.div

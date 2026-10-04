@@ -156,7 +156,7 @@ export default function Solution() {
             maxWidth: 800,
           }}
         >
-          One dashboard to run all four locations.
+          Four locations, run as one system.
         </h2>
 
         <motion.div
