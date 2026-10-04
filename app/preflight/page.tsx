@@ -514,7 +514,7 @@ const STUDIO_POINTS = [
   },
   {
     icon: <IconKey />,
-    text: "Everything we build is owned by the client. One price, agreed before we start. No per-seat licence.",
+    text: "Everything we build is owned by the client. One price, agreed in writing before we start. No per-seat licence.",
   },
 ];
 
